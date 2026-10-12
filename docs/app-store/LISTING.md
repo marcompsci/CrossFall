@@ -1,6 +1,6 @@
 # Crossfall: App Store listing
 
-Copy each field into **App Store Connect › Crossfall › App Store › iOS App 0.2**. Character counts are under Apple's limits.
+Copy each field into **App Store Connect › Crossfall › App Store › iOS App 0.3**. Character counts are under Apple's limits.
 
 | Field | Text | Limit |
 | --- | --- | --- |
@@ -17,7 +17,7 @@ Copy each field into **App Store Connect › Crossfall › App Store › iOS App
 
 ## Promotional text (170)
 
-New: Game Center rankings, a fall-speed setting, music, and three puzzles in every category. Solve the clue, watch your word fall, and find what's hiding in the stack.
+New: Daily Crossfall with streaks and a Today leaderboard, scoring you can see, hold and next pieces, Zen mode, and a puzzle maker for your own word lists.
 
 ## Keywords (100)
 
@@ -47,24 +47,40 @@ PLAY YOUR WAY
 • Relaxed, Normal or Fast falling speed
 • Light, dark, or follow your phone
 • Bigger text, high contrast and a magnifying glass for clues and tiles
+• Hold a piece and see the next three
+• Zen mode: no timer, no game over
+• Check a word, or turn on Autocheck
+• Readable font option
 • Works with Dynamic Type and VoiceOver
 • Sound effects and an optional music loop
 
+DAILY CROSSFALL
+One puzzle for everyone each day. Your first try goes on the Today leaderboard. Keep your streak going, and earn freezes that cover a missed day. Share your result with friends.
+
+SCORING YOU CAN SEE
+Every point is shown line by line: clean letters, speed chains, row clears, combos, the target, rushes and your time. Solve with no help for a gold bonus and chase an SS grade.
+
+LEARN AS YOU PLAY
+Every word you solve goes into your word bank, and quick reviews bring back the ones you're still learning. Teachers and parents can turn any spelling list into a puzzle and share it with a code.
+
 RANKINGS AND ACHIEVEMENTS
-Climb the Game Center leaderboards for all-time score, best game and this week. Unlock achievements as you go.
+Climb the Game Center leaderboards for today, all time, this week and best game. Unlock 9 achievements.
 
 No ads. No account to create. No tracking.
 ```
 
-## What's New (0.2)
+## What's New (0.3)
 
 ```
-• Game Center leaderboards and achievements
-• Fall speed: Relaxed, Normal or Fast
-• Light and dark mode can follow your phone
-• Sound effects and optional music
-• Three puzzles in every category
-• Dynamic Type and VoiceOver support
+• Daily Crossfall: one puzzle for everyone, a Today leaderboard, streaks with freezes, past puzzles and a share card
+• New scoring you can see line by line: speed chains, combos, gold solves and D–SS grades
+• Hold a piece and see the next three
+• Check a word or turn on Autocheck
+• Zen mode: no timer, no game over
+• Word bank and quick reviews of the words you've solved
+• Make a puzzle from your own word list and share it as a code
+• Your game in progress is saved; back up your progress with a code
+• Readable font option
 ```
 
 ## Screenshots

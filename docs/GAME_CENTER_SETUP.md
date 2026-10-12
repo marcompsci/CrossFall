@@ -14,8 +14,9 @@ turn Game Center on for the app version, then add:
 | All-time total | `crossfall.total` | Classic | Integer | High to low | Lifetime total score. Submission type: Best score. |
 | Best game | `crossfall.best` | Classic | Integer | High to low | Best single game. Submission type: Best score. |
 | This week | `crossfall.weekly` | Recurring | Integer | High to low | Starts on a Monday, duration 1 week, repeats. Best game of the week. |
+| Today | `crossfall.daily` | Recurring | Integer | High to low | Starts at midnight, duration 1 day, repeats. Only a player's first try at the daily puzzle is sent. |
 
-For each one, add an English localisation: display name ("All-Time Total", "Best Game", "This Week") and score format suffix "points".
+For each one, add an English localisation: display name ("All-Time Total", "Best Game", "This Week", "Today's Daily") and score format suffix "points".
 
 ## Achievements
 
@@ -26,6 +27,10 @@ For each one, add an English localisation: display name ("All-Time Total", "Best
 | Three Stars | `crossfall.three_stars` | 20 | Yes | Earn all three stars on a puzzle. |
 | Rush Master | `crossfall.rush_ten` | 30 | Yes | Win 10 rushes (progress shows as you go). |
 | Every Category | `crossfall.every_category` | 25 | Yes | Play a puzzle in every category. |
+| Gold Solve | `crossfall.gold_solve` | 15 | Yes | Finish a puzzle with no hints, checks or autocheck. |
+| Perfect SS | `crossfall.grade_ss` | 40 | Yes | Earn an SS grade. |
+| Week of Dailies | `crossfall.daily_7` | 30 | Yes | Solve the daily puzzle 7 days in a row (progress shows as you go). |
+| Word Collector | `crossfall.word_bank_100` | 25 | Yes | Put 100 different words in your word bank. |
 
 Each achievement needs an English localisation (title, description before/after earning) and a 512×512 or 1024×1024 image.
 Images are in `design/achievements/`.

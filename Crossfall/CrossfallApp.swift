@@ -108,8 +108,9 @@ enum GC {
     static let total = "crossfall.total"     // classic, high to low: lifetime total score
     static let best = "crossfall.best"       // classic, high to low: best single game
     static let weekly = "crossfall.weekly"   // recurring, resets every Monday: best game this week
+    static let daily = "crossfall.daily"     // recurring, resets every day: first try at the daily puzzle
     static func board(_ scope: String) -> String {
-        switch scope { case "best": return best; case "week": return weekly; default: return total }
+        switch scope { case "best": return best; case "week": return weekly; case "day": return daily; default: return total }
     }
 }
 
@@ -163,7 +164,8 @@ final class GameCenter: NSObject, GKGameCenterControllerDelegate {
 
     private func submit(_ b: [String: Any]) {
         guard GKLocalPlayer.local.isAuthenticated else { return }
-        let pairs: [(String, Int)] = [(GC.total, b["total"] as? Int ?? 0), (GC.best, b["best"] as? Int ?? 0), (GC.weekly, b["game"] as? Int ?? 0)]
+        let pairs: [(String, Int)] = [(GC.total, b["total"] as? Int ?? 0), (GC.best, b["best"] as? Int ?? 0),
+                                      (GC.weekly, b["game"] as? Int ?? 0), (GC.daily, b["daily"] as? Int ?? 0)]
         for (id, value) in pairs where value > 0 {
             GKLeaderboard.submitScore(value, context: 0, player: GKLocalPlayer.local, leaderboardIDs: [id]) { _ in }
         }
@@ -217,6 +219,24 @@ final class GameCenter: NSObject, GKGameCenterControllerDelegate {
     }
 }
 
+// MARK: - Share sheet
+
+/// Shows the iOS share sheet for a daily result, a puzzle code or a backup code.
+enum Share {
+    static func present(_ text: String) {
+        let scene = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first
+        var top = scene?.windows.first(where: { $0.isKeyWindow })?.rootViewController
+        while let p = top?.presentedViewController { top = p }
+        guard let host = top else { return }
+        let sheet = UIActivityViewController(activityItems: [text], applicationActivities: nil)
+        if let pop = sheet.popoverPresentationController {
+            pop.sourceView = host.view
+            pop.sourceRect = CGRect(x: host.view.bounds.midX, y: host.view.bounds.maxY - 80, width: 1, height: 1)
+        }
+        host.present(sheet, animated: true)
+    }
+}
+
 // MARK: - Bridge from the page
 
 final class PageBridge: NSObject, WKScriptMessageHandler {
@@ -230,6 +250,8 @@ final class PageBridge: NSObject, WKScriptMessageHandler {
             if let value = message.body as? String { DispatchQueue.main.async { self.theme.set(value) } }
         case "gc":
             if let body = message.body as? [String: Any] { gameCenter.handle(body) }
+        case "share":
+            if let text = message.body as? String { DispatchQueue.main.async { Share.present(text) } }
         default: break
         }
     }
@@ -255,6 +277,7 @@ struct GameView: UIViewRepresentable {
         let bridge = PageBridge(theme: theme, gameCenter: context.coordinator.gameCenter)
         config.userContentController.add(bridge, name: "theme")
         config.userContentController.add(bridge, name: "gc")
+        config.userContentController.add(bridge, name: "share")
         config.userContentController.addUserScript(WKUserScript(
             source: "window.__NATIVE_TS=\(TextScale.current);window.__NATIVE_GC=true;",
             injectionTime: .atDocumentStart, forMainFrameOnly: true))

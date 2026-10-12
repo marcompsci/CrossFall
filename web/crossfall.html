@@ -160,7 +160,7 @@ html.hc .cc.on{outline:2px solid #fff}
 .k{flex:1;max-width:40px;height:44px;background:var(--panel-2);border:0;border-bottom:3px solid var(--key-edge);border-radius:6px;font-family:var(--f-mono);font-weight:700;font-size:calc(17px*var(--ts));padding:0}
 .k.wide{max-width:64px;flex:1.5;font-family:var(--f-body);font-size:calc(13px*var(--ts));letter-spacing:.04em}
 .k:active{transform:translateY(2px);border-bottom-width:1px}
-.ctrl{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.ctrl{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.ctrl:has(> :nth-child(6)){grid-template-columns:repeat(6,1fr)}
 .ctrl .k{max-width:none;height:58px;font-size:22px;font-family:var(--f-body)}
 .ctrl .k.hd{background:var(--accent);color:var(--ink)}
 .ctrl-hint{font-size:calc(13px*var(--ts));color:var(--muted);text-align:center}
@@ -367,6 +367,65 @@ html.hc .cc.on{outline:2px solid #fff}
 .tabwrap{overflow-x:auto}
 .chipline{display:flex;gap:6px;flex-wrap:wrap}
 .chipline span{background:var(--panel-2);border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-weight:700;font-size:calc(13px*var(--ts))}
+
+/* v2: queue + hold, grades, breakdown, daily, maker, review */
+.queue.live{display:flex;align-items:center;gap:12px;justify-content:center;text-transform:none;letter-spacing:0;--mq:calc(13px*var(--ts))}
+.qhold{display:flex;flex-direction:column;align-items:center;gap:3px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:5px 8px;min-height:44px;min-width:56px;color:var(--fg)}
+.qhold.used{opacity:.45}
+.ql{font-size:10px;letter-spacing:.1em;color:var(--muted);font-weight:700}
+.qnext{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.mp{display:inline-grid;gap:1px;vertical-align:middle}
+.mp b{width:var(--mq);height:var(--mq);background:var(--tile);color:var(--ink);font:700 calc(var(--mq)*.68)/var(--mq) var(--f-mono);text-align:center;border-radius:2px}
+.mp i{width:var(--mq);height:var(--mq)}
+.mp.empty{width:30px;height:var(--mq);border:1px dashed var(--line);border-radius:3px}
+.qmore,.qempty{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.cc.bad{box-shadow:inset 0 0 0 2px #ff5a5f}.cc.bad .l{color:#d6262c}
+.cc.helped::after{content:"";position:absolute;right:3px;bottom:3px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.grade{display:inline-grid;place-items:center;min-width:52px;height:52px;padding:0 6px;box-sizing:border-box;border-radius:14px;font-family:var(--f-display);font-size:26px;background:var(--panel-2);border:2px solid var(--line);color:var(--fg)}
+.grade.g-SS,.grade.g-S{background:var(--gold);color:#231b35;border-color:transparent}
+.grade.g-A{background:var(--solved);color:#06281f;border-color:transparent}
+.grade.sm{min-width:30px;height:30px;font-size:15px;border-radius:8px}
+.grade.xs{min-width:22px;height:20px;font-size:11px;border-radius:5px;border-width:1px;vertical-align:1px}
+.goldtag{display:inline-block;font-size:11px;letter-spacing:.1em;font-weight:800;background:var(--gold);color:#231b35;border-radius:999px;padding:3px 10px}
+.resrow{display:flex;align-items:center;gap:14px;justify-content:center}
+.brk{width:100%;max-width:320px;border-collapse:collapse;font-size:calc(14px*var(--ts))}
+.brk td{padding:5px 2px;border-bottom:1px solid var(--line);text-align:left}
+.brk td.n{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.brk tr.sub td{color:var(--muted)}.brk tr.mul td{color:var(--gold)}.brk tr.tot td{font-weight:800;border-bottom:0;font-size:1.1em}
+html.light .brk tr.mul td{color:#a86f00}
+.mini{display:grid;gap:2px;width:100%;margin:2px auto}
+.mini b{aspect-ratio:1;background:var(--tile);color:var(--ink);font:700 11px/1 var(--f-mono);display:grid;place-items:center;border-radius:3px}
+.mini b.hp{background:var(--gold)}.mini b.no{background:var(--panel-2)}.mini i{aspect-ratio:1}
+.sclist{text-align:left;padding-left:18px;margin:8px 0 0;display:flex;flex-direction:column;gap:6px;font-size:calc(13px*var(--ts));line-height:1.45}
+.how.sc{width:100%;max-width:340px;text-align:left;box-sizing:border-box}
+.how h4{margin:12px 0 0}
+.dcard{background:linear-gradient(135deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:16px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:none}
+.dcard .sub{color:var(--muted);font-size:calc(13px*var(--ts));margin:0;line-height:1.4}
+.dc-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.dc-st{font-weight:800;font-size:calc(15px*var(--ts));white-space:nowrap}
+.dc-done{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.dc-done b{font-family:var(--f-mono);font-size:24px}
+.dc-btns{display:flex;gap:8px}.dc-btns>*{flex:1;height:44px;font-size:calc(15px*var(--ts))}.dc-btns>.big{flex:2}
+.linkbtn{background:none;border:0;color:var(--accent);font-weight:700;text-decoration:underline;align-self:flex-start;padding:4px 0;min-height:36px;font-size:calc(14px*var(--ts))}
+.alist{display:flex;flex-direction:column;gap:6px;width:100%;max-width:420px}
+.arow{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-height:48px;color:var(--fg);font-weight:700;text-align:left}
+.arow .sub{font-weight:400}
+.mkin,#textbox textarea{width:100%;max-width:420px;box-sizing:border-box;background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;font-size:16px}
+textarea.mkin,#textbox textarea{font-family:var(--f-mono);font-size:14px;line-height:1.5}
+#maker .seg,#maker .alist{width:100%;max-width:420px;box-sizing:border-box}
+#maker,#archive,#textbox,#review{gap:10px}
+.mkrow{display:flex;gap:8px;width:100%;max-width:420px}.mkrow .mkin{flex:1}
+.mkmsg{color:var(--accent);min-height:1.2em;margin:0;font-size:14px;font-weight:700}
+.btns.wide{max-width:420px}
+.rvcard{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px 16px;width:100%;max-width:380px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px;align-items:center}
+.rvclue{font-size:calc(19px*var(--ts));line-height:1.45;margin:0;text-align:center}
+.bank{display:flex;flex-direction:column;gap:6px}
+.bk{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline;font-size:calc(13px*var(--ts))}
+.bk b{font-family:var(--f-mono);letter-spacing:.06em}.bk span{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.zskip{margin-top:10px;width:100%;max-width:280px}
+.seg4{grid-template-columns:repeat(4,1fr)}
+html.readable{--f-body:Verdana,Tahoma,"Segoe UI",system-ui,sans-serif}
+html.readable body{letter-spacing:.03em;word-spacing:.1em}
+html.readable .ct,html.readable .rvclue,html.readable .gc-tag{line-height:1.55}
 </style>
 
 <div id="app">
@@ -419,6 +478,10 @@ html.hc .cc.on{outline:2px solid #fff}
       <span class="dr-lab">More</span>
       <nav class="dr-list" aria-label="More">
         <button data-act="resume" id="drResume" hidden>Resume game</button>
+        <button data-act="archive">Past daily puzzles</button>
+        <button data-act="maker">Make a puzzle</button>
+        <button data-act="review">Review my words</button>
+        <button data-act="backup">Back up progress</button>
         <button data-act="how">How to play</button>
         <button data-act="settings">Display and rush timer</button>
         <button data-act="checkin">Change my check-in answers</button>
@@ -427,6 +490,7 @@ html.hc .cc.on{outline:2px solid #fff}
 
     <section class="hpage" id="pgPlay" aria-label="Play">
       <button class="big" id="resumeBtn" hidden>Resume game</button>
+      <div class="dcard" id="dailyCard"></div>
       <div class="deckhead"><h2 class="hh">Pick a category</h2><span class="ln" id="deckPos">1 / 9</span></div>
       <div class="deck" id="deck" tabindex="0" aria-label="Categories. Swipe left or right, or use the arrow keys."></div>
       <div class="deckctl">
@@ -442,13 +506,17 @@ html.hc .cc.on{outline:2px solid #fff}
           <li>Fill a whole row to clear it.</li>
           <li>Spell the <b>target</b> across the orange middle line, or down through it, for +500.</li>
           <li>Stack above the line? <b>Rush</b>: up to 2 minutes to find the hidden word. Win fast and your next rush gets shorter.</li>
+          <li>Tap <b>HOLD</b> (or ⇄) to save a piece for later. <b>CHECK</b> marks wrong letters in the current word.</li>
+          <li><b>Daily</b>: one puzzle for everyone each day. Your first try goes on the Today board. Every 7-day streak earns a freeze that covers a missed day (hold up to 2).</li>
         </ol>
+        <h4 class="ln">SCORING</h4><div id="howScore"></div>
       </details>
     </section>
 
     <section class="hpage" id="pgRanks" aria-label="Rankings" hidden>
       <div class="deckhead"><h2 class="hh">Live rankings</h2><span class="live" id="rkLive"><i></i><span id="rkStatus">Connecting…</span></span></div>
-      <div class="seg" role="tablist" id="rkSeg">
+      <div class="seg seg4" role="tablist" id="rkSeg">
+        <button role="tab" data-rk="day" aria-selected="false">Today</button>
         <button role="tab" data-rk="total" aria-selected="true">All time</button>
         <button role="tab" data-rk="week" aria-selected="false">This week</button>
         <button role="tab" data-rk="best" aria-selected="false">Best game</button>
@@ -470,6 +538,10 @@ html.hc .cc.on{outline:2px solid #fff}
   </div>
   <div class="ov res" id="result" hidden></div>
   <div class="ov quiz" id="quiz" hidden></div>
+  <div class="ov res" id="review" hidden></div>
+  <div class="ov res" id="archive" hidden></div>
+  <div class="ov res" id="maker" hidden></div>
+  <div class="ov res" id="textbox" hidden></div>
   <div class="ov" id="settings" hidden>
     <h1>SET<span>TINGS</span></h1>
     <button class="setrow" role="switch" id="setBig"><span><span class="st-t">Bigger text</span><br><span class="st-d">Larger clues, quotes and buttons.</span></span><span class="sw"></span></button>
@@ -481,8 +553,12 @@ html.hc .cc.on{outline:2px solid #fff}
       <div class="seg seg3" role="radiogroup" aria-label="Theme" id="themeSeg"><button role="radio" data-theme="system">System</button><button role="radio" data-theme="light">Light</button><button role="radio" data-theme="dark">Dark</button></div></div>
     <button class="setrow" role="switch" id="setSfx"><span><span class="st-t">Sound effects</span><br><span class="st-d">Clicks, drops, clears and the rush countdown.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setMusic"><span><span class="st-t">Music</span><br><span class="st-d">A calm background loop while you play.</span></span><span class="sw"></span></button>
+    <button class="setrow" role="switch" id="setZen"><span><span class="st-t">Zen mode</span><br><span class="st-d">No rush timer and no game over: a full well just clears its top. Scores count at half.</span></span><span class="sw"></span></button>
+    <button class="setrow" role="switch" id="setAuto"><span><span class="st-t">Autocheck</span><br><span class="st-d">Wrong letters turn red as you type. Uses up the gold-solve bonus.</span></span><span class="sw"></span></button>
+    <button class="setrow" role="switch" id="setRead"><span><span class="st-t">Readable font</span><br><span class="st-d">A wider, plainer font with more space between letters.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setAdapt"><span><span class="st-t">Rush timer learns from you</span><br><span class="st-d">Starts at 2:00. Win fast and your next rush gets shorter (never under 0:30). Run out of time and it gives time back. Off keeps every rush at 2:00.</span></span><span class="sw"></span></button>
     <div class="pacebox"><span class="ln">YOUR RUSH TIMES</span><div id="paceInfo"></div><button class="retake" id="paceReset">Reset to 2:00</button></div>
+    <button class="ghost-btn" id="setBackup">Back up or restore progress</button>
     <button class="big" id="setDone">Done</button>
   </div>
 </div>
@@ -838,17 +914,18 @@ const CW_CACHE={};
 function crosswordFor(i){if(!CW_CACHE[i])CW_CACHE[i]=buildCrossword(LEVELS[i].words,LEVELS[i].seed);return CW_CACHE[i]}
 
 function startLevel(i){
-  const L=LEVELS[i];
+  const obj=typeof i==="object",L=obj?i:LEVELS[i];
   if(L.heal){if(!healProfile){showQuiz(i);return}if(!genHealing(L)){toast("Try again");return}}
-  const base=L.heal?L._cw:crosswordFor(i),R=rng(L.seed*7+Date.now()%997);
+  const base=(L.heal||obj)?L._cw:crosswordFor(i),R=rng(L.seed*7+Date.now()%997);
   const cells=new Map();for(const[k,c]of base.cells)cells.set(k,{...c,val:"",lock:false,words:c.words.slice()});
   const cw={rows:base.rows,cols:base.cols,cells,words:base.words.map(w=>({...w,cells:w.cells.slice(),solved:false}))};
   const grid=Array.from({length:ROWS},()=>Array(COLS).fill(null));
   for(let r=ROWS-2;r<ROWS;r++){const gap=Math.floor(R()*COLS);for(let c=0;c<COLS;c++)if(c!==gap)grid[r][c]={ch:GARB[Math.floor(R()*GARB.length)],g:1}}
-  S={li:i,L,R,cw,grid,phase:"cross",sel:{key:cw.words[0].cells[0],dir:cw.words[0].dir},active:null,queue:[],score:0,
-     targetHit:false,lastText:null,t0:Date.now(),rushWins:0,rushTotal:0,lockCount:0,lastRush:-9,cool:1,rush:null,acc:0,usedBonus:[],flash:[],hit:[],ghost:true,linesCleared:0};
-  document.getElementById("menu").hidden=true;document.getElementById("result").hidden=true;document.getElementById("quiz").hidden=true;
-  padMode="";layout();renderAll();
+  S={li:obj?-1:i,L,R,cw,grid,phase:"cross",sel:{key:cw.words[0].cells[0],dir:cw.words[0].dir},active:null,queue:[],score:0,
+     targetHit:false,lastText:null,t0:Date.now(),rushWins:0,rushTotal:0,lockCount:0,lastRush:-9,cool:1,rush:null,acc:0,usedBonus:[],flash:[],hit:[],ghost:true,linesCleared:0,
+     pts:{},helped:new Set(),bad:new Set(),assist:!!prefs.autocheck,chain:0,lastSolve:null,maxChain:0,crossMs:0,rushStreak:0,b2b:false,combo:0,hold:null,canHold:true,zen:!!prefs.zen,speedMult:SPEED_MULT[prefs.speed]||1,wordLog:[],final:null};
+  document.getElementById("menu").hidden=true;document.getElementById("result").hidden=true;document.getElementById("quiz").hidden=true;["maker","archive","textbox","review"].forEach(id=>{const x=document.getElementById(id);if(x)x.hidden=true});
+  padMode="";layout();renderAll();clearRun();saveRunSoon();
 }
 
 /* ---------- crossword interaction ---------- */
@@ -865,7 +942,7 @@ function typeLetter(ch){
   if(S.phase==="rush"){rushType(ch);return}
   if(S.phase!=="cross")return;
   const w=curWord();const cell=S.cw.cells.get(S.sel.key);
-  if(!cell.lock){cell.val=ch;blip(520,.03)}
+  if(!cell.lock){cell.val=ch;blip(520,.03);if(prefs.autocheck&&ch!==cell.ans){S.bad.add(S.sel.key);S.assist=true}}
   const i=w.cells.indexOf(S.sel.key);
   let nk=null;for(let j=i+1;j<w.cells.length;j++){if(!S.cw.cells.get(w.cells[j]).lock){nk=w.cells[j];break}}
   if(nk)S.sel.key=nk;
@@ -881,7 +958,7 @@ function backspace(){
 }
 function hint(){if(S.phase!=="cross")return;const w=curWord();
   const k=w.cells.find(k=>{const c=S.cw.cells.get(k);return c.val!==c.ans})||S.sel.key;
-  const c=S.cw.cells.get(k);if(c.lock)return;c.val=c.ans;S.sel.key=k;S.score=Math.max(0,S.score-25);toast("−25");checkWords(c)}
+  const c=S.cw.cells.get(k);if(c.lock)return;c.val=c.ans;S.sel.key=k;S.helped.add(k);addPts("hints",-25);toast("Hint −25");checkWords(c)}
 function checkWords(cell){
   const done=[];
   for(const wi of cell.words){const w=S.cw.words[wi];if(w.solved)continue;
@@ -890,28 +967,28 @@ function checkWords(cell){
       if(vals.join("")===w.ans){w.solved=true;w.cells.forEach(k=>S.cw.cells.get(k).lock=true);done.push(w)}
       else{S.wrong=new Set(w.cells);setTimeout(()=>{S.wrong=null;renderCW()},380);blip(140,.12)}}}
   if(done.length){
-    for(const w of done){S.score+=40*w.ans.length;S.queue.push(...piecesFor(w.ans,S.L.drop,S.R));if(S.L.texts&&S.L.texts[w.ans])S.lastText={word:w.ans,...S.L.texts[w.ans]}}
+    let gain=0;for(const w of done){gain+=scoreWord(w);S.queue.push(...piecesFor(w.ans,S.L.drop,S.R));if(S.L.texts&&S.L.texts[w.ans])S.lastText={word:w.ans,...S.L.texts[w.ans]}}
     blip(660,.08);setTimeout(()=>blip(880,.1),80);
-    toast(done.map(w=>w.ans).join(" + ")+" ↓");
+    toast(done.map(w=>w.ans).join(" + ")+" ↓ +"+gain+(S.chain?"  CHAIN ×"+(S.chain+1):""));
     S.phase="drop";spawnNext();
   }
-  renderAll();
+  renderAll();saveRunSoon();
 }
 
 /* ---------- well ---------- */
 function absCells(p,dr=0,dc=0){return p.cells.map(x=>({r:p.r+x.dr+dr,c:p.c+x.dc+dc,ch:x.ch}))}
 function collides(cells){return cells.some(({r,c})=>c<0||c>=COLS||r>=ROWS||(r>=0&&S.grid[r][c]))}
 function spawnNext(){
-  if(S.queue.length){
-    const p=S.queue.shift();const w=Math.max(...p.cells.map(x=>x.dc))+1;
-    p.r=0;p.c=Math.floor((COLS-w)/2);S.active=p;S.acc=-speedCfg().grace;S.landT=0;S.phase="drop";
-    if(collides(absCells(p))){gameOver("The well filled to the top.");return}
+  if(S.queue.length||S.hold){
+    const p=S.queue.length?S.queue.shift():(h=>{S.hold=null;return{cells:h.base.map(x=>({...x})),base:h.base}})(S.hold);
+    S.canHold=true;
+    if(!spawnPiece(p)){if(S.phase==="over")return;if(collides(absCells(p))){gameOver("The well filled to the top.");return}S.active=p;S.phase="drop"}
   }else{
     S.active=null;
     if(S.cw.words.every(w=>w.solved)){levelDone();return}
     S.phase="cross";S.view="cw";S.lastText=null;const cw=curWord();if(!cw||cw.solved){const n=S.cw.words.find(w=>!w.solved);if(n)selectWord(n)}
   }
-  renderAll();
+  renderAll();saveRunSoon();
 }
 function move(dc){if(S.phase!=="drop"||!S.active)return;if(!collides(absCells(S.active,0,dc))){S.active.c+=dc;blip(300,.02);renderWell()}}
 function rotate(){if(S.phase!=="drop"||!S.active)return;const p=S.active;
@@ -923,22 +1000,27 @@ function rotate(){if(S.phase!=="drop"||!S.active)return;const p=S.active;
   for(const k of[0,-1,1,-2,2,-3,3]){np.c=nc+k;if(!collides(absCells(np))){p.cells=rc;p.r=np.r;p.c=np.c;blip(420,.03);renderWell();return}}
 }
 function softDrop(){if(S.phase!=="drop"||!S.active)return;if(!collides(absCells(S.active,1,0))){S.active.r++;S.acc=0;renderWell()}else lock()}
-function hardDrop(){if(S.phase!=="drop"||!S.active)return;while(!collides(absCells(S.active,1,0)))S.active.r++;blip(200,.06);lock()}
+function hardDrop(){if(S.phase!=="drop"||!S.active)return;let d=0;while(!collides(absCells(S.active,1,0))){S.active.r++;d++}addPts("drop",2*d);blip(200,.06);lock()}
 function lock(){
-  const cells=absCells(S.active);S.active=null;
-  if(cells.some(x=>x.r<0)){gameOver("A word stuck out of the top of the well.");return}
+  let cells=absCells(S.active);S.active=null;
+  if(cells.some(x=>x.r<0)){if(!S.zen){gameOver("A word stuck out of the top of the well.");return}
+    cells.filter(x=>x.r>=0).forEach(({r,c,ch})=>S.grid[r][c]={ch});S.lockCount++;topOut();afterSettle();return}
   cells.forEach(({r,c,ch})=>S.grid[r][c]={ch});S.lockCount++;
   const full=[];for(let r=0;r<ROWS;r++)if(S.grid[r].every(Boolean))full.push(r);
   if(full.length){
     S.phase="anim";S.flash=full.flatMap(r=>[...Array(COLS)].map((_,c)=>[r,c]));renderWell();blip(990,.12);
     setTimeout(()=>{for(const r of full){S.grid.splice(r,1);S.grid.unshift(Array(COLS).fill(null))}
-      S.flash=[];S.score+=[0,100,250,450,700][full.length]||900;S.linesCleared+=full.length;toast(full.length>1?full.length+" ROWS!":"ROW CLEAR");afterSettle()},260);
-  }else afterSettle();
+      S.flash=[];
+      const n=full.length;let v=[0,100,300,500,800][n]||1000,lab=n>1?n+" ROWS":"ROW CLEAR";
+      if(n>1){if(S.b2b){v=Math.round(v*1.5);lab+=" · B2B"}S.b2b=true}else S.b2b=false;
+      addPts("rows",v);S.combo++;if(S.combo>1){addPts("combo",50*(S.combo-1));lab+=" · COMBO "+S.combo}
+      S.linesCleared+=n;toast(lab+" +"+v);afterSettle()},260);
+  }else{S.combo=0;afterSettle()}
 }
 function gravity(){for(let c=0;c<COLS;c++){const col=[];for(let r=ROWS-1;r>=0;r--)if(S.grid[r][c])col.push(S.grid[r][c]);for(let r=ROWS-1,i=0;r>=0;r--,i++)S.grid[r][c]=col[i]||null}}
 function afterSettle(){
   if(!S.targetHit){const span=findTarget(S.grid,S.L.target[0]);
-    if(span){S.targetHit=true;S.score+=500;S.phase="anim";S.hit=span;renderAll();toast("TARGET +500");blip(784,.1);setTimeout(()=>blip(1046,.18),120);
+    if(span){S.targetHit=true;addPts("target",500);S.phase="anim";S.hit=span;renderAll();toast("TARGET +500");blip(784,.1);setTimeout(()=>blip(1046,.18),120);
       setTimeout(()=>{S.grid.splice(MID,1);S.grid.unshift(Array(COLS).fill(null));S.hit=[];afterSettle()},900);return}}
   const above=S.grid.slice(0,MID).some(row=>row.some(Boolean));
   if(above&&S.lockCount-S.lastRush>=S.cool){startRush();return}
@@ -956,7 +1038,7 @@ function startRush(){
   if(mode==="scramble"){word=word||(found.length?pick().word:bonus()[0])}
   if(mode==="clue"){const b=bonus();word=b[0];clue=b[1]}
   let scr=word;for(let t=0;t<8&&scr===word;t++)scr=shuffle([...word],S.R).join("");
-  const lim=rushLimit(mode);S.rush={mode,word,clue,scr,input:"",taps:[],t0:performance.now(),left:lim,limit:lim,state:"on"};
+  const lim=S.zen?RUSH_SECS:rushLimit(mode);S.rush={mode,word,clue,scr,input:"",taps:[],t0:performance.now(),left:lim,limit:lim,state:"on",zen:!!S.zen};
   S.phase="rush";announce(mode==="tap"?`Rush. ${fmtTime(lim)}. Find ${word} in the well.`:mode==="scramble"?`Rush. ${fmtTime(lim)}. Unscramble the hidden word.`:`Rush. ${fmtTime(lim)}. `+clue);blip(330,.08);setTimeout(()=>blip(440,.08),100);setTimeout(()=>blip(550,.12),200);
   renderAll();
 }
@@ -976,14 +1058,15 @@ function rushType(ch){const R_=S.rush;if(!R_||R_.state!=="on"||R_.mode==="tap")r
     blip(140,.1);const el=document.getElementById("rush");el.classList.remove("wrong");void el.offsetWidth;R_.input=""}
   renderRush()}
 function rushWin(cells){
-  const R_=S.rush;R_.state="won";S.rushWins++;const bonus=150+Math.ceil(R_.left)*2+(RUSH_SECS-R_.limit)*3;S.score+=bonus;
-  const next=rushLearn(R_.mode,R_.limit-R_.left,R_.limit,true);R_.next=next;
+  const R_=S.rush;R_.state="won";S.rushWins++;S.rushStreak=(S.rushStreak||0)+1;
+  const bonus=R_.zen?100:150+Math.ceil(R_.left)*3+(RUSH_SECS-R_.limit)*2+Math.min(250,50*(S.rushStreak-1));addPts("rush",bonus);
+  const next=R_.zen?R_.limit:rushLearn(R_.mode,R_.limit-R_.left,R_.limit,true);R_.next=next;
   S.hit=cells;renderAll();toast("FOUND +"+bonus);if(next<R_.limit)setTimeout(()=>toast("NEXT RUSH "+fmtTime(next)),450);blip(880,.08);setTimeout(()=>blip(1175,.16),90);
   setTimeout(()=>{cells.forEach(([r,c])=>S.grid[r][c]=null);for(let r=0;r<MID;r++)S.grid[r].fill(null);gravity();
     S.hit=[];S.rush=null;S.cool=1;afterRush()},900);
 }
 function rushLose(){
-  const R_=S.rush;R_.state="lost";R_.next=rushLearn(R_.mode,R_.limit,R_.limit,false);renderRush();blip(160,.25);
+  const R_=S.rush;R_.state="lost";S.rushStreak=0;R_.next=rushLearn(R_.mode,R_.limit,R_.limit,false);renderRush();blip(160,.25);
   setTimeout(()=>{
     if(S.grid[0].some(Boolean)){gameOver("A junk row pushed the stack out of the well.");return}
     S.grid.shift();const gap=Math.floor(S.R()*COLS);const row=Array(COLS).fill(null);
@@ -1059,28 +1142,35 @@ function renderQuiz(){
 /* ---------- end states ---------- */
 function stars(){return 1+(S.targetHit?1:0)+((S.rushTotal===0||S.rushWins===S.rushTotal)?1:0)}
 function levelDone(){
-  S.phase="done";const st=stars();const prev=store[S.L.id]||{stars:0,best:0};
-  store[S.L.id]={stars:Math.max(prev.stars,st),best:Math.max(prev.best,S.score)};saveStore();
+  S.phase="done";finalize(true);clearRun();const st=stars();
+  if(S.li>=0){const prev=store[S.L.id]||{stars:0,best:0};store[S.L.id]={stars:Math.max(prev.stars,st),best:Math.max(prev.best,S.score)};saveStore()}
   blip(660,.1);setTimeout(()=>blip(880,.1),120);setTimeout(()=>blip(1320,.25),240);
   recordGame(true);showResult(true,st);
 }
-function gameOver(why){S.phase="over";S.active=null;recordGame(false);blip(200,.2);setTimeout(()=>blip(130,.35),180);showResult(false,0,why)}
+function gameOver(why){S.phase="over";S.active=null;finalize(false);clearRun();recordGame(false);blip(200,.2);setTimeout(()=>blip(130,.35),180);showResult(false,0,why)}
 function showResult(win,st,why){
-  const el=document.getElementById("result");const nx=LEVELS[S.li+1];const has=!!nx;const sameCat=has&&nx.ci===S.L.ci;
-  el.innerHTML=`<div class="sub">${S.L.cat} · ${S.L.name}</div>
+  const el=document.getElementById("result");const nx=S.li>=0?LEVELS[S.li+1]:null;const has=!!nx;const sameCat=has&&nx.ci===S.L.ci;
+  const dk=S.L.daily,official=dk&&!S.L.archive?dailyRecord(dk):null;
+  const help=S.helped.size?`${S.helped.size} hint${S.helped.size>1?"s":""} used`:S.assist?"Check or Autocheck used":"";
+  el.innerHTML=`<div class="sub">${esc(S.L.cat)} · ${esc(S.L.name)}${S.L.archive||S.L.custom?" · practice":""}${S.zen?" · Zen":""}</div>
    <h1>${win?"WELL <span>DONE</span>":"WELL <span>FULL</span>"}</h1>
-   ${win?`<div class="stars" aria-label="${st} of 3 stars">${"★".repeat(st)}<i>${"★".repeat(3-st)}</i></div>`:`<p class="sub">${why}</p>`}
-   <div class="pts">${S.score}</div>
-   <ul><li>${S.cw.words.filter(w=>w.solved).length}/${S.cw.words.length} words solved</li>
+   ${win?`<div class="resrow"><div class="stars" aria-label="${st} of 3 stars">${"★".repeat(st)}<i>${"★".repeat(3-st)}</i></div>${S.grade?`<span class="grade g-${S.grade}" role="img" aria-label="Grade ${S.grade}">${S.grade}</span>`:""}</div>
+     ${S.gold?`<span class="goldtag">GOLD SOLVE · NO HELP</span>`:help?`<span class="sub">${help}</span>`:""}`:`<p class="sub">${why}</p>`}
+   <div class="pts">${fmtN(S.score)}</div>${S.newBest?`<span class="goldtag">NEW PERSONAL BEST</span>`:""}
+   ${breakdownHTML()}
+   ${win?miniGridHTML():""}
+   <ul><li>${S.cw.words.filter(w=>w.solved).length}/${S.cw.words.length} words solved${S.maxChain>1?` · best chain ×${S.maxChain}`:""}</li>
    <li>Target ${S.L.target[0]}: ${S.targetHit?"built":"missed"}</li>
    <li>Rushes won: ${S.rushWins}/${S.rushTotal}</li><li>Rows cleared: ${S.linesCleared}</li></ul>
    ${S.L.texts?`<div class="readback" data-mag><span class="ln">READ IT BACK</span>${S.cw.words.filter(w=>w.solved).map(w=>{const x=S.L.texts[w.ans];return x?`<div class="rb"><b>${w.ans}</b><p>${x.ref?`“${x.text}”`:x.text}</p>${x.ref?`<cite>${x.ref}</cite>`:""}</div>`:""}).join("")}</div>`:""}
-   <div class="btns">${win&&has?`<button class="big" id="nextL">${sameCat?"Next puzzle":"Next category: "+nx.cat}</button>`:""}
-   <button class="${win&&has?"ghost-btn":"big"}" id="retryL">Play again</button>
+   <details class="how sc"><summary>How scoring works</summary>${SCORING_HELP}</details>
+   <div class="btns">${official?`<button class="big" id="shareD">Share result</button>`:""}${win&&has?`<button class="${official?"ghost-btn":"big"}" id="nextL">${sameCat?"Next puzzle":"Next category: "+nx.cat}</button>`:""}
+   <button class="${(win&&has)||official?"ghost-btn":"big"}" id="retryL">${dk?"Play again (practice)":"Play again"}</button>
    <button class="ghost-btn" id="toMenu">All categories</button></div>`;
-  el.hidden=false;
+  el.hidden=false;el.scrollTop=0;
   const n=document.getElementById("nextL");if(n)n.onclick=()=>startLevel(S.li+1);
-  document.getElementById("retryL").onclick=()=>startLevel(S.li);
+  const sh=document.getElementById("shareD");if(sh)sh.onclick=()=>shareOut(shareText(official,dk));
+  document.getElementById("retryL").onclick=()=>dk?playDaily(dk,true):startLevel(S.li>=0?S.li:S.L);
   document.getElementById("toMenu").onclick=showMenu;
 }
 /* ---------- hub: card deck, rankings, profile ---------- */
@@ -1110,13 +1200,20 @@ function starsTotal(){return Object.values(store).reduce((t,s)=>t+(s.stars||0),0
 function streak(){const set=new Set(stats.days);let n=0;const d=new Date();if(!set.has(dayKeyOf(d)))d.setDate(d.getDate()-1);while(set.has(dayKeyOf(d))){n++;d.setDate(d.getDate()-1)}return n}
 function saveStats(){stats.stars=store;try{localStorage.setItem("crossfall-stats",JSON.stringify(stats))}catch(e){}}
 function recordGame(win){
-  const now=Date.now(),g={t:now,id:S.L.id,cat:S.L.cat,name:S.L.name,score:S.score,stars:win?stars():0,words:S.cw.words.filter(w=>w.solved).length,
-    target:S.targetHit,rushW:S.rushWins,rushT:S.rushTotal,rows:S.linesCleared,win,secs:Math.round((now-(S.t0||now))/1000)};
+  const now=Date.now(),practice=!!(S.L.custom||S.L.archive),g={t:now,id:S.L.id,cat:S.L.cat,name:S.L.name,score:S.score,stars:win?stars():0,words:S.cw.words.filter(w=>w.solved).length,
+    target:S.targetHit,rushW:S.rushWins,rushT:S.rushTotal,rows:S.linesCleared,win,secs:Math.round((now-(S.t0||now))/1000),grade:S.grade,gold:!!S.gold,chain:S.maxChain||0,practice,zen:!!S.zen};
+  const T=stats.tot;S.newBest=!practice&&T.games>0&&g.score>T.best;
   stats.games.unshift(g);stats.games=stats.games.slice(0,60);
-  const T=stats.tot;T.games++;T.score+=g.score;T.words+=g.words;T.targets+=g.target?1:0;T.rushW+=g.rushW;T.rushT+=g.rushT;T.rows+=g.rows;T.wins+=win?1:0;T.best=Math.max(T.best,g.score);T.secs+=g.secs;
+  if(!practice){T.games++;T.score+=g.score;T.words+=g.words;T.targets+=g.target?1:0;T.rushW+=g.rushW;T.rushT+=g.rushT;T.rows+=g.rows;T.wins+=win?1:0;T.best=Math.max(T.best,g.score);T.secs+=g.secs;
+    T.golds=(T.golds||0)+(g.gold?1:0);T.ss=(T.ss||0)+(g.grade==="SS"?1:0);T.chainBest=Math.max(T.chainBest||0,g.chain);
+    const wk=weekKeyOf(now);if(stats.weekKey!==wk){stats.weekKey=wk;stats.week=0}stats.week+=g.score}
   const dk=dayKeyOf(now);if(!stats.days.includes(dk))stats.days=[dk,...stats.days].slice(0,120);
-  const wk=weekKeyOf(now);if(stats.weekKey!==wk){stats.weekKey=wk;stats.week=0}stats.week+=g.score;
-  saveStats();pushCloud();gcSync(g.score);
+  let daily=0;
+  if(S.L.daily&&!S.L.archive){stats.daily=stats.daily||{};const d=S.L.daily;
+    if(!stats.daily[d]){stats.daily[d]={score:g.score,grade:S.grade,gold:!!S.gold,win,target:S.targetHit,chain:S.maxChain||0,rushW:S.rushWins,rushT:S.rushTotal,log:S.wordLog,t:now};daily=g.score;
+      const ks=Object.keys(stats.daily).sort();ks.slice(0,Math.max(0,ks.length-60)).forEach(k=>delete stats.daily[k])}
+    if(win)bumpDailyStreak(d)}
+  saveStats();pushCloud();if(!practice)gcSync(g.score,daily);
 }
 
 /* cloud: shared leaderboard + private stats copy */
@@ -1127,7 +1224,7 @@ function pushCloud(){
   pushChain=pushChain.then(async()=>{
     try{
       await cloud.db.doc("data/users/"+cloud.uid+"/stats").set(JSON.parse(JSON.stringify(stats)));
-      await cloud.db.doc("scores/"+cloud.uid).set({nick:stats.nick||defaultNick(),total:stats.tot.score,best:stats.tot.best,games:stats.tot.games,stars:starsTotal(),words:stats.tot.words,weekKey:weekKeyOf(Date.now()),week:curWeek(),updatedAt:Date.now()});
+      await cloud.db.doc("scores/"+cloud.uid).set({nick:stats.nick||defaultNick(),total:stats.tot.score,best:stats.tot.best,games:stats.tot.games,stars:starsTotal(),words:stats.tot.words,weekKey:weekKeyOf(Date.now()),week:curWeek(),dailyKey:(stats.daily||{})[todayKey()]?todayKey():"",daily:((stats.daily||{})[todayKey()]||{}).score||0,golds:stats.tot.golds||0,updatedAt:Date.now()});
     }catch(e){cloud.err=e&&e.code||"error";if(e&&e.code==="invalid_argument")cloud.readOnly=true;renderRanks()}
   });
 }
@@ -1142,10 +1239,14 @@ const GC_ACH=[
   {id:"crossfall.first_target",test:()=>stats.tot.targets>=1?100:0},
   {id:"crossfall.three_stars",test:()=>Object.values(store).some(s=>s.stars>=3)?100:0},
   {id:"crossfall.rush_ten",test:()=>Math.min(100,stats.tot.rushW*10)},
-  {id:"crossfall.every_category",test:()=>Math.round(CATEGORIES.filter(c=>c.puzzles.some(p=>store[p.id])).length/CATEGORIES.length*100)}];
-function gcSync(game){
+  {id:"crossfall.every_category",test:()=>Math.round(CATEGORIES.filter(c=>c.puzzles.some(p=>store[p.id])).length/CATEGORIES.length*100)},
+  {id:"crossfall.gold_solve",test:()=>(stats.tot.golds||0)>=1?100:0},
+  {id:"crossfall.grade_ss",test:()=>(stats.tot.ss||0)>=1?100:0},
+  {id:"crossfall.daily_7",test:()=>Math.min(100,Math.round(((stats.dstreak||{}).best||0)/7*100))},
+  {id:"crossfall.word_bank_100",test:()=>Math.min(100,Object.keys(stats.bank||{}).length)}];
+function gcSync(game,daily){
   if(!gc.native||!(gc.auth&&gc.auth.ok))return;
-  gcPost({type:"score",total:stats.tot.score,best:stats.tot.best,game:game||0});
+  gcPost({type:"score",total:stats.tot.score,best:stats.tot.best,game:game||0,daily:daily||0});
   for(const a of GC_ACH){const pct=a.test();if(pct>0)gcPost({type:"achieve",id:a.id,pct})}
   gc.rows={};gcLoad(rkMode);
 }
@@ -1172,7 +1273,7 @@ function setRankStatus(t){const el=document.getElementById("rkStatus");if(el)el.
 /* hub navigation */
 function showMenu(){
   const rb=document.getElementById("resumeBtn");rb.hidden=!(S&&["drop","cross","rush","anim"].includes(S.phase));
-  rb.onclick=()=>{document.getElementById("menu").hidden=true;last=performance.now()};
+  rb.onclick=resumeRun;
   document.getElementById("result").hidden=true;document.getElementById("menu").hidden=false;
   goPage(hubPage);
 }
@@ -1193,6 +1294,7 @@ function catTiles(name,seed){
     return`<b style="left:${x.toFixed(1)}%;top:${y.toFixed(0)}px;transform:rotate(${rot.toFixed(0)}deg);animation-delay:${i*55}ms">${c}</b>`}).join("");
 }
 function renderDeck(){
+  renderDailyCard();const hs=document.getElementById("howScore");if(hs&&!hs.innerHTML)hs.innerHTML=SCORING_HELP;
   const deck=document.getElementById("deck"),n=CATEGORIES.length;
   deck.innerHTML=CATEGORIES.map((cat,ci)=>{
     const look=CAT_LOOK[cat.name]||{g1:"#444",g2:"#222",tag:""},ps=cat.puzzles;
@@ -1235,10 +1337,10 @@ function deckFx(){
 
 /* rankings */
 let rkMode="total";
-const RK_LABEL={total:"pts",week:"pts",best:"best"};
+const RK_LABEL={total:"pts",week:"pts",best:"best",day:"pts"};
 function rankRows(mode){
   const wk=weekKeyOf(Date.now());
-  const val=r=>mode==="week"?(r.weekKey===wk?r.week||0:0):mode==="best"?r.best||0:r.total||0;
+  const tk=todayKey(),val=r=>mode==="day"?(r.dailyKey===tk?r.daily||0:0):mode==="week"?(r.weekKey===wk?r.week||0:0):mode==="best"?r.best||0:r.total||0;
   return cloud.rows.map(r=>({...r,v:val(r)})).filter(r=>r.v>0).sort((a,b)=>b.v-a.v||(a.updatedAt||0)-(b.updatedAt||0));
 }
 function rkRow(r,i){
@@ -1254,7 +1356,7 @@ function renderRanks(){
   if(!cloud.db){list.innerHTML=`<li class="empty">${cloud.native?"Worldwide rankings arrive with Game Center in the App Store version. Your games still count on your profile.":"Live rankings need you signed in. Your games still count on your profile."}</li>`;document.getElementById("rkMe").hidden=true;return}
   const rows=rankRows(rkMode);
   setRankStatus(cloud.live?`Live · ${fmtN(cloud.rows.length)} player${cloud.rows.length===1?"":"s"}`:"Connecting…");
-  if(!rows.length){list.innerHTML=`<li class="empty">${rkMode==="week"?"Nobody has scored this week yet.":"No scores yet."} Finish a puzzle to take first place.</li>`;document.getElementById("rkMe").hidden=true;return}
+  if(!rows.length){list.innerHTML=`<li class="empty">${rkMode==="day"?"Nobody has played today's puzzle yet. Your first try counts.":rkMode==="week"?"Nobody has scored this week yet.":"No scores yet."} ${rkMode==="day"?"":"Finish a puzzle to take first place."}</li>`;document.getElementById("rkMe").hidden=true;return}
   list.innerHTML=rows.slice(0,100).map(rkRow).join("");
   const mi=rows.findIndex(r=>r.id===cloud.uid),me=document.getElementById("rkMe");
   if(mi>=100){me.hidden=false;me.innerHTML=`<ol class="rklist">${rkRow(rows[mi],mi)}</ol>`}else me.hidden=true;
@@ -1269,7 +1371,7 @@ function renderGcRanks(list){
   if(err){setRankStatus("Game Center");list.innerHTML=`<li class="empty">${err==="setup"?"Worldwide leaderboards are being set up. Your scores are saved and will appear here once they're live.":"Couldn't load rankings right now: "+esc(err)}</li><li>${btn}</li>`;wireGcBtn();return}
   const rows=data.rows||[];setRankStatus(`Game Center · ${fmtN(data.total||rows.length)} player${(data.total||rows.length)===1?"":"s"}`);
   const lv=document.getElementById("rkLive");if(lv)lv.classList.add("on");
-  const row=(r)=>`<li class="rkrow${r.me?" me":""}${r.rank<=3?" p"+r.rank:""}"><span class="rn">${r.rank}</span><span class="av" aria-hidden="true">${esc(String(r.name||"?").charAt(0).toUpperCase())}</span><span class="nm"><b>${esc(r.name||"Player")}${r.me?`<span class="youtag">YOU</span>`:""}</b><span>${rkMode==="week"?"Best game this week":rkMode==="best"?"Best single game":"Total score"}</span></span><span class="vl">${fmtN(r.score)}</span></li>`;
+  const row=(r)=>`<li class="rkrow${r.me?" me":""}${r.rank<=3?" p"+r.rank:""}"><span class="rn">${r.rank}</span><span class="av" aria-hidden="true">${esc(String(r.name||"?").charAt(0).toUpperCase())}</span><span class="nm"><b>${esc(r.name||"Player")}${r.me?`<span class="youtag">YOU</span>`:""}</b><span>${rkMode==="day"?"Today's daily puzzle":rkMode==="week"?"Best game this week":rkMode==="best"?"Best single game":"Total score"}</span></span><span class="vl">${fmtN(r.score)}</span></li>`;
   list.innerHTML=(rows.length?rows.map(row).join(""):`<li class="empty">No scores yet. Finish a puzzle to take first place.</li>`)+`<li>${btn}</li>`;
   if(data.mine&&!rows.some(r=>r.me)){me.hidden=false;me.innerHTML=`<ol class="rklist">${row(data.mine)}</ol>`}
   wireGcBtn();
@@ -1282,6 +1384,7 @@ function levelOf(score){const lv=Math.floor(Math.sqrt(score/400))+1,lo=Math.pow(
 function renderProfile(){if(gc.native)gcLoad("total");
   const el=document.getElementById("profile");if(!el)return;
   const T=stats.tot,nick=stats.nick||(cloud.uid?defaultNick():"Player"),L=levelOf(T.score),rk=myRank();
+  const ds=dailyStreak(),bankN=Object.keys(stats.bank||{}).length,bankRecent=Object.entries(stats.bank||{}).sort((a,b)=>b[1].t-a[1].t).slice(0,8);
   const maxStars=LEVELS.length*3,rushRate=T.rushT?Math.round(T.rushW/T.rushT*100):null;
   const kpi=(l,v,s)=>`<div class="kpi"><span class="kl">${l}</span><span class="kv">${v}</span>${s?`<span class="ks">${s}</span>`:""}</div>`;
   const recent=stats.games.slice(0,14).reverse();
@@ -1301,19 +1404,21 @@ function renderProfile(){if(gc.native)gcLoad("total");
      ${kpi("Games",fmtN(T.games),`${fmtN(T.wins)} finished`)}
      ${kpi("Stars",`${starsTotal()}`,`of ${maxStars}`)}
      ${kpi("Rush wins",rushRate==null?"—":rushRate+"%",`${fmtN(T.rushW)} of ${fmtN(T.rushT)}`)}
-     ${kpi("Words solved",fmtN(T.words),"")}
-     ${kpi("Targets built",fmtN(T.targets),"")}
-     ${kpi("Day streak",fmtN(streak()),streak()===1?"day":"days")}
+     ${kpi("Words solved",fmtN(T.words),`${fmtN(Object.keys(stats.bank||{}).length)} in your word bank`)}
+     ${kpi("Gold solves",fmtN(T.golds||0),`${fmtN(T.targets)} targets built`)}
+     ${kpi("Daily streak",`🔥 ${fmtN(ds.n)}`,`${ds.freezes} freeze${ds.freezes===1?"":"s"} · best ${fmtN((stats.dstreak||{}).best||0)}`)}
      ${kpi("Best game",fmtN(T.best),"points")}
    </div>
    <div class="panel chart" id="scoreChart"><h3>Score, last ${recent.length||14} games</h3>${recent.length?scoreChart(recent):`<div class="empty">Play a puzzle and your scores show up here.</div>`}</div>
+   <div class="panel"><h3>Word bank · ${fmtN(bankN)} word${bankN===1?"":"s"}</h3>${bankN?`<div class="bank">${bankRecent.map(([w,b])=>`<div class="bk"><b>${esc(w)}</b><span>${esc(b.c)}</span></div>`).join("")}</div><button class="retake" id="pfReview">Review 10 words</button>`:`<div class="empty">Every word you solve is saved here so you can review it later.</div>`}</div>
    <div class="panel"><h3>Stars by category</h3>${catRows.map(r=>`<div class="hbar"><span>${esc(r.c)}</span><span class="tr"><i style="width:${r.max?Math.round(r.got/r.max*100):0}%"></i></span><span class="v">${r.got}/${r.max}</span></div>`).join("")}</div>
    <div class="panel"><h3>Your rush times</h3>${Object.entries(RUSH_MODES).map(([m,l])=>{const p=rushPace[m],lim=prefs.adapt===false?RUSH_SECS:rushLimit(m);return`<div class="hbar"><span>${l}</span><span class="tr"><i style="width:${Math.round(lim/RUSH_SECS*100)}%"></i></span><span class="v">${fmtTime(lim)}</span></div>`}).join("")}<span class="pf-rank">Shorter bar = faster rushes. ${prefs.adapt===false?"Adaptive timer is off.":"It adapts as you play."}</span></div>
    ${healProfile?`<div class="panel"><h3>Your check-in focus</h3><div class="chipline">${healFocus().slice(0,3).map(t=>`<span>${themeLabel(t)}</span>`).join("")}</div><button class="retake" id="pfRetake">Change my answers</button></div>`:""}
-   <div class="panel"><h3>Recent games</h3>${stats.games.length?`<div class="tabwrap"><table class="rtab"><thead><tr><th>Puzzle</th><th>Stars</th><th style="text-align:right">Score</th></tr></thead><tbody>${stats.games.slice(0,10).map(g=>`<tr><td>${esc(g.cat)} · ${esc(g.name)}<br><span class="pf-rank">${new Date(g.t).toLocaleDateString("en-US",{month:"short",day:"numeric"})}${g.win?"":" · well filled"}</span></td><td class="st">${starStr(g.stars)}</td><td class="n">${fmtN(g.score)}</td></tr>`).join("")}</tbody></table></div>`:`<div class="empty">No games yet.</div>`}</div>`;
+   <div class="panel"><h3>Recent games</h3>${stats.games.length?`<div class="tabwrap"><table class="rtab"><thead><tr><th>Puzzle</th><th>Stars</th><th style="text-align:right">Score</th></tr></thead><tbody>${stats.games.slice(0,10).map(g=>`<tr><td>${esc(g.cat)} · ${esc(g.name)}<br><span class="pf-rank">${new Date(g.t).toLocaleDateString("en-US",{month:"short",day:"numeric"})}${g.win?"":" · well filled"}</span></td><td class="st">${starStr(g.stars)}${g.grade?` <span class="grade xs g-${g.grade}">${g.grade}</span>`:""}</td><td class="n">${fmtN(g.score)}</td></tr>`).join("")}</tbody></table></div>`:`<div class="empty">No games yet.</div>`}</div>`;
   document.getElementById("nickForm").onsubmit=e=>{e.preventDefault();const v=document.getElementById("nickIn").value.replace(/[^\p{L}\p{N} _.-]/gu,"").trim().slice(0,16);
     if(!v)return;stats.nick=v;saveStats();pushCloud();toast("Name saved");renderProfile()};
   const rt=document.getElementById("pfRetake");if(rt)rt.onclick=()=>showQuiz(null);
+  const rvb=document.getElementById("pfReview");if(rvb)rvb.onclick=openReview;
   wireChart();
 }
 function scoreChart(games){
@@ -1366,6 +1471,7 @@ document.getElementById("drClose").onclick=closeDrawer;document.getElementById("
     if(a==="resume")document.getElementById("resumeBtn").click();
     else if(a==="settings"){renderPaceInfo();document.getElementById("settings").hidden=false}
     else if(a==="checkin")showQuiz(null);
+    else if(a==="archive")openArchive();else if(a==="maker")openMaker();else if(a==="review")openReview();else if(a==="backup")openBackup();
     else if(a==="how"){goPage("Play");const h=document.querySelector(".how");if(h){h.open=true;setTimeout(()=>h.scrollIntoView({behavior:"smooth",block:"start"}),60)}}});
   document.querySelectorAll("#rkSeg button").forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;renderRanks()});
   document.getElementById("hubA11y").onclick=()=>{renderPaceInfo();document.getElementById("settings").hidden=false};
@@ -1425,7 +1531,7 @@ function renderCW(){
   const w=S.phase==="cross"?curWord():null;const inW=new Set(w?w.cells:[]);
   let h="";for(let r=0;r<cw.rows;r++)for(let c=0;c<cw.cols;c++){const k=r+","+c,cell=cw.cells.get(k);
     if(!cell){h+=`<div class="cc"></div>`;continue}
-    let cls="cc on"+(S.wrong&&S.wrong.has(k)?" wrong":"");if(cell.lock)cls+=" solved";else if(S.phase==="cross"&&k===S.sel.key)cls+=" cur";else if(inW.has(k))cls+=" inword";
+    let cls="cc on"+(S.wrong&&S.wrong.has(k)?" wrong":"")+(S.bad&&S.bad.has(k)&&cell.val&&cell.val!==cell.ans&&!cell.lock?" bad":"")+(S.helped&&S.helped.has(k)?" helped":"");if(cell.lock)cls+=" solved";else if(S.phase==="cross"&&k===S.sel.key)cls+=" cur";else if(inW.has(k))cls+=" inword";
     const ws=cell.words.map(i=>S.cw.words[i]).map(x=>`${x.num} ${x.dir==="a"?"Across":"Down"}, square ${x.cells.indexOf(k)+1} of ${x.ans.length}`).join("; ");
     const lab=`${ws}. ${cell.val?"Letter "+cell.val:"Empty"}${cell.lock?", solved":""}${S.phase==="cross"&&k===S.sel.key?", selected":""}`;
     h+=`<div class="${cls}" data-k="${k}" role="button" aria-label="${lab}">${cell.num?`<span class="n" aria-hidden="true">${cell.num}</span>`:""}<span class="l" aria-hidden="true">${cell.val}</span></div>`}
@@ -1456,8 +1562,7 @@ function renderWell(){
     if(fl.has(k))cls+=" flash";if(hi.has(k))cls+=" hit";if(sel.has(k))cls+=" sel";
     if(d.className!==cls)d.className=cls;if(d.textContent!==t)d.textContent=t;
     const lab=`Row ${r+1}, column ${c+1}${r===MID-1?", just above the middle line":r===MID?", on the middle line":""}: ${t?(act.has(k)?"falling ":"")+t:"empty"}`;if(d.getAttribute("aria-label")!==lab)d.setAttribute("aria-label",lab)});
-  const q=document.getElementById("queue");
-  q.textContent=S.phase==="drop"||S.phase==="anim"?(S.queue.length?`+${S.queue.length} more piece${S.queue.length>1?"s":""}`:"last piece"):(n=>`${n} word${n===1?"":"s"} left`)(S.cw.words.filter(w=>!w.solved).length);
+  renderQueue();
 }
 let lastSpokenWord=null;
 function renderClue(){
@@ -1475,16 +1580,16 @@ function renderPad(){
   const mode=S.phase==="drop"||S.phase==="anim"?"drop":S.phase==="rush"&&S.rush&&S.rush.mode==="tap"?"tap":S.phase==="rush"?"type":"cross";
   if(mode===padMode)return;padMode=mode;
   if(mode==="drop"){
-    pad.innerHTML=`<div class="ctrl"><button class="k" data-a="L" aria-label="Move left">◀</button><button class="k" data-a="R" aria-label="Move right">▶</button><button class="k" data-a="T" aria-label="Rotate">⟳</button><button class="k" data-a="D" aria-label="Drop one row">▼</button><button class="k hd" data-a="H" aria-label="Slam down">⤓</button></div><div class="ctrl-hint">Keyboard: arrows, ↑ rotate, space slams</div>`;
+    pad.innerHTML=`<div class="ctrl"><button class="k" data-a="L" aria-label="Move left">◀</button><button class="k" data-a="R" aria-label="Move right">▶</button><button class="k" data-a="T" aria-label="Rotate">⟳</button><button class="k" data-a="D" aria-label="Drop one row">▼</button><button class="k" data-a="X" aria-label="Hold piece">⇄</button><button class="k hd" data-a="H" aria-label="Slam down">⤓</button></div><div class="ctrl-hint">Keyboard: arrows, ↑ rotate, C holds, space slams</div>`;
   }else if(mode==="tap"){
     pad.innerHTML=`<div class="ctrl-hint" style="padding:20px 0;font-size:14px">Tap the word's letters in the well, in order.</div>`;
   }else{
     const rows=["QWERTYUIOP","ASDFGHJKL","ZXCVBNM"];
-    pad.innerHTML=rows.map((r,i)=>`<div class="kr">${i===2?(mode==="cross"?`<button class="k wide" data-a="hint">HINT</button>`:`<button class="k wide" data-a="clr">CLEAR</button>`):""}${[...r].map(c=>`<button class="k" data-ch="${c}">${c}</button>`).join("")}${i===2?`<button class="k wide" data-a="bk" aria-label="Delete">⌫</button>`:""}</div>`).join("");
+    pad.innerHTML=rows.map((r,i)=>`<div class="kr">${i===1&&mode==="cross"?`<button class="k wide" data-a="chk">CHECK</button>`:""}${i===2?(mode==="cross"?`<button class="k wide" data-a="hint">HINT</button>`:`<button class="k wide" data-a="clr">CLEAR</button>`):""}${[...r].map(c=>`<button class="k" data-ch="${c}">${c}</button>`).join("")}${i===2?`<button class="k wide" data-a="bk" aria-label="Delete">⌫</button>`:""}</div>`).join("");
   }
   pad.querySelectorAll("button").forEach(b=>{
     const a=b.dataset.a,ch=b.dataset.ch;
-    const fire=()=>{if(ch)typeLetter(ch);else if(a==="bk")backspace();else if(a==="hint")hint();else if(a==="clr"){if(S.rush){S.rush.input="";renderRush()}}
+    const fire=()=>{if(ch)typeLetter(ch);else if(a==="bk")backspace();else if(a==="hint")hint();else if(a==="chk")checkWord();else if(a==="X")holdPiece();else if(a==="clr"){if(S.rush){S.rush.input="";renderRush()}}
       else if(a==="L")move(-1);else if(a==="R")move(1);else if(a==="T")rotate();else if(a==="D")softDrop();else if(a==="H")hardDrop()};
     let t1,t2;
     b.onpointerdown=e=>{lastPD=Date.now();e.preventDefault();audioInit();fire();if(a==="L"||a==="R"||a==="D"){t1=setTimeout(()=>{t2=setInterval(fire,a==="D"?60:95)},210)}};
@@ -1506,6 +1611,8 @@ function renderRush(){
   if(R_.state==="won")prompt=`Found it. Clearing above the line.`+(R_.next<R_.limit?` <span class="pace">Next ${RUSH_MODES[R_.mode]} rush: ${fmtTime(R_.next)}.</span>`:"");
   el.innerHTML=tap?`<div class="rt">RUSH</div><div class="secs" id="rsecs">${fmtTime(R_.left)}</div>${slots}<div class="bar"><i id="rbar" style="transform:scaleX(${R_.left/R_.limit})"></i></div><div class="rp">${prompt}</div>`
     :`<div class="rt">RUSH</div><div class="secs" id="rsecs">${fmtTime(R_.left)}</div><div class="bar"><i id="rbar" style="transform:scaleX(${R_.left/R_.limit})"></i></div><div class="rp">${prompt}</div>${slots}`;
+  if(R_.zen&&R_.state==="on"){const s=el.querySelector("#rsecs");if(s)s.textContent="ZEN";const b=el.querySelector(".bar");if(b)b.style.visibility="hidden";
+    el.insertAdjacentHTML("beforeend",`<button class="ghost-btn zskip" id="zSkip">Skip this rush (no points)</button>`);onActivate(document.getElementById("zSkip"),zenSkip)}
 }
 function announce(t){const r=document.getElementById("sr");if(r){r.textContent="";setTimeout(()=>r.textContent=t,30)}}
 let toastN=0;function toast(t){announce(t);const a=document.getElementById("app");const d=document.createElement("div");d.className="toast";d.textContent=t;d.style.top=(30+toastN*7)+"%";toastN++;a.appendChild(d);setTimeout(()=>{d.remove();toastN=Math.max(0,toastN-1)},950)}
@@ -1537,7 +1644,7 @@ const music=(()=>{let on=false,timer=0,next=0,step=0,bus=null;const BPM=88,SPB=6
 if(typeof document!=="undefined")document.addEventListener("visibilitychange",()=>{if(!AC)return;if(document.hidden)AC.suspend();else if(prefs.music||prefs.sfx)AC.resume()});
 
 /* ---------- display settings ---------- */
-let prefs={big:false,hc:false,mag:true,adapt:true,light:false,theme:null,speed:"normal",sfx:true,music:false};try{Object.assign(prefs,JSON.parse(localStorage.getItem("crossfall-a11y")||"{}"))}catch(e){}
+let prefs={big:false,hc:false,mag:true,adapt:true,light:false,theme:null,speed:"normal",sfx:true,music:false,zen:false,autocheck:false,readable:false};try{Object.assign(prefs,JSON.parse(localStorage.getItem("crossfall-a11y")||"{}"))}catch(e){}
 if(!prefs.theme)prefs.theme=prefs.light?"light":"dark";
 try{if(localStorage.getItem("crossfall-mute")==="1"){prefs.sfx=false;localStorage.removeItem("crossfall-mute")}}catch(e){}
 const MQ_LIGHT=window.matchMedia?matchMedia("(prefers-color-scheme: light)"):null;
@@ -1546,13 +1653,14 @@ if(MQ_LIGHT){const f=()=>{if(prefs.theme==="system")applyPrefs()};MQ_LIGHT.addEv
 let NATIVE_TS=(typeof window!=="undefined"&&window.__NATIVE_TS)||1;
 function setNativeTextScale(x){NATIVE_TS=Math.max(.8,Math.min(1.8,+x||1));applyPrefs()}
 if(typeof window!=="undefined")window.setNativeTextScale=setNativeTextScale;
-function applyPrefs(){const h=document.documentElement;prefs.light=isLight();h.style.setProperty("--ts",String(Math.round((prefs.big?1.22:1)*NATIVE_TS*100)/100));h.classList.toggle("lgtext",!!prefs.big);h.classList.toggle("hc",!!prefs.hc);h.classList.toggle("light",prefs.light);
+function applyPrefs(){const h=document.documentElement;prefs.light=isLight();h.style.setProperty("--ts",String(Math.round((prefs.big?1.22:1)*NATIVE_TS*100)/100));h.classList.toggle("lgtext",!!prefs.big);h.classList.toggle("hc",!!prefs.hc);h.classList.toggle("light",prefs.light);h.classList.toggle("readable",!!prefs.readable);
+  if(S&&S.final==null){if(prefs.zen)S.zen=true;if(prefs.autocheck)S.assist=true;S.speedMult=Math.min(S.speedMult==null?1:S.speedMult,SPEED_MULT[prefs.speed]||1)}
   document.querySelectorAll("[data-theme]").forEach(b=>b.setAttribute("aria-checked",b.dataset.theme===prefs.theme));
   document.querySelectorAll("[data-speed]").forEach(b=>b.setAttribute("aria-checked",b.dataset.speed===prefs.speed));
   muted=!prefs.sfx;const mb=document.getElementById("muteBtn");if(mb){mb.style.opacity=muted?.4:1;mb.setAttribute("aria-pressed",!muted)}
   music.set(!!prefs.music);
   try{window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.theme&&window.webkit.messageHandlers.theme.postMessage(prefs.hc?"dark":prefs.theme)}catch(e){}
-  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"]].forEach(([id,k])=>{const b=document.getElementById(id);if(b)b.setAttribute("aria-checked",!!prefs[k])});
+  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"]].forEach(([id,k])=>{const b=document.getElementById(id);if(b)b.setAttribute("aria-checked",!!prefs[k])});
   renderPaceInfo();
   try{localStorage.setItem("crossfall-a11y",JSON.stringify(prefs))}catch(e){}
   if(S){layout();renderAll()}}
@@ -1597,6 +1705,341 @@ function drawLens(){
 function magRefresh(){if(lensShown&&!lensRaf)lensRaf=requestAnimationFrame(drawLens)}
 function hideLens(){if(!lensShown)return;lensShown=false;lensT=null;lens.classList.remove("pop");lens.classList.add("out");setTimeout(()=>{if(!lensShown)lens.style.display="none"},150)}
 
+/* ---------- scoring v2: transparent points, chains, combos, grades ---------- */
+const CHAIN_MS=20000,PAR_PER_WORD=30;
+const SPEED_MULT={relaxed:.9,normal:1,fast:1.25};
+const PTS_LABEL={words:"Words",chain:"Speed chains",drop:"Hard drops",rows:"Row clears",combo:"Clear combos",target:"Target word",rush:"Rushes",hints:"Hints",time:"Time bonus"};
+function addPts(k,v){if(!v)return;S.pts[k]=(S.pts[k]||0)+v;S.score=Math.max(0,S.score+v)}
+function wordValue(len,own){return 50+10*own+(own===len?Math.max(0,len-5)*25:0)}
+function scoreWord(w){
+  const own=w.cells.filter(k=>!S.helped.has(k)).length,v=wordValue(w.ans.length,own);addPts("words",v);
+  const c=S.crossMs;S.chain=(S.lastSolve!=null&&c-S.lastSolve<=CHAIN_MS)?S.chain+1:0;S.lastSolve=c;
+  let ch=0;if(S.chain){ch=Math.min(250,50*S.chain);addPts("chain",ch);S.maxChain=Math.max(S.maxChain||0,S.chain+1)}
+  S.wordLog.push({w:w.ans,own:own===w.ans.length});bankWord(w);
+  return v+ch;
+}
+function parScore(){return S.cw.words.reduce((t,w)=>t+wordValue(w.ans.length,w.ans.length),0)+500+300*Math.max(1,S.rushTotal)+S.cw.words.length*PAR_PER_WORD*2.5}
+function gradeOf(final,gold,st){const r=final/parScore();return gold&&st===3&&r>=1.6?"SS":r>=1.25?"S":r>=.95?"A":r>=.7?"B":r>=.45?"C":"D"}
+function finalize(win){
+  if(S.final!=null)return;
+  const total=S.cw.cells.size,own=total?(total-S.helped.size)/total:1;
+  if(win&&own>=.5){const tb=Math.max(0,Math.round(PAR_PER_WORD*S.cw.words.length-S.crossMs/1000))*5;addPts("time",tb)}
+  S.gold=win&&!S.assist&&!S.helped.size;
+  S.speedMult=S.speedMult==null?(SPEED_MULT[prefs.speed]||1):S.speedMult;
+  S.mult=(S.gold?1.2:1)*S.speedMult*(S.zen?.5:1);
+  S.raw=S.score;S.final=Math.round(S.score*S.mult);S.score=S.final;S.grade=win?gradeOf(S.final,S.gold,stars()):null;
+}
+const signed=v=>(v>0?"+":v<0?"−":"")+fmtN(Math.abs(v));
+function breakdownHTML(){
+  const rows=Object.entries(PTS_LABEL).filter(([k])=>S.pts[k]).map(([k,l])=>`<tr><td>${l}</td><td class="n">${signed(S.pts[k])}</td></tr>`).join("");
+  const m=[];if(S.gold)m.push(["Gold solve, no help","×1.2"]);if(S.speedMult&&S.speedMult!==1)m.push([`${S.speedMult>1?"Fast":"Relaxed"} fall speed`,"×"+S.speedMult]);if(S.zen)m.push(["Zen mode","×0.5"]);
+  return`<table class="brk" aria-label="How your score was made"><tbody>${rows||`<tr><td>No points yet</td><td></td></tr>`}
+    ${m.length?`<tr class="sub"><td>Subtotal</td><td class="n">${fmtN(S.raw)}</td></tr>${m.map(([a,b])=>`<tr class="mul"><td>${a}</td><td class="n">${b}</td></tr>`).join("")}`:""}
+    <tr class="tot"><td>Score</td><td class="n">${fmtN(S.final)}</td></tr></tbody></table>`;
+}
+function miniGridHTML(){
+  const cw=S.cw;let h="";
+  for(let r=0;r<cw.rows;r++)for(let c=0;c<cw.cols;c++){const k=r+","+c,cell=cw.cells.get(k);
+    h+=cell?`<b class="${S.helped.has(k)?"hp":""}${cell.lock?"":" no"}">${cell.lock?cell.ans:""}</b>`:`<i></i>`}
+  return`<div class="mini" style="grid-template-columns:repeat(${cw.cols},1fr);max-width:${cw.cols*26}px" role="img" aria-label="Your finished crossword">${h}</div>`;
+}
+const SCORING_HELP=`<ul class="sclist">
+ <li><b>Words</b> 50 + 10 per letter you type yourself. Words longer than 5 letters get +25 per extra letter when you solve them with no help.</li>
+ <li><b>Speed chain</b> solve the next clue within 20 seconds of crossword time: +50, +100, +150… up to +250 a word.</li>
+ <li><b>Rows</b> 100 / 300 / 500 / 800 for 1–4 rows at once. Two multi-row clears in a row: ×1.5. Clear on back-to-back pieces: +50 per combo.</li>
+ <li><b>Hard drop</b> +2 per row the piece falls.</li>
+ <li><b>Target</b> +500. <b>Rush</b> 150 + 3 per second left, +50 for each rush won in a row (up to +250).</li>
+ <li><b>Time bonus</b> 5 per second under 30 s a word, if you typed at least half the letters.</li>
+ <li><b>Hints</b> −25, and that letter scores 0. Check and Autocheck are free but cost the gold.</li>
+ <li><b>Gold solve</b> no hints, checks or autocheck: ×1.2. Fast fall ×1.25, Relaxed ×0.9, Zen ×0.5.</li>
+ <li><b>Grade</b> D to S compares your score with the puzzle's par. SS needs a gold solve with all 3 stars.</li></ul>`;
+
+/* ---------- check, autocheck ---------- */
+function checkWord(){if(!S||S.phase!=="cross")return;const w=curWord();if(!w)return;
+  const bad=w.cells.filter(k=>{const c=S.cw.cells.get(k);return c.val&&c.val!==c.ans});
+  bad.forEach(k=>S.bad.add(k));S.assist=true;
+  const empty=w.cells.filter(k=>!S.cw.cells.get(k).val).length;
+  toast(bad.length?`${bad.length} wrong letter${bad.length>1?"s":""}`:empty?"All correct so far":"Looks right");renderAll()}
+
+/* ---------- hold + next pieces ---------- */
+function holdPiece(){
+  if(!S||S.phase!=="drop"||!S.active)return;
+  if(!S.canHold){toast("One hold per piece");return}
+  if(!S.hold&&!S.queue.length){toast("Nothing to swap with");return}
+  const cur=S.active,back={cells:(cur.base||cur.cells).map(x=>({...x}))};back.base=back.cells.map(x=>({...x}));
+  const h=S.hold;S.hold=back;S.active=null;
+  if(h){spawnPiece({cells:h.base.map(x=>({...x})),base:h.base,r:0,c:0});S.canHold=false}
+  else{S.queue.length?spawnPiece(S.queue.shift()):null;S.canHold=false}
+  blip(360,.04);announce("Held. "+(S.active?"Next piece: "+S.active.cells.map(x=>x.ch).join(""):""));renderAll();saveRunSoon();
+}
+function spawnPiece(p){
+  if(!p.base)p.base=p.cells.map(x=>({...x}));
+  const w=Math.max(...p.cells.map(x=>x.dc))+1;p.r=0;p.c=Math.floor((COLS-w)/2);S.active=p;S.acc=-speedCfg().grace;S.landT=0;S.phase="drop";
+  if(collides(absCells(p)))return topOut("The well filled to the top.");
+  return true;
+}
+function miniPiece(p,lab){
+  if(!p)return`<span class="mp empty" aria-hidden="true"></span>`;
+  const cs=p.base||p.cells,h=Math.max(...cs.map(x=>x.dr))+1,w=Math.max(...cs.map(x=>x.dc))+1;const m=new Map(cs.map(x=>[x.dr+","+x.dc,x.ch]));
+  let s="";for(let r=0;r<h;r++)for(let c=0;c<w;c++){const ch=m.get(r+","+c);s+=ch?`<b>${ch}</b>`:"<i></i>"}
+  return`<span class="mp" style="grid-template-columns:repeat(${w},var(--mq))" role="img" aria-label="${lab}: ${cs.map(x=>x.ch).join("")}">${s}</span>`;
+}
+function renderQueue(){
+  const q=document.getElementById("queue");if(!q)return;
+  if(S.phase==="drop"||S.phase==="anim"){
+    const nx=S.queue.slice(0,3);
+    q.className="queue live";
+    q.innerHTML=`<button class="qhold${S.canHold?"":" used"}" id="qHold" aria-label="Hold piece${S.hold?", holding "+S.hold.base.map(x=>x.ch).join(""):""}"><span class="ql">HOLD</span>${miniPiece(S.hold,"Held")}</button>
+      <span class="qnext"><span class="ql">NEXT</span>${nx.length?nx.map((p,i)=>miniPiece(p,"Next "+(i+1))).join(""):`<span class="qempty">last piece</span>`}${S.queue.length>3?`<span class="qmore">+${S.queue.length-3}</span>`:""}</span>`;
+    onActivate(document.getElementById("qHold"),holdPiece);
+  }else{q.className="queue";const n=S.cw.words.filter(w=>!w.solved).length;q.textContent=`${n} word${n===1?"":"s"} left`}
+}
+
+/* ---------- zen + top-out ---------- */
+function topOut(why){
+  if(!S.zen){gameOver(why);return false}
+  for(let r=0;r<MID;r++)S.grid[r].fill(null);gravity();S.active=null;toast("Zen: top cleared");announce("Zen mode cleared the top of the well.");
+  return false;
+}
+function zenSkip(){if(!S||!S.rush||!S.zen||S.rush.state!=="on")return;S.rush.state="won";S.rushStreak=0;
+  for(let r=0;r<MID;r++)S.grid[r].fill(null);gravity();S.rush=null;S.cool=1;toast("Skipped");afterRush()}
+
+/* ---------- word bank + review ---------- */
+function bankWord(w){
+  if(!stats.bank)stats.bank={};const b=stats.bank[w.ans]||{c:w.clue,k:S.L.cat,n:0,box:0,t:0};
+  b.c=String(w.clue||b.c).slice(0,220);b.k=S.L.cat;b.n++;b.t=Date.now();stats.bank[w.ans]=b;
+  const keys=Object.keys(stats.bank);if(keys.length>800){keys.sort((a,z)=>stats.bank[a].t-stats.bank[z].t).slice(0,keys.length-800).forEach(k=>delete stats.bank[k])}
+}
+let rv=null;
+function openReview(){
+  const all=Object.entries(stats.bank||{});if(!all.length){toast("Solve some words first");return}
+  const R=rng(Date.now()%100000);const pick=shuffle(all.slice(),R).sort((a,z)=>a[1].box-z[1].box).slice(0,10);
+  rv={list:pick,i:0,shown:false,got:0};renderReview();document.getElementById("review").hidden=false;
+}
+function renderReview(){
+  const el=document.getElementById("review");if(!rv)return;
+  if(rv.i>=rv.list.length){el.innerHTML=`<h1>WORD <span>BANK</span></h1><div class="pts">${rv.got}/${rv.list.length}</div><p class="sub">${rv.got===rv.list.length?"You knew every one.":"The ones you're still learning come back first next time."}</p><div class="btns"><button class="big" id="rvAgain">Review 10 more</button><button class="ghost-btn" id="rvClose">Done</button></div>`;
+    document.getElementById("rvAgain").onclick=openReview;document.getElementById("rvClose").onclick=closeReview;saveStats();return}
+  const[word,b]=rv.list[rv.i];
+  el.innerHTML=`<h1>WORD <span>BANK</span></h1><div class="sub">Word ${rv.i+1} of ${rv.list.length} · ${esc(b.k)}</div>
+   <div class="rvcard" data-mag><p class="rvclue">${esc(b.c)}</p>
+   <div class="slots">${[...word].map(ch=>`<b>${rv.shown?ch:""}</b>`).join("")}</div>
+   <p class="sub">${word.length} letters${b.box?` · known ${b.box}×`:""}</p></div>
+   <div class="btns">${rv.shown?`<button class="big" id="rvYes">I knew it</button><button class="ghost-btn" id="rvNo">Still learning</button>`:`<button class="big" id="rvShow">Show the word</button><button class="ghost-btn" id="rvClose">Stop</button>`}</div>`;
+  announce(rv.shown?`The word is ${word}`:`Clue: ${b.c}. ${word.length} letters.`);
+  const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
+  on("rvShow",()=>{rv.shown=true;renderReview()});on("rvClose",closeReview);
+  on("rvYes",()=>{b.box=Math.min(5,(b.box||0)+1);rv.got++;rv.i++;rv.shown=false;renderReview()});
+  on("rvNo",()=>{b.box=0;rv.i++;rv.shown=false;renderReview()});
+}
+function closeReview(){saveStats();document.getElementById("review").hidden=true;rv=null;if(hubPage==="Profile")renderProfile()}
+
+/* ---------- daily puzzle, streaks with freezes, archive, share ---------- */
+const DAILY_CACHE={};
+const fmtDay=dk=>new Date(dk+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric"});
+function pickTarget(words,R,avoid){
+  const set=new Set(words.map(w=>w[0])),c=[];
+  for(const lens of[[4,5],[3]]){for(const[w]of words)for(let i=0;i<w.length;i++)for(const n of lens){const s=w.slice(i,i+n);if(s.length===n&&DICT.has(s)&&!set.has(s)&&s!==avoid)c.push([s,w])}if(c.length)break}
+  if(c.length){const[s,w]=c[Math.floor(R()*c.length)];return[s,`Hidden inside ${w}`]}
+  const pool={};words.forEach(([w])=>[...w].forEach(ch=>pool[ch]=(pool[ch]||0)+1));
+  const ok=x=>{const n={};return[...x].every(ch=>(n[ch]=(n[ch]||0)+1)<=(pool[ch]||0))};
+  for(const len of[4,3]){const cand=[...DICT].filter(x=>x.length===len&&!set.has(x)&&x!==avoid&&ok(x));if(cand.length)return[cand[Math.floor(R()*cand.length)],"Spell it with today's letters"]}
+  const sh=words.slice().sort((a,b)=>a[0].length-b[0].length)[0];return[sh[0],sh[1]];
+}
+function dailyLevel(dk){
+  if(DAILY_CACHE[dk])return DAILY_CACHE[dk];
+  const n=+dk.replace(/-/g,""),R=rng(n);
+  const pool=LEVELS.filter(l=>!l.heal),byCat={};pool.forEach(l=>(byCat[l.cat]=byCat[l.cat]||[]).push(l));
+  const cats=shuffle(Object.keys(byCat).sort(),R);
+  let words=null,cw=null;
+  for(let t=0;t<40&&!cw;t++){
+    const used=new Set(),pick=[],want=t<25?6:5;
+    for(let i=0;pick.length<want&&i<60;i++){const cat=cats[(i+t)%cats.length],lvs=byCat[cat],lv=lvs[Math.floor(R()*lvs.length)],e=lv.words[Math.floor(R()*lv.words.length)];
+      if(e[0].length<3||e[0].length>8||used.has(e[0]))continue;used.add(e[0]);pick.push([e[0],e[1]])}
+    const res=buildCrossword(pick,n+t,20);if(res&&res.rows<=9&&res.cols<=9){words=pick;cw=res}
+  }
+  const day=Math.floor(Date.parse(dk+"T12:00:00Z")/864e5);
+  const bonus=shuffle(pool.flatMap(l=>l.bonus||[]).filter(b=>!words.some(w=>w[0]===b[0])),R).slice(0,6);
+  const L={name:fmtDay(dk),cat:"Daily",id:"Daily:"+dk,daily:dk,seed:n%100000,words,target:pickTarget(words,R),bonus,
+    drop:["bar","tetro","single"][day%3],find:["tap","scramble","clue"][(day+1)%3],speed:860,_cw:cw,n:1,pi:0};
+  return DAILY_CACHE[dk]=L;
+}
+function todayKey(){return dayKeyOf(Date.now())}
+function addDays(dk,n){const d=new Date(dk+"T12:00:00");d.setDate(d.getDate()+n);return dayKeyOf(d)}
+function dailyStreak(){
+  const s=stats.dstreak||{n:0,last:"",freezes:0},t=todayKey();
+  if(!s.last)return{n:0,freezes:s.freezes||0,alive:false,doneToday:false};
+  if(s.last===t)return{n:s.n,freezes:s.freezes,alive:true,doneToday:true};
+  if(s.last===addDays(t,-1))return{n:s.n,freezes:s.freezes,alive:true,doneToday:false};
+  const gap=Math.round((Date.parse(t+"T12:00:00")-Date.parse(s.last+"T12:00:00"))/864e5)-1;
+  if(gap<=s.freezes)return{n:s.n,freezes:s.freezes-gap,alive:true,doneToday:false,frozen:gap};
+  return{n:0,freezes:s.freezes,alive:false,doneToday:false};
+}
+function bumpDailyStreak(dk){
+  const s=stats.dstreak||{n:0,last:"",freezes:0};if(s.last===dk)return;
+  const cur=dailyStreak();
+  if(cur.alive&&dk===todayKey()){if(cur.frozen){s.freezes=cur.freezes;toast(`Streak saved by ${cur.frozen} freeze${cur.frozen>1?"s":""}`)}s.n=cur.n+1}else s.n=1;
+  s.last=dk;s.best=Math.max(s.best||0,s.n);
+  if(s.n%7===0&&(s.freezes||0)<2){s.freezes=(s.freezes||0)+1;setTimeout(()=>toast("Streak freeze earned"),900)}
+  stats.dstreak=s;
+}
+function dailyRecord(dk){return(stats.daily||{})[dk]||null}
+function shareText(rec,dk){
+  const sq=(rec.log||[]).map(x=>x.own?"🟩":"🟨").join("");
+  return`Crossfall Daily · ${fmtDay(dk)}\n${sq}${rec.target?" 🎯":""}${rec.chain>1?` ⚡×${rec.chain}`:""}${rec.rushT?` 🏃${rec.rushW}/${rec.rushT}`:""}\n${fmtN(rec.score)} pts · Grade ${rec.grade||"—"}${rec.gold?" · ⭐ Gold":""}${rec.win?"":" · well full"}`;
+}
+function shareOut(text){
+  try{if(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.share){window.webkit.messageHandlers.share.postMessage(text);return}}catch(e){}
+  if(navigator.share){navigator.share({text}).catch(()=>{});return}
+  const done=()=>toast("Copied");
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,()=>showText(text))}else showText(text);
+}
+function showText(text,title){
+  const el=document.getElementById("textbox");el.innerHTML=`<h1>${title||"SHARE"}</h1><p class="sub">Select and copy:</p><textarea readonly rows="7">${esc(text)}</textarea><button class="big" id="tbDone">Done</button>`;
+  el.hidden=false;const ta=el.querySelector("textarea");ta.focus();ta.select();document.getElementById("tbDone").onclick=()=>el.hidden=true;
+}
+function playDaily(dk,archive){const L=dailyLevel(dk);if(!L.words){toast("Couldn't build that day");return}L.archive=!!archive||dk!==todayKey();startLevel(L)}
+function renderDailyCard(){
+  const box=document.getElementById("dailyCard");if(!box)return;
+  const t=todayKey(),rec=dailyRecord(t),st=dailyStreak();
+  box.innerHTML=`<div class="dc-top"><span class="ln">DAILY · ${esc(fmtDay(t).toUpperCase())}</span><span class="dc-st" aria-label="Daily streak ${st.n} days, ${st.freezes} freezes">🔥 ${st.n}${st.freezes?` · ❄ ${st.freezes}`:""}</span></div>
+   ${rec?`<div class="dc-done"><b>${fmtN(rec.score)}</b><span class="grade sm g-${rec.grade||"D"}">${rec.grade||"—"}</span>${rec.gold?`<span class="goldtag">GOLD</span>`:""}<span class="sub">${rec.win?"Solved":"Well filled"}</span></div>
+     <div class="dc-btns"><button class="big" id="dcShare">Share</button><button class="ghost-btn" id="dcAgain">Practice</button><button class="ghost-btn" id="dcArchive">Past</button></div>`
+   :`<div class="dc-btns"><button class="big" id="dcPlay">Play today's puzzle</button><button class="ghost-btn" id="dcArchive">Past</button></div>`}`;
+  const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
+  on("dcPlay",()=>playDaily(t));on("dcAgain",()=>playDaily(t,true));on("dcShare",()=>shareOut(shareText(rec,t)));on("dcArchive",openArchive);
+}
+function openArchive(){
+  const el=document.getElementById("archive"),t=todayKey();let h="";
+  for(let i=1;i<=14;i++){const dk=addDays(t,-i),rec=dailyRecord(dk);h+=`<button class="arow" data-dk="${dk}"><span>${esc(fmtDay(dk))}</span><span class="sub">${rec?`${fmtN(rec.score)} · ${rec.grade||"—"}${rec.gold?" · ⭐":""}`:"not played"}</span></button>`}
+  el.innerHTML=`<h1>PAST <span>PUZZLES</span></h1><p class="sub">Replay the last two weeks. Practice only: these don't change your streak or the boards.</p><div class="alist">${h}</div><div class="btns"><button class="big" id="arClose">Close</button></div>`;
+  el.hidden=false;el.querySelectorAll("[data-dk]").forEach(b=>b.onclick=()=>{el.hidden=true;playDaily(b.dataset.dk,true)});
+  document.getElementById("arClose").onclick=()=>el.hidden=true;
+}
+
+/* ---------- puzzle maker (for teachers, parents, friends) ---------- */
+const b64e=s=>btoa(unescape(encodeURIComponent(s))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+const b64d=s=>decodeURIComponent(escape(atob(s.replace(/-/g,"+").replace(/_/g,"/"))));
+function parseWordList(text){
+  const out=[],bad=[];
+  for(const raw of String(text).split(/\n/)){const line=raw.trim();if(!line)continue;
+    const m=line.match(/^([A-Za-z]{3,9})\s*[-–—:=,|]\s*(.{2,140})$/);
+    if(m&&!out.some(e=>e[0]===m[1].toUpperCase()))out.push([m[1].toUpperCase(),m[2].trim()]);else bad.push(line)}
+  return{out,bad};
+}
+function buildCustom(spec){
+  let words=spec.w.slice(0,10),cw=buildCrossword(words,spec.s||7,30),dropped=[];
+  for(let k=0;!cw&&k<3&&words.length>3;k++){
+    let best=null;for(let i=0;i<words.length;i++){const tryW=words.filter((_,j)=>j!==i),r=buildCrossword(tryW,(spec.s||7)+i,12);if(r){best={i,r};break}}
+    if(best){dropped.push(words[best.i][0]);words=words.filter((_,j)=>j!==best.i);cw=best.r}else{dropped.push(words[words.length-1][0]);words=words.slice(0,-1);cw=buildCrossword(words,spec.s||7,20)}
+  }
+  if(!cw)return{err:"These words don't cross. Add words that share letters."};
+  const R=rng(spec.s||7);
+  return{L:{name:spec.t||"My puzzle",cat:"Custom",id:"Custom:"+b64e(spec.t+words.map(w=>w[0]).join("")).slice(0,16),custom:true,code:customCode(spec),
+    seed:spec.s||7,words,target:pickTarget(words,R),bonus:spec.w.map(e=>[e[0],e[1]]),drop:spec.d||"bar",find:spec.f||"clue",speed:900,_cw:cw,n:1,pi:0},dropped};
+}
+function customCode(spec){return"CF1."+b64e(JSON.stringify({t:spec.t,w:spec.w,d:spec.d,f:spec.f,s:spec.s}))}
+function readCustomCode(code){try{const m=String(code).trim().match(/CF1\.([A-Za-z0-9_-]+)/);if(!m)return null;const o=JSON.parse(b64d(m[1]));
+  if(!o||!Array.isArray(o.w))return null;const p=parseWordList(o.w.map(e=>e[0]+" - "+e[1]).join("\n"));
+  return{t:String(o.t||"Shared puzzle").slice(0,40),w:p.out,d:["bar","tetro","single"].includes(o.d)?o.d:"bar",f:["tap","scramble","clue"].includes(o.f)?o.f:"clue",s:+o.s||7}}catch(e){return null}}
+let mk={d:"bar",f:"clue"};
+function openMaker(){
+  const el=document.getElementById("maker"),saved=(stats.custom||[]);
+  el.innerHTML=`<h1>MAKE A <span>PUZZLE</span></h1>
+   <p class="sub">Type 4 to 10 words, one per line, with a clue after a dash. Great for spelling lists and study words.</p>
+   <label class="ln" for="mkTitle">TITLE</label><input id="mkTitle" class="mkin" maxlength="40" placeholder="Week 3 spelling" value="${esc(mk.t||"")}">
+   <label class="ln" for="mkWords">WORDS AND CLUES</label><textarea id="mkWords" class="mkin" rows="7" placeholder="PLANET - It orbits a star&#10;COMET - Icy visitor with a tail&#10;ORBIT - Path around the sun&#10;MOON - Earth's night light">${esc(mk.raw||"")}</textarea>
+   <span class="ln">HOW WORDS DROP</span><div class="seg seg3" role="radiogroup" aria-label="How words drop" id="mkDrop">${[["bar","Whole word"],["tetro","Chunks"],["single","Letters"]].map(([v,l])=>`<button role="radio" data-v="${v}" aria-checked="${mk.d===v}">${l}</button>`).join("")}</div>
+   <span class="ln">RUSH STYLE</span><div class="seg seg3" role="radiogroup" aria-label="Rush style" id="mkFind">${[["clue","Answer a clue"],["scramble","Unscramble"],["tap","Find in well"]].map(([v,l])=>`<button role="radio" data-v="${v}" aria-checked="${mk.f===v}">${l}</button>`).join("")}</div>
+   <p class="mkmsg" id="mkMsg" role="status"></p>
+   <div class="btns wide"><button class="big" id="mkPlay">Build and play</button><button class="ghost-btn" id="mkShare">Share as a code</button></div>
+   <span class="ln">HAVE A CODE?</span><div class="mkrow"><input id="mkCode" class="mkin" placeholder="CF1.…" autocapitalize="off" autocomplete="off"><button class="ghost-btn" id="mkLoad">Play</button></div>
+   ${saved.length?`<span class="ln">YOUR PUZZLES</span><div class="alist">${saved.map((c,i)=>`<button class="arow" data-ci="${i}"><span>${esc(c.t)}</span><span class="sub">${c.w.length} words</span></button>`).join("")}</div>`:""}
+   <div class="btns wide"><button class="ghost-btn" id="mkClose">Close</button></div>`;
+  el.hidden=false;
+  const msg=t=>{document.getElementById("mkMsg").textContent=t;if(t)announce(t)};
+  const read=()=>{mk.t=document.getElementById("mkTitle").value.trim();mk.raw=document.getElementById("mkWords").value;const p=parseWordList(mk.raw);
+    if(p.out.length<4){msg(`Add at least 4 words (3–9 letters each, a dash, then the clue).${p.bad.length?` Couldn't read: ${p.bad.slice(0,2).join(" / ")}`:""}`);return null}
+    return{t:mk.t||"My puzzle",w:p.out.slice(0,10),d:mk.d,f:mk.f,s:1+Math.floor(Math.random()*9000)}};
+  el.querySelectorAll("#mkDrop button").forEach(b=>b.onclick=()=>{mk.d=b.dataset.v;el.querySelectorAll("#mkDrop button").forEach(x=>x.setAttribute("aria-checked",x===b))});
+  el.querySelectorAll("#mkFind button").forEach(b=>b.onclick=()=>{mk.f=b.dataset.v;el.querySelectorAll("#mkFind button").forEach(x=>x.setAttribute("aria-checked",x===b))});
+  const play=spec=>{const r=buildCustom(spec);if(r.err){msg(r.err);return}
+    stats.custom=[spec,...(stats.custom||[]).filter(c=>customCode(c)!==customCode(spec))].slice(0,10);saveStats();
+    if(r.dropped.length)toast(`Left out: ${r.dropped.join(", ")}`);el.hidden=true;startLevel(r.L)};
+  document.getElementById("mkPlay").onclick=()=>{const s=read();if(s)play(s)};
+  document.getElementById("mkShare").onclick=()=>{const s=read();if(!s)return;const r=buildCustom(s);if(r.err){msg(r.err);return}
+    stats.custom=[s,...(stats.custom||[]).filter(c=>customCode(c)!==customCode(s))].slice(0,10);saveStats();
+    shareOut(`Play my Crossfall puzzle "${s.t}": open Crossfall › Menu › Make a puzzle › paste this code:\n${customCode(s)}`)};
+  document.getElementById("mkLoad").onclick=()=>{const s=readCustomCode(document.getElementById("mkCode").value);if(!s||s.w.length<3){msg("That code didn't work. Check it was copied in full.");return}play(s)};
+  el.querySelectorAll("[data-ci]").forEach(b=>b.onclick=()=>play(stats.custom[+b.dataset.ci]));
+  document.getElementById("mkClose").onclick=()=>el.hidden=true;
+}
+
+/* ---------- save the game in progress (survives closing the app) ---------- */
+let runT=0;
+function saveRunSoon(){clearTimeout(runT);runT=setTimeout(saveRun,350)}
+function saveRun(){
+  if(!S||!["drop","cross","rush","anim"].includes(S.phase))return;
+  try{
+    const q=S.active?[{cells:(S.active.base||S.active.cells).map(x=>({...x}))},...S.queue]:S.queue;
+    const L=S.li>=0?{li:S.li}:S.L.daily?{daily:S.L.daily,archive:!!S.L.archive}:S.L.custom?{custom:customCode({t:S.L.name,w:S.L.bonus,d:S.L.drop,f:S.L.find,s:S.L.seed})}:null;
+    if(!L||S.L.heal)return;
+    const snap={v:2,L,at:Date.now(),cw:{rows:S.cw.rows,cols:S.cw.cols,cells:[...S.cw.cells.entries()],words:S.cw.words},grid:S.grid,queue:q.map(p=>({cells:(p.base||p.cells)})),
+      hold:S.hold,score:S.score,pts:S.pts,helped:[...S.helped],bad:[...S.bad],assist:S.assist,chain:S.chain,lastSolve:S.lastSolve,maxChain:S.maxChain,crossMs:S.crossMs,
+      targetHit:S.targetHit,rushWins:S.rushWins,rushTotal:S.rushTotal,rushStreak:S.rushStreak,lockCount:S.lockCount,lastRush:S.lastRush,cool:S.cool,usedBonus:S.usedBonus,
+      linesCleared:S.linesCleared,b2b:S.b2b,combo:S.combo,zen:S.zen,speedMult:S.speedMult,wordLog:S.wordLog,sel:S.sel,t0:S.t0,
+      rush:S.rush&&S.rush.state==="on"?{...S.rush}:null,phase:S.phase};
+    localStorage.setItem("crossfall-run",JSON.stringify(snap));
+  }catch(e){}
+}
+function clearRun(){try{localStorage.removeItem("crossfall-run")}catch(e){}}
+function loadRun(){
+  try{const o=JSON.parse(localStorage.getItem("crossfall-run")||"null");if(!o||o.v!==2)return false;
+    if(Date.now()-o.at>14*864e5){clearRun();return false}
+    let L=null,li=-1;
+    if(o.L.li!=null){li=o.L.li;L=LEVELS[li]}else if(o.L.daily){L=dailyLevel(o.L.daily);L.archive=o.L.archive}else if(o.L.custom){const s=readCustomCode(o.L.custom);const r=s&&buildCustom(s);L=r&&r.L}
+    if(!L)return false;
+    const cells=new Map(o.cw.cells);
+    S={li,L,R:rng((L.seed||1)*31+o.lockCount),cw:{rows:o.cw.rows,cols:o.cw.cols,cells,words:o.cw.words},grid:o.grid,queue:o.queue.map(p=>({cells:p.cells,base:p.cells.map(x=>({...x})),r:0,c:0})),
+      hold:o.hold,canHold:true,active:null,score:o.score,pts:o.pts||{},helped:new Set(o.helped||[]),bad:new Set(o.bad||[]),assist:!!o.assist,chain:o.chain||0,lastSolve:o.lastSolve,maxChain:o.maxChain||0,crossMs:o.crossMs||0,
+      targetHit:o.targetHit,rushWins:o.rushWins,rushTotal:o.rushTotal,rushStreak:o.rushStreak||0,lockCount:o.lockCount,lastRush:o.lastRush,cool:o.cool,usedBonus:o.usedBonus||[],
+      linesCleared:o.linesCleared,b2b:!!o.b2b,combo:o.combo||0,zen:!!o.zen,speedMult:o.speedMult,wordLog:o.wordLog||[],sel:o.sel,t0:o.t0,
+      lastText:null,acc:0,flash:[],hit:[],ghost:true,final:null,phase:o.phase,rush:o.rush};
+    if(S.phase==="anim")S.phase="drop";
+    if(S.phase==="drop")S.needSpawn=true;
+    if(S.phase==="rush"&&!S.rush){S.phase="drop";S.needSpawn=true}
+    return true;
+  }catch(e){clearRun();return false}
+}
+function resumeRun(){
+  document.getElementById("menu").hidden=true;last=performance.now();padMode="";
+  if(S&&S.needSpawn){S.needSpawn=false;spawnNext()}else if(S){layout();renderAll()}
+}
+
+/* ---------- backup code ---------- */
+function backupCode(){return"CFB1."+b64e(JSON.stringify({stats,store,pace:rushPace,heal:healProfile}))}
+function openBackup(){
+  const el=document.getElementById("textbox");
+  el.innerHTML=`<h1>BACK<span>UP</span></h1><p class="sub">Your stars, stats, streak and word bank live on this phone. Save this code somewhere safe (Notes, email to yourself). Paste it here on a new phone to bring everything back.</p>
+   <textarea id="bkOut" readonly rows="4">${esc(backupCode())}</textarea>
+   <div class="btns wide"><button class="big" id="bkShare">Share backup code</button></div>
+   <span class="ln">RESTORE</span><textarea id="bkIn" rows="3" placeholder="CFB1.…" autocapitalize="off"></textarea>
+   <p class="mkmsg" id="bkMsg" role="status"></p>
+   <div class="btns wide"><button class="ghost-btn" id="bkRestore">Restore from code</button><button class="ghost-btn" id="bkClose">Close</button></div>`;
+  el.hidden=false;
+  document.getElementById("bkShare").onclick=()=>shareOut(backupCode());
+  document.getElementById("bkClose").onclick=()=>el.hidden=true;
+  let armed=false;
+  document.getElementById("bkRestore").onclick=()=>{
+    const m=document.getElementById("bkIn").value.trim().match(/CFB1\.([A-Za-z0-9_-]+)/),out=document.getElementById("bkMsg");
+    let o=null;try{o=m&&JSON.parse(b64d(m[1]))}catch(e){}
+    if(!o||!o.stats||!o.stats.tot){out.textContent="That code didn't work. Check it was copied in full.";return}
+    if(!armed){armed=true;out.textContent=`This replaces what's on this phone with ${fmtN(o.stats.tot.games)} games and ${fmtN(o.stats.tot.score)} points. Tap Restore again to confirm.`;return}
+    stats=Object.assign(stats,o.stats);store=o.store||store;rushPace=o.pace||rushPace;if(o.heal){healProfile=o.heal;try{localStorage.setItem("crossfall-heal",JSON.stringify(o.heal))}catch(e){}}
+    saveStore();saveStats();saveRushPace();pushCloud();out.textContent="Restored.";toast("Progress restored");renderHub();
+  };
+}
+
 /* ---------- loop ---------- */
 let last=performance.now();
 function frame(now){const dt=Math.min(100,now-last);last=now;
@@ -1604,7 +2047,8 @@ function frame(now){const dt=Math.min(100,now-last);last=now;
     if(S.phase==="drop"&&S.active){
       if(collides(absCells(S.active,1,0))){S.landT=(S.landT||0)+dt;if(S.landT>=speedCfg().lock){S.landT=0;lock()}}
       else{S.landT=0;S.acc+=dt;if(S.acc>=fallMs()){S.acc=0;S.active.r++;renderWell()}}}
-    if(S.phase==="rush"&&S.rush&&S.rush.state==="on"){S.rush.left-=dt/1000;
+    if(S.phase==="cross")S.crossMs=(S.crossMs||0)+dt;
+    if(S.phase==="rush"&&S.rush&&S.rush.state==="on"&&!S.rush.zen){S.rush.left-=dt/1000;
       if(S.rush.left<=0){S.rush.left=0;rushLose()}else{const s=document.getElementById("rsecs"),b=document.getElementById("rbar");if(s)s.textContent=fmtTime(S.rush.left);const sec=Math.ceil(S.rush.left);if(sec<=10&&sec!==S.rush.lastTick){S.rush.lastTick=sec;blip(sec<=3?988:660,.05)}
       if((sec===60||sec===30||sec===10)&&S.rush.saidAt!==sec){S.rush.saidAt=sec;announce(sec+" seconds left")}if(b)b.style.transform=`scaleX(${S.rush.left/S.rush.limit})`}}}
   requestAnimationFrame(frame)}
@@ -1618,9 +2062,10 @@ function boot(){
   document.getElementById("tabCw").onclick=()=>{if(S&&S.phase==="cross"){S.view="cw";renderAll()}};
   document.getElementById("tabWell").onclick=()=>{if(S&&S.phase==="cross"){S.view="well";renderAll()}};
   document.getElementById("a11yBtn").onclick=()=>{renderPaceInfo();document.getElementById("settings").hidden=false};
+  document.getElementById("setBackup").onclick=()=>{document.getElementById("settings").hidden=true;openBackup()};
   document.getElementById("setDone").onclick=()=>{document.getElementById("settings").hidden=true};
   document.getElementById("paceReset").onclick=()=>{rushPace={};saveRushPace();renderPaceInfo();announce("Rush times reset to two minutes.")};
-  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"]].forEach(([id,k])=>document.getElementById(id).onclick=()=>{audioInit();prefs[k]=!prefs[k];if(k==="mag"&&!prefs.mag)hideLens();applyPrefs()});
+  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"]].forEach(([id,k])=>document.getElementById(id).onclick=()=>{audioInit();prefs[k]=!prefs[k];if(k==="mag"&&!prefs.mag)hideLens();applyPrefs()});
   document.querySelectorAll("[data-speed]").forEach(b=>b.onclick=()=>{prefs.speed=b.dataset.speed;applyPrefs();announce("Fall speed: "+SPEEDS[prefs.speed].label)});
   document.querySelectorAll("[data-theme]").forEach(b=>b.onclick=()=>{prefs.theme=b.dataset.theme;if(prefs.theme!=="dark"&&prefs.hc)prefs.hc=false;applyPrefs();announce("Theme: "+b.dataset.theme)});
   applyPrefs();initLens();initHub();
@@ -1629,10 +2074,11 @@ function boot(){
   document.addEventListener("pointerdown",audioInit,{once:true});
   document.addEventListener("keydown",e=>{if(!S||!document.getElementById("menu").hidden)return;
     const k=e.key;
-    if(S.phase==="drop"){if(k==="ArrowLeft")move(-1);else if(k==="ArrowRight")move(1);else if(k==="ArrowUp")rotate();else if(k==="ArrowDown")softDrop();else if(k===" ")hardDrop();else return;e.preventDefault();return}
+    if(S.phase==="drop"){if(k==="ArrowLeft")move(-1);else if(k==="ArrowRight")move(1);else if(k==="ArrowUp")rotate();else if(k==="c"||k==="C")holdPiece();else if(k==="ArrowDown")softDrop();else if(k===" ")hardDrop();else return;e.preventDefault();return}
     if(/^[a-zA-Z]$/.test(k)){typeLetter(k.toUpperCase());e.preventDefault()}else if(k==="Backspace"){backspace();e.preventDefault()}
     else if(S.phase==="cross"&&(k==="Tab"||k==="Enter")){cycleWord(e.shiftKey?-1:1);e.preventDefault()}});
   window.addEventListener("resize",()=>{layout();renderAll()});
+  loadRun();document.addEventListener("visibilitychange",()=>{if(document.hidden)saveRun()});
   showMenu();requestAnimationFrame(frame);
 }
 if(typeof document!=="undefined")boot();

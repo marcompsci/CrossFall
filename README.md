@@ -22,21 +22,29 @@ A word puzzle game for iPhone that crosses a crossword with a falling-block well
 2. **Your word falls.** Every finished word drops into the well as a piece: the whole word, Tetris-style chunks, or one letter at a time, depending on the puzzle. Move it with ◀ ▶, rotate with ⟳, slam it down with ⤓.
 3. **Build the target.** Each puzzle has a target word. Spell it across the orange middle line, or down through it, for **+500**. Fill a whole row to clear it.
 4. **Win the rush.** When the stack climbs above the middle line, a rush starts: find the hidden word by tapping its letters in the well, unscrambling it, or answering a clue. Win and everything above the line clears. Run out of time and a junk row rises from the bottom.
-5. **Earn stars.** One for finishing, one for building the target, one for winning every rush.
+5. **Earn stars and a grade.** One star for finishing, one for building the target, one for winning every rush. Every game also gets a D–SS grade and a line-by-line score breakdown ([how scoring works](docs/SCORING.md)).
 
 ## Features
 
 | | |
 | --- | --- |
+| **Daily Crossfall** | One puzzle for everyone each day, a Today leaderboard where your first try counts, a streak with freezes earned every 7 days, a 14-day archive and an emoji share card. |
+| **Scoring** | Clean letters, speed chains, Tetris-style row clears with back-to-back and combos, hard drops, target, rushes and a time bonus. Gold solve ×1.2, fall-speed multiplier, D–SS grades. See [docs/SCORING.md](docs/SCORING.md). |
+| **Hold and next** | Hold a piece for later (⇄ or C) and see the next three. |
+| **Check and Autocheck** | Check the current word, or mark wrong letters as you type. Both cost the gold bonus, and the game says so. |
+| **Zen mode** | No rush timer and no game over; scores count at half. |
+| **Word bank** | Every word you solve is saved with its clue, with 10-card reviews that bring back the ones you missed. |
+| **Make a puzzle** | Turn a spelling or study list into a crossword and share it as a code. |
+| **Saved progress** | The game in progress survives closing the app. A backup code moves everything to a new phone. |
 | **Categories** | Swipeable game cards: Sports (Skate Park, Hoops, Soccer), Biblical, Psychology, Books, Music, Arcade, Bay City, Kitchen and Night Sky. Three puzzles in each. |
 | **Personal puzzles** | Biblical, Psychology and Books open with a five-question check-in. The answers choose the words, built around the player's focus: Peace, Hope, Strength, Love, Rest, Courage, Letting go or Gratitude. Clues are King James Version verses, short affirmations and public-domain book quotes, and each one can be read back at the end. |
 | **Adaptive rush timer** | Every rush starts at 2:00. Win fast and your next one gets shorter (down to 0:30). Run out of time and it gives time back. Tracked per player and per rush style. |
 | **Fall speed** | Relaxed, Normal or Fast. Normal is about 1.3–1.5 s per row with a 2-second pause before each piece starts falling. |
-| **Accessibility** | Crossword and well on separate full-width screens, bigger text, high contrast, a press-and-hold magnifying glass over clues and tiles. The app follows the phone's text size (Dynamic Type), and every square, tile and button is labelled for VoiceOver. |
+| **Accessibility** | Crossword and well on separate full-width screens, bigger text, high contrast, a readable-font option, a press-and-hold magnifying glass over clues and tiles. The app follows the phone's text size (Dynamic Type), and every square, tile and button is labelled for VoiceOver. |
 | **Light and dark mode** | System, Light or Dark from the ☰ menu. Light mode uses a warm off-white. |
 | **Sound** | Sound effects and an optional music loop, each with its own switch. |
 | **Profile** | Level and XP, total and weekly score, stars, rush win rate, day streak, a score chart and recent games. |
-| **Rankings** | All time, this week and best game. Game Center leaderboards and 5 achievements in the iPhone app; a live board in the web version. |
+| **Rankings** | Today, all time, this week and best game. Game Center leaderboards and 9 achievements in the iPhone app; a live board in the web version. |
 
 <p align="center">
   <img src="docs/screenshots/rush.png" width="200" alt="Rush: find the hidden word in the well">
@@ -52,6 +60,7 @@ The whole game lives in **one HTML file** (`web/crossfall.html`: markup, CSS and
 - It listens for a `theme` message from the page and switches the status bar and background to match.
 - It passes the phone's text size to the page and updates it live.
 - A `gc` bridge signs the player in to Game Center, submits scores and achievements, and loads leaderboard rows for the Ranks tab.
+- A `share` bridge opens the iOS share sheet for daily results, puzzle codes and backup codes.
 
 Crossword layouts are generated on the fly by a backtracking placer (max 9×9). The personal categories build a fresh crossword from the player's themes every time.
 
@@ -72,6 +81,8 @@ Crossfall/
 ├── design/                       # Icon, icon options, achievement art
 └── docs/
     ├── GAME_CENTER_SETUP.md      # Leaderboards and achievements to create
+    ├── SCORING.md                # Every point, multiplier and grade
+    ├── RESEARCH.md               # What players asked for, and what was added
     ├── app-store/                # Listing, privacy, support, TestFlight, screenshots
     └── screenshots/
 ```
@@ -122,6 +133,8 @@ To stop the error for future uploads, sign out of your Apple ID and back in unde
 - [x] Three puzzles per category
 - [x] Sound and music pass
 - [x] App Store listing kit: screenshots, description, privacy policy ([docs/app-store](docs/app-store))
+- [x] Research pass: App Store and Reddit wishes ([docs/RESEARCH.md](docs/RESEARCH.md))
+- [x] 0.3: daily puzzle, visible scoring and grades, hold/next, check, Zen, word bank, puzzle maker, saved progress
 - [ ] Create the leaderboards and achievements in App Store Connect
 - [ ] Submit 0.2 for App Store review
 - [ ] iPad layout

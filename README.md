@@ -31,6 +31,11 @@ Bundle ID `com.phoronomicstudios.crossfall` · iOS 16+ · iPhone, portrait.
 1. Edit `web/crossfall.html`.
 2. `python3 scripts/build_index.py`
 3. Double-click **Install on iPhone.command** to test, then **Ship to TestFlight.command** to upload.
+   If the upload step says "Failed to Use Accounts", double-click `build/Crossfall.xcarchive` and use Xcode Organizer: Distribute App > App Store Connect > Distribute.
+
+## TestFlight
+- App Store Connect app: **Crossfall** (bundle ID `com.phoronomicstudios.crossfall`), created 11 Oct 2026 from Xcode Organizer.
+- First build: 0.1 (2610111829), uploaded 11 Oct 2026. Build numbers come from the date and time (YYMMDDHHMM).
 
 ## Notes
 - In the iOS app the Rankings tab shows a placeholder; worldwide rankings are planned for Game Center. The live leaderboard currently runs only in the web version published in Claude.

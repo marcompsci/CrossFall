@@ -42,6 +42,9 @@ if [[ $? -ne 0 ]]; then
   echo "FAILED (upload). Errors:"; grep -iE "error" Logs/xcodebuild_export.log | sort -u | head -12
   if grep -qiE "no suitable application records|Cannot determine the Apple ID|app record|Error Downloading App Information" Logs/xcodebuild_export.log; then
     echo "App Store Connect has no app with bundle ID $BUNDLE yet. Create it (App Store Connect > Apps > + > New App), then double-click this again."
+  elif grep -qiE "Failed to Use Accounts" Logs/xcodebuild_export.log; then
+    echo "Xcode wouldn't let the command line use your Apple ID for the upload. The archive is ready: open build/Crossfall.xcarchive (double-click it), then in Organizer click Distribute App > App Store Connect > Distribute."
+    echo "If it keeps happening: Xcode > Settings > Accounts, remove your Apple ID and sign in again."
   fi
   exit 1
 fi

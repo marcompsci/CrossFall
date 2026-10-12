@@ -19,7 +19,8 @@ xcodebuild -project Crossfall.xcodeproj -scheme Crossfall -configuration Release
   DEVELOPMENT_TEAM="$TEAM" CODE_SIGN_STYLE=Automatic CURRENT_PROJECT_VERSION="$BUILD" archive > Logs/xcodebuild_archive.log 2>&1
 if [[ ! -d "$ARCHIVE" ]]; then
   echo "FAILED (archive). Errors:"; grep -E "error:|requires a provisioning|No Account|No profiles" Logs/xcodebuild_archive.log | sort -u | head -15
-  echo "If it mentions accounts: Xcode > Settings > Accounts, check your Apple ID and paid team are listed."; exit 1
+  echo "If it says \"No Accounts\" or the profile lacks Game Center: the command line can't reach your Xcode account."
+  echo "Archive from Xcode instead: open Crossfall.xcodeproj, Product > Archive, then Distribute App > App Store Connect > Distribute."; exit 1
 fi
 
 echo "2/2  Uploading to App Store Connect..."

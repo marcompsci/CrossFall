@@ -99,10 +99,9 @@ Then run **Install on iPhone** again.
 
 Double-click **`Ship to TestFlight.command`**. It archives a Release build and uploads it. Each build number comes from the date and time (`YYMMDDHHMM`), so every run makes a new build.
 
-If the upload step says **"Failed to Use Accounts"**:
+If the upload step says **"Failed to Use Accounts"**, double-click `build/Crossfall.xcarchive` and choose **Distribute App › App Store Connect › Distribute** in Xcode Organizer.
 
-1. Double-click `build/Crossfall.xcarchive`.
-2. In Xcode Organizer, choose **Distribute App › App Store Connect › Distribute**.
+If the archive step says **"No Accounts"** or that the profile doesn't include Game Center, the command line can't reach your Xcode account to make a Game Center profile. Open `Crossfall.xcodeproj` in Xcode, choose **Product › Archive**, then **Distribute App › App Store Connect › Distribute**. (Same for installing: pick your iPhone in Xcode and press Run.)
 
 To stop the error for future uploads, sign out of your Apple ID and back in under *Xcode › Settings › Accounts*.
 
@@ -111,7 +110,7 @@ To stop the error for future uploads, sign out of your Apple ID and back in unde
 | App Store Connect app | Crossfall |
 | Bundle ID | `com.phoronomicstudios.crossfall` |
 | First build | 0.1 (2610111829), 11 Oct 2026 |
-| Current | 0.2: Game Center, polish, accessibility |
+| Current | 0.2 (7), 11 Oct 2026: Game Center, polish, accessibility |
 | Devices | iPhone, portrait |
 
 ## Roadmap

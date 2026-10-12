@@ -36,7 +36,8 @@ xcodebuild -project Crossfall.xcodeproj -scheme Crossfall -configuration Debug \
   -destination "id=$UDID" -derivedDataPath build -allowProvisioningUpdates \
   DEVELOPMENT_TEAM="$TEAM" CODE_SIGN_STYLE=Automatic build > Logs/xcodebuild.log 2>&1
 if [[ $? -ne 0 ]]; then
-  echo "FAILED (build). Errors:"; grep -E "error:|requires a provisioning|No Account|No profiles|BUILD FAILED" Logs/xcodebuild.log | sort -u | head -20; exit 1
+  echo "FAILED (build). Errors:"; grep -E "error:|requires a provisioning|No Account|No profiles|BUILD FAILED" Logs/xcodebuild.log | sort -u | head -20
+  echo "If it says \"No Accounts\", the profile lacks Game Center, or no destination matches: open Crossfall.xcodeproj in Xcode, pick your iPhone at the top and press Run."; exit 1
 fi
 APP="$(ls -d build/Build/Products/Debug-iphoneos/Crossfall.app 2>/dev/null)"
 [[ -z "$APP" ]] && { echo "FAILED: build finished but Crossfall.app is missing."; exit 1; }

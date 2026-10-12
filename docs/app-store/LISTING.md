@@ -142,4 +142,4 @@ First launch: a 3-question welcome (name, mood, 3 free categories), then a one-m
 | Review screenshot | `docs/app-store/iap-review.png` (the Go Pro sheet) |
 | Review notes | Opens from a locked category, puzzle 7+, or Menu › Go Pro. |
 
-Requires the **Paid Apps agreement** (Business › Agreements, with banking and tax forms) to be active. Submit the purchase together with the app version.
+Created in App Store Connect on 12 Oct 2026 (Apple ID 6822074048): $4.99, 175 countries, review screenshot and notes added. The Paid Apps agreement is active. Submit the purchase together with the app version.

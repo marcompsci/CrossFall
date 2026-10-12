@@ -686,9 +686,9 @@ const HEAL={
    ["JOURNAL","Daily notebook","Write down three good things tonight. It trains your mind to look for them."]]},
  Books:{
   peace:[["WOODS","I went to the woods because I wished to live deliberately.","Henry David Thoreau, Walden"],
-   ["PACE","Adopt the pace of nature: her secret is patience.","Ralph Waldo Emerson"],
-   ["LIFE","Our life is frittered away by detail. Simplify, simplify.","Henry David Thoreau, Walden"],
-   ["WORLD","The world is too much with us.","William Wordsworth"]],
+   ["PEACE","Nothing can bring you peace but yourself.","Ralph Waldo Emerson, Self-Reliance"],
+   ["LIFE","Our life is frittered away by detail. … Simplify, simplify.","Henry David Thoreau, Walden"],
+   ["WORLD","The world is too much with us.","William Wordsworth, The World Is Too Much with Us"]],
   hope:[["HOPE","“Hope” is the thing with feathers / That perches in the soul.","Emily Dickinson"],
    ["SPRING","If Winter comes, can Spring be far behind?","Percy Bysshe Shelley, Ode to the West Wind"],
    ["HUMAN","Hope springs eternal in the human breast.","Alexander Pope, An Essay on Man"],
@@ -701,7 +701,7 @@ const HEAL={
    ["TRUE","This above all: to thine own self be true.","William Shakespeare, Hamlet"]],
   rest:[["SLEEP","Sleep that knits up the ravell'd sleave of care.","William Shakespeare, Macbeth"],
    ["BEAUTY","A thing of beauty is a joy for ever.","John Keats, Endymion"],
-   ["DANCES","And then my heart with pleasure fills, / And dances with the daffodils.","William Wordsworth"]],
+   ["DANCES","And then my heart with pleasure fills, / And dances with the daffodils.","William Wordsworth, I Wandered Lonely as a Cloud"]],
   courage:[["FEAR","Courage is resistance to fear, mastery of fear—not absence of fear.","Mark Twain, Pudd'nhead Wilson"],
    ["ROADS","Two roads diverged in a wood, and I— / I took the one less traveled by, / And that has made all the difference.","Robert Frost, The Road Not Taken"],
    ["DOUBTS","Our doubts are traitors, and make us lose the good we oft might win by fearing to attempt.","William Shakespeare, Measure for Measure"]],
@@ -709,7 +709,7 @@ const HEAL={
    ["ERR","To err is human, to forgive divine.","Alexander Pope, An Essay on Criticism"],
    ["BIRD","I am no bird; and no net ensnares me: I am a free human being with an independent will.","Charlotte Brontë, Jane Eyre"]],
   gratitude:[["READING","I declare after all there is no enjoyment like reading!","Jane Austen, Pride and Prejudice"],
-   ["DAY","Write it on your heart that every day is the best day in the year.","Ralph Waldo Emerson"],
+   ["DAY","Write it on your heart that every day is the best day in the year.","Ralph Waldo Emerson, Works and Days"],
    ["HONOUR","I will honour Christmas in my heart, and try to keep it all the year.","Charles Dickens, A Christmas Carol"]]}};
 const DICT=new Set(COMMON);
 LEVELS.forEach(L=>{if(L.heal)return;L.words.forEach(w=>DICT.add(w[0]));L.bonus.forEach(b=>DICT.add(b[0]));DICT.add(L.target[0]);});

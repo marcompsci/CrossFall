@@ -1,6 +1,6 @@
 # Crossfall: App Store listing
 
-Copy each field into **App Store Connect › Crossfall › App Store › iOS App 0.3**. Character counts are under Apple's limits.
+Copy each field into **App Store Connect › Crossfall › App Store › iOS App 1.0**. Character counts are under Apple's limits.
 
 | Field | Text | Limit |
 | --- | --- | --- |
@@ -70,7 +70,7 @@ Climb the Game Center leaderboards for today, all time, this week and best game.
 No ads. No account to create. No tracking.
 ```
 
-## What's New (0.3)
+## What's New (for the next update after 1.0; leave blank on the first release)
 
 ```
 • Daily Crossfall: one puzzle for everyone, a Today leaderboard, streaks with freezes, past puzzles and a share card

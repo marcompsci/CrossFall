@@ -426,6 +426,79 @@ textarea.mkin,#textbox textarea{font-family:var(--f-mono);font-size:14px;line-he
 html.readable{--f-body:Verdana,Tahoma,"Segoe UI",system-ui,sans-serif}
 html.readable body{letter-spacing:.03em;word-spacing:.1em}
 html.readable .ct,html.readable .rvclue,html.readable .gc-tag{line-height:1.55}
+
+/* Learn: Life Moves */
+.hubnav{grid-template-columns:repeat(4,1fr)!important}
+.navind{width:calc((100% - 12px)/4)!important}
+.lf-hero p{margin:0;font-size:calc(14px*var(--ts));line-height:1.45}
+.lf-xp{font-family:var(--f-mono);font-weight:800;color:var(--gold);font-size:calc(14px*var(--ts))}
+html.light .lf-xp{color:#a86f00}
+.lf-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.lf-tile{position:relative;overflow:hidden;text-align:left;color:#fff;border:0;border-radius:18px;padding:14px;min-height:150px;display:flex;flex-direction:column;gap:4px;
+  background:linear-gradient(160deg,var(--g1),var(--g2));box-shadow:0 10px 24px rgba(0,0,0,.3),inset 0 0 0 1px rgba(255,255,255,.12);transition:transform .15s}
+.lf-tile:active{transform:scale(.97)}
+.lf-tile .lf-icon{font-size:34px;line-height:1;margin-bottom:4px}
+.lf-tile b{font-family:var(--f-display);font-size:calc(19px*var(--ts));font-weight:400}
+.lf-tile .lt{font-size:calc(13px*var(--ts));opacity:.88;line-height:1.3}
+.lf-tile .lf-dots{margin-top:auto}
+.lf-dots{display:flex;gap:5px}.lf-dots i{width:18px;height:6px;border-radius:3px;background:rgba(255,255,255,.28)}
+.lf-dots i.on{background:#ffd166}.lifeov .lf-dots i{background:var(--line)}.lifeov .lf-dots i.on{background:var(--gold)}.lifeov .lf-dots i.cur{outline:2px solid var(--accent);outline-offset:1px}
+.badge2{position:absolute;top:10px;right:10px;font-size:11px;font-weight:800;background:rgba(0,0,0,.35);border-radius:999px;padding:3px 8px}
+.qlist{display:flex;flex-direction:column;gap:8px}
+.qi{display:flex;gap:10px;align-items:flex-start;font-size:calc(14px*var(--ts));line-height:1.35;cursor:pointer}
+.qi input{width:22px;height:22px;flex:none;accent-color:var(--solved);margin:0}
+.qi i{display:block;font-style:normal;color:var(--muted);font-size:.85em}
+.qi.done span{text-decoration:line-through;opacity:.6}
+.lifeov{gap:12px}
+.lf-top{display:flex;align-items:center;gap:10px}.lf-top .ln{flex:1}
+.lf-card{position:relative;overflow:hidden;color:#fff;border-radius:22px;padding:18px;background:linear-gradient(160deg,var(--g1),var(--g2));display:flex;flex-direction:column;gap:10px;box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.lf-card h2,.life-side h2{font-family:var(--f-display);font-weight:400;font-size:calc(26px*var(--ts));margin:0;line-height:1}
+.lf-card p{margin:0;color:#fff;font-size:calc(15px*var(--ts));line-height:1.45}
+.lf-card .lf-icon{position:absolute;right:14px;top:8px;font-size:48px;opacity:.25}
+.lf-vis{display:flex;flex-direction:column;align-items:center;gap:8px;padding:6px 0}
+.board{display:grid;width:min(100%,270px);aspect-ratio:1;border-radius:8px;overflow:hidden;box-shadow:0 0 0 3px rgba(0,0,0,.25)}
+.sq{border:0;padding:0;background:#efe3c8;display:grid;place-items:center;font-size:clamp(24px,8vw,38px);line-height:1;aspect-ratio:1}
+.sq.d{background:#a7805a}.sq:disabled{opacity:1}
+.sq .w{color:#fff;text-shadow:0 0 2px #000,0 1px 2px #000}.sq .b{color:#111}
+.sq.mk{box-shadow:inset 0 0 0 4px #3ad29f}.sq.bd{box-shadow:inset 0 0 0 4px #ff5a5f}
+.pcards{display:flex;gap:8px}
+.pcard{width:54px;height:76px;border-radius:8px;background:#fff;color:#111;display:grid;place-items:center;font:800 22px/1 var(--f-mono);box-shadow:0 4px 0 rgba(0,0,0,.25)}
+.pcard.red{color:#d6262c}
+.pot{display:flex;align-items:center;gap:8px;font-size:calc(15px*var(--ts));color:#fff}.pot b{font-family:var(--f-mono);font-size:1.3em}
+.chips{display:flex}.chips i{width:18px;height:18px;border-radius:50%;margin-left:-6px;background:radial-gradient(circle,#fff 0 28%,#e2632a 30% 62%,#fff 64% 70%,#e2632a 72%);box-shadow:0 2px 0 rgba(0,0,0,.3)}
+.lnote{font-size:13px;opacity:.85}
+.wmini{display:grid;gap:2px;width:min(100%,220px);background:rgba(0,0,0,.25);padding:4px;border-radius:6px}
+.wmini>*{aspect-ratio:1;border-radius:3px}
+.wmini i{background:rgba(255,255,255,.07)}.wmini b{background:#d9cdb3}.wmini b.j{background:#8b8296}.wmini b.t{background:#e2632a;color:#fff;display:grid;place-items:center;font-size:11px}
+.wmini .fillcol.e{background:#3ad29f}
+.wcols{display:grid;gap:2px;width:min(100%,220px);padding:0 4px;box-sizing:border-box}
+.wcols button{height:40px;border:0;border-radius:8px;background:rgba(255,255,255,.2);color:#fff;font-size:18px;font-weight:800}
+.slots.pencil b{color:#6d6d6d;font-style:italic;background:#f4efe4}
+.lf-vis .slots b.hole{background:rgba(255,255,255,.18)}
+.lf-opts{display:flex;flex-direction:column;gap:8px}
+.lf-opt{text-align:left;background:var(--panel);border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;min-height:52px;font-weight:700;font-size:calc(15px*var(--ts));color:var(--fg)}
+.lf-opt.right{border-color:#3ad29f;background:color-mix(in srgb,#3ad29f 18%,var(--panel))}
+.lf-opt.wrong{border-color:#ff5a5f;background:color-mix(in srgb,#ff5a5f 14%,var(--panel))}
+.lf-fb{border-radius:14px;padding:12px 14px;font-size:calc(15px*var(--ts));line-height:1.45;background:var(--panel);border-left:5px solid #ff9f43}
+.lf-fb.good{border-left-color:#3ad29f}
+.xpg{display:inline-block;font-family:var(--f-mono);font-weight:800;color:var(--gold);animation:pop .4s cubic-bezier(.34,1.6,.64,1)}
+@keyframes pop{from{transform:scale(.3);opacity:0}}
+.split{display:flex;flex-direction:column;gap:12px;background:var(--panel);border-radius:14px;padding:14px}
+.sp{display:grid;grid-template-columns:1fr 46px;gap:4px 10px;align-items:center}
+.sp span{grid-column:1/-1;font-size:calc(14px*var(--ts))}.sp i{font-style:normal;color:var(--muted);font-size:.9em}
+.sp input{width:100%;accent-color:var(--accent);height:28px}
+.sp output{font-family:var(--f-mono);font-weight:800;text-align:right;font-size:18px}
+.sptot{text-align:right;color:var(--muted);font-size:14px}
+.flip{perspective:1200px}
+.flip .side{border-radius:22px;padding:20px;color:#fff;background:linear-gradient(200deg,var(--g2),#120d1c);box-shadow:0 14px 30px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.12);
+  display:flex;flex-direction:column;gap:10px;animation:flipin .55s cubic-bezier(.3,1.3,.5,1) both;transform-origin:center}
+@keyframes flipin{from{transform:rotateY(-100deg);opacity:0}}
+@media (prefers-reduced-motion:reduce){.flip .side,.xpg{animation:none}}
+.life-side p{margin:0;font-size:calc(16px*var(--ts));line-height:1.5;color:#fff}
+.life-side .ln{color:#ffd166}
+.quest{background:rgba(255,255,255,.1);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.quest .ghost-btn{color:#fff;border-color:rgba(255,255,255,.45)}
+.lifeov .btns{display:flex;flex-direction:column;gap:8px;width:100%}.lifeov .btns>*{width:100%}
 </style>
 
 <div id="app">
@@ -468,6 +541,7 @@ html.readable .ct,html.readable .rvclue,html.readable .gc-tag{line-height:1.55}
       <div class="dr-me" id="drMe"></div>
       <nav class="dr-list" aria-label="Go to">
         <button data-go="Play"><i class="dot" style="--d:var(--accent)"></i>Play</button>
+        <button data-go="Learn"><i class="dot" style="--d:#8a4fb0"></i>Learn: Life Moves</button>
         <button data-go="Ranks"><i class="dot" style="--d:var(--solved)"></i>Live rankings</button>
         <button data-go="Profile"><i class="dot" style="--d:var(--gold)"></i>My profile</button>
       </nav>
@@ -513,6 +587,8 @@ html.readable .ct,html.readable .rvclue,html.readable .gc-tag{line-height:1.55}
       </details>
     </section>
 
+    <section class="hpage" id="pgLearn" aria-label="Learn" hidden><div id="learn"></div></section>
+
     <section class="hpage" id="pgRanks" aria-label="Rankings" hidden>
       <div class="deckhead"><h2 class="hh">Live rankings</h2><span class="live" id="rkLive"><i></i><span id="rkStatus">Connecting…</span></span></div>
       <div class="seg seg4" role="tablist" id="rkSeg">
@@ -532,6 +608,7 @@ html.readable .ct,html.readable .rvclue,html.readable .gc-tag{line-height:1.55}
     <nav class="hubnav" aria-label="Main">
       <span class="navind" id="navInd" aria-hidden="true"></span>
       <button data-pg="Play" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="6" height="6" rx="1.6"/><rect x="9" y="5" width="6" height="6" rx="1.6"/><rect x="15.5" y="5" width="6" height="6" rx="1.6"/><rect x="9" y="11.5" width="6" height="6" rx="1.6"/></svg><span>Play</span></button>
+      <button data-pg="Learn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 8.5 12 14l8.5-4.45V16h2V8.5z"/><path d="M5.5 12.6v4.1C7.3 18.8 9.6 20 12 20s4.7-1.2 6.5-3.3v-4.1L12 16z" opacity=".8"/></svg><span>Learn</span></button>
       <button data-pg="Ranks"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8.5" y="6" width="7" height="14" rx="1.6"/><rect x="1.5" y="10.5" width="6.5" height="9.5" rx="1.6" opacity=".75"/><rect x="16" y="13" width="6.5" height="7" rx="1.6" opacity=".6"/><path d="M12 1.6l1 2 2.2.3-1.6 1.5.4 2.2-2-1-2 1 .4-2.2-1.6-1.5 2.2-.3z"/></svg><span>Ranks</span></button>
       <button data-pg="Profile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4.5"/><path d="M3.5 21c.8-4.4 4.2-7 8.5-7s7.7 2.6 8.5 7z"/></svg><span>Profile</span></button>
     </nav>
@@ -542,6 +619,7 @@ html.readable .ct,html.readable .rvclue,html.readable .gc-tag{line-height:1.55}
   <div class="ov res" id="archive" hidden></div>
   <div class="ov res" id="maker" hidden></div>
   <div class="ov res" id="textbox" hidden></div>
+  <div class="ov lifeov" id="life" hidden></div>
   <div class="ov" id="settings" hidden>
     <h1>SET<span>TINGS</span></h1>
     <button class="setrow" role="switch" id="setBig"><span><span class="st-t">Bigger text</span><br><span class="st-d">Larger clues, quotes and buttons.</span></span><span class="sw"></span></button>
@@ -1279,13 +1357,13 @@ function showMenu(){
 }
 function goPage(p){
   hubPage=p;
-  for(const n of["Play","Ranks","Profile"]){const el=document.getElementById("pg"+n);const show=n===p;
+  for(const n of["Play","Learn","Ranks","Profile"]){const el=document.getElementById("pg"+n);const show=n===p;
     if(el.hidden===show){el.hidden=!show;if(show){el.classList.remove("enter");void el.offsetWidth;el.classList.add("enter")}}}
   document.querySelectorAll(".hubnav button").forEach(b=>b.dataset.pg===p?b.setAttribute("aria-current","page"):b.removeAttribute("aria-current"));
-  const ix=["Play","Ranks","Profile"].indexOf(p),ind=document.getElementById("navInd");if(ind)ind.style.transform=`translateX(${ix*100}%)`;
+  const ix=["Play","Learn","Ranks","Profile"].indexOf(p),ind=document.getElementById("navInd");if(ind)ind.style.transform=`translateX(${ix*100}%)`;
   renderHub();
 }
-function renderHub(){if(hubPage==="Play")renderDeck();else if(hubPage==="Ranks")renderRanks();else renderProfile()}
+function renderHub(){if(hubPage==="Play")renderDeck();else if(hubPage==="Learn")renderLearn();else if(hubPage==="Ranks")renderRanks();else renderProfile()}
 
 /* card deck */
 function catTiles(name,seed){
@@ -2038,6 +2116,171 @@ function openBackup(){
     stats=Object.assign(stats,o.stats);store=o.store||store;rushPace=o.pace||rushPace;if(o.heal){healProfile=o.heal;try{localStorage.setItem("crossfall-heal",JSON.stringify(o.heal))}catch(e){}}
     saveStore();saveStats();saveRushPace();pushCloud();out.textContent="Restored.";toast("Progress restored");renderHub();
   };
+}
+
+/* ---------- Learn: Life Moves (what games teach about adulting) ---------- */
+const PC={K:"♔",Q:"♕",R:"♖",B:"♗",N:"♘",P:"♙",k:"♚",q:"♛",r:"♜",b:"♝",n:"♞",p:"♟"};
+function boardHTML(n,pieces,opt){opt=opt||{};let h="";
+  for(let r=0;r<n;r++)for(let c=0;c<n;c++){const k=r+","+c,p=pieces[k],dark=(r+c)%2===1;
+    h+=`<button class="sq${dark?" d":""}${opt.mark&&opt.mark.includes(k)?" mk":""}${opt.bad&&opt.bad.includes(k)?" bd":""}" data-k="${k}" ${opt.tap?"":"tabindex=\"-1\" disabled"} aria-label="${"abcdefgh"[c]}${n-r}${p?", "+({K:"white king",Q:"white queen",R:"white rook",B:"white bishop",N:"white knight",P:"white pawn",k:"black king",q:"black queen",r:"black rook",b:"black bishop",n:"black knight",p:"black pawn"})[p]:""}">${p?`<span class="${p===p.toUpperCase()?"w":"b"}">${PC[p]}</span>`:""}</button>`}
+  return`<div class="board" style="grid-template-columns:repeat(${n},1fr)">${h}</div>`}
+function cardsHTML(cards){return`<div class="pcards">${cards.map(c=>`<span class="pcard${/[♥♦]/.test(c)?" red":""}">${c}</span>`).join("")}</div>`}
+function chipsHTML(n,label){return`<div class="pot"><span class="chips">${"<i></i>".repeat(Math.min(6,Math.max(1,Math.round(n/20))))}</span><b>${n}</b> ${label}</div>`}
+function wellMini(rows,opt){opt=opt||{};const w=rows[0].length;let h="";
+  rows.forEach((row,r)=>[...row].forEach((ch,c)=>{h+=ch==="."?`<i class="e" data-c="${c}" data-r="${r}"></i>`:`<b class="${ch==="#"?"j":"t"}" data-c="${c}" data-r="${r}">${ch==="#"?"":ch}</b>`}));
+  return`<div class="wmini${opt.tap?" tap":""}" style="grid-template-columns:repeat(${w},1fr)">${h}</div>${opt.tap?`<div class="wcols" style="grid-template-columns:repeat(${w},1fr)">${[...Array(w)].map((_,c)=>`<button data-c="${c}" aria-label="Drop in column ${c+1}">↓</button>`).join("")}</div>`:""}`}
+function tilesHTML(word,shown){return`<div class="slots">${[...word].map((ch,i)=>`<b class="${shown[i]?"":"hole"}">${shown[i]?ch:""}</b>`).join("")}</div>`}
+
+const LIFE=[
+ {id:"chess",name:"Chess",icon:"♞",g1:"#2a7fc4",g2:"#123a63",badge:"Board Thinker",tag:"Think a few moves ahead",rounds:[
+  {title:"The fork",setup:"Your knight can make one move that attacks the king and the rook at the same time. Tap the square.",
+   vis:()=>boardHTML(5,{"0,2":"k","0,4":"r","4,4":"N","4,0":"K","3,1":"p"},{tap:true}),kind:"tap",ok:"2,3",
+   hit:"Fork! They can only save one. One move, two wins.",miss:"Close, but that square only hits one thing (or nothing). A knight jumps in an L: two one way, one to the side.",
+   life:"Hunt for moves that win twice. Cooking at home saves money and feeds you better. Walking to work is exercise and a commute. Studying with a friend counts as learning and hanging out.",
+   quest:"Stack two wins on one chore this week, like a podcast while you do laundry."},
+  {title:"The free pawn",setup:"Your opponent leaves a pawn hanging. Grab it and their bishop gets a clear shot at your queen next move. What do you play?",
+   vis:()=>boardHTML(5,{"0,1":"b","2,3":"p","3,3":"Q","4,0":"K","4,2":"N","0,4":"k"}),kind:"pick",
+   options:[{t:"Take the free pawn",why:"Their bishop takes your queen. That pawn cost you your best piece."},{t:"Bring out another piece first",ok:true,why:"Good. Develop, stay safe, and the pawn is still there next turn if it's really free."},{t:"Charge the queen across the board",why:"An early queen raid gets chased around and you fall behind on development."}],
+   life:"Free stuff often has strings. \"Buy now, pay later\", a 0% card that jumps to 29% after the intro, a free trial that bills on day 8. Always ask what it costs on move two.",
+   quest:"Set a reminder for the day before any free trial ends."},
+  {title:"Castle early",setup:"Move 6. Your king is still in the middle of the board and the position is about to open up.",
+   vis:()=>boardHTML(5,{"4,2":"K","4,4":"R","4,1":"N","3,3":"P","3,4":"P","0,2":"k","1,1":"q"}),kind:"pick",
+   options:[{t:"Attack now, glory awaits",why:"Bold, but one check on your exposed king and the whole attack falls apart."},{t:"Castle: tuck the king behind pawns",ok:true,why:"Boring and correct. Your king is safe, your rook joins the game, and now you can attack."},{t:"Push pawns for space",why:"Space is nice, but it opens more lines straight at your own king."}],
+   life:"Castling is your emergency fund, health insurance and a spare key at a friend's place. There's no glory in it, but it's why one bad move doesn't end your game. Get safe first, then attack.",
+   quest:"Start a tiny \"castle\" fund, even $5 or $10 a week."}]},
+ {id:"poker",name:"Poker",icon:"♠",g1:"#1f8f4e",g2:"#0d4727",badge:"Card Sharp",tag:"Play the odds, not the feelings",rounds:[
+  {title:"Bankroll",setup:"You have 100 chips for the month. Pros never bring rent money to the table. Split your chips.",
+   vis:()=>chipsHTML(100,"chips this month"),kind:"split",buckets:[["Needs","Rent, food, bills, transport",50],["Wants","Going out, games, shopping",30],["Save","Castle fund, goals, debt",20]],
+   hit:"Solid bankroll. Needs covered, fun included, chips saved for the next session.",miss:"",
+   life:"A common starting point is 50/30/20: about half for needs, a third for wants, a fifth saved. It's a guide, not a law. If rent eats 70%, saving even 5% is still a win.",
+   quest:"Sort last month's bank statement into Needs, Wants and Save."},
+  {title:"Pot odds",setup:"There's 80 in the pot. Calling costs 20. You'll win this hand about 1 time in 4.",
+   vis:()=>cardsHTML(["8♥","9♥"])+chipsHTML(80,"in the pot · 20 to call"),kind:"pick",
+   options:[{t:"Fold, I'll probably lose",why:"You'll lose most of the time, but you only need to win 1 in 5 for this call to pay off (20 to win 100). At 1 in 4 you're ahead over time."},{t:"Call",ok:true,why:"Right. You need to win 20% of the time and you win 25%. You'll lose this hand often and still come out ahead."},{t:"All in, feeling lucky",why:"Now you're risking everything on a hand that loses 3 times out of 4."}],
+   life:"A good decision can still lose. Apply to 10 jobs with a 1-in-5 shot each and you should expect around 2 callbacks, so the 8 no's don't mean you played badly. Judge a choice by the odds you had, not by one result.",
+   quest:"Count a decision as good if you'd make it again with the same info."},
+  {title:"Tilt",setup:"A lucky card on the river just beat your great hand. Your face is hot. Next hand is dealt.",
+   vis:()=>cardsHTML(["A♠","A♦"])+`<p class="lnote">…and they hit a 2-outer. Ouch.</p>`,kind:"pick",
+   options:[{t:"Win it back now with a huge bluff",why:"That's tilt. Angry chips play badly, and this is how one bad beat turns into a bad night."},{t:"Take a lap, sit out a few hands",ok:true,why:"Pro move. Cool down and come back to good decisions."},{t:"Quit poker forever",why:"One bad beat isn't the whole game. You played it right."}],
+   life:"Tilt happens off the table too. After a bad text, a bad grade or a rough shift, don't make the money or relationship call right then. \"Sleep on it\" is a pro strategy.",
+   quest:"Make a rule: no buys over $50 and no hard texts within an hour of getting upset."}]},
+ {id:"crossword",name:"Crossword",icon:"✎",g1:"#c4452f",g2:"#5e1a10",badge:"Puzzle Brain",tag:"Fill in what you know first",rounds:[
+  {title:"Crossings",setup:"Clue: \"Money plan for the month\" (6). It looked impossible until the crossing words filled in some letters. Finish it.",
+   vis:()=>tilesHTML("BUDGET",[0,1,0,1,0,1]),kind:"fill",answer:"BUDGET",
+   hit:"Easy once the crossings gave you half the letters.",miss:"Not quite. Look at the letters you already have: _U_G_T.",
+   life:"Stuck on something big like taxes, a lease or a job application? Fill in the easy squares first: gather the documents and answer what you already know. The hard parts get a lot more obvious.",
+   quest:"Take one task you're avoiding and do just the two easiest pieces."},
+  {title:"Pencil it in",setup:"You think 3-Down is HOPE, but you're not sure yet.",
+   vis:()=>`<div class="slots pencil"><b>H</b><b>O</b><b>P</b><b>E</b></div>`,kind:"pick",
+   options:[{t:"Ink it in and never look back",why:"If it's wrong, every crossing word goes wrong with it."},{t:"Pencil it in and check the crossings",ok:true,why:"Yes. Commit lightly, test it against what crosses it, and erase if needed."},{t:"Leave it blank until you're 100% sure",why:"You'll never be 100% sure. Blank squares don't help the crossings either."}],
+   life:"Most choices are pencil, not pen: a first apartment, a major, a first job. Make your best guess, see how it fits with everything around it, and change it with zero shame if it doesn't.",
+   quest:"Call one big decision a draft this month."},
+  {title:"The stuck clue",setup:"You've stared at one clue for ten minutes. Everything else is done.",
+   vis:()=>tilesHTML("MENTOR",[0,0,0,0,0,0]),kind:"pick",
+   options:[{t:"Quit the puzzle",why:"You're one word away. Don't throw out the whole grid."},{t:"Use one hint and keep solving",ok:true,why:"One letter often unlocks the whole word, and it's still your solve."},{t:"Reveal the entire grid",why:"Done, but you didn't really solve anything."}],
+   life:"Asking for help is taking a hint, not failing. One specific question to a coworker, a mentor or a search engine clears the jam, and you still do the rest. Revealing the whole grid is like letting someone else run your life.",
+   quest:"Ask one person one specific question this week."}]},
+ {id:"tetris",name:"Tetris",icon:"▦",g1:"#8a4fb0",g2:"#3f1f57",badge:"Stack Master",tag:"Make room before you need it",rounds:[
+  {title:"Clear the line",setup:"Two rows are one gap away from clearing. Your piece is a 2-tall bar. Tap the column to drop it.",
+   vis:()=>wellMini(["......","......","##.###","###.##".replace(/\./,"#").replace(/#(?=##$)/,"."),"##.###"].slice(0,2).concat(["##.###","##.###"]),{tap:true}),kind:"col",ok:2,
+   hit:"Two rows gone. Look at all that room.",miss:"It landed, but no rows cleared. Find the gap that runs through both rows.",
+   life:"One finished thing clears more space in your head than five half-done ones. Finish the dishes, then start the laundry.",
+   quest:"Pick the task that would clear the most headspace and finish it first."},
+  {title:"The open column",setup:"Your stack is low and flat. A long 4-piece is coming eventually. How do you build?",
+   vis:()=>wellMini(["......","......","#####.","#####."]),kind:"pick",
+   options:[{t:"Keep one column open for the long piece",ok:true,why:"When the long piece lands, four rows clear at once. That's a Tetris."},{t:"Fill every hole right now",why:"It looks tidy, but then the long piece has nowhere good to go."},{t:"Stack tall on one side",why:"Towers top out fast. One bad piece and it's game over."}],
+   life:"That open column is slack: savings, a free evening, a buffer before deadlines. When the big piece shows up, good (a trip) or bad (a car repair), you have room for it.",
+   quest:"Leave one evening this week with nothing planned."},
+  {title:"Garbage lines",setup:"Junk rows keep rising from the bottom: unpaid bills, unread emails, dishes.",
+   vis:()=>wellMini(["......","..T...","##.###","#.####","###.##"]),kind:"pick",
+   options:[{t:"Ignore them, they'll go away",why:"They never go away. They push you toward the top."},{t:"Clear a little every day",ok:true,why:"A row a day keeps the stack low and stress-free."},{t:"Wait for one perfect move to fix everything",why:"The perfect move rarely comes. The junk keeps rising while you wait."}],
+   life:"Small debts, chores and \"I'll reply later\" messages stack up like garbage lines. Ten minutes a day keeps the well low. Ignore them and you top out.",
+   quest:"Set a 10-minute \"clear the junk\" timer tomorrow."}]}];
+/* fix the column puzzle well explicitly (gap in column 3 on both bottom rows) */
+LIFE[3].rounds[0].vis=()=>wellMini(["......","......","##.###","##.###"],{tap:true});
+
+function lifeState(){if(!stats.life)stats.life={done:{},xp:0,quests:[]};return stats.life}
+function lifeProgress(g){const L=lifeState();return g.rounds.filter((_,i)=>L.done[g.id+":"+i]).length}
+let lr=null;
+function openLife(gi,ri){
+  const g=LIFE[gi];if(ri==null){ri=g.rounds.findIndex((_,i)=>!lifeState().done[g.id+":"+i]);if(ri<0)ri=0}
+  lr={gi,ri,state:"play",tries:0,split:null};renderLife();const el=document.getElementById("life");el.hidden=false;el.scrollTop=0;
+}
+function lifeAnswer(ok,why){
+  const L=lifeState(),g=LIFE[lr.gi],key=g.id+":"+lr.ri;lr.tries++;
+  if(ok||lr.tries>=2){const first=!L.done[key];const xp=ok?(lr.tries===1?100:60):30;if(first){L.done[key]=1;L.xp+=xp;lr.xp=xp}else lr.xp=0;
+    lr.state="reveal";lr.ok=ok;lr.why=why;saveStats();blip(ok?880:300,.1);if(ok)setTimeout(()=>blip(1175,.14),90)}
+  else{lr.why=why;lr.state="retry";blip(220,.1)}
+  renderLife();
+}
+function renderLife(){
+  const el=document.getElementById("life");if(!lr)return;const g=LIFE[lr.gi],R_=g.rounds[lr.ri],L=lifeState();
+  const head=`<div class="lf-top"><button class="icon-btn" id="lfX" aria-label="Close">✕</button><span class="ln">${esc(g.name.toUpperCase())} · MOVE ${lr.ri+1} OF ${g.rounds.length}</span><span class="lf-xp">${fmtN(L.xp)} XP</span></div>
+    <div class="lf-dots">${g.rounds.map((_,i)=>`<i class="${L.done[g.id+":"+i]?"on":""}${i===lr.ri?" cur":""}"></i>`).join("")}</div>`;
+  let body="";
+  if(lr.state==="flip"){
+    const last=lr.ri===g.rounds.length-1,qAdded=(L.quests||[]).some(q=>q.t===R_.quest);
+    body=`<div class="flip on" style="--g1:${g.g1};--g2:${g.g2}"><div class="side life-side" data-mag>
+      <span class="ln">IN REAL LIFE</span><h2>${esc(R_.title)}</h2><p>${esc(R_.life)}</p>
+      <div class="quest"><span class="ln">SIDE QUEST</span><p>${esc(R_.quest)}</p><button class="ghost-btn" id="lfQ"${qAdded?" disabled":""}>${qAdded?"Added to your side quests ✓":"Add to my side quests"}</button></div></div></div>
+      <div class="btns"><button class="big" id="lfNext">${last?(lifeProgress(g)===g.rounds.length?`Badge: ${esc(g.badge)} →`:"Back to Learn"):"Next move"}</button></div>`;
+  }else{
+    let play="";
+    if(R_.kind==="pick")play=`<div class="lf-opts">${R_.options.map((o,i)=>`<button class="lf-opt${lr.state==="reveal"&&o.ok?" right":""}${lr.picked===i&&!o.ok?" wrong":""}" data-o="${i}" ${lr.state==="reveal"?"disabled":""}>${esc(o.t)}</button>`).join("")}</div>`;
+    else if(R_.kind==="split"){const v=lr.split||R_.buckets.map(()=>Math.round(100/R_.buckets.length));if(!lr.split){v[0]+=100-v.reduce((a,b)=>a+b,0);lr.split=v}
+      play=`<div class="split">${R_.buckets.map((b,i)=>`<label class="sp"><span><b>${esc(b[0])}</b> <i>${esc(b[1])}</i></span><input type="range" min="0" max="100" step="5" value="${lr.split[i]}" data-i="${i}" aria-label="${esc(b[0])} chips" ${lr.state==="reveal"?"disabled":""}><output>${lr.split[i]}</output></label>`).join("")}
+        <div class="sptot">Total: <b id="spTot">${lr.split.reduce((a,b)=>a+b,0)}</b>/100</div></div>${lr.state==="reveal"?"":`<div class="btns"><button class="big" id="spGo">Lock it in</button></div>`}`}
+    else if(R_.kind==="fill")play=lr.state==="reveal"?"":`<form class="mkrow" id="fillF"><input class="mkin" id="fillIn" maxlength="${R_.answer.length}" autocapitalize="characters" autocomplete="off" placeholder="Type the word" aria-label="Your answer"><button class="big" type="submit">Go</button></form>`;
+    body=`<div class="lf-card" style="--g1:${g.g1};--g2:${g.g2}"><span class="lf-icon" aria-hidden="true">${g.icon}</span><h2>${esc(R_.title)}</h2><p>${esc(R_.setup)}</p><div class="lf-vis">${R_.vis()}</div></div>${play}
+      ${lr.state!=="play"?`<div class="lf-fb ${lr.state==="reveal"&&lr.ok?"good":"bad"}" role="status"><b>${lr.state==="reveal"?(lr.ok?"Good move!":"Here's the move:"):"Not quite. One more try."}</b> ${esc(lr.why||"")}${lr.state==="reveal"&&lr.xp?` <span class="xpg">+${lr.xp} XP</span>`:""}</div>`:""}
+      ${lr.state==="reveal"?`<div class="btns"><button class="big" id="lfFlip">Flip it: real life ↻</button></div>`:""}`;
+  }
+  el.innerHTML=head+body;
+  if(lr.state!=="play")announce(el.querySelector(".lf-fb,.life-side")?.textContent||"");
+  const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
+  on("lfX",closeLife);
+  on("lfFlip",()=>{lr.state="flip";renderLife()});
+  on("lfQ",()=>{const L=lifeState();L.quests=[{t:R_.quest,g:g.name,done:false,at:Date.now()},...(L.quests||[]).filter(q=>q.t!==R_.quest)].slice(0,20);saveStats();toast("Side quest added");renderLife()});
+  on("lfNext",()=>{if(lr.ri<g.rounds.length-1){lr={gi:lr.gi,ri:lr.ri+1,state:"play",tries:0};renderLife();el.scrollTop=0}else{if(lifeProgress(g)===g.rounds.length)toast(`Badge unlocked: ${g.badge}`);closeLife()}});
+  if(lr.state==="flip")return;
+  if(R_.kind==="pick")el.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{const o=R_.options[+b.dataset.o];lr.picked=+b.dataset.o;lifeAnswer(!!o.ok,o.why)});
+  if(R_.kind==="tap"&&lr.state!=="reveal")el.querySelectorAll(".board .sq").forEach(b=>b.onclick=()=>{const ok=b.dataset.k===R_.ok;b.classList.add(ok?"mk":"bd");lifeAnswer(ok,ok?R_.hit:R_.miss)});
+  if(R_.kind==="tap"&&lr.state==="reveal"){const sq=el.querySelector(`.board .sq[data-k="${R_.ok}"]`);if(sq){sq.classList.add("mk");sq.innerHTML=`<span class="w">${PC.N}</span>`}const fr=el.querySelector('.board .sq[data-k="4,4"]');if(fr)fr.innerHTML=""}
+  if(R_.kind==="col"&&lr.state!=="reveal")el.querySelectorAll(".wcols button").forEach(b=>b.onclick=()=>{const ok=+b.dataset.c===R_.ok;lifeAnswer(ok,ok?R_.hit:R_.miss)});
+  if(R_.kind==="col"&&lr.state==="reveal"){const n=el.querySelectorAll(".wmini [data-c='0']").length;el.querySelectorAll(`.wmini [data-c="${R_.ok}"]`).forEach(x=>{if(+x.dataset.r>=n-2)x.classList.add("fillcol")})}
+  if(R_.kind==="split"){
+    el.querySelectorAll(".split input").forEach(inp=>inp.oninput=()=>{lr.split[+inp.dataset.i]=+inp.value;inp.nextElementSibling.textContent=inp.value;document.getElementById("spTot").textContent=lr.split.reduce((a,b)=>a+b,0)});
+    on("spGo",()=>{const v=lr.split,tot=v.reduce((a,b)=>a+b,0);
+      if(tot!==100){toast(`That's ${tot}. Make it 100.`);return}
+      const[n,w,s]=v;let why;
+      if(s===0)why="No chips saved. One surprise bill and you're out of the game.";
+      else if(n<40)why="Needs look underfunded. Make sure rent and food are covered before anything else.";
+      else if(w===0)why="All work, no fun. Burnout is a leak too; budget a little joy.";
+      else why=R_.hit+(s>=20?" Saving 20 or more is a strong habit.":" Saving anything at all is a strong habit.");
+      lifeAnswer(s>0&&n>=40&&w>0,why)})}
+  if(R_.kind==="fill"){const f=document.getElementById("fillF");if(f){f.onsubmit=e=>{e.preventDefault();const v=document.getElementById("fillIn").value.toUpperCase().replace(/[^A-Z]/g,"");const ok=v===R_.answer;
+    lifeAnswer(ok,ok?R_.hit:R_.miss+(lr.tries>=1?` The word is ${R_.answer}.`:""))};setTimeout(()=>{const i=document.getElementById("fillIn");if(i&&matchMedia("(pointer:fine)").matches)i.focus()},50)}
+    if(lr.state==="reveal"){const s=el.querySelector(".lf-vis .slots");if(s)s.outerHTML=tilesHTML(R_.answer,[1,1,1,1,1,1])}}
+}
+function closeLife(){document.getElementById("life").hidden=true;lr=null;if(hubPage==="Learn")renderLearn()}
+function renderLearn(){
+  const el=document.getElementById("learn");if(!el)return;const L=lifeState();
+  const allDone=LIFE.every(g=>lifeProgress(g)===g.rounds.length);
+  const bankN=Object.keys(stats.bank||{}).length,qs=L.quests||[];
+  el.innerHTML=`<div class="deckhead"><h2 class="hh">Learn</h2><span class="lf-xp">${fmtN(L.xp)} XP</span></div>
+   <div class="panel lf-hero"><h3>Life Moves</h3><p>Chess, poker, crosswords and Tetris already taught you how adulting works. Make the move, then flip the card.</p>
+     ${allDone?`<span class="goldtag">ADULTING: UNLOCKED</span>`:""}</div>
+   <div class="lf-grid">${LIFE.map((g,gi)=>{const p=lifeProgress(g),done=p===g.rounds.length;return`<button class="lf-tile" data-g="${gi}" style="--g1:${g.g1};--g2:${g.g2}" aria-label="${esc(g.name)}: ${esc(g.tag)}. ${p} of ${g.rounds.length} moves done${done?", badge "+esc(g.badge):""}">
+     <span class="lf-icon" aria-hidden="true">${g.icon}</span><b>${esc(g.name)}</b><span class="lt">${esc(g.tag)}</span>
+     <span class="lf-dots">${g.rounds.map((_,i)=>`<i class="${L.done[g.id+":"+i]?"on":""}"></i>`).join("")}</span>${done?`<span class="badge2">🏅 ${esc(g.badge)}</span>`:""}</button>`}).join("")}</div>
+   <div class="panel"><h3>Side quests${qs.length?` · ${qs.filter(q=>q.done).length}/${qs.length}`:""}</h3>
+     ${qs.length?`<div class="qlist">${qs.map((q,i)=>`<label class="qi${q.done?" done":""}"><input type="checkbox" data-q="${i}" ${q.done?"checked":""}><span>${esc(q.t)}<i>${esc(q.g)}</i></span></label>`).join("")}</div>`
+     :`<div class="empty">Finish a move and add its side quest. They're small real-life moves, done when you feel like it.</div>`}</div>
+   <div class="panel"><h3>Word bank · ${fmtN(bankN)} word${bankN===1?"":"s"}</h3><p class="pf-rank">Every word you solve is saved with its clue.</p><button class="retake" id="lnReview">Review 10 words</button></div>
+   <div class="panel"><h3>Make a puzzle</h3><p class="pf-rank">Turn a spelling or study list into a Crossfall puzzle and share it as a code.</p><button class="retake" id="lnMaker">Make a puzzle</button></div>`;
+  el.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>openLife(+b.dataset.g));
+  el.querySelectorAll("[data-q]").forEach(c=>c.onchange=()=>{const q=L.quests[+c.dataset.q];q.done=c.checked;if(c.checked&&!q.paid){q.paid=1;L.xp+=25;toast("Quest done +25 XP");blip(880,.08)}saveStats();renderLearn()});
+  document.getElementById("lnReview").onclick=openReview;document.getElementById("lnMaker").onclick=openMaker;
 }
 
 /* ---------- loop ---------- */

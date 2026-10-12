@@ -33,6 +33,7 @@ A word puzzle game for iPhone that crosses a crossword with a falling-block well
 | **Hold and next** | Hold a piece for later (⇄ or C) and see the next three. |
 | **Check and Autocheck** | Check the current word, or mark wrong letters as you type. Both cost the gold bonus, and the game says so. |
 | **Zen mode** | No rush timer and no game over; scores count at half. |
+| **Learn: Life Moves** | A Learn tab where chess, poker, crosswords and Tetris explain adulting through play. Each game has three quick interactive moves (tap the fork on a chess board, split a poker bankroll, fill a crossing, drop a piece into a gap). After each move, flip the card to see the real-life version: budgeting, odds, tilt, emergency funds, asking for help. Optional side quests, XP and badges. |
 | **Word bank** | Every word you solve is saved with its clue, with 10-card reviews that bring back the ones you missed. |
 | **Make a puzzle** | Turn a spelling or study list into a crossword and share it as a code. |
 | **Saved progress** | The game in progress survives closing the app. A backup code moves everything to a new phone. |

@@ -61,6 +61,7 @@ SCORING YOU CAN SEE
 Every point is shown line by line: clean letters, speed chains, row clears, combos, the target, rushes and your time. Solve with no help for a gold bonus and chase an SS grade.
 
 LEARN AS YOU PLAY
+Life Moves turns chess, poker, crosswords and Tetris into quick, playful lessons about real life: budgeting, odds, staying calm, making room for surprises and asking for help. Make the move, flip the card, take on a side quest. No lectures.
 Every word you solve goes into your word bank, and quick reviews bring back the ones you're still learning. Teachers and parents can turn any spelling list into a puzzle and share it with a code.
 
 RANKINGS AND ACHIEVEMENTS
@@ -77,6 +78,7 @@ No ads. No account to create. No tracking.
 • Hold a piece and see the next three
 • Check a word or turn on Autocheck
 • Zen mode: no timer, no game over
+• Learn tab with Life Moves: what chess, poker, crosswords and Tetris teach about adulting
 • Word bank and quick reviews of the words you've solved
 • Make a puzzle from your own word list and share it as a code
 • Your game in progress is saved; back up your progress with a code

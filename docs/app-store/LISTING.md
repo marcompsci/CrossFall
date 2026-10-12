@@ -11,8 +11,8 @@ Copy each field into **App Store Connect › Crossfall › App Store › iOS App
 | Age rating | 4+ (answer "None" to every content question) | |
 | Price | Free | |
 | Copyright | 2026 Omari Bell | |
-| Support URL | https://github.com/marcompsci/crossfall/blob/main/docs/app-store/SUPPORT.md | |
-| Privacy Policy URL | https://github.com/marcompsci/crossfall/blob/main/docs/app-store/PRIVACY.md | |
+| Support URL | https://github.com/marcompsci/CrossFall/blob/main/docs/app-store/SUPPORT.md | |
+| Privacy Policy URL | https://github.com/marcompsci/CrossFall/blob/main/docs/app-store/PRIVACY.md | |
 
 
 ## Promotional text (170)

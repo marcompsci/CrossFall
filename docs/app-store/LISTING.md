@@ -17,12 +17,12 @@ Copy each field into **App Store Connect › Crossfall › App Store › iOS App
 
 ## Promotional text (170)
 
-New: Daily Crossfall with streaks and a Today leaderboard, scoring you can see, hold and next pieces, Zen mode, and a puzzle maker for your own word lists.
+A new crossword every day, scoring you can see, Zen mode, and Life Moves: quick lessons on what games teach about real life. No ads, no tracking.
 
 ## Keywords (100)
 
 ```
-crossword,word,puzzle,tetris,blocks,falling,anagram,clue,brain,vocabulary,spelling,daily,verse,quote
+crossword,word,puzzle,blocks,falling,stack,anagram,clue,brain,vocabulary,spelling,daily,verse,quote
 ```
 
 ## Description (4,000)
@@ -34,7 +34,7 @@ Crossfall crosses a classic crossword with a falling-block well. Every answer yo
 
 When the stack climbs too high, a rush begins: find the hidden word in the well before the clock runs out. Win and the top of the well clears. Miss and a junk row rises from the bottom.
 
-TEN CATEGORIES
+NINE CATEGORIES
 Swipe through game cards: Sports, Biblical, Psychology, Books, Music, Arcade, Bay City, Kitchen and Night Sky. Three puzzles in each, with stars to collect.
 
 PUZZLES THAT MEET YOU WHERE YOU ARE
@@ -61,7 +61,7 @@ SCORING YOU CAN SEE
 Every point is shown line by line: clean letters, speed chains, row clears, combos, the target, rushes and your time. Solve with no help for a gold bonus and chase an SS grade.
 
 LEARN AS YOU PLAY
-Life Moves turns chess, poker, crosswords and Tetris into quick, playful lessons about real life: budgeting, odds, staying calm, making room for surprises and asking for help. Make the move, flip the card, take on a side quest. No lectures.
+Life Moves turns chess, poker, crosswords and falling blocks into quick, playful lessons about real life: budgeting, odds, staying calm, making room for surprises and asking for help. Make the move, flip the card, take on a side quest. No lectures.
 Every word you solve goes into your word bank, and quick reviews bring back the ones you're still learning. Teachers and parents can turn any spelling list into a puzzle and share it with a code.
 
 RANKINGS AND ACHIEVEMENTS

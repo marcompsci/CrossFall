@@ -1,0 +1,40 @@
+{
+  "identifier" : "C7A1F0E2",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "6A1B2C3D",
+      "localizations" : [
+        {
+          "description" : "Unlock all 9 categories and all 180 puzzles.",
+          "displayName" : "Crossfall Pro",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.phoronomicstudios.crossfall.pro",
+      "referenceName" : "Crossfall Pro",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6821776754",
+    "_developerTeamID" : "X6LZQ3FS36",
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

@@ -1,6 +1,7 @@
 import SwiftUI
 import WebKit
 import GameKit
+import StoreKit
 import UniformTypeIdentifiers
 
 // MARK: - Theme
@@ -243,6 +244,87 @@ enum Share {
     }
 }
 
+// MARK: - Crossfall Pro (StoreKit 2, one-time non-consumable)
+
+@MainActor
+final class ProStore {
+    static let shared = ProStore()
+    static let productID = "com.phoronomicstudios.crossfall.pro"
+    weak var web: WKWebView?
+    private var product: Product?
+    private var updates: Task<Void, Never>?
+
+    func start() {
+        guard updates == nil else { return }
+        updates = Task { [weak self] in
+            for await result in Transaction.updates {
+                if case .verified(let t) = result { await t.finish() }
+                await self?.refresh()
+            }
+        }
+        Task { await loadProduct(); await refresh() }
+    }
+
+    func handle(_ action: String) {
+        Task {
+            switch action {
+            case "load": await loadProduct()
+            case "refresh": await refresh()
+            case "buy": await buy()
+            case "restore": await restore()
+            default: break
+            }
+        }
+    }
+
+    private func send(_ json: String) {
+        web?.evaluateJavaScript("window.__iap&&window.__iap(\(json))", completionHandler: nil)
+    }
+
+    private func loadProduct() async {
+        if product == nil { product = try? await Product.products(for: [Self.productID]).first }
+        if let p = product {
+            let price = p.displayPrice.replacingOccurrences(of: "\\", with: "").replacingOccurrences(of: "\"", with: "")
+            send("{\"type\":\"product\",\"price\":\"\(price)\"}")
+        }
+    }
+
+    private func owned() async -> Bool {
+        for await result in Transaction.currentEntitlements {
+            if case .verified(let t) = result, t.productID == Self.productID, t.revocationDate == nil { return true }
+        }
+        return false
+    }
+
+    func refresh() async {
+        let pro = await owned()
+        send("{\"type\":\"entitlement\",\"pro\":\(pro)}")
+    }
+
+    private func buy() async {
+        await loadProduct()
+        guard let p = product else { send("{\"type\":\"failed\"}"); return }
+        do {
+            switch try await p.purchase() {
+            case .success(let verification):
+                if case .verified(let t) = verification {
+                    await t.finish()
+                    send("{\"type\":\"purchased\"}")
+                } else { send("{\"type\":\"failed\"}") }
+            case .userCancelled: send("{\"type\":\"cancelled\"}")
+            case .pending: send("{\"type\":\"pending\"}")
+            @unknown default: send("{\"type\":\"cancelled\"}")
+            }
+        } catch { send("{\"type\":\"failed\"}") }
+    }
+
+    private func restore() async {
+        try? await AppStore.sync()
+        let pro = await owned()
+        send("{\"type\":\"restored\",\"pro\":\(pro)}")
+    }
+}
+
 // MARK: - Haptics
 
 enum Haptics {
@@ -283,6 +365,8 @@ final class PageBridge: NSObject, WKScriptMessageHandler {
             if let body = message.body as? [String: Any] { gameCenter.handle(body) }
         case "share":
             if let text = message.body as? String { DispatchQueue.main.async { Share.present(text) } }
+        case "iap":
+            if let action = message.body as? String { Task { @MainActor in ProStore.shared.handle(action) } }
         case "haptic":
             if let kind = message.body as? String { DispatchQueue.main.async { Haptics.play(kind) } }
         default: break
@@ -312,8 +396,9 @@ struct GameView: UIViewRepresentable {
         config.userContentController.add(bridge, name: "gc")
         config.userContentController.add(bridge, name: "share")
         config.userContentController.add(bridge, name: "haptic")
+        config.userContentController.add(bridge, name: "iap")
         config.userContentController.addUserScript(WKUserScript(
-            source: "window.__NATIVE_TS=\(TextScale.current);window.__NATIVE_GC=true;",
+            source: "window.__NATIVE_TS=\(TextScale.current);window.__NATIVE_GC=true;window.__NATIVE_IAP=true;",
             injectionTime: .atDocumentStart, forMainFrameOnly: true))
         config.setURLSchemeHandler(BundleSchemeHandler(), forURLScheme: "crossfall")
         config.websiteDataStore = .default()
@@ -331,6 +416,8 @@ struct GameView: UIViewRepresentable {
 
         context.coordinator.web = web
         context.coordinator.gameCenter.web = web
+        ProStore.shared.web = web
+        ProStore.shared.start()
         NotificationCenter.default.addObserver(context.coordinator, selector: #selector(Coordinator.textSizeChanged),
                                                name: UIContentSizeCategory.didChangeNotification, object: nil)
         web.load(URLRequest(url: URL(string: "crossfall://app/index.html")!))

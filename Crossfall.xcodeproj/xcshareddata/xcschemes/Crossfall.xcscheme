@@ -15,6 +15,9 @@
          <BuildableReference BuildableIdentifier = "primary" BlueprintIdentifier = "C0F000000000000000000041" BuildableName = "Crossfall.app" BlueprintName = "Crossfall" ReferencedContainer = "container:Crossfall.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <StoreKitConfigurationFileReference
+         identifier = "../../Crossfall/Crossfall.storekit">
+      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction buildConfiguration = "Release" shouldUseLaunchSchemeArgsEnv = "YES" savedToolIdentifier = "" useCustomWorkingDirectory = "NO" debugDocumentVersioning = "YES">
    </ProfileAction>

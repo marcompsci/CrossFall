@@ -138,6 +138,8 @@ To stop the error for future uploads, sign out of your Apple ID and back in unde
 - [x] Research pass: App Store and Reddit wishes ([docs/RESEARCH.md](docs/RESEARCH.md))
 - [x] 0.3: daily puzzle, visible scoring and grades, hold/next, check, Zen, word bank, puzzle maker, saved progress
 - [x] Create the leaderboards and achievements in App Store Connect
+- [x] Onboarding (name, mood, 3 free picks), 20 puzzles per category (180 total), free tier and Crossfall Pro ($4.99, StoreKit 2)
+- [ ] Create the Crossfall Pro in-app purchase in App Store Connect (needs the Paid Apps agreement)
 - [ ] Submit 1.0 for App Store review
 - [x] iPad layout: side-by-side crossword and well
 - [x] 1.0 (11) design pass: cleaner top bar, bigger crossword, landing/clear/rush effects, haptics, a playable first-run tour, App Store preview videos

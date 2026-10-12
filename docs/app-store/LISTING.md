@@ -9,7 +9,7 @@ Copy each field into **App Store Connect › Crossfall › App Store › iOS App
 | Primary category | Games › Word | |
 | Secondary category | Games › Puzzle | |
 | Age rating | Contests: Frequent (leaderboards). Health or Wellness Topics: Yes (check-in). Simulated Gambling: **None** from build 11 (the Cards lesson has no betting or chips). Everything else: None. | |
-| Price | Free | |
+| Price | Free, with one in-app purchase: Crossfall Pro, $4.99 one time | |
 | Copyright | 2026 Omari Bell | |
 | Support URL | https://github.com/marcompsci/CrossFall/blob/main/docs/app-store/SUPPORT.md | |
 | Privacy Policy URL | https://github.com/marcompsci/CrossFall/blob/main/docs/app-store/PRIVACY.md | |
@@ -35,7 +35,10 @@ Crossfall crosses a classic crossword with a falling-block well. Every answer yo
 When the stack climbs too high, a rush begins: find the hidden word in the well before the clock runs out. Win and the top of the well clears. Miss and a junk row rises from the bottom.
 
 NINE CATEGORIES
-Swipe through game cards: Sports, Biblical, Psychology, Books, Music, Arcade, Bay City, Kitchen and Night Sky. Three puzzles in each, with stars to collect.
+Swipe through game cards: Sports, Biblical, Psychology, Books, Music, Arcade, Bay City, Kitchen and Night Sky. Twenty puzzles in each, 180 in all, with stars to collect.
+
+START FREE
+Tell us your name and how you're feeling, then pick 3 free categories with 6 puzzles each. The Daily puzzle is free for everyone, every day. Crossfall Pro unlocks all 9 categories and all 180 puzzles with a single one-time purchase. No subscription.
 
 PUZZLES THAT MEET YOU WHERE YOU ARE
 Biblical, Psychology and Books begin with a short five-question check-in. Your answers choose the words, verses and quotes, built around what you need today: peace, hope, strength, rest, courage or gratitude. Your answers never leave your phone.
@@ -121,4 +124,22 @@ To try a full round: Play › Sports › Skate Park. Type the answer to any clue
 Biblical, Psychology and Books start with an optional five-question check-in that chooses which words appear. The answers are stored only on the device. The check-in screen notes that the game is not therapy and lists 988 (US) for anyone who needs support.
 
 Rankings use Game Center. If the reviewer isn't signed in to Game Center, the Ranks tab says so and the rest of the game works normally.
+
+First launch: a 3-question welcome (name, mood, 3 free categories), then a one-minute playable tour. Free players get 6 puzzles in each of their 3 categories plus the Daily. Crossfall Pro (non-consumable, com.phoronomicstudios.crossfall.pro, $4.99) unlocks everything. To see the purchase sheet: open any category that wasn't picked, or puzzle 7 of a picked one, or Menu › Go Pro. Restore Purchase is on the same sheet.
 ```
+
+## In-app purchase (create in App Store Connect › Monetization › In-App Purchases)
+
+| Field | Value |
+| --- | --- |
+| Type | Non-Consumable |
+| Reference name | Crossfall Pro |
+| Product ID | com.phoronomicstudios.crossfall.pro |
+| Price | $4.99 (USD) |
+| Family Sharing | Off |
+| Display name (en-US) | Crossfall Pro |
+| Description (en-US) | Unlock all 9 categories and all 180 puzzles. |
+| Review screenshot | `docs/app-store/iap-review.png` (the Go Pro sheet) |
+| Review notes | Opens from a locked category, puzzle 7+, or Menu › Go Pro. |
+
+Requires the **Paid Apps agreement** (Business › Agreements, with banking and tax forms) to be active. Submit the purchase together with the app version.

@@ -31,3 +31,7 @@ If this policy changes, the new version will be posted here with a new date.
 ## Contact
 
 Questions: open an issue at the Crossfall GitHub repository or see [SUPPORT.md](SUPPORT.md).
+
+## Purchases
+
+Crossfall Pro is bought through Apple's App Store. Apple handles the payment; Crossfall never sees your payment details or Apple ID. The app only checks with the App Store whether Pro is unlocked on your account.

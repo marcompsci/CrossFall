@@ -37,6 +37,7 @@ A word puzzle game for iPhone that crosses a crossword with a falling-block well
 | **Word bank** | Every word you solve is saved with its clue, with 10-card reviews that bring back the ones you missed. |
 | **Make a puzzle** | Turn a spelling or study list into a crossword and share it as a code. |
 | **Saved progress** | The game in progress survives closing the app. A backup code moves everything to a new phone. |
+| **iPad** | On iPad (and any window 700 pt or wider) the crossword and the well sit side by side, so there's no switching tabs. Text and controls scale up, and portrait and landscape both work. |
 | **Categories** | Swipeable game cards: Sports (Skate Park, Hoops, Soccer), Biblical, Psychology, Books, Music, Arcade, Bay City, Kitchen and Night Sky. Three puzzles in each. |
 | **Personal puzzles** | Biblical, Psychology and Books open with a five-question check-in. The answers choose the words, built around the player's focus: Peace, Hope, Strength, Love, Rest, Courage, Letting go or Gratitude. Clues are King James Version verses, short affirmations and public-domain book quotes, and each one can be read back at the end. |
 | **Adaptive rush timer** | Every rush starts at 2:00. Win fast and your next one gets shorter (down to 0:30). Run out of time and it gives time back. Tracked per player and per rush style. |
@@ -123,7 +124,7 @@ To stop the error for future uploads, sign out of your Apple ID and back in unde
 | Bundle ID | `com.phoronomicstudios.crossfall` |
 | First build | 0.1 (2610111829), 11 Oct 2026 |
 | Current | 0.2 (7), 11 Oct 2026: Game Center, polish, accessibility |
-| Devices | iPhone, portrait |
+| Devices | iPhone (portrait) and iPad (all orientations, from 0.3) |
 
 ## Roadmap
 
@@ -138,7 +139,7 @@ To stop the error for future uploads, sign out of your Apple ID and back in unde
 - [x] 0.3: daily puzzle, visible scoring and grades, hold/next, check, Zen, word bank, puzzle maker, saved progress
 - [ ] Create the leaderboards and achievements in App Store Connect
 - [ ] Submit 0.2 for App Store review
-- [ ] iPad layout
+- [x] iPad layout: side-by-side crossword and well
 
 ## Content notes
 

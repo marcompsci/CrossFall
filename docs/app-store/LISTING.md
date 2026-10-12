@@ -78,6 +78,7 @@ No ads. No account to create. No tracking.
 • Hold a piece and see the next three
 • Check a word or turn on Autocheck
 • Zen mode: no timer, no game over
+• Now on iPad, with the crossword and well side by side
 • Learn tab with Life Moves: what chess, poker, crosswords and Tetris teach about adulting
 • Word bank and quick reviews of the words you've solved
 • Make a puzzle from your own word list and share it as a code
@@ -87,7 +88,7 @@ No ads. No account to create. No tracking.
 
 ## Screenshots
 
-Upload `screenshots/01-home.png` … `07-check-in.png` (1320 × 2868) to the **6.9" iPhone Display** slot. App Store Connect scales them down for smaller iPhones.
+Upload `screenshots/01-home.png` … `08-check-in.png` (1320 × 2868) to the **6.9" iPhone Display** slot, and `screenshots-ipad/01-play.png` … `06-profile.png` (2064 × 2752) to the **13" iPad Display** slot. App Store Connect scales them down for smaller devices.
 
 ## App Privacy (Data Collection)
 

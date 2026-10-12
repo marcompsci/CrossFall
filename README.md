@@ -28,14 +28,15 @@ A word puzzle game for iPhone that crosses a crossword with a falling-block well
 
 | | |
 | --- | --- |
-| **Categories** | Swipeable game cards: Sports (Skate Park, Hoops, Soccer), Biblical, Psychology, Books, Music, Arcade, Bay City, Kitchen and Night Sky. |
+| **Categories** | Swipeable game cards: Sports (Skate Park, Hoops, Soccer), Biblical, Psychology, Books, Music, Arcade, Bay City, Kitchen and Night Sky. Three puzzles in each. |
 | **Personal puzzles** | Biblical, Psychology and Books open with a five-question check-in. The answers choose the words, built around the player's focus: Peace, Hope, Strength, Love, Rest, Courage, Letting go or Gratitude. Clues are King James Version verses, short affirmations and public-domain book quotes, and each one can be read back at the end. |
 | **Adaptive rush timer** | Every rush starts at 2:00. Win fast and your next one gets shorter (down to 0:30). Run out of time and it gives time back. Tracked per player and per rush style. |
-| **Forgiving fall** | About 1.3–1.5 s per row, a 2-second pause before each piece starts falling, and a moment to slide it after it lands. |
-| **Accessibility** | Crossword and well on separate full-width screens, bigger text, high contrast, a press-and-hold magnifying glass over clues and tiles, and screen-reader announcements. |
-| **Light and dark mode** | Switch from the ☰ menu. Light mode uses a warm off-white. |
+| **Fall speed** | Relaxed, Normal or Fast. Normal is about 1.3–1.5 s per row with a 2-second pause before each piece starts falling. |
+| **Accessibility** | Crossword and well on separate full-width screens, bigger text, high contrast, a press-and-hold magnifying glass over clues and tiles. The app follows the phone's text size (Dynamic Type), and every square, tile and button is labelled for VoiceOver. |
+| **Light and dark mode** | System, Light or Dark from the ☰ menu. Light mode uses a warm off-white. |
+| **Sound** | Sound effects and an optional music loop, each with its own switch. |
 | **Profile** | Level and XP, total and weekly score, stars, rush win rate, day streak, a score chart and recent games. |
-| **Rankings** | All time, this week and best game. Live in the web version; Game Center is planned for the App Store version. |
+| **Rankings** | All time, this week and best game. Game Center leaderboards and 5 achievements in the iPhone app; a live board in the web version. |
 
 <p align="center">
   <img src="docs/screenshots/rush.png" width="200" alt="Rush: find the hidden word in the well">
@@ -48,7 +49,9 @@ A word puzzle game for iPhone that crosses a crossword with a falling-block well
 The whole game lives in **one HTML file** (`web/crossfall.html`: markup, CSS and JavaScript, no frameworks). The iOS app is a small SwiftUI shell around a `WKWebView`:
 
 - It serves the bundled game from `crossfall://app/`, a custom URL scheme, so saved stars, stats and settings persist between launches.
-- It listens for a `theme` message from the page and switches the status bar and background when the player changes between light and dark mode.
+- It listens for a `theme` message from the page and switches the status bar and background to match.
+- It passes the phone's text size to the page and updates it live.
+- A `gc` bridge signs the player in to Game Center, submits scores and achievements, and loads leaderboard rows for the Ranks tab.
 
 Crossword layouts are generated on the fly by a backtracking placer (max 9×9). The personal categories build a fresh crossword from the player's themes every time.
 
@@ -58,15 +61,19 @@ Crossword layouts are generated on the fly by a backtracking placer (max 9×9). 
 Crossfall/
 ├── web/crossfall.html            # The game: source of truth
 ├── Crossfall/
-│   ├── CrossfallApp.swift        # SwiftUI app + WKWebView + theme bridge
+│   ├── CrossfallApp.swift        # SwiftUI app + WKWebView + theme, text size and Game Center bridges
+│   ├── Crossfall.entitlements    # Game Center
 │   ├── index.html                # web/crossfall.html wrapped for iOS (generated)
 │   └── Assets.xcassets/          # App icon
 ├── Crossfall.xcodeproj
 ├── scripts/build_index.py        # Regenerates Crossfall/index.html
 ├── Install on iPhone.command     # Build + install on the plugged-in iPhone
 ├── Ship to TestFlight.command    # Archive + upload a TestFlight build
-├── design/                       # Final icon and the icon options
-└── docs/screenshots/
+├── design/                       # Icon, icon options, achievement art
+└── docs/
+    ├── GAME_CENTER_SETUP.md      # Leaderboards and achievements to create
+    ├── app-store/                # Listing, privacy, support, TestFlight, screenshots
+    └── screenshots/
 ```
 
 ## Run it
@@ -104,17 +111,21 @@ To stop the error for future uploads, sign out of your Apple ID and back in unde
 | App Store Connect app | Crossfall |
 | Bundle ID | `com.phoronomicstudios.crossfall` |
 | First build | 0.1 (2610111829), 11 Oct 2026 |
+| Current | 0.2: Game Center, polish, accessibility |
 | Devices | iPhone, portrait |
 
 ## Roadmap
 
-- [ ] Game Center leaderboards (all time, weekly, best game)
-- [ ] Fall-speed setting (Relaxed / Normal / Fast)
-- [ ] Light/dark mode that follows the phone's setting
-- [ ] Dynamic Type and full VoiceOver support in the native app
-- [ ] More puzzles per category and a bigger word list
-- [ ] Sound and music pass
-- [ ] App Store listing: screenshots, description, privacy details
+- [x] Game Center leaderboards (all time, weekly, best game) and achievements
+- [x] Fall-speed setting (Relaxed / Normal / Fast)
+- [x] Light/dark mode that follows the phone's setting
+- [x] Dynamic Type and VoiceOver support in the native app
+- [x] Three puzzles per category
+- [x] Sound and music pass
+- [x] App Store listing kit: screenshots, description, privacy policy ([docs/app-store](docs/app-store))
+- [ ] Create the leaderboards and achievements in App Store Connect
+- [ ] Submit 0.2 for App Store review
+- [ ] iPad layout
 
 ## Content notes
 

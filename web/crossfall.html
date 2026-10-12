@@ -106,7 +106,7 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .sw{flex:none;width:56px;height:32px;border-radius:16px;background:var(--line);position:relative}
 .sw::after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:var(--fg);transition:left .15s}
 .setrow[aria-checked="true"] .sw{background:var(--accent)}.setrow[aria-checked="true"] .sw::after{left:28px;background:var(--ink)}
-html.lgtext{--ts:1.22}
+
 /* Light mode: warm off-white paper; tiles stay cream-white with outlines so they read on the light ground */
 html.light{--bg:#f7f2e8;--panel:#fffcf6;--panel-2:#efe6d5;--line:#dccfb8;--tile:#ffffff;--tile-hi:#ffe3c9;--tile-dim:#e3d6bd;--ink:#231b35;
   --accent:#e8671c;--solved:#25a898;--danger:#d63a5a;--gold:#f0b429;--fg:#241c33;--muted:#6d6386;
@@ -120,6 +120,10 @@ html.light .hubnav{box-shadow:0 10px 26px rgba(80,60,30,.18),inset 0 1px 0 rgba(
 html.light .drawer{box-shadow:-16px 0 36px rgba(80,60,30,.18)}
 html.light .gcard{box-shadow:0 16px 34px rgba(80,50,30,.28),inset 0 0 0 1px rgba(255,255,255,.18)}
 html.light .chart .bar{fill:var(--accent)}
+.setgroup{display:flex;flex-direction:column;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:left}
+.setgroup .st-t{font-weight:700;font-size:calc(17px*var(--ts))}.setgroup .st-d{font-size:calc(14px*var(--ts));color:var(--muted)}
+.seg3 button[aria-checked="true"]{background:var(--accent);color:var(--ink)}
+.dr-theme button{font-size:calc(13px*var(--ts));min-height:44px}
 .theme-row{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:0;border-radius:12px;padding:10px;text-align:left;font-weight:700;font-size:calc(16px*var(--ts));min-height:50px}
 .theme-row:hover,.theme-row:focus-visible{background:var(--panel-2)}
 .theme-row .ti{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--panel-2);font-size:16px}
@@ -323,6 +327,7 @@ html.hc .cc.on{outline:2px solid #fff}
 .rkrow.p3 .rn{color:#e3a072}.rkrow.p3 .av{background:#e3a072}
 .youtag{font-size:10px;letter-spacing:.08em;background:var(--accent);color:var(--ink);border-radius:999px;padding:1px 6px;margin-left:6px;vertical-align:2px}
 .rkme{position:sticky;bottom:0}
+.gcbtn{width:100%;margin-top:6px}
 .empty{background:var(--panel);border:1px dashed var(--line);border-radius:12px;padding:18px;text-align:center;color:var(--muted);font-size:calc(15px*var(--ts));line-height:1.45}
 
 /* profile dashboard */
@@ -410,7 +415,7 @@ html.hc .cc.on{outline:2px solid #fff}
       <span class="dr-lab">Categories</span>
       <div class="dr-cats" id="drCats"></div>
       <span class="dr-lab">Appearance</span>
-      <button class="theme-row" role="switch" id="themeToggle" aria-checked="false"><span class="ti" id="themeIcon" aria-hidden="true">☾</span><span class="tl" id="themeLabel">Dark mode</span><span class="sw"></span></button>
+      <div class="seg seg3 dr-theme" role="radiogroup" aria-label="Theme" id="themeSeg2"><button role="radio" data-theme="system">◐ System</button><button role="radio" data-theme="light">☀ Light</button><button role="radio" data-theme="dark">☾ Dark</button></div>
       <span class="dr-lab">More</span>
       <nav class="dr-list" aria-label="More">
         <button data-act="resume" id="drResume" hidden>Resume game</button>
@@ -470,6 +475,12 @@ html.hc .cc.on{outline:2px solid #fff}
     <button class="setrow" role="switch" id="setBig"><span><span class="st-t">Bigger text</span><br><span class="st-d">Larger clues, quotes and buttons.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setHc"><span><span class="st-t">High contrast</span><br><span class="st-d">Pure black and white with brighter highlights.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setMag"><span><span class="st-t">Magnifying glass</span><br><span class="st-d">Hover, or press and hold, on a clue, the target, the grid or a quote to zoom in.</span></span><span class="sw"></span></button>
+    <div class="setgroup"><span class="st-t">Fall speed</span><span class="st-d">How fast pieces drop into the well.</span>
+      <div class="seg seg3" role="radiogroup" aria-label="Fall speed" id="speedSeg"><button role="radio" data-speed="relaxed">Relaxed</button><button role="radio" data-speed="normal">Normal</button><button role="radio" data-speed="fast">Fast</button></div></div>
+    <div class="setgroup"><span class="st-t">Theme</span><span class="st-d">System follows your phone's light or dark setting.</span>
+      <div class="seg seg3" role="radiogroup" aria-label="Theme" id="themeSeg"><button role="radio" data-theme="system">System</button><button role="radio" data-theme="light">Light</button><button role="radio" data-theme="dark">Dark</button></div></div>
+    <button class="setrow" role="switch" id="setSfx"><span><span class="st-t">Sound effects</span><br><span class="st-d">Clicks, drops, clears and the rush countdown.</span></span><span class="sw"></span></button>
+    <button class="setrow" role="switch" id="setMusic"><span><span class="st-t">Music</span><br><span class="st-d">A calm background loop while you play.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setAdapt"><span><span class="st-t">Rush timer learns from you</span><br><span class="st-d">Starts at 2:00. Win fast and your next rush gets shorter (never under 0:30). Run out of time and it gives time back. Off keeps every rush at 2:00.</span></span><span class="sw"></span></button>
     <div class="pacebox"><span class="ln">YOUR RUSH TIMES</span><div id="paceInfo"></div><button class="retake" id="paceReset">Reset to 2:00</button></div>
     <button class="big" id="setDone">Done</button>
@@ -479,8 +490,10 @@ html.hc .cc.on{outline:2px solid #fff}
 <script>
 "use strict";
 /* Fall pacing: slow rows, a grace period before each piece starts falling, and a moment to slide it once it lands. */
-const SPAWN_GRACE=2000, LOCK_DELAY=900;
-function fallMs(){return Math.max(1300,Math.round(S.L.speed*1.7))}
+/* Fall speed is a player setting: Relaxed / Normal / Fast */
+const SPEEDS={relaxed:{mul:1.45,grace:3000,lock:1200,label:"Relaxed"},normal:{mul:1,grace:2000,lock:900,label:"Normal"},fast:{mul:.6,grace:1000,lock:500,label:"Fast"}};
+function speedCfg(){return SPEEDS[(typeof prefs!=="undefined"&&prefs.speed)||"normal"]||SPEEDS.normal}
+function fallMs(){return Math.round(Math.max(1300,S.L.speed*1.7)*speedCfg().mul)}
 const COLS=7, ROWS=11, MID=5, RUSH_SECS=120, RUSH_MIN=30;
 const RUSH_MODES={tap:"Tap it",scramble:"Unscramble",clue:"Clue"};
 /* Adaptive rush: each player's time per rush style shrinks when they win fast and grows back when they run out. */
@@ -526,27 +539,63 @@ const CATEGORIES=[
   {name:"On Stage",drop:"tetro",find:"tap",speed:780,seed:281,
    words:[["JAZZ","Improvised genre born in New Orleans"],["OPERA","Drama that's sung"],["GUITAR","Six strings"],["REMIX","New version of a track"],["ALBUM","Collection of tracks"],["STAGE","Where the band plays"]],
    target:["STAG","Male deer"],
-   bonus:[["LYRIC","Line of a song"],["BAND","Group that plays together"],["SOLO","Part played alone"]]}]},
+   bonus:[["LYRIC","Line of a song"],["BAND","Group that plays together"],["SOLO","Part played alone"]]},
+  {name:"Studio",drop:"single",find:"clue",speed:700,seed:414,
+   words:[["MIC","Sing into it"],["BEAT","What a producer makes"],["TRACK","One song on an album"],["HOOK","The catchy part you can't forget"],["STUDIO","Where records get made"],["MIXER","Board with all the sliders"]],
+   target:["RACK","Shelf for gear"],
+   bonus:[["TAPE","Old-school recording reel"],["LOOP","A bit that repeats"],["DROP","When the bass kicks in"]]}]},
  {name:"Arcade",puzzles:[
   {name:"Game Room",drop:"single",find:"clue",speed:650,seed:37,
    words:[["COIN","Drop one in to play"],["PIXEL","One dot on the screen"],["LEVEL","Stage you have to clear"],["SCORE","Points on the board"],["POWER","___-up: makes you stronger"],["BOSS","Final enemy of a stage"]],
    target:["LOOP","Track that circles back"],
-   bonus:[["GAME","What you're playing right now"],["TOKEN","Arcade coin substitute"],["HIGH","___ score: the best ever"],["LIFE","Lose them all and it's game over"]]}]},
+   bonus:[["GAME","What you're playing right now"],["TOKEN","Arcade coin substitute"],["HIGH","___ score: the best ever"],["LIFE","Lose them all and it's game over"]]},
+  {name:"Joystick",drop:"bar",find:"tap",speed:860,seed:314,
+   words:[["JOYSTICK","Stick you steer with"],["BUTTON","Press it to jump"],["SPRITE","A character made of pixels"],["COMBO","Moves chained together"],["RETRO","Old-school style"],["MAZE","Where a ghost chase happens"]],
+   target:["RITE","A ceremony"],
+   bonus:[["JUMP","What the A button does"],["GHOST","Haunts the maze"],["QUEST","An adventure with a goal"]]},
+  {name:"High Score",drop:"tetro",find:"scramble",speed:760,seed:327,
+   words:[["RECORD","Best score ever"],["BONUS","Extra points"],["EXTRA","___ life"],["LIVES","Lose them all, game over"],["TOKENS","Arcade coins"],["STAGE","A level to clear"]],
+   target:["CORD","Thin rope"],
+   bonus:[["SCORE","Points on the board"],["PLAYER","One or two of them"],["WINNER","Top of the board"]]}]},
  {name:"Bay City",puzzles:[
   {name:"San Francisco",drop:"bar",find:"scramble",speed:780,seed:41,
    words:[["FOG","Weather the city is famous for"],["BAY","Water between SF and Oakland"],["HILL","Steep street climb"],["CABLE","___ car: rolling landmark"],["BRIDGE","Golden Gate, for one"],["GATE","Golden ___ Park"]],
    target:["RIDGE","Long, narrow hilltop"],
-   bonus:[["CITY","San Francisco, for one"],["SEAL","Barking resident of Pier 39"],["TOUR","Trip around the sights"]]}]},
+   bonus:[["CITY","San Francisco, for one"],["SEAL","Barking resident of Pier 39"],["TOUR","Trip around the sights"]]},
+  {name:"Neighborhoods",drop:"tetro",find:"clue",speed:800,seed:340,
+   words:[["MISSION","District famous for murals and burritos"],["CASTRO","Neighborhood with the rainbow crosswalks"],["SUNSET","Foggy district near Ocean Beach"],["RICHMOND","District by Golden Gate Park's north side"],["MARINA","Waterfront district near the Palace of Fine Arts"],["SOMA","South of Market, for short"]],
+   target:["RICH","Wealthy"],
+   bonus:[["MURAL","Painting on a wall"],["OCEAN","___ Beach"],["PARK","Golden Gate ___"]]},
+  {name:"Landmarks",drop:"single",find:"tap",speed:660,seed:353,
+   words:[["ALCATRAZ","Island prison in the bay"],["PRESIDIO","Old army post turned park"],["TWIN","___ Peaks"],["PEAKS","Hilltops"],["LOMBARD","The crooked street"],["COIT","___ Tower on Telegraph Hill"]],
+   target:["PEAK","Mountaintop"],
+   bonus:[["TOWER","Tall building"],["ISLAND","Land surrounded by water"],["CABLE","___ car"]]}]},
  {name:"Kitchen",puzzles:[
   {name:"Cooking",drop:"tetro",find:"tap",speed:720,seed:53,
    words:[["BREAD","Loaf you slice"],["STOVE","Where the burners are"],["SPOON","Stir the soup with it"],["PLATE","Serve dinner on it"],["KNIFE","Cuts the bread"],["SALT","Shake it on fries"]],
    target:["LATE","Not on time"],
-   bonus:[["PAN","Fry an egg in it"],["OVEN","Bake inside it"],["SOUP","Eat it with a spoon"]]}]},
+   bonus:[["PAN","Fry an egg in it"],["OVEN","Bake inside it"],["SOUP","Eat it with a spoon"]]},
+  {name:"Baking",drop:"bar",find:"clue",speed:860,seed:366,
+   words:[["FLOUR","Powder in bread"],["SUGAR","Makes it sweet"],["WHISK","Beat eggs with it"],["DOUGH","Bread before the oven"],["BUTTER","Spread on toast"],["CRUST","Edge of a pie"]],
+   target:["RUST","Orange coating on old iron"],
+   bonus:[["CAKE","Birthday dessert"],["YEAST","Makes bread rise"],["OVEN","Bake inside it"]]},
+  {name:"Breakfast",drop:"tetro",find:"scramble",speed:760,seed:379,
+   words:[["TOAST","Bread from the toaster"],["BACON","Sizzling strips"],["EGGS","Scrambled or sunny-side up"],["SYRUP","Pour it on pancakes"],["JUICE","Orange ___"],["BAGEL","Bread with a hole"]],
+   target:["OATS","Porridge grain"],
+   bonus:[["HONEY","Sweet stuff from bees"],["MILK","Pour it on cereal"],["JAM","Fruit spread"]]}]},
  {name:"Night Sky",puzzles:[
   {name:"Space",drop:"single",find:"tap",speed:560,seed:67,
    words:[["STAR","Twinkle, twinkle"],["MOON","Lights up the night"],["COMET","Icy visitor with a tail"],["ORBIT","Path around a planet"],["PLANET","Earth, for one"],["DUST","Cosmic ___: space particles"]],
    target:["OMEN","A sign of things to come"],
-   bonus:[["SUN","Our nearest star"],["MARS","The red planet"],["NOVA","A star that suddenly flares"]]}]}
+   bonus:[["SUN","Our nearest star"],["MARS","The red planet"],["NOVA","A star that suddenly flares"]]},
+  {name:"Planets",drop:"bar",find:"clue",speed:840,seed:392,
+   words:[["VENUS","Brightest planet in our sky"],["SATURN","Planet with famous rings"],["EARTH","Our home"],["PLUTO","Dwarf planet far out"],["MERCURY","Closest planet to the sun"],["RINGS","Saturn's are made of ice"]],
+   target:["TURN","Rotate"],
+   bonus:[["ORBIT","Path around a star"],["MARS","The red planet"],["MOON","Earth has one"]]},
+  {name:"Stargazing",drop:"tetro",find:"scramble",speed:720,seed:405,
+   words:[["ORION","The hunter constellation"],["LENS","Curved glass that focuses light"],["ZODIAC","Twelve signs in a circle"],["METEOR","Shooting star"],["TELESCOPE","Tool for seeing far"],["GALAXY","Milky Way, for one"]],
+   target:["SCOPE","Range or extent"],
+   bonus:[["STARS","Points of light at night"],["COMET","Icy visitor with a tail"],["DIPPER","Big ___"]]}]}
 ];
 const LEVELS=[];CATEGORIES.forEach((cat,ci)=>cat.puzzles.forEach((p,pi)=>{p.cat=cat.name;p.heal=!!cat.heal;p.ci=ci;p.pi=pi;p.n=cat.puzzles.length;p.id=cat.name+":"+pi;LEVELS.push(p)}));
 const DROP_LABEL={bar:"Whole word drops",tetro:"Tetromino chunks",single:"One letter at a time"};
@@ -741,7 +790,8 @@ const SHAPES4=[[[0,0],[0,1],[0,2],[0,3]],[[0,0],[0,1],[1,0],[1,1]],[[0,0],[0,1],
 const SHAPES3=[[[0,0],[0,1],[0,2]],[[0,0],[1,0],[1,1]],[[0,0],[0,1],[1,1]]];
 function mkPiece(offs,letters){const sorted=offs.slice().sort((p,q)=>p[0]-q[0]||p[1]-q[1]);return{cells:sorted.map((o,i)=>({dr:o[0],dc:o[1],ch:letters[i]})),r:0,c:0}}
 function piecesFor(word,style,R){
-  if(style==="bar")return[mkPiece([...word].map((_,i)=>[0,i]),word)];
+  if(style==="bar"&&word.length<=COLS)return[mkPiece([...word].map((_,i)=>[0,i]),word)];
+  if(style==="bar"){const h=Math.ceil(word.length/2);return[mkPiece([...word.slice(0,h)].map((_,i)=>[0,i]),word.slice(0,h)),mkPiece([...word.slice(h)].map((_,i)=>[0,i]),word.slice(h))]}
   if(style==="single")return[...word].map(ch=>mkPiece([[0,0]],ch));
   const sizes=[];let n=word.length;
   while(n>0){if(n<=4){sizes.push(n);n=0}else if(n===5){sizes.push(3,2);n=0}else{sizes.push(4);n-=4}}
@@ -854,7 +904,7 @@ function collides(cells){return cells.some(({r,c})=>c<0||c>=COLS||r>=ROWS||(r>=0
 function spawnNext(){
   if(S.queue.length){
     const p=S.queue.shift();const w=Math.max(...p.cells.map(x=>x.dc))+1;
-    p.r=0;p.c=Math.floor((COLS-w)/2);S.active=p;S.acc=-SPAWN_GRACE;S.landT=0;S.phase="drop";
+    p.r=0;p.c=Math.floor((COLS-w)/2);S.active=p;S.acc=-speedCfg().grace;S.landT=0;S.phase="drop";
     if(collides(absCells(p))){gameOver("The well filled to the top.");return}
   }else{
     S.active=null;
@@ -1066,7 +1116,7 @@ function recordGame(win){
   const T=stats.tot;T.games++;T.score+=g.score;T.words+=g.words;T.targets+=g.target?1:0;T.rushW+=g.rushW;T.rushT+=g.rushT;T.rows+=g.rows;T.wins+=win?1:0;T.best=Math.max(T.best,g.score);T.secs+=g.secs;
   const dk=dayKeyOf(now);if(!stats.days.includes(dk))stats.days=[dk,...stats.days].slice(0,120);
   const wk=weekKeyOf(now);if(stats.weekKey!==wk){stats.weekKey=wk;stats.week=0}stats.week+=g.score;
-  saveStats();pushCloud();
+  saveStats();pushCloud();gcSync(g.score);
 }
 
 /* cloud: shared leaderboard + private stats copy */
@@ -1081,8 +1131,28 @@ function pushCloud(){
     }catch(e){cloud.err=e&&e.code||"error";if(e&&e.code==="invalid_argument")cloud.readOnly=true;renderRanks()}
   });
 }
+/* Game Center (iPhone app only): the native shell signs the player in, takes scores and achievements, and returns leaderboard rows. */
+const gc={native:false,auth:null,rows:{},err:{},pending:{}};
+function gcPost(m){try{window.webkit.messageHandlers.gc.postMessage(m);return true}catch(e){return false}}
+window.gcAuth=a=>{gc.auth=a;if(a&&a.ok){if(!stats.nick||/^Player( \d+)?$/.test(stats.nick)){stats.nick=a.name;saveStats()}gcSync()}renderRanks();if(hubPage==="Profile")renderProfile()};
+window.gcEntries=(scope,data,err)=>{gc.pending[scope]=false;if(err){gc.err[scope]=err}else{gc.err[scope]=null;gc.rows[scope]=data}renderRanks();if(hubPage==="Profile")renderProfile()};
+function gcLoad(scope){if(!gc.native||!(gc.auth&&gc.auth.ok)||gc.pending[scope])return;gc.pending[scope]=true;gcPost({type:"load",scope})}
+const GC_ACH=[
+  {id:"crossfall.first_finish",test:()=>stats.tot.wins>=1?100:0},
+  {id:"crossfall.first_target",test:()=>stats.tot.targets>=1?100:0},
+  {id:"crossfall.three_stars",test:()=>Object.values(store).some(s=>s.stars>=3)?100:0},
+  {id:"crossfall.rush_ten",test:()=>Math.min(100,stats.tot.rushW*10)},
+  {id:"crossfall.every_category",test:()=>Math.round(CATEGORIES.filter(c=>c.puzzles.some(p=>store[p.id])).length/CATEGORIES.length*100)}];
+function gcSync(game){
+  if(!gc.native||!(gc.auth&&gc.auth.ok))return;
+  gcPost({type:"score",total:stats.tot.score,best:stats.tot.best,game:game||0});
+  for(const a of GC_ACH){const pct=a.test();if(pct>0)gcPost({type:"achieve",id:a.id,pct})}
+  gc.rows={};gcLoad(rkMode);
+}
 async function initCloud(){
-  if(!window.claude||!window.claude.use){cloud.native=true;setRankStatus("Offline");return}
+  if(!window.claude||!window.claude.use){cloud.native=true;
+    if(window.__NATIVE_GC&&window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.gc){gc.native=true;setRankStatus("Game Center");gcPost({type:"status"})}
+    else setRankStatus("Offline");return}
   const [db,user]=await Promise.all([window.claude.use("db"),window.claude.use("user")]);
   const uid=user?await user.id():null;
   if(!db||!uid){setRankStatus("Sign in to join the live rankings. Your stats are saved on this device.");return}
@@ -1180,6 +1250,7 @@ function renderRanks(){
   const list=document.getElementById("rkList");if(!list)return;
   document.querySelectorAll("#rkSeg button").forEach(b=>b.setAttribute("aria-selected",b.dataset.rk===rkMode));
   const lv=document.getElementById("rkLive");if(lv)lv.classList.toggle("on",cloud.live);
+  if(gc.native){renderGcRanks(list);return}
   if(!cloud.db){list.innerHTML=`<li class="empty">${cloud.native?"Worldwide rankings arrive with Game Center in the App Store version. Your games still count on your profile.":"Live rankings need you signed in. Your games still count on your profile."}</li>`;document.getElementById("rkMe").hidden=true;return}
   const rows=rankRows(rkMode);
   setRankStatus(cloud.live?`Live · ${fmtN(cloud.rows.length)} player${cloud.rows.length===1?"":"s"}`:"Connecting…");
@@ -1188,11 +1259,27 @@ function renderRanks(){
   const mi=rows.findIndex(r=>r.id===cloud.uid),me=document.getElementById("rkMe");
   if(mi>=100){me.hidden=false;me.innerHTML=`<ol class="rklist">${rkRow(rows[mi],mi)}</ol>`}else me.hidden=true;
 }
-function myRank(){if(!cloud.live)return null;const rows=rankRows("total");const i=rows.findIndex(r=>r.id===cloud.uid);return i<0?null:{pos:i+1,of:rows.length}}
+function renderGcRanks(list){
+  const me=document.getElementById("rkMe");me.hidden=true;
+  const btn=`<button class="ghost-btn gcbtn" data-gcopen="1">Open Game Center</button>`;
+  if(!gc.auth){setRankStatus("Signing in…");list.innerHTML=`<li class="empty">Signing in to Game Center…</li>`;return}
+  if(!gc.auth.ok){setRankStatus("Not signed in");list.innerHTML=`<li class="empty">Sign in to Game Center to see worldwide rankings: open your iPhone's Settings › Game Center. Your games still count on your profile.</li>`;return}
+  const data=gc.rows[rkMode],err=gc.err[rkMode];
+  if(!data&&!err){gcLoad(rkMode);setRankStatus("Loading…");list.innerHTML=`<li class="empty">Loading worldwide rankings…</li>`;return}
+  if(err){setRankStatus("Game Center");list.innerHTML=`<li class="empty">${err==="setup"?"Worldwide leaderboards are being set up. Your scores are saved and will appear here once they're live.":"Couldn't load rankings right now: "+esc(err)}</li><li>${btn}</li>`;wireGcBtn();return}
+  const rows=data.rows||[];setRankStatus(`Game Center · ${fmtN(data.total||rows.length)} player${(data.total||rows.length)===1?"":"s"}`);
+  const lv=document.getElementById("rkLive");if(lv)lv.classList.add("on");
+  const row=(r)=>`<li class="rkrow${r.me?" me":""}${r.rank<=3?" p"+r.rank:""}"><span class="rn">${r.rank}</span><span class="av" aria-hidden="true">${esc(String(r.name||"?").charAt(0).toUpperCase())}</span><span class="nm"><b>${esc(r.name||"Player")}${r.me?`<span class="youtag">YOU</span>`:""}</b><span>${rkMode==="week"?"Best game this week":rkMode==="best"?"Best single game":"Total score"}</span></span><span class="vl">${fmtN(r.score)}</span></li>`;
+  list.innerHTML=(rows.length?rows.map(row).join(""):`<li class="empty">No scores yet. Finish a puzzle to take first place.</li>`)+`<li>${btn}</li>`;
+  if(data.mine&&!rows.some(r=>r.me)){me.hidden=false;me.innerHTML=`<ol class="rklist">${row(data.mine)}</ol>`}
+  wireGcBtn();
+}
+function wireGcBtn(){document.querySelectorAll("[data-gcopen]").forEach(b=>b.onclick=()=>gcPost({type:"open",scope:rkMode}))}
+function myRank(){if(gc.native){const d=gc.rows.total;return d&&d.mine?{pos:d.mine.rank,of:d.total||0}:null}if(!cloud.live)return null;const rows=rankRows("total");const i=rows.findIndex(r=>r.id===cloud.uid);return i<0?null:{pos:i+1,of:rows.length}}
 
 /* profile dashboard */
 function levelOf(score){const lv=Math.floor(Math.sqrt(score/400))+1,lo=Math.pow(lv-1,2)*400,hi=Math.pow(lv,2)*400;return{lv,pct:Math.round((score-lo)/(hi-lo)*100),toNext:hi-score}}
-function renderProfile(){
+function renderProfile(){if(gc.native)gcLoad("total");
   const el=document.getElementById("profile");if(!el)return;
   const T=stats.tot,nick=stats.nick||(cloud.uid?defaultNick():"Player"),L=levelOf(T.score),rk=myRank();
   const maxStars=LEVELS.length*3,rushRate=T.rushT?Math.round(T.rushW/T.rushT*100):null;
@@ -1204,7 +1291,7 @@ function renderProfile(){
      <div class="pf-av" aria-hidden="true">${esc(nick.trim().charAt(0).toUpperCase()||"?")}</div>
      <div class="pf-id">
        <form class="pf-nick" id="nickForm"><label class="sr" for="nickIn">Player name</label><input id="nickIn" maxlength="16" value="${esc(nick)}" autocomplete="off"><button type="submit">Save</button></form>
-       <span class="pf-rank">${rk?`Rank <b>#${rk.pos}</b> of ${fmtN(rk.of)} worldwide`:cloud.db?"Finish a puzzle to get ranked":"Sign in to get ranked"} · Level <b>${L.lv}</b></span>
+       <span class="pf-rank">${rk?`Rank <b>#${rk.pos}</b> of ${fmtN(rk.of)} worldwide`:(cloud.db||(gc.native&&gc.auth&&gc.auth.ok))?"Finish a puzzle to get ranked":gc.native?"Sign in to Game Center to get ranked":"Sign in to get ranked"} · Level <b>${L.lv}</b></span>
        <div class="xp" role="img" aria-label="${L.pct}% to level ${L.lv+1}"><i style="width:${L.pct}%"></i></div>
        <span class="pf-rank">${fmtN(L.toNext)} points to level ${L.lv+1}</span>
      </div>
@@ -1272,7 +1359,7 @@ function closeDrawer(){
 function initHub(){
   document.querySelectorAll(".hubnav button").forEach(b=>b.onclick=()=>goPage(b.dataset.pg));
   document.getElementById("hubMenu").onclick=openDrawer;
-  document.getElementById("themeToggle").onclick=()=>{prefs.light=!prefs.light;if(prefs.light&&prefs.hc)prefs.hc=false;applyPrefs();announce(prefs.light?"Light mode on":"Dark mode on")};document.getElementById("drClose").onclick=closeDrawer;document.getElementById("scrim").onclick=closeDrawer;
+document.getElementById("drClose").onclick=closeDrawer;document.getElementById("scrim").onclick=closeDrawer;
   document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!document.getElementById("drawer").hidden)closeDrawer()});
   document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{closeDrawer();goPage(b.dataset.go)});
   document.querySelectorAll("[data-act]").forEach(b=>b.onclick=()=>{const a=b.dataset.act;closeDrawer();
@@ -1292,6 +1379,9 @@ function initHub(){
 }
 
 /* ---------- rendering ---------- */
+/* Activate on pointerdown for snappy touch, and on click for VoiceOver / Switch Control (which send click only). */
+let lastPD=0;
+function onActivate(el,fn){el.onpointerdown=e=>{lastPD=Date.now();e.preventDefault();fn(e)};el.onclick=e=>{if(Date.now()-lastPD<600)return;fn(e)}}
 function layout(){
   if(!S)return;const play=document.getElementById("play");const W=play.clientWidth;
   const rushH=S.rush&&S.rush.mode==="tap"?(document.getElementById("rush").offsetHeight||110)+8:0;
@@ -1336,16 +1426,20 @@ function renderCW(){
   let h="";for(let r=0;r<cw.rows;r++)for(let c=0;c<cw.cols;c++){const k=r+","+c,cell=cw.cells.get(k);
     if(!cell){h+=`<div class="cc"></div>`;continue}
     let cls="cc on"+(S.wrong&&S.wrong.has(k)?" wrong":"");if(cell.lock)cls+=" solved";else if(S.phase==="cross"&&k===S.sel.key)cls+=" cur";else if(inW.has(k))cls+=" inword";
-    h+=`<div class="${cls}" data-k="${k}">${cell.num?`<span class="n">${cell.num}</span>`:""}<span class="l">${cell.val}</span></div>`}
-  el.innerHTML=h;
-  el.querySelectorAll("[data-k]").forEach(d=>d.onpointerdown=e=>{e.preventDefault();tapCell(d.dataset.k)});
+    const ws=cell.words.map(i=>S.cw.words[i]).map(x=>`${x.num} ${x.dir==="a"?"Across":"Down"}, square ${x.cells.indexOf(k)+1} of ${x.ans.length}`).join("; ");
+    const lab=`${ws}. ${cell.val?"Letter "+cell.val:"Empty"}${cell.lock?", solved":""}${S.phase==="cross"&&k===S.sel.key?", selected":""}`;
+    h+=`<div class="${cls}" data-k="${k}" role="button" aria-label="${lab}">${cell.num?`<span class="n" aria-hidden="true">${cell.num}</span>`:""}<span class="l" aria-hidden="true">${cell.val}</span></div>`}
+  el.innerHTML=h;el.setAttribute("role","group");el.setAttribute("aria-label",`Crossword, ${cw.rows} rows by ${cw.cols} columns`);
+  el.querySelectorAll("[data-k]").forEach(d=>onActivate(d,()=>tapCell(d.dataset.k)));
 }
 let wellBuilt=false;
 function buildWell(){
   const el=document.getElementById("well");let h="";
   for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++)h+=`<div class="wc${r<MID?" above":r===MID?" mid":""}" data-r="${r}" data-c="${c}"></div>`;
   el.innerHTML=h+`<div class="midline" id="midline"></div><div class="midtag" id="midtag">MIDDLE</div>`;
-  el.querySelectorAll(".wc").forEach(d=>d.onpointerdown=e=>{e.preventDefault();if(S&&S.phase==="rush")rushTap(+d.dataset.r,+d.dataset.c)});
+  el.setAttribute("role","group");el.setAttribute("aria-label",`Letter well, ${COLS} columns by ${ROWS} rows. The middle line is under row ${MID}.`);
+  el.querySelectorAll(".midline,.midtag").forEach(x=>x.setAttribute("aria-hidden","true"));
+  el.querySelectorAll(".wc").forEach(d=>{d.setAttribute("role","button");onActivate(d,()=>{if(S&&S.phase==="rush")rushTap(+d.dataset.r,+d.dataset.c)})});
   wellBuilt=true;
 }
 function renderWell(){
@@ -1360,11 +1454,14 @@ function renderWell(){
     let cls="wc"+(r<MID?" above":r===MID?" mid":"");let t="";
     if(act.has(k)){cls+=" p";t=act.get(k)}else if(x){cls+=x.g?" g":" f";t=x.ch}else if(gh.has(k))cls+=" ghost";
     if(fl.has(k))cls+=" flash";if(hi.has(k))cls+=" hit";if(sel.has(k))cls+=" sel";
-    if(d.className!==cls)d.className=cls;if(d.textContent!==t)d.textContent=t});
+    if(d.className!==cls)d.className=cls;if(d.textContent!==t)d.textContent=t;
+    const lab=`Row ${r+1}, column ${c+1}${r===MID-1?", just above the middle line":r===MID?", on the middle line":""}: ${t?(act.has(k)?"falling ":"")+t:"empty"}`;if(d.getAttribute("aria-label")!==lab)d.setAttribute("aria-label",lab)});
   const q=document.getElementById("queue");
   q.textContent=S.phase==="drop"||S.phase==="anim"?(S.queue.length?`+${S.queue.length} more piece${S.queue.length>1?"s":""}`:"last piece"):(n=>`${n} word${n===1?"":"s"} left`)(S.cw.words.filter(w=>!w.solved).length);
 }
+let lastSpokenWord=null;
 function renderClue(){
+  if(S.phase==="cross"){const w=curWord();if(w&&w!==lastSpokenWord){lastSpokenWord=w;announce(`${w.num} ${w.dir==="a"?"Across":"Down"}, ${w.ans.length} letters: ${w.clue}`)}}else lastSpokenWord=null;
   const bar=document.getElementById("cluebar");bar.classList.toggle("reading",!!(S.lastText&&S.phase!=="cross"));
   if(S.phase==="rush"){bar.style.visibility="hidden";return}bar.style.visibility="visible";
   const n=document.getElementById("clueNum"),t=document.getElementById("clueText");
@@ -1390,7 +1487,8 @@ function renderPad(){
     const fire=()=>{if(ch)typeLetter(ch);else if(a==="bk")backspace();else if(a==="hint")hint();else if(a==="clr"){if(S.rush){S.rush.input="";renderRush()}}
       else if(a==="L")move(-1);else if(a==="R")move(1);else if(a==="T")rotate();else if(a==="D")softDrop();else if(a==="H")hardDrop()};
     let t1,t2;
-    b.onpointerdown=e=>{e.preventDefault();audioInit();fire();if(a==="L"||a==="R"||a==="D"){t1=setTimeout(()=>{t2=setInterval(fire,a==="D"?60:95)},210)}};
+    b.onpointerdown=e=>{lastPD=Date.now();e.preventDefault();audioInit();fire();if(a==="L"||a==="R"||a==="D"){t1=setTimeout(()=>{t2=setInterval(fire,a==="D"?60:95)},210)}};
+    b.onclick=()=>{if(Date.now()-lastPD<600)return;audioInit();fire()};
     const stop=()=>{clearTimeout(t1);clearInterval(t2)};b.onpointerup=stop;b.onpointerleave=stop;b.onpointercancel=stop;
   });
 }
@@ -1413,16 +1511,48 @@ function announce(t){const r=document.getElementById("sr");if(r){r.textContent="
 let toastN=0;function toast(t){announce(t);const a=document.getElementById("app");const d=document.createElement("div");d.className="toast";d.textContent=t;d.style.top=(30+toastN*7)+"%";toastN++;a.appendChild(d);setTimeout(()=>{d.remove();toastN=Math.max(0,toastN-1)},950)}
 
 /* ---------- sound ---------- */
-let AC=null,muted=false;try{muted=localStorage.getItem("crossfall-mute")==="1"}catch(e){}
-function audioInit(){if(!AC){try{AC=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}if(AC&&AC.state==="suspended")AC.resume()}
-function blip(f,d){if(muted||!AC)return;try{const o=AC.createOscillator(),g=AC.createGain();o.type="square";o.frequency.value=f;g.gain.value=.05;g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+d+.05);o.connect(g).connect(AC.destination);o.start();o.stop(AC.currentTime+d+.06)}catch(e){}}
+let AC=null,muted=false,MASTER=null;
+function audioInit(){if(!AC){try{AC=new(window.AudioContext||window.webkitAudioContext)();MASTER=AC.createGain();MASTER.gain.value=.9;MASTER.connect(AC.destination)}catch(e){}}if(AC&&AC.state==="suspended")AC.resume();if(prefs.music)music.set(true)}
+/* Sound effects: a soft square+triangle pair with a quick pitch blip and a short tail */
+function blip(f,d){if(muted||!AC)return;try{const t=AC.currentTime,g=AC.createGain(),lp=AC.createBiquadFilter();lp.type="lowpass";lp.frequency.value=Math.min(6000,f*5);
+  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.06,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+d+.09);
+  for(const[type,mul,vol]of[["square",1,.55],["triangle",2,.45]]){const o=AC.createOscillator(),og=AC.createGain();o.type=type;o.frequency.setValueAtTime(f*mul*1.04,t);o.frequency.exponentialRampToValueAtTime(f*mul,t+.03);og.gain.value=vol;o.connect(og).connect(lp);o.start(t);o.stop(t+d+.1)}
+  lp.connect(g).connect(MASTER)}catch(e){}}
+/* Music: a calm generated loop (pentatonic arpeggio over a slow bass), scheduled ahead in small chunks */
+const music=(()=>{let on=false,timer=0,next=0,step=0,bus=null;const BPM=88,SPB=60/BPM/2;
+  const prog=[[57,60,64,67],[53,57,60,64],[48,52,55,60],[55,59,62,67]];const pat=[0,2,1,3,2,1,3,2];
+  const hz=m=>440*Math.pow(2,(m-69)/12);
+  function note(t,m,len,type,vol){const o=AC.createOscillator(),g=AC.createGain();o.type=type;o.frequency.value=hz(m);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+len);o.connect(g).connect(bus);o.start(t);o.stop(t+len+.05)}
+  function tick(){if(!on||!AC)return;while(next<AC.currentTime+.6){const bar=Math.floor(step/8)%prog.length,ch=prog[bar],i=step%8;
+      note(next,ch[pat[i]]+12,SPB*1.6,"triangle",.05);
+      if(i===0)note(next,ch[0]-12,SPB*7.5,"sine",.07);
+      if(i===4&&bar%2===1)note(next,ch[3]+24,SPB*3,"sine",.018);
+      next+=SPB;step++}
+    timer=setTimeout(tick,180)}
+  return{set(v){if(v===on)return;on=v;if(!AC)return;
+      if(on){if(!bus){bus=AC.createGain();const lp=AC.createBiquadFilter();lp.type="lowpass";lp.frequency.value=2400;bus.connect(lp).connect(MASTER)}
+        bus.gain.cancelScheduledValues(AC.currentTime);bus.gain.setValueAtTime(.0001,AC.currentTime);bus.gain.exponentialRampToValueAtTime(.9,AC.currentTime+1.2);next=AC.currentTime+.1;tick()}
+      else{clearTimeout(timer);if(bus){bus.gain.cancelScheduledValues(AC.currentTime);bus.gain.setValueAtTime(bus.gain.value||.9,AC.currentTime);bus.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+.4)}}},
+    get on(){return on}}})();
+if(typeof document!=="undefined")document.addEventListener("visibilitychange",()=>{if(!AC)return;if(document.hidden)AC.suspend();else if(prefs.music||prefs.sfx)AC.resume()});
 
 /* ---------- display settings ---------- */
-let prefs={big:false,hc:false,mag:true,adapt:true,light:false};try{Object.assign(prefs,JSON.parse(localStorage.getItem("crossfall-a11y")||"{}"))}catch(e){}
-function applyPrefs(){const h=document.documentElement;h.classList.toggle("lgtext",!!prefs.big);h.classList.toggle("hc",!!prefs.hc);h.classList.toggle("light",!!prefs.light&&!prefs.hc);
-  const tt=document.getElementById("themeToggle");if(tt){tt.setAttribute("aria-checked",!!prefs.light);document.getElementById("themeLabel").textContent=prefs.light?"Light mode":"Dark mode";document.getElementById("themeIcon").textContent=prefs.light?"☀":"☾"}
-  try{window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.theme&&window.webkit.messageHandlers.theme.postMessage(prefs.light&&!prefs.hc?"light":"dark")}catch(e){}
-  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"]].forEach(([id,k])=>{const b=document.getElementById(id);if(b)b.setAttribute("aria-checked",!!prefs[k])});
+let prefs={big:false,hc:false,mag:true,adapt:true,light:false,theme:null,speed:"normal",sfx:true,music:false};try{Object.assign(prefs,JSON.parse(localStorage.getItem("crossfall-a11y")||"{}"))}catch(e){}
+if(!prefs.theme)prefs.theme=prefs.light?"light":"dark";
+try{if(localStorage.getItem("crossfall-mute")==="1"){prefs.sfx=false;localStorage.removeItem("crossfall-mute")}}catch(e){}
+const MQ_LIGHT=window.matchMedia?matchMedia("(prefers-color-scheme: light)"):null;
+function isLight(){return !prefs.hc&&(prefs.theme==="light"||(prefs.theme==="system"&&!!(MQ_LIGHT&&MQ_LIGHT.matches)))}
+if(MQ_LIGHT){const f=()=>{if(prefs.theme==="system")applyPrefs()};MQ_LIGHT.addEventListener?MQ_LIGHT.addEventListener("change",f):MQ_LIGHT.addListener(f)}
+let NATIVE_TS=(typeof window!=="undefined"&&window.__NATIVE_TS)||1;
+function setNativeTextScale(x){NATIVE_TS=Math.max(.8,Math.min(1.8,+x||1));applyPrefs()}
+if(typeof window!=="undefined")window.setNativeTextScale=setNativeTextScale;
+function applyPrefs(){const h=document.documentElement;prefs.light=isLight();h.style.setProperty("--ts",String(Math.round((prefs.big?1.22:1)*NATIVE_TS*100)/100));h.classList.toggle("lgtext",!!prefs.big);h.classList.toggle("hc",!!prefs.hc);h.classList.toggle("light",prefs.light);
+  document.querySelectorAll("[data-theme]").forEach(b=>b.setAttribute("aria-checked",b.dataset.theme===prefs.theme));
+  document.querySelectorAll("[data-speed]").forEach(b=>b.setAttribute("aria-checked",b.dataset.speed===prefs.speed));
+  muted=!prefs.sfx;const mb=document.getElementById("muteBtn");if(mb){mb.style.opacity=muted?.4:1;mb.setAttribute("aria-pressed",!muted)}
+  music.set(!!prefs.music);
+  try{window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.theme&&window.webkit.messageHandlers.theme.postMessage(prefs.hc?"dark":prefs.theme)}catch(e){}
+  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"]].forEach(([id,k])=>{const b=document.getElementById(id);if(b)b.setAttribute("aria-checked",!!prefs[k])});
   renderPaceInfo();
   try{localStorage.setItem("crossfall-a11y",JSON.stringify(prefs))}catch(e){}
   if(S){layout();renderAll()}}
@@ -1472,10 +1602,11 @@ let last=performance.now();
 function frame(now){const dt=Math.min(100,now-last);last=now;
   if(S&&document.getElementById("menu").hidden&&document.getElementById("settings").hidden){
     if(S.phase==="drop"&&S.active){
-      if(collides(absCells(S.active,1,0))){S.landT=(S.landT||0)+dt;if(S.landT>=LOCK_DELAY){S.landT=0;lock()}}
+      if(collides(absCells(S.active,1,0))){S.landT=(S.landT||0)+dt;if(S.landT>=speedCfg().lock){S.landT=0;lock()}}
       else{S.landT=0;S.acc+=dt;if(S.acc>=fallMs()){S.acc=0;S.active.r++;renderWell()}}}
     if(S.phase==="rush"&&S.rush&&S.rush.state==="on"){S.rush.left-=dt/1000;
-      if(S.rush.left<=0){S.rush.left=0;rushLose()}else{const s=document.getElementById("rsecs"),b=document.getElementById("rbar");if(s)s.textContent=fmtTime(S.rush.left);if(b)b.style.transform=`scaleX(${S.rush.left/S.rush.limit})`}}}
+      if(S.rush.left<=0){S.rush.left=0;rushLose()}else{const s=document.getElementById("rsecs"),b=document.getElementById("rbar");if(s)s.textContent=fmtTime(S.rush.left);const sec=Math.ceil(S.rush.left);if(sec<=10&&sec!==S.rush.lastTick){S.rush.lastTick=sec;blip(sec<=3?988:660,.05)}
+      if((sec===60||sec===30||sec===10)&&S.rush.saidAt!==sec){S.rush.saidAt=sec;announce(sec+" seconds left")}if(b)b.style.transform=`scaleX(${S.rush.left/S.rush.limit})`}}}
   requestAnimationFrame(frame)}
 
 /* ---------- boot ---------- */
@@ -1489,11 +1620,12 @@ function boot(){
   document.getElementById("a11yBtn").onclick=()=>{renderPaceInfo();document.getElementById("settings").hidden=false};
   document.getElementById("setDone").onclick=()=>{document.getElementById("settings").hidden=true};
   document.getElementById("paceReset").onclick=()=>{rushPace={};saveRushPace();renderPaceInfo();announce("Rush times reset to two minutes.")};
-  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"]].forEach(([id,k])=>document.getElementById(id).onclick=()=>{prefs[k]=!prefs[k];if(k==="mag"&&!prefs.mag)hideLens();applyPrefs()});
+  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"]].forEach(([id,k])=>document.getElementById(id).onclick=()=>{audioInit();prefs[k]=!prefs[k];if(k==="mag"&&!prefs.mag)hideLens();applyPrefs()});
+  document.querySelectorAll("[data-speed]").forEach(b=>b.onclick=()=>{prefs.speed=b.dataset.speed;applyPrefs();announce("Fall speed: "+SPEEDS[prefs.speed].label)});
+  document.querySelectorAll("[data-theme]").forEach(b=>b.onclick=()=>{prefs.theme=b.dataset.theme;if(prefs.theme!=="dark"&&prefs.hc)prefs.hc=false;applyPrefs();announce("Theme: "+b.dataset.theme)});
   applyPrefs();initLens();initHub();
   try{new ResizeObserver(()=>{if(S){layout();renderWell()}}).observe(document.getElementById("play"))}catch(e){}
-  const mb=document.getElementById("muteBtn");const sm=()=>{mb.style.opacity=muted?.4:1};sm();
-  mb.onclick=()=>{audioInit();muted=!muted;try{localStorage.setItem("crossfall-mute",muted?"1":"0")}catch(e){}sm()};
+  document.getElementById("muteBtn").onclick=()=>{audioInit();prefs.sfx=!prefs.sfx;applyPrefs();announce(prefs.sfx?"Sound on":"Sound off")};
   document.addEventListener("pointerdown",audioInit,{once:true});
   document.addEventListener("keydown",e=>{if(!S||!document.getElementById("menu").hidden)return;
     const k=e.key;

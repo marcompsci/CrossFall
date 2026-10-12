@@ -527,16 +527,75 @@ html.wide .drawer{max-width:380px}
 html.wide #pgProfile .panel,html.wide #pgLearn .panel{max-width:none}
 html.wide .board{width:min(100%,320px)}
 html.wide .chart svg{max-width:620px;margin-inline:auto}
+
+/* ---------- 1.1 polish: header, target, tabs ---------- */
+.top{gap:8px}
+.top .lvl{display:flex;flex-direction:column;white-space:normal;text-transform:none;letter-spacing:0;line-height:1.15}
+.top .lvl small{font-size:calc(10.5px*var(--ts));letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .lvl b{display:block;font-size:calc(15px*var(--ts));color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.score{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:4px 11px;min-width:28px;text-align:center;font-size:16px}
+.score.bump{animation:bump .4s ease-out}
+@keyframes bump{35%{transform:scale(1.2);color:var(--gold);border-color:var(--gold)}}
+.target{padding:5px 10px}
+.target .tclue{font-size:calc(13.5px*var(--ts));display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tabs{padding:3px;border-radius:10px}
+.tab{min-height:34px;font-size:calc(14px*var(--ts))}
+/* ---------- 1.1 polish: game feel ---------- */
+.wc.land{animation:land .28s ease-out}
+@keyframes land{0%{transform:scaleY(.78) translateY(12%)}55%{transform:scaleY(1.07)}100%{transform:none}}
+.wc.flash{animation:clearrow .26s ease-in forwards}
+.wellgrid .wc.flash:nth-child(7n+2){animation-delay:12ms}.wellgrid .wc.flash:nth-child(7n+3){animation-delay:24ms}.wellgrid .wc.flash:nth-child(7n+4){animation-delay:36ms}.wellgrid .wc.flash:nth-child(7n+5){animation-delay:48ms}.wellgrid .wc.flash:nth-child(7n+6){animation-delay:60ms}.wellgrid .wc.flash:nth-child(7n){animation-delay:72ms}
+@keyframes clearrow{35%{background:#fff;color:transparent;box-shadow:0 0 14px 2px #fff}100%{background:#fff;color:transparent;transform:scaleY(.05);opacity:0}}
+.wc.fall1{animation:fall1 .18s ease-in}.wc.fall2{animation:fall2 .22s ease-in}.wc.fall3{animation:fall3 .25s ease-in}.wc.fall4{animation:fall4 .28s ease-in}
+@keyframes fall1{from{transform:translateY(calc(-1*(var(--wc) + 1px)))}}
+@keyframes fall2{from{transform:translateY(calc(-2*(var(--wc) + 1px)))}}
+@keyframes fall3{from{transform:translateY(calc(-3*(var(--wc) + 1px)))}}
+@keyframes fall4{from{transform:translateY(calc(-4*(var(--wc) + 1px)))}}
+.wellgrid.thump{animation:thump .18s ease-out}
+@keyframes thump{40%{transform:translateY(3px)}}
+.wellgrid.quake{animation:quake .42s ease-out}
+@keyframes quake{20%{transform:translate(-5px,2px)}40%{transform:translate(4px,-2px)}60%{transform:translate(-3px,1px)}80%{transform:translate(2px,0)}}
+.cc.pop{animation:ccpop .45s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(var(--i)*45ms)}
+@keyframes ccpop{0%{transform:scale(1)}40%{transform:scale(1.22);background:var(--gold)}100%{transform:none}}
+.wc.hit{animation:hitglow .5s ease-in-out infinite alternate}
+@keyframes hitglow{to{box-shadow:0 0 12px 2px var(--gold);z-index:2}}
+.burst{position:absolute;width:9px;height:9px;border-radius:2px;pointer-events:none;z-index:60;animation:burst .85s cubic-bezier(.15,.7,.3,1) forwards}
+@keyframes burst{from{transform:translate(-50%,-50%) rotate(0) scale(1)}to{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(var(--rot)) scale(.4);opacity:0}}
+
+/* ---------- 1.1 first-run tour ---------- */
+html:not(.wide) #app.touring #cwScreen{justify-content:flex-end;padding-bottom:4px}
+
+#coach{position:absolute;inset:0;pointer-events:none;z-index:70}
+#coach .cring{position:absolute;border:3px solid var(--gold);border-radius:14px;box-shadow:0 0 0 4px rgba(255,210,74,.25),0 0 22px rgba(255,210,74,.5);animation:cring 1.2s ease-in-out infinite alternate;transition:all .25s ease}
+@keyframes cring{to{box-shadow:0 0 0 8px rgba(255,210,74,.08),0 0 30px rgba(255,210,74,.7)}}
+#coach .cbub{position:absolute;left:16px;right:16px;max-width:360px;margin-inline:auto;background:var(--fg);color:var(--bg);border-radius:16px;padding:14px 16px 12px;box-shadow:0 12px 34px rgba(0,0,0,.45);pointer-events:auto;animation:cbub .3s cubic-bezier(.3,1.4,.5,1)}
+html.light #coach .cbub{background:#221a33;color:#f6f1e7}
+@keyframes cbub{from{transform:translateY(10px) scale(.96);opacity:0}}
+#coach .cstep{font-family:var(--f-mono);font-size:calc(11px*var(--ts));letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+#coach .ct{font-family:var(--f-display);font-size:calc(21px*var(--ts));line-height:1.1;margin:4px 0 6px}
+#coach .cb{font-size:calc(15px*var(--ts));line-height:1.4}
+#coach .cb kbd{font-family:var(--f-mono);background:rgba(127,127,127,.22);border-radius:5px;padding:0 5px;font-weight:700}
+#coach .cbtns{display:flex;gap:8px;justify-content:space-between;align-items:center;margin-top:10px}
+#coach .cskip{background:none;border:0;color:inherit;opacity:.6;font-size:calc(13px*var(--ts));padding:6px 0;text-decoration:underline}
+#coach .cgo{background:var(--accent);color:var(--ink);border:0;border-radius:10px;padding:9px 16px;font-weight:800;font-size:calc(15px*var(--ts))}
+#coach.modal{pointer-events:auto;background:rgba(10,6,20,.62);display:grid;place-items:center}
+#coach.modal .cbub{position:relative;left:auto;right:auto;margin:0 16px;padding:22px 20px 16px;text-align:center}
+#coach.modal .ct{font-size:calc(28px*var(--ts))}
+#coach .cdemo{display:flex;justify-content:center;gap:4px;margin:12px 0 4px}
+#coach .cdemo b{font-family:var(--f-mono);width:30px;height:30px;display:grid;place-items:center;background:var(--accent);color:var(--ink);border-radius:5px;animation:tiledrop .6s cubic-bezier(.3,1.5,.5,1) both}
+#coach .cflow{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:10px 0 2px;font-weight:700;font-size:calc(13px*var(--ts))}
+#coach .cflow span{border:1px solid currentColor;border-radius:999px;padding:3px 10px;opacity:.85}
+@media (prefers-reduced-motion:reduce){#coach .cring,#coach .cbub,#coach .cdemo b{animation:none}}
+@media (prefers-reduced-motion:reduce){.burst{display:none}.wellgrid.thump,.wellgrid.quake{animation:none}}
 </style>
 
 <div id="app">
   <div class="top">
-    <div class="mark">CROSS<span>FALL</span></div>
+    <button class="icon-btn" id="menuBtn" aria-label="Categories">☰</button>
     <div class="lvl" id="lvlName"></div>
-    <div class="score" id="score">0</div>
+    <div class="score" id="score" aria-label="Score">0</div>
     <button class="icon-btn" id="a11yBtn" aria-label="Settings: display and rush timer">Aa</button>
     <button class="icon-btn" id="muteBtn" aria-label="Sound on or off">♪</button>
-    <button class="icon-btn" id="menuBtn" aria-label="Categories">☰</button>
   </div>
   <div class="target" id="target" data-mag></div>
   <div class="tabs" role="tablist" aria-label="Screens">
@@ -549,6 +608,7 @@ html.wide .chart svg{max-width:620px;margin-inline:auto}
     <section class="screen" id="rushScreen" aria-label="Rush" hidden><div id="rush" class="rush" data-mag hidden></div></section>
   </div>
   <div id="sr" class="sr" aria-live="polite"></div>
+  <div id="coach" hidden></div>
   <div class="cluebar" id="cluebar">
     <button class="nav" id="prevW" aria-label="Previous clue">‹</button>
     <button class="clue" id="clueBtn" data-mag aria-label="Clue. Tap to switch Across and Down"><span class="cn" id="clueNum"></span><span class="ct" id="clueText"></span></button>
@@ -584,6 +644,7 @@ html.wide .chart svg{max-width:620px;margin-inline:auto}
         <button data-act="maker">Make a puzzle</button>
         <button data-act="review">Review my words</button>
         <button data-act="backup">Back up progress</button>
+        <button data-act="tour">Play the tour</button>
         <button data-act="how">How to play</button>
         <button data-act="settings">Display and rush timer</button>
         <button data-act="checkin">Change my check-in answers</button>
@@ -658,6 +719,7 @@ html.wide .chart svg{max-width:620px;margin-inline:auto}
     <div class="setgroup"><span class="st-t">Theme</span><span class="st-d">System follows your phone's light or dark setting.</span>
       <div class="seg seg3" role="radiogroup" aria-label="Theme" id="themeSeg"><button role="radio" data-theme="system">System</button><button role="radio" data-theme="light">Light</button><button role="radio" data-theme="dark">Dark</button></div></div>
     <button class="setrow" role="switch" id="setSfx"><span><span class="st-t">Sound effects</span><br><span class="st-d">Clicks, drops, clears and the rush countdown.</span></span><span class="sw"></span></button>
+    <button class="setrow" role="switch" id="setHaptics"><span><span class="st-t">Haptics</span><br><span class="st-d">Little taps when pieces land, rows clear and you find a word.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setMusic"><span><span class="st-t">Music</span><br><span class="st-d">A calm background loop while you play.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setZen"><span><span class="st-t">Zen mode</span><br><span class="st-d">No rush timer and no game over: a full well just clears its top. Scores count at half.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setAuto"><span><span class="st-t">Autocheck</span><br><span class="st-d">Wrong letters turn red as you type. Uses up the gold-solve bonus.</span></span><span class="sw"></span></button>
@@ -1071,8 +1133,9 @@ function checkWords(cell){
     const vals=w.cells.map(k=>S.cw.cells.get(k).val);
     if(vals.every(v=>v)){
       if(vals.join("")===w.ans){w.solved=true;w.cells.forEach(k=>S.cw.cells.get(k).lock=true);done.push(w)}
-      else{S.wrong=new Set(w.cells);setTimeout(()=>{S.wrong=null;renderCW()},380);blip(140,.12)}}}
+      else{S.wrong=new Set(w.cells);setTimeout(()=>{S.wrong=null;renderCW()},380);blip(140,.12);hap("error")}}}
   if(done.length){
+    const pu=performance.now()+650;done.forEach(w=>w.cells.forEach((k,i)=>CWFX.set(k,{i,until:pu})));S.popUntil=isWide()?0:performance.now()+520;setTimeout(()=>{if(S)renderAll()},540);hap("success");
     let gain=0;for(const w of done){gain+=scoreWord(w);S.queue.push(...piecesFor(w.ans,S.L.drop,S.R));if(S.L.texts&&S.L.texts[w.ans])S.lastText={word:w.ans,...S.L.texts[w.ans]}}
     blip(660,.08);setTimeout(()=>blip(880,.1),80);
     toast(done.map(w=>w.ans).join(" + ")+" ↓ +"+gain+(S.chain?"  CHAIN ×"+(S.chain+1):""));
@@ -1106,16 +1169,20 @@ function rotate(){if(S.phase!=="drop"||!S.active)return;const p=S.active;
   for(const k of[0,-1,1,-2,2,-3,3]){np.c=nc+k;if(!collides(absCells(np))){p.cells=rc;p.r=np.r;p.c=np.c;blip(420,.03);renderWell();return}}
 }
 function softDrop(){if(S.phase!=="drop"||!S.active)return;if(!collides(absCells(S.active,1,0))){S.active.r++;S.acc=0;renderWell()}else lock()}
-function hardDrop(){if(S.phase!=="drop"||!S.active)return;let d=0;while(!collides(absCells(S.active,1,0))){S.active.r++;d++}addPts("drop",2*d);blip(200,.06);lock()}
+function hardDrop(){if(S.phase!=="drop"||!S.active)return;let d=0;while(!collides(absCells(S.active,1,0))){S.active.r++;d++}addPts("drop",2*d);blip(200,.06);S._hd=d>0;lock()}
 function lock(){
   let cells=absCells(S.active);S.active=null;
   if(cells.some(x=>x.r<0)){if(!S.zen){gameOver("A word stuck out of the top of the well.");return}
     cells.filter(x=>x.r>=0).forEach(({r,c,ch})=>S.grid[r][c]={ch});S.lockCount++;topOut();afterSettle();return}
-  cells.forEach(({r,c,ch})=>S.grid[r][c]={ch});S.lockCount++;
+  cells.forEach(({r,c,ch})=>{S.grid[r][c]={ch};fxCell(r,c,"land",300)});S.lockCount++;
+  hap(S._hd?"medium":"light");if(S._hd)wellFx("thump");S._hd=false;
   const full=[];for(let r=0;r<ROWS;r++)if(S.grid[r].every(Boolean))full.push(r);
   if(full.length){
-    S.phase="anim";S.flash=full.flatMap(r=>[...Array(COLS)].map((_,c)=>[r,c]));renderWell();blip(990,.12);
-    setTimeout(()=>{for(const r of full){S.grid.splice(r,1);S.grid.unshift(Array(COLS).fill(null))}
+    S.phase="anim";S.flash=full.flatMap(r=>[...Array(COLS)].map((_,c)=>[r,c]));renderWell();blip(990,.12);hap(full.length>1?"heavy":"rigid");if(full.length>1)wellFx("quake");
+    setTimeout(()=>{const keep=[];for(let r=0;r<ROWS;r++)if(!full.includes(r))keep.push(r);
+      for(const r of full){S.grid.splice(r,1);S.grid.unshift(Array(COLS).fill(null))}
+      keep.forEach((o,i)=>{const nr=full.length+i,sh=nr-o;if(sh>0)for(let c=0;c<COLS;c++)if(S.grid[nr][c])fxCell(nr,c,"fall"+Math.min(4,sh),300)});
+      if(full.length>1)burst(document.querySelector(`#well .wc[data-r="${full[full.length-1]}"][data-c="3"]`),14+full.length*6,110);
       S.flash=[];
       const n=full.length;let v=[0,100,300,500,800][n]||1000,lab=n>1?n+" ROWS":"ROW CLEAR";
       if(n>1){if(S.b2b){v=Math.round(v*1.5);lab+=" · B2B"}S.b2b=true}else S.b2b=false;
@@ -1125,8 +1192,9 @@ function lock(){
 }
 function gravity(){for(let c=0;c<COLS;c++){const col=[];for(let r=ROWS-1;r>=0;r--)if(S.grid[r][c])col.push(S.grid[r][c]);for(let r=ROWS-1,i=0;r>=0;r--,i++)S.grid[r][c]=col[i]||null}}
 function afterSettle(){
+  if(S.tut&&S.lockCount>=2&&!S.tut.rushed&&occurrences(S.L.tutWord).length){S.tut.rushed=true;startRush();return}
   if(!S.targetHit){const span=findTarget(S.grid,S.L.target[0]);
-    if(span){S.targetHit=true;addPts("target",500);S.phase="anim";S.hit=span;renderAll();toast("TARGET +500");blip(784,.1);setTimeout(()=>blip(1046,.18),120);
+    if(span){S.targetHit=true;addPts("target",500);S.phase="anim";S.hit=span;renderAll();toast("TARGET +500");hap("success");setTimeout(()=>hap("heavy"),140);burst(document.getElementById("midline"),30,170);blip(784,.1);setTimeout(()=>blip(1046,.18),120);
       setTimeout(()=>{S.grid.splice(MID,1);S.grid.unshift(Array(COLS).fill(null));S.hit=[];afterSettle()},900);return}}
   const above=S.grid.slice(0,MID).some(row=>row.some(Boolean));
   if(above&&S.lockCount-S.lastRush>=S.cool){startRush();return}
@@ -1140,7 +1208,8 @@ function startRush(){
   const found=scanWords(S.grid,DICT).filter(f=>f.word!==S.L.target[0]);
   const pick=()=>{const longest=Math.max(...found.map(f=>f.word.length));const pool=found.filter(f=>f.word.length>=Math.min(4,longest));return pool[Math.floor(S.R()*pool.length)]};
   const bonus=()=>{let b=S.L.bonus.find(b=>!S.usedBonus.includes(b[0]));if(!b){S.usedBonus=[];b=S.L.bonus[0]}S.usedBonus.push(b[0]);return b};
-  if(mode==="tap"){if(found.length)word=pick().word;else mode="scramble"}
+  if(S.tut&&S.L.tutWord&&occurrences(S.L.tutWord).length){mode="tap";word=S.L.tutWord}
+  if(mode==="tap"&&!word){if(found.length)word=pick().word;else mode="scramble"}
   if(mode==="scramble"){word=word||(found.length?pick().word:bonus()[0])}
   if(mode==="clue"){const b=bonus();word=b[0];clue=b[1]}
   let scr=word;for(let t=0;t<8&&scr===word;t++)scr=shuffle([...word],S.R).join("");
@@ -1153,9 +1222,9 @@ function rushTap(r,c){
   const R_=S.rush;if(!R_||R_.state!=="on"||R_.mode!=="tap")return;
   const occ=occurrences(R_.word);const next=[...R_.taps,[r,c]];
   const ok=o=>next.every((p,i)=>o[i]&&o[i][0]===p[0]&&o[i][1]===p[1]);
-  if(occ.some(ok)){R_.taps=next;blip(500+next.length*60,.04);if(next.length===R_.word.length){rushWin(next);return}}
+  if(occ.some(ok)){R_.taps=next;blip(500+next.length*60,.04);hap("select");if(next.length===R_.word.length){rushWin(next);return}}
   else if(occ.some(o=>o[0][0]===r&&o[0][1]===c)){R_.taps=[[r,c]];blip(500,.04)}
-  else{R_.taps=[];blip(140,.08)}
+  else{R_.taps=[];blip(140,.08);hap("warning")}
   renderAll();
 }
 function rushType(ch){const R_=S.rush;if(!R_||R_.state!=="on"||R_.mode==="tap")return;
@@ -1167,12 +1236,12 @@ function rushWin(cells){
   const R_=S.rush;R_.state="won";S.rushWins++;S.rushStreak=(S.rushStreak||0)+1;
   const bonus=R_.zen?100:150+Math.ceil(R_.left)*3+(RUSH_SECS-R_.limit)*2+Math.min(250,50*(S.rushStreak-1));addPts("rush",bonus);
   const next=R_.zen?R_.limit:rushLearn(R_.mode,R_.limit-R_.left,R_.limit,true);R_.next=next;
-  S.hit=cells;renderAll();toast("FOUND +"+bonus);if(next<R_.limit)setTimeout(()=>toast("NEXT RUSH "+fmtTime(next)),450);blip(880,.08);setTimeout(()=>blip(1175,.16),90);
+  S.hit=cells;renderAll();toast("FOUND +"+bonus);hap("success");burst(document.getElementById("well"),26,160);if(next<R_.limit)setTimeout(()=>toast("NEXT RUSH "+fmtTime(next)),450);blip(880,.08);setTimeout(()=>blip(1175,.16),90);
   setTimeout(()=>{cells.forEach(([r,c])=>S.grid[r][c]=null);for(let r=0;r<MID;r++)S.grid[r].fill(null);gravity();
     S.hit=[];S.rush=null;S.cool=1;afterRush()},900);
 }
 function rushLose(){
-  const R_=S.rush;R_.state="lost";S.rushStreak=0;R_.next=rushLearn(R_.mode,R_.limit,R_.limit,false);renderRush();blip(160,.25);
+  const R_=S.rush;R_.state="lost";S.rushStreak=0;R_.next=rushLearn(R_.mode,R_.limit,R_.limit,false);renderRush();blip(160,.25);hap("error");
   setTimeout(()=>{
     if(S.grid[0].some(Boolean)){gameOver("A junk row pushed the stack out of the well.");return}
     S.grid.shift();const gap=Math.floor(S.R()*COLS);const row=Array(COLS).fill(null);
@@ -1248,12 +1317,13 @@ function renderQuiz(){
 /* ---------- end states ---------- */
 function stars(){return 1+(S.targetHit?1:0)+((S.rushTotal===0||S.rushWins===S.rushTotal)?1:0)}
 function levelDone(){
+  if(S.tut){S.phase="done";clearRun();blip(660,.1);setTimeout(()=>blip(880,.1),120);setTimeout(()=>blip(1320,.25),240);hap("success");burst(document.getElementById("well"),36,190);setTimeout(()=>tutEnd(false),500);return}
   S.phase="done";finalize(true);clearRun();const st=stars();
   if(S.li>=0){const prev=store[S.L.id]||{stars:0,best:0};store[S.L.id]={stars:Math.max(prev.stars,st),best:Math.max(prev.best,S.score)};saveStore()}
   blip(660,.1);setTimeout(()=>blip(880,.1),120);setTimeout(()=>blip(1320,.25),240);
   recordGame(true);showResult(true,st);
 }
-function gameOver(why){S.phase="over";S.active=null;finalize(false);clearRun();recordGame(false);blip(200,.2);setTimeout(()=>blip(130,.35),180);showResult(false,0,why)}
+function gameOver(why){if(S.tut){S.phase="over";tutEnd(false);return}S.phase="over";S.active=null;finalize(false);clearRun();recordGame(false);blip(200,.2);setTimeout(()=>blip(130,.35),180);showResult(false,0,why)}
 function showResult(win,st,why){
   const el=document.getElementById("result");const nx=S.li>=0?LEVELS[S.li+1]:null;const has=!!nx;const sameCat=has&&nx.ci===S.L.ci;
   const dk=S.L.daily,official=dk&&!S.L.archive?dailyRecord(dk):null;
@@ -1578,6 +1648,7 @@ document.getElementById("drClose").onclick=closeDrawer;document.getElementById("
     else if(a==="settings"){renderPaceInfo();document.getElementById("settings").hidden=false}
     else if(a==="checkin")showQuiz(null);
     else if(a==="archive")openArchive();else if(a==="maker")openMaker();else if(a==="review")openReview();else if(a==="backup")openBackup();
+    else if(a==="tour"){startTutorial()}
     else if(a==="how"){goPage("Play");const h=document.querySelector(".how");if(h){h.open=true;setTimeout(()=>h.scrollIntoView({behavior:"smooth",block:"start"}),60)}}});
   document.querySelectorAll("#rkSeg button").forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;renderRanks()});
   document.getElementById("hubA11y").onclick=()=>{renderPaceInfo();document.getElementById("settings").hidden=false};
@@ -1597,11 +1668,12 @@ function onActivate(el,fn){el.onpointerdown=e=>{lastPD=Date.now();e.preventDefau
 function layout(){
   if(!S)return;const play=document.getElementById("play");const W=isWide()?Math.floor((play.clientWidth-16)/2):play.clientWidth;
   const rushH=S.rush&&S.rush.mode==="tap"?(document.getElementById("rush").offsetHeight||110)+8:0;
-  const H=play.clientHeight-30-rushH;
+  const q=document.getElementById("queue"),qH=q&&q.offsetParent?q.offsetHeight+8:64;
+  const H=play.clientHeight-qH-6-rushH;
   const wc=Math.max(18,Math.min(56,Math.floor((H-4)/ROWS)-1,Math.floor((W-30)/COLS)-1));
   document.documentElement.style.setProperty("--wc",wc+"px");
   const ch=play.clientHeight-8;
-  const cc=Math.max(18,Math.min(64,Math.floor((W-(S.cw.cols-1)*3)/S.cw.cols),Math.floor((ch-(S.cw.rows-1)*3)/S.cw.rows)));
+  const cc=Math.max(18,Math.min(S.tut?46:64,Math.floor((W-(S.cw.cols-1)*3)/S.cw.cols),Math.floor((ch-(S.cw.rows-1)*3)/S.cw.rows)));
   document.documentElement.style.setProperty("--cc",cc+"px");
 }
 /* iPad and wide windows: crossword and well side by side, roomier hub */
@@ -1612,6 +1684,7 @@ let booted=false;
 function currentScreen(){
   if(!S)return"cw";
   if(S.phase==="rush"&&S.rush)return S.rush.mode==="tap"?"well":"rush";
+  if(S.phase==="drop"&&S.popUntil&&performance.now()<S.popUntil)return"cw";
   if(S.phase==="drop"||S.phase==="anim")return"well";
   if(S.phase==="cross")return S.view||"cw";
   return S.lastScreen||"well";
@@ -1630,23 +1703,25 @@ function renderScreens(){
   const rush=document.getElementById("rush"),parent=S.rush&&S.rush.mode==="tap"?document.getElementById("rushSlot"):document.getElementById("rushScreen");
   if(rush.parentNode!==parent)parent.appendChild(rush);
 }
-function renderAll(){if(!S)return;renderScreens();renderRush();renderHeader();renderCW();renderClue();renderPad();layout();renderWell();magRefresh()}
+function renderAll(){if(!S)return;renderScreens();renderRush();renderHeader();renderCW();renderClue();renderPad();layout();renderWell();magRefresh();if(S.tut)tutRender()}
 function renderHeader(){
-  document.getElementById("lvlName").textContent=`${S.L.cat} · ${S.L.name}`+(S.L.n>1?` ${S.L.pi+1}/${S.L.n}`:"");
-  document.getElementById("score").textContent=S.score;
+  document.getElementById("lvlName").innerHTML=`<small>${esc(S.L.cat)}</small><b>${esc(S.L.name)}${S.L.n>1?` <span style="color:var(--muted);font-weight:500">${S.L.pi+1}/${S.L.n}</span>`:""}</b>`;
+  setScore(S.score);
   const t=document.getElementById("target");t.className="target"+(S.targetHit?" hit":"");
   t.innerHTML=`<span class="lab">Target</span><span class="word">${[...S.L.target[0]].map(c=>`<b>${c}</b>`).join("")}</span>
-   <span class="tclue">${S.targetHit?"Built! +500":S.L.target[1]+" · on the middle line"}</span>`;
+   <span class="tclue">${S.targetHit?"Built! +500":esc(S.L.target[1])}</span>`;
+  t.setAttribute("aria-label",S.targetHit?"Target built":`Target word, ${S.L.target[0].length} letters. Build it on the middle line of the well. ${S.L.target[1]}`);
 }
 function renderCW(){
   const el=document.getElementById("cw");const cw=S.cw;el.style.gridTemplateColumns=`repeat(${cw.cols},var(--cc))`;
   const w=S.phase==="cross"?curWord():null;const inW=new Set(w?w.cells:[]);
   let h="";for(let r=0;r<cw.rows;r++)for(let c=0;c<cw.cols;c++){const k=r+","+c,cell=cw.cells.get(k);
     if(!cell){h+=`<div class="cc"></div>`;continue}
-    let cls="cc on"+(S.wrong&&S.wrong.has(k)?" wrong":"")+(S.bad&&S.bad.has(k)&&cell.val&&cell.val!==cell.ans&&!cell.lock?" bad":"")+(S.helped&&S.helped.has(k)?" helped":"");if(cell.lock)cls+=" solved";else if(S.phase==="cross"&&k===S.sel.key)cls+=" cur";else if(inW.has(k))cls+=" inword";
+    const pf=CWFX.get(k),pop=pf&&pf.until>performance.now();
+    let cls="cc on"+(pop?" pop":"")+(S.wrong&&S.wrong.has(k)?" wrong":"")+(S.bad&&S.bad.has(k)&&cell.val&&cell.val!==cell.ans&&!cell.lock?" bad":"")+(S.helped&&S.helped.has(k)?" helped":"");if(cell.lock)cls+=" solved";else if(S.phase==="cross"&&k===S.sel.key)cls+=" cur";else if(inW.has(k))cls+=" inword";
     const ws=cell.words.map(i=>S.cw.words[i]).map(x=>`${x.num} ${x.dir==="a"?"Across":"Down"}, square ${x.cells.indexOf(k)+1} of ${x.ans.length}`).join("; ");
     const lab=`${ws}. ${cell.val?"Letter "+cell.val:"Empty"}${cell.lock?", solved":""}${S.phase==="cross"&&k===S.sel.key?", selected":""}`;
-    h+=`<div class="${cls}" data-k="${k}" role="button" aria-label="${lab}">${cell.num?`<span class="n" aria-hidden="true">${cell.num}</span>`:""}<span class="l" aria-hidden="true">${cell.val}</span></div>`}
+    h+=`<div class="${cls}"${pop?` style="--i:${pf.i}"`:""} data-k="${k}" role="button" aria-label="${lab}">${cell.num?`<span class="n" aria-hidden="true">${cell.num}</span>`:""}<span class="l" aria-hidden="true">${cell.val}</span></div>`}
   el.innerHTML=h;el.setAttribute("role","group");el.setAttribute("aria-label",`Crossword, ${cw.rows} rows by ${cw.cols} columns`);
   el.querySelectorAll("[data-k]").forEach(d=>onActivate(d,()=>tapCell(d.dataset.k)));
 }
@@ -1671,7 +1746,7 @@ function renderWell(){
   document.querySelectorAll("#well .wc").forEach(d=>{const r=+d.dataset.r,c=+d.dataset.c,k=r+","+c,x=S.grid[r][c];
     let cls="wc"+(r<MID?" above":r===MID?" mid":"");let t="";
     if(act.has(k)){cls+=" p";t=act.get(k)}else if(x){cls+=x.g?" g":" f";t=x.ch}else if(gh.has(k))cls+=" ghost";
-    if(fl.has(k))cls+=" flash";if(hi.has(k))cls+=" hit";if(sel.has(k))cls+=" sel";
+    if(fl.has(k))cls+=" flash";if(hi.has(k))cls+=" hit";if(sel.has(k))cls+=" sel";if(x||act.has(k))cls+=fxClass(k);
     if(d.className!==cls)d.className=cls;if(d.textContent!==t)d.textContent=t;
     const lab=`Row ${r+1}, column ${c+1}${r===MID-1?", just above the middle line":r===MID?", on the middle line":""}: ${t?(act.has(k)?"falling ":"")+t:"empty"}`;if(d.getAttribute("aria-label")!==lab)d.setAttribute("aria-label",lab)});
   renderQueue();
@@ -1726,6 +1801,100 @@ function renderRush(){
   if(R_.zen&&R_.state==="on"){const s=el.querySelector("#rsecs");if(s)s.textContent="ZEN";const b=el.querySelector(".bar");if(b)b.style.visibility="hidden";
     el.insertAdjacentHTML("beforeend",`<button class="ghost-btn zskip" id="zSkip">Skip this rush (no points)</button>`);onActivate(document.getElementById("zSkip"),zenSkip)}
 }
+
+/* ---------- 1.1 first-run tour ---------- */
+const TUT_WORDS=[["FALL","What leaves do in autumn"],["WELL","Deep hole you pull water from"]];
+TUT_WORDS.forEach(w=>DICT.add(w[0]));
+function tutLevel(){const cw=buildCrossword(TUT_WORDS,11,40);
+  return{name:"First Drop",cat:"Tour",id:"Tour:first",tut:true,seed:11,words:TUT_WORDS,target:["FALL","Drop your first word on the orange line"],bonus:TUT_WORDS,drop:"bar",find:"tap",tutWord:"WELL",speed:900,_cw:cw,n:1,pi:0}}
+function startTutorial(){
+  hideCoach();document.getElementById("app").classList.add("touring");const L=tutLevel();if(!L._cw){stats.tutDone=1;saveStats();return}
+  startLevel(L);if(!S||!S.L.tut)return;
+  S.zen=false;S.speedMult=1;S.tut={step:"intro"};
+  for(let r=0;r<ROWS;r++)S.grid[r].fill(null);
+  const junk="RSTNEOAI";for(let r=MID+1;r<ROWS;r++)for(let c=0;c<COLS-1;c++)S.grid[r][c]={ch:junk[(r*3+c)%junk.length],g:1};
+  const f=S.cw.words.find(w=>w.ans==="FALL");if(f)selectWord(f);
+  renderAll();
+}
+function tutEnd(skipped){
+  document.getElementById("app").classList.remove("touring");stats.tutDone=1;saveStats();hideCoach();
+  if(skipped){S=null;showMenu();return}
+  const c=document.getElementById("coach");c.hidden=false;c.className="modal";c.dataset.k="end";
+  c.innerHTML=`<div class="cbub" role="dialog" aria-label="Tour complete"><div class="cstep">Tour complete</div><div class="ct">That's Crossfall.</div>
+    <div class="cflow"><span>Solve</span><span>Stack</span><span>Rush</span></div>
+    <div class="cb" style="margin-top:8px">Real games score from here on. Build the target, clear rows, win rushes, and chase an SS grade.</div>
+    <div class="cbtns" style="justify-content:center;flex-wrap:wrap"><button class="cgo" id="tutDaily">Play today's Daily</button><button class="cskip" id="tutMenu">Pick a category</button></div></div>`;
+  onActivate(document.getElementById("tutDaily"),()=>{hideCoach();S=null;showMenu();try{playDaily(todayKey())}catch(e){}});
+  onActivate(document.getElementById("tutMenu"),()=>{hideCoach();S=null;showMenu()});
+  setTimeout(()=>{const b=document.getElementById("tutDaily");if(b)b.focus()},60);
+}
+function hideCoach(){const c=document.getElementById("coach");if(c){c.hidden=true;c.className="";c.innerHTML="";c.dataset.k=""}}
+function tutStepNow(){
+  const T=S.tut,solved=S.cw.words.filter(w=>w.solved).length;
+  if(T.step==="intro")return{modal:true};
+  if(S.phase==="rush")return{n:5,t:"Rush!",b:"When the stack gets tall, a word hides in the well. Find <b>"+S.rush.word+"</b> and tap its letters in order. Real rushes give you up to 2 minutes.",at:["#rush","#well"]};
+  if(S.phase==="cross"&&solved===0)return{n:1,t:"Solve the clue",b:"Type the answer on the keyboard. Stuck? Peek at the target word up top.",at:["#cluebar"],place:"play"};
+  if((S.phase==="drop"||S.phase==="anim")&&S.lockCount===0&&!S.targetHit)return{n:2,t:"Watch it fall",b:"Your answer is a piece now. <kbd>◀</kbd> <kbd>▶</kbd> move · <kbd>⟳</kbd> turn · <kbd>⤓</kbd> slam it down.",at:["#pad"],place:"top"};
+  if(S.phase==="cross"&&solved===1)return{n:3,t:S.targetHit?"Target built! +500":"The target",b:(S.targetHit?"You spelled the target on the orange middle line. ":"Spell the target on the orange middle line for +500. ")+"Every puzzle has one. Now solve the last clue: crossing letters are already filled in.",at:["#target","#cluebar"],place:"play"};
+  if(S.phase==="anim"&&S.targetHit&&S.lockCount===1)return{n:3,t:"Target built! +500",b:"You spelled the target on the orange middle line.",at:["#target"],place:"play"};
+  if(S.phase==="drop")return{n:4,t:"Drop it anywhere",b:"Full rows clear. Stack above the line and a rush begins.",at:["#pad"],place:"top"};
+  return null;
+}
+function tutRender(){
+  const c=document.getElementById("coach");if(!c)return;
+  if(!S||!S.tut||S.phase==="done"||S.phase==="over"||!document.getElementById("menu").hidden||!document.getElementById("settings").hidden){hideCoachIfTut();return}
+  const st=tutStepNow();if(!st){c.hidden=true;return}
+  c.hidden=false;
+  if(st.modal){
+    if(c.dataset.k==="intro")return;c.dataset.k="intro";c.className="modal";
+    c.innerHTML=`<div class="cbub" role="dialog" aria-label="Welcome to Crossfall"><div class="cstep">Quick tour · 1 minute</div><div class="ct">Welcome to Crossfall</div>
+      <div class="cdemo" aria-hidden="true">${[..."FALL"].map((ch,i)=>`<b style="animation-delay:${i*90}ms">${ch}</b>`).join("")}</div>
+      <div class="cb">Solve a clue and your answer drops into a well. Stack it, spell the target, then find the word hiding in the pile.</div>
+      <div class="cbtns" style="justify-content:center;flex-direction:column"><button class="cgo" id="tutGo">Let's play</button><button class="cskip" id="tutSkip">I know how to play</button></div></div>`;
+    onActivate(document.getElementById("tutGo"),()=>{audioInit();S.tut.step="play";c.dataset.k="";renderAll()});
+    onActivate(document.getElementById("tutSkip"),()=>tutEnd(true));
+    setTimeout(()=>{const b=document.getElementById("tutGo");if(b)b.focus()},60);return}
+  c.className="";
+  const key=st.n+st.t;
+  if(c.dataset.k!==key){c.dataset.k=key;
+    c.innerHTML=`<div class="cring" aria-hidden="true"></div><div class="cbub" role="status"><div class="cbtns" style="margin:0"><span class="cstep">Step ${st.n} of 5</span><button class="cskip" id="tutSkip2" style="padding:0">Skip tour</button></div><div class="ct">${st.t}</div><div class="cb">${st.b}</div></div>`;
+    onActivate(document.getElementById("tutSkip2"),()=>tutEnd(true));announce(st.t+". "+st.b.replace(/<[^>]+>/g,""))}
+  tutPlace(st);
+}
+function hideCoachIfTut(){const c=document.getElementById("coach");if(c&&!c.hidden&&c.dataset.k!=="end"&&S&&S.tut){c.hidden=true;c.dataset.k=""}}
+function tutPlace(st){
+  const c=document.getElementById("coach"),app=document.getElementById("app").getBoundingClientRect();
+  const rs=st.at.map(q=>document.querySelector(q)).filter(e=>e&&e.offsetParent).map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height);
+  const ring=c.querySelector(".cring"),bub=c.querySelector(".cbub");if(!ring||!bub)return;
+  if(!rs.length){ring.style.display="none";bub.style.top="40%";return}
+  const pad=6,L=Math.min(...rs.map(r=>r.left))-pad,T=Math.min(...rs.map(r=>r.top))-pad,R=Math.max(...rs.map(r=>r.right))+pad,B=Math.max(...rs.map(r=>r.bottom))+pad;
+  ring.style.display="";Object.assign(ring.style,{left:(L-app.left)+"px",top:(T-app.top)+"px",width:(R-L)+"px",height:(B-T)+"px"});
+  const bh=bub.offsetHeight||140,above=T-app.top,below=app.bottom-B;
+  if(st.place==="top"){bub.style.top="6px";return}
+  if(st.place==="play"){const pl=document.getElementById("play").getBoundingClientRect();bub.style.top=Math.round(pl.top-app.top+2)+"px";return}
+  let top;if(below>=bh+12)top=B-app.top+10;else if(above>=bh+12)top=T-app.top-bh-10;else top=Math.max(8,(T-app.top)+((B-T)-bh)/2);
+  bub.style.top=Math.round(top)+"px";
+}
+window.addEventListener("resize",()=>{if(S&&S.tut)tutRender()});
+
+/* ---------- 1.1 polish: score count-up, effects, haptics ---------- */
+let scoreShown=null,scoreRaf=0;
+function setScore(v){const el=document.getElementById("score");if(!el)return;
+  if(scoreShown==null||v<scoreShown||matchMedia("(prefers-reduced-motion: reduce)").matches){scoreShown=v;el.textContent=v;return}
+  if(v===scoreShown)return;const from=scoreShown,t0=performance.now();scoreShown=v;
+  el.classList.remove("bump");void el.offsetWidth;el.classList.add("bump");
+  cancelAnimationFrame(scoreRaf);const step=now=>{const k=Math.min(1,(now-t0)/450);el.textContent=Math.round(from+(v-from)*(1-Math.pow(1-k,3)));if(k<1)scoreRaf=requestAnimationFrame(step)};scoreRaf=requestAnimationFrame(step)}
+const FX=new Map(),CWFX=new Map();
+function fxCell(r,c,cls,ms){FX.set(r+","+c,{cls,until:performance.now()+(ms||320)})}
+function fxClass(k){const f=FX.get(k);if(!f)return"";if(f.until<performance.now()){FX.delete(k);return""}return" "+f.cls}
+function wellFx(cls){const w=document.getElementById("well");if(!w||matchMedia("(prefers-reduced-motion: reduce)").matches)return;w.classList.remove("thump","quake");void w.offsetWidth;w.classList.add(cls);setTimeout(()=>w.classList.remove(cls),450)}
+const BURST_COLS=["#ff8a3d","#ffd24a","#4fd1c5","#f5efe0","#ff5d8f"];
+function burst(el,n,spread){if(!el||matchMedia("(prefers-reduced-motion: reduce)").matches)return;const app=document.getElementById("app"),a=app.getBoundingClientRect(),b=el.getBoundingClientRect();
+  const x=b.left-a.left+b.width/2,y=b.top-a.top+b.height/2;spread=spread||140;
+  for(let i=0;i<(n||22);i++){const d=document.createElement("i");d.className="burst";const ang=Math.random()*Math.PI*2,dist=spread*(.45+Math.random()*.7);
+    d.style.cssText=`left:${x}px;top:${y}px;background:${BURST_COLS[i%BURST_COLS.length]};--dx:${Math.cos(ang)*dist}px;--dy:${Math.sin(ang)*dist-30}px;--rot:${(Math.random()*540-270)|0}deg;animation-delay:${(Math.random()*60)|0}ms`;
+    app.appendChild(d);setTimeout(()=>d.remove(),1000)}}
+function hap(kind){if(!prefs.haptics)return;try{window.webkit.messageHandlers.haptic.postMessage(kind)}catch(e){try{navigator.vibrate&&navigator.vibrate(kind==="heavy"||kind==="error"?30:kind==="success"?[12,40,12]:8)}catch(_){}}}
 function announce(t){const r=document.getElementById("sr");if(r){r.textContent="";setTimeout(()=>r.textContent=t,30)}}
 let toastN=0;function toast(t){announce(t);const a=document.getElementById("app");const d=document.createElement("div");d.className="toast";d.textContent=t;d.style.top=(30+toastN*7)+"%";toastN++;a.appendChild(d);setTimeout(()=>{d.remove();toastN=Math.max(0,toastN-1)},950)}
 
@@ -1756,7 +1925,7 @@ const music=(()=>{let on=false,timer=0,next=0,step=0,bus=null;const BPM=88,SPB=6
 if(typeof document!=="undefined")document.addEventListener("visibilitychange",()=>{if(!AC)return;if(document.hidden)AC.suspend();else if(prefs.music||prefs.sfx)AC.resume()});
 
 /* ---------- display settings ---------- */
-let prefs={big:false,hc:false,mag:true,adapt:true,light:false,theme:null,speed:"normal",sfx:true,music:false,zen:false,autocheck:false,readable:false};try{Object.assign(prefs,JSON.parse(localStorage.getItem("crossfall-a11y")||"{}"))}catch(e){}
+let prefs={big:false,hc:false,mag:true,adapt:true,light:false,theme:null,speed:"normal",sfx:true,music:false,zen:false,autocheck:false,readable:false,haptics:true};try{Object.assign(prefs,JSON.parse(localStorage.getItem("crossfall-a11y")||"{}"))}catch(e){}
 if(!prefs.theme)prefs.theme=prefs.light?"light":"dark";
 try{if(localStorage.getItem("crossfall-mute")==="1"){prefs.sfx=false;localStorage.removeItem("crossfall-mute")}}catch(e){}
 const MQ_LIGHT=window.matchMedia?matchMedia("(prefers-color-scheme: light)"):null;
@@ -1772,7 +1941,7 @@ function applyPrefs(){const h=document.documentElement;prefs.light=isLight();h.s
   muted=!prefs.sfx;const mb=document.getElementById("muteBtn");if(mb){mb.style.opacity=muted?.4:1;mb.setAttribute("aria-pressed",!muted)}
   music.set(!!prefs.music);
   try{window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.theme&&window.webkit.messageHandlers.theme.postMessage(prefs.hc?"dark":prefs.theme)}catch(e){}
-  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"]].forEach(([id,k])=>{const b=document.getElementById(id);if(b)b.setAttribute("aria-checked",!!prefs[k])});
+  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setHaptics","haptics"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"]].forEach(([id,k])=>{const b=document.getElementById(id);if(b)b.setAttribute("aria-checked",!!prefs[k])});
   renderPaceInfo();
   try{localStorage.setItem("crossfall-a11y",JSON.stringify(prefs))}catch(e){}
   if(S){layout();renderAll()}}
@@ -2089,7 +2258,7 @@ function openMaker(){
 
 /* ---------- save the game in progress (survives closing the app) ---------- */
 let runT=0;
-function saveRunSoon(){clearTimeout(runT);runT=setTimeout(saveRun,350)}
+function saveRunSoon(){if(S&&S.tut)return;clearTimeout(runT);runT=setTimeout(saveRun,350)}
 function saveRun(){
   if(!S||!["drop","cross","rush","anim"].includes(S.phase))return;
   try{
@@ -2182,20 +2351,20 @@ const LIFE=[
    options:[{t:"Attack now, glory awaits",why:"Bold, but one check on your exposed king and the whole attack falls apart."},{t:"Castle: tuck the king behind pawns",ok:true,why:"Boring and correct. Your king is safe, your rook joins the game, and now you can attack."},{t:"Push pawns for space",why:"Space is nice, but it opens more lines straight at your own king."}],
    life:"Castling is your emergency fund, health insurance and a spare key at a friend's place. There's no glory in it, but it's why one bad move doesn't end your game. Get safe first, then attack.",
    quest:"Start a tiny \"castle\" fund, even $5 or $10 a week."}]},
- {id:"poker",name:"Poker",icon:"♠",g1:"#1f8f4e",g2:"#0d4727",badge:"Card Sharp",tag:"Play the odds, not the feelings",rounds:[
-  {title:"Bankroll",setup:"You have 100 chips for the month. Pros never bring rent money to the table. Split your chips.",
-   vis:()=>chipsHTML(100,"chips this month"),kind:"split",buckets:[["Needs","Rent, food, bills, transport",50],["Wants","Going out, games, shopping",30],["Save","Castle fund, goals, debt",20]],
-   hit:"Solid bankroll. Needs covered, fun included, chips saved for the next session.",miss:"",
+ {id:"cards",name:"Cards",icon:"♠",g1:"#1f8f4e",g2:"#0d4727",badge:"Card Sharp",tag:"Play the odds, not the feelings",rounds:[
+  {title:"Deal the month",setup:"You've got 100 coins to last the month. Deal them into three piles before you play a single card.",
+   vis:()=>chipsHTML(100,"coins this month"),kind:"split",buckets:[["Needs","Rent, food, bills, transport",50],["Wants","Going out, games, shopping",30],["Save","Castle fund, goals, debt",20]],
+   hit:"Solid deal. Needs covered, fun included, coins saved for later.",miss:"",
    life:"A common starting point is 50/30/20: about half for needs, a third for wants, a fifth saved. It's a guide, not a law. If rent eats 70%, saving even 5% is still a win.",
    quest:"Sort last month's bank statement into Needs, Wants and Save."},
-  {title:"Pot odds",setup:"There's 80 in the pot. Calling costs 20. You'll win this hand about 1 time in 4.",
-   vis:()=>cardsHTML(["8♥","9♥"])+chipsHTML(80,"in the pot · 20 to call"),kind:"pick",
-   options:[{t:"Fold, I'll probably lose",why:"You'll lose most of the time, but you only need to win 1 in 5 for this call to pay off (20 to win 100). At 1 in 4 you're ahead over time."},{t:"Call",ok:true,why:"Right. You need to win 20% of the time and you win 25%. You'll lose this hand often and still come out ahead."},{t:"All in, feeling lucky",why:"Now you're risking everything on a hand that loses 3 times out of 4."}],
-   life:"A good decision can still lose. Apply to 10 jobs with a 1-in-5 shot each and you should expect around 2 callbacks, so the 8 no's don't mean you played badly. Judge a choice by the odds you had, not by one result.",
+  {title:"Count your outs",setup:"You need a heart to finish your hand. A deck has 52 cards and 13 are hearts. What are your chances on one draw?",
+   vis:()=>cardsHTML(["8♥","9♥","J♥","Q♥"])+`<p class="lnote">One more heart and you've got it.</p>`,kind:"pick",
+   options:[{t:"About 1 in 4",ok:true,why:"Right. 13 out of 52 is exactly 1 in 4. You'll miss most of the time, and that's normal."},{t:"About half",why:"It feels like a coin flip when you want it badly, but only 13 of 52 cards help. That's 1 in 4."},{t:"Basically zero",why:"Not that bad. 13 cards out of 52 help you, so it's 1 in 4."}],
+   life:"A good decision can still miss. Apply to 10 jobs with a 1-in-5 shot each and you should expect around 2 callbacks, so the 8 no's don't mean you played badly. Judge a choice by the odds you had, not by one result.",
    quest:"Count a decision as good if you'd make it again with the same info."},
-  {title:"Tilt",setup:"A lucky card on the river just beat your great hand. Your face is hot. Next hand is dealt.",
-   vis:()=>cardsHTML(["A♠","A♦"])+`<p class="lnote">…and they hit a 2-outer. Ouch.</p>`,kind:"pick",
-   options:[{t:"Win it back now with a huge bluff",why:"That's tilt. Angry chips play badly, and this is how one bad beat turns into a bad night."},{t:"Take a lap, sit out a few hands",ok:true,why:"Pro move. Cool down and come back to good decisions."},{t:"Quit poker forever",why:"One bad beat isn't the whole game. You played it right."}],
+  {title:"Tilt",setup:"You lose a close game of Spades on the very last trick. Your face is hot. Your friend is already shuffling for a rematch.",
+   vis:()=>cardsHTML(["A♠","K♠"])+`<p class="lnote">…and they trumped it on the last trick. Ouch.</p>`,kind:"pick",
+   options:[{t:"Rematch right now and play every card fast",why:"That's tilt. Angry players play badly, and this is how one close loss turns into a bad night."},{t:"Grab a drink, sit out a hand",ok:true,why:"Pro move. Cool down and come back to good decisions."},{t:"Quit cards forever",why:"One close loss isn't the whole game. You played it right."}],
    life:"Tilt happens off the table too. After a bad text, a bad grade or a rough shift, don't make the money or relationship call right then. \"Sleep on it\" is a pro strategy.",
    quest:"Make a rule: no buys over $50 and no hard texts within an hour of getting upset."}]},
  {id:"crossword",name:"Crossword",icon:"✎",g1:"#c4452f",g2:"#5e1a10",badge:"Puzzle Brain",tag:"Fill in what you know first",rounds:[
@@ -2214,7 +2383,7 @@ const LIFE=[
    options:[{t:"Quit the puzzle",why:"You're one word away. Don't throw out the whole grid."},{t:"Use one hint and keep solving",ok:true,why:"One letter often unlocks the whole word, and it's still your solve."},{t:"Reveal the entire grid",why:"Done, but you didn't really solve anything."}],
    life:"Asking for help is taking a hint, not failing. One specific question to a coworker, a mentor or a search engine clears the jam, and you still do the rest. Revealing the whole grid is like letting someone else run your life.",
    quest:"Ask one person one specific question this week."}]},
- {id:"tetris",name:"Tetris",icon:"▦",g1:"#8a4fb0",g2:"#3f1f57",badge:"Stack Master",tag:"Make room before you need it",rounds:[
+ {id:"blocks",name:"Blocks",icon:"▦",g1:"#8a4fb0",g2:"#3f1f57",badge:"Stack Master",tag:"Make room before you need it",rounds:[
   {title:"Clear the line",setup:"Two rows are one gap away from clearing. Your piece is a 2-tall bar. Tap the column to drop it.",
    vis:()=>wellMini(["......","......","##.###","###.##".replace(/\./,"#").replace(/#(?=##$)/,"."),"##.###"].slice(0,2).concat(["##.###","##.###"]),{tap:true}),kind:"col",ok:2,
    hit:"Two rows gone. Look at all that room.",miss:"It landed, but no rows cleared. Find the gap that runs through both rows.",
@@ -2222,7 +2391,7 @@ const LIFE=[
    quest:"Pick the task that would clear the most headspace and finish it first."},
   {title:"The open column",setup:"Your stack is low and flat. A long 4-piece is coming eventually. How do you build?",
    vis:()=>wellMini(["......","......","#####.","#####."]),kind:"pick",
-   options:[{t:"Keep one column open for the long piece",ok:true,why:"When the long piece lands, four rows clear at once. That's a Tetris."},{t:"Fill every hole right now",why:"It looks tidy, but then the long piece has nowhere good to go."},{t:"Stack tall on one side",why:"Towers top out fast. One bad piece and it's game over."}],
+   options:[{t:"Keep one column open for the long piece",ok:true,why:"When the long piece lands, four rows clear at once. Huge clear."},{t:"Fill every hole right now",why:"It looks tidy, but then the long piece has nowhere good to go."},{t:"Stack tall on one side",why:"Towers top out fast. One bad piece and it's game over."}],
    life:"That open column is slack: savings, a free evening, a buffer before deadlines. When the big piece shows up, good (a trip) or bad (a car repair), you have room for it.",
    quest:"Leave one evening this week with nothing planned."},
   {title:"Garbage lines",setup:"Junk rows keep rising from the bottom: unpaid bills, unread emails, dishes.",
@@ -2233,7 +2402,9 @@ const LIFE=[
 /* fix the column puzzle well explicitly (gap in column 3 on both bottom rows) */
 LIFE[3].rounds[0].vis=()=>wellMini(["......","......","##.###","##.###"],{tap:true});
 
-function lifeState(){if(!stats.life)stats.life={done:{},xp:0,quests:[]};return stats.life}
+function lifeState(){if(!stats.life)stats.life={done:{},xp:0,quests:[]};const L=stats.life;
+  if(!L.v2){for(const k of Object.keys(L.done)){const m=k.match(/^(poker|tetris):(\d)$/);if(m){L.done[(m[1]==="poker"?"cards":"blocks")+":"+m[2]]=L.done[k];delete L.done[k]}}L.v2=1}
+  return L}
 function lifeProgress(g){const L=lifeState();return g.rounds.filter((_,i)=>L.done[g.id+":"+i]).length}
 let lr=null;
 function openLife(gi,ri){
@@ -2287,7 +2458,7 @@ function renderLife(){
     on("spGo",()=>{const v=lr.split,tot=v.reduce((a,b)=>a+b,0);
       if(tot!==100){toast(`That's ${tot}. Make it 100.`);return}
       const[n,w,s]=v;let why;
-      if(s===0)why="No chips saved. One surprise bill and you're out of the game.";
+      if(s===0)why="No coins saved. One surprise bill and you're out of the game.";
       else if(n<40)why="Needs look underfunded. Make sure rent and food are covered before anything else.";
       else if(w===0)why="All work, no fun. Burnout is a leak too; budget a little joy.";
       else why=R_.hit+(s>=20?" Saving 20 or more is a strong habit.":" Saving anything at all is a strong habit.");
@@ -2302,7 +2473,7 @@ function renderLearn(){
   const allDone=LIFE.every(g=>lifeProgress(g)===g.rounds.length);
   const bankN=Object.keys(stats.bank||{}).length,qs=L.quests||[];
   el.innerHTML=`<div class="deckhead"><h2 class="hh">Learn</h2><span class="lf-xp">${fmtN(L.xp)} XP</span></div>
-   <div class="panel lf-hero"><h3>Life Moves</h3><p>Chess, poker, crosswords and Tetris already taught you how adulting works. Make the move, then flip the card.</p>
+   <div class="panel lf-hero"><h3>Life Moves</h3><p>Chess, cards, crosswords and falling blocks already taught you how adulting works. Make the move, then flip the card.</p>
      ${allDone?`<span class="goldtag">ADULTING: UNLOCKED</span>`:""}</div>
    <div class="lf-grid">${LIFE.map((g,gi)=>{const p=lifeProgress(g),done=p===g.rounds.length;return`<button class="lf-tile" data-g="${gi}" style="--g1:${g.g1};--g2:${g.g2}" aria-label="${esc(g.name)}: ${esc(g.tag)}. ${p} of ${g.rounds.length} moves done${done?", badge "+esc(g.badge):""}">
      <span class="lf-icon" aria-hidden="true">${g.icon}</span><b>${esc(g.name)}</b><span class="lt">${esc(g.tag)}</span>
@@ -2321,7 +2492,7 @@ function renderLearn(){
 let last=performance.now();
 function frame(now){const dt=Math.min(100,now-last);last=now;
   if(S&&document.getElementById("menu").hidden&&document.getElementById("settings").hidden){
-    if(S.phase==="drop"&&S.active){
+    if(S.phase==="drop"&&S.active&&!(S.popUntil&&now<S.popUntil)&&!(S.tut&&!collides(absCells(S.active,1,0)))){
       if(collides(absCells(S.active,1,0))){S.landT=(S.landT||0)+dt;if(S.landT>=speedCfg().lock){S.landT=0;lock()}}
       else{S.landT=0;S.acc+=dt;if(S.acc>=fallMs()){S.acc=0;S.active.r++;renderWell()}}}
     if(S.phase==="cross")S.crossMs=(S.crossMs||0)+dt;
@@ -2342,7 +2513,7 @@ function boot(){
   document.getElementById("setBackup").onclick=()=>{document.getElementById("settings").hidden=true;openBackup()};
   document.getElementById("setDone").onclick=()=>{document.getElementById("settings").hidden=true};
   document.getElementById("paceReset").onclick=()=>{rushPace={};saveRushPace();renderPaceInfo();announce("Rush times reset to two minutes.")};
-  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"]].forEach(([id,k])=>document.getElementById(id).onclick=()=>{audioInit();prefs[k]=!prefs[k];if(k==="mag"&&!prefs.mag)hideLens();applyPrefs()});
+  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setHaptics","haptics"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"]].forEach(([id,k])=>document.getElementById(id).onclick=()=>{audioInit();prefs[k]=!prefs[k];if(k==="mag"&&!prefs.mag)hideLens();applyPrefs()});
   document.querySelectorAll("[data-speed]").forEach(b=>b.onclick=()=>{prefs.speed=b.dataset.speed;applyPrefs();announce("Fall speed: "+SPEEDS[prefs.speed].label)});
   document.querySelectorAll("[data-theme]").forEach(b=>b.onclick=()=>{prefs.theme=b.dataset.theme;if(prefs.theme!=="dark"&&prefs.hc)prefs.hc=false;applyPrefs();announce("Theme: "+b.dataset.theme)});
   applyPrefs();initLens();initHub();
@@ -2358,6 +2529,8 @@ function boot(){
   document.documentElement.classList.toggle("wide",isWide());booted=true;
   loadRun();document.addEventListener("visibilitychange",()=>{if(document.hidden)saveRun()});
   showMenu();requestAnimationFrame(frame);
+  let hasRun=false;try{hasRun=!!localStorage.getItem("crossfall-run")}catch(e){}
+  if(!stats.tutDone&&!(stats.tot&&stats.tot.games)&&!hasRun)setTimeout(startTutorial,250);
 }
 if(typeof document!=="undefined")boot();
 </script>

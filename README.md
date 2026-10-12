@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="design/app-icon-final.png" width="160" alt="Crossfall app icon: the words WORDS, FALL and DOWN falling as Tetris pieces onto CROSS">
+  <img src="design/app-icon-final.png" width="160" alt="Crossfall app icon: the words WORDS, FALL and DOWN falling as block pieces onto CROSS">
 </p>
 
 <h1 align="center">Crossfall</h1>
@@ -19,7 +19,7 @@ A word puzzle game for iPhone that crosses a crossword with a falling-block well
 ## How to play
 
 1. **Solve a clue.** Tap a square and type. Tap the clue bar to switch between Across and Down.
-2. **Your word falls.** Every finished word drops into the well as a piece: the whole word, Tetris-style chunks, or one letter at a time, depending on the puzzle. Move it with ◀ ▶, rotate with ⟳, slam it down with ⤓.
+2. **Your word falls.** Every finished word drops into the well as a piece: the whole word, block-style chunks, or one letter at a time, depending on the puzzle. Move it with ◀ ▶, rotate with ⟳, slam it down with ⤓.
 3. **Build the target.** Each puzzle has a target word. Spell it across the orange middle line, or down through it, for **+500**. Fill a whole row to clear it.
 4. **Win the rush.** When the stack climbs above the middle line, a rush starts: find the hidden word by tapping its letters in the well, unscrambling it, or answering a clue. Win and everything above the line clears. Run out of time and a junk row rises from the bottom.
 5. **Earn stars and a grade.** One star for finishing, one for building the target, one for winning every rush. Every game also gets a D–SS grade and a line-by-line score breakdown ([how scoring works](docs/SCORING.md)).
@@ -29,11 +29,11 @@ A word puzzle game for iPhone that crosses a crossword with a falling-block well
 | | |
 | --- | --- |
 | **Daily Crossfall** | One puzzle for everyone each day, a Today leaderboard where your first try counts, a streak with freezes earned every 7 days, a 14-day archive and an emoji share card. |
-| **Scoring** | Clean letters, speed chains, Tetris-style row clears with back-to-back and combos, hard drops, target, rushes and a time bonus. Gold solve ×1.2, fall-speed multiplier, D–SS grades. See [docs/SCORING.md](docs/SCORING.md). |
+| **Scoring** | Clean letters, speed chains, falling-block row clears with back-to-back and combos, hard drops, target, rushes and a time bonus. Gold solve ×1.2, fall-speed multiplier, D–SS grades. See [docs/SCORING.md](docs/SCORING.md). |
 | **Hold and next** | Hold a piece for later (⇄ or C) and see the next three. |
 | **Check and Autocheck** | Check the current word, or mark wrong letters as you type. Both cost the gold bonus, and the game says so. |
 | **Zen mode** | No rush timer and no game over; scores count at half. |
-| **Learn: Life Moves** | A Learn tab where chess, poker, crosswords and Tetris explain adulting through play. Each game has three quick interactive moves (tap the fork on a chess board, split a poker bankroll, fill a crossing, drop a piece into a gap). After each move, flip the card to see the real-life version: budgeting, odds, tilt, emergency funds, asking for help. Optional side quests, XP and badges. |
+| **Learn: Life Moves** | A Learn tab where chess, card games, crosswords and falling blocks explain adulting through play. Each game has three quick interactive moves (tap the fork on a chess board, deal out a monthly budget, fill a crossing, drop a piece into a gap). After each move, flip the card to see the real-life version: budgeting, odds, tilt, emergency funds, asking for help. Optional side quests, XP and badges. |
 | **Word bank** | Every word you solve is saved with its clue, with 10-card reviews that bring back the ones you missed. |
 | **Make a puzzle** | Turn a spelling or study list into a crossword and share it as a code. |
 | **Saved progress** | The game in progress survives closing the app. A backup code moves everything to a new phone. |
@@ -137,9 +137,10 @@ To stop the error for future uploads, sign out of your Apple ID and back in unde
 - [x] App Store listing kit: screenshots, description, privacy policy ([docs/app-store](docs/app-store))
 - [x] Research pass: App Store and Reddit wishes ([docs/RESEARCH.md](docs/RESEARCH.md))
 - [x] 0.3: daily puzzle, visible scoring and grades, hold/next, check, Zen, word bank, puzzle maker, saved progress
-- [ ] Create the leaderboards and achievements in App Store Connect
-- [ ] Submit 0.2 for App Store review
+- [x] Create the leaderboards and achievements in App Store Connect
+- [ ] Submit 1.0 for App Store review
 - [x] iPad layout: side-by-side crossword and well
+- [x] 1.0 (11) design pass: cleaner top bar, bigger crossword, landing/clear/rush effects, haptics, a playable first-run tour, App Store preview videos
 
 ## Content notes
 

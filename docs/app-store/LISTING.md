@@ -8,7 +8,7 @@ Copy each field into **App Store Connect › Crossfall › App Store › iOS App
 | Subtitle | Crossword meets falling blocks | 30 |
 | Primary category | Games › Word | |
 | Secondary category | Games › Puzzle | |
-| Age rating | 4+ (answer "None" to every content question) | |
+| Age rating | Contests: Frequent (leaderboards). Health or Wellness Topics: Yes (check-in). Simulated Gambling: **None** from build 11 (the Cards lesson has no betting or chips). Everything else: None. | |
 | Price | Free | |
 | Copyright | 2026 Omari Bell | |
 | Support URL | https://github.com/marcompsci/CrossFall/blob/main/docs/app-store/SUPPORT.md | |
@@ -47,6 +47,7 @@ PLAY YOUR WAY
 • Relaxed, Normal or Fast falling speed
 • Light, dark, or follow your phone
 • Bigger text, high contrast and a magnifying glass for clues and tiles
+• A one-minute playable tour the first time you open the game
 • Hold a piece and see the next three
 • Zen mode: no timer, no game over
 • Check a word, or turn on Autocheck
@@ -61,7 +62,7 @@ SCORING YOU CAN SEE
 Every point is shown line by line: clean letters, speed chains, row clears, combos, the target, rushes and your time. Solve with no help for a gold bonus and chase an SS grade.
 
 LEARN AS YOU PLAY
-Life Moves turns chess, poker, crosswords and falling blocks into quick, playful lessons about real life: budgeting, odds, staying calm, making room for surprises and asking for help. Make the move, flip the card, take on a side quest. No lectures.
+Life Moves turns chess, card games, crosswords and falling blocks into quick, playful lessons about real life: budgeting, odds, staying calm, making room for surprises and asking for help. Make the move, flip the card, take on a side quest. No lectures.
 Every word you solve goes into your word bank, and quick reviews bring back the ones you're still learning. Teachers and parents can turn any spelling list into a puzzle and share it with a code.
 
 RANKINGS AND ACHIEVEMENTS
@@ -75,11 +76,12 @@ No ads. No account to create. No tracking.
 ```
 • Daily Crossfall: one puzzle for everyone, a Today leaderboard, streaks with freezes, past puzzles and a share card
 • New scoring you can see line by line: speed chains, combos, gold solves and D–SS grades
+• A one-minute playable tour the first time you open the game
 • Hold a piece and see the next three
 • Check a word or turn on Autocheck
 • Zen mode: no timer, no game over
 • Now on iPad, with the crossword and well side by side
-• Learn tab with Life Moves: what chess, poker, crosswords and Tetris teach about adulting
+• Learn tab with Life Moves: what chess, card games, crosswords and falling blocks teach about adulting
 • Word bank and quick reviews of the words you've solved
 • Make a puzzle from your own word list and share it as a code
 • Your game in progress is saved; back up your progress with a code
@@ -88,7 +90,13 @@ No ads. No account to create. No tracking.
 
 ## Screenshots
 
-Upload `screenshots/01-home.png` … `08-check-in.png` (1320 × 2868) to the **6.9" iPhone Display** slot, and `screenshots-ipad/01-play.png` … `06-profile.png` (2064 × 2752) to the **13" iPad Display** slot. App Store Connect scales them down for smaller devices.
+Upload `screenshots-6.3/01-hero.png` … `08-check-in.png` (1206 × 2622; the 1320 × 2868 originals are in `screenshots/`) to the iPhone slot, and `screenshots-ipad/01-play.png` … `06-profile.png` (2064 × 2752) to the **13" iPad Display** slot. App Store Connect scales them down for smaller devices.
+
+## App previews (video)
+
+- iPhone slot: `preview/crossfall-preview-phone.mp4` (886 × 1920, 25 s, 30 fps, H.264, silent AAC track)
+- iPad slot: `preview/crossfall-preview-ipad.mp4` (1200 × 1600, 25 s, 30 fps)
+- Both are real gameplay: home, solving, dropping, two rushes, and the results screen with the grade. Set the poster frame to around 0:08 (the word falling into the well).
 
 ## App Privacy (Data Collection)
 

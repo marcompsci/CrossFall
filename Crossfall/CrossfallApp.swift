@@ -243,6 +243,31 @@ enum Share {
     }
 }
 
+// MARK: - Haptics
+
+enum Haptics {
+    private static let light = UIImpactFeedbackGenerator(style: .light)
+    private static let medium = UIImpactFeedbackGenerator(style: .medium)
+    private static let heavy = UIImpactFeedbackGenerator(style: .heavy)
+    private static let rigid = UIImpactFeedbackGenerator(style: .rigid)
+    private static let note = UINotificationFeedbackGenerator()
+    private static let pick = UISelectionFeedbackGenerator()
+
+    static func play(_ kind: String) {
+        switch kind {
+        case "light": light.impactOccurred()
+        case "medium": medium.impactOccurred()
+        case "heavy": heavy.impactOccurred()
+        case "rigid": rigid.impactOccurred()
+        case "success": note.notificationOccurred(.success)
+        case "warning": note.notificationOccurred(.warning)
+        case "error": note.notificationOccurred(.error)
+        case "select": pick.selectionChanged()
+        default: break
+        }
+    }
+}
+
 // MARK: - Bridge from the page
 
 final class PageBridge: NSObject, WKScriptMessageHandler {
@@ -258,6 +283,8 @@ final class PageBridge: NSObject, WKScriptMessageHandler {
             if let body = message.body as? [String: Any] { gameCenter.handle(body) }
         case "share":
             if let text = message.body as? String { DispatchQueue.main.async { Share.present(text) } }
+        case "haptic":
+            if let kind = message.body as? String { DispatchQueue.main.async { Haptics.play(kind) } }
         default: break
         }
     }
@@ -284,6 +311,7 @@ struct GameView: UIViewRepresentable {
         config.userContentController.add(bridge, name: "theme")
         config.userContentController.add(bridge, name: "gc")
         config.userContentController.add(bridge, name: "share")
+        config.userContentController.add(bridge, name: "haptic")
         config.userContentController.addUserScript(WKUserScript(
             source: "window.__NATIVE_TS=\(TextScale.current);window.__NATIVE_GC=true;",
             injectionTime: .atDocumentStart, forMainFrameOnly: true))

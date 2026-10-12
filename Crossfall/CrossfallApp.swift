@@ -122,10 +122,16 @@ final class GameCenter: NSObject, GKGameCenterControllerDelegate {
         DispatchQueue.main.async { self.web?.evaluateJavaScript(code, completionHandler: nil) }
     }
 
+    /// Encodes a value for evaluateJavaScript. JSONSerialization only accepts arrays and
+    /// dictionaries at the top level (anything else raises an uncatchable NSException),
+    /// so single values are wrapped in an array and unwrapped again.
     private func json(_ obj: Any) -> String {
-        guard let data = try? JSONSerialization.data(withJSONObject: obj),
+        let isContainer = obj is [Any] || obj is [String: Any]
+        let wrapped: Any = isContainer ? obj : [obj]
+        guard JSONSerialization.isValidJSONObject(wrapped),
+              let data = try? JSONSerialization.data(withJSONObject: wrapped),
               let s = String(data: data, encoding: .utf8) else { return "null" }
-        return s
+        return isContainer ? s : String(s.dropFirst().dropLast())
     }
 
     private func topController() -> UIViewController? {

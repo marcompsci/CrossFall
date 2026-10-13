@@ -16,6 +16,10 @@ A word puzzle game for iPhone that crosses a crossword with a falling-block well
 
 ---
 
+## Play the beta
+
+Crossfall is in beta on TestFlight. See **[TESTERS.md](TESTERS.md)** for how to join, what to try, and how to send feedback.
+
 ## How to play
 
 1. **Solve a clue.** Tap a square and type. Tap the clue bar to switch between Across and Down.

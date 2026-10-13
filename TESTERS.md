@@ -8,7 +8,7 @@ You need an iPhone or iPad with iOS 16 or later.
 
 1. On your iPhone or iPad, install **TestFlight** from the App Store. It's Apple's free beta-testing app.
 2. Get your invite:
-   - **Public link:** on your iPhone or iPad, open **https://testflight.apple.com/join/Ncy29VUy** and tap **Accept**.
+   - **Public link:** on your iPhone or iPad, open **https://testflight.apple.com/join/Ncy29VUy** and tap **Accept**. If it says "Beta Not Found" or that the beta isn't accepting testers, Apple hasn't opened it yet. Use the email option below for now.
    - **Want in now?** Email **rodlonbell16@gmail.com** with the email address of your Apple ID, with the subject "Crossfall beta". You'll get an invite email from Apple (App Store Connect). Accept it, then open TestFlight.
 3. In TestFlight, tap **Crossfall**, then **Install**.
 4. Open Crossfall from your home screen.

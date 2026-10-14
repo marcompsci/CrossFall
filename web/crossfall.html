@@ -267,7 +267,11 @@ html.hc .cc.on{outline:2px solid #fff}
 .dot{width:10px;height:10px;border-radius:3px;background:var(--d);flex:none}
 .dr-cats{display:grid;grid-template-columns:1fr 1fr;gap:4px}
 .dr-cats button{font-size:calc(14px*var(--ts));padding:10px 8px}
-.dr-cats .cs{margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--gold);font-weight:700}
+.cic{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;color:color-mix(in srgb,var(--d) 62%,#fff);background:color-mix(in srgb,var(--d) 18%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--d) 40%,transparent)}
+.cic svg{width:19px;height:19px}
+html.light .cic{color:color-mix(in srgb,var(--d) 80%,#000)}
+.dr-cats .cn{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dr-cats .cs{flex:none;margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--gold);font-weight:700}
 @media (prefers-reduced-motion:reduce){.navind,.drawer,.scrim{transition:none;animation:none}}
 
 /* card deck */
@@ -1658,6 +1662,19 @@ const fmtN=n=>Math.round(n||0).toLocaleString("en-US");
 const starStr=(s,n=3)=>"★".repeat(s)+`<i>${"★".repeat(n-s)}</i>`;
 let hubPage="Play",deckIdx=0;
 
+/* category symbols (24×24 line icons, drawn in the category colour) */
+const CAT_ICON={
+ "Sports":'<circle cx="12" cy="12" r="9"/><path d="M3.6 9.5c3 .2 5.7-1.3 7-4.1M20.4 14.5c-3-.2-5.7 1.3-7 4.1M5.6 18.4c2.2-2.4 5-3.6 8.4-3.4M18.4 5.6c-2.2 2.4-5 3.6-8.4 3.4"/>',
+ "Biblical":'<path d="M12 6.5C10 5 7 4.6 3.5 5v13c3.5-.4 6.5 0 8.5 1.5 2-1.5 5-1.9 8.5-1.5V5C17 4.6 14 5 12 6.5Z"/><path d="M12 6.5v13M16.2 8.2v5.4M14.4 10h3.6"/>',
+ "Psychology":'<path d="M9 4.5a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2.5 4.6A2.8 2.8 0 0 0 12 18V6a2.6 2.6 0 0 0-3-1.5Z"/><path d="M15 4.5a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2.5 4.6A2.8 2.8 0 0 1 12 18"/><path d="M8.5 10.5c1 .3 1.9 1 2.3 2M15.5 10.5c-1 .3-1.9 1-2.3 2"/>',
+ "Books":'<path d="M4 19.5h16"/><rect x="5" y="6" width="3.5" height="13.5" rx=".6"/><rect x="9" y="4" width="3.5" height="15.5" rx=".6"/><path d="m14.2 6.6 3.3-1 3.6 13.3-3.3.9Z"/>',
+ "Music":'<path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/><path d="m9 9.5 10-2"/>',
+ "Arcade":'<rect x="3" y="12" width="18" height="7" rx="2"/><path d="M12 12V8"/><circle cx="12" cy="6" r="2.4"/><circle cx="16.5" cy="15.5" r="1"/><circle cx="7.5" cy="15.5" r="1"/>',
+ "Bay City":'<path d="M2.5 15.5h19M7.5 20V5M16.5 20V5M2.5 8c2.3 1.6 4 3.5 5 5.5M21.5 8c-2.3 1.6-4 3.5-5 5.5M7.5 6.5c1.2 3.5 2.7 5.5 4.5 6.5 1.8-1 3.3-3 4.5-6.5"/>',
+ "Kitchen":'<path d="M7.5 13.5A4 4 0 1 1 9.4 6a4 4 0 0 1 5.2 0 4 4 0 1 1 1.9 7.5"/><path d="M7.5 13.5V19h9v-5.5M7.5 16.2h9"/>',
+ "Night Sky":'<path d="M17.5 14.8A7.5 7.5 0 0 1 9.2 4.2a7.5 7.5 0 1 0 8.3 10.6Z"/><path d="m17.2 3.5.7 1.6 1.6.7-1.6.7-.7 1.6-.7-1.6-1.6-.7 1.6-.7Z"/><circle cx="20" cy="10.5" r=".6"/>'};
+function catIcon(name,col){const p=CAT_ICON[name];if(!p)return`<i class="dot" style="--d:${col}"></i>`;
+  return`<span class="cic" style="--d:${col}" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p}</svg></span>`}
 /* stats kept per player: on this device, and in a private cloud copy when available */
 let stats={nick:"",games:[],tot:{games:0,score:0,words:0,targets:0,rushW:0,rushT:0,rows:0,wins:0,best:0,secs:0},days:[],weekKey:"",week:0,stars:{}};
 try{const s=JSON.parse(localStorage.getItem("crossfall-stats")||"null");if(s&&s.tot)stats=Object.assign(stats,s)}catch(e){}
@@ -1950,7 +1967,7 @@ function openDrawer(){
   const nick=stats.nick||"Player",L=levelOf(xpTotal()),rk=myRank();
   document.getElementById("drMe").innerHTML=`<div class="pf-av" aria-hidden="true">${esc(nick.charAt(0).toUpperCase())}</div><div><b>${esc(nick)}</b><span>Level ${L.lv} · ${fmtN(stats.tot.score)} pts${rk?` · #${rk.pos}`:""}</span></div>`;
   document.getElementById("drCats").innerHTML=CATEGORIES.map((c,i)=>{const got=c.puzzles.reduce((t,p)=>t+((store[p.id]||{}).stars||0),0);const lk=CAT_LOOK[c.name]||{g1:"#888"};
-    return`<button data-ci="${i}"><i class="dot" style="--d:${lk.g1}"></i>${esc(c.name)}<span class="cs">${got}★</span></button>`}).join("");
+    return`<button data-ci="${i}">${catIcon(c.name,lk.g1)}<span class="cn">${esc(c.name)}</span><span class="cs">${got}★</span></button>`}).join("");
   document.querySelectorAll("#drCats [data-ci]").forEach(b=>b.onclick=()=>{closeDrawer();goPage("Play");setTimeout(()=>deckTo(deckOrder().indexOf(CATEGORIES[+b.dataset.ci])),80)});
   document.getElementById("drResume").hidden=document.getElementById("resumeBtn").hidden;
   d.classList.remove("out");sc.classList.remove("out");d.hidden=false;sc.hidden=false;

@@ -861,6 +861,19 @@ html.wide #profile.hud{display:grid;grid-template-columns:1fr 1fr;align-items:st
 html.wide #profile.hud>.hud-bar,html.wide #profile.hud>.hero{grid-column:1/-1}
 @media (prefers-reduced-motion: reduce){.rx-spin,.hg-on,.hud-bar .blink{animation:none}}
 /* 1.1: Language */
+.onb.dqo .dq-cat{display:flex;align-items:center;gap:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:13px;opacity:.85}
+.onb.dqo .dq-cat svg{width:22px;height:22px}
+.onb.dqo .dq-list{display:flex;flex-direction:column;gap:10px}
+.onb.dqo .dq-opt{display:flex;align-items:center;gap:12px;text-align:left;padding:14px;border-radius:16px;border:2px solid var(--line,rgba(255,255,255,.14));background:var(--panel,rgba(255,255,255,.05));color:inherit;font:inherit;min-height:64px}
+.onb.dqo .dq-opt[aria-checked="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 16%,transparent)}
+.onb.dqo .dq-ic{font-size:28px;line-height:1}
+.onb.dqo .dq-t{flex:1;display:flex;flex-direction:column;gap:3px}
+.onb.dqo .dq-t b{font-size:17px}
+.onb.dqo .dq-t span{font-size:13px;line-height:1.35;opacity:.8}
+.onb.dqo .dq-x{font-weight:800;font-size:14px;color:var(--accent);min-width:40px;text-align:right}
+.onb.dqo .dq-all{display:flex;align-items:center;gap:10px;font-size:14px;margin-top:4px;min-height:44px}
+.onb.dqo .dq-all input{width:20px;height:20px;accent-color:var(--accent)}
+.gc-diff{margin-left:auto;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.2);color:inherit;font:inherit;font-size:12px;font-weight:700;border-radius:999px;padding:5px 10px;min-height:30px}
 .onb.spq .sqg{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 .onb.spq .sqc{flex-direction:row;justify-content:flex-start;gap:8px;padding:10px 12px;min-height:46px}
 .onb.spq .sqc .oi{font-size:20px}
@@ -1056,6 +1069,7 @@ html.wide #profile.hud>.hud-bar,html.wide #profile.hud>.hero{grid-column:1/-1}
   <div class="ov pz" id="pz" hidden role="dialog" aria-modal="true" aria-label="Puzzle"></div>
   <div class="ov res" id="sb" hidden role="dialog" aria-modal="true" aria-label="Scoreboard"></div>
   <div class="ov onb lq" id="lq" hidden role="dialog" aria-modal="true" aria-label="Choose a language"></div>
+  <div class="ov onb dqo" id="dq" hidden role="dialog" aria-modal="true" aria-label="Choose difficulty"></div>
   <div class="ov onb lq spq" id="sq" hidden role="dialog" aria-modal="true" aria-label="Sports setup"></div>
   <div class="ov lr" id="lr" hidden role="dialog" aria-modal="true" aria-label="Rapid Recall"></div>
   <div class="ov lh" id="lh" hidden role="dialog" aria-modal="true" aria-label="Language lab"></div>
@@ -1092,7 +1106,7 @@ html.wide #profile.hud>.hud-bar,html.wide #profile.hud>.hero{grid-column:1/-1}
 /* Fall speed is a player setting: Relaxed / Normal / Fast */
 const SPEEDS={relaxed:{mul:1.45,grace:3000,lock:1200,label:"Relaxed"},normal:{mul:1,grace:2000,lock:900,label:"Normal"},fast:{mul:.6,grace:1000,lock:500,label:"Fast"}};
 function speedCfg(){return SPEEDS[(typeof prefs!=="undefined"&&prefs.speed)||"normal"]||SPEEDS.normal}
-function fallMs(){return Math.round(Math.max(1300,S.L.speed*1.7)*speedCfg().mul)}
+function fallMs(){const d=diffCfg();return Math.round(Math.max(1300,S.L.speed*1.7)*speedCfg().mul*(d?d.fall:1))}
 const COLS=7, ROWS=11, MID=5, RUSH_SECS=120, RUSH_MIN=30;
 const RUSH_MODES={tap:"Tap it",scramble:"Unscramble",clue:"Clue"};
 /* Adaptive rush: each player's time per rush style shrinks when they win fast and grows back when they run out. */
@@ -1824,9 +1838,39 @@ function saveStore(){try{localStorage.setItem("crossfall",JSON.stringify(store))
 const CW_CACHE={};
 function crosswordFor(i){if(!CW_CACHE[i])CW_CACHE[i]=buildCrossword(LEVELS[i].words,LEVELS[i].seed);return CW_CACHE[i]}
 
+/* 1.1: per-category difficulty, asked before a category's first game */
+const DIFFS={
+ easy:{label:"Easy",ic:"🌱",fall:1.3,rush:1.4,garb:1,first:true,hint:25,score:.8,blurb:"Slower falls, more rush time, and the first letter of every word is filled in."},
+ medium:{label:"Medium",ic:"⚖️",fall:1,rush:1,garb:2,first:false,hint:25,score:1,blurb:"The classic Crossfall pace."},
+ hard:{label:"Hard",ic:"🔥",fall:.82,rush:.75,garb:3,first:false,hint:25,score:1.25,blurb:"Faster falls, shorter rushes, a deeper well to start."},
+ expert:{label:"Expert",ic:"⚡",fall:.68,rush:.6,garb:4,first:false,hint:50,score:1.5,blurb:"Top speed, tight rushes, hints cost double. For the fearless."}};
+const DIFF_ORDER=["easy","medium","hard","expert"];
+function diffCat(L){return L&&!L.daily&&!L.custom&&!L.archive&&!L.tut&&L.cat&&CATEGORIES.some(c=>c.name===L.cat)?L.cat:null}
+function diffOf(cat){return(stats.diff||{})[cat]||null}
+function diffCfg(){return S&&S.diff&&DIFFS[S.diff]||null}
+let dq=null;
+function showDiffPick(cat,after){dq={cat,pick:diffOf(cat)||null,all:false,after:after||null};const el=document.getElementById("dq");el.hidden=false;renderDiffPick()}
+function renderDiffPick(){const el=document.getElementById("dq"),o=dq,first=!diffOf(o.cat);
+  el.innerHTML=`<div class="otop"><button class="oback" id="dqX">✕ Close</button><span></span><span></span></div>
+   <div class="obody"><div class="dq-cat">${typeof catIcon==="function"?catIcon(o.cat):""}<span>${esc(o.cat)}</span></div>
+   <h2>${first?"How hard should your puzzles be?":"Change difficulty"}</h2><p class="olead">You can change this any time from the ${esc(o.cat)} card. Harder levels score more.</p>
+   <div class="dq-list" role="radiogroup" aria-label="Difficulty">${DIFF_ORDER.map(k=>{const d=DIFFS[k];return`<button class="dq-opt" role="radio" data-dq="${k}" aria-checked="${o.pick===k}">
+     <span class="dq-ic" aria-hidden="true">${d.ic}</span><span class="dq-t"><b>${d.label}</b><span>${d.blurb}</span></span><span class="dq-x">×${d.score}</span></button>`}).join("")}</div>
+   <label class="dq-all"><input type="checkbox" id="dqAll"${o.all?" checked":""}> Use this for every category</label></div>
+   <div class="ofoot"><button class="big" id="dqGo"${o.pick?"":" disabled"}>${o.after?"Start playing":"Save"}</button></div>`;
+  el.scrollTop=0;
+  el.querySelectorAll("[data-dq]").forEach(b=>b.onclick=()=>{o.pick=b.dataset.dq;hap("select");renderDiffPick()});
+  document.getElementById("dqAll").onchange=e=>{o.all=e.target.checked};
+  document.getElementById("dqX").onclick=()=>{if(o.after&&first){o.pick="medium";saveDiff()}else closeDiff(false)};
+  document.getElementById("dqGo").onclick=()=>{if(o.pick)saveDiff()}}
+function saveDiff(){const o=dq;stats.diff=stats.diff||{};(o.all?CATEGORIES.map(c=>c.name):[o.cat]).forEach(c=>stats.diff[c]=o.pick);saveStats();
+  toast(`${o.all?"All categories":o.cat}: ${DIFFS[o.pick].label}`);closeDiff(true)}
+function closeDiff(done){const el=document.getElementById("dq");el.hidden=true;el.innerHTML="";const a=dq&&dq.after;dq=null;
+  if(!document.getElementById("menu").hidden&&hubPage==="Play")renderDeck();if(done&&a)a()}
 function startLevel(i){
   const obj=typeof i==="object",L=obj?i:LEVELS[i];
   {const why=lockReason(L);if(why){showPaywall(why,L,()=>startLevel(i));return}}
+  {const dc=diffCat(L);if(dc&&!obj&&!diffOf(dc)){showDiffPick(dc,()=>startLevel(i));return}}
   if(L.cat==="Sports"&&!obj&&!spProfile()&&!stats.spSkip){showSportsQuiz(()=>startLevel(i));return}
   if(L.lang){if(!langProfile()){showLangQuiz(()=>startLevel(i));return}if(!genLang(L)){toast("Try again");return}}
   if(L.heal){if(!healProfile){showQuiz(i);return}if(!genHealing(L)){toast("Try again");return}}
@@ -1834,11 +1878,14 @@ function startLevel(i){
   const cells=new Map();for(const[k,c]of base.cells)cells.set(k,{...c,val:"",lock:false,words:c.words.slice()});
   const cw={rows:base.rows,cols:base.cols,cells,words:base.words.map(w=>({...w,cells:w.cells.slice(),solved:false}))};
   const grid=Array.from({length:ROWS},()=>Array(COLS).fill(null));
-  for(let r=ROWS-2;r<ROWS;r++){const gap=Math.floor(R()*COLS);for(let c=0;c<COLS;c++)if(c!==gap)grid[r][c]={ch:GARB[Math.floor(R()*GARB.length)],g:1}}
-  S={li:obj?-1:i,L,R,cw,grid,phase:"cross",sel:{key:cw.words[0].cells[0],dir:cw.words[0].dir},active:null,queue:[],score:0,
+  const dKey=diffCat(L)&&diffOf(diffCat(L))||null,dC=dKey?DIFFS[dKey]:null,garbN=dC?dC.garb:2;
+  for(let r=ROWS-garbN;r<ROWS;r++){const gap=Math.floor(R()*COLS);for(let c=0;c<COLS;c++)if(c!==gap)grid[r][c]={ch:GARB[Math.floor(R()*GARB.length)],g:1}}
+  if(dC&&dC.first)cw.words.forEach(w=>{const c=cw.cells.get(w.cells[0]);c.val=c.ans;c.lock=true});
+  S={diff:dKey,li:obj?-1:i,L,R,cw,grid,phase:"cross",sel:{key:cw.words[0].cells[0],dir:cw.words[0].dir},active:null,queue:[],score:0,
      targetHit:false,lastText:null,t0:Date.now(),rushWins:0,rushTotal:0,lockCount:0,lastRush:-9,cool:1,rush:null,acc:0,usedBonus:[],flash:[],hit:[],ghost:true,linesCleared:0,
      pts:{},helped:new Set(),bad:new Set(),assist:!!prefs.autocheck,chain:0,lastSolve:null,maxChain:0,crossMs:0,rushStreak:0,b2b:false,combo:0,hold:null,canHold:true,zen:!!prefs.zen,speedMult:SPEED_MULT[prefs.speed]||1,wordLog:[],final:null};
   document.getElementById("menu").hidden=true;document.getElementById("result").hidden=true;document.getElementById("quiz").hidden=true;["maker","archive","textbox","review"].forEach(id=>{const x=document.getElementById(id);if(x)x.hidden=true});
+  if(dC&&dC.first)selectWord(S.cw.words[0]);
   padMode="";layout();renderAll();clearRun();saveRunSoon();
 }
 
@@ -1872,7 +1919,7 @@ function backspace(){
 }
 function hint(){if(S.phase!=="cross")return;const w=curWord();
   const k=w.cells.find(k=>{const c=S.cw.cells.get(k);return c.val!==c.ans})||S.sel.key;
-  const c=S.cw.cells.get(k);if(c.lock)return;c.val=c.ans;S.sel.key=k;S.helped.add(k);addPts("hints",-25);toast("Hint −25");checkWords(c)}
+  const c=S.cw.cells.get(k);if(c.lock)return;c.val=c.ans;S.sel.key=k;{const hc=(diffCfg()||{hint:25}).hint;S.helped.add(k);addPts("hints",-hc);toast("Hint −"+hc)}checkWords(c)}
 function checkWords(cell){
   const done=[];
   for(const wi of cell.words){const w=S.cw.words[wi];if(w.solved)continue;
@@ -1959,7 +2006,7 @@ function startRush(){
   if(mode==="scramble"){word=word||(found.length?pick().word:bonus()[0])}
   if(mode==="clue"){const b=bonus();word=b[0];clue=b[1]}
   let scr=word;for(let t=0;t<8&&scr===word;t++)scr=shuffle([...word],S.R).join("");
-  const lim=S.zen?RUSH_SECS:rushLimit(mode);S.rush={mode,word,clue,scr,input:"",taps:[],t0:performance.now(),left:lim,limit:lim,state:"on",zen:!!S.zen};
+  const dR=diffCfg(),lim=S.zen?RUSH_SECS:Math.max(RUSH_MIN,Math.round(rushLimit(mode)*(dR?dR.rush:1)));S.rush={mode,word,clue,scr,input:"",taps:[],t0:performance.now(),left:lim,limit:lim,state:"on",zen:!!S.zen};
   S.phase="rush";announce(mode==="tap"?`Rush. ${fmtTime(lim)}. Find ${word} in the well.`:mode==="scramble"?`Rush. ${fmtTime(lim)}. Unscramble the hidden word.`:`Rush. ${fmtTime(lim)}. `+clue);sfx("rush");
   renderAll();
 }
@@ -2259,7 +2306,7 @@ function renderDeck(){
       <div class="gc-top"><span>${String(oi+1).padStart(2,"0")} / ${String(n).padStart(2,"0")}</span><span style="display:flex;gap:6px">${cat.heal?`<span class="gc-badge">PERSONAL</span>`:cat.lang?`<span class="gc-badge learn">LEARN</span>`:""}${catLock?`<span class="gc-pill pro">PRO</span>`:free?`<span class="gc-pill">FREE · ${FREE_PER_CAT} OF ${ps.length}</span>`:""}</span></div>
       <h3 class="gc-name">${esc(cat.name)}</h3><p class="gc-tag">${esc(look.tag)}</p>
       <div class="gc-tiles" aria-hidden="true">${catTiles(cat.name,ci*97+13)}</div>
-      <div class="gc-meta"><span class="stz">★ ${got}/${ps.length*3}</span><span>${ps.length} puzzle${ps.length>1?"s":""}</span></div>
+      <div class="gc-meta"><span class="stz">★ ${got}/${ps.length*3}</span><span>${ps.length} puzzle${ps.length>1?"s":""}</span><button class="gc-diff" data-dqc="${esc(cat.name)}" aria-label="Difficulty: ${diffOf(cat.name)?DIFFS[diffOf(cat.name)].label:"not set"}. Change">${diffOf(cat.name)?`${DIFFS[diffOf(cat.name)].ic} ${DIFFS[diffOf(cat.name)].label}`:"Set difficulty"} ›</button></div>
       ${focus}
       ${ps.length>DECK_PAGE?`<div class="gc-pages" role="tablist" aria-label="Puzzle pages">${[...Array(Math.ceil(ps.length/DECK_PAGE))].map((_,k)=>`<button role="tab" data-pg="${k}" data-cat="${esc(cat.name)}" aria-selected="${k===deckPageOf(cat,next)}">${k*DECK_PAGE+1}–${Math.min(ps.length,(k+1)*DECK_PAGE)}</button>`).join("")}</div>`:""}
       <div class="gc-grid" role="group" aria-label="${ps.length} puzzles">${deckGridHTML(cat,deckPageOf(cat,next),next,nextLocked)}</div>
@@ -2270,6 +2317,7 @@ function renderDeck(){
   deck.querySelectorAll("[data-pg]").forEach(b=>b.onclick=e=>{e.stopPropagation();const cat=CATEGORIES.find(c=>c.name===b.dataset.cat),card=b.closest(".gcard"),k=+b.dataset.pg;deckPage[cat.name]=k;
     card.querySelectorAll("[data-pg]").forEach(t=>t.setAttribute("aria-selected",t===b));const ps=cat.puzzles,next=ps.find(p=>!((store[p.id]||{}).stars)&&!lockReason(p))||ps[0];
     const g=card.querySelector(".gc-grid");g.innerHTML=deckGridHTML(cat,k,next,!!lockReason(next));g.querySelectorAll("[data-l]").forEach(x=>x.onclick=ev=>{ev.stopPropagation();startLevel(+x.dataset.l)});hap("select")});
+  deck.querySelectorAll("[data-dqc]").forEach(b=>b.onclick=e=>{e.stopPropagation();showDiffPick(b.dataset.dqc)});
   deck.querySelectorAll("[data-sqs]").forEach(b=>b.onclick=e=>{e.stopPropagation();showSportsQuiz()});
   deck.querySelectorAll("[data-lgs]").forEach(b=>b.onclick=e=>{e.stopPropagation();openLegends()});
   /* tapping anywhere else on the centered card starts its next puzzle; a side card slides to the middle first */
@@ -2941,13 +2989,13 @@ function finalize(win){
   if(win&&own>=.5){const tb=Math.max(0,Math.round(PAR_PER_WORD*S.cw.words.length-S.crossMs/1000))*5;addPts("time",tb)}
   S.gold=win&&!S.assist&&!S.helped.size;
   S.speedMult=S.speedMult==null?(SPEED_MULT[prefs.speed]||1):S.speedMult;
-  S.mult=(S.gold?1.2:1)*S.speedMult*(S.zen?.5:1);
+  S.mult=(S.gold?1.2:1)*S.speedMult*(S.zen?.5:1)*((diffCfg()||{score:1}).score);
   S.raw=S.score;S.final=Math.round(S.score*S.mult);S.score=S.final;S.grade=win?gradeOf(S.final,S.gold,stars()):null;
 }
 const signed=v=>(v>0?"+":v<0?"−":"")+fmtN(Math.abs(v));
 function breakdownHTML(){
   const rows=Object.entries(PTS_LABEL).filter(([k])=>S.pts[k]).map(([k,l])=>`<tr><td>${l}</td><td class="n">${signed(S.pts[k])}</td></tr>`).join("");
-  const m=[];if(S.gold)m.push(["Gold solve, no help","×1.2"]);if(S.speedMult&&S.speedMult!==1)m.push([`${S.speedMult>1?"Fast":"Relaxed"} fall speed`,"×"+S.speedMult]);if(S.zen)m.push(["Zen mode","×0.5"]);
+  const m=[];if(S.gold)m.push(["Gold solve, no help","×1.2"]);if(S.speedMult&&S.speedMult!==1)m.push([`${S.speedMult>1?"Fast":"Relaxed"} fall speed`,"×"+S.speedMult]);if(S.zen)m.push(["Zen mode","×0.5"]);{const d=diffCfg();if(d&&d.score!==1)m.push([`${d.label} difficulty`,"×"+d.score])}
   return`<table class="brk" aria-label="How your score was made"><tbody>${rows||`<tr><td>No points yet</td><td></td></tr>`}
     ${m.length?`<tr class="sub"><td>Subtotal</td><td class="n">${fmtN(S.raw)}</td></tr>${m.map(([a,b])=>`<tr class="mul"><td>${a}</td><td class="n">${b}</td></tr>`).join("")}`:""}
     <tr class="tot"><td>Score</td><td class="n">${fmtN(S.final)}</td></tr></tbody></table>`;
@@ -3205,7 +3253,7 @@ function saveRun(){
     const snap={v:2,L,at:Date.now(),cw:{rows:S.cw.rows,cols:S.cw.cols,cells:[...S.cw.cells.entries()],words:S.cw.words},grid:S.grid,queue:q.map(p=>({cells:(p.base||p.cells)})),
       hold:S.hold,score:S.score,pts:S.pts,helped:[...S.helped],bad:[...S.bad],assist:S.assist,chain:S.chain,lastSolve:S.lastSolve,maxChain:S.maxChain,crossMs:S.crossMs,
       targetHit:S.targetHit,rushWins:S.rushWins,rushTotal:S.rushTotal,rushStreak:S.rushStreak,lockCount:S.lockCount,lastRush:S.lastRush,cool:S.cool,usedBonus:S.usedBonus,
-      linesCleared:S.linesCleared,b2b:S.b2b,combo:S.combo,zen:S.zen,speedMult:S.speedMult,wordLog:S.wordLog,sel:S.sel,t0:S.t0,
+      linesCleared:S.linesCleared,b2b:S.b2b,combo:S.combo,zen:S.zen,speedMult:S.speedMult,diff:S.diff||null,wordLog:S.wordLog,sel:S.sel,t0:S.t0,
       rush:S.rush&&S.rush.state==="on"?{...S.rush}:null,phase:S.phase};
     localStorage.setItem("crossfall-run",JSON.stringify(snap));
   }catch(e){}
@@ -3221,7 +3269,7 @@ function loadRun(){
     S={li,L,R:rng((L.seed||1)*31+o.lockCount),cw:{rows:o.cw.rows,cols:o.cw.cols,cells,words:o.cw.words},grid:o.grid,queue:o.queue.map(p=>({cells:p.cells,base:p.cells.map(x=>({...x})),r:0,c:0})),
       hold:o.hold,canHold:true,active:null,score:o.score,pts:o.pts||{},helped:new Set(o.helped||[]),bad:new Set(o.bad||[]),assist:!!o.assist,chain:o.chain||0,lastSolve:o.lastSolve,maxChain:o.maxChain||0,crossMs:o.crossMs||0,
       targetHit:o.targetHit,rushWins:o.rushWins,rushTotal:o.rushTotal,rushStreak:o.rushStreak||0,lockCount:o.lockCount,lastRush:o.lastRush,cool:o.cool,usedBonus:o.usedBonus||[],
-      linesCleared:o.linesCleared,b2b:!!o.b2b,combo:o.combo||0,zen:!!o.zen,speedMult:o.speedMult,wordLog:o.wordLog||[],sel:o.sel,t0:o.t0,
+      linesCleared:o.linesCleared,b2b:!!o.b2b,combo:o.combo||0,zen:!!o.zen,speedMult:o.speedMult,diff:o.diff||null,wordLog:o.wordLog||[],sel:o.sel,t0:o.t0,
       lastText:null,acc:0,flash:[],hit:[],ghost:true,final:null,phase:o.phase,rush:o.rush};
     if(S.phase==="anim")S.phase="drop";
     if(S.phase==="drop")S.needSpawn=true;

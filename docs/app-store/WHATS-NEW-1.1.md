@@ -12,6 +12,9 @@ Learn a language as you play
 More than 500 new puzzles
 • 50 new puzzles in every category, so each one now has 70 or more. New themes include Rugby, Cricket, Opera, Broadway, Pinball, Oakland, Berkeley, Moon Landing, Seafood and more.
 
+Pick your difficulty
+• Before your first game in any category, choose Easy, Medium, Hard or Expert. Easy fills in the first letter of every word and slows things down; Expert is top speed with tight rushes. Harder levels score up to ×1.5. Change it any time from the category card.
+
 Sports, made personal
 • Before your first Sports puzzle, tell us the sports you love, the teams you root for, and your hometown.
 • Meet the legendary athletes from your area, from Bill Russell in Oakland to Messi in Rosario. Use your current location if you like: it's checked once, on your device, and never stored.

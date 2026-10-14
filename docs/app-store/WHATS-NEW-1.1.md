@@ -9,7 +9,13 @@ Learn a language as you play
 • Rapid Recall: a 60-second drill to lock words in. See it or hear it, then spell it fast.
 • The Language lab spaces your reviews so each word comes back right before you'd forget it.
 
-Sports legends
+More than 500 new puzzles
+• 50 new puzzles in every category, so each one now has 70 or more. New themes include Rugby, Cricket, Opera, Broadway, Pinball, Oakland, Berkeley, Moon Landing, Seafood and more.
+
+Sports, made personal
+• Before your first Sports puzzle, tell us the sports you love, the teams you root for, and your hometown.
+• Meet the legendary athletes from your area, from Bill Russell in Oakland to Messi in Rosario. Use your current location if you like: it's checked once, on your device, and never stored.
+• Every Sports result shows a Hometown Hero fact, and we pick Sports puzzles that match your favorites.
 • Three new Sports puzzles built from famous lines by the greatest athletes, including quotes in their original Spanish and Dutch.
 
 Today's Puzzles

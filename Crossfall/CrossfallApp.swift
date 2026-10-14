@@ -6,6 +6,7 @@ import UniformTypeIdentifiers
 import UserNotifications
 import WidgetKit
 import AVFoundation
+import CoreLocation
 
 // MARK: - Theme
 
@@ -438,6 +439,60 @@ enum Speech {
     }
 }
 
+// MARK: - Hometown (Sports category)
+
+/// One-shot, when-in-use location so the Sports intro can find legends from the player's area.
+/// The coordinates go straight back to the page and are matched against a built-in list of cities
+/// on the device. Nothing is stored or sent anywhere.
+@MainActor
+final class Locator: NSObject, CLLocationManagerDelegate {
+    static let shared = Locator()
+    weak var web: WKWebView?
+    private let manager = CLLocationManager()
+    private var waiting = false
+
+    override init() {
+        super.init()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyReduced
+    }
+
+    func locate() {
+        waiting = true
+        switch manager.authorizationStatus {
+        case .notDetermined: manager.requestWhenInUseAuthorization()
+        case .denied, .restricted: reply("{err:'denied'}")
+        default: manager.requestLocation()
+        }
+    }
+
+    private func reply(_ body: String) {
+        guard waiting else { return }
+        waiting = false
+        web?.evaluateJavaScript("window.__locate&&window.__locate(\(body))", completionHandler: nil)
+    }
+
+    nonisolated func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        Task { @MainActor in
+            guard self.waiting else { return }
+            switch manager.authorizationStatus {
+            case .notDetermined: break
+            case .denied, .restricted: self.reply("{err:'denied'}")
+            default: manager.requestLocation()
+            }
+        }
+    }
+
+    nonisolated func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let c = locations.last?.coordinate else { return }
+        Task { @MainActor in self.reply("{lat:\(c.latitude),lon:\(c.longitude)}") }
+    }
+
+    nonisolated func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        Task { @MainActor in self.reply("{err:'failed'}") }
+    }
+}
+
 // MARK: - Bridge from the page
 
 final class PageBridge: NSObject, WKScriptMessageHandler {
@@ -461,6 +516,8 @@ final class PageBridge: NSObject, WKScriptMessageHandler {
             }
         case "say":
             if let body = message.body as? [String: Any] { Task { @MainActor in Speech.say(body) } }
+        case "locate":
+            Task { @MainActor in Locator.shared.locate() }
         case "notify":
             Task { @MainActor in DailyStatus.shared.askPermission() }
         case "status":
@@ -500,8 +557,9 @@ struct GameView: UIViewRepresentable {
         config.userContentController.add(bridge, name: "notify")
         config.userContentController.add(bridge, name: "status")
         config.userContentController.add(bridge, name: "say")
+        config.userContentController.add(bridge, name: "locate")
         config.userContentController.addUserScript(WKUserScript(
-            source: "window.__NATIVE_TS=\(TextScale.current);window.__NATIVE_GC=true;window.__NATIVE_IAP=true;window.__NATIVE_NOTIFY=true;window.__NATIVE_SAY=true;",
+            source: "window.__NATIVE_TS=\(TextScale.current);window.__NATIVE_GC=true;window.__NATIVE_IAP=true;window.__NATIVE_NOTIFY=true;window.__NATIVE_SAY=true;window.__NATIVE_LOC=true;",
             injectionTime: .atDocumentStart, forMainFrameOnly: true))
         config.setURLSchemeHandler(BundleSchemeHandler(), forURLScheme: "crossfall")
         config.websiteDataStore = .default()
@@ -522,6 +580,7 @@ struct GameView: UIViewRepresentable {
         ProStore.shared.web = web
         ProStore.shared.start()
         DailyStatus.shared.web = web
+        Locator.shared.web = web
         NotificationCenter.default.addObserver(context.coordinator, selector: #selector(Coordinator.textSizeChanged),
                                                name: UIContentSizeCategory.didChangeNotification, object: nil)
         web.load(URLRequest(url: URL(string: "crossfall://app/index.html")!))

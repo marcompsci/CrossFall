@@ -154,6 +154,7 @@ To stop the error for future uploads, sign out of your Apple ID and back in unde
 - [x] 1.1 (13): levels and well themes, weekly challenges, streak milestones, friend challenges and share cards, daily reminder, home-screen widget, new sound effects and music tracks
 - [x] 1.1 (14): Today's Puzzles: The Mini and Chunks, scoreboards, difficulty labels, filterable archive
 - [x] 1.1 (15): Language category with Rapid Recall and the Language lab; Sports legends quotes
+- [x] 1.1: Sports intro (favorite sports, teams, hometown or current location) with hometown legends; 50 more puzzles in every category (70+ each, 703 total)
 - [ ] Ship 1.1 after 1.0 is approved
 - [x] iPad layout: side-by-side crossword and well
 - [x] 1.0 (11) design pass: cleaner top bar, bigger crossword, landing/clear/rush effects, haptics, a playable first-run tour, App Store preview videos

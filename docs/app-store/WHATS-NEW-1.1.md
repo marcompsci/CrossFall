@@ -3,6 +3,15 @@
 Paste into App Store Connect › 1.1 › What's New in This Version (under 4,000 characters):
 
 ```
+Learn a language as you play
+• New Language category: Spanish, French, Italian, Portuguese, German, Japanese or Mandarin.
+• Tell us what you're learning and every puzzle is built around it. Spell each word, hear it spoken, and see hints from languages you already know.
+• Rapid Recall: a 60-second drill to lock words in. See it or hear it, then spell it fast.
+• The Language lab spaces your reviews so each word comes back right before you'd forget it.
+
+Sports legends
+• Three new Sports puzzles built from famous lines by the greatest athletes, including quotes in their original Spanish and Dutch.
+
 Today's Puzzles
 • Two new free daily puzzles next to the Daily Crossfall.
 • The Mini: a quick 5×5 crossword against the clock.

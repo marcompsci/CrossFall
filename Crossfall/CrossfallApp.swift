@@ -5,6 +5,7 @@ import StoreKit
 import UniformTypeIdentifiers
 import UserNotifications
 import WidgetKit
+import AVFoundation
 
 // MARK: - Theme
 
@@ -420,6 +421,23 @@ final class DailyStatus {
     }
 }
 
+// MARK: - Spoken words (Language category)
+
+/// Speaks a word in its language with the system voice so players hear real pronunciation.
+@MainActor
+enum Speech {
+    static let synth = AVSpeechSynthesizer()
+    static func say(_ body: [String: Any]) {
+        guard let text = body["text"] as? String, !text.isEmpty else { return }
+        try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio, options: [.mixWithOthers, .duckOthers])
+        if synth.isSpeaking { synth.stopSpeaking(at: .immediate) }
+        let u = AVSpeechUtterance(string: text)
+        u.voice = AVSpeechSynthesisVoice(language: body["lang"] as? String ?? "en-US")
+        u.rate = Float((body["rate"] as? NSNumber)?.doubleValue ?? 0.45)
+        synth.speak(u)
+    }
+}
+
 // MARK: - Bridge from the page
 
 final class PageBridge: NSObject, WKScriptMessageHandler {
@@ -441,6 +459,8 @@ final class PageBridge: NSObject, WKScriptMessageHandler {
                    let data = Data(base64Encoded: String(url[url.index(after: comma)...])) { image = UIImage(data: data) }
                 DispatchQueue.main.async { Share.present(text, image: image) }
             }
+        case "say":
+            if let body = message.body as? [String: Any] { Task { @MainActor in Speech.say(body) } }
         case "notify":
             Task { @MainActor in DailyStatus.shared.askPermission() }
         case "status":
@@ -479,8 +499,9 @@ struct GameView: UIViewRepresentable {
         config.userContentController.add(bridge, name: "iap")
         config.userContentController.add(bridge, name: "notify")
         config.userContentController.add(bridge, name: "status")
+        config.userContentController.add(bridge, name: "say")
         config.userContentController.addUserScript(WKUserScript(
-            source: "window.__NATIVE_TS=\(TextScale.current);window.__NATIVE_GC=true;window.__NATIVE_IAP=true;window.__NATIVE_NOTIFY=true;",
+            source: "window.__NATIVE_TS=\(TextScale.current);window.__NATIVE_GC=true;window.__NATIVE_IAP=true;window.__NATIVE_NOTIFY=true;window.__NATIVE_SAY=true;",
             injectionTime: .atDocumentStart, forMainFrameOnly: true))
         config.setURLSchemeHandler(BundleSchemeHandler(), forURLScheme: "crossfall")
         config.websiteDataStore = .default()

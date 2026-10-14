@@ -698,6 +698,13 @@ html.light .ov.cele{background:rgba(60,45,30,.45)}
 @media (prefers-reduced-motion: reduce){.cl-card,.cl-lv{animation:none}}
 
 #remindGroup{display:flex;flex-direction:column;gap:14px}#remindGroup[hidden],#remindTimes[hidden]{display:none}
+.hpage>*{flex-shrink:0}
+@media (max-width:699px){.gc-tiles{height:74px;flex-basis:74px}}
+.gcard{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.gcard:active:not(:has(button:active)){filter:brightness(1.06)}
+.gc-top{gap:8px}.gc-top>span:first-child{white-space:nowrap}
+.gc-top .gc-badge,.gc-top .gc-pill{white-space:nowrap;font-size:10px;padding:3px 8px}
+.gc-hint{font-size:12px;opacity:.75;text-align:center;margin-top:-4px}
 </style>
 
 <div id="app">
@@ -1621,10 +1628,14 @@ function renderDeck(){
       ${focus}
       <div class="gc-grid" role="group" aria-label="${ps.length} puzzles">${ps.map((p,pi)=>{const s=(store[p.id]||{}).stars||0,lk=!!lockReason(p);return`<button class="s${s}${lk?" lk":""}${p===next&&!nextLocked?" nx":""}" data-l="${LEVELS.indexOf(p)}" aria-label="Puzzle ${pi+1}, ${esc(p.name)}${lk?", Pro":`, ${s} of 3 stars`}">${pi+1}</button>`}).join("")}</div>
       ${nextLocked?`<button class="gc-play pro" data-pro="${esc(cat.name)}">${catLock?"Unlock with Pro":"Unlock puzzles "+(FREE_PER_CAT+1)+"–"+ps.length}</button>`:`<button class="gc-play" data-l="${LEVELS.indexOf(next)}">Play ${LEVELS.indexOf(next)>=0?(next.pi+1)+". ":""}${esc(next.name)}</button>`}
+      <div class="gc-hint" aria-hidden="true">Tap the card to play · pick a number to choose a puzzle</div>
     </article>`}).join("");
-  deck.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>startLevel(+b.dataset.l));
-  deck.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>showQuiz(null));
-  deck.querySelectorAll("[data-pro]").forEach(b=>b.onclick=()=>{const c=CATEGORIES.find(x=>x.name===b.dataset.pro);showPaywall(lockReason(c.puzzles[0])?"cat":"limit",c.puzzles[0])});
+  deck.querySelectorAll("[data-l]").forEach(b=>b.onclick=e=>{e.stopPropagation();startLevel(+b.dataset.l)});
+  /* tapping anywhere else on the centered card starts its next puzzle; a side card slides to the middle first */
+  [...deck.children].forEach((card,i)=>card.onclick=e=>{if(e.target.closest("button"))return;
+    if(i!==deckIdx){deckTo(i);return}const pl=card.querySelector(".gc-play");if(pl)pl.click()});
+  deck.querySelectorAll("[data-q]").forEach(b=>b.onclick=e=>{e.stopPropagation();showQuiz(null)});
+  deck.querySelectorAll("[data-pro]").forEach(b=>b.onclick=e=>{e.stopPropagation();const c=CATEGORIES.find(x=>x.name===b.dataset.pro);showPaywall(lockReason(c.puzzles[0])?"cat":"limit",c.puzzles[0])});
   document.getElementById("dots").innerHTML=ORDER.map((c,i)=>`<button aria-label="${esc(c.name)}" data-d="${i}"></button>`).join("");
   document.querySelectorAll("#dots button").forEach(b=>b.onclick=()=>deckTo(+b.dataset.d));
   requestAnimationFrame(()=>{deckTo(deckIdx,true);deckFx()});

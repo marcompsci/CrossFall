@@ -10,7 +10,33 @@
 		C0F000000000000000000011 /* CrossfallApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000001 /* CrossfallApp.swift */; };
 		C0F000000000000000000012 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000002 /* index.html */; };
 		C0F000000000000000000013 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000004 /* Assets.xcassets */; };
+		C0F000000000000000000101 /* CrossfallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000111 /* CrossfallWidget.swift */; };
+		C0F000000000000000000102 /* CrossfallWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000114 /* CrossfallWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C0F000000000000000000141 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0F000000000000000000051 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0F000000000000000000151;
+			remoteInfo = CrossfallWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C0F000000000000000000143 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C0F000000000000000000102 /* CrossfallWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C0F000000000000000000001 /* CrossfallApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossfallApp.swift; sourceTree = "<group>"; };
@@ -18,10 +44,21 @@
 		C0F000000000000000000003 /* Crossfall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crossfall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F000000000000000000004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0F000000000000000000005 /* Crossfall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Crossfall.entitlements; sourceTree = "<group>"; };
+		C0F000000000000000000111 /* CrossfallWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossfallWidget.swift; sourceTree = "<group>"; };
+		C0F000000000000000000112 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0F000000000000000000113 /* CrossfallWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CrossfallWidget.entitlements; sourceTree = "<group>"; };
+		C0F000000000000000000114 /* CrossfallWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CrossfallWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C0F000000000000000000021 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0F000000000000000000153 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -35,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				C0F000000000000000000032 /* Crossfall */,
+				C0F000000000000000000131 /* CrossfallWidget */,
 				C0F000000000000000000033 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,8 +92,19 @@
 			isa = PBXGroup;
 			children = (
 				C0F000000000000000000003 /* Crossfall.app */,
+				C0F000000000000000000114 /* CrossfallWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C0F000000000000000000131 /* CrossfallWidget */ = {
+			isa = PBXGroup;
+			children = (
+				C0F000000000000000000111 /* CrossfallWidget.swift */,
+				C0F000000000000000000112 /* Info.plist */,
+				C0F000000000000000000113 /* CrossfallWidget.entitlements */,
+			);
+			path = CrossfallWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -68,15 +117,34 @@
 				C0F000000000000000000022 /* Sources */,
 				C0F000000000000000000021 /* Frameworks */,
 				C0F000000000000000000023 /* Resources */,
+				C0F000000000000000000143 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C0F000000000000000000142 /* PBXTargetDependency */,
 			);
 			name = Crossfall;
 			productName = Crossfall;
 			productReference = C0F000000000000000000003 /* Crossfall.app */;
 			productType = "com.apple.product-type.application";
+		};
+		C0F000000000000000000151 /* CrossfallWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0F000000000000000000161 /* Build configuration list for PBXNativeTarget "CrossfallWidgetExtension" */;
+			buildPhases = (
+				C0F000000000000000000152 /* Sources */,
+				C0F000000000000000000153 /* Frameworks */,
+				C0F000000000000000000154 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CrossfallWidgetExtension;
+			productName = CrossfallWidgetExtension;
+			productReference = C0F000000000000000000114 /* CrossfallWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -89,6 +157,9 @@
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					C0F000000000000000000041 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					C0F000000000000000000151 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
@@ -107,6 +178,7 @@
 			projectRoot = "";
 			targets = (
 				C0F000000000000000000041 /* Crossfall */,
+				C0F000000000000000000151 /* CrossfallWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -121,6 +193,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C0F000000000000000000154 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -132,7 +211,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C0F000000000000000000152 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0F000000000000000000101 /* CrossfallWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C0F000000000000000000142 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0F000000000000000000151 /* CrossfallWidgetExtension */;
+			targetProxy = C0F000000000000000000141 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		C0F000000000000000000071 /* Debug */ = {
@@ -170,7 +265,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Crossfall/Crossfall.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = X6LZQ3FS36;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Crossfall;
@@ -185,7 +280,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.phoronomicstudios.crossfall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -200,7 +295,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Crossfall/Crossfall.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = X6LZQ3FS36;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Crossfall;
@@ -215,9 +310,61 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.phoronomicstudios.crossfall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C0F000000000000000000171 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CrossfallWidget/CrossfallWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 13;
+				DEVELOPMENT_TEAM = X6LZQ3FS36;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CrossfallWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Crossfall;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoronomicstudios.crossfall.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C0F000000000000000000172 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CrossfallWidget/CrossfallWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 13;
+				DEVELOPMENT_TEAM = X6LZQ3FS36;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CrossfallWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Crossfall;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoronomicstudios.crossfall.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -241,6 +388,15 @@
 			buildConfigurations = (
 				C0F000000000000000000071 /* Debug */,
 				C0F000000000000000000072 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0F000000000000000000161 /* Build configuration list for PBXNativeTarget "CrossfallWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0F000000000000000000171 /* Debug */,
+				C0F000000000000000000172 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

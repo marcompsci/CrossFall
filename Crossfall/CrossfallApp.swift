@@ -3,6 +3,8 @@ import WebKit
 import GameKit
 import StoreKit
 import UniformTypeIdentifiers
+import UserNotifications
+import WidgetKit
 
 // MARK: - Theme
 
@@ -230,12 +232,13 @@ final class GameCenter: NSObject, GKGameCenterControllerDelegate {
 
 /// Shows the iOS share sheet for a daily result, a puzzle code or a backup code.
 enum Share {
-    static func present(_ text: String) {
+    static func present(_ text: String, image: UIImage? = nil) {
         let scene = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first
         var top = scene?.windows.first(where: { $0.isKeyWindow })?.rootViewController
         while let p = top?.presentedViewController { top = p }
         guard let host = top else { return }
-        let sheet = UIActivityViewController(activityItems: [text], applicationActivities: nil)
+        let items: [Any] = image.map { [$0, text] } ?? [text]
+        let sheet = UIActivityViewController(activityItems: items, applicationActivities: nil)
         if let pop = sheet.popoverPresentationController {
             pop.sourceView = host.view
             pop.sourceRect = CGRect(x: host.view.bounds.midX, y: host.view.bounds.maxY - 80, width: 1, height: 1)
@@ -350,6 +353,73 @@ enum Haptics {
     }
 }
 
+// MARK: - Daily reminder + home-screen widget
+
+/// Takes a small snapshot from the game (streak, today's Daily, level), shares it with the
+/// widget through the app group, and schedules the once-a-day Daily reminder.
+@MainActor
+final class DailyStatus {
+    static let shared = DailyStatus()
+    static let group = "group.com.phoronomicstudios.crossfall"
+    weak var web: WKWebView?
+    private var last: [String: Any] = [:]
+
+    func askPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
+            Task { @MainActor in
+                self.web?.evaluateJavaScript("window.__notify&&window.__notify({granted:\(granted)})", completionHandler: nil)
+                self.reschedule()
+            }
+        }
+    }
+
+    func update(_ body: [String: Any]) {
+        last = body
+        if let shared = UserDefaults(suiteName: DailyStatus.group) {
+            for key in ["streak", "freezes", "best", "level", "pct", "weekly", "score"] {
+                shared.set((body[key] as? NSNumber)?.intValue ?? 0, forKey: key)
+            }
+            shared.set(body["doneToday"] as? Bool ?? false, forKey: "doneToday")
+            shared.set(body["day"] as? String ?? "", forKey: "day")
+            shared.set(Date().timeIntervalSince1970, forKey: "updated")
+            WidgetCenter.shared.reloadAllTimelines()
+        }
+        reschedule()
+    }
+
+    private func reschedule() {
+        let center = UNUserNotificationCenter.current()
+        let ids = (0..<8).map { "crossfall.daily.\($0)" }
+        center.removePendingNotificationRequests(withIdentifiers: ids)
+        guard last["remind"] as? Bool == true else { return }
+        let hour = (last["hour"] as? NSNumber)?.intValue ?? 19
+        let minute = (last["minute"] as? NSNumber)?.intValue ?? 0
+        let streak = (last["streak"] as? NSNumber)?.intValue ?? 0
+        let doneToday = last["doneToday"] as? Bool ?? false
+        center.getNotificationSettings { settings in
+            guard settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional else { return }
+            let cal = Calendar.current
+            let now = Date()
+            for d in 0..<7 {
+                guard let day = cal.date(byAdding: .day, value: d, to: now),
+                      let fire = cal.date(bySettingHour: hour, minute: minute, second: 0, of: day) else { continue }
+                if d == 0 && (doneToday || fire <= now) { continue }
+                let content = UNMutableNotificationContent()
+                content.title = "Today's Crossfall is ready"
+                let known = d == 0 ? streak : (d == 1 && doneToday ? streak : 0)
+                content.body = known > 0
+                    ? "Keep your 🔥 \(known)-day streak going. One puzzle, a few minutes."
+                    : "A fresh Daily puzzle is waiting. Same puzzle for everyone today."
+                content.sound = .default
+                let parts = cal.dateComponents([.year, .month, .day, .hour, .minute], from: fire)
+                let request = UNNotificationRequest(identifier: "crossfall.daily.\(d)", content: content,
+                                                    trigger: UNCalendarNotificationTrigger(dateMatching: parts, repeats: false))
+                center.add(request)
+            }
+        }
+    }
+}
+
 // MARK: - Bridge from the page
 
 final class PageBridge: NSObject, WKScriptMessageHandler {
@@ -365,6 +435,16 @@ final class PageBridge: NSObject, WKScriptMessageHandler {
             if let body = message.body as? [String: Any] { gameCenter.handle(body) }
         case "share":
             if let text = message.body as? String { DispatchQueue.main.async { Share.present(text) } }
+            else if let body = message.body as? [String: Any], let text = body["text"] as? String {
+                var image: UIImage?
+                if let url = body["image"] as? String, let comma = url.firstIndex(of: ","),
+                   let data = Data(base64Encoded: String(url[url.index(after: comma)...])) { image = UIImage(data: data) }
+                DispatchQueue.main.async { Share.present(text, image: image) }
+            }
+        case "notify":
+            Task { @MainActor in DailyStatus.shared.askPermission() }
+        case "status":
+            if let body = message.body as? [String: Any] { Task { @MainActor in DailyStatus.shared.update(body) } }
         case "iap":
             if let action = message.body as? String { Task { @MainActor in ProStore.shared.handle(action) } }
         case "haptic":
@@ -397,8 +477,10 @@ struct GameView: UIViewRepresentable {
         config.userContentController.add(bridge, name: "share")
         config.userContentController.add(bridge, name: "haptic")
         config.userContentController.add(bridge, name: "iap")
+        config.userContentController.add(bridge, name: "notify")
+        config.userContentController.add(bridge, name: "status")
         config.userContentController.addUserScript(WKUserScript(
-            source: "window.__NATIVE_TS=\(TextScale.current);window.__NATIVE_GC=true;window.__NATIVE_IAP=true;",
+            source: "window.__NATIVE_TS=\(TextScale.current);window.__NATIVE_GC=true;window.__NATIVE_IAP=true;window.__NATIVE_NOTIFY=true;",
             injectionTime: .atDocumentStart, forMainFrameOnly: true))
         config.setURLSchemeHandler(BundleSchemeHandler(), forURLScheme: "crossfall")
         config.websiteDataStore = .default()
@@ -418,6 +500,7 @@ struct GameView: UIViewRepresentable {
         context.coordinator.gameCenter.web = web
         ProStore.shared.web = web
         ProStore.shared.start()
+        DailyStatus.shared.web = web
         NotificationCenter.default.addObserver(context.coordinator, selector: #selector(Coordinator.textSizeChanged),
                                                name: UIContentSizeCategory.didChangeNotification, object: nil)
         web.load(URLRequest(url: URL(string: "crossfall://app/index.html")!))

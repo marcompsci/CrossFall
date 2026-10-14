@@ -651,6 +651,53 @@ html.light #coach .cbub{background:#221a33;color:#f6f1e7}
 .gc-play.pro{background:#ffd24a;color:#2a1a00}
 @media (prefers-reduced-motion:reduce){.onb .ohero b,.pw .pwtiles b,.pw .pwc,.onb .obody{animation:none}}
 @media (prefers-reduced-motion:reduce){.burst{display:none}.wellgrid.thump,.wellgrid.quake{animation:none}}
+/* 1.1: rewards, celebrations, challenges */
+.ov.cele{background:rgba(10,6,20,.62);align-items:center;justify-content:center;z-index:9;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+html.light .ov.cele{background:rgba(60,45,30,.45)}
+.cl-card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:24px 20px 18px;width:min(100%,340px);display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;animation:clIn .42s cubic-bezier(.2,1.4,.4,1);position:relative}
+.cl-card h2{font-family:var(--f-display);font-size:34px;line-height:1;margin:4px 0 0}
+.cl-card p{margin:0;color:var(--muted);font-size:calc(15px*var(--ts,1))}
+.cl-card .big,.cl-card .ghost-btn{width:100%}
+@keyframes clIn{from{transform:scale(.6) translateY(20px);opacity:0}to{transform:none;opacity:1}}
+.cl-lv{width:104px;height:104px;border-radius:50%;background:conic-gradient(var(--gold),var(--accent),var(--solved),var(--gold));display:grid;place-items:center;align-content:center;color:#231b35;box-shadow:0 0 0 6px var(--panel),0 0 40px rgba(240,180,41,.45);animation:clSpin 1.2s ease-out}
+.cl-lv small{font-size:11px;font-weight:800;letter-spacing:.14em}
+.cl-lv b{font-family:var(--f-display);font-size:48px;line-height:.9}
+.cl-lv.sm{width:64px;height:64px;box-shadow:none;animation:none}.cl-lv.sm b{font-size:28px}.cl-lv.sm small{font-size:9px}
+@keyframes clSpin{from{transform:rotate(-200deg) scale(.4)}to{transform:none}}
+.cl-theme{display:flex;align-items:center;gap:10px;font-size:14px}
+.wt-prev{display:inline-flex;gap:3px}
+.wt-prev i{width:24px;height:24px;border-radius:5px;display:grid;place-items:center;font-style:normal;font-family:var(--f-mono);font-weight:800;font-size:13px;color:#231b35;background:var(--tile)}
+.wt-prev i.b{background:var(--tile-dim)}.wt-prev i.c{background:var(--accent)}
+.rw-lv{display:flex;gap:14px;align-items:center}
+.rw-dl{float:right;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:0}
+.ch{display:flex;flex-direction:column;gap:4px;padding:6px 0;border-top:1px solid var(--line)}
+.ch:first-of-type{border-top:0}
+.ch-t{display:flex;justify-content:space-between;gap:8px;font-weight:600}
+.ch-t .v{font-variant-numeric:tabular-nums;color:var(--muted)}
+.ch .tr{height:8px;border-radius:99px;background:var(--panel-2);overflow:hidden;display:block}
+.ch .tr i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .5s}
+.ch.done .tr i{background:var(--solved)}.ch.done .ch-t span:first-child{color:var(--solved)}
+.miles{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.ml{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px;border-radius:12px;background:var(--panel-2);border:1px solid var(--line);font-size:11px;color:var(--muted)}
+.ml b{font-size:17px;color:var(--fg)}.ml.got{background:var(--gold);border-color:var(--gold);color:#231b35}.ml.got b{color:#231b35}
+#rewards .panel{width:100%;box-sizing:border-box;max-width:560px;align-self:center}
+.wtgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
+.wt{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px;border-radius:14px;border:2px solid var(--line);background:var(--panel-2);color:var(--fg);font:inherit;cursor:pointer}
+.wt b{font-size:14px}.wt span{font-size:11px;color:var(--muted)}
+.wt[aria-checked="true"]{border-color:var(--accent);box-shadow:0 0 0 3px rgba(232,103,28,.2)}
+.wt.locked{opacity:.55}
+.wk-line{display:flex;align-items:center;gap:10px;width:100%;margin-top:8px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--panel-2);color:var(--fg);font:inherit;font-size:14px;text-align:left;cursor:pointer}
+.wk-line>span:first-child{flex:1}
+.wk-bars{display:flex;gap:4px}.wk-bars i{width:22px;height:6px;border-radius:9px;background:linear-gradient(90deg,var(--solved) var(--p),rgba(128,128,128,.3) var(--p))}
+.chal-pill{display:inline-block;margin-top:2px;font-size:11px;font-weight:800;letter-spacing:.04em;padding:2px 8px;border-radius:99px;background:var(--panel-2);border:1px solid var(--line);color:var(--muted)}
+.chal-pill.ahead{background:var(--solved);border-color:var(--solved);color:#06231f}
+.chal-res{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--panel);font-size:17px}
+.chal-res span{font-size:13px;color:var(--muted)}
+.chal-res.won{border-color:var(--solved);background:rgba(37,168,152,.14)}
+.chal-res.lost{border-color:var(--danger)}
+@media (prefers-reduced-motion: reduce){.cl-card,.cl-lv{animation:none}}
+
+#remindGroup{display:flex;flex-direction:column;gap:14px}#remindGroup[hidden],#remindTimes[hidden]{display:none}
 </style>
 
 <div id="app">
@@ -707,6 +754,8 @@ html.light #coach .cbub{background:#221a33;color:#f6f1e7}
         <button data-act="archive">Past daily puzzles</button>
         <button data-act="maker">Make a puzzle</button>
         <button data-act="review">Review my words</button>
+        <button data-act="rewards">Rewards &amp; themes</button>
+        <button data-act="code">Enter a challenge code</button>
         <button data-act="backup">Back up progress</button>
         <button data-act="pro" id="drPro">Go Pro: unlock everything</button>
         <button data-act="tour">Play the tour</button>
@@ -775,6 +824,8 @@ html.light #coach .cbub{background:#221a33;color:#f6f1e7}
   <div class="ov res" id="archive" hidden></div>
   <div class="ov res" id="maker" hidden></div>
   <div class="ov res" id="textbox" hidden></div>
+  <div class="ov res" id="rewards" hidden role="dialog" aria-modal="true" aria-label="Rewards"></div>
+  <div class="ov cele" id="cele" hidden></div>
   <div class="ov lifeov" id="life" hidden></div>
   <div class="ov" id="settings" hidden>
     <h1>SET<span>TINGS</span></h1>
@@ -787,7 +838,11 @@ html.light #coach .cbub{background:#221a33;color:#f6f1e7}
       <div class="seg seg3" role="radiogroup" aria-label="Theme" id="themeSeg"><button role="radio" data-theme="system">System</button><button role="radio" data-theme="light">Light</button><button role="radio" data-theme="dark">Dark</button></div></div>
     <button class="setrow" role="switch" id="setSfx"><span><span class="st-t">Sound effects</span><br><span class="st-d">Clicks, drops, clears and the rush countdown.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setHaptics"><span><span class="st-t">Haptics</span><br><span class="st-d">Little taps when pieces land, rows clear and you find a word.</span></span><span class="sw"></span></button>
-    <button class="setrow" role="switch" id="setMusic"><span><span class="st-t">Music</span><br><span class="st-d">A calm background loop while you play.</span></span><span class="sw"></span></button>
+    <button class="setrow" role="switch" id="setMusic"><span><span class="st-t">Music</span><br><span class="st-d">Original background music while you play.</span></span><span class="sw"></span></button>
+    <div class="setgroup"><span class="st-t">Music track</span><span class="st-d">Three original loops. Picking one turns music on.</span>
+      <div class="seg seg3" role="radiogroup" aria-label="Music track" id="trackSeg"><button role="radio" data-track="calm">Calm</button><button role="radio" data-track="drive">Drive</button><button role="radio" data-track="night">Night</button></div></div>
+    <div id="remindGroup" hidden><button class="setrow" role="switch" id="setRemind"><span><span class="st-t">Daily reminder</span><br><span class="st-d">One nudge a day when the Daily is waiting, with your streak. Skipped on days you have already played.</span></span><span class="sw"></span></button>
+    <div class="setgroup" id="remindTimes"><span class="st-t">Remind me at</span><div class="seg seg3" role="radiogroup" aria-label="Reminder time"><button role="radio" data-remind="morning">9 AM</button><button role="radio" data-remind="noon">12:30 PM</button><button role="radio" data-remind="evening">7 PM</button></div></div></div>
     <button class="setrow" role="switch" id="setZen"><span><span class="st-t">Zen mode</span><br><span class="st-d">No rush timer and no game over: a full well just clears its top. Scores count at half.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setAuto"><span><span class="st-t">Autocheck</span><br><span class="st-d">Wrong letters turn red as you type. Uses up the gold-solve bonus.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setRead"><span><span class="st-t">Readable font</span><br><span class="st-d">A wider, plainer font with more space between letters.</span></span><span class="sw"></span></button>
@@ -1211,7 +1266,7 @@ function checkWords(cell){
   if(done.length){
     const pu=performance.now()+650;done.forEach(w=>w.cells.forEach((k,i)=>CWFX.set(k,{i,until:pu})));S.popUntil=isWide()?0:performance.now()+520;setTimeout(()=>{if(S)renderAll()},540);hap("success");
     let gain=0;for(const w of done){gain+=scoreWord(w);S.queue.push(...piecesFor(w.ans,S.L.drop,S.R));if(S.L.texts&&S.L.texts[w.ans])S.lastText={word:w.ans,...S.L.texts[w.ans]}}
-    blip(660,.08);setTimeout(()=>blip(880,.1),80);
+    sfx("solve");
     toast(done.map(w=>w.ans).join(" + ")+" ↓ +"+gain+(S.chain?"  CHAIN ×"+(S.chain+1):""));
     S.phase="drop";spawnNext();
   }
@@ -1243,7 +1298,7 @@ function rotate(){if(S.phase!=="drop"||!S.active)return;const p=S.active;
   for(const k of[0,-1,1,-2,2,-3,3]){np.c=nc+k;if(!collides(absCells(np))){p.cells=rc;p.r=np.r;p.c=np.c;blip(420,.03);renderWell();return}}
 }
 function softDrop(){if(S.phase!=="drop"||!S.active)return;if(!collides(absCells(S.active,1,0))){S.active.r++;S.acc=0;renderWell()}else lock()}
-function hardDrop(){if(S.phase!=="drop"||!S.active)return;let d=0;while(!collides(absCells(S.active,1,0))){S.active.r++;d++}addPts("drop",2*d);blip(200,.06);S._hd=d>0;lock()}
+function hardDrop(){if(S.phase!=="drop"||!S.active)return;let d=0;while(!collides(absCells(S.active,1,0))){S.active.r++;d++}addPts("drop",2*d);sfx("drop");S._hd=d>0;lock()}
 function lock(){
   let cells=absCells(S.active);S.active=null;
   if(cells.some(x=>x.r<0)){if(!S.zen){gameOver("A word stuck out of the top of the well.");return}
@@ -1252,7 +1307,7 @@ function lock(){
   hap(S._hd?"medium":"light");if(S._hd)wellFx("thump");S._hd=false;
   const full=[];for(let r=0;r<ROWS;r++)if(S.grid[r].every(Boolean))full.push(r);
   if(full.length){
-    S.phase="anim";S.flash=full.flatMap(r=>[...Array(COLS)].map((_,c)=>[r,c]));renderWell();blip(990,.12);hap(full.length>1?"heavy":"rigid");if(full.length>1)wellFx("quake");
+    S.phase="anim";S.flash=full.flatMap(r=>[...Array(COLS)].map((_,c)=>[r,c]));renderWell();sfx("clear");hap(full.length>1?"heavy":"rigid");if(full.length>1)wellFx("quake");
     setTimeout(()=>{const keep=[];for(let r=0;r<ROWS;r++)if(!full.includes(r))keep.push(r);
       for(const r of full){S.grid.splice(r,1);S.grid.unshift(Array(COLS).fill(null))}
       keep.forEach((o,i)=>{const nr=full.length+i,sh=nr-o;if(sh>0)for(let c=0;c<COLS;c++)if(S.grid[nr][c])fxCell(nr,c,"fall"+Math.min(4,sh),300)});
@@ -1268,7 +1323,7 @@ function gravity(){for(let c=0;c<COLS;c++){const col=[];for(let r=ROWS-1;r>=0;r-
 function afterSettle(){
   if(S.tut&&S.lockCount>=2&&!S.tut.rushed&&occurrences(S.L.tutWord).length){S.tut.rushed=true;startRush();return}
   if(!S.targetHit){const span=findTarget(S.grid,S.L.target[0]);
-    if(span){S.targetHit=true;addPts("target",500);S.phase="anim";S.hit=span;renderAll();toast("TARGET +500");hap("success");setTimeout(()=>hap("heavy"),140);burst(document.getElementById("midline"),30,170);blip(784,.1);setTimeout(()=>blip(1046,.18),120);
+    if(span){S.targetHit=true;addPts("target",500);S.phase="anim";S.hit=span;renderAll();toast("TARGET +500");hap("success");setTimeout(()=>hap("heavy"),140);burst(document.getElementById("midline"),30,170);sfx("target");
       setTimeout(()=>{S.grid.splice(MID,1);S.grid.unshift(Array(COLS).fill(null));S.hit=[];afterSettle()},900);return}}
   const above=S.grid.slice(0,MID).some(row=>row.some(Boolean));
   if(above&&S.lockCount-S.lastRush>=S.cool){startRush();return}
@@ -1288,7 +1343,7 @@ function startRush(){
   if(mode==="clue"){const b=bonus();word=b[0];clue=b[1]}
   let scr=word;for(let t=0;t<8&&scr===word;t++)scr=shuffle([...word],S.R).join("");
   const lim=S.zen?RUSH_SECS:rushLimit(mode);S.rush={mode,word,clue,scr,input:"",taps:[],t0:performance.now(),left:lim,limit:lim,state:"on",zen:!!S.zen};
-  S.phase="rush";announce(mode==="tap"?`Rush. ${fmtTime(lim)}. Find ${word} in the well.`:mode==="scramble"?`Rush. ${fmtTime(lim)}. Unscramble the hidden word.`:`Rush. ${fmtTime(lim)}. `+clue);blip(330,.08);setTimeout(()=>blip(440,.08),100);setTimeout(()=>blip(550,.12),200);
+  S.phase="rush";announce(mode==="tap"?`Rush. ${fmtTime(lim)}. Find ${word} in the well.`:mode==="scramble"?`Rush. ${fmtTime(lim)}. Unscramble the hidden word.`:`Rush. ${fmtTime(lim)}. `+clue);sfx("rush");
   renderAll();
 }
 function occurrences(word){return scanWords(S.grid,new Set([word])).map(f=>f.cells)}
@@ -1310,12 +1365,12 @@ function rushWin(cells){
   const R_=S.rush;R_.state="won";S.rushWins++;S.rushStreak=(S.rushStreak||0)+1;
   const bonus=R_.zen?100:150+Math.ceil(R_.left)*3+(RUSH_SECS-R_.limit)*2+Math.min(250,50*(S.rushStreak-1));addPts("rush",bonus);
   const next=R_.zen?R_.limit:rushLearn(R_.mode,R_.limit-R_.left,R_.limit,true);R_.next=next;
-  S.hit=cells;renderAll();toast("FOUND +"+bonus);hap("success");burst(document.getElementById("well"),26,160);if(next<R_.limit)setTimeout(()=>toast("NEXT RUSH "+fmtTime(next)),450);blip(880,.08);setTimeout(()=>blip(1175,.16),90);
+  S.hit=cells;renderAll();toast("FOUND +"+bonus);hap("success");burst(document.getElementById("well"),26,160);if(next<R_.limit)setTimeout(()=>toast("NEXT RUSH "+fmtTime(next)),450);sfx("rushwin");
   setTimeout(()=>{cells.forEach(([r,c])=>S.grid[r][c]=null);for(let r=0;r<MID;r++)S.grid[r].fill(null);gravity();
     S.hit=[];S.rush=null;S.cool=1;afterRush()},900);
 }
 function rushLose(){
-  const R_=S.rush;R_.state="lost";S.rushStreak=0;R_.next=rushLearn(R_.mode,R_.limit,R_.limit,false);renderRush();blip(160,.25);hap("error");
+  const R_=S.rush;R_.state="lost";S.rushStreak=0;R_.next=rushLearn(R_.mode,R_.limit,R_.limit,false);renderRush();sfx("lose");hap("error");
   setTimeout(()=>{
     if(S.grid[0].some(Boolean)){gameOver("A junk row pushed the stack out of the well.");return}
     S.grid.shift();const gap=Math.floor(S.R()*COLS);const row=Array(COLS).fill(null);
@@ -1392,13 +1447,13 @@ function renderQuiz(){
 /* ---------- end states ---------- */
 function stars(){return 1+(S.targetHit?1:0)+((S.rushTotal===0||S.rushWins===S.rushTotal)?1:0)}
 function levelDone(){
-  if(S.tut){S.phase="done";clearRun();blip(660,.1);setTimeout(()=>blip(880,.1),120);setTimeout(()=>blip(1320,.25),240);hap("success");burst(document.getElementById("well"),36,190);setTimeout(()=>tutEnd(false),500);return}
+  if(S.tut){S.phase="done";clearRun();sfx("win");hap("success");burst(document.getElementById("well"),36,190);setTimeout(()=>tutEnd(false),500);return}
   S.phase="done";finalize(true);clearRun();const st=stars();
   if(S.li>=0){const prev=store[S.L.id]||{stars:0,best:0};store[S.L.id]={stars:Math.max(prev.stars,st),best:Math.max(prev.best,S.score)};saveStore()}
-  blip(660,.1);setTimeout(()=>blip(880,.1),120);setTimeout(()=>blip(1320,.25),240);
+  sfx("win");
   recordGame(true);showResult(true,st);
 }
-function gameOver(why){if(S.tut){S.phase="over";tutEnd(false);return}S.phase="over";S.active=null;finalize(false);clearRun();recordGame(false);blip(200,.2);setTimeout(()=>blip(130,.35),180);showResult(false,0,why)}
+function gameOver(why){if(S.tut){S.phase="over";tutEnd(false);return}S.phase="over";S.active=null;finalize(false);clearRun();recordGame(false);sfx("over");showResult(false,0,why)}
 function showResult(win,st,why){
   const el=document.getElementById("result");const nx=S.li>=0?LEVELS[S.li+1]:null;const has=!!nx;const sameCat=has&&nx.ci===S.L.ci;
   const dk=S.L.daily,official=dk&&!S.L.archive?dailyRecord(dk):null;
@@ -1408,6 +1463,7 @@ function showResult(win,st,why){
    ${win?`<div class="resrow"><div class="stars" aria-label="${st} of 3 stars">${"★".repeat(st)}<i>${"★".repeat(3-st)}</i></div>${S.grade?`<span class="grade g-${S.grade}" role="img" aria-label="Grade ${S.grade}">${S.grade}</span>`:""}</div>
      ${S.gold?`<span class="goldtag">GOLD SOLVE · NO HELP</span>`:help?`<span class="sub">${help}</span>`:""}`:`<p class="sub">${why}</p>`}
    <div class="pts">${fmtN(S.score)}</div>${S.newBest?`<span class="goldtag">NEW PERSONAL BEST</span>`:""}
+   ${chalResultHTML()}
    ${breakdownHTML()}
    ${win?miniGridHTML():""}
    <ul><li>${S.cw.words.filter(w=>w.solved).length}/${S.cw.words.length} words solved${S.maxChain>1?` · best chain ×${S.maxChain}`:""}</li>
@@ -1415,14 +1471,16 @@ function showResult(win,st,why){
    <li>Rushes won: ${S.rushWins}/${S.rushTotal}</li><li>Rows cleared: ${S.linesCleared}</li></ul>
    ${S.L.texts?`<div class="readback" data-mag><span class="ln">READ IT BACK</span>${S.cw.words.filter(w=>w.solved).map(w=>{const x=S.L.texts[w.ans];return x?`<div class="rb"><b>${w.ans}</b><p>${x.ref?`“${x.text}”`:x.text}</p>${x.ref?`<cite>${x.ref}</cite>`:""}</div>`:""}).join("")}</div>`:""}
    <details class="how sc"><summary>How scoring works</summary>${SCORING_HELP}</details>
-   <div class="btns">${official?`<button class="big" id="shareD">Share result</button>`:""}${win&&has?`<button class="${official?"ghost-btn":"big"}" id="nextL">${sameCat?"Next puzzle":"Next category: "+nx.cat}</button>`:""}
+   <div class="btns">${official?`<button class="big" id="shareD">Share result</button>`:""}${!S.L.custom&&S.score>0?`<button class="ghost-btn" id="chalBtn">${S.challenge?"Send it back":"Challenge a friend"}</button>`:""}${win&&has?`<button class="${official?"ghost-btn":"big"}" id="nextL">${sameCat?"Next puzzle":"Next category: "+nx.cat}</button>`:""}
    <button class="${(win&&has)||official?"ghost-btn":"big"}" id="retryL">${dk?"Play again (practice)":"Play again"}</button>
    <button class="ghost-btn" id="toMenu">All categories</button></div>`;
   el.hidden=false;el.scrollTop=0;
   const n=document.getElementById("nextL");if(n)n.onclick=()=>startLevel(S.li+1);
-  const sh=document.getElementById("shareD");if(sh)sh.onclick=()=>shareOut(shareText(official,dk));
+  const sh=document.getElementById("shareD");if(sh)sh.onclick=()=>shareWithCard(shareText(official,dk));
+  const cb=document.getElementById("chalBtn");if(cb)cb.onclick=()=>shareWithCard(chalShareText());
   document.getElementById("retryL").onclick=()=>dk?playDaily(dk,true):startLevel(S.li>=0?S.li:S.L);
   document.getElementById("toMenu").onclick=showMenu;
+  setTimeout(runCele,650);
 }
 /* ---------- hub: card deck, rankings, profile ---------- */
 const CAT_LOOK={
@@ -1451,8 +1509,8 @@ function starsTotal(){return Object.values(store).reduce((t,s)=>t+(s.stars||0),0
 function streak(){const set=new Set(stats.days);let n=0;const d=new Date();if(!set.has(dayKeyOf(d)))d.setDate(d.getDate()-1);while(set.has(dayKeyOf(d))){n++;d.setDate(d.getDate()-1)}return n}
 function saveStats(){stats.stars=store;try{localStorage.setItem("crossfall-stats",JSON.stringify(stats))}catch(e){}}
 function recordGame(win){
-  const now=Date.now(),practice=!!(S.L.custom||S.L.archive),g={t:now,id:S.L.id,cat:S.L.cat,name:S.L.name,score:S.score,stars:win?stars():0,words:S.cw.words.filter(w=>w.solved).length,
-    target:S.targetHit,rushW:S.rushWins,rushT:S.rushTotal,rows:S.linesCleared,win,secs:Math.round((now-(S.t0||now))/1000),grade:S.grade,gold:!!S.gold,chain:S.maxChain||0,practice,zen:!!S.zen};
+  const lv0=levelOf(xpTotal()).lv,now=Date.now(),practice=!!(S.L.custom||S.L.archive),g={t:now,id:S.L.id,cat:S.L.cat,name:S.L.name,score:S.score,stars:win?stars():0,words:S.cw.words.filter(w=>w.solved).length,
+    target:S.targetHit,rushW:S.rushWins,rushT:S.rushTotal,rows:S.linesCleared,win,secs:Math.round((now-(S.t0||now))/1000),grade:S.grade,gold:!!S.gold,chain:S.maxChain||0,practice,zen:!!S.zen,daily:!!(S.L.daily&&!S.L.archive)};
   const T=stats.tot;S.newBest=!practice&&T.games>0&&g.score>T.best;
   stats.games.unshift(g);stats.games=stats.games.slice(0,60);
   if(!practice){T.games++;T.score+=g.score;T.words+=g.words;T.targets+=g.target?1:0;T.rushW+=g.rushW;T.rushT+=g.rushT;T.rows+=g.rows;T.wins+=win?1:0;T.best=Math.max(T.best,g.score);T.secs+=g.secs;
@@ -1464,7 +1522,7 @@ function recordGame(win){
     if(!stats.daily[d]){stats.daily[d]={score:g.score,grade:S.grade,gold:!!S.gold,win,target:S.targetHit,chain:S.maxChain||0,rushW:S.rushWins,rushT:S.rushTotal,log:S.wordLog,t:now};daily=g.score;
       const ks=Object.keys(stats.daily).sort();ks.slice(0,Math.max(0,ks.length-60)).forEach(k=>delete stats.daily[k])}
     if(win)bumpDailyStreak(d)}
-  saveStats();pushCloud();if(!practice)gcSync(g.score,daily);
+  recordChal();progressAfter(lv0);saveStats();pushCloud();if(!practice)gcSync(g.score,daily);
 }
 
 /* cloud: shared leaderboard + private stats copy */
@@ -1638,7 +1696,7 @@ function myRank(){if(gc.native){const d=gc.rows.total;return d&&d.mine?{pos:d.mi
 function levelOf(score){const lv=Math.floor(Math.sqrt(score/400))+1,lo=Math.pow(lv-1,2)*400,hi=Math.pow(lv,2)*400;return{lv,pct:Math.round((score-lo)/(hi-lo)*100),toNext:hi-score}}
 function renderProfile(){if(gc.native)gcLoad("total");
   const el=document.getElementById("profile");if(!el)return;
-  const T=stats.tot,nick=stats.nick||(cloud.uid?defaultNick():"Player"),L=levelOf(T.score),rk=myRank();
+  const T=stats.tot,nick=stats.nick||(cloud.uid?defaultNick():"Player"),L=levelOf(xpTotal()),rk=myRank();
   const ds=dailyStreak(),bankN=Object.keys(stats.bank||{}).length,bankRecent=Object.entries(stats.bank||{}).sort((a,b)=>b[1].t-a[1].t).slice(0,8);
   const maxStars=LEVELS.length*3,rushRate=T.rushT?Math.round(T.rushW/T.rushT*100):null;
   const kpi=(l,v,s)=>`<div class="kpi"><span class="kl">${l}</span><span class="kv">${v}</span>${s?`<span class="ks">${s}</span>`:""}</div>`;
@@ -1651,7 +1709,8 @@ function renderProfile(){if(gc.native)gcLoad("total");
        <form class="pf-nick" id="nickForm"><label class="sr" for="nickIn">Player name</label><input id="nickIn" maxlength="16" value="${esc(nick)}" autocomplete="off"><button type="submit">Save</button></form>
        <span class="pf-rank">${rk?`Rank <b>#${rk.pos}</b> of ${fmtN(rk.of)} worldwide`:(cloud.db||(gc.native&&gc.auth&&gc.auth.ok))?"Finish a puzzle to get ranked":gc.native?"Sign in to Game Center to get ranked":"Sign in to get ranked"} · Level <b>${L.lv}</b></span>
        <div class="xp" role="img" aria-label="${L.pct}% to level ${L.lv+1}"><i style="width:${L.pct}%"></i></div>
-       <span class="pf-rank">${fmtN(L.toNext)} points to level ${L.lv+1}</span>
+       <span class="pf-rank">${fmtN(L.toNext)} XP to level ${L.lv+1}</span>
+       <button class="retake" id="pfRewards">Rewards, challenges &amp; themes</button>
      </div>
    </div>
    <div class="kpis">
@@ -1674,6 +1733,7 @@ function renderProfile(){if(gc.native)gcLoad("total");
     if(!v)return;stats.nick=v;saveStats();pushCloud();toast("Name saved");renderProfile()};
   const rt=document.getElementById("pfRetake");if(rt)rt.onclick=()=>showQuiz(null);
   const rvb=document.getElementById("pfReview");if(rvb)rvb.onclick=openReview;
+  const pr=document.getElementById("pfRewards");if(pr)pr.onclick=openRewards;
   wireChart();
 }
 function scoreChart(games){
@@ -1700,7 +1760,7 @@ function wireChart(){
 }
 function openDrawer(){
   const d=document.getElementById("drawer"),sc=document.getElementById("scrim");
-  const nick=stats.nick||"Player",L=levelOf(stats.tot.score),rk=myRank();
+  const nick=stats.nick||"Player",L=levelOf(xpTotal()),rk=myRank();
   document.getElementById("drMe").innerHTML=`<div class="pf-av" aria-hidden="true">${esc(nick.charAt(0).toUpperCase())}</div><div><b>${esc(nick)}</b><span>Level ${L.lv} · ${fmtN(stats.tot.score)} pts${rk?` · #${rk.pos}`:""}</span></div>`;
   document.getElementById("drCats").innerHTML=CATEGORIES.map((c,i)=>{const got=c.puzzles.reduce((t,p)=>t+((store[p.id]||{}).stars||0),0);const lk=CAT_LOOK[c.name]||{g1:"#888"};
     return`<button data-ci="${i}"><i class="dot" style="--d:${lk.g1}"></i>${esc(c.name)}<span class="cs">${got}★</span></button>`}).join("");
@@ -1728,6 +1788,7 @@ document.getElementById("drClose").onclick=closeDrawer;document.getElementById("
     else if(a==="checkin")showQuiz(null);
     else if(a==="archive")openArchive();else if(a==="maker")openMaker();else if(a==="review")openReview();else if(a==="backup")openBackup();
     else if(a==="tour"){startTutorial()}
+    else if(a==="rewards")openRewards();else if(a==="code")openCode();
     else if(a==="pro"){showPaywall(PRO?"owned":"menu")}
     else if(a==="how"){goPage("Play");const h=document.querySelector(".how");if(h){h.open=true;setTimeout(()=>h.scrollIntoView({behavior:"smooth",block:"start"}),60)}}});
   document.querySelectorAll("#rkSeg button").forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;renderRanks()});
@@ -1785,7 +1846,7 @@ function renderScreens(){
 }
 function renderAll(){if(!S)return;renderScreens();renderRush();renderHeader();renderCW();renderClue();renderPad();layout();renderWell();magRefresh();if(S.tut)tutRender()}
 function renderHeader(){
-  document.getElementById("lvlName").innerHTML=`<small>${esc(S.L.cat)}</small><b>${esc(S.L.name)}${S.L.n>1?` <span style="color:var(--muted);font-weight:500">${S.L.pi+1}/${S.L.n}</span>`:""}</b>`;
+  document.getElementById("lvlName").innerHTML=`<small>${esc(S.L.cat)}</small><b>${esc(S.L.name)}${S.L.n>1?` <span style="color:var(--muted);font-weight:500">${S.L.pi+1}/${S.L.n}</span>`:""}</b>${S.challenge?`<span class="chal-pill" id="chalPill"></span>`:""}`;chalPill();
   setScore(S.score);
   const t=document.getElementById("target");t.className="target"+(S.targetHit?" hit":"");
   t.innerHTML=`<span class="lab">Target</span><span class="word">${[...S.L.target[0]].map(c=>`<b>${c}</b>`).join("")}</span>
@@ -2065,7 +2126,8 @@ window.addEventListener("resize",()=>{if(S&&S.tut)tutRender()});
 
 /* ---------- 1.1 polish: score count-up, effects, haptics ---------- */
 let scoreShown=null,scoreRaf=0;
-function setScore(v){const el=document.getElementById("score");if(!el)return;
+function chalPill(){const p=document.getElementById("chalPill");if(!p||!S||!S.challenge)return;const c=S.challenge,a=S.score>c.s;p.className="chal-pill"+(a?" ahead":"");p.textContent=(a?"Ahead of ":"Beat ")+c.n+": "+fmtN(c.s)}
+function setScore(v){chalPill();const el=document.getElementById("score");if(!el)return;
   if(scoreShown==null||v<scoreShown||matchMedia("(prefers-reduced-motion: reduce)").matches){scoreShown=v;el.textContent=v;return}
   if(v===scoreShown)return;const from=scoreShown,t0=performance.now();scoreShown=v;
   el.classList.remove("bump");void el.offsetWidth;el.classList.add("bump");
@@ -2093,20 +2155,25 @@ function blip(f,d){if(muted||!AC)return;try{const t=AC.currentTime,g=AC.createGa
   for(const[type,mul,vol]of[["square",1,.55],["triangle",2,.45]]){const o=AC.createOscillator(),og=AC.createGain();o.type=type;o.frequency.setValueAtTime(f*mul*1.04,t);o.frequency.exponentialRampToValueAtTime(f*mul,t+.03);og.gain.value=vol;o.connect(og).connect(lp);o.start(t);o.stop(t+d+.1)}
   lp.connect(g).connect(MASTER)}catch(e){}}
 /* Music: a calm generated loop (pentatonic arpeggio over a slow bass), scheduled ahead in small chunks */
-const music=(()=>{let on=false,timer=0,next=0,step=0,bus=null;const BPM=88,SPB=60/BPM/2;
-  const prog=[[57,60,64,67],[53,57,60,64],[48,52,55,60],[55,59,62,67]];const pat=[0,2,1,3,2,1,3,2];
+const music=(()=>{let on=false,timer=0,next=0,step=0,bus=null;
   const hz=m=>440*Math.pow(2,(m-69)/12);
+  const T=()=>TRACKS[prefs.track]||TRACKS.calm;
   function note(t,m,len,type,vol){const o=AC.createOscillator(),g=AC.createGain();o.type=type;o.frequency.value=hz(m);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+len);o.connect(g).connect(bus);o.start(t);o.stop(t+len+.05)}
-  function tick(){if(!on||!AC)return;while(next<AC.currentTime+.6){const bar=Math.floor(step/8)%prog.length,ch=prog[bar],i=step%8;
-      note(next,ch[pat[i]]+12,SPB*1.6,"triangle",.05);
+  function hat(t,vol){const s=AC.createBufferSource(),hp=AC.createBiquadFilter(),g=AC.createGain();s.buffer=noiseBuf();hp.type="highpass";hp.frequency.value=7000;g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0001,t+.05);s.connect(hp).connect(g).connect(bus);s.start(t);s.stop(t+.06)}
+  function kick(t){const o=AC.createOscillator(),g=AC.createGain();o.frequency.setValueAtTime(140,t);o.frequency.exponentialRampToValueAtTime(45,t+.12);g.gain.setValueAtTime(.12,t);g.gain.exponentialRampToValueAtTime(.0001,t+.2);o.connect(g).connect(bus);o.start(t);o.stop(t+.22)}
+  function tick(){if(!on||!AC)return;const tr=T(),SPB=60/tr.bpm/2,lv=tr.lead==="square"?.022:.05;
+    while(next<AC.currentTime+.6){const bar=Math.floor(step/8)%tr.prog.length,ch=tr.prog[bar],i=step%8;
+      note(next,ch[tr.pat[i]]+12,SPB*1.6,tr.lead,lv);
       if(i===0)note(next,ch[0]-12,SPB*7.5,"sine",.07);
       if(i===4&&bar%2===1)note(next,ch[3]+24,SPB*3,"sine",.018);
+      if(tr.perc){if(i%4===0)kick(next);if(i%2===1)hat(next,.025)}
       next+=SPB;step++}
     timer=setTimeout(tick,180)}
   return{set(v){if(v===on)return;on=v;if(!AC)return;
       if(on){if(!bus){bus=AC.createGain();const lp=AC.createBiquadFilter();lp.type="lowpass";lp.frequency.value=2400;bus.connect(lp).connect(MASTER)}
-        bus.gain.cancelScheduledValues(AC.currentTime);bus.gain.setValueAtTime(.0001,AC.currentTime);bus.gain.exponentialRampToValueAtTime(.9,AC.currentTime+1.2);next=AC.currentTime+.1;tick()}
+        bus.gain.cancelScheduledValues(AC.currentTime);bus.gain.setValueAtTime(.0001,AC.currentTime);bus.gain.exponentialRampToValueAtTime(.9,AC.currentTime+1.2);next=AC.currentTime+.1;step=0;tick()}
       else{clearTimeout(timer);if(bus){bus.gain.cancelScheduledValues(AC.currentTime);bus.gain.setValueAtTime(bus.gain.value||.9,AC.currentTime);bus.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+.4)}}},
+    restart(){if(on){this.set(false);setTimeout(()=>this.set(!!prefs.music),450)}},
     get on(){return on}}})();
 if(typeof document!=="undefined")document.addEventListener("visibilitychange",()=>{if(!AC)return;if(document.hidden)AC.suspend();else if(prefs.music||prefs.sfx)AC.resume()});
 
@@ -2128,6 +2195,10 @@ function applyPrefs(){const h=document.documentElement;prefs.light=isLight();h.s
   music.set(!!prefs.music);
   try{window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.theme&&window.webkit.messageHandlers.theme.postMessage(prefs.hc?"dark":prefs.theme)}catch(e){}
   [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setHaptics","haptics"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"]].forEach(([id,k])=>{const b=document.getElementById(id);if(b)b.setAttribute("aria-checked",!!prefs[k])});
+  try{applyWellTheme()}catch(e){}
+  document.querySelectorAll("[data-track]").forEach(b=>b.setAttribute("aria-checked",b.dataset.track===(prefs.track||"calm")));
+  document.querySelectorAll("[data-remind]").forEach(b=>b.setAttribute("aria-checked",b.dataset.remind===(prefs.remindAt||"evening")));
+  {const r=document.getElementById("setRemind");if(r)r.setAttribute("aria-checked",!!prefs.remind);const rt=document.getElementById("remindTimes");if(rt)rt.hidden=!prefs.remind;try{syncNative()}catch(e){}}
   renderPaceInfo();
   try{localStorage.setItem("crossfall-a11y",JSON.stringify(prefs))}catch(e){}
   if(S){layout();renderAll()}}
@@ -2374,6 +2445,7 @@ function renderDailyCard(){
      <div class="dc-btns"><button class="big" id="dcShare">Share</button><button class="ghost-btn" id="dcAgain">Practice</button><button class="ghost-btn" id="dcArchive">Past</button></div>`
    :`<div class="dc-btns"><button class="big" id="dcPlay">Play today's puzzle</button><button class="ghost-btn" id="dcArchive">Past</button></div>`}`;
   const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
+  box.insertAdjacentHTML("beforeend",weeklyLine());on("wkLine",openRewards);
   on("dcPlay",()=>playDaily(t));on("dcAgain",()=>playDaily(t,true));on("dcShare",()=>shareOut(shareText(rec,t)));on("dcArchive",openArchive);
 }
 function openArchive(){
@@ -2437,7 +2509,7 @@ function openMaker(){
   document.getElementById("mkShare").onclick=()=>{const s=read();if(!s)return;const r=buildCustom(s);if(r.err){msg(r.err);return}
     stats.custom=[s,...(stats.custom||[]).filter(c=>customCode(c)!==customCode(s))].slice(0,10);saveStats();
     shareOut(`Play my Crossfall puzzle "${s.t}": open Crossfall › Menu › Make a puzzle › paste this code:\n${customCode(s)}`)};
-  document.getElementById("mkLoad").onclick=()=>{const s=readCustomCode(document.getElementById("mkCode").value);if(!s||s.w.length<3){msg("That code didn't work. Check it was copied in full.");return}play(s)};
+  document.getElementById("mkLoad").onclick=()=>{{const c=readChalCode(document.getElementById("mkCode").value);if(c){el.hidden=true;playChallenge(c);return}}const s=readCustomCode(document.getElementById("mkCode").value);if(!s||s.w.length<3){msg("That code didn't work. Check it was copied in full.");return}play(s)};
   el.querySelectorAll("[data-ci]").forEach(b=>b.onclick=()=>play(stats.custom[+b.dataset.ci]));
   document.getElementById("mkClose").onclick=()=>el.hidden=true;
 }
@@ -2688,6 +2760,210 @@ function frame(now){const dt=Math.min(100,now-last);last=now;
   requestAnimationFrame(frame)}
 
 /* ---------- boot ---------- */
+
+/* ================= 1.1: progression, weekly challenges, streak rewards, reminders, friend challenges, share cards ================= */
+/* XP = lifetime score + bonus XP from challenges and streak milestones. Leaderboard totals stay pure score. */
+function xpTotal(){return (stats.tot.score||0)+(stats.xpBonus||0)}
+function giveXP(n,why){stats.xpBonus=(stats.xpBonus||0)+n;if(why)queueCele({kind:"xp",title:`+${fmtN(n)} XP`,sub:why})}
+
+/* ---- well themes (tile skins), unlocked by level ---- */
+const WELL_THEMES=[
+ {id:"classic",name:"Classic",lv:1,tile:"",dim:"",act:"",sw:["#ffffff","#e3d6bd","#e8671c"]},
+ {id:"neon",name:"Neon",lv:3,tile:"#c9fbff",dim:"#9fe3ee",act:"#ff4fd8",sw:["#c9fbff","#9fe3ee","#ff4fd8"]},
+ {id:"sunset",name:"Sunset",lv:5,tile:"#ffe1cc",dim:"#f7c3a6",act:"#ff5a5f",sw:["#ffe1cc","#f7c3a6","#ff5a5f"]},
+ {id:"ocean",name:"Ocean",lv:8,tile:"#d4f1ff",dim:"#a9dcf2",act:"#1e88e5",sw:["#d4f1ff","#a9dcf2","#1e88e5"]},
+ {id:"forest",name:"Forest",lv:12,tile:"#ddf5d8",dim:"#b9e3b0",act:"#2e9e5b",sw:["#ddf5d8","#b9e3b0","#2e9e5b"]},
+ {id:"royal",name:"Royal",lv:16,tile:"#ebe0ff",dim:"#cfbcf5",act:"#7b4fd6",sw:["#ebe0ff","#cfbcf5","#7b4fd6"]},
+ {id:"gold",name:"Gold",lv:20,tile:"#fff1b8",dim:"#f3d77a",act:"#c98a00",sw:["#fff1b8","#f3d77a","#c98a00"]}];
+function themeUnlocked(t){return levelOf(xpTotal()).lv>=t.lv}
+function applyWellTheme(){
+  let t=WELL_THEMES.find(x=>x.id===prefs.wellTheme)||WELL_THEMES[0];if(!themeUnlocked(t))t=WELL_THEMES[0];
+  let st=document.getElementById("wtStyle");if(!st){st=document.createElement("style");st.id="wtStyle";document.head.appendChild(st)}
+  st.textContent=t.tile?`html:not(.hc) #well,html:not(.hc) #queue,html:not(.hc) .wt-prev{--tile:${t.tile};--tile-dim:${t.dim};--accent:${t.act}}`:"";
+}
+
+/* ---- weekly challenges: 3 a week, the same for everyone, picked from the week's date ---- */
+const CHALLENGES=[
+ {id:"targets",goal:3,label:"Build 3 target words",m:g=>g.filter(x=>x.target).length},
+ {id:"rush",goal:5,label:"Win 5 rushes",m:g=>g.reduce((t,x)=>t+(x.rushW||0),0)},
+ {id:"stars",goal:8,label:"Earn 8 stars",m:g=>g.reduce((t,x)=>t+(x.stars||0),0)},
+ {id:"daily",goal:3,label:"Play 3 Daily puzzles",m:g=>g.filter(x=>x.daily).length},
+ {id:"words",goal:40,label:"Solve 40 words",m:g=>g.reduce((t,x)=>t+(x.words||0),0)},
+ {id:"gold",goal:1,label:"Get a Gold solve (no help)",m:g=>g.filter(x=>x.gold).length},
+ {id:"score",goal:15000,label:"Score 15,000 points",m:g=>g.reduce((t,x)=>t+(x.score||0),0)},
+ {id:"chain",goal:4,label:"Hit a ×4 speed chain",m:g=>Math.max(0,...g.map(x=>x.chain||0))},
+ {id:"finish",goal:5,label:"Finish 5 puzzles",m:g=>g.filter(x=>x.win).length},
+ {id:"cats",goal:3,label:"Play 3 different categories",m:g=>new Set(g.filter(x=>x.cat!=="Daily"&&x.cat!=="Custom").map(x=>x.cat)).size}];
+const CH_XP=1500,CH_ALL_XP=3000;
+function weekChallenges(){const wk=weekKeyOf(Date.now()),R=rng(+wk.replace(/-/g,"")*7+3);return shuffle(CHALLENGES.slice(),R).slice(0,3)}
+function weekGames(){const start=Date.parse(weekKeyOf(Date.now())+"T00:00:00");return stats.games.filter(g=>g.t>=start&&!(g.practice&&!g.daily))}
+function challengeState(){const wk=weekKeyOf(Date.now()),gs=weekGames(),done=(stats.wkc&&stats.wkc.key===wk)?stats.wkc.done:[];
+  return weekChallenges().map(c=>{const v=Math.min(c.goal,c.m(gs));return{...c,v,done:done.includes(c.id)||v>=c.goal,claimed:done.includes(c.id)}})}
+function daysLeftInWeek(){const end=Date.parse(weekKeyOf(Date.now())+"T00:00:00")+7*864e5;return Math.max(1,Math.ceil((end-Date.now())/864e5))}
+function claimChallenges(){
+  const wk=weekKeyOf(Date.now());if(!stats.wkc||stats.wkc.key!==wk)stats.wkc={key:wk,done:[],all:false};
+  challengeState().forEach(c=>{if(c.v>=c.goal&&!stats.wkc.done.includes(c.id)){stats.wkc.done.push(c.id);giveXP(CH_XP,"Weekly challenge: "+c.label)}});
+  if(!stats.wkc.all&&stats.wkc.done.length>=3){stats.wkc.all=true;giveXP(CH_ALL_XP,"All 3 weekly challenges done");
+    const s=stats.dstreak||{n:0,last:"",freezes:0};if((s.freezes||0)<2){s.freezes=(s.freezes||0)+1;stats.dstreak=s;queueCele({kind:"xp",title:"❄ Streak freeze",sub:"Bonus for finishing the week"})}}
+}
+
+/* ---- daily streak milestones ---- */
+const MILESTONES=[[3,1000],[7,2500],[14,5000],[30,10000],[50,15000],[100,30000],[365,100000]];
+function claimMilestones(){const n=(stats.dstreak||{}).n||0;stats.miles=stats.miles||[];
+  MILESTONES.forEach(([d,xp])=>{if(n>=d&&!stats.miles.includes(d)){stats.miles.push(d);stats.xpBonus=(stats.xpBonus||0)+xp;
+    queueCele({kind:"streak",title:`🔥 ${d}-day streak!`,sub:`+${fmtN(xp)} XP for playing the Daily ${d} days in a row`})}})}
+
+/* ---- celebrations (shown over the result screen, one at a time) ---- */
+let celeQ=[],celeOn=false;
+function queueCele(c){celeQ.push(c)}
+function runCele(){if(celeOn||!celeQ.length)return;celeOn=true;const c=celeQ.shift(),el=document.getElementById("cele");
+  el.innerHTML=`<div class="cl-card ${c.kind}" role="alertdialog" aria-modal="true" aria-labelledby="clT">
+    ${c.kind==="level"?`<div class="cl-lv"><small>LEVEL</small><b>${c.lv}</b></div>`:""}
+    <h2 id="clT">${esc(c.title)}</h2><p>${esc(c.sub||"")}</p>
+    ${c.theme?`<div class="cl-theme">${themeSwatch(c.theme)}<span>New well theme: <b>${esc(c.theme.name)}</b></span></div><button class="big" id="clUse">Use ${esc(c.theme.name)}</button>`:""}
+    <button class="${c.theme?"ghost-btn":"big"}" id="clOk">${celeQ.length?"Next":"Nice!"}</button></div>`;
+  el.hidden=false;announce(c.title+". "+(c.sub||""));sfx(c.kind==="level"?"levelup":"reward");hap("success");
+  setTimeout(()=>burst(el.querySelector(".cl-card"),c.kind==="level"?40:22,180),60);
+  const close=()=>{el.hidden=true;celeOn=false;setTimeout(runCele,180)};
+  document.getElementById("clOk").onclick=close;
+  const u=document.getElementById("clUse");if(u)u.onclick=()=>{prefs.wellTheme=c.theme.id;applyPrefs();toast(c.theme.name+" theme on");close()};
+  setTimeout(()=>{const b=el.querySelector("button");if(b)b.focus()},80);
+}
+function themeSwatch(t){return`<span class="wt-prev" aria-hidden="true" style="${t.tile?`--tile:${t.tile};--tile-dim:${t.dim};--accent:${t.act}`:""}"><i class="a">C</i><i class="b">F</i><i class="c">W</i></span>`}
+
+/* called at the end of every recorded game */
+function progressAfter(lv0){
+  claimChallenges();claimMilestones();
+  const lv1=levelOf(xpTotal()).lv;
+  if(lv1>lv0){const t=WELL_THEMES.filter(x=>x.lv>lv0&&x.lv<=lv1).pop();
+    celeQ.unshift({kind:"level",lv:lv1,title:`Level ${lv1}!`,sub:t?"You unlocked something new.":`${fmtN(levelOf(xpTotal()).toNext)} XP to level ${lv1+1}.`,theme:t||null})}
+  syncNative();
+}
+
+/* ---- rewards screen ---- */
+function openRewards(){
+  const el=document.getElementById("rewards"),X=xpTotal(),L=levelOf(X),cs=challengeState(),n=(stats.dstreak||{}).n||0,miles=stats.miles||[];
+  const cur=WELL_THEMES.find(x=>x.id===prefs.wellTheme)||WELL_THEMES[0];
+  el.innerHTML=`<h1>RE<span>WARDS</span></h1>
+   <div class="panel"><div class="rw-lv"><div class="cl-lv sm"><small>LEVEL</small><b>${L.lv}</b></div><div style="flex:1">
+     <div class="xp" role="img" aria-label="${L.pct}% to level ${L.lv+1}"><i style="width:${L.pct}%"></i></div>
+     <span class="pf-rank">${fmtN(L.toNext)} XP to level ${L.lv+1} · ${fmtN(X)} XP total</span></div></div>
+     <span class="pf-rank">Every point you score is XP. Challenges and streaks add bonus XP.</span></div>
+   <div class="panel"><h3>This week's challenges <span class="rw-dl">${daysLeftInWeek()} day${daysLeftInWeek()===1?"":"s"} left</span></h3>
+     ${cs.map(c=>`<div class="ch ${c.done?"done":""}"><div class="ch-t"><span>${c.done?"✓ ":""}${esc(c.label)}</span><span class="v">${fmtN(c.v)}/${fmtN(c.goal)}</span></div>
+       <span class="tr"><i style="width:${Math.round(c.v/c.goal*100)}%"></i></span><span class="pf-rank">+${fmtN(CH_XP)} XP</span></div>`).join("")}
+     <span class="pf-rank">Finish all 3 for +${fmtN(CH_ALL_XP)} XP and a streak freeze. New challenges every Monday.</span></div>
+   <div class="panel"><h3>Daily streak · 🔥 ${n}</h3><div class="miles">${MILESTONES.map(([d,xp])=>`<div class="ml ${miles.includes(d)?"got":""}" aria-label="${d}-day streak${miles.includes(d)?", earned":""}"><b>${d}</b><span>${miles.includes(d)?"✓":"+"+(xp>=1000?Math.round(xp/1000)+"k":xp)}</span></div>`).join("")}</div>
+     <span class="pf-rank">Play the Daily every day. Every 7 days earns a freeze that covers a missed day.</span></div>
+   <div class="panel"><h3>Well themes</h3><div class="wtgrid" role="radiogroup" aria-label="Well theme">${WELL_THEMES.map(t=>{const ok=themeUnlocked(t);
+     return`<button role="radio" aria-checked="${t.id===cur.id}" ${ok?"":"aria-disabled=\"true\""} data-wt="${t.id}" class="wt ${ok?"":"locked"}">${themeSwatch(t)}<b>${t.name}</b><span>${ok?(t.id===cur.id?"In use":"Tap to use"):"🔒 Level "+t.lv}</span></button>`}).join("")}</div></div>
+   <div class="btns wide"><button class="big" id="rwDone">Done</button></div>`;
+  el.hidden=false;el.scrollTop=0;
+  el.querySelectorAll("[data-wt]").forEach(b=>b.onclick=()=>{const t=WELL_THEMES.find(x=>x.id===b.dataset.wt);
+    if(!themeUnlocked(t)){toast(`Reach level ${t.lv} to unlock ${t.name}`);return}prefs.wellTheme=t.id;applyPrefs();announce(t.name+" theme on");openRewards()});
+  document.getElementById("rwDone").onclick=()=>{el.hidden=true;if(hubPage==="Profile")renderProfile();renderDailyCard()};
+}
+function weeklyLine(){const cs=challengeState(),d=cs.filter(c=>c.done).length;return`<button class="wk-line" id="wkLine"><span>🏆 Weekly challenges <b>${d}/3</b></span><span class="wk-bars">${cs.map(c=>`<i style="--p:${Math.round(c.v/c.goal*100)}%"></i>`).join("")}</span><span aria-hidden="true">›</span></button>`}
+
+/* ---- friend challenges: a short code that carries the puzzle and the score to beat ---- */
+let pendingChal=null;
+function chalCode(){return"CFC."+b64e(JSON.stringify({p:S.L.id,s:Math.round(S.score),n:(stats.nick||"A friend").slice(0,16),g:S.grade||""}))}
+function readChalCode(code){try{const m=String(code).trim().match(/CFC\.([A-Za-z0-9_-]+)/);if(!m)return null;const o=JSON.parse(b64d(m[1]));
+  if(!o||typeof o.p!=="string"||!(o.s>=0))return null;return{p:o.p.slice(0,40),s:Math.min(1e7,Math.round(+o.s)),n:String(o.n||"A friend").replace(/[^\p{L}\p{N} _.-]/gu,"").slice(0,16)||"A friend",g:String(o.g||"").slice(0,2)}}catch(e){return null}}
+function chalLevel(c){if(c.p.startsWith("Daily:")){const dk=c.p.slice(6);if(!/^\d{4}-\d{2}-\d{2}$/.test(dk))return null;const L=dailyLevel(dk);if(!L.words)return null;L.archive=dk!==todayKey()||!!dailyRecord(dk);return L}
+  const i=LEVELS.findIndex(l=>l.id===c.p);return i<0?null:i}
+function playChallenge(c){const L=chalLevel(c);if(L==null){toast("That challenge's puzzle isn't in this version");return}
+  pendingChal=c;startLevel(L);
+  if(S&&S.L&&S.L.id===c.p&&S.final==null){S.challenge=c;renderHeader();toast(`Beat ${c.n}: ${fmtN(c.s)}`)}pendingChal=null}
+function chalShareText(){const where=S.L.daily?`the Crossfall Daily (${fmtDay(S.L.daily)})`:`"${S.L.name}" in ${S.L.cat}`;
+  return`I scored ${fmtN(S.score)} on ${where}${S.grade?` · grade ${S.grade}`:""}. Think you can beat it? 🎯\nOpen Crossfall › Menu › Enter a code, and paste:\n${chalCode()}`}
+function chalResultHTML(){const c=S.challenge;if(!c)return"";const d=Math.round(S.score)-c.s;
+  return`<div class="chal-res ${d>0?"won":d===0?"tie":"lost"}"><div>${d>0?`You beat <b>${esc(c.n)}</b> by ${fmtN(d)}!`:d===0?`Dead even with <b>${esc(c.n)}</b>.`:`<b>${esc(c.n)}</b> wins by ${fmtN(-d)}.`}</div><span>${esc(c.n)}: ${fmtN(c.s)} · You: ${fmtN(S.score)}</span></div>`}
+function recordChal(){const c=S.challenge;if(!c)return;stats.chals=[{n:c.n,them:c.s,me:Math.round(S.score),p:c.p,t:Date.now()},...(stats.chals||[])].slice(0,20);
+  stats.chalW=(stats.chalW||0)+(S.score>c.s?1:0)}
+function openCode(){const el=document.getElementById("textbox");
+  el.innerHTML=`<h1>ENTER A <span>CODE</span></h1><p class="sub">Paste a friend's challenge code (CFC.…) or a shared puzzle code (CF1.…).</p>
+   <textarea id="codeIn" class="mkin" rows="3" autocapitalize="off" autocomplete="off" placeholder="CFC.…"></textarea><p class="mkmsg" id="codeMsg" role="status"></p>
+   <div class="btns wide"><button class="big" id="codeGo">Play</button><button class="ghost-btn" id="codeX">Cancel</button></div>`;
+  el.hidden=false;const ta=document.getElementById("codeIn");ta.focus();
+  document.getElementById("codeX").onclick=()=>el.hidden=true;
+  document.getElementById("codeGo").onclick=()=>{const v=ta.value,c=readChalCode(v);
+    if(c){el.hidden=true;playChallenge(c);return}
+    const s=readCustomCode(v);if(s&&s.w.length>=3){const r=buildCustom(s);if(!r.err){el.hidden=true;startLevel(r.L);return}}
+    const m=document.getElementById("codeMsg");m.textContent="That code didn't work. Check it was copied in full.";announce(m.textContent)}}
+
+/* ---- share card: a picture of the result for Messages and socials ---- */
+function shareCard(){
+  try{const W=1080,H=1350,cv=document.createElement("canvas");cv.width=W;cv.height=H;const x=cv.getContext("2d");
+    const look=CAT_LOOK[S.L.cat]||{g1:"#e8671c",g2:"#5a1f6e"};const gr=x.createLinearGradient(0,0,W,H);gr.addColorStop(0,look.g1);gr.addColorStop(1,look.g2);x.fillStyle=gr;x.fillRect(0,0,W,H);
+    x.fillStyle="rgba(0,0,0,.28)";x.fillRect(0,0,W,H);
+    const font=(w,s)=>`${w} ${s}px "Avenir Next","Helvetica Neue",Arial,sans-serif`;x.textAlign="center";x.fillStyle="#fff";
+    x.font=font(800,64);x.fillText("CROSSFALL",W/2,150);
+    x.font=font(600,40);x.globalAlpha=.85;x.fillText((S.L.daily?"Daily · "+fmtDay(S.L.daily):S.L.cat+" · "+S.L.name).slice(0,40),W/2,225);x.globalAlpha=1;
+    x.font=font(800,190);x.fillText(fmtN(S.score),W/2,470);x.font=font(600,44);x.fillText("points",W/2,535);
+    const st=S.phase==="over"?0:stars();x.font=font(400,96);x.fillText("★".repeat(st)+"☆".repeat(3-st),W/2,680);
+    if(S.grade){x.fillStyle="#ffd34d";x.beginPath();x.arc(W/2,800,78,0,7);x.fill();x.fillStyle="#231b35";x.font=font(900,80);x.fillText(S.grade,W/2,828)}
+    const log=S.wordLog||[],sz=86,gap=16,n=Math.min(log.length,10),tw=n*sz+(n-1)*gap;let ox=(W-tw)/2;
+    log.slice(0,10).forEach(w=>{x.fillStyle=w.own?"#4fd1a5":"#ffd34d";const r=16;x.beginPath();x.roundRect?x.roundRect(ox,930,sz,sz,r):x.rect(ox,930,sz,sz);x.fill();ox+=sz+gap});
+    x.fillStyle="#fff";x.font=font(600,40);const bits=[S.targetHit?"🎯 Target built":"",S.maxChain>1?"⚡ ×"+S.maxChain+" chain":"",S.rushTotal?`🏃 ${S.rushWins}/${S.rushTotal} rushes`:""].filter(Boolean).join("   ");x.fillText(bits,W/2,1110);
+    x.font=font(800,52);x.fillText("Can you beat it?",W/2,1235);
+    return cv.toDataURL("image/png")}catch(e){return null}}
+function shareWithCard(text){const img=shareCard();
+  try{if(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.share&&img){window.webkit.messageHandlers.share.postMessage({text,image:img});return}}catch(e){}
+  if(img&&navigator.canShare){try{const b=atob(img.split(",")[1]),u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);
+    const f=new File([u],"crossfall.png",{type:"image/png"});if(navigator.canShare({files:[f]})){navigator.share({files:[f],text}).catch(()=>{});return}}catch(e){}}
+  shareOut(text)}
+
+/* ---- native: reminders + home-screen widget snapshot ---- */
+const NATIVE_NOTIFY=typeof window!=="undefined"&&!!window.__NATIVE_NOTIFY;
+const REMIND_TIMES={morning:[9,0,"9 AM"],noon:[12,30,"12:30 PM"],evening:[19,0,"7 PM"]};
+function nativePost(name,msg){try{window.webkit.messageHandlers[name].postMessage(msg);return true}catch(e){return false}}
+function syncNative(){if(!NATIVE_NOTIFY)return;const ds=dailyStreak(),L=levelOf(xpTotal()),t=REMIND_TIMES[prefs.remindAt]||REMIND_TIMES.evening,cs=challengeState();
+  nativePost("status",{streak:ds.alive?ds.n:0,doneToday:!!ds.doneToday,freezes:ds.freezes||0,best:(stats.dstreak||{}).best||0,level:L.lv,pct:L.pct,
+    weekly:cs.filter(c=>c.done).length,day:todayKey(),score:((dailyRecord(todayKey())||{}).score)||0,remind:!!prefs.remind,hour:t[0],minute:t[1]})}
+if(typeof window!=="undefined")window.__notify=r=>{if(r&&r.granted===false&&prefs.remind){prefs.remind=false;applyPrefs();toast("Turn on notifications for Crossfall in iPhone Settings")}};
+function setRemind(on){prefs.remind=on;applyPrefs();if(on){nativePost("notify",{type:"ask"});const t=REMIND_TIMES[prefs.remindAt]||REMIND_TIMES.evening;announce("Daily reminder on, "+t[2])}}
+
+/* ---- sound effects with a little more body ---- */
+let NOISE=null;
+function noiseBuf(){if(NOISE||!AC)return NOISE;const n=AC.sampleRate*.3|0,b=AC.createBuffer(1,n,AC.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=Math.random()*2-1;return NOISE=b}
+function tone(f,t0,d,type,vol,bend){const o=AC.createOscillator(),g=AC.createGain();o.type=type||"triangle";o.frequency.setValueAtTime(f*(bend||1),AC.currentTime+t0);if(bend)o.frequency.exponentialRampToValueAtTime(f,AC.currentTime+t0+.04);
+  const t=AC.currentTime+t0;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g).connect(MASTER);o.start(t);o.stop(t+d+.05)}
+function thud(t0,vol,f){const s=AC.createBufferSource(),lp=AC.createBiquadFilter(),g=AC.createGain(),t=AC.currentTime+t0;s.buffer=noiseBuf();lp.type="lowpass";lp.frequency.value=f||420;
+  g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0001,t+.18);s.connect(lp).connect(g).connect(MASTER);s.start(t);s.stop(t+.2)}
+const SFX={
+  solve(){tone(659,0,.18,"triangle",.07,1.02);tone(988,.07,.28,"triangle",.06,1.02);tone(1319,.07,.22,"sine",.025)},
+  drop(){thud(0,.22,380);tone(110,0,.14,"sine",.09,1.6)},
+  clear(){[784,988,1175,1568].forEach((f,i)=>tone(f,i*.045,.22,"triangle",.05));thud(0,.08,2400)},
+  target(){[523,659,784].forEach(f=>tone(f,0,.32,"triangle",.045));[659,784,1047].forEach(f=>tone(f,.16,.5,"triangle",.045));tone(1568,.16,.5,"sine",.02)},
+  rush(){[330,392,440,523].forEach((f,i)=>tone(f,i*.08,.12,"square",.03))},
+  rushwin(){tone(880,0,.14,"triangle",.06,1.03);tone(1175,.09,.18,"triangle",.06);tone(1760,.18,.3,"sine",.03)},
+  lose(){tone(196,0,.28,"triangle",.07,1.05);tone(147,.16,.42,"triangle",.07)},
+  win(){[523,659,784,1047].forEach((f,i)=>tone(f,i*.1,.3,"triangle",.055));[523,659,784].forEach(f=>tone(f,.42,.7,"sine",.03))},
+  over(){tone(220,0,.3,"triangle",.07);tone(165,.2,.5,"triangle",.07);thud(.2,.1,300)},
+  levelup(){[523,659,784,1047,1319].forEach((f,i)=>tone(f,i*.07,.28,"triangle",.05));[1047,1319,1568].forEach(f=>tone(f,.38,.8,"sine",.028))},
+  reward(){tone(1047,0,.16,"triangle",.05);tone(1568,.08,.35,"sine",.035)}};
+function sfx(name){if(muted||!AC)return;try{SFX[name]&&SFX[name]()}catch(e){}}
+
+/* ---- music tracks ---- */
+const TRACKS={
+  calm:{label:"Calm",bpm:88,prog:[[57,60,64,67],[53,57,60,64],[48,52,55,60],[55,59,62,67]],pat:[0,2,1,3,2,1,3,2],lead:"triangle",perc:false},
+  drive:{label:"Drive",bpm:116,prog:[[50,57,62,65],[46,53,58,62],[48,55,60,64],[45,52,57,61]],pat:[0,1,2,3,2,3,1,2],lead:"square",perc:true},
+  night:{label:"Night",bpm:72,prog:[[52,55,59,64],[48,52,55,59],[45,48,52,57],[47,51,54,59]],pat:[0,2,3,1,2,3,0,2],lead:"sine",perc:false}};
+
+function initGrowth(){
+  if(prefs.wellTheme==null)prefs.wellTheme="classic";if(!prefs.track)prefs.track="calm";if(!prefs.remindAt)prefs.remindAt="evening";
+  applyWellTheme();
+  const rs=document.getElementById("setRemind"),rg=document.getElementById("remindGroup");
+  if(rg)rg.hidden=!NATIVE_NOTIFY;
+  if(rs)rs.onclick=()=>setRemind(!prefs.remind);
+  document.querySelectorAll("[data-remind]").forEach(b=>b.onclick=()=>{prefs.remindAt=b.dataset.remind;applyPrefs();announce("Reminder at "+REMIND_TIMES[prefs.remindAt][2])});
+  document.querySelectorAll("[data-track]").forEach(b=>b.onclick=()=>{audioInit();prefs.track=b.dataset.track;if(!prefs.music)prefs.music=true;music.restart();applyPrefs();announce("Music: "+TRACKS[prefs.track].label)});
+  claimChallenges();claimMilestones();saveStats();applyPrefs();syncNative();
+  setTimeout(()=>{if(document.getElementById("onb").hidden&&!S)runCele()},1400);
+  document.addEventListener("visibilitychange",()=>{if(document.hidden)syncNative()});
+}
+
 function boot(){
   document.getElementById("prevW").onclick=()=>S&&S.phase==="cross"&&cycleWord(-1);
   document.getElementById("nextW").onclick=()=>S&&S.phase==="cross"&&cycleWord(1);
@@ -2718,7 +2994,7 @@ function boot(){
   let hasRun=false;try{hasRun=!!localStorage.getItem("crossfall-run")}catch(e){}
   if(!stats.freeCats&&!PRO)setTimeout(showOnboarding,200);
   else if(!stats.tutDone&&!(stats.tot&&stats.tot.games)&&!hasRun)setTimeout(startTutorial,250);
-  if(NATIVE_IAP)iapSend("refresh");renderProMenu();
+  if(NATIVE_IAP)iapSend("refresh");renderProMenu();initGrowth();
 }
 if(typeof document!=="undefined")boot();
 </script>

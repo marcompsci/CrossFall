@@ -48,8 +48,11 @@ Crossfall is in beta on TestFlight. See **[TESTERS.md](TESTERS.md)** for how to 
 | **Fall speed** | Relaxed, Normal or Fast. Normal is about 1.3–1.5 s per row with a 2-second pause before each piece starts falling. |
 | **Accessibility** | Crossword and well on separate full-width screens, bigger text, high contrast, a readable-font option, a press-and-hold magnifying glass over clues and tiles. The app follows the phone's text size (Dynamic Type), and every square, tile and button is labelled for VoiceOver. |
 | **Light and dark mode** | System, Light or Dark from the ☰ menu. Light mode uses a warm off-white. |
-| **Sound** | Sound effects and an optional music loop, each with its own switch. |
+| **Sound** | Layered sound effects (solve chime, landing thud, row-clear sparkle, target fanfare, rush riser) and three original music loops: Calm, Drive and Night. |
 | **Profile** | Level and XP, total and weekly score, stars, rush win rate, day streak, a score chart and recent games. |
+| **Rewards (1.1)** | XP is your lifetime score plus bonuses. Levels unlock 7 well themes (tile skins). Three weekly challenges (same for everyone, new each Monday) give bonus XP, and finishing all three earns a streak freeze. Daily streak milestones at 3, 7, 14, 30, 50, 100 and 365 days. A level-up celebration shows what you unlocked. |
+| **Challenge a friend (1.1)** | After any puzzle, send a challenge code with your score and a picture of your result. Your friend enters the code, plays the same puzzle with a "Beat Omari: 12,340" marker, and sees who won. |
+| **Reminders and widget (1.1)** | An optional daily reminder (9 AM, 12:30 PM or 7 PM) that mentions your streak and skips days you've already played. A home-screen and Lock Screen widget shows your streak, whether today's Daily is done, your level and weekly progress. |
 | **Rankings** | Today, all time, this week and best game. Game Center leaderboards and 9 achievements in the iPhone app; a live board in the web version. |
 
 <p align="center">
@@ -143,8 +146,10 @@ To stop the error for future uploads, sign out of your Apple ID and back in unde
 - [x] 0.3: daily puzzle, visible scoring and grades, hold/next, check, Zen, word bank, puzzle maker, saved progress
 - [x] Create the leaderboards and achievements in App Store Connect
 - [x] Onboarding (name, mood, 3 free picks), 20 puzzles per category (180 total), free tier and Crossfall Pro ($4.99, StoreKit 2)
-- [ ] Create the Crossfall Pro in-app purchase in App Store Connect (needs the Paid Apps agreement)
-- [ ] Submit 1.0 for App Store review
+- [x] Create the Crossfall Pro in-app purchase in App Store Connect
+- [x] Submit 1.0 (build 12) with Crossfall Pro for App Store review (13 Oct 2026)
+- [x] 1.1 (13): levels and well themes, weekly challenges, streak milestones, friend challenges and share cards, daily reminder, home-screen widget, new sound effects and music tracks
+- [ ] Ship 1.1 after 1.0 is approved
 - [x] iPad layout: side-by-side crossword and well
 - [x] 1.0 (11) design pass: cleaner top bar, bigger crossword, landing/clear/rush effects, haptics, a playable first-run tour, App Store preview videos
 

@@ -705,6 +705,66 @@ html.light .ov.cele{background:rgba(60,45,30,.45)}
 .gc-top{gap:8px}.gc-top>span:first-child{white-space:nowrap}
 .gc-top .gc-badge,.gc-top .gc-pill{white-space:nowrap;font-size:10px;padding:3px 8px}
 .gc-hint{font-size:12px;opacity:.75;text-align:center;margin-top:-4px}
+/* 1.2: Today's Puzzles */
+.diff{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:99px;vertical-align:1px;font-family:var(--f-body)}
+.diff.d-e{background:rgba(37,168,152,.2);color:var(--solved)}.diff.d-m{background:rgba(240,180,41,.2);color:#d59a10}.diff.d-c{background:rgba(214,58,90,.18);color:var(--danger)}
+html:not(.light) .diff.d-m{color:var(--gold)}
+.pz-label{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--muted);margin-top:4px}
+.pzrow{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pzc{display:grid;grid-template-columns:1fr auto;grid-template-areas:"n f" "s s" "st st";gap:2px 6px;text-align:left;padding:10px 12px;border-radius:14px;border:1px solid var(--line);background:var(--panel);color:var(--fg);font:inherit;cursor:pointer;min-height:84px}
+.pzc-n{grid-area:n;font-family:var(--f-display);font-size:calc(19px*var(--ts));line-height:1}
+.pzc-f{grid-area:f;font-size:12px;font-weight:800;white-space:nowrap}
+.pzc-s{grid-area:s;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pzc-st{grid-area:st;align-self:end;margin-top:4px;font-weight:800;color:var(--accent);font-size:calc(15px*var(--ts))}
+.pzc.done{border-color:var(--solved)}.pzc.done .pzc-st{color:var(--solved)}
+.pzlinks{display:flex;gap:8px}.pzlinks button{flex:1;background:none;border:1px solid var(--line);border-radius:10px;color:var(--fg);font:inherit;font-size:13px;font-weight:700;padding:8px}
+.ov.pz{align-items:center;gap:10px;padding-top:max(16px,env(safe-area-inset-top))}
+.ov.pz>*{width:100%;max-width:520px;box-sizing:border-box}
+.pz-top{display:flex;align-items:center;gap:10px}
+.pz-tt{flex:1;display:flex;flex-direction:column;gap:2px}.pz-tt b{font-family:var(--f-display);font-size:24px;line-height:1}.pz-tt span{font-size:12px;color:var(--muted)}
+.pz-time{font-family:var(--f-mono);font-weight:800;font-size:20px;min-width:56px;text-align:right}
+.mi-board{display:flex;justify-content:center;padding:6px 0}
+.mi-grid{display:grid;gap:3px}
+.mi-grid .cc:not(.on){background:transparent}
+.mi-grid .cc.on{cursor:pointer}
+.mi-clue{display:flex;align-items:center;gap:10px;text-align:left;background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;color:var(--fg);font:inherit;min-height:52px}
+.mi-clue b{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;color:var(--accent);white-space:nowrap}.mi-clue span{flex:1;font-size:calc(16px*var(--ts))}.mi-clue i{font-style:normal;color:var(--muted)}
+.mi-tools{display:flex;gap:6px}.mi-tools button{flex:1;min-height:38px;font-size:13px}
+.mi-note{font-size:12px;color:var(--muted);text-align:center;margin:0}
+.mi-pad{display:flex;flex-direction:column;gap:6px;margin-top:auto}
+.pz-done{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}
+.pz-done h2{font-family:var(--f-display);font-size:30px;margin:0}
+.pz-big{font-family:var(--f-mono);font-size:44px;font-weight:800;line-height:1}.pz-big small{font-size:16px;color:var(--muted)}
+.pz-done .btns{width:100%}
+.ch-theme{text-align:center;font-size:15px;color:var(--muted)}.ch-theme b{color:var(--fg)}
+.ch-rank{display:flex;align-items:center;gap:10px;font-weight:800}
+.ch-rank>span:first-child{min-width:84px}
+.ch-rank .tr{flex:1;height:10px;border-radius:99px;background:var(--panel-2);position:relative;overflow:hidden}
+.ch-rank .tr i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--gold));border-radius:99px;transition:width .4s}
+.ch-rank .tr b{position:absolute;top:0;bottom:0;width:2px;background:var(--bg);opacity:.7}
+.ch-slots{display:flex;flex-direction:column;gap:6px}
+.ch-slot{display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:12px;background:var(--panel);border:1px solid var(--line)}
+.ch-slot.got{border-color:var(--solved);background:rgba(37,168,152,.12)}
+.ch-w{display:flex;gap:3px;font-family:var(--f-mono);font-weight:800;letter-spacing:.12em;font-size:18px}
+.ch-w i{width:14px;height:18px;border-bottom:2px solid var(--muted);display:inline-block}
+.ch-c{font-size:13px;color:var(--muted)}.ch-c button{background:none;border:0;color:var(--accent);font:inherit;font-weight:700;padding:0;text-decoration:underline}
+.ch-build{min-height:48px;display:grid;place-items:center;font-family:var(--f-mono);font-weight:800;font-size:26px;letter-spacing:.08em;border-bottom:2px solid var(--line)}
+.ch-build .ph{font-family:var(--f-body);font-size:14px;font-weight:500;color:var(--muted);letter-spacing:0}
+.ch-build.shake{animation:shake .3s}
+.ch-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ck-t{min-height:54px;border-radius:12px;border:0;border-bottom:3px solid var(--key-edge);background:var(--tile);color:var(--ink);font-family:var(--f-mono);font-weight:800;font-size:calc(19px*var(--ts));letter-spacing:.06em}
+.ck-t.used{background:var(--tile-dim)}
+.ck-t.on{background:var(--accent);color:#fff;transform:translateY(2px);border-bottom-width:1px}
+.ch-act{display:flex;gap:8px}.ch-act>*{flex:1;min-height:46px}.ch-act .big{flex:1.4}
+.ch-bonus{display:flex;flex-direction:column;gap:6px}
+.sbdays{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.sbd{display:grid;place-items:center;aspect-ratio:1;border-radius:10px;background:var(--panel-2);font-size:13px;font-weight:700;color:var(--muted)}
+.sbd.y{background:var(--solved);color:#06231f}.sbd.p{background:var(--gold);color:#231b35}.sbd.s{box-shadow:inset 0 0 0 2px var(--accent)}
+.sbkey{display:flex;gap:14px;font-size:12px;color:var(--muted);justify-content:center}.sbkey span{display:flex;align-items:center;gap:5px}.sbkey .sbd{width:12px;height:12px;border-radius:3px;aspect-ratio:auto}
+#sb .kpis,#sb .panel,#sb .seg{width:100%;max-width:520px;box-sizing:border-box;align-self:center}
+#archive .seg{align-self:center}
+.ck-t{display:grid;place-items:center;text-align:center;padding:0}
+.pz-done .btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pz-done .btns>*{width:100%;min-height:44px;margin:0}
 </style>
 
 <div id="app">
@@ -761,6 +821,9 @@ html.light .ov.cele{background:rgba(60,45,30,.45)}
         <button data-act="archive">Past daily puzzles</button>
         <button data-act="maker">Make a puzzle</button>
         <button data-act="review">Review my words</button>
+        <button data-act="mini">Play the Mini</button>
+        <button data-act="chunks">Play Chunks</button>
+        <button data-act="scoreboard">Puzzle scoreboard</button>
         <button data-act="rewards">Rewards &amp; themes</button>
         <button data-act="code">Enter a challenge code</button>
         <button data-act="backup">Back up progress</button>
@@ -833,6 +896,8 @@ html.light .ov.cele{background:rgba(60,45,30,.45)}
   <div class="ov res" id="textbox" hidden></div>
   <div class="ov res" id="rewards" hidden role="dialog" aria-modal="true" aria-label="Rewards"></div>
   <div class="ov cele" id="cele" hidden></div>
+  <div class="ov pz" id="pz" hidden role="dialog" aria-modal="true" aria-label="Puzzle"></div>
+  <div class="ov res" id="sb" hidden role="dialog" aria-modal="true" aria-label="Scoreboard"></div>
   <div class="ov lifeov" id="life" hidden></div>
   <div class="ov" id="settings" hidden>
     <h1>SET<span>TINGS</span></h1>
@@ -1799,7 +1864,7 @@ document.getElementById("drClose").onclick=closeDrawer;document.getElementById("
     else if(a==="checkin")showQuiz(null);
     else if(a==="archive")openArchive();else if(a==="maker")openMaker();else if(a==="review")openReview();else if(a==="backup")openBackup();
     else if(a==="tour"){startTutorial()}
-    else if(a==="rewards")openRewards();else if(a==="code")openCode();
+    else if(a==="rewards")openRewards();else if(a==="mini")openMini();else if(a==="chunks")openChunks();else if(a==="scoreboard")openScoreboard();else if(a==="code")openCode();
     else if(a==="pro"){showPaywall(PRO?"owned":"menu")}
     else if(a==="how"){goPage("Play");const h=document.querySelector(".how");if(h){h.open=true;setTimeout(()=>h.scrollIntoView({behavior:"smooth",block:"start"}),60)}}});
   document.querySelectorAll("#rkSeg button").forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;renderRanks()});
@@ -2410,7 +2475,7 @@ function dailyLevel(dk){
   const day=Math.floor(Date.parse(dk+"T12:00:00Z")/864e5);
   const bonus=shuffle(pool.flatMap(l=>l.bonus||[]).filter(b=>!words.some(w=>w[0]===b[0])),R).slice(0,6);
   const L={name:fmtDay(dk),cat:"Daily",id:"Daily:"+dk,daily:dk,seed:n%100000,words,target:pickTarget(words,R),bonus,
-    drop:["bar","tetro","single"][day%3],find:["tap","scramble","clue"][(day+1)%3],speed:860,_cw:cw,n:1,pi:0};
+    drop:["bar","tetro","single"][day%3],find:["tap","scramble","clue"][(day+1)%3],speed:{Easy:920,Moderate:860,Challenging:800}[dayDiff(dk)],_cw:cw,n:1,pi:0};
   return DAILY_CACHE[dk]=L;
 }
 function todayKey(){return dayKeyOf(Date.now())}
@@ -2451,15 +2516,17 @@ function playDaily(dk,archive){const L=dailyLevel(dk);if(!L.words){toast("Couldn
 function renderDailyCard(){
   const box=document.getElementById("dailyCard");if(!box)return;
   const t=todayKey(),rec=dailyRecord(t),st=dailyStreak();
-  box.innerHTML=`<div class="dc-top"><span class="ln">DAILY · ${esc(fmtDay(t).toUpperCase())}</span><span class="dc-st" aria-label="Daily streak ${st.n} days, ${st.freezes} freezes">🔥 ${st.n}${st.freezes?` · ❄ ${st.freezes}`:""}</span></div>
+  box.innerHTML=`<div class="dc-top"><span class="ln">DAILY · ${esc(fmtDay(t).toUpperCase())} ${diffTag(dayDiff(t))}</span><span class="dc-st" aria-label="Daily streak ${st.n} days, ${st.freezes} freezes">🔥 ${st.n}${st.freezes?` · ❄ ${st.freezes}`:""}</span></div>
    ${rec?`<div class="dc-done"><b>${fmtN(rec.score)}</b><span class="grade sm g-${rec.grade||"D"}">${rec.grade||"—"}</span>${rec.gold?`<span class="goldtag">GOLD</span>`:""}<span class="sub">${rec.win?"Solved":"Well filled"}</span></div>
      <div class="dc-btns"><button class="big" id="dcShare">Share</button><button class="ghost-btn" id="dcAgain">Practice</button><button class="ghost-btn" id="dcArchive">Past</button></div>`
    :`<div class="dc-btns"><button class="big" id="dcPlay">Play today's puzzle</button><button class="ghost-btn" id="dcArchive">Past</button></div>`}`;
   const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
   box.insertAdjacentHTML("beforeend",weeklyLine());on("wkLine",openRewards);
+  box.insertAdjacentHTML("beforeend",`<span class="pz-label">TODAY'S PUZZLES</span>`+puzzlesStrip());
+  on("pzMini",()=>openMini());on("pzChunks",()=>openChunks());on("pzSb",()=>openScoreboard("mini"));on("pzArc",()=>openArchive("mini"));
   on("dcPlay",()=>playDaily(t));on("dcAgain",()=>playDaily(t,true));on("dcShare",()=>shareOut(shareText(rec,t)));on("dcArchive",openArchive);
 }
-function openArchive(){
+function openArchive(k){if(typeof openArchiveV2==="function"){openArchiveV2(typeof k==="string"?k:"daily");return}
   const el=document.getElementById("archive"),t=todayKey();let h="";
   for(let i=1;i<=14;i++){const dk=addDays(t,-i),rec=dailyRecord(dk);h+=`<button class="arow" data-dk="${dk}"><span>${esc(fmtDay(dk))}</span><span class="sub">${rec?`${fmtN(rec.score)} · ${rec.grade||"—"}${rec.gold?" · ⭐":""}`:"not played"}</span></button>`}
   el.innerHTML=`<h1>PAST <span>PUZZLES</span></h1><p class="sub">Replay the last two weeks. Practice only: these don't change your streak or the boards.</p><div class="alist">${h}</div><div class="btns"><button class="big" id="arClose">Close</button></div>`;
@@ -2893,12 +2960,13 @@ function chalResultHTML(){const c=S.challenge;if(!c)return"";const d=Math.round(
 function recordChal(){const c=S.challenge;if(!c)return;stats.chals=[{n:c.n,them:c.s,me:Math.round(S.score),p:c.p,t:Date.now()},...(stats.chals||[])].slice(0,20);
   stats.chalW=(stats.chalW||0)+(S.score>c.s?1:0)}
 function openCode(){const el=document.getElementById("textbox");
-  el.innerHTML=`<h1>ENTER A <span>CODE</span></h1><p class="sub">Paste a friend's challenge code (CFC.…) or a shared puzzle code (CF1.…).</p>
+  el.innerHTML=`<h1>ENTER A <span>CODE</span></h1><p class="sub">Paste a friend's challenge code (CFC.… or CFM.… for the Mini) or a shared puzzle code (CF1.…).</p>
    <textarea id="codeIn" class="mkin" rows="3" autocapitalize="off" autocomplete="off" placeholder="CFC.…"></textarea><p class="mkmsg" id="codeMsg" role="status"></p>
    <div class="btns wide"><button class="big" id="codeGo">Play</button><button class="ghost-btn" id="codeX">Cancel</button></div>`;
   el.hidden=false;const ta=document.getElementById("codeIn");ta.focus();
   document.getElementById("codeX").onclick=()=>el.hidden=true;
   document.getElementById("codeGo").onclick=()=>{const v=ta.value,c=readChalCode(v);
+    {const m=readMiniCode(v);if(m){el.hidden=true;openMini(m.d,{chal:{n:m.n,s:m.s}});return}}
     if(c){el.hidden=true;playChallenge(c);return}
     const s=readCustomCode(v);if(s&&s.w.length>=3){const r=buildCustom(s);if(!r.err){el.hidden=true;startLevel(r.L);return}}
     const m=document.getElementById("codeMsg");m.textContent="That code didn't work. Check it was copied in full.";announce(m.textContent)}}
@@ -2973,6 +3041,254 @@ function initGrowth(){
   claimChallenges();claimMilestones();saveStats();applyPrefs();syncNative();
   setTimeout(()=>{if(document.getElementById("onb").hidden&&!S)runCele()},1400);
   document.addEventListener("visibilitychange",()=>{if(document.hidden)syncNative()});
+}
+
+
+/* ================= 1.2: Today's Puzzles — The Mini and Chunks, scoreboards, difficulty, archive ================= */
+/* Weekday difficulty: Mon–Tue easy, Wed–Thu moderate, Fri–Sun challenging (same for every puzzle type). */
+function dayDiff(dk){const w=new Date(dk+"T12:00:00").getDay();return w===1||w===2?"Easy":w===3||w===4?"Moderate":"Challenging"}
+const DIFF_CLS={Easy:"e",Moderate:"m",Challenging:"c"};
+function diffTag(d){return`<span class="diff d-${DIFF_CLS[d]}">${d}</span>`}
+function pzStore(kind){stats.pz=stats.pz||{};return stats.pz[kind]=stats.pz[kind]||{days:{},streak:{n:0,last:"",best:0}}}
+function pzStreak(kind){const s=pzStore(kind).streak,t=todayKey();if(!s.last)return{n:0,best:s.best||0};
+  return{n:s.last===t||s.last===addDays(t,-1)?s.n:0,best:s.best||0}}
+function pzBump(kind,dk){const st=pzStore(kind).streak;if(st.last===dk)return;st.n=st.last===addDays(dk,-1)?st.n+1:1;st.last=dk;st.best=Math.max(st.best||0,st.n)}
+function pzXP(n,why){const lv0=levelOf(xpTotal()).lv;stats.xpBonus=(stats.xpBonus||0)+n;toast(`+${fmtN(n)} XP`);progressAfter(lv0);saveStats();pushCloud()}
+/* word pool: every puzzle answer and bonus word outside the personal categories, with its clue */
+let PZ_POOL=null;
+function pzPool(){if(PZ_POOL)return PZ_POOL;const seen=new Map();
+  LEVELS.filter(l=>!l.heal).forEach(l=>[...l.words,...(l.bonus||[])].forEach(([w,c])=>{if(/^[A-Z]+$/.test(w)&&!seen.has(w))seen.set(w,{w,c,cat:l.cat})}));
+  return PZ_POOL=[...seen.values()]}
+
+/* ---------------- The Mini ---------------- */
+const MINI_CACHE={};
+function miniPuzzle(dk){
+  if(MINI_CACHE[dk])return MINI_CACHE[dk];
+  const n=+dk.replace(/-/g,""),R=rng(n*31+7),diff=dayDiff(dk),want=diff==="Easy"?4:5;let calls=0;/* a fixed work budget (not a clock) so every phone builds the same Mini */
+  const pool=pzPool().filter(e=>e.w.length>=3&&e.w.length<=5);let best=null;
+  /* grow a grid word by word: start from a 4–5 letter word, keep adding pool words that still fit inside 5×5 */
+  for(let t=0;t<60&&calls<160;t++){const start=shuffle(pool.filter(e=>e.w.length>=4),R)[0],pick=[start];let cw=buildCrossword([[start.w,start.c]],n+t,1);
+    let tried=0;for(const e of shuffle(pool.slice(),R)){if(pick.length>=want||tried>40||calls>=160)break;if(pick.some(p=>p.w===e.w||p.w.includes(e.w)||e.w.includes(p.w)))continue;
+      if(![...e.w].some(ch=>pick.some(p=>p.w.includes(ch))))continue;tried++;
+      calls++;const tryCw=buildCrossword([...pick,e].map(x=>[x.w,x.c]),n+t*7+pick.length,4);
+      if(tryCw&&tryCw.rows<=5&&tryCw.cols<=5&&tryCw.words.length===pick.length+1){pick.push(e);cw=tryCw}}
+    if(cw&&(!best||cw.words.length>best.words.length||(cw.words.length===best.words.length&&cw.cells.size>best.cells.size)))best=cw;
+    if(best&&best.words.length>=want)break}
+  return MINI_CACHE[dk]={dk,diff,cw:best}}
+let MI=null;
+function miniFresh(cw){const cells=new Map();for(const[k,c]of cw.cells)cells.set(k,{...c,val:""});return{cells,words:cw.words.map(w=>({...w}))}}
+function openMini(dk,opts){
+  dk=dk||todayKey();const P=miniPuzzle(dk);if(!P.cw){toast("Couldn't build that Mini");return}
+  const rec=pzStore("mini").days[dk]||{};const g=miniFresh(P.cw);
+  if(rec.vals)for(const[k,v]of Object.entries(rec.vals)){const c=g.cells.get(k);if(c)c.val=v}
+  const w0=g.words.find(w=>w.dir==="a")||g.words[0];
+  MI={dk,P,g,dir:w0.dir,key:w0.cells[0],secs:rec.secs||0,t0:0,rev:!!rec.rev,done:!!rec.done,chal:opts&&opts.chal||null,archive:dk!==todayKey()};
+  const el=document.getElementById("pz");el.hidden=false;el.className="ov pz pz-mini";el.scrollTop=0;
+  el.innerHTML=`<div class="pz-top"><button class="icon-btn" id="pzX" aria-label="Close">✕</button><div class="pz-tt"><b>THE MINI</b><span>${esc(fmtDay(dk))} · ${diffTag(P.diff)}${MI.archive?" · practice":""}</span></div><span class="pz-time" id="miT" aria-live="off">0:00</span></div>
+   ${MI.chal?`<div class="chal-pill" id="miChal">Beat ${esc(MI.chal.n)}: ${fmtTime(MI.chal.s)}</div>`:""}
+   <div class="mi-board"><div class="cwgrid mi-grid" id="miGrid" role="grid" aria-label="Mini crossword"></div></div>
+   <button class="mi-clue" id="miClue" aria-live="polite"></button>
+   <div class="mi-tools"><button class="ghost-btn" id="miChk">Check</button><button class="ghost-btn" id="miRevL">Reveal letter</button><button class="ghost-btn" id="miRevW">Reveal word</button></div>
+   <p class="mi-note">Reveals finish the puzzle for you but don't count toward your Mini streak.</p>
+   <div id="miPad" class="mi-pad"></div>`;
+  document.getElementById("pzX").onclick=closePz;
+  document.getElementById("miClue").onclick=()=>{MI.dir=MI.dir==="a"?"d":"a";if(!miWord())MI.dir=MI.dir==="a"?"d":"a";miRender()};
+  document.getElementById("miChk").onclick=miCheck;
+  document.getElementById("miRevL").onclick=()=>miReveal(false);
+  document.getElementById("miRevW").onclick=()=>miReveal(true);
+  const rows=["QWERTYUIOP","ASDFGHJKL","ZXCVBNM"];
+  document.getElementById("miPad").innerHTML=rows.map((r,i)=>`<div class="kr">${[...r].map(c=>`<button class="k" data-ch="${c}">${c}</button>`).join("")}${i===2?`<button class="k wide" data-bk="1" aria-label="Delete">⌫</button>`:""}</div>`).join("");
+  document.querySelectorAll("#miPad .k").forEach(b=>onActivate(b,()=>{audioInit();b.dataset.bk?miBack():miType(b.dataset.ch)}));
+  miRender();if(MI.done)miDone(true);else miTick();
+}
+function miWord(dir){dir=dir||MI.dir;const c=MI.g.cells.get(MI.key);return c&&c.words.map(i=>MI.g.words[i]).find(w=>w.dir===dir)}
+function miTick(){if(!MI||MI.done)return;MI.t0=performance.now();clearInterval(MI.iv);
+  MI.iv=setInterval(()=>{if(!MI||MI.done||document.hidden||document.getElementById("pz").hidden)return;const el=document.getElementById("miT");if(el)el.textContent=fmtTime(miSecs())},500)}
+function miSecs(){return MI.secs+(MI.t0&&!MI.done?(performance.now()-MI.t0)/1000:0)}
+function miSave(){if(!MI)return;const d=pzStore("mini").days,r=d[MI.dk]=d[MI.dk]||{};const vals={};for(const[k,c]of MI.g.cells)if(c.val)vals[k]=c.val;
+  r.vals=vals;r.secs=Math.round(miSecs()*10)/10;r.rev=MI.rev;r.done=MI.done;if(MI.archive)r.practice=true;
+  const ks=Object.keys(d).sort();ks.slice(0,Math.max(0,ks.length-60)).forEach(k=>delete d[k]);saveStats()}
+function miRender(){
+  const{g,P}=MI,cc=Math.min(64,Math.floor((Math.min(window.innerWidth,520)-48)/Math.max(P.cw.cols,P.cw.rows))-3);
+  const grid=document.getElementById("miGrid");grid.style.setProperty("--cc",cc+"px");grid.style.gridTemplateColumns=`repeat(${P.cw.cols},var(--cc))`;
+  const w=miWord(),inW=new Set(w?w.cells:[]);let num=0;const nums=new Map();
+  for(let r=0;r<P.cw.rows;r++)for(let c=0;c<P.cw.cols;c++){const k=r+","+c,x=g.cells.get(k);if(!x)continue;const starts=g.words.some(wd=>wd.cells[0]===k);if(starts)nums.set(k,++num)}
+  let h="";for(let r=0;r<P.cw.rows;r++)for(let c=0;c<P.cw.cols;c++){const k=r+","+c,x=g.cells.get(k);
+    if(!x){h+=`<div class="cc" aria-hidden="true"></div>`;continue}
+    const cls="cc on"+(k===MI.key&&!MI.done?" cur":inW.has(k)&&!MI.done?" inword":"")+(MI.done?" solved":"")+(x.bad?" bad":"")+(x.rev?" helped":"");
+    h+=`<div class="${cls}" data-k="${k}" role="gridcell" aria-label="${nums.has(k)?nums.get(k)+", ":""}${x.val||"blank"}">${nums.has(k)?`<span class="n">${nums.get(k)}</span>`:""}<span class="l">${x.val||""}</span></div>`}
+  grid.innerHTML=h;
+  grid.querySelectorAll("[data-k]").forEach(d=>onActivate(d,()=>{if(MI.done)return;if(MI.key===d.dataset.k){MI.dir=MI.dir==="a"?"d":"a";if(!miWord())MI.dir=MI.dir==="a"?"d":"a"}else{MI.key=d.dataset.k;if(!miWord())MI.dir=MI.dir==="a"?"d":"a"}miRender()}));
+  if(w){const n=nums.get(w.cells[0]);document.getElementById("miClue").innerHTML=`<b>${n}${w.dir==="a"?" ACROSS":" DOWN"}</b><span>${esc(w.clue)}</span><i aria-hidden="true">⇄</i>`}
+  document.getElementById("miT").textContent=fmtTime(miSecs());
+}
+function miType(ch){if(MI.done)return;const c=MI.g.cells.get(MI.key);if(!c)return;if(!c.rev){c.val=ch;c.bad=false}blip(520,.03);
+  const w=miWord();if(w){const i=w.cells.indexOf(MI.key);const nx=w.cells.slice(i+1).find(k=>!MI.g.cells.get(k).val)||w.cells[Math.min(i+1,w.cells.length-1)];
+    if(i===w.cells.length-1){const wi=MI.g.words.indexOf(w),order=MI.g.words.map((_,j)=>(wi+1+j)%MI.g.words.length).map(j=>MI.g.words[j]);
+      const nw=order.find(x=>x.cells.some(k=>!MI.g.cells.get(k).val));if(nw){MI.dir=nw.dir;MI.key=nw.cells.find(k=>!MI.g.cells.get(k).val)}}else MI.key=nx}
+  miAfter()}
+function miBack(){if(MI.done)return;const c=MI.g.cells.get(MI.key);if(c&&c.val&&!c.rev){c.val="";c.bad=false}else{const w=miWord();if(w){const i=w.cells.indexOf(MI.key);if(i>0){MI.key=w.cells[i-1];const p=MI.g.cells.get(MI.key);if(!p.rev){p.val="";p.bad=false}}}}miAfter()}
+function miAfter(){miRender();miSaveSoon();
+  const all=[...MI.g.cells.values()];if(all.every(c=>c.val)){if(all.every(c=>c.val===c.ans)){MI.secs=miSecs();MI.done=true;clearInterval(MI.iv);miSave();miDone(false)}else if(!MI._warned){MI._warned=true;toast("Not quite: something's off");hap("warning")}}else MI._warned=false}
+let miT_=0;function miSaveSoon(){clearTimeout(miT_);miT_=setTimeout(miSave,400)}
+function miCheck(){let bad=0;for(const c of MI.g.cells.values())if(c.val&&c.val!==c.ans){c.bad=true;bad++}miRender();toast(bad?`${bad} wrong square${bad>1?"s":""}`:"All good so far");if(bad)hap("warning")}
+function miReveal(word){if(MI.done)return;const ks=word?(miWord()||{cells:[]}).cells:[MI.key];ks.forEach(k=>{const c=MI.g.cells.get(k);if(c.val!==c.ans){c.val=c.ans;c.rev=true}c.bad=false});MI.rev=true;miAfter()}
+function miDone(already){
+  const P=MI.P,secs=Math.round(MI.secs),counts=!MI.archive&&!MI.rev;
+  if(!already){sfx("win");hap("success");burst(document.getElementById("miGrid"),30,170);
+    if(counts){pzBump("mini",MI.dk)}const r=pzStore("mini").days[MI.dk];r.solvedAt=Date.now();saveStats();
+    if(!MI.archive)pzXP(MI.rev?100:250+(secs<60?100:0),"Mini")}
+  const st=pzStreak("mini"),chal=MI.chal,beat=chal?secs<chal.s:null;
+  const box=document.createElement("div");box.className="pz-done";
+  box.innerHTML=`<h2>${MI.rev?"Solved with help":"Solved!"}</h2><div class="pz-big">${fmtTime(secs)}</div>
+    <p class="sub">${MI.archive?"Practice puzzle: streak and boards unchanged.":MI.rev?"Reveals used, so today doesn't count toward your streak.":`Mini streak 🔥 ${st.n} · best ${st.best}`}</p>
+    ${chal?`<div class="chal-res ${beat?"won":"lost"}"><div>${beat?`You beat <b>${esc(chal.n)}</b>!`:`<b>${esc(chal.n)}</b> was faster.`}</div><span>${esc(chal.n)}: ${fmtTime(chal.s)} · You: ${fmtTime(secs)}</span></div>`:""}
+    <div class="btns wide"><button class="big" id="miShare">Share</button><button class="ghost-btn" id="miChalB">Challenge a friend</button><button class="ghost-btn" id="miSb">Scoreboard</button><button class="ghost-btn" id="miBack">Back to puzzles</button></div>`;
+  const old=document.querySelector("#pz .pz-done");if(old)old.remove();
+  document.querySelector("#pz .mi-tools").replaceWith(box);const pad=document.getElementById("miPad");if(pad)pad.remove();const nt=document.querySelector("#pz .mi-note");if(nt)nt.remove();
+  miRender();
+  document.getElementById("miShare").onclick=()=>shareOut(`Crossfall Mini · ${fmtDay(MI.dk)} · ${P.diff}\n⏱ ${fmtTime(secs)}${MI.rev?" (with reveals)":" ✅"}`);
+  document.getElementById("miChalB").onclick=()=>shareOut(`I solved the Crossfall Mini (${fmtDay(MI.dk)}) in ${fmtTime(secs)}. Can you beat it? ⏱\nOpen Crossfall › Menu › Enter a code, and paste:\n${"CFM."+b64e(JSON.stringify({d:MI.dk,s:secs,n:(stats.nick||"A friend").slice(0,16)}))}`);
+  document.getElementById("miSb").onclick=()=>openScoreboard("mini");
+  document.getElementById("miBack").onclick=closePz;
+  setTimeout(runCele,700);
+}
+function readMiniCode(code){try{const m=String(code).trim().match(/CFM\.([A-Za-z0-9_-]+)/);if(!m)return null;const o=JSON.parse(b64d(m[1]));
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(o.d)||!(o.s>0))return null;return{d:o.d,s:Math.min(36000,Math.round(+o.s)),n:String(o.n||"A friend").replace(/[^\p{L}\p{N} _.-]/gu,"").slice(0,16)||"A friend"}}catch(e){return null}}
+
+/* ---------------- Chunks: rebuild the day's theme words from letter chunks ---------------- */
+const CH_RANKS=[[0,"Warm-up"],[.25,"Solid"],[.5,"Sharp"],[.75,"Brilliant"],[1,"Perfect"]];
+const CHUNK_CACHE={};
+function splitWord(w,R){const n=w.length;const opts=n<=5?[[2,n-2],[3,n-3]]:n===6?[[3,3],[2,2,2],[2,4]]:n===7?[[3,4],[2,2,3],[3,2,2],[4,3]]:n===8?[[4,4],[3,3,2],[2,3,3],[3,2,3]]:[[3,3,3],[4,2,3],[3,4,2],[2,3,4]];
+  const pick=opts.filter(p=>p.every(x=>x>=2&&x<=4));const p=pick[Math.floor(R()*pick.length)];const out=[];let i=0;p.forEach(x=>{out.push(w.slice(i,i+x));i+=x});return out}
+function chunksPuzzle(dk){
+  if(CHUNK_CACHE[dk])return CHUNK_CACHE[dk];
+  const n=+dk.replace(/-/g,""),R=rng(n*17+3),diff=dayDiff(dk),cats=shuffle(CATEGORIES.filter(c=>!c.heal).map(c=>c.name).sort(),R);
+  const lenMin=diff==="Easy"?5:6,lenMax=diff==="Challenging"?9:8;let theme=null,words=null;
+  for(const cat of cats){const ws=shuffle(pzPool().filter(e=>e.cat===cat&&e.w.length>=lenMin&&e.w.length<=lenMax),R);
+    const pick=[];for(const e of ws){if(pick.length>=4)break;if(!pick.some(p=>p.w.includes(e.w)||e.w.includes(p.w)))pick.push(e)}if(pick.length===4){theme=cat;words=pick;break}}
+  const tiles=[];words.forEach((e,wi)=>splitWord(e.w,R).forEach((t,pos)=>tiles.push({t,wi,pos})));
+  const order=shuffle(tiles.map((_,i)=>i),R);
+  const max=words.reduce((s,e)=>s+e.w.length*10,0)+40;
+  return CHUNK_CACHE[dk]={dk,diff,theme,words,tiles:order.map(i=>tiles[i]),max}}
+let CH=null;
+function chunkWordOK(w){return w.length>=3&&(DICT.has(w)||pzPool().some(e=>e.w===w))}
+function openChunks(dk){
+  dk=dk||todayKey();const P=chunksPuzzle(dk);if(!P.words){toast("Couldn't build that puzzle");return}
+  const rec=pzStore("chunks").days[dk]||{};
+  CH={dk,P,sel:[],found:rec.found||[],bonus:rec.bonus||[],clues:rec.clues||[],score:rec.score||0,done:!!rec.done,archive:dk!==todayKey()};
+  const el=document.getElementById("pz");el.hidden=false;el.className="ov pz pz-chunks";el.scrollTop=0;
+  el.innerHTML=`<div class="pz-top"><button class="icon-btn" id="pzX" aria-label="Close">✕</button><div class="pz-tt"><b>CHUNKS</b><span>${esc(fmtDay(dk))} · ${diffTag(P.diff)}${CH.archive?" · practice":""}</span></div><span class="pz-time" id="chS">0</span></div>
+   <div class="ch-theme">Theme: <b>${esc(P.theme)}</b></div>
+   <div class="ch-rank" id="chRank"></div>
+   <div class="ch-slots" id="chSlots"></div>
+   <div class="ch-build" id="chBuild" aria-live="polite"></div>
+   <div class="ch-tiles" id="chTiles" role="group" aria-label="Letter chunks"></div>
+   <div class="ch-act"><button class="ghost-btn" id="chClr">Clear</button><button class="ghost-btn" id="chMix">Shuffle</button><button class="big" id="chGo">Submit</button></div>
+   <div class="ch-bonus" id="chBonus"></div>
+   <p class="mi-note">Rebuild the 4 theme words from the chunks. Any other real word made of chunks scores a bonus. A clue costs 10 points.</p>`;
+  document.getElementById("pzX").onclick=closePz;
+  document.getElementById("chClr").onclick=()=>{CH.sel=[];chRender()};
+  document.getElementById("chMix").onclick=()=>{CH.mix=shuffle(CH.P.tiles.map((_,i)=>i),Math.random);chRender()};
+  document.getElementById("chGo").onclick=chSubmit;
+  chRender();if(CH.done)chDone(true);
+}
+function chRank(){const f=CH.score/CH.P.max;let r=CH_RANKS[0][1];CH_RANKS.forEach(([t,n])=>{if(f>=t)r=n});if(CH.found.length===4&&!CH.clues.length&&r!=="Perfect"&&CH.score>=CH.P.max-40)r="Perfect";return r}
+function chRender(){
+  const P=CH.P,order=CH.mix||P.tiles.map((_,i)=>i);
+  document.getElementById("chS").textContent=fmtN(CH.score);
+  const rk=chRank(),f=Math.min(1,CH.score/P.max);
+  document.getElementById("chRank").innerHTML=`<span>${rk}</span><span class="tr"><i style="width:${Math.round(f*100)}%"></i>${CH_RANKS.slice(1).map(([t])=>`<b style="left:${t*100}%"></b>`).join("")}</span>`;
+  document.getElementById("chSlots").innerHTML=P.words.map((e,i)=>{const got=CH.found.includes(e.w),cl=CH.clues.includes(i);
+    return`<div class="ch-slot ${got?"got":""}"><span class="ch-w">${got?esc(e.w):[...e.w].map(()=>"<i></i>").join("")}</span><span class="ch-c">${got||cl?esc(e.c):`<button data-clue="${i}">Clue (−10)</button>`}</span></div>`}).join("");
+  document.querySelectorAll("[data-clue]").forEach(b=>b.onclick=()=>{const i=+b.dataset.clue;if(!CH.clues.includes(i)){CH.clues.push(i);CH.score=Math.max(0,CH.score-10);chSave();chRender()}});
+  const cur=CH.sel.map(i=>P.tiles[i].t).join("");
+  document.getElementById("chBuild").innerHTML=cur?`<span>${esc(cur)}</span>`:`<span class="ph">Tap chunks to build a word</span>`;
+  const usedTheme=new Set();P.tiles.forEach((t,i)=>{if(CH.found.includes(P.words[t.wi].w))usedTheme.add(i)});
+  document.getElementById("chTiles").innerHTML=order.map(i=>`<button class="ck-t ${CH.sel.includes(i)?"on":""} ${usedTheme.has(i)?"used":""}" data-i="${i}" aria-pressed="${CH.sel.includes(i)}">${esc(P.tiles[i].t)}</button>`).join("");
+  document.querySelectorAll("#chTiles [data-i]").forEach(b=>onActivate(b,()=>{if(CH.done)return;audioInit();const i=+b.dataset.i;const at=CH.sel.indexOf(i);
+    if(at>=0)CH.sel.splice(at,1);else if(CH.sel.length<4){CH.sel.push(i);blip(480+CH.sel.length*70,.03)}chRender()}));
+  document.getElementById("chBonus").innerHTML=CH.bonus.length?`<span class="ln">BONUS WORDS · ${CH.bonus.length}</span><div class="chipline">${CH.bonus.map(w=>`<span>${esc(w)}</span>`).join("")}</div>`:"";
+  const act=document.querySelector("#pz .ch-act");if(act)act.style.display=CH.done?"none":"";
+}
+function chSubmit(){if(CH.done)return;const P=CH.P,w=CH.sel.map(i=>P.tiles[i].t).join("");if(!w)return;
+  const ti=P.words.findIndex(e=>e.w===w);
+  if(ti>=0&&!CH.found.includes(w)){CH.found.push(w);CH.score+=w.length*10;sfx("target");hap("success");burst(document.getElementById("chSlots"),18,140);toast(`${w} +${w.length*10}`)}
+  else if(CH.found.includes(w)||CH.bonus.includes(w)){toast("Already found");hap("warning")}
+  else if(chunkWordOK(w)){CH.bonus.push(w);const pts=Math.max(2,w.length*2);CH.score+=pts;sfx("solve");toast(`Bonus: ${w} +${pts}`)}
+  else{toast("Not in the word list");blip(140,.1);hap("error");const b=document.getElementById("chBuild");b.classList.remove("shake");void b.offsetWidth;b.classList.add("shake")}
+  CH.sel=[];chSave();chRender();
+  if(CH.found.length===4){CH.done=true;chSave();chDone(false)}}
+function chSave(){const d=pzStore("chunks").days,r=d[CH.dk]=d[CH.dk]||{};Object.assign(r,{found:CH.found,bonus:CH.bonus,clues:CH.clues,score:CH.score,done:CH.done,rank:chRank()});if(CH.archive)r.practice=true;
+  const ks=Object.keys(d).sort();ks.slice(0,Math.max(0,ks.length-60)).forEach(k=>delete d[k]);saveStats()}
+function chDone(already){
+  const rk=chRank();if(!already){sfx("win");if(!CH.archive){pzBump("chunks",CH.dk);pzXP(CH.score*5,"Chunks")}}
+  const st=pzStreak("chunks"),old=document.querySelector("#pz .pz-done");if(old)old.remove();
+  const box=document.createElement("div");box.className="pz-done";
+  box.innerHTML=`<h2>${rk}!</h2><div class="pz-big">${fmtN(CH.score)} <small>pts</small></div><p class="sub">${CH.archive?"Practice puzzle: streak unchanged.":`Chunks streak 🔥 ${st.n} · best ${st.best}`} · ${CH.bonus.length} bonus word${CH.bonus.length===1?"":"s"}</p>
+    <div class="btns wide"><button class="big" id="chShare">Share</button><button class="ghost-btn" id="chMore">Keep finding bonus words</button><button class="ghost-btn" id="chSb">Scoreboard</button><button class="ghost-btn" id="chBack">Back to puzzles</button></div>`;
+  document.getElementById("chBonus").before(box);chRender();
+  document.getElementById("chShare").onclick=()=>shareOut(`Crossfall Chunks · ${fmtDay(CH.dk)} · ${CH.P.theme}\n${CH.P.words.map((_,i)=>CH.clues.includes(i)?"🟨":"🟩").join("")} ${rk} · ${fmtN(CH.score)} pts${CH.bonus.length?` · +${CH.bonus.length} bonus`:""}`);
+  document.getElementById("chMore").onclick=()=>{box.remove();CH.done=false;CH.more=true;chRender()};
+  document.getElementById("chSb").onclick=()=>openScoreboard("chunks");
+  document.getElementById("chBack").onclick=closePz;
+  setTimeout(runCele,700);
+}
+function closePz(){const el=document.getElementById("pz");el.hidden=true;if(MI){MI.secs=miSecs();MI.t0=0;clearInterval(MI.iv);miSave();MI=null}if(CH&&CH.more&&CH.found.length===4){CH.done=true;chSave()}CH=null;renderDailyCard()}
+
+/* ---------------- Scoreboard ---------------- */
+function openScoreboard(kind){
+  const el=document.getElementById("sb"),t=todayKey();kind=kind||"daily";
+  const tabs=[["daily","Crossfall Daily"],["mini","The Mini"],["chunks","Chunks"]];
+  let body="";
+  if(kind==="daily"){const recs=Object.entries(stats.daily||{}),ds=dailyStreak(),wins=recs.filter(([,r])=>r.win);
+    const best=Math.max(0,...recs.map(([,r])=>r.score||0)),avg=recs.length?Math.round(recs.reduce((s,[,r])=>s+(r.score||0),0)/recs.length):0;
+    body=sbStats([["Played",recs.length],["Solve rate",recs.length?Math.round(wins.length/recs.length*100)+"%":"—"],["Current streak",ds.n],["Longest streak",(stats.dstreak||{}).best||0],["Best score",fmtN(best)],["Average",fmtN(avg)]])+sbWeek(dk=>{const r=dailyRecord(dk);return r?(r.win?"y":"p"):""});}
+  else if(kind==="mini"){const d=pzStore("mini").days,recs=Object.entries(d).filter(([,r])=>!r.practice),solved=recs.filter(([,r])=>r.done),clean=solved.filter(([,r])=>!r.rev),st=pzStreak("mini");
+    const times=clean.map(([,r])=>r.secs);body=sbStats([["Played",recs.length],["Solved",solved.length],["Current streak",st.n],["Longest streak",st.best],["Best time",times.length?fmtTime(Math.min(...times)):"—"],["Average",times.length?fmtTime(times.reduce((a,b)=>a+b,0)/times.length):"—"]])
+      +sbWeek(dk=>{const r=d[dk];return r&&!r.practice?(r.done&&!r.rev?"y":r.done?"p":"s"):""})}
+  else{const d=pzStore("chunks").days,recs=Object.entries(d).filter(([,r])=>!r.practice),solved=recs.filter(([,r])=>r.done),st=pzStreak("chunks");
+    const ranks={};recs.forEach(([,r])=>{if(r.rank)ranks[r.rank]=(ranks[r.rank]||0)+1});
+    body=sbStats([["Played",recs.length],["Completed",solved.length],["Current streak",st.n],["Longest streak",st.best],["Best score",fmtN(Math.max(0,...recs.map(([,r])=>r.score||0)))],["Perfects",ranks.Perfect||0]])
+      +`<div class="panel"><h3>Ranks reached</h3>${CH_RANKS.map(([,n])=>`<div class="hbar"><span>${n}</span><span class="tr"><i style="width:${recs.length?Math.round((ranks[n]||0)/recs.length*100):0}%"></i></span><span class="v">${ranks[n]||0}</span></div>`).join("")}</div>`
+      +sbWeek(dk=>{const r=d[dk];return r&&!r.practice?(r.done?"y":"s"):""})}
+  el.innerHTML=`<h1>SCORE<span>BOARD</span></h1><div class="seg" role="tablist">${tabs.map(([k,l])=>`<button role="tab" aria-selected="${k===kind}" aria-checked="${k===kind}" data-sbk="${k}">${l}</button>`).join("")}</div>${body}
+   <p class="sub" style="text-align:center">A streak counts days in a row you finish that day's puzzle on the day. Mini reveals don't count.</p><div class="btns wide"><button class="big" id="sbDone">Done</button></div>`;
+  el.hidden=false;el.scrollTop=0;
+  el.querySelectorAll("[data-sbk]").forEach(b=>b.onclick=()=>openScoreboard(b.dataset.sbk));
+  document.getElementById("sbDone").onclick=()=>el.hidden=true;
+}
+function sbStats(rows){return`<div class="kpis">${rows.map(([l,v])=>`<div class="kpi"><span class="kl">${l}</span><span class="kv">${v}</span></div>`).join("")}</div>`}
+function sbWeek(f){const t=todayKey(),days=[...Array(14)].map((_,i)=>addDays(t,i-13));
+  return`<div class="panel"><h3>Last 14 days</h3><div class="sbdays">${days.map(dk=>{const s=f(dk);return`<span class="sbd ${s}" title="${fmtDay(dk)}" aria-label="${fmtDay(dk)}: ${s==="y"?"solved":s==="p"?"finished with help":s==="s"?"started":"not played"}">${new Date(dk+"T12:00:00").getDate()}</span>`}).join("")}</div>
+   <div class="sbkey"><span><i class="sbd y"></i>Solved</span><span><i class="sbd p"></i>With help</span><span><i class="sbd s"></i>Started</span></div></div>`}
+
+/* ---------------- Today's Puzzles strip on the home screen ---------------- */
+function puzzlesStrip(){const t=todayKey(),m=pzStore("mini").days[t],c=pzStore("chunks").days[t],ms=pzStreak("mini"),cs=pzStreak("chunks"),P=chunksPuzzle(t),diff=dayDiff(t);
+  const card=(id,name,sub,status,streak,done)=>`<button class="pzc ${done?"done":""}" id="${id}"><span class="pzc-n">${name}</span><span class="pzc-s">${sub}</span><span class="pzc-st">${status}</span><span class="pzc-f">🔥 ${streak}</span></button>`;
+  return`<div class="pzrow">${card("pzMini","The Mini",`${diffTag(diff)}`,m&&m.done?`✓ ${fmtTime(m.secs)}`:m&&m.secs?"Resume":"Play",ms.n,m&&m.done)}
+    ${card("pzChunks","Chunks",`${esc(P.theme||"")}`,c&&c.done?`✓ ${esc(c.rank)}`:c&&c.found&&c.found.length?`${c.found.length}/4`:"Play",cs.n,c&&c.done)}</div>
+    <div class="pzlinks"><button id="pzSb">Scoreboard</button><button id="pzArc">Past puzzles</button></div>`}
+
+/* ---------------- archive with tabs and filters ---------------- */
+let arcKind="daily",arcFilter="all";
+function openArchiveV2(kind){if(kind)arcKind=kind;const el=document.getElementById("archive"),t=todayKey();
+  const st=dk=>arcKind==="daily"?(dailyRecord(dk)?"solved":""):arcKind==="mini"?((pzStore("mini").days[dk]||{}).done?"solved":(pzStore("mini").days[dk]||{}).secs?"started":""):((pzStore("chunks").days[dk]||{}).done?"solved":(pzStore("chunks").days[dk]||{}).found?.length?"started":"");
+  const info=dk=>{if(arcKind==="daily"){const r=dailyRecord(dk);return r?`${fmtN(r.score)} · ${r.grade||"—"}`:"not played"}
+    if(arcKind==="mini"){const r=pzStore("mini").days[dk];return r&&r.done?`✓ ${fmtTime(r.secs)}${r.rev?" · with help":""}`:r&&r.secs?"started":"not played"}
+    const r=pzStore("chunks").days[dk];return r&&r.done?`✓ ${r.rank} · ${fmtN(r.score)}`:r&&r.found&&r.found.length?`${r.found.length}/4 words`:"not played"};
+  const days=[...Array(14)].map((_,i)=>addDays(t,-(i+(arcKind==="daily"?1:0)))).filter(dk=>arcFilter==="all"||(arcFilter==="solved"?st(dk)==="solved":st(dk)!=="solved"));
+  el.innerHTML=`<h1>PAST <span>PUZZLES</span></h1>
+   <div class="seg" role="tablist" aria-label="Puzzle type">${[["daily","Daily"],["mini","Mini"],["chunks","Chunks"]].map(([k,l])=>`<button role="tab" aria-selected="${k===arcKind}" aria-checked="${k===arcKind}" data-ak="${k}">${l}</button>`).join("")}</div>
+   <div class="seg" role="radiogroup" aria-label="Filter">${[["all","All"],["unsolved","Unsolved"],["solved","Solved"]].map(([k,l])=>`<button role="radio" aria-checked="${k===arcFilter}" data-af="${k}">${l}</button>`).join("")}</div>
+   <p class="sub">The last two weeks. Replays are practice: they don't change streaks or the boards.</p>
+   <div class="alist">${days.length?days.map(dk=>`<button class="arow" data-dk="${dk}"><span>${esc(fmtDay(dk))} ${diffTag(dayDiff(dk))}</span><span class="sub">${info(dk)}</span></button>`).join(""):`<div class="empty">Nothing here yet.</div>`}</div>
+   <div class="btns"><button class="big" id="arClose">Close</button></div>`;
+  el.hidden=false;
+  el.querySelectorAll("[data-ak]").forEach(b=>b.onclick=()=>{arcKind=b.dataset.ak;openArchiveV2()});
+  el.querySelectorAll("[data-af]").forEach(b=>b.onclick=()=>{arcFilter=b.dataset.af;openArchiveV2()});
+  el.querySelectorAll("[data-dk]").forEach(b=>b.onclick=()=>{el.hidden=true;const dk=b.dataset.dk;arcKind==="daily"?playDaily(dk,true):arcKind==="mini"?openMini(dk):openChunks(dk)});
+  document.getElementById("arClose").onclick=()=>el.hidden=true;
 }
 
 function boot(){

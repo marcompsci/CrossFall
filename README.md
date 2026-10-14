@@ -52,6 +52,7 @@ Crossfall is in beta on TestFlight. See **[TESTERS.md](TESTERS.md)** for how to 
 | **Profile** | Level and XP, total and weekly score, stars, rush win rate, day streak, a score chart and recent games. |
 | **Rewards (1.1)** | XP is your lifetime score plus bonuses. Levels unlock 7 well themes (tile skins). Three weekly challenges (same for everyone, new each Monday) give bonus XP, and finishing all three earns a streak freeze. Daily streak milestones at 3, 7, 14, 30, 50, 100 and 365 days. A level-up celebration shows what you unlocked. |
 | **Challenge a friend (1.1)** | After any puzzle, send a challenge code with your score and a picture of your result. Your friend enters the code, plays the same puzzle with a "Beat Omari: 12,340" marker, and sees who won. |
+| **Today's Puzzles (1.1)** | Inspired by puzzle hubs like Apple News: next to the Daily, two more free daily puzzles. **The Mini** is a timed 5×5 crossword with Check, Reveal letter and Reveal word (reveals finish it but don't count toward your streak). **Chunks** hides 4 theme words split into 2–4 letter chunks; rebuild them, find bonus words, and climb from Warm-up to Perfect. Every puzzle has a weekday difficulty (Mon–Tue Easy, Wed–Thu Moderate, Fri–Sun Challenging), its own streak, a scoreboard (played, solve rate, streaks, best time, ranks, last 14 days), a tabbed and filterable 14-day archive, sharing, and Mini time challenges (CFM codes). |
 | **Reminders and widget (1.1)** | An optional daily reminder (9 AM, 12:30 PM or 7 PM) that mentions your streak and skips days you've already played. A home-screen and Lock Screen widget shows your streak, whether today's Daily is done, your level and weekly progress. |
 | **Rankings** | Today, all time, this week and best game. Game Center leaderboards and 9 achievements in the iPhone app; a live board in the web version. |
 
@@ -149,6 +150,7 @@ To stop the error for future uploads, sign out of your Apple ID and back in unde
 - [x] Create the Crossfall Pro in-app purchase in App Store Connect
 - [x] Submit 1.0 (build 12) with Crossfall Pro for App Store review (13 Oct 2026)
 - [x] 1.1 (13): levels and well themes, weekly challenges, streak milestones, friend challenges and share cards, daily reminder, home-screen widget, new sound effects and music tracks
+- [x] 1.1 (14): Today's Puzzles: The Mini and Chunks, scoreboards, difficulty labels, filterable archive
 - [ ] Ship 1.1 after 1.0 is approved
 - [x] iPad layout: side-by-side crossword and well
 - [x] 1.0 (11) design pass: cleaner top bar, bigger crossword, landing/clear/rush effects, haptics, a playable first-run tour, App Store preview videos

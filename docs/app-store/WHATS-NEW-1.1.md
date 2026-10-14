@@ -3,6 +3,12 @@
 Paste into App Store Connect › 1.1 › What's New in This Version (under 4,000 characters):
 
 ```
+Today's Puzzles
+• Two new free daily puzzles next to the Daily Crossfall.
+• The Mini: a quick 5×5 crossword against the clock.
+• Chunks: rebuild 4 theme words from letter chunks and chase a Perfect.
+• Every puzzle shows its difficulty, keeps its own streak, and has a scoreboard and a 14-day archive.
+
 Level up and make it yours
 • Every point you score is XP. Levels unlock 7 new well themes: Neon, Sunset, Ocean, Forest, Royal and Gold.
 • Three weekly challenges, new every Monday. Finish all three for bonus XP and a streak freeze.

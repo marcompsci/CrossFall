@@ -612,6 +612,24 @@ html.light #coach .cbub{background:#221a33;color:#f6f1e7}
 .onb .ochip[aria-pressed=true]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 16%,var(--panel))}
 .onb .omoods{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 .onb .omood{background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:12px 2px 10px;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:calc(13px*var(--ts));font-weight:700}
+.onb .ochip .sty{width:54px;height:54px;display:block;overflow:visible}
+.sty .t{fill:#efe3c8;stroke:#2a2238;stroke-width:1.6}
+.sty text{fill:#2a2238;font-weight:800;text-anchor:middle;font-family:inherit}
+.sty .a{fill:var(--accent)}
+.sty .ln{fill:none;stroke:var(--muted);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.sty .ln.thin{stroke-width:1.5}.sty .ln.soft{opacity:.6}
+.sty .ln.a2{stroke:var(--accent)}
+.sty .beam{fill:var(--muted)}
+.sty .sw{transform-origin:24px 12px}.sty .tl{transform-origin:24px 29px}
+.onb .ochip[aria-pressed=true] .sty-chill .sw{animation:styChill 3s ease-in-out infinite}
+.onb .ochip[aria-pressed=true] .sty-bal .tl{animation:styBal 2.6s ease-in-out infinite}
+.onb .ochip[aria-pressed=true] .sty-spd .dr{animation:stySpd .9s cubic-bezier(.5,0,.75,0) infinite}
+.onb .ochip[aria-pressed=true] .sty-spd .st{animation:stySt .9s linear infinite}
+@keyframes styChill{0%,100%{transform:translateY(-1px) rotate(-6deg)}50%{transform:translateY(2px) rotate(6deg)}}
+@keyframes styBal{0%,100%{transform:rotate(0)}25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}
+@keyframes stySpd{0%{transform:translateY(-6px)}70%{transform:translateY(1px)}100%{transform:translateY(0)}}
+@keyframes stySt{0%{opacity:.3;transform:translateY(-4px)}60%{opacity:1}100%{opacity:.3;transform:translateY(2px)}}
+@media (prefers-reduced-motion:reduce){.sty *{animation:none!important}}
 .onb .omood .oi{font-size:28px;line-height:1;transition:transform .2s}
 .onb .omood[aria-pressed=true]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 16%,var(--panel))}.onb .omood[aria-pressed=true] .oi{transform:scale(1.2)}
 .onb .oreply{background:var(--panel);border-left:4px solid var(--accent);border-radius:10px;padding:12px 14px;font-size:calc(15px*var(--ts));line-height:1.45;animation:cbub .3s ease-out}
@@ -2727,7 +2745,8 @@ const MOODS=[["Heavy","🌧️","Thanks for telling us. We'll keep it gentle. Ps
  ["Tired","😴","Easy does it. Short puzzles and a calm pace are a good place to start.",["Kitchen","Night Sky","Music"]],
  ["Okay","🙂","Solid. Let's find you something fun.",["Sports","Arcade","Music"]],
  ["Hopeful","🌤️","Love that. Let's put it to work.",["Bay City","Sports","Books"]]];
-const STYLES=[["relaxed","Chill","🐢","Slow falls, take your time"],["normal","Balanced","⚖️","The classic pace"],["fast","Speedy","⚡","Quick drops, bigger points"]];
+const STYLE_ICONS={relaxed:'<svg class="sty sty-chill" viewBox="0 0 48 48"><g class="sw"><path class="a" d="M7 19C9 8 39 8 41 19Z"/><path class="ln" d="M7 19q4.25-3 8.5 0q4.25-3 8.5 0q4.25-3 8.5 0q4.25-3 8.5 0"/><path class="ln thin" d="M9 19L18 30M24 19V30M39 19L30 30"/><rect class="t" x="17" y="29" width="14" height="14" rx="3.1"/><text x="24.0" y="39.1" font-size="8.7">C</text></g><path class="ln thin soft" d="M4 34q3-2 6 0M38 40q3-2 6 0"/></svg>',normal:'<svg class="sty sty-bal" viewBox="0 0 48 48"><g class="tl"><rect class="beam" x="5" y="27" width="38" height="3" rx="1.5"/><rect class="t" x="7" y="14" width="13" height="13" rx="2.9"/><text x="13.5" y="23.4" font-size="8.1">B</text><rect class="t" x="28" y="14" width="13" height="13" rx="2.9"/><text x="34.5" y="23.4" font-size="8.1">B</text></g><path class="a" d="M24 30L18.5 40H29.5Z"/><path class="ln thin" d="M14 42H34"/></svg>',fast:'<svg class="sty sty-spd" viewBox="0 0 48 48"><g class="st"><path class="ln a2" d="M19 3V15M25 1V18M31 5V13"/></g><g class="dr"><rect class="t" x="16" y="19" width="16" height="16" rx="3.5"/><text x="24.0" y="30.5" font-size="9.9">S</text></g><path class="ln a2 thin" d="M12 39L7 43M36 39L41 43M10 34H5M38 34H43"/><path class="ln thin" d="M11 43.5H37"/></svg>'};
+const STYLES=[["relaxed","Chill",STYLE_ICONS.relaxed,"Slow falls, take your time"],["normal","Balanced",STYLE_ICONS.normal,"The classic pace"],["fast","Speedy",STYLE_ICONS.fast,"Quick drops, bigger points"]];
 let onb=null;
 function showOnboarding(){onb={step:0,name:stats.nick||"",style:prefs.speed||"normal",mood:stats.mood!=null?stats.mood:null,cats:(stats.freeCats||[]).slice()};
   document.getElementById("onb").hidden=false;renderOnb()}

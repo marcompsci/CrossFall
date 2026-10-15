@@ -190,16 +190,27 @@ final class GameCenter: NSObject, GKGameCenterControllerDelegate {
         GKAchievement.report([a]) { _ in }
     }
 
+    /// `scope` is "total", "week", "best" or "day"; a "~f" suffix loads only the player's Game Center friends.
     private func load(scope: String) {
+        let friends = scope.hasSuffix("~f")
+        let base = friends ? String(scope.dropLast(2)) : scope
         guard GKLocalPlayer.local.isAuthenticated else {
             js("window.gcEntries&&window.gcEntries(\(json(scope)),null,\(json("Not signed in to Game Center")))"); return
         }
-        GKLeaderboard.loadLeaderboards(IDs: [GC.board(scope)]) { [weak self] boards, error in
+        let go = { [weak self] in self?.loadBoard(scope: scope, base: base, friends: friends) }
+        if friends {
+            // Asks for friends-list permission the first time (NSGKFriendListUsageDescription).
+            GKLocalPlayer.local.loadFriends { _, _ in go() }
+        } else { go() }
+    }
+
+    private func loadBoard(scope: String, base: String, friends: Bool) {
+        GKLeaderboard.loadLeaderboards(IDs: [GC.board(base)]) { [weak self] boards, error in
             guard let self = self else { return }
             guard let board = boards?.first else {
                 self.js("window.gcEntries&&window.gcEntries(\(self.json(scope)),null,\(self.json("setup")))"); return
             }
-            board.loadEntries(for: .global, timeScope: .allTime, range: NSRange(location: 1, length: 100)) { local, entries, total, error in
+            board.loadEntries(for: friends ? .friendsOnly : .global, timeScope: .allTime, range: NSRange(location: 1, length: 100)) { local, entries, total, error in
                 let me = GKLocalPlayer.local.gamePlayerID
                 func row(_ e: GKLeaderboard.Entry) -> [String: Any] {
                     ["rank": e.rank, "name": e.player.displayName, "score": e.score, "me": e.player.gamePlayerID == me]

@@ -154,6 +154,7 @@ To stop the error for future uploads, sign out of your Apple ID and back in unde
 - [x] 1.1 (13): levels and well themes, weekly challenges, streak milestones, friend challenges and share cards, daily reminder, home-screen widget, new sound effects and music tracks
 - [x] 1.1 (14): Today's Puzzles: The Mini and Chunks, scoreboards, difficulty labels, filterable archive
 - [x] 1.1 (15): Language category with Rapid Recall and the Language lab; Sports legends quotes
+- [x] Game feel (chain/combo callouts, word bursts, rising chain sounds, rush tick haptics, highlights reel); tiered hints; adaptive difficulty suggestions; "For you" pick; Game Center Friends leaderboards; Share my week card; 1.1 screenshots + SHIP-1.1 checklist (build 16)
 - [x] Weekly events, monthly season packs (72 puzzles) + season themes + badges; word book with golden words and collector milestones; duels with a live ghost and rival records; accessibility pass (axe clean) and iPad overlay layout
 - [x] 1.1: Per-category difficulty (Easy/Medium/Hard/Expert) asked before the first game; changes fall speed, rush time, starting well, hints and score multiplier
 - [x] 1.1: Sports intro (favorite sports, teams, hometown or current location) with hometown legends; 50 more puzzles in every category (70+ each, 703 total)

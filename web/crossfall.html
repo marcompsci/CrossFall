@@ -436,7 +436,7 @@ textarea.mkin,#textbox textarea{font-family:var(--f-mono);font-size:14px;line-he
 .bk{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline;font-size:calc(13px*var(--ts))}
 .bk b{font-family:var(--f-mono);letter-spacing:.06em}.bk span{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .zskip{margin-top:10px;width:100%;max-width:280px}
-.seg4{grid-template-columns:repeat(4,1fr)}
+.seg4{grid-template-columns:repeat(4,1fr)}.seg2{grid-template-columns:repeat(2,1fr)}.rkwho button[aria-checked="true"]{background:var(--accent);color:var(--ink)}
 html.readable{--f-body:Verdana,Tahoma,"Segoe UI",system-ui,sans-serif}
 html.readable body{letter-spacing:.03em;word-spacing:.1em}
 html.readable .ct,html.readable .rvclue,html.readable .gc-tag{line-height:1.55}
@@ -771,6 +771,27 @@ html.light .ov.cele{background:rgba(60,45,30,.45)}
 .wb-det .wb-det-w{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px}.wb-det .wb-det-w b{width:30px;height:30px;display:grid;place-items:center;border-radius:6px;background:#efe3c8;color:#2a2238;font-family:var(--f-mono);border:1.5px solid #2a2238}
 .wb-det.golden .wb-det-w b{background:#ffd166}.wb-det p{margin:6px 0}
 .wn{display:flex;gap:12px;align-items:flex-start}.wn>.ti{width:52px;height:52px;flex:none}.wn p{margin:4px 0 0;color:var(--muted)}
+.popcall{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%) scale(.6);z-index:30;pointer-events:none;font-family:var(--f-display,inherit);font-weight:900;font-size:calc(40px*var(--ts));letter-spacing:.04em;color:#fff;
+  text-shadow:0 3px 0 #2a2238,0 0 24px color-mix(in srgb,var(--accent) 70%,transparent);animation:popcall 1s cubic-bezier(.2,1.6,.4,1) forwards;white-space:nowrap}
+.popcall.chain{color:#ffd166}.popcall.combo{top:46%;font-size:calc(28px*var(--ts));color:#7fe3ff}
+@keyframes popcall{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}18%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}30%{transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-80%) scale(1)}}
+.floatpts{position:absolute;z-index:30;pointer-events:none;transform:translate(-50%,-50%);font-family:var(--f-mono);font-weight:800;font-size:calc(18px*var(--ts));color:var(--accent);text-shadow:0 2px 0 #2a2238;animation:floatpts .9s ease-out forwards}
+@keyframes floatpts{from{opacity:1;transform:translate(-50%,-50%)}to{opacity:0;transform:translate(-50%,-160%)}}
+@media (prefers-reduced-motion:reduce){.popcall{animation:none;opacity:0}.floatpts{display:none}}
+.hl-reel{margin:8px 0}.hl-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:6px}
+.hl{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 6px;border-radius:12px;background:var(--panel-2);border:1px solid var(--line);text-align:center}
+.hl .hl-ic .ti{width:40px;height:40px}.hl b{font-family:var(--f-mono);font-size:calc(14px*var(--ts));word-break:break-word}.hl span{font-size:calc(11px*var(--ts));color:var(--muted)}
+.readback.adv p{margin:6px 0}.adv-b{display:flex;gap:8px;flex-wrap:wrap}.adv-b .ghost-btn{flex:1}
+.hint-menu{position:absolute;inset:0;z-index:35;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.35);padding:16px;box-sizing:border-box}
+.hint-menu[hidden]{display:none}
+.hm-card{width:100%;max-width:440px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:8px;box-shadow:0 10px 40px rgba(0,0,0,.4)}
+.hm-card button[data-hk]{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;text-align:left;gap:2px 10px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--panel-2);color:inherit;font:inherit;min-height:56px}
+.hm-card button[data-hk] b{font-size:calc(15px*var(--ts))}.hm-card button[data-hk] span{grid-column:1;font-size:calc(12px*var(--ts));color:var(--muted)}
+.hm-card button[data-hk] i{grid-row:span 2;grid-column:2;align-self:center;font-style:normal;font-family:var(--f-mono);font-weight:800;color:var(--danger,#ff5a5f)}
+.hm-x{background:none;border:0;color:var(--muted);font:inherit;padding:10px;min-height:44px}
+.fy-line span:first-child{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.fy-line small{flex-basis:100%;font-size:calc(12px*var(--ts));color:var(--muted);margin-left:42px;margin-top:-4px}
+.fy-line .cic,.fy-line .cic svg{width:30px;height:30px}
+.rkwho{margin:8px 0}html.light .fy-line small{color:#5a5170}
 .gc-pages{display:flex;gap:6px;margin:2px 0 8px;overflow-x:auto;scrollbar-width:none}
 .gc-pages button{flex:1 0 auto;min-height:32px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.18);color:inherit;font:inherit;font-size:12px;font-weight:700;letter-spacing:.02em}
 .gc-pages button[aria-selected="true"]{background:rgba(255,255,255,.92);color:#111;border-color:transparent}
@@ -1107,6 +1128,7 @@ html.wide #profile.hud>.hud-bar,html.wide #profile.hud>.hero{grid-column:1/-1}
         <button role="tab" data-rk="week" aria-selected="false">This week</button>
         <button role="tab" data-rk="best" aria-selected="false">Best game</button>
       </div>
+      <div class="seg seg2 rkwho" role="radiogroup" id="rkWho" aria-label="Whose scores" hidden><button role="radio" data-who="all" aria-checked="true">Everyone</button><button role="radio" data-who="f" aria-checked="false">Friends</button></div>
       <ol class="rklist" id="rkList"></ol>
       <div class="rkme" id="rkMe" hidden></div>
     </section>
@@ -2140,6 +2162,7 @@ function lock(){
       const n=full.length;let v=[0,100,300,500,800][n]||1000,lab=n>1?n+" ROWS":"ROW CLEAR";
       if(n>1){if(S.b2b){v=Math.round(v*1.5);lab+=" · B2B"}S.b2b=true}else S.b2b=false;
       addPts("rows",v);S.combo++;if(S.combo>1){addPts("combo",50*(S.combo-1));lab+=" · COMBO "+S.combo}
+      S.bestClear=Math.max(S.bestClear||0,n);try{juiceClear(n,S.combo)}catch(e){}
       S.linesCleared+=n;toast(lab+" +"+v);afterSettle()},260);
   }else{S.combo=0;afterSettle()}
 }
@@ -2296,16 +2319,19 @@ function showResult(win,st,why){
    ${S.L.lang?langReadback():S.L.texts?`<div class="readback" data-mag><span class="ln">READ IT BACK</span>${S.cw.words.filter(w=>w.solved).map(w=>{const x=S.L.texts[w.ans];return x?`<div class="rb"><b>${w.ans}</b><p>${x.ref?`“${x.text}”`:x.text}</p>${x.ref?`<cite>${x.ref}</cite>`:""}</div>`:""}).join("")}</div>`:""}
    ${S.L.cat==="Sports"&&!S.L.daily?spResultHTML():""}
    ${p2ResultHTML(win)}
+   ${highlightsHTML()}
+   ${win||S.phase==="over"?diffAdviceHTML():""}
    <details class="how sc"><summary>How scoring works</summary>${SCORING_HELP}</details>
    <div class="btns">${official?`<button class="big" id="shareD">Share result</button>`:""}${!S.L.custom&&S.score>0?`<button class="ghost-btn" id="chalBtn">${S.challenge?"Send it back":"Challenge a friend"}</button>`:""}${win&&has?`<button class="${official?"ghost-btn":"big"}" id="nextL">${sameCat?"Next puzzle":"Next category: "+nx.cat}</button>`:""}
    <button class="${(win&&has)||official?"ghost-btn":"big"}" id="retryL">${dk?"Play again (practice)":"Play again"}</button>
    <button class="ghost-btn" id="toMenu">All categories</button></div>`;
-  el.hidden=false;el.scrollTop=0;
+  el.hidden=false;el.scrollTop=0;document.querySelectorAll(".popcall,.floatpts").forEach(x=>x.remove());
   const n=document.getElementById("nextL");if(n)n.onclick=()=>startLevel(S.li+1);
   const sh=document.getElementById("shareD");if(sh)sh.onclick=()=>shareWithCard(shareText(official,dk));
   const cb=document.getElementById("chalBtn");if(cb)cb.onclick=()=>shareWithCard(chalShareText());
   document.getElementById("retryL").onclick=()=>dk?playDaily(dk,true):startLevel(S.li>=0?S.li:S.L);
   document.getElementById("toMenu").onclick=showMenu;
+  wireAdvice();
   {const b=document.getElementById("p2Next");if(b)b.onclick=()=>{const v=b.dataset;if(v.sea!=null)playSeason(+v.sea);else startLevel(+v.evl)}}
   {const b=document.getElementById("hhSet");if(b)b.onclick=()=>showSportsQuiz();const m=document.getElementById("hhMore");if(m)m.onclick=()=>openLegends()}
   wireSay(el);{const d=document.getElementById("lrbDrill");if(d)d.onclick=()=>{el.hidden=true;openRecall("see")}}
@@ -2532,6 +2558,7 @@ function renderRanks(){
   const list=document.getElementById("rkList");if(!list)return;
   document.querySelectorAll("#rkSeg button").forEach(b=>b.setAttribute("aria-selected",b.dataset.rk===rkMode));
   const lv=document.getElementById("rkLive");if(lv)lv.classList.toggle("on",cloud.live);
+  {const w=document.getElementById("rkWho");if(w)w.hidden=!gc.native}
   if(gc.native){renderGcRanks(list);return}
   if(!cloud.db){list.innerHTML=`<li class="empty">${cloud.native?"Worldwide rankings arrive with Game Center in the App Store version. Your games still count on your profile.":"Live rankings need you signed in. Your games still count on your profile."}</li>`;document.getElementById("rkMe").hidden=true;return}
   const rows=rankRows(rkMode);
@@ -2546,13 +2573,13 @@ function renderGcRanks(list){
   const btn=`<button class="ghost-btn gcbtn" data-gcopen="1">Open Game Center</button>`;
   if(!gc.auth){setRankStatus("Signing in…");list.innerHTML=`<li class="empty">Signing in to Game Center…</li>`;return}
   if(!gc.auth.ok){setRankStatus("Not signed in");list.innerHTML=`<li class="empty">Sign in to Game Center to see worldwide rankings: open your iPhone's Settings › Game Center. Your games still count on your profile.</li>`;return}
-  const data=gc.rows[rkMode],err=gc.err[rkMode];
-  if(!data&&!err){gcLoad(rkMode);setRankStatus("Loading…");list.innerHTML=`<li class="empty">Loading worldwide rankings…</li>`;return}
+  const data=gc.rows[rkKey()],err=gc.err[rkKey()];
+  if(!data&&!err){gcLoad(rkKey());setRankStatus("Loading…");list.innerHTML=`<li class="empty">Loading worldwide rankings…</li>`;return}
   if(err){setRankStatus("Game Center");list.innerHTML=`<li class="empty">${err==="setup"?"Worldwide leaderboards are being set up. Your scores are saved and will appear here once they're live.":"Couldn't load rankings right now: "+esc(err)}</li><li>${btn}</li>`;wireGcBtn();return}
   const rows=data.rows||[];setRankStatus(`Game Center · ${fmtN(data.total||rows.length)} player${(data.total||rows.length)===1?"":"s"}`);
   const lv=document.getElementById("rkLive");if(lv)lv.classList.add("on");
   const row=(r)=>`<li class="rkrow${r.me?" me":""}${r.rank<=3?" p"+r.rank:""}"><span class="rn">${r.rank}</span><span class="av" aria-hidden="true">${esc(String(r.name||"?").charAt(0).toUpperCase())}</span><span class="nm"><b>${esc(r.name||"Player")}${r.me?`<span class="youtag">YOU</span>`:""}</b><span>${rkMode==="day"?"Today's daily puzzle":rkMode==="week"?"Best game this week":rkMode==="best"?"Best single game":"Total score"}</span></span><span class="vl">${fmtN(r.score)}</span></li>`;
-  list.innerHTML=(rows.length?rows.map(row).join(""):`<li class="empty">No scores yet. Finish a puzzle to take first place.</li>`)+`<li>${btn}</li>`;
+  list.innerHTML=(rows.length?rows.map(row).join(""):`<li class="empty">${rkFriends?"None of your Game Center friends have a score here yet. Challenge one from any result screen.":"No scores yet. Finish a puzzle to take first place."}</li>`)+`<li>${btn}</li>`;
   if(data.mine&&!rows.some(r=>r.me)){me.hidden=false;me.innerHTML=`<ol class="rklist">${row(data.mine)}</ol>`}
   wireGcBtn();
 }
@@ -2609,7 +2636,7 @@ function renderProfile(){if(gc.native)gcLoad("total");
      ${ro("Targets built",fmtN(T.targets),`best chain ×${T.chainBest||0}`)}
      ${ro("Mini streak",`${fmtN(ms.n)}<i>d</i>`,`best ${fmtN(ms.best)}`)}
      ${ro("Chunks streak",`${fmtN(cs.n)}<i>d</i>`,`best ${fmtN(cs.best)}`)}</div>
-     <button class="hbtn" id="pfSb">Open puzzle scoreboard ›</button>`)}
+     <button class="hbtn" id="pfSb">Open puzzle scoreboard ›</button><button class="hbtn" id="pfWeek">Share my week ›</button>`)}
    ${sec("03",`SCORE TRACE · LAST ${recent.length||14}`,`<div class="chart" id="scoreChart">${recent.length?scoreChart(recent):`<div class="hempty">NO SIGNAL · play a puzzle to start the trace</div>`}</div>`)}
    ${sec("04","SYSTEMS · STARS BY CATEGORY",`<div class="hsys">${catRows.map(r=>{const f=r.max?r.got/r.max:0,on=Math.round(f*12);
      return`<div class="hs"><span>${esc(r.c)}</span><span class="segs" aria-hidden="true">${[...Array(12)].map((_,i)=>`<i class="${i<on?"on":""}"></i>`).join("")}</span><span class="v">${r.got}/${r.max}</span></div>`}).join("")}</div>`)}
@@ -2626,7 +2653,7 @@ function renderProfile(){if(gc.native)gcLoad("total");
   document.getElementById("nickForm").onsubmit=e=>{e.preventDefault();const v=document.getElementById("nickIn").value.replace(/[^\p{L}\p{N} _.-]/gu,"").trim().slice(0,16);
     if(!v)return;stats.nick=v;saveStats();pushCloud();toast("Name saved");renderProfile()};
   const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
-  on("pfRetake",()=>showQuiz(null));on("pfReview",openReview);on("pfRewards",openRewards);on("pfSb",()=>openScoreboard&&openScoreboard("daily"));on("pfWb",()=>openWordBook());on("pfEv",openEvents);on("pfDu",openDuels);
+  on("pfRetake",()=>showQuiz(null));on("pfReview",openReview);on("pfRewards",openRewards);on("pfSb",()=>openScoreboard&&openScoreboard("daily"));on("pfWb",()=>openWordBook());on("pfWeek",shareWeek);on("pfEv",openEvents);on("pfDu",openDuels);
   wireChart();
 }
 function scoreChart(games){
@@ -2685,6 +2712,7 @@ document.getElementById("drClose").onclick=closeDrawer;document.getElementById("
     else if(a==="pro"){showPaywall(PRO?"owned":"menu")}
     else if(a==="how"){goPage("Play");const h=document.querySelector(".how");if(h){h.open=true;setTimeout(()=>h.scrollIntoView({behavior:"smooth",block:"start"}),60)}}});
   document.querySelectorAll("#rkSeg button").forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;renderRanks()});
+  document.querySelectorAll("#rkWho button").forEach(b=>b.onclick=()=>{rkFriends=b.dataset.who==="f";document.querySelectorAll("#rkWho button").forEach(x=>x.setAttribute("aria-checked",x===b));renderRanks()});
   document.getElementById("hubA11y").onclick=()=>{renderPaceInfo();document.getElementById("settings").hidden=false};
   const deck=document.getElementById("deck");
   deck.addEventListener("scroll",()=>{if(!deckRaf)deckRaf=requestAnimationFrame(deckFx)},{passive:true});
@@ -2810,7 +2838,7 @@ function renderPad(){
   }
   pad.querySelectorAll("button").forEach(b=>{
     const a=b.dataset.a,ch=b.dataset.ch;
-    const fire=()=>{if(ch)typeLetter(ch);else if(a==="bk")backspace();else if(a==="hint")hint();else if(a==="chk")checkWord();else if(a==="X")holdPiece();else if(a==="clr"){if(S.rush){S.rush.input="";renderRush()}}
+    const fire=()=>{if(ch)typeLetter(ch);else if(a==="bk")backspace();else if(a==="hint")openHintMenu();else if(a==="chk")checkWord();else if(a==="X")holdPiece();else if(a==="clr"){if(S.rush){S.rush.input="";renderRush()}}
       else if(a==="L")move(-1);else if(a==="R")move(1);else if(a==="T")rotate();else if(a==="D")softDrop();else if(a==="H")hardDrop()};
     let t1,t2;
     b.onpointerdown=e=>{lastPD=Date.now();e.preventDefault();audioInit();fire();if(a==="L"||a==="R"||a==="D"){t1=setTimeout(()=>{t2=setInterval(fire,a==="D"?60:95)},210)}};
@@ -3147,9 +3175,10 @@ function addPts(k,v){if(!v)return;S.pts[k]=(S.pts[k]||0)+v;S.score=Math.max(0,S.
 function wordValue(len,own){return 50+10*own+(own===len?Math.max(0,len-5)*25:0)}
 function scoreWord(w){
   const own=w.cells.filter(k=>!S.helped.has(k)).length,v=wordValue(w.ans.length,own);addPts("words",v);
-  const c=S.crossMs;S.chain=(S.lastSolve!=null&&c-S.lastSolve<=CHAIN_MS)?S.chain+1:0;S.lastSolve=c;
+  const c=S.crossMs,prevT=S.lastSolve;S.chain=(S.lastSolve!=null&&c-S.lastSolve<=CHAIN_MS)?S.chain+1:0;S.lastSolve=c;
   let ch=0;if(S.chain){ch=Math.min(250,50*S.chain);addPts("chain",ch);S.maxChain=Math.max(S.maxChain||0,S.chain+1)}
-  S.wordLog.push({w:w.ans,own:own===w.ans.length});bankWord(w);
+  S.wordLog.push({w:w.ans,own:own===w.ans.length,dt:Math.max(0,c-(prevT==null?0:prevT))});bankWord(w);
+  try{juiceWord(w,v+ch,S.chain)}catch(e){}
   return v+ch;
 }
 function parScore(){return S.cw.words.reduce((t,w)=>t+wordValue(w.ans.length,w.ans.length),0)+500+300*Math.max(1,S.rushTotal)+S.cw.words.length*PAR_PER_WORD*2.5}
@@ -3344,6 +3373,7 @@ function renderDailyCard(){
   const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
   box.insertAdjacentHTML("beforeend",weeklyLine());on("wkLine",openRewards);
   try{box.insertAdjacentHTML("beforeend",eventLine());on("evLine",openEvents)}catch(e){}
+  try{const fy=forYouLine();if(fy){box.insertAdjacentHTML("beforeend",fy);const b=document.getElementById("fyLine");b.onclick=()=>startLevel(+b.dataset.l)}}catch(e){}
   box.insertAdjacentHTML("beforeend",`<span class="pz-label">TODAY'S PUZZLES</span>`+puzzlesStrip());
   on("pzMini",()=>openMini());on("pzChunks",()=>openChunks());on("pzSb",()=>openScoreboard("mini"));on("pzArc",()=>openArchive("mini"));
   on("dcPlay",()=>playDaily(t));on("dcAgain",()=>playDaily(t,true));on("dcShare",()=>shareOut(shareText(rec,t)));on("dcArchive",openArchive);
@@ -3656,7 +3686,7 @@ function frame(now){const dt=Math.min(100,now-last);last=now;
     if(S.phase==="cross")S.crossMs=(S.crossMs||0)+dt;
     if(S.phase==="rush"&&S.rush&&S.rush.state==="on"&&!S.rush.zen){S.rush.left-=dt/1000;
       if(S.rush.left<=0){S.rush.left=0;rushLose()}else{const s=document.getElementById("rsecs"),b=document.getElementById("rbar");if(s)s.textContent=fmtTime(S.rush.left);const sec=Math.ceil(S.rush.left);if(sec<=10&&sec!==S.rush.lastTick){S.rush.lastTick=sec;blip(sec<=3?988:660,.05)}
-      if((sec===60||sec===30||sec===10)&&S.rush.saidAt!==sec){S.rush.saidAt=sec;announce(sec+" seconds left")}if(b)b.style.transform=`scaleX(${S.rush.left/S.rush.limit})`}}}
+      if((sec===60||sec===30||sec===10)&&S.rush.saidAt!==sec){S.rush.saidAt=sec;announce(sec+" seconds left")}if(sec<=5&&S.rush.tickAt!==sec){S.rush.tickAt=sec;hap("select");sfx("tick")}if(b)b.style.transform=`scaleX(${S.rush.left/S.rush.limit})`}}}
   requestAnimationFrame(frame)}
 
 /* ---------- boot ---------- */
@@ -3918,6 +3948,90 @@ function maybeWhatsNew(){if(stats.seen12||!stats.tot||!stats.tot.games)return;st
    <div class="btns wide"><button class="big" id="evDone">Let's go</button></div>`;
   el.hidden=false;document.getElementById("evDone").onclick=closeEvents}
 
+/* ================= 1.2: game feel, smarter puzzles, friends & recaps ================= */
+/* ---- juice: big pop-up callouts, rising chain sounds, word bursts ---- */
+function popCall(text,kind){const app=document.getElementById("app");if(!app||!S||S.final!=null||["done","over"].includes(S.phase))return;app.querySelectorAll(".popcall"+(kind==="combo"?".combo":":not(.combo)")).forEach(x=>x.remove());const d=document.createElement("div");d.className="popcall "+(kind||"");d.setAttribute("aria-hidden","true");d.textContent=text;app.appendChild(d);setTimeout(()=>d.remove(),1100)}
+function juiceWord(w,v,chain){
+  const cells=w.cells.map(k=>document.querySelector(`#cw [data-k="${k}"]`)).filter(Boolean),mid=cells[Math.floor(cells.length/2)];
+  if(mid){burst(mid,10+Math.min(14,w.ans.length*2),90);const app=document.getElementById("app"),a=app.getBoundingClientRect(),b=mid.getBoundingClientRect();
+    if(!matchMedia("(prefers-reduced-motion: reduce)").matches){const f=document.createElement("div");f.className="floatpts";f.setAttribute("aria-hidden","true");f.textContent="+"+fmtN(v);f.style.left=(b.left-a.left+b.width/2)+"px";f.style.top=(b.top-a.top)+"px";app.appendChild(f);setTimeout(()=>f.remove(),900)}}
+  if(chain>0){sfx("chain",chain);hap("success");popCall(chain>=4?"ON FIRE ×"+(chain+1):"CHAIN ×"+(chain+1),"chain")}}
+function juiceClear(n,combo){const words=["","","DOUBLE!","TRIPLE!","QUAD!"];if(n>1)popCall(words[Math.min(4,n)]||n+" ROWS!","clear");if(combo>1){popCall("COMBO ×"+combo,"combo");sfx("combo",combo)}}
+/* ---- highlights reel on the result screen ---- */
+function highlightsHTML(){if(!S||!S.cw)return"";const log=S.wordLog||[],h=[];
+  const timed=log.filter(x=>x.dt>0&&x.own);if(timed.length){const f=timed.reduce((a,b)=>b.dt<a.dt?b:a);h.push(["bolt","Fastest word",`${f.w} in ${(f.dt/1000).toFixed(1)}s`])}
+  const longest=log.filter(x=>x.own).sort((a,b)=>b.w.length-a.w.length)[0];if(longest&&longest.w.length>=6)h.push(["star","Longest on your own",longest.w]);
+  if(S.maxChain>1)h.push(["fire","Best speed chain","×"+S.maxChain]);
+  if(S.bestClear>1)h.push(["cards","Biggest clear",S.bestClear+" rows at once"]);
+  if(S.targetHit)h.push(["target","Target built",S.L.target[0]]);
+  if(S.rushTotal)h.push(["runner","Rushes won",S.rushWins+" of "+S.rushTotal]);
+  return h.length?`<div class="hl-reel" aria-label="Highlights"><span class="ln">HIGHLIGHTS</span><div class="hl-row">${h.slice(0,4).map(([ic,a,b])=>`<div class="hl"><span class="hl-ic">${ti(ic)}</span><b>${esc(b)}</b><span>${a}</span></div>`).join("")}</div></div>`:""}
+
+/* ---- smarter: difficulty that follows your play ---- */
+function diffAdvice(){if(!S||!S.L||!diffCat(S.L))return null;const cat=diffCat(S.L),cur=diffOf(cat)||"medium",i=DIFF_ORDER.indexOf(cur);
+  const skip=(stats.diffSkip||{})[cat]||0;if(Date.now()-skip<3*864e5)return null;
+  const gs=stats.games.filter(g=>g.cat===cat&&!g.practice).slice(0,4);if(gs.length<3)return null;
+  const strong=gs.length>=4&&gs.every(g=>g.win&&(g.grade==="S"||g.grade==="SS"||(g.grade==="A"&&g.gold)));
+  const rough=gs.slice(0,3).every(g=>!g.win);
+  if(strong&&i<DIFF_ORDER.length-1)return{cat,to:DIFF_ORDER[i+1],why:`Your last 4 ${cat} puzzles were top grades.`};
+  if(rough&&i>0)return{cat,to:DIFF_ORDER[i-1],why:`The well filled up on your last 3 ${cat} puzzles.`};
+  return null}
+function diffAdviceHTML(){const a=diffAdvice();if(!a)return"";const d=DIFFS[a.to];
+  return`<div class="readback adv" data-mag><span class="ln">${DIFF_ORDER.indexOf(a.to)>DIFF_ORDER.indexOf(diffOf(a.cat)||"medium")?"LEVEL UP?":"EASE OFF?"}</span><p>${esc(a.why)} Try <b>${d.ic} ${d.label}</b> in ${esc(a.cat)}? ${d.label==="Easy"?"":`Scores ×${d.score}.`}</p>
+   <div class="adv-b"><button class="ghost-btn" id="advYes" data-to="${a.to}" data-cat="${esc(a.cat)}">Switch to ${d.label}</button><button class="ghost-btn" id="advNo" data-cat="${esc(a.cat)}">Not now</button></div></div>`}
+function wireAdvice(){const y=document.getElementById("advYes"),n=document.getElementById("advNo");
+  if(y)y.onclick=()=>{stats.diff=stats.diff||{};stats.diff[y.dataset.cat]=y.dataset.to;saveStats();toast(`${y.dataset.cat}: ${DIFFS[y.dataset.to].label}`);y.closest(".adv").remove()};
+  if(n)n.onclick=()=>{stats.diffSkip=stats.diffSkip||{};stats.diffSkip[n.dataset.cat]=Date.now();saveStats();n.closest(".adv").remove()}}
+
+/* ---- smarter: tiered hints ---- */
+const HINTS=[["letter","Reveal a letter",25,"One letter in this word"],["vowels","Show the vowels",40,"Every A, E, I, O, U in this word"],["word","Solve this word",90,"Fills the whole word in"]];
+function hintCost(base){const d=diffCfg();return d&&d.hint>25?base*2:base}
+function openHintMenu(){if(!S||S.phase!=="cross")return;const w=curWord();if(!w||w.solved){hint();return}let el=document.getElementById("hintMenu");
+  if(!el){el=document.createElement("div");el.id="hintMenu";el.className="hint-menu";el.setAttribute("role","dialog");el.setAttribute("aria-label","Hints");document.getElementById("app").appendChild(el)}
+  el.innerHTML=`<div class="hm-card"><span class="ln">HINT · ${w.ans.length} LETTERS</span>${HINTS.map(([k,l,c,d])=>`<button data-hk="${k}"><b>${l}</b><span>${d}</span><i>−${hintCost(c)}</i></button>`).join("")}<button class="hm-x" id="hmX">Never mind</button></div>`;
+  el.hidden=false;el.onclick=e=>{if(e.target===el)closeHintMenu()};document.getElementById("hmX").onclick=closeHintMenu;
+  el.querySelectorAll("[data-hk]").forEach(b=>b.onclick=()=>{closeHintMenu();useHint(b.dataset.hk)});
+  setTimeout(()=>{const b=el.querySelector("[data-hk]");if(b)b.focus()},40)}
+function closeHintMenu(){const el=document.getElementById("hintMenu");if(el)el.hidden=true}
+function useHint(kind){if(!S||S.phase!=="cross")return;const w=curWord();if(!w)return;
+  if(kind==="letter"){hint();return}
+  const cells=w.cells.map(k=>[k,S.cw.cells.get(k)]).filter(([k,c])=>!c.lock&&c.val!==c.ans&&(kind==="word"||"AEIOU".includes(c.ans)));
+  if(!cells.length){toast(kind==="vowels"?"No vowels left to show":"Already solved");return}
+  const cost=hintCost(kind==="word"?90:40);cells.forEach(([k,c])=>{c.val=c.ans;S.helped.add(k)});addPts("hints",-cost);toast((kind==="word"?"Word solved":"Vowels shown")+" −"+cost);
+  checkWords(cells[cells.length-1][1]);renderAll()}
+
+/* ---- smarter: a puzzle picked for you ---- */
+function pickForYou(){const played={};stats.games.forEach(g=>{played[g.cat]=(played[g.cat]||0)+1});const E=currentEvent();
+  const cats=CATEGORIES.filter(c=>!c.lang&&!lockReason(c.puzzles[0])).map(c=>{const p=wbProgress?wbProgress(c.name):{pct:0};
+    const next=c.puzzles.find(x=>!((store[x.id]||{}).stars)&&!lockReason(x));return{c,next,s:(played[c.name]||0)*2+(stats.sp&&c.name==="Sports"?3:0)+(100-p.pct)/50+(E.cat===c.name?2:0)}}).filter(x=>x.next);
+  if(!cats.length)return null;cats.sort((a,b)=>b.s-a.s);const pick=cats[0];
+  const why=E.cat===pick.c.name&&E.puzzles.includes(pick.next)?"This week's event":(played[pick.c.name]||0)?`You play ${pick.c.name} the most`:`New for you`;
+  return{L:pick.next,why}}
+function forYouLine(){const f=pickForYou();if(!f)return"";
+  return`<button class="wk-line fy-line" id="fyLine" data-l="${LEVELS.indexOf(f.L)}"><span>${catIcon(f.L.cat,(CAT_LOOK[f.L.cat]||{}).g1)} <b>For you:</b> ${esc(f.L.cat)} · ${f.L.pi+1}. ${esc(f.L.name)}<small>${esc(f.why)}</small></span><span aria-hidden="true">›</span></button>`}
+
+/* ---- social: your week, as a shareable card ---- */
+function weekStats(){const gs=weekGames(),cats={};gs.forEach(g=>cats[g.cat]=(cats[g.cat]||0)+1);
+  const top=Object.entries(cats).sort((a,b)=>b[1]-a[1])[0];const grades=["SS","S","A","B","C","D"],best=gs.map(g=>g.grade).filter(Boolean).sort((a,b)=>grades.indexOf(a)-grades.indexOf(b))[0];
+  return{games:gs.length,score:gs.reduce((t,g)=>t+(g.score||0),0),words:gs.reduce((t,g)=>t+(g.words||0),0),wins:gs.filter(g=>g.win).length,best,top:top?top[0]:null,streak:dailyStreak().n,golds:gs.filter(g=>g.gold).length}}
+function weekCard(){try{const W=1080,H=1350,cv=document.createElement("canvas");cv.width=W;cv.height=H;const x=cv.getContext("2d"),s=weekStats();
+  const gr=x.createLinearGradient(0,0,W,H);gr.addColorStop(0,"#e8671c");gr.addColorStop(1,"#3b1f6e");x.fillStyle=gr;x.fillRect(0,0,W,H);x.fillStyle="rgba(0,0,0,.3)";x.fillRect(0,0,W,H);
+  const font=(w,sz)=>`${w} ${sz}px "Avenir Next","Helvetica Neue",Arial,sans-serif`;x.textAlign="center";x.fillStyle="#fff";
+  x.font=font(800,64);x.fillText("CROSSFALL",W/2,140);x.font=font(600,42);x.globalAlpha=.85;x.fillText("My week · "+fmtDay(weekKeyOf(Date.now())),W/2,210);x.globalAlpha=1;
+  x.font=font(800,180);x.fillText(fmtN(s.score),W/2,430);x.font=font(600,44);x.fillText("points this week",W/2,500);
+  const tiles=[[fmtN(s.games),"puzzles"],[fmtN(s.words),"words"],[s.streak+"d","daily streak"],[s.best||"—","best grade"]];
+  tiles.forEach(([v,l],i)=>{const cx=150+(i%2)*390,cy=600+Math.floor(i/2)*230;x.fillStyle="rgba(255,255,255,.12)";x.beginPath();x.roundRect?x.roundRect(cx,cy,390-30,200,28):x.rect(cx,cy,360,200);x.fill();
+    x.fillStyle="#fff";x.font=font(800,84);x.fillText(v,cx+180,cy+110);x.font=font(600,34);x.globalAlpha=.85;x.fillText(l,cx+180,cy+160);x.globalAlpha=1});
+  x.font=font(600,40);x.fillText(s.top?"Most played: "+s.top:"Play a puzzle to start your week",W/2,1110);
+  x.font=font(800,52);x.fillText("Can you beat my week?",W/2,1235);return cv.toDataURL("image/png")}catch(e){return null}}
+function shareWeek(){const s=weekStats(),text=`My Crossfall week: ${fmtN(s.score)} points, ${s.games} puzzle${s.games===1?"":"s"}, ${s.words} words${s.best?", best grade "+s.best:""}${s.streak?`, ${s.streak}-day Daily streak`:""}. Can you beat it?`;
+  const img=weekCard();try{if(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.share&&img){window.webkit.messageHandlers.share.postMessage({text,image:img});return}}catch(e){}
+  shareOut(text)}
+
+/* ---- social: friends-only Game Center boards ---- */
+let rkFriends=false;
+function rkKey(){return rkMode+(rkFriends?"~f":"")}
+
 function weeklyLine(){const cs=challengeState(),d=cs.filter(c=>c.done).length;return`<button class="wk-line" id="wkLine"><span>${ti("trophy")} Weekly challenges <b>${d}/3</b></span><span class="wk-bars">${cs.map(c=>`<i style="--p:${Math.round(c.v/c.goal*100)}%"></i>`).join("")}</span><span aria-hidden="true">›</span></button>`}
 
 /* ---- friend challenges: a short code that carries the puzzle and the score to beat ---- */
@@ -4002,7 +4116,10 @@ const SFX={
   over(){tone(220,0,.3,"triangle",.07);tone(165,.2,.5,"triangle",.07);thud(.2,.1,300)},
   levelup(){[523,659,784,1047,1319].forEach((f,i)=>tone(f,i*.07,.28,"triangle",.05));[1047,1319,1568].forEach(f=>tone(f,.38,.8,"sine",.028))},
   reward(){tone(1047,0,.16,"triangle",.05);tone(1568,.08,.35,"sine",.035)}};
-function sfx(name){if(muted||!AC)return;try{SFX[name]&&SFX[name]()}catch(e){}}
+SFX.chain=function(n){const base=523*Math.pow(1.122,Math.min(8,n));tone(base,0,.12,"triangle",.05);tone(base*1.5,.06,.18,"triangle",.045);tone(base*2,.12,.22,"sine",.025)};
+SFX.tick=function(){tone(1200,0,.05,"square",.02)};
+SFX.combo=function(n){[0,1,2].forEach(i=>tone(659*Math.pow(1.19,i+Math.min(4,n)),i*.05,.16,"triangle",.045));thud(0,.1,1800)};
+function sfx(name,a){if(muted||!AC)return;try{SFX[name]&&SFX[name](a)}catch(e){}}
 
 /* ---- music tracks ---- */
 const TRACKS={

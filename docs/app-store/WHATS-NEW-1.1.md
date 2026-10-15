@@ -9,6 +9,16 @@ Learn a language as you play
 • Rapid Recall: a 60-second drill to lock words in. See it or hear it, then spell it fast.
 • The Language lab spaces your reviews so each word comes back right before you'd forget it.
 
+Events & seasons
+• A free weekly event: five puzzles from one category, free for everyone that week. Finish all five for a champion badge.
+• A new season pack every month, with six puzzles you can only play that month. Finish it to unlock a season-only well theme.
+
+Your word book
+• Every word you solve is collected by category. Hunt for golden words and finish a category for a collector badge.
+
+Duels with a ghost
+• Challenge a friend and they race a live ghost of your run on the same puzzle. Track your record against every rival.
+
 More than 500 new puzzles
 • 50 new puzzles in every category, so each one now has 70 or more. New themes include Rugby, Cricket, Opera, Broadway, Pinball, Oakland, Berkeley, Moon Landing, Seafood and more.
 

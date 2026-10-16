@@ -778,7 +778,7 @@ html.light .ov.cele{background:rgba(60,45,30,.45)}
 .floatpts{position:absolute;z-index:30;pointer-events:none;transform:translate(-50%,-50%);font-family:var(--f-mono);font-weight:800;font-size:calc(18px*var(--ts));color:var(--accent);text-shadow:0 2px 0 #2a2238;animation:floatpts .9s ease-out forwards}
 @keyframes floatpts{from{opacity:1;transform:translate(-50%,-50%)}to{opacity:0;transform:translate(-50%,-160%)}}
 @media (prefers-reduced-motion:reduce){.popcall{animation:none;opacity:0}.floatpts{display:none}}
-.hl-reel{margin:8px 0}.hl-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:6px}
+.hl-reel{margin:8px 0}.hlr{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:6px}
 .hl{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 6px;border-radius:12px;background:var(--panel-2);border:1px solid var(--line);text-align:center}
 .hl .hl-ic .ti{width:40px;height:40px}.hl b{font-family:var(--f-mono);font-size:calc(14px*var(--ts));word-break:break-word}.hl span{font-size:calc(11px*var(--ts));color:var(--muted)}
 .readback.adv p{margin:6px 0}.adv-b{display:flex;gap:8px;flex-wrap:wrap}.adv-b .ghost-btn{flex:1}
@@ -792,13 +792,64 @@ html.light .ov.cele{background:rgba(60,45,30,.45)}
 .fy-line span:first-child{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.fy-line small{flex-basis:100%;font-size:calc(12px*var(--ts));color:var(--muted);margin-left:42px;margin-top:-4px}
 .fy-line .cic,.fy-line .cic svg{width:30px;height:30px}
 .rkwho{margin:8px 0}html.light .fy-line small{color:#5a5170}
+/* ---- phase 4: quests, Marathon, Pass & Play ---- */
+.q-list{list-style:none;margin:6px 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.q-list li{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;background:var(--panel-2);border:1px solid var(--line)}
+.q-list li{text-align:left}.q-list li .ti{width:34px;height:34px}#settings>*,#jrn>*,#evh>*{flex-shrink:0}.q-list li>span:nth-child(2){display:flex;flex-direction:column;gap:5px}.q-list b{font-size:calc(14px*var(--ts))}
+.q-bar{display:block;height:6px;border-radius:9px;background:rgba(128,128,128,.3);overflow:hidden}.q-bar i{display:block;height:100%;background:var(--solved);border-radius:9px}
+.q-v{font-family:var(--f-mono);font-weight:800;font-size:calc(13px*var(--ts))}.q-list li.done{border-color:var(--solved)}.q-list li.done .q-v{color:var(--solved)}
+.ph .sub{font-size:calc(12px*var(--ts));font-weight:600;margin-left:6px}
+.md-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:6px}
+.md-cats button{display:flex;align-items:center;gap:8px;text-align:left;padding:8px 10px;border-radius:12px;border:1px solid var(--line);background:var(--panel-2);color:var(--fg);font:inherit;min-height:52px;cursor:pointer}
+.md-cats button>span{display:flex;flex-direction:column}.md-cats b{font-size:calc(14px*var(--ts))}.md-cats button>span>span{font-size:calc(11px*var(--ts));color:var(--muted)}
+.md-cats .cic,.md-cats .cic svg{width:30px;height:30px}
+.pp-form{display:flex;flex-direction:column;gap:10px;margin-top:8px}.pp-form label{display:flex;flex-direction:column;gap:4px;font-size:calc(13px*var(--ts));font-weight:700;color:var(--muted)}
+.pp-form .mkin{width:100%;box-sizing:border-box;background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;font-size:16px;min-height:44px}
+.pp-hand{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding-top:6vh}.pp-hand>.ti{width:88px;height:88px}
+.pp-up{margin:0;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}.pp-hand h1{margin:0;overflow-wrap:anywhere}
+.run-res p,.pp-res p{margin:6px 0}.run-res .big,.pp-res .big{width:100%;margin-top:6px}
+.pp-tab th{font-size:calc(12px*var(--ts));color:var(--muted);text-align:left;font-weight:700}.pp-tab td.win{color:var(--solved);font-weight:800}
+.pp-win{font-size:calc(17px*var(--ts))}.pp-win .ti{width:28px;height:28px;vertical-align:middle}
+/* ---- phase 5: reflection, journal, quote shelf ---- */
+.refl-quote{margin:6px 0;padding:8px 12px;border-left:3px solid var(--gold);font-style:italic;line-height:1.45}.refl-quote b{font-style:normal;margin-right:4px}.refl-quote cite{display:block;font-size:calc(12px*var(--ts));color:var(--muted);font-style:normal;margin-top:2px}
+.refl-q{font-weight:800;font-size:calc(16px*var(--ts));margin:8px 0}
+.refl textarea{max-width:none;margin:6px 0;font-family:var(--f-body);font-size:16px;line-height:1.4}
+.moods>div{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:6px 0}
+.moods button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 2px;border-radius:12px;border:1px solid var(--line);background:var(--panel-2);color:var(--fg);font:inherit;font-size:calc(11px*var(--ts));min-height:56px;cursor:pointer}
+.moods button .ti{width:34px;height:34px}.moods button[aria-checked=true]{border-color:var(--m);box-shadow:inset 0 0 0 2px var(--m);font-weight:800}
+.rb{position:relative}.rb-save{position:absolute;top:4px;right:4px;width:44px;height:44px;display:grid;place-items:center;border-radius:10px;border:0;background:none;cursor:pointer;opacity:.45;filter:grayscale(1)}
+.rb-save .ti{width:28px;height:28px}.rb-save[aria-pressed=true]{opacity:1;filter:none}
+.mood-ch{width:100%;max-width:420px;height:auto;display:block;margin-top:6px}.mood-ch .mc-empty{fill:rgba(128,128,128,.45)}.mood-ch .mc-t{font-size:10px;fill:var(--muted)}
+.jr-list{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.jr-list li{padding:10px 12px;border-radius:12px;background:var(--panel-2);border:1px solid var(--line)}
+.jr-h{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:calc(12px*var(--ts));color:var(--muted)}.jr-h>span{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.jr-h .ti{width:24px;height:24px}
+.jr-x{min-width:44px;min-height:44px;border:0;background:none;color:var(--muted);font:inherit;font-size:18px;cursor:pointer}.jr-x:focus-visible{outline:2px solid var(--accent)}
+.jr-q{margin:4px 0;font-weight:700;font-size:calc(13px*var(--ts))}.jr-n{margin:4px 0;line-height:1.45;white-space:pre-wrap}
+#jrn{gap:10px}#jrn .seg{width:100%;max-width:420px}#jrn .panel{width:100%;max-width:420px;box-sizing:border-box}
+/* ---- phase 6: comfort & access ---- */
+.set-sec{display:block;margin:14px 0 2px}
+.cluebar #clueSay{display:grid;place-items:center;padding:0}.cluebar #clueSay[hidden]{display:none}.cluebar #clueSay .ti{width:28px;height:28px}
+html.lefty .ctrl [data-a=H]{order:-3}html.lefty .ctrl [data-a=T]{order:-2}html.lefty .ctrl [data-a=X]{order:-1}
+html.calm *,html.calm *::before,html.calm *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+html.calm .popcall,html.calm .floatpts,html.calm .spark{display:none!important}
+html.cb{--solved:#56b4e9;--gold:#f0e442;--danger:#d55e00}
+html.cb.light{--solved:#0072b2;--gold:#b8a200;--danger:#c04a00}
+html.cb .wc.p{background-image:repeating-linear-gradient(45deg,rgba(0,0,0,.22) 0 3px,transparent 3px 8px)}
+html.cb .wc.g{background-image:radial-gradient(rgba(0,0,0,.35) 1.2px,transparent 1.6px);background-size:7px 7px}
+html.cb .wc.ghost{box-shadow:none;outline:2px dashed var(--accent);outline-offset:-3px}
+html.cb .wc.hit{box-shadow:inset 0 0 0 4px #000,inset 0 0 0 6px var(--gold)}
+html.cb .wc.hit::after{content:"★";position:absolute;top:0;right:2px;font-size:calc(var(--wc)*.28);line-height:1}
+html.cb .wc.sel{box-shadow:inset 0 -5px 0 rgba(0,0,0,.55)}
+html.cb .wc.mid:not(.f):not(.g):not(.p){background-image:linear-gradient(transparent 44%,rgba(255,255,255,.18) 44% 56%,transparent 56%)}
+html.cb .cc.bad .l{text-decoration:underline wavy;text-decoration-thickness:2px}
+html.cb .cc.bad::after{content:"✕";position:absolute;top:1px;right:3px;font-size:9px;font-weight:900;color:var(--danger)}
 .gc-pages{display:flex;gap:6px;margin:2px 0 8px;overflow-x:auto;scrollbar-width:none}
 .gc-pages button{flex:1 0 auto;min-height:32px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.18);color:inherit;font:inherit;font-size:12px;font-weight:700;letter-spacing:.02em}
 .gc-pages button[aria-selected="true"]{background:rgba(255,255,255,.92);color:#111;border-color:transparent}
 .gc-hint{font-size:12px;opacity:.75;text-align:center;margin-top:-4px}
 /* 1.2: Today's Puzzles */
 .diff{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:99px;vertical-align:1px;font-family:var(--f-body)}
-.diff.d-e{background:rgba(37,168,152,.2);color:var(--solved)}.diff.d-m{background:rgba(240,180,41,.2);color:#7a5600}.diff.d-c{background:rgba(214,58,90,.18);color:var(--danger)}
+.diff.d-e{background:rgba(37,168,152,.2);color:var(--solved)}.diff.d-m{background:rgba(240,180,41,.2);color:#7a5600}.diff.d-c{background:rgba(214,58,90,.18);color:var(--danger)}html:not(.light) .diff.d-c{color:#ff8098}
 html:not(.light) .diff.d-m{color:var(--gold)}
 .pz-label{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--muted);margin-top:4px}
 .pzrow{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -1045,6 +1096,7 @@ html.wide #profile.hud>.hud-bar,html.wide #profile.hud>.hero{grid-column:1/-1}
     <button class="nav" id="prevW" aria-label="Previous clue">‹</button>
     <button class="clue" id="clueBtn" data-mag aria-label="Clue. Tap to switch Across and Down"><span class="cn" id="clueNum"></span><span class="ct" id="clueText"></span></button>
     <button class="nav" id="nextW" aria-label="Next clue">›</button>
+    <button class="nav" id="clueSay" aria-label="Read the clue aloud" hidden><span data-ti="sound"></span></button>
   </div>
   <div id="pad"></div>
 
@@ -1082,6 +1134,8 @@ html.wide #profile.hud>.hud-bar,html.wide #profile.hud>.hero{grid-column:1/-1}
         <button data-act="events"><span data-ti="trophy"></span> Events &amp; seasons</button>
         <button data-act="wordbook"><span data-ti="cards"></span> Word book</button>
         <button data-act="duels"><span data-ti="bolt"></span> Duels &amp; rivals</button>
+        <button data-act="modes"><span data-ti="target"></span> Quests, Marathon &amp; Pass and Play</button>
+        <button data-act="journal"><span data-ti="pencil"></span> My journal</button>
         <button data-act="rewards">Rewards &amp; themes</button>
         <button data-act="code">Enter a challenge code</button>
         <button data-act="backup">Back up progress</button>
@@ -1156,6 +1210,7 @@ html.wide #profile.hud>.hud-bar,html.wide #profile.hud>.hero{grid-column:1/-1}
   <div class="ov res" id="rewards" hidden role="dialog" aria-modal="true" aria-label="Rewards"></div>
   <div class="ov res" id="evh" hidden role="dialog" aria-modal="true" aria-label="Events and seasons"></div>
   <div class="ov res" id="wbk" hidden role="dialog" aria-modal="true" aria-label="Word book"></div>
+  <div class="ov res" id="jrn" hidden role="dialog" aria-modal="true" aria-label="My journal"></div>
   <div class="ov cele" id="cele" hidden></div>
   <div class="ov pz" id="pz" hidden role="dialog" aria-modal="true" aria-label="Puzzle"></div>
   <div class="ov res" id="sb" hidden role="dialog" aria-modal="true" aria-label="Scoreboard"></div>
@@ -1186,6 +1241,11 @@ html.wide #profile.hud>.hud-bar,html.wide #profile.hud>.hero{grid-column:1/-1}
     <button class="setrow" role="switch" id="setRead"><span><span class="st-t">Readable font</span><br><span class="st-d">A wider, plainer font with more space between letters.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setAdapt"><span><span class="st-t">Rush timer learns from you</span><br><span class="st-d">Starts at 2:00. Win fast and your next rush gets shorter (never under 0:30). Run out of time and it gives time back. Off keeps every rush at 2:00.</span></span><span class="sw"></span></button>
     <div class="pacebox"><span class="ln">YOUR RUSH TIMES</span><div id="paceInfo"></div><button class="retake" id="paceReset">Reset to 2:00</button></div>
+    <span class="ln set-sec">COMFORT &amp; ACCESS</span>
+    <button class="setrow" role="switch" id="setCb"><span><span class="st-t">Colorblind-friendly tiles</span><br><span class="st-d">Adds stripes, dots and outlines so no tile relies on color alone, and swaps green for blue.</span></span><span class="sw"></span></button>
+    <button class="setrow" role="switch" id="setSpeak"><span><span class="st-t">Read clues aloud</span><br><span class="st-d">Speaks each new clue and quote as it appears. The speaker by the clue reads it any time.</span></span><span class="sw"></span></button>
+    <button class="setrow" role="switch" id="setLefty"><span><span class="st-t">Left-handed controls</span><br><span class="st-d">Moves slam, turn and hold to the left side of the well controls.</span></span><span class="sw"></span></button>
+    <button class="setrow" role="switch" id="setCalm"><span><span class="st-t">Reduce motion</span><br><span class="st-d">Turns off shakes, pops, floating points and the card tilt. Your phone's Reduce Motion setting does this too.</span></span><span class="sw"></span></button>
     <button class="ghost-btn" id="setBackup">Back up or restore progress</button>
     <button class="big" id="setDone">Done</button>
   </div>
@@ -1197,7 +1257,7 @@ html.wide #profile.hud>.hud-bar,html.wide #profile.hud>.hero{grid-column:1/-1}
 /* Fall speed is a player setting: Relaxed / Normal / Fast */
 const SPEEDS={relaxed:{mul:1.45,grace:3000,lock:1200,label:"Relaxed"},normal:{mul:1,grace:2000,lock:900,label:"Normal"},fast:{mul:.6,grace:1000,lock:500,label:"Fast"}};
 function speedCfg(){return SPEEDS[(typeof prefs!=="undefined"&&prefs.speed)||"normal"]||SPEEDS.normal}
-function fallMs(){const d=diffCfg();return Math.round(Math.max(1300,S.L.speed*1.7)*speedCfg().mul*(d?d.fall:1))}
+function fallMs(){const d=diffCfg();return Math.round(Math.max(1300,S.L.speed*1.7)*speedCfg().mul*(d?d.fall:1)*(S&&S.runMul||1))}
 const COLS=7, ROWS=11, MID=5, RUSH_SECS=120, RUSH_MIN=30;
 const RUSH_MODES={tap:"Tap it",scramble:"Unscramble",clue:"Clue"};
 /* Adaptive rush: each player's time per rush style shrinks when they win fast and grows back when they run out. */
@@ -1206,6 +1266,7 @@ function saveRushPace(){try{localStorage.setItem("crossfall-rush",JSON.stringify
 function rushLimit(mode){if(typeof prefs!=="undefined"&&prefs.adapt===false)return RUSH_SECS;const p=rushPace[mode];return p?Math.round(p.limit):RUSH_SECS}
 function rushLearn(mode,used,limit,won){
   if(typeof prefs!=="undefined"&&prefs.adapt===false)return limit;
+  if(S&&S.pp)return limit;
   let L=limit;
   if(won){const f=used/limit;L=f<.35?L*.8:f<.6?L*.9:f<.85?L*.97:L}
   else L=L*1.2+10;
@@ -2052,11 +2113,12 @@ function closeDiff(done){const el=document.getElementById("dq");el.hidden=true;e
 function startLevel(i){
   const obj=typeof i==="object",L=obj?i:LEVELS[i];
   {const why=lockReason(L);if(why){showPaywall(why,L,()=>startLevel(i));return}}
-  {const dc=diffCat(L);if(dc&&!obj&&!diffOf(dc)){showDiffPick(dc,()=>startLevel(i));return}}
-  if(L.cat==="Sports"&&!obj&&!spProfile()&&!stats.spSkip){showSportsQuiz(()=>startLevel(i));return}
+  {const dc=diffCat(L);if(dc&&!obj&&!diffOf(dc)&&!(PP&&PP.pending)){showDiffPick(dc,()=>startLevel(i));return}}
+  if(L.cat==="Sports"&&!obj&&!spProfile()&&!stats.spSkip&&!(PP&&PP.pending)){showSportsQuiz(()=>startLevel(i));return}
   if(L.lang){if(!langProfile()){showLangQuiz(()=>startLevel(i));return}if(!genLang(L)){toast("Try again");return}}
   if(L.heal){if(!healProfile){showQuiz(i);return}if(!genHealing(L)){toast("Try again");return}}
-  const base=(L.heal||L.lang||obj)?L._cw:crosswordFor(i),R=rng(L.seed*7+Date.now()%997);
+  const runOn=!!(RUN&&RUN.pending&&!obj),ppOn=!!(PP&&PP.pending&&!obj);if(RUN&&!runOn)RUN=null;if(PP&&!ppOn)PP=null;if(RUN)RUN.pending=false;if(PP)PP.pending=false;
+  const base=(L.heal||L.lang||obj)?L._cw:crosswordFor(i),R=rng(L.seed*7+(ppOn?PP.fix:Date.now()%997));
   const cells=new Map();for(const[k,c]of base.cells)cells.set(k,{...c,val:"",lock:false,words:c.words.slice()});
   const cw={rows:base.rows,cols:base.cols,cells,words:base.words.map(w=>({...w,cells:w.cells.slice(),solved:false}))};
   const grid=Array.from({length:ROWS},()=>Array(COLS).fill(null));
@@ -2066,6 +2128,7 @@ function startLevel(i){
   S={diff:dKey,li:obj?-1:i,L,R,cw,grid,phase:"cross",sel:{key:cw.words[0].cells[0],dir:cw.words[0].dir},active:null,queue:[],score:0,
      targetHit:false,lastText:null,t0:Date.now(),rushWins:0,rushTotal:0,lockCount:0,lastRush:-9,cool:1,rush:null,acc:0,usedBonus:[],flash:[],hit:[],ghost:true,linesCleared:0,
      pts:{},helped:new Set(),bad:new Set(),assist:!!prefs.autocheck,chain:0,lastSolve:null,maxChain:0,crossMs:0,rushStreak:0,b2b:false,combo:0,hold:null,canHold:true,zen:!!prefs.zen,speedMult:SPEED_MULT[prefs.speed]||1,wordLog:[],final:null};
+  if(runOn){S.run=RUN.legs+1;S.runMul=Math.max(.6,1-.06*RUN.legs)}if(ppOn)S.pp=PP.turn+1;
   document.getElementById("menu").hidden=true;document.getElementById("result").hidden=true;document.getElementById("quiz").hidden=true;["maker","archive","textbox","review"].forEach(id=>{const x=document.getElementById(id);if(x)x.hidden=true});
   if(dC&&dC.first)selectWord(S.cw.words[0]);
   padMode="";layout();renderAll();clearRun();saveRunSoon();
@@ -2189,7 +2252,7 @@ function startRush(){
   if(mode==="scramble"){word=word||(found.length?pick().word:bonus()[0])}
   if(mode==="clue"){const b=bonus();word=b[0];clue=b[1]}
   let scr=word;for(let t=0;t<8&&scr===word;t++)scr=shuffle([...word],S.R).join("");
-  const dR=diffCfg(),lim=S.zen?RUSH_SECS:Math.max(RUSH_MIN,Math.round(rushLimit(mode)*(dR?dR.rush:1)));S.rush={mode,word,clue,scr,input:"",taps:[],t0:performance.now(),left:lim,limit:lim,state:"on",zen:!!S.zen};
+  const dR=diffCfg(),lim=S.zen||S.pp?RUSH_SECS:Math.max(RUSH_MIN,Math.round(rushLimit(mode)*(dR?dR.rush:1)));S.rush={mode,word,clue,scr,input:"",taps:[],t0:performance.now(),left:lim,limit:lim,state:"on",zen:!!S.zen};
   S.phase="rush";announce(mode==="tap"?`Rush. ${fmtTime(lim)}. Find ${word} in the well.`:mode==="scramble"?`Rush. ${fmtTime(lim)}. Unscramble the hidden word.`:`Rush. ${fmtTime(lim)}. `+clue);sfx("rush");
   renderAll();
 }
@@ -2296,31 +2359,34 @@ function stars(){return 1+(S.targetHit?1:0)+((S.rushTotal===0||S.rushWins===S.ru
 function levelDone(){
   if(S.tut){S.phase="done";clearRun();sfx("win");hap("success");burst(document.getElementById("well"),36,190);setTimeout(()=>tutEnd(false),500);return}
   S.phase="done";finalize(true);clearRun();const st=stars();
-  if(S.li>=0){const prev=store[S.L.id]||{stars:0,best:0};store[S.L.id]={stars:Math.max(prev.stars,st),best:Math.max(prev.best,S.score)};saveStore()}
+  if(S.li>=0&&!S.pp){const prev=store[S.L.id]||{stars:0,best:0};store[S.L.id]={stars:Math.max(prev.stars,st),best:Math.max(prev.best,S.score)};saveStore()}
   sfx("win");
   recordGame(true);showResult(true,st);
 }
 function gameOver(why){if(S.tut){S.phase="over";tutEnd(false);return}S.phase="over";S.active=null;finalize(false);clearRun();recordGame(false);sfx("over");showResult(false,0,why)}
 function showResult(win,st,why){
+  try{runAfter(win);ppAfter()}catch(e){console.error(e)}
   const el=document.getElementById("result");const nx=S.li>=0?LEVELS[S.li+1]:null;const has=!!nx;const sameCat=has&&nx.ci===S.L.ci;
   const dk=S.L.daily,official=dk&&!S.L.archive?dailyRecord(dk):null;
   const help=S.helped.size?`${S.helped.size} hint${S.helped.size>1?"s":""} used`:S.assist?"Check or Autocheck used":"";
-  el.innerHTML=`<div class="sub">${esc(S.L.cat)} · ${esc(S.L.name)}${S.L.archive||S.L.custom?" · practice":""}${S.zen?" · Zen":""}</div>
+  el.innerHTML=`<div class="sub">${esc(S.L.cat)} · ${esc(S.L.name)}${S.L.archive||S.L.custom?" · practice":""}${S.zen?" · Zen":""}${S.run?` · Marathon leg ${S.run}`:""}${S.pp&&PP?` · ${esc(PP.names[S.pp-1])}`:""}</div>
    <h1>${win?"WELL <span>DONE</span>":"WELL <span>FULL</span>"}</h1>
    ${win?`<div class="resrow"><div class="stars" aria-label="${st} of 3 stars">${"★".repeat(st)}<i>${"★".repeat(3-st)}</i></div>${S.grade?`<span class="grade g-${S.grade}" role="img" aria-label="Grade ${S.grade}">${S.grade}</span>`:""}</div>
      ${S.gold?`<span class="goldtag">GOLD SOLVE · NO HELP</span>`:help?`<span class="sub">${help}</span>`:""}`:`<p class="sub">${why}</p>`}
    <div class="pts">${fmtN(S.score)}</div>${S.newBest?`<span class="goldtag">NEW PERSONAL BEST</span>`:""}
+   ${runResultHTML(win)}${ppResultHTML()}
    ${chalResultHTML()}
    ${breakdownHTML()}
    ${win?miniGridHTML():""}
    <ul><li>${S.cw.words.filter(w=>w.solved).length}/${S.cw.words.length} words solved${S.maxChain>1?` · best chain ×${S.maxChain}`:""}</li>
    <li>Target ${S.L.target[0]}: ${S.targetHit?"built":"missed"}</li>
    <li>Rushes won: ${S.rushWins}/${S.rushTotal}</li><li>Rows cleared: ${S.linesCleared}</li></ul>
-   ${S.L.lang?langReadback():S.L.texts?`<div class="readback" data-mag><span class="ln">READ IT BACK</span>${S.cw.words.filter(w=>w.solved).map(w=>{const x=S.L.texts[w.ans];return x?`<div class="rb"><b>${w.ans}</b><p>${x.ref?`“${x.text}”`:x.text}</p>${x.ref?`<cite>${x.ref}</cite>`:""}</div>`:""}).join("")}</div>`:""}
-   ${S.L.cat==="Sports"&&!S.L.daily?spResultHTML():""}
+   ${S.L.lang?langReadback():S.L.texts?`<div class="readback" data-mag><span class="ln">READ IT BACK</span>${S.cw.words.filter(w=>w.solved).map(w=>{const x=S.L.texts[w.ans];return x?`<div class="rb"><b>${w.ans}</b>${qsBtn(w.ans)}<p>${x.ref?`“${x.text}”`:x.text}</p>${x.ref?`<cite>${x.ref}</cite>`:""}</div>`:""}).join("")}</div>`:""}
+   ${S.L.cat==="Sports"&&!S.L.daily&&!S.pp?spResultHTML():""}
+   ${reflectHTML()}
    ${p2ResultHTML(win)}
    ${highlightsHTML()}
-   ${win||S.phase==="over"?diffAdviceHTML():""}
+   ${!S.pp&&(win||S.phase==="over")?diffAdviceHTML():""}
    <details class="how sc"><summary>How scoring works</summary>${SCORING_HELP}</details>
    <div class="btns">${official?`<button class="big" id="shareD">Share result</button>`:""}${!S.L.custom&&S.score>0?`<button class="ghost-btn" id="chalBtn">${S.challenge?"Send it back":"Challenge a friend"}</button>`:""}${win&&has?`<button class="${official?"ghost-btn":"big"}" id="nextL">${sameCat?"Next puzzle":"Next category: "+nx.cat}</button>`:""}
    <button class="${(win&&has)||official?"ghost-btn":"big"}" id="retryL">${dk?"Play again (practice)":"Play again"}</button>
@@ -2331,7 +2397,7 @@ function showResult(win,st,why){
   const cb=document.getElementById("chalBtn");if(cb)cb.onclick=()=>shareWithCard(chalShareText());
   document.getElementById("retryL").onclick=()=>dk?playDaily(dk,true):startLevel(S.li>=0?S.li:S.L);
   document.getElementById("toMenu").onclick=showMenu;
-  wireAdvice();
+  wireAdvice();ppRunWire(el);wireReflect(el);wireQS(el);
   {const b=document.getElementById("p2Next");if(b)b.onclick=()=>{const v=b.dataset;if(v.sea!=null)playSeason(+v.sea);else startLevel(+v.evl)}}
   {const b=document.getElementById("hhSet");if(b)b.onclick=()=>showSportsQuiz();const m=document.getElementById("hhMore");if(m)m.onclick=()=>openLegends()}
   wireSay(el);{const d=document.getElementById("lrbDrill");if(d)d.onclick=()=>{el.hidden=true;openRecall("see")}}
@@ -2381,8 +2447,8 @@ function starsTotal(){return Object.values(store).reduce((t,s)=>t+(s.stars||0),0
 function streak(){const set=new Set(stats.days);let n=0;const d=new Date();if(!set.has(dayKeyOf(d)))d.setDate(d.getDate()-1);while(set.has(dayKeyOf(d))){n++;d.setDate(d.getDate()-1)}return n}
 function saveStats(){stats.stars=store;try{localStorage.setItem("crossfall-stats",JSON.stringify(stats))}catch(e){}}
 function recordGame(win){
-  const lv0=levelOf(xpTotal()).lv,now=Date.now(),practice=!!(S.L.custom||S.L.archive),g={t:now,id:S.L.id,cat:S.L.cat,name:S.L.name,score:S.score,stars:win?stars():0,words:S.cw.words.filter(w=>w.solved).length,
-    target:S.targetHit,rushW:S.rushWins,rushT:S.rushTotal,rows:S.linesCleared,win,secs:Math.round((now-(S.t0||now))/1000),grade:S.grade,gold:!!S.gold,chain:S.maxChain||0,practice,zen:!!S.zen,daily:!!(S.L.daily&&!S.L.archive)};
+  const lv0=levelOf(xpTotal()).lv,now=Date.now(),practice=!!(S.L.custom||S.L.archive||S.pp),g={t:now,id:S.L.id,cat:S.L.cat,name:S.L.name,score:S.score,stars:win?stars():0,words:S.cw.words.filter(w=>w.solved).length,
+    target:S.targetHit,rushW:S.rushWins,rushT:S.rushTotal,rows:S.linesCleared,win,secs:Math.round((now-(S.t0||now))/1000),grade:S.grade,gold:!!S.gold,chain:S.maxChain||0,practice,zen:!!S.zen,daily:!!(S.L.daily&&!S.L.archive),clear:S.bestClear||0,hints:S.helped?S.helped.size:0,heal:!!S.L.heal,leg:S.run||0};
   const T=stats.tot;S.newBest=!practice&&T.games>0&&g.score>T.best;
   stats.games.unshift(g);stats.games=stats.games.slice(0,60);
   if(!practice){T.games++;T.score+=g.score;T.words+=g.words;T.targets+=g.target?1:0;T.rushW+=g.rushW;T.rushT+=g.rushT;T.rows+=g.rows;T.wins+=win?1:0;T.best=Math.max(T.best,g.score);T.secs+=g.secs;
@@ -2394,7 +2460,7 @@ function recordGame(win){
     if(!stats.daily[d]){stats.daily[d]={score:g.score,grade:S.grade,gold:!!S.gold,win,target:S.targetHit,chain:S.maxChain||0,rushW:S.rushWins,rushT:S.rushTotal,log:S.wordLog,t:now};daily=g.score;
       const ks=Object.keys(stats.daily).sort();ks.slice(0,Math.max(0,ks.length-60)).forEach(k=>delete stats.daily[k])}
     if(win)bumpDailyStreak(d)}
-  langAfterGame();recordChal();try{p2After(g)}catch(e){console.error(e)}progressAfter(lv0);saveStats();pushCloud();if(!practice)gcSync(g.score,daily);
+  langAfterGame();recordChal();try{p2After(g)}catch(e){console.error(e)}try{claimQuests()}catch(e){console.error(e)}progressAfter(lv0);saveStats();pushCloud();if(!practice)gcSync(g.score,daily);
 }
 
 /* cloud: shared leaderboard + private stats copy */
@@ -2524,12 +2590,12 @@ function renderDeck(){
 }
 function deckTo(i,instant){
   const deck=document.getElementById("deck"),cards=deck.children;i=Math.max(0,Math.min(cards.length-1,i));
-  const c=cards[i];if(!c)return;deck.scrollTo({left:c.offsetLeft-(deck.clientWidth-c.offsetWidth)/2,behavior:instant||matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+  const c=cards[i];if(!c)return;deck.scrollTo({left:c.offsetLeft-(deck.clientWidth-c.offsetWidth)/2,behavior:instant||calmNow()?"auto":"smooth"});
 }
 let deckRaf=0;
 function deckFx(){
   deckRaf=0;const deck=document.getElementById("deck");if(!deck||!deck.children.length)return;
-  const mid=deck.scrollLeft+deck.clientWidth/2,calm=matchMedia("(prefers-reduced-motion: reduce)").matches;let best=0,bd=1e9;
+  const mid=deck.scrollLeft+deck.clientWidth/2,calm=calmNow();let best=0,bd=1e9;
   [...deck.children].forEach((c,i)=>{const cc=c.offsetLeft+c.offsetWidth/2,d=(cc-mid)/c.offsetWidth,ad=Math.abs(d);
     if(ad<bd){bd=ad;best=i}
     c.style.transform=calm?"":`rotateY(${(-d*22).toFixed(1)}deg) scale(${(1-Math.min(.14,ad*.14)).toFixed(3)}) translateY(${(Math.min(1,ad)*14).toFixed(1)}px)`;
@@ -2693,7 +2759,7 @@ function openDrawer(){
 function closeDrawer(){
   const d=document.getElementById("drawer"),sc=document.getElementById("scrim");if(d.hidden)return;
   document.getElementById("hubMenu").setAttribute("aria-expanded","false");
-  if(matchMedia("(prefers-reduced-motion: reduce)").matches){d.hidden=true;sc.hidden=true;return}
+  if(calmNow()){d.hidden=true;sc.hidden=true;return}
   d.classList.add("out");sc.classList.add("out");setTimeout(()=>{d.hidden=true;sc.hidden=true;d.classList.remove("out");sc.classList.remove("out")},190);
 }
 function initHub(){
@@ -2708,7 +2774,7 @@ document.getElementById("drClose").onclick=closeDrawer;document.getElementById("
     else if(a==="checkin")showQuiz(null);
     else if(a==="archive")openArchive();else if(a==="maker")openMaker();else if(a==="review")openReview();else if(a==="backup")openBackup();
     else if(a==="tour"){startTutorial()}
-    else if(a==="rewards")openRewards();else if(a==="events")openEvents();else if(a==="wordbook")openWordBook();else if(a==="duels")openDuels();else if(a==="langlab")openLangHub();else if(a==="mini")openMini();else if(a==="chunks")openChunks();else if(a==="scoreboard")openScoreboard();else if(a==="code")openCode();
+    else if(a==="rewards")openRewards();else if(a==="events")openEvents();else if(a==="wordbook")openWordBook();else if(a==="duels")openDuels();else if(a==="modes")openModes();else if(a==="journal")openJournal();else if(a==="langlab")openLangHub();else if(a==="mini")openMini();else if(a==="chunks")openChunks();else if(a==="scoreboard")openScoreboard();else if(a==="code")openCode();
     else if(a==="pro"){showPaywall(PRO?"owned":"menu")}
     else if(a==="how"){goPage("Play");const h=document.querySelector(".how");if(h){h.open=true;setTimeout(()=>h.scrollIntoView({behavior:"smooth",block:"start"}),60)}}});
   document.querySelectorAll("#rkSeg button").forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;renderRanks()});
@@ -2815,7 +2881,8 @@ function renderWell(){
 }
 let lastSpokenWord=null;
 function renderClue(){
-  if(S.phase==="cross"){const w=curWord();if(w&&w!==lastSpokenWord){lastSpokenWord=w;announce(`${w.num} ${w.dir==="a"?"Across":"Down"}, ${w.ans.length} letters: ${w.clue}`)}}else lastSpokenWord=null;
+  if(S.phase==="cross"){const w=curWord();if(w&&w!==lastSpokenWord){lastSpokenWord=w;announce(`${w.num} ${w.dir==="a"?"Across":"Down"}, ${w.ans.length} letters: ${w.clue}`);if(prefs.speak)speakText(clueWords(w))}}else lastSpokenWord=null;
+  speakQuoteIfNew();
   const bar=document.getElementById("cluebar");bar.classList.toggle("reading",!!(S.lastText&&S.phase!=="cross"));
   if(S.phase==="rush"){bar.style.visibility="hidden";return}bar.style.visibility="visible";
   const n=document.getElementById("clueNum"),t=document.getElementById("clueText");
@@ -3052,16 +3119,16 @@ function chalPill(){const p=document.getElementById("chalPill");if(!p||!S||!S.ch
   if(g!=null){const a=S.score>=g;p.className="chal-pill ghost"+(a?" ahead":"");p.innerHTML=`${ti("bolt")} ${esc(c.n)} ${fmtN(g)} · you ${a?"+":"−"}${fmtN(Math.abs(S.score-g))}`;p.setAttribute("aria-label",`${c.n}'s ghost has ${g} points. You are ${a?"ahead":"behind"} by ${Math.abs(S.score-g)}.`);return}
   const a=S.score>c.s;p.className="chal-pill"+(a?" ahead":"");p.textContent=(a?"Ahead of ":"Beat ")+c.n+": "+fmtN(c.s)}
 function setScore(v){chalPill();const el=document.getElementById("score");if(!el)return;
-  if(scoreShown==null||v<scoreShown||matchMedia("(prefers-reduced-motion: reduce)").matches){scoreShown=v;el.textContent=v;return}
+  if(scoreShown==null||v<scoreShown||calmNow()){scoreShown=v;el.textContent=v;return}
   if(v===scoreShown)return;const from=scoreShown,t0=performance.now();scoreShown=v;
   el.classList.remove("bump");void el.offsetWidth;el.classList.add("bump");
   cancelAnimationFrame(scoreRaf);const step=now=>{const k=Math.min(1,(now-t0)/450);el.textContent=Math.round(from+(v-from)*(1-Math.pow(1-k,3)));if(k<1)scoreRaf=requestAnimationFrame(step)};scoreRaf=requestAnimationFrame(step)}
 const FX=new Map(),CWFX=new Map();
 function fxCell(r,c,cls,ms){FX.set(r+","+c,{cls,until:performance.now()+(ms||320)})}
 function fxClass(k){const f=FX.get(k);if(!f)return"";if(f.until<performance.now()){FX.delete(k);return""}return" "+f.cls}
-function wellFx(cls){const w=document.getElementById("well");if(!w||matchMedia("(prefers-reduced-motion: reduce)").matches)return;w.classList.remove("thump","quake");void w.offsetWidth;w.classList.add(cls);setTimeout(()=>w.classList.remove(cls),450)}
+function wellFx(cls){const w=document.getElementById("well");if(!w||calmNow())return;w.classList.remove("thump","quake");void w.offsetWidth;w.classList.add(cls);setTimeout(()=>w.classList.remove(cls),450)}
 const BURST_COLS=["#ff8a3d","#ffd24a","#4fd1c5","#f5efe0","#ff5d8f"];
-function burst(el,n,spread){if(!el||matchMedia("(prefers-reduced-motion: reduce)").matches)return;const app=document.getElementById("app"),a=app.getBoundingClientRect(),b=el.getBoundingClientRect();
+function burst(el,n,spread){if(!el||calmNow())return;const app=document.getElementById("app"),a=app.getBoundingClientRect(),b=el.getBoundingClientRect();
   const x=b.left-a.left+b.width/2,y=b.top-a.top+b.height/2;spread=spread||140;
   for(let i=0;i<(n||22);i++){const d=document.createElement("i");d.className="burst";const ang=Math.random()*Math.PI*2,dist=spread*(.45+Math.random()*.7);
     d.style.cssText=`left:${x}px;top:${y}px;background:${BURST_COLS[i%BURST_COLS.length]};--dx:${Math.cos(ang)*dist}px;--dy:${Math.sin(ang)*dist-30}px;--rot:${(Math.random()*540-270)|0}deg;animation-delay:${(Math.random()*60)|0}ms`;
@@ -3111,14 +3178,14 @@ if(MQ_LIGHT){const f=()=>{if(prefs.theme==="system")applyPrefs()};MQ_LIGHT.addEv
 let NATIVE_TS=(typeof window!=="undefined"&&window.__NATIVE_TS)||1;
 function setNativeTextScale(x){NATIVE_TS=Math.max(.8,Math.min(1.8,+x||1));applyPrefs()}
 if(typeof window!=="undefined")window.setNativeTextScale=setNativeTextScale;
-function applyPrefs(){const h=document.documentElement;prefs.light=isLight();h.style.setProperty("--ts",String(Math.round((prefs.big?1.22:1)*NATIVE_TS*(isWide()?1.18:1)*100)/100));h.classList.toggle("lgtext",!!prefs.big);h.classList.toggle("hc",!!prefs.hc);h.classList.toggle("light",prefs.light);h.classList.toggle("readable",!!prefs.readable);
+function applyPrefs(){const h=document.documentElement;prefs.light=isLight();h.style.setProperty("--ts",String(Math.round((prefs.big?1.22:1)*NATIVE_TS*(isWide()?1.18:1)*100)/100));h.classList.toggle("lgtext",!!prefs.big);h.classList.toggle("hc",!!prefs.hc);h.classList.toggle("light",prefs.light);h.classList.toggle("readable",!!prefs.readable);h.classList.toggle("cb",!!prefs.cb);h.classList.toggle("lefty",!!prefs.lefty);h.classList.toggle("calm",!!prefs.calm);
   if(S&&S.final==null){if(prefs.zen)S.zen=true;if(prefs.autocheck)S.assist=true;S.speedMult=Math.min(S.speedMult==null?1:S.speedMult,SPEED_MULT[prefs.speed]||1)}
   document.querySelectorAll("[data-theme]").forEach(b=>b.setAttribute("aria-checked",b.dataset.theme===prefs.theme));
   document.querySelectorAll("[data-speed]").forEach(b=>b.setAttribute("aria-checked",b.dataset.speed===prefs.speed));
   muted=!prefs.sfx;const mb=document.getElementById("muteBtn");if(mb){mb.style.opacity=muted?.4:1;mb.setAttribute("aria-pressed",!muted)}
   music.set(!!prefs.music);
   try{window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.theme&&window.webkit.messageHandlers.theme.postMessage(prefs.hc?"dark":prefs.theme)}catch(e){}
-  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setHaptics","haptics"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"]].forEach(([id,k])=>{const b=document.getElementById(id);if(b)b.setAttribute("aria-checked",!!prefs[k])});
+  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setHaptics","haptics"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"],["setCb","cb"],["setSpeak","speak"],["setLefty","lefty"],["setCalm","calm"]].forEach(([id,k])=>{const b=document.getElementById(id);if(b)b.setAttribute("aria-checked",!!prefs[k])});
   try{applyWellTheme()}catch(e){}
   document.querySelectorAll("[data-track]").forEach(b=>b.setAttribute("aria-checked",b.dataset.track===(prefs.track||"calm")));
   document.querySelectorAll("[data-remind]").forEach(b=>b.setAttribute("aria-checked",b.dataset.remind===(prefs.remindAt||"evening")));
@@ -3268,7 +3335,7 @@ function zenSkip(){if(!S||!S.rush||!S.zen||S.rush.state!=="on")return;S.rush.sta
   for(let r=0;r<MID;r++)S.grid[r].fill(null);gravity();S.rush=null;S.cool=1;toast("Skipped");afterRush()}
 
 /* ---------- word bank + review ---------- */
-function bankWord(w){
+function bankWord(w){if(S&&S.pp)return;
   if(!stats.bank)stats.bank={};const b=stats.bank[w.ans]||{c:w.clue,k:S.L.cat,n:0,box:0,t:0};
   b.c=String(w.clue||b.c).slice(0,220);b.k=S.L.cat;b.n++;b.t=Date.now();stats.bank[w.ans]=b;
   try{if(!S.L.lang)wbCollect(w,w.cells.some(k=>S.helped.has(k)))}catch(e){}
@@ -3371,6 +3438,7 @@ function renderDailyCard(){
      <div class="dc-btns"><button class="big" id="dcShare">Share</button><button class="ghost-btn" id="dcAgain">Practice</button><button class="ghost-btn" id="dcArchive">Past</button></div>`
    :`<div class="dc-btns"><button class="big" id="dcPlay">Play today's puzzle</button><button class="ghost-btn" id="dcArchive">Past</button></div>`}`;
   const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
+  try{box.insertAdjacentHTML("beforeend",questLine());on("qLine",()=>openModes())}catch(e){}
   box.insertAdjacentHTML("beforeend",weeklyLine());on("wkLine",openRewards);
   try{box.insertAdjacentHTML("beforeend",eventLine());on("evLine",openEvents)}catch(e){}
   try{const fy=forYouLine();if(fy){box.insertAdjacentHTML("beforeend",fy);const b=document.getElementById("fyLine");b.onclick=()=>startLevel(+b.dataset.l)}}catch(e){}
@@ -3486,7 +3554,7 @@ function resumeRun(){
 }
 
 /* ---------- backup code ---------- */
-function backupCode(){return"CFB1."+b64e(JSON.stringify({stats,store,pace:rushPace,heal:healProfile}))}
+function backupCode(){return"CFB1."+b64e(JSON.stringify({stats,store,pace:rushPace,heal:healProfile,jr:JR,qs:QS}))}
 function openBackup(){
   const el=document.getElementById("textbox");
   el.innerHTML=`<h1>BACK<span>UP</span></h1><p class="sub">Your stars, stats, streak and word bank live on this phone. Save this code somewhere safe (Notes, email to yourself). Paste it here on a new phone to bring everything back.</p>
@@ -3504,7 +3572,7 @@ function openBackup(){
     let o=null;try{o=m&&JSON.parse(b64d(m[1]))}catch(e){}
     if(!o||!o.stats||!o.stats.tot){out.textContent="That code didn't work. Check it was copied in full.";return}
     if(!armed){armed=true;out.textContent=`This replaces what's on this phone with ${fmtN(o.stats.tot.games)} games and ${fmtN(o.stats.tot.score)} points. Tap Restore again to confirm.`;return}
-    stats=Object.assign(stats,o.stats);store=o.store||store;rushPace=o.pace||rushPace;if(o.heal){healProfile=o.heal;try{localStorage.setItem("crossfall-heal",JSON.stringify(o.heal))}catch(e){}}
+    stats=Object.assign(stats,o.stats);store=o.store||store;rushPace=o.pace||rushPace;if(Array.isArray(o.jr)){JR=o.jr;saveJR()}if(Array.isArray(o.qs)){QS=o.qs;saveQS()}if(o.heal){healProfile=o.heal;try{localStorage.setItem("crossfall-heal",JSON.stringify(o.heal))}catch(e){}}
     saveStore();saveStats();saveRushPace();pushCloud();out.textContent="Restored.";toast("Progress restored");renderHub();
   };
 }
@@ -3940,8 +4008,12 @@ function openWordBook(cat){wbBackfill();const U=wbUniverse(),cats=Object.keys(U)
   document.getElementById("wbDone").onclick=()=>{el.hidden=true;el.innerHTML="";if(hubPage==="Profile")renderProfile()}}
 
 /* ---- what's new (shown once to returning players) ---- */
-function maybeWhatsNew(){if(stats.seen12||!stats.tot||!stats.tot.games)return;stats.seen12=1;saveStats();const el=document.getElementById("evh");
+function maybeWhatsNew(){if(stats.seen13||!stats.tot||!stats.tot.games)return;stats.seen12=1;stats.seen13=1;saveStats();const el=document.getElementById("evh");
   el.innerHTML=`<h1>WHAT'S <span>NEW</span></h1>
+   <div class="panel wn">${ti("target")}<div><b>Daily quests</b><p>Three fresh goals every day, with XP and a quest streak.</p></div></div>
+   <div class="panel wn">${ti("runner")}<div><b>Marathon &amp; Pass and Play</b><p>Run puzzles back to back as they speed up, or hand the phone to a friend for a best-of-3 match.</p></div></div>
+   <div class="panel wn">${ti("pencil")}<div><b>Your journal</b><p>After Biblical, Psychology and Books puzzles, a short question to reflect on. Log your mood and keep favorite quotes on a shelf.</p></div></div>
+   <div class="panel wn">${ti("eyes")}<div><b>Comfort &amp; access</b><p>Colorblind-friendly tiles, clues read aloud, left-handed controls and a Reduce motion switch, in Settings.</p></div></div>
    <div class="panel wn">${ti("trophy")}<div><b>Events &amp; seasons</b><p>A free weekly event and a six-puzzle season pack every month, with badges and season-only well themes.</p></div></div>
    <div class="panel wn">${ti("cards")}<div><b>Your word book</b><p>Every word you solve is collected by category. Hunt for golden words and finish a category for a badge.</p></div></div>
    <div class="panel wn">${ti("bolt")}<div><b>Duels with a ghost</b><p>Challenge a friend and they race a live ghost of your run. Track your record against every rival.</p></div></div>
@@ -3954,7 +4026,7 @@ function popCall(text,kind){const app=document.getElementById("app");if(!app||!S
 function juiceWord(w,v,chain){
   const cells=w.cells.map(k=>document.querySelector(`#cw [data-k="${k}"]`)).filter(Boolean),mid=cells[Math.floor(cells.length/2)];
   if(mid){burst(mid,10+Math.min(14,w.ans.length*2),90);const app=document.getElementById("app"),a=app.getBoundingClientRect(),b=mid.getBoundingClientRect();
-    if(!matchMedia("(prefers-reduced-motion: reduce)").matches){const f=document.createElement("div");f.className="floatpts";f.setAttribute("aria-hidden","true");f.textContent="+"+fmtN(v);f.style.left=(b.left-a.left+b.width/2)+"px";f.style.top=(b.top-a.top)+"px";app.appendChild(f);setTimeout(()=>f.remove(),900)}}
+    if(!calmNow()){const f=document.createElement("div");f.className="floatpts";f.setAttribute("aria-hidden","true");f.textContent="+"+fmtN(v);f.style.left=(b.left-a.left+b.width/2)+"px";f.style.top=(b.top-a.top)+"px";app.appendChild(f);setTimeout(()=>f.remove(),900)}}
   if(chain>0){sfx("chain",chain);hap("success");popCall(chain>=4?"ON FIRE ×"+(chain+1):"CHAIN ×"+(chain+1),"chain")}}
 function juiceClear(n,combo){const words=["","","DOUBLE!","TRIPLE!","QUAD!"];if(n>1)popCall(words[Math.min(4,n)]||n+" ROWS!","clear");if(combo>1){popCall("COMBO ×"+combo,"combo");sfx("combo",combo)}}
 /* ---- highlights reel on the result screen ---- */
@@ -3965,7 +4037,7 @@ function highlightsHTML(){if(!S||!S.cw)return"";const log=S.wordLog||[],h=[];
   if(S.bestClear>1)h.push(["cards","Biggest clear",S.bestClear+" rows at once"]);
   if(S.targetHit)h.push(["target","Target built",S.L.target[0]]);
   if(S.rushTotal)h.push(["runner","Rushes won",S.rushWins+" of "+S.rushTotal]);
-  return h.length?`<div class="hl-reel" aria-label="Highlights"><span class="ln">HIGHLIGHTS</span><div class="hl-row">${h.slice(0,4).map(([ic,a,b])=>`<div class="hl"><span class="hl-ic">${ti(ic)}</span><b>${esc(b)}</b><span>${a}</span></div>`).join("")}</div></div>`:""}
+  return h.length?`<div class="hl-reel" aria-label="Highlights"><span class="ln">HIGHLIGHTS</span><div class="hlr">${h.slice(0,4).map(([ic,a,b])=>`<div class="hl"><span class="hl-ic">${ti(ic)}</span><b>${esc(b)}</b><span>${a}</span></div>`).join("")}</div></div>`:""}
 
 /* ---- smarter: difficulty that follows your play ---- */
 function diffAdvice(){if(!S||!S.L||!diffCat(S.L))return null;const cat=diffCat(S.L),cur=diffOf(cat)||"medium",i=DIFF_ORDER.indexOf(cur);
@@ -4031,6 +4103,202 @@ function shareWeek(){const s=weekStats(),text=`My Crossfall week: ${fmtN(s.score
 /* ---- social: friends-only Game Center boards ---- */
 let rkFriends=false;
 function rkKey(){return rkMode+(rkFriends?"~f":"")}
+
+/* ================= Phase 4: daily quests, Marathon, Pass & Play ================= */
+const QUEST_POOL=[
+ {id:"daily",goal:1,easy:1,label:"Play today's Daily",ic:"sun",m:g=>g.filter(x=>x.daily).length},
+ {id:"words",goal:15,easy:1,label:"Solve 15 words",ic:"pencil",m:g=>g.reduce((t,x)=>t+(x.words||0),0)},
+ {id:"finish",goal:2,easy:1,label:"Finish 2 puzzles",ic:"trophy",m:g=>g.filter(x=>x.win).length},
+ {id:"cats",goal:2,easy:1,label:"Play 2 different categories",ic:"cards",m:g=>new Set(g.filter(x=>!x.daily).map(x=>x.cat)).size},
+ {id:"heal",goal:1,easy:1,label:"Play Biblical, Psychology or Books",ic:"heart",m:g=>g.filter(x=>x.heal).length,ok:()=>CATEGORIES.some(c=>c.heal&&!lockReason(c.puzzles[0]))},
+ {id:"rush",goal:3,label:"Win 3 rushes",ic:"bolt",m:g=>g.reduce((t,x)=>t+(x.rushW||0),0)},
+ {id:"target",goal:2,label:"Build 2 target words",ic:"target",m:g=>g.filter(x=>x.target).length},
+ {id:"chain",goal:3,label:"Hit a ×3 speed chain",ic:"fire",m:g=>Math.max(0,...g.map(x=>x.chain||0))},
+ {id:"clear",goal:2,label:"Clear 2 rows with one piece",ic:"star",m:g=>Math.max(0,...g.map(x=>x.clear||0))},
+ {id:"nohint",goal:1,label:"Finish a puzzle with no hints",ic:"eyes",m:g=>g.filter(x=>x.win&&!x.hints).length},
+ {id:"stars",goal:5,label:"Earn 5 stars",ic:"medal",m:g=>g.reduce((t,x)=>t+(x.stars||0),0)},
+ {id:"score",goal:5000,label:"Score 5,000 points",ic:"numbers",m:g=>g.reduce((t,x)=>t+(x.score||0),0)},
+ {id:"lang",goal:1,label:"Finish a Language puzzle",ic:"globe",m:g=>g.filter(x=>x.cat==="Language"&&x.win).length,ok:()=>{const c=CATEGORIES.find(x=>x.lang);return!!(c&&!lockReason(c.puzzles[0]))}},
+ {id:"run",goal:2,label:"Reach leg 2 of a Marathon",ic:"runner",m:g=>Math.max(0,...g.map(x=>x.leg||0))}];
+const QUEST_XP=500,QUEST_ALL_XP=1500;
+function dayQuests(dk){dk=dk||todayKey();const R=rng(+dk.replace(/-/g,"")*13+5),pool=QUEST_POOL.filter(q=>!q.ok||q.ok());
+  const easy=shuffle(pool.filter(q=>q.easy),R),hard=shuffle(pool.filter(q=>!q.easy),R);return[easy[0],hard[0],hard[1]].filter(Boolean)}
+function dayGames(){const t=todayKey();return stats.games.filter(g=>dayKeyOf(g.t)===t&&!(g.practice&&!g.daily))}
+function questState(){const t=todayKey(),gs=dayGames(),done=(stats.dq&&stats.dq.key===t)?stats.dq.done:[];
+  return dayQuests(t).map(q=>{const v=Math.min(q.goal,q.m(gs));return{...q,v,done:done.includes(q.id)||v>=q.goal}})}
+function claimQuests(){const t=todayKey();if(!stats.dq||stats.dq.key!==t)stats.dq={key:t,done:[],all:false};
+  questState().forEach(q=>{if(q.v>=q.goal&&!stats.dq.done.includes(q.id)){stats.dq.done.push(q.id);giveXP(QUEST_XP,"Daily quest: "+q.label)}});
+  if(!stats.dq.all&&stats.dq.done.length>=3){stats.dq.all=true;giveXP(QUEST_ALL_XP,"All 3 daily quests done");
+    const s=stats.qstreak||{n:0,last:""};s.n=s.last===addDays(t,-1)?s.n+1:1;s.last=t;stats.qstreak=s;
+    [3,7,30].forEach(n=>{if(s.n===n)giveBadge("quest"+n,`Quest streak: ${n} days`,"target",`All 3 daily quests, ${n} days running`)})}}
+function questLine(){const qs=questState(),d=qs.filter(q=>q.done).length,s=stats.qstreak||{};
+  return`<button class="wk-line q-line" id="qLine"><span>${ti("target")} Daily quests <b>${d}/3</b>${s.n>1&&s.last>=addDays(todayKey(),-1)?` · ${ti("fire")} ${s.n}`:""}</span><span class="wk-bars">${qs.map(q=>`<i style="--p:${Math.round(q.v/q.goal*100)}%"></i>`).join("")}</span><span aria-hidden="true">›</span></button>`}
+function hoursLeftToday(){const d=new Date();d.setHours(24,0,0,0);return Math.max(1,Math.ceil((d-Date.now())/36e5))}
+
+/* ---- Marathon: puzzles back to back in one category, each leg a little faster, until the well fills ---- */
+var RUN=null;const MARA_XP=300;
+function maraPool(cat){const c=CATEGORIES.find(x=>x.name===cat);return c?c.puzzles.filter(p=>!lockReason(p)):[]}
+function startMarathon(cat){const c=CATEGORIES.find(x=>x.name===cat);if(!c)return;const pool=maraPool(cat);
+  if(!pool.length){closeEvents();showPaywall("cat",c.puzzles[0]);return}
+  const done=pool.filter(p=>(store[p.id]||{}).stars),fresh=pool.filter(p=>!(store[p.id]||{}).stars),R=rng(Date.now()%1e9);
+  RUN={cat,legs:0,score:0,order:[...shuffle(fresh,R),...shuffle(done,R)].map(p=>LEVELS.indexOf(p)),pending:true};PP=null;
+  closeEvents();document.getElementById("result").hidden=true;startLevel(RUN.order[0])}
+function runNext(){if(!RUN)return;RUN.pending=true;RUN.best=false;startLevel(RUN.order[RUN.legs%RUN.order.length])}
+function runAfter(win){if(!S||!S.run||S.runDone||!RUN)return;S.runDone=1;
+  if(win){RUN.legs++;RUN.score+=S.score;giveXP(MARA_XP,`Marathon leg ${RUN.legs}`)}else RUN.over=true;
+  stats.mara=stats.mara||{};const b=stats.mara[RUN.cat]||{legs:0,score:0};
+  if(RUN.legs&&(RUN.legs>b.legs||(RUN.legs===b.legs&&RUN.score>b.score))){stats.mara[RUN.cat]={legs:RUN.legs,score:RUN.score,t:Date.now()};RUN.best=true}
+  if(win)[3,5,10].forEach(n=>{if(RUN.legs===n)giveBadge("mara"+n,`Marathon: ${n} legs`,"runner",`${n} puzzles in a row`)});
+  saveStats()}
+function runResultHTML(win){if(!S.run||!RUN)return"";
+  return`<div class="readback run-res"><span class="ln">MARATHON · ${esc(RUN.cat.toUpperCase())}</span>${win
+    ?`<p>Leg <b>${RUN.legs}</b> done · run score <b>${fmtN(RUN.score)}</b>${RUN.best?` · <span class="goldtag">BEST RUN</span>`:""}</p><p class="sub">The next leg falls a little faster.</p><button class="big" id="runNext">Start leg ${RUN.legs+1} ›</button>`
+    :`<p>The run ends at <b>${RUN.legs}</b> leg${RUN.legs===1?"":"s"} · run score <b>${fmtN(RUN.score)}</b>${RUN.best?` · <span class="goldtag">BEST RUN</span>`:""}</p><button class="ghost-btn" id="runAgain">New run in ${esc(RUN.cat)} ›</button>`}</div>`}
+
+/* ---- Pass & Play: two players, one phone, the same puzzle and the same falling pieces ---- */
+var PP=null;
+function ppCats(){return CATEGORIES.filter(c=>!c.heal&&!c.lang&&c.puzzles.some(p=>!lockReason(p)))}
+function startPP(names,cat,rounds){stats.ppNames=names.slice();saveStats();
+  PP={names,cat,rounds,round:1,turn:0,sc:[0,0],wins:[0,0],hist:[],used:[]};RUN=null;ppPickPuzzle();ppHandoff()}
+function ppPickPuzzle(){const pool=maraPool(PP.cat).filter(p=>!PP.used.includes(LEVELS.indexOf(p)));const all=pool.length?pool:maraPool(PP.cat);
+  const p=all[Math.floor(Math.random()*all.length)];PP.li=LEVELS.indexOf(p);PP.used.push(PP.li);PP.fix=Math.floor(Math.random()*997);PP.turn=0;PP.sc=[0,0]}
+function ppHandoff(){const el=document.getElementById("evh"),who=PP.names[PP.turn],other=PP.names[1-PP.turn],L=LEVELS[PP.li];
+  document.getElementById("result").hidden=true;
+  el.innerHTML=`<div class="pp-hand"><span class="ln">PASS &amp; PLAY · ROUND ${PP.round} OF ${PP.rounds}</span>${ti("family")}
+    <p class="pp-up">Your turn</p><h1>${esc(who)}</h1>
+    <p>${esc(L.cat)} · ${esc(L.name)}</p>
+    <p class="sub">${PP.turn===0?`You both get the same puzzle and the same falling pieces. ${esc(other)}, no peeking!`:`${esc(other)} scored <b>${fmtN(PP.sc[0])}</b>. Beat it.`}</p>
+    <div class="btns wide"><button class="big" id="ppGo">I'm ${esc(who)}. Start</button><button class="ghost-btn" id="ppQuit">End the match</button></div></div>`;
+  el.hidden=false;el.scrollTop=0;
+  document.getElementById("ppGo").onclick=()=>{closeEvents();PP.pending=true;startLevel(PP.li)};
+  document.getElementById("ppQuit").onclick=()=>{PP=null;closeEvents();showMenu()}}
+function ppAfter(){if(!S||!S.pp||S.ppDone||!PP)return;S.ppDone=1;PP.sc[PP.turn]=S.score;PP.just=PP.turn;
+  if(PP.turn===0){PP.turn=1;return}
+  const w=PP.sc[0]>PP.sc[1]?0:PP.sc[1]>PP.sc[0]?1:-1;if(w>=0)PP.wins[w]++;PP.hist.push({sc:PP.sc.slice(),w});
+  const need=Math.ceil(PP.rounds/2);PP.over=PP.wins[0]>=need||PP.wins[1]>=need||PP.hist.length>=PP.rounds;PP.round++}
+function ppResultHTML(){if(!S.pp||!PP)return"";const N=PP.names.map(esc);
+  if(PP.just===0)return`<div class="readback pp-res"><span class="ln">PASS &amp; PLAY · ROUND ${PP.round}</span><p><b>${N[0]}</b> scored <b>${fmtN(PP.sc[0])}</b>. Now hand the phone to <b>${N[1]}</b>.</p><button class="big" id="ppPass">Pass to ${N[1]} ›</button></div>`;
+  const last=PP.hist[PP.hist.length-1],mw=PP.wins[0]>PP.wins[1]?0:PP.wins[1]>PP.wins[0]?1:-1;
+  return`<div class="readback pp-res"><span class="ln">PASS &amp; PLAY · ${N[0]} ${PP.wins[0]}–${PP.wins[1]} ${N[1]}</span>
+    <table class="brk pp-tab" aria-label="Rounds"><tbody><tr><th scope="col">Round</th><th scope="col">${N[0]}</th><th scope="col">${N[1]}</th></tr>${PP.hist.map((h,i)=>`<tr><td>${i+1}</td><td class="n${h.w===0?" win":""}">${fmtN(h.sc[0])}</td><td class="n${h.w===1?" win":""}">${fmtN(h.sc[1])}</td></tr>`).join("")}</tbody></table>
+    <p>${last.w<0?"That round is a tie!":`<b>${N[last.w]}</b> takes the round.`}</p>
+    ${PP.over?`<p class="pp-win">${mw<0?"The match is a draw!":`${ti("trophy")} <b>${N[mw]}</b> wins the match ${Math.max(...PP.wins)}–${Math.min(...PP.wins)}!`}</p>
+      <div class="adv-b"><button class="big" id="ppAgain">Rematch</button><button class="ghost-btn" id="ppDone">Done</button></div>`
+    :`<button class="big" id="ppNext">Round ${PP.round} ›</button>`}</div>`}
+function ppRunWire(el){
+  if(S.pp||S.run)["nextL","chalBtn","retryL","shareD"].forEach(id=>{const x=document.getElementById(id);if(x)x.remove()});
+  const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
+  on("runNext",runNext);on("runAgain",()=>startMarathon(RUN.cat));
+  on("ppPass",ppHandoff);on("ppNext",()=>{ppPickPuzzle();ppHandoff()});
+  on("ppAgain",()=>startPP(PP.names,PP.cat,PP.rounds));on("ppDone",()=>{PP=null;showMenu()});
+  if(S.pp||S.run){const b=el.querySelector(".pp-res .big,.run-res .big");if(b)setTimeout(()=>{try{b.focus({preventScroll:true})}catch(e){}},80)}}
+
+/* ---- play modes screen: quests, Marathon, Pass & Play ---- */
+function openModes(focus){const el=document.getElementById("evh"),qs=questState(),qd=qs.filter(q=>q.done).length,s=stats.qstreak||{},mara=stats.mara||{};
+  const cats=CATEGORIES.filter(c=>maraPool(c.name).length),pc=ppCats(),nm=stats.ppNames||["Player 1","Player 2"];
+  el.innerHTML=`<h1>PLAY <span>MODES</span></h1>
+   <div class="panel" id="mdQuests"><h2 class="ph">${ti("target")} Daily quests <span class="sub">${qd}/3 · resets in ${hoursLeftToday()} h</span></h2>
+     <ul class="q-list">${qs.map(q=>`<li class="${q.done?"done":""}">${ti(q.ic)}<span><b>${esc(q.label)}</b><span class="q-bar" role="progressbar" aria-label="${esc(q.label)}" aria-valuemin="0" aria-valuemax="${q.goal}" aria-valuenow="${q.v}"><i style="width:${Math.round(q.v/q.goal*100)}%"></i></span></span><span class="q-v">${q.done?"Done":`${fmtN(q.v)}/${fmtN(q.goal)}`}</span></li>`).join("")}</ul>
+     <p class="sub">+${fmtN(QUEST_XP)} XP each, +${fmtN(QUEST_ALL_XP)} XP for all three.${s.n?` Quest streak: ${s.n} day${s.n>1?"s":""}.`:""}</p></div>
+   <div class="panel" id="mdMara"><h2 class="ph">${ti("runner")} Marathon</h2>
+     <p class="sub">Puzzles back to back in one category. Each leg falls a little faster. The run ends when the well fills. +${MARA_XP} XP a leg.</p>
+     <div class="md-cats">${cats.map(c=>{const b=mara[c.name];return`<button data-mara="${esc(c.name)}">${catIcon(c.name,(CAT_LOOK[c.name]||{}).g1)}<span><b>${esc(c.name)}</b><span>${b?`Best: ${b.legs} leg${b.legs>1?"s":""} · ${fmtN(b.score)}`:"No run yet"}</span></span></button>`}).join("")}</div></div>
+   <div class="panel" id="mdPP"><h2 class="ph">${ti("family")} Pass &amp; Play</h2>
+     <p class="sub">Two players, one phone. You each play the same puzzle with the same falling pieces, then compare scores. Games here don't change your stats.</p>
+     <div class="pp-form"><label>Player 1<input class="mkin" id="ppN1" maxlength="14" value="${esc(nm[0])}" autocomplete="off"></label><label>Player 2<input class="mkin" id="ppN2" maxlength="14" value="${esc(nm[1])}" autocomplete="off"></label>
+     <label>Category<select class="mkin" id="ppCat">${pc.map(c=>`<option>${esc(c.name)}</option>`).join("")}</select></label>
+     <div class="setgroup"><span class="st-t">Match</span><div class="seg seg3" role="radiogroup" aria-label="Match length" id="ppLen"><button role="radio" data-n="1" aria-checked="false">1 round</button><button role="radio" data-n="3" aria-checked="true">Best of 3</button><button role="radio" data-n="5" aria-checked="false">Best of 5</button></div></div>
+     <button class="big" id="ppStart">Start the match</button></div></div>
+   <div class="btns wide"><button class="big" id="evDone">Done</button></div>`;
+  el.hidden=false;el.scrollTop=0;
+  el.querySelectorAll("[data-mara]").forEach(b=>b.onclick=()=>startMarathon(b.dataset.mara));
+  let len=3;el.querySelectorAll("#ppLen button").forEach(b=>b.onclick=()=>{len=+b.dataset.n;el.querySelectorAll("#ppLen button").forEach(x=>x.setAttribute("aria-checked",x===b))});
+  document.getElementById("ppStart").onclick=()=>{const clean=v=>String(v||"").replace(/[<>]/g,"").trim().slice(0,14);
+    const a=clean(document.getElementById("ppN1").value)||"Player 1",b=clean(document.getElementById("ppN2").value)||"Player 2";
+    startPP([a,b===a?b+" 2":b],document.getElementById("ppCat").value,len)};
+  document.getElementById("evDone").onclick=closeEvents;
+  if(focus){const t=document.getElementById(focus);if(t)setTimeout(()=>t.scrollIntoView({block:"start"}),40)}}
+
+/* ================= Phase 5: reflection, journal, mood, quote shelf ================= */
+let JR=[],QS=[];try{JR=JSON.parse(localStorage.getItem("crossfall-journal")||"[]")}catch(e){JR=[]}try{QS=JSON.parse(localStorage.getItem("crossfall-quotes")||"[]")}catch(e){QS=[]}
+if(!Array.isArray(JR))JR=[];if(!Array.isArray(QS))QS=[];
+function saveJR(){JR=JR.slice(-400);try{localStorage.setItem("crossfall-journal",JSON.stringify(JR))}catch(e){}}
+function saveQS(){QS=QS.slice(-300);try{localStorage.setItem("crossfall-quotes",JSON.stringify(QS))}catch(e){}}
+const JMOODS=[["rain","Low","#6f8fd8"],["sleepy","Tired","#a08ad8"],["suncloud","Okay","#9aabbb"],["smile","Good","#4fc2b4"],["sun","Great","#f2c14e"]];
+const REFLECT={
+ Biblical:["What does this verse say to you today?","Where could you lean on this promise this week?","Who could you share this verse with, and why?","Which word in it feels most like you right now?"],
+ Psychology:["Which idea from today could you try before bed?","What's one small step you'll take this week?","What felt true for you in today's words?","When did you last feel this way, and what helped?"],
+ Books:["Which line stayed with you, and why?","How does this connect to your life right now?","If you could write back to the author, what would you say?","Who in your life would love this line?"]};
+function reflectItem(){if(!S||!S.L||!S.L.texts)return null;const it=S.cw.words.filter(w=>w.solved&&S.L.texts[w.ans]).map(w=>({w:w.ans,...S.L.texts[w.ans]}));
+  if(!it.length)return null;return it.slice().sort((a,b)=>(b.text||"").length-(a.text||"").length)[Math.floor((S.L.seed||0)%Math.min(2,it.length))]}
+function reflectPrompt(){const P=REFLECT[S.L.cat]||REFLECT.Psychology;return P[(+todayKey().replace(/-/g,"")+(S.L.seed||0))%P.length]}
+function reflectHTML(){if(!S||!S.L||!S.L.heal||S.pp||S.tut)return"";const it=reflectItem(),q=reflectPrompt();S.reflect={it,q};
+  return`<div class="readback refl" id="refl"><span class="ln">REFLECT · JUST FOR YOU</span>
+   ${it?`<blockquote class="refl-quote"><b>${esc(it.w)}</b> ${it.ref?`“${esc(it.text)}”`:esc(it.text)}${it.ref?`<cite>${esc(it.ref)}</cite>`:""}</blockquote>`:""}
+   <p class="refl-q">${esc(q)}</p>
+   <div class="moods" role="radiogroup" aria-label="How do you feel now?"><span class="ln">HOW DO YOU FEEL NOW?</span><div>${JMOODS.map((m,i)=>`<button role="radio" aria-checked="false" data-mood="${i}" style="--m:${m[2]}">${ti(m[0])}<span>${m[1]}</span></button>`).join("")}</div></div>
+   <label class="sr" for="reflNote">Your reflection</label><textarea id="reflNote" rows="3" maxlength="600" placeholder="A sentence or two, just for you"></textarea>
+   <div class="adv-b"><button class="ghost-btn" id="reflSave">Save to my journal</button><button class="ghost-btn" id="reflOpen">${ti("pencil")} Journal</button></div>
+   <p class="sub">Your journal stays on this phone. It's only included in your backup code.</p></div>`}
+function wireReflect(el){const box=el.querySelector("#refl");if(!box)return;let mood=null;
+  box.querySelectorAll("[data-mood]").forEach(b=>b.onclick=()=>{mood=+b.dataset.mood;box.querySelectorAll("[data-mood]").forEach(x=>x.setAttribute("aria-checked",x===b));hap("select")});
+  document.getElementById("reflOpen").onclick=()=>openJournal();
+  const sv=document.getElementById("reflSave");sv.onclick=()=>{const note=document.getElementById("reflNote").value.trim().slice(0,600);
+    if(!note&&mood==null){toast("Pick a mood or write a line first");return}const r=S.reflect||{},it=r.it||{};
+    JR.push({t:Date.now(),d:todayKey(),cat:S.L.cat,w:it.w||"",text:String(it.text||"").slice(0,320),ref:it.ref||"",q:r.q||"",note,mood});saveJR();
+    sv.disabled=true;sv.textContent="Saved";toast("Saved to your journal");hap("success");
+    if(JR.length===1)giveBadge("journal1","First journal entry","pencil","You wrote your first reflection");if(JR.length===25)giveBadge("journal25","25 reflections","pencil","A habit worth keeping");runCele()}}
+function qsHas(w,ref){return QS.some(q=>q.w===w&&q.ref===ref)}
+function qsBtn(w){const x=S&&S.L&&S.L.texts&&S.L.texts[w];if(!x||!x.ref)return"";const on=qsHas(w,x.ref);
+  return`<button class="rb-save" data-qs="${esc(w)}" aria-pressed="${on}" aria-label="${on?"Saved to":"Save to"} your quote shelf: ${esc(w)}">${ti("star")}</button>`}
+function wireQS(el){el.querySelectorAll("[data-qs]").forEach(b=>b.onclick=ev=>{ev.stopPropagation();const w=b.dataset.qs,x=S.L.texts[w];if(!x)return;
+  if(qsHas(w,x.ref)){QS=QS.filter(q=>!(q.w===w&&q.ref===x.ref));toast("Removed from your shelf")}else{QS.push({w,text:String(x.text).slice(0,400),ref:x.ref,cat:S.L.cat,t:Date.now()});toast("Saved to your quote shelf")}
+  saveQS();const on=qsHas(w,x.ref);b.setAttribute("aria-pressed",on);b.setAttribute("aria-label",`${on?"Saved to":"Save to"} your quote shelf: ${w}`);hap("select")})}
+function moodDays(n){const t=todayKey(),out=[];for(let i=n-1;i>=0;i--){const d=addDays(t,-i),ms=JR.filter(e=>e.d===d&&e.mood!=null).map(e=>e.mood);out.push({d,v:ms.length?ms.reduce((a,b)=>a+b,0)/ms.length:null,n:ms.length})}return out}
+function moodChart(){const D=moodDays(14),W=300,H=96,bw=W/14,have=D.filter(x=>x.v!=null);
+  const avg=have.length?have.reduce((a,x)=>a+x.v,0)/have.length:null,lab=have.length?`Mood over the last 14 days: ${have.length} day${have.length>1?"s":""} logged, mostly ${JMOODS[Math.round(avg)][1]}.`:"No moods logged in the last 14 days.";
+  return`<svg class="mood-ch" viewBox="0 0 ${W} ${H+18}" role="img" aria-label="${lab}">${D.map((x,i)=>{const cx=i*bw+bw/2;if(x.v==null)return`<circle cx="${cx}" cy="${H-4}" r="2.5" class="mc-empty"/>`;const h=14+x.v/4*(H-20),m=JMOODS[Math.round(x.v)];
+    return`<rect x="${(i*bw+3).toFixed(1)}" y="${(H-h).toFixed(1)}" width="${(bw-6).toFixed(1)}" height="${h.toFixed(1)}" rx="4" fill="${m[2]}"/>`}).join("")}
+   <text x="0" y="${H+15}" class="mc-t">${esc(fmtDay(D[0].d))}</text><text x="${W}" y="${H+15}" text-anchor="end" class="mc-t">Today</text></svg>`}
+let jrTab="journal",jrDel=null;
+function openJournal(tab){if(tab)jrTab=tab;const el=document.getElementById("jrn");
+  const ent=JR.slice().reverse(),today=JR.filter(e=>e.d===todayKey()&&e.mood!=null).pop();
+  el.innerHTML=`<h1>MY <span>JOURNAL</span></h1>
+   <div class="seg seg2" role="tablist" aria-label="Journal sections" id="jrSeg"><button role="tab" data-t="journal" aria-selected="${jrTab==="journal"}">Journal</button><button role="tab" data-t="shelf" aria-selected="${jrTab==="shelf"}">Quote shelf · ${QS.length}</button></div>
+   ${jrTab==="journal"?`
+   <div class="panel"><h2 class="ph">How are you feeling?</h2><div class="moods" role="radiogroup" aria-label="Log your mood"><div>${JMOODS.map((m,i)=>`<button role="radio" aria-checked="${!!today&&today.mood===i}" data-jm="${i}" style="--m:${m[2]}">${ti(m[0])}<span>${m[1]}</span></button>`).join("")}</div></div>
+     ${moodChart()}</div>
+   <div class="panel"><h2 class="ph">Reflections</h2>${ent.filter(e=>e.note||e.w).length?`<ul class="jr-list">${ent.filter(e=>e.note||e.w).map(e=>`<li>
+      <div class="jr-h"><span>${e.mood!=null?ti(JMOODS[e.mood][0]):""}<b>${esc(fmtDay(e.d))}</b> · ${esc(e.cat||"")}${e.w?` · ${esc(e.w)}`:""}</span><button class="jr-x" data-del="${e.t}" aria-label="${jrDel===e.t?"Tap again to delete":"Delete this entry"}">${jrDel===e.t?"Delete?":"×"}</button></div>
+      ${e.q?`<p class="jr-q">${esc(e.q)}</p>`:""}${e.note?`<p class="jr-n">${esc(e.note)}</p>`:""}</li>`).join("")}</ul>`
+      :`<p class="sub">Finish a Biblical, Psychology or Books puzzle and you'll get a short question to reflect on. Your answers collect here.</p>`}</div>`
+   :`<div class="panel">${QS.length?`<ul class="jr-list qs-list">${QS.slice().reverse().map(q=>`<li><p class="jr-n">“${esc(q.text)}”</p><div class="jr-h"><span><b>${esc(q.ref)}</b> · ${esc(q.cat)} · ${esc(q.w)}</span><button class="jr-x" data-uq="${q.t}" aria-label="Remove from shelf">×</button></div></li>`).join("")}</ul>`
+      :`<p class="sub">Tap the star next to any verse or quote on a result screen to keep it here.</p>`}</div>`}
+   <p class="sub">Everything here stays on this phone. It's only included in your backup code.</p>
+   <div class="btns wide"><button class="big" id="jrDone">Done</button></div>`;
+  el.hidden=false;
+  el.querySelectorAll("#jrSeg button").forEach(b=>b.onclick=()=>{jrDel=null;openJournal(b.dataset.t)});
+  el.querySelectorAll("[data-jm]").forEach(b=>b.onclick=()=>{const m=+b.dataset.jm,t=todayKey(),e=JR.find(x=>x.d===t&&x.only);
+    if(e){e.mood=m;e.t=Date.now()}else JR.push({t:Date.now(),d:t,mood:m,only:1});saveJR();hap("select");toast(`Logged: ${JMOODS[m][1]}`);openJournal()});
+  el.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{const t=+b.dataset.del;if(jrDel!==t){jrDel=t;openJournal();const x=el.querySelector(`[data-del="${t}"]`);if(x)x.focus();return}
+    JR=JR.filter(e=>e.t!==t);jrDel=null;saveJR();toast("Entry deleted");openJournal()});
+  el.querySelectorAll("[data-uq]").forEach(b=>b.onclick=()=>{QS=QS.filter(q=>q.t!==+b.dataset.uq);saveQS();openJournal()});
+  document.getElementById("jrDone").onclick=()=>{el.hidden=true;el.innerHTML="";jrDel=null};
+  if(!el.dataset.kb){el.dataset.kb=1;el.addEventListener("keydown",e=>{if(e.key==="Escape"){el.hidden=true;el.innerHTML=""}})}}
+
+/* ================= Phase 6: colorblind tiles, clues read aloud, left-handed, reduce motion ================= */
+function calmNow(){let c=false;try{c=!!prefs.calm}catch(e){}return c||matchMedia("(prefers-reduced-motion: reduce)").matches}
+const CLUE_SPEAK=typeof window!=="undefined"&&(("speechSynthesis" in window)||!!window.__NATIVE_SAY);
+function speakText(t){if(!t)return false;
+  try{if(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.say){window.webkit.messageHandlers.say.postMessage({text:String(t),lang:"en-US",rate:.5});return true}}catch(x){}
+  try{if(!("speechSynthesis" in window))return false;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t));u.lang="en-US";u.rate=1;speechSynthesis.speak(u);return true}catch(x){return false}}
+const clueWords=w=>`${w.num} ${w.dir==="a"?"Across":"Down"}, ${w.ans.length} letters. ${w.clue}`;
+let lastSaidQuote=null;
+function speakQuoteIfNew(){if(!S||S.phase==="cross"||!S.lastText||S.lastText===lastSaidQuote)return;lastSaidQuote=S.lastText;
+  if(prefs.speak)speakText(`${S.lastText.word}. ${S.lastText.text}${S.lastText.ref?". "+S.lastText.ref:""}`)}
+function sayClueNow(){audioInit();const w=S&&S.phase==="cross"?curWord():null;
+  const t=w?clueWords(w):S&&S.lastText?`${S.lastText.word}. ${S.lastText.text}`:"";if(!t)return;if(!speakText(t))toast("Speech isn't available on this device")}
+{const b=document.getElementById("clueSay");if(b){b.hidden=!CLUE_SPEAK;b.onclick=e=>{e.stopPropagation();sayClueNow()}}}
 
 function weeklyLine(){const cs=challengeState(),d=cs.filter(c=>c.done).length;return`<button class="wk-line" id="wkLine"><span>${ti("trophy")} Weekly challenges <b>${d}/3</b></span><span class="wk-bars">${cs.map(c=>`<i style="--p:${Math.round(c.v/c.goal*100)}%"></i>`).join("")}</span><span aria-hidden="true">›</span></button>`}
 
@@ -4605,7 +4873,7 @@ function boot(){
   document.getElementById("setBackup").onclick=()=>{document.getElementById("settings").hidden=true;openBackup()};
   document.getElementById("setDone").onclick=()=>{document.getElementById("settings").hidden=true};
   document.getElementById("paceReset").onclick=()=>{rushPace={};saveRushPace();renderPaceInfo();announce("Rush times reset to two minutes.")};
-  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setHaptics","haptics"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"]].forEach(([id,k])=>document.getElementById(id).onclick=()=>{audioInit();prefs[k]=!prefs[k];if(k==="mag"&&!prefs.mag)hideLens();applyPrefs()});
+  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setHaptics","haptics"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"],["setCb","cb"],["setSpeak","speak"],["setLefty","lefty"],["setCalm","calm"]].forEach(([id,k])=>document.getElementById(id).onclick=()=>{audioInit();prefs[k]=!prefs[k];if(k==="mag"&&!prefs.mag)hideLens();applyPrefs()});
   document.querySelectorAll("[data-speed]").forEach(b=>b.onclick=()=>{prefs.speed=b.dataset.speed;applyPrefs();announce("Fall speed: "+SPEEDS[prefs.speed].label)});
   document.querySelectorAll("[data-theme]").forEach(b=>b.onclick=()=>{prefs.theme=b.dataset.theme;if(prefs.theme!=="dark"&&prefs.hc)prefs.hc=false;applyPrefs();announce("Theme: "+b.dataset.theme)});
   applyPrefs();initLens();initHub();

@@ -843,6 +843,38 @@ html.cb .wc.sel{box-shadow:inset 0 -5px 0 rgba(0,0,0,.55)}
 html.cb .wc.mid:not(.f):not(.g):not(.p){background-image:linear-gradient(transparent 44%,rgba(255,255,255,.18) 44% 56%,transparent 56%)}
 html.cb .cc.bad .l{text-decoration:underline wavy;text-decoration-thickness:2px}
 html.cb .cc.bad::after{content:"✕";position:absolute;top:1px;right:3px;font-size:9px;font-weight:900;color:var(--danger)}
+/* ---- phase 7: Word Trail ---- */
+.tr-line .tr-mini{width:70px;height:6px;border-radius:9px;background:rgba(128,128,128,.3);overflow:hidden}.tr-line .tr-mini i{display:block;height:100%;width:var(--p);background:var(--solved)}
+.tr-sheet{border-color:var(--rc)!important;text-align:left}.tr-sheet .big{width:100%;margin-top:6px}.tr-sheet .sub{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.tr-sheet .cic,.tr-sheet .cic svg{width:26px;height:26px}
+.tr-rule{display:flex;align-items:center;gap:10px;margin:6px 0;text-align:left}.tr-rule>.ti{width:44px;height:44px;flex:none}.tr-rule>span{display:flex;flex-direction:column}.tr-rule>span>span{font-size:calc(13px*var(--ts));color:var(--muted)}
+.tr-reg h2 .ti{width:30px;height:30px;vertical-align:middle}.tr-reg{border-left:4px solid var(--rc)!important}.tr-reg.locked{border-style:dashed!important}
+.tr-path{display:flex;flex-direction:column;gap:10px;margin-top:8px;position:relative}
+.tr-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;position:relative}.tr-row.rev{direction:rtl}.tr-row.rev>*{direction:ltr}
+.tr-row::before{content:"";position:absolute;left:12%;right:12%;top:50%;border-top:3px dashed color-mix(in srgb,var(--rc) 60%,transparent);z-index:0}
+.tr-node{position:relative;z-index:1;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;border-radius:50%;border:2px solid var(--line);background:var(--panel-2);color:var(--fg);font:inherit;cursor:pointer;min-height:64px;padding:0}
+.tr-node .ti{width:30px;height:30px}.tr-node b{font-family:var(--f-mono);font-size:calc(12px*var(--ts));line-height:1}.tr-node .tr-st{position:absolute;bottom:-6px;font-size:10px;color:var(--gold);letter-spacing:-1px;background:var(--panel);padding:0 3px;border-radius:6px}
+.tr-node.done{border-color:var(--rc);background:color-mix(in srgb,var(--rc) 22%,var(--panel-2))}
+.tr-node.cur{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 45%,transparent);animation:trpulse 1.6s ease-in-out infinite}
+.tr-node.sel{outline:3px solid var(--fg);outline-offset:2px}.tr-node.lk{opacity:.5}.tr-node.boss{border-width:3px;border-style:double}
+@keyframes trpulse{50%{box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 20%,transparent)}}
+@media (prefers-reduced-motion:reduce){.tr-node.cur{animation:none}}
+.tr-res{border-color:var(--rc)!important}.tr-res .adv-b>*{flex:1}.tr-ok{color:var(--solved);font-weight:700}.tr-no{color:var(--muted)}
+html.cb .tr-node.done::after{content:"✓";position:absolute;top:2px;right:8px;font-weight:900;font-size:12px}
+/* ---- phase 8: look ---- */
+.pf-av.av-tile{background:var(--avc)}.pf-av.av-tile .ti{width:78%;height:78%}
+.pf-look{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.pf-look .pf-av.sm{width:40px;height:40px;font-size:17px}.pf-look .hbtn{margin-left:auto}
+.lk-prev{display:flex;align-items:center;gap:14px;text-align:left}.lk-prev .pf-av.lk-big{width:84px;height:84px;font-size:34px}.lk-prev b{display:block;font-size:calc(20px*var(--ts))}.lk-prev span{color:var(--muted)}
+.lk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:8px;margin:6px 0 12px}
+.lk-grid button{aspect-ratio:1;border-radius:12px;border:1px solid var(--line);background:var(--panel-2);display:grid;place-items:center;cursor:pointer;min-height:48px}.lk-grid .ti{width:80%;height:80%}
+.lk-grid button[aria-checked=true],.lk-titles button[aria-checked=true]{border-color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
+.lk-cols{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}.lk-cols button{width:44px;height:44px;border-radius:50%;background:var(--avc);border:2px solid var(--line);cursor:pointer}
+.lk-cols button[aria-checked=true]{outline:3px solid var(--fg);outline-offset:2px}
+.lk-titles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:6px}
+.lk-titles button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;padding:10px;border-radius:12px;border:1px solid var(--line);background:var(--panel-2);color:var(--fg);font:inherit;cursor:pointer;min-height:56px}
+.lk-titles button span{font-size:calc(11px*var(--ts));color:var(--muted)}.lk-titles .lk-off{opacity:.6}.lk-titles .ti{width:18px;height:18px;vertical-align:-3px}
+/* ---- phase 9: coach ---- */
+.coach .co-tip{display:flex;gap:10px;align-items:flex-start;text-align:left;margin:8px 0}.coach .co-tip>.ti{width:40px;height:40px;flex:none}
+.coach .co-tip p{margin:2px 0 0;line-height:1.4;font-size:calc(14px*var(--ts))}.coach .co-tip .ghost-btn{margin-top:6px}
 .gc-pages{display:flex;gap:6px;margin:2px 0 8px;overflow-x:auto;scrollbar-width:none}
 .gc-pages button{flex:1 0 auto;min-height:32px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.18);color:inherit;font:inherit;font-size:12px;font-weight:700;letter-spacing:.02em}
 .gc-pages button[aria-selected="true"]{background:rgba(255,255,255,.92);color:#111;border-color:transparent}
@@ -1134,6 +1166,8 @@ html.wide #profile.hud>.hud-bar,html.wide #profile.hud>.hero{grid-column:1/-1}
         <button data-act="events"><span data-ti="trophy"></span> Events &amp; seasons</button>
         <button data-act="wordbook"><span data-ti="cards"></span> Word book</button>
         <button data-act="duels"><span data-ti="bolt"></span> Duels &amp; rivals</button>
+        <button data-act="trail"><span data-ti="map"></span> Word Trail</button>
+        <button data-act="look"><span data-ti="smile"></span> Avatar &amp; title</button>
         <button data-act="modes"><span data-ti="target"></span> Quests, Marathon &amp; Pass and Play</button>
         <button data-act="journal"><span data-ti="pencil"></span> My journal</button>
         <button data-act="rewards">Rewards &amp; themes</button>
@@ -1246,6 +1280,7 @@ html.wide #profile.hud>.hud-bar,html.wide #profile.hud>.hero{grid-column:1/-1}
     <button class="setrow" role="switch" id="setSpeak"><span><span class="st-t">Read clues aloud</span><br><span class="st-d">Speaks each new clue and quote as it appears. The speaker by the clue reads it any time.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setLefty"><span><span class="st-t">Left-handed controls</span><br><span class="st-d">Moves slam, turn and hold to the left side of the well controls.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setCalm"><span><span class="st-t">Reduce motion</span><br><span class="st-d">Turns off shakes, pops, floating points and the card tilt. Your phone's Reduce Motion setting does this too.</span></span><span class="sw"></span></button>
+    <button class="setrow" role="switch" id="setCoach"><span><span class="st-t">Coach's notes</span><br><span class="st-d">Up to two tips after each game, based on how it went.</span></span><span class="sw"></span></button>
     <button class="ghost-btn" id="setBackup">Back up or restore progress</button>
     <button class="big" id="setDone">Done</button>
   </div>
@@ -2117,7 +2152,7 @@ function startLevel(i){
   if(L.cat==="Sports"&&!obj&&!spProfile()&&!stats.spSkip&&!(PP&&PP.pending)){showSportsQuiz(()=>startLevel(i));return}
   if(L.lang){if(!langProfile()){showLangQuiz(()=>startLevel(i));return}if(!genLang(L)){toast("Try again");return}}
   if(L.heal){if(!healProfile){showQuiz(i);return}if(!genHealing(L)){toast("Try again");return}}
-  const runOn=!!(RUN&&RUN.pending&&!obj),ppOn=!!(PP&&PP.pending&&!obj);if(RUN&&!runOn)RUN=null;if(PP&&!ppOn)PP=null;if(RUN)RUN.pending=false;if(PP)PP.pending=false;
+  const runOn=!!(RUN&&RUN.pending&&!obj),ppOn=!!(PP&&PP.pending&&!obj);if(RUN&&!runOn)RUN=null;if(PP&&!ppOn)PP=null;if(RUN)RUN.pending=false;if(PP)PP.pending=false;const trOn=!!(TRAIL&&TRAIL.pending&&!obj);if(TRAIL&&!trOn)TRAIL=null;if(TRAIL)TRAIL.pending=false;
   const base=(L.heal||L.lang||obj)?L._cw:crosswordFor(i),R=rng(L.seed*7+(ppOn?PP.fix:Date.now()%997));
   const cells=new Map();for(const[k,c]of base.cells)cells.set(k,{...c,val:"",lock:false,words:c.words.slice()});
   const cw={rows:base.rows,cols:base.cols,cells,words:base.words.map(w=>({...w,cells:w.cells.slice(),solved:false}))};
@@ -2128,7 +2163,7 @@ function startLevel(i){
   S={diff:dKey,li:obj?-1:i,L,R,cw,grid,phase:"cross",sel:{key:cw.words[0].cells[0],dir:cw.words[0].dir},active:null,queue:[],score:0,
      targetHit:false,lastText:null,t0:Date.now(),rushWins:0,rushTotal:0,lockCount:0,lastRush:-9,cool:1,rush:null,acc:0,usedBonus:[],flash:[],hit:[],ghost:true,linesCleared:0,
      pts:{},helped:new Set(),bad:new Set(),assist:!!prefs.autocheck,chain:0,lastSolve:null,maxChain:0,crossMs:0,rushStreak:0,b2b:false,combo:0,hold:null,canHold:true,zen:!!prefs.zen,speedMult:SPEED_MULT[prefs.speed]||1,wordLog:[],final:null};
-  if(runOn){S.run=RUN.legs+1;S.runMul=Math.max(.6,1-.06*RUN.legs)}if(ppOn)S.pp=PP.turn+1;
+  if(runOn){S.run=RUN.legs+1;S.runMul=Math.max(.6,1-.06*RUN.legs)}if(ppOn)S.pp=PP.turn+1;if(trOn)trailApply(TRAIL.k);
   document.getElementById("menu").hidden=true;document.getElementById("result").hidden=true;document.getElementById("quiz").hidden=true;["maker","archive","textbox","review"].forEach(id=>{const x=document.getElementById(id);if(x)x.hidden=true});
   if(dC&&dC.first)selectWord(S.cw.words[0]);
   padMode="";layout();renderAll();clearRun();saveRunSoon();
@@ -2162,7 +2197,7 @@ function backspace(){
     for(let j=i-1;j>=0;j--){const c=S.cw.cells.get(w.cells[j]);if(!c.lock){S.sel.key=w.cells[j];c.val="";break}}}
   renderAll();
 }
-function hint(){if(S.phase!=="cross")return;const w=curWord();
+function hint(){if(S.phase!=="cross")return;if(S.noHint){toast("No hints on this Word Trail stop");return}const w=curWord();
   const k=w.cells.find(k=>{const c=S.cw.cells.get(k);return c.val!==c.ans})||S.sel.key;
   const c=S.cw.cells.get(k);if(c.lock)return;c.val=c.ans;S.sel.key=k;{const hc=(diffCfg()||{hint:25}).hint;S.helped.add(k);addPts("hints",-hc);toast("Hint −"+hc)}checkWords(c)}
 function checkWords(cell){
@@ -2365,16 +2400,16 @@ function levelDone(){
 }
 function gameOver(why){if(S.tut){S.phase="over";tutEnd(false);return}S.phase="over";S.active=null;finalize(false);clearRun();recordGame(false);sfx("over");showResult(false,0,why)}
 function showResult(win,st,why){
-  try{runAfter(win);ppAfter()}catch(e){console.error(e)}
+  try{runAfter(win);ppAfter();trailAfter(win)}catch(e){console.error(e)}
   const el=document.getElementById("result");const nx=S.li>=0?LEVELS[S.li+1]:null;const has=!!nx;const sameCat=has&&nx.ci===S.L.ci;
   const dk=S.L.daily,official=dk&&!S.L.archive?dailyRecord(dk):null;
   const help=S.helped.size?`${S.helped.size} hint${S.helped.size>1?"s":""} used`:S.assist?"Check or Autocheck used":"";
-  el.innerHTML=`<div class="sub">${esc(S.L.cat)} · ${esc(S.L.name)}${S.L.archive||S.L.custom?" · practice":""}${S.zen?" · Zen":""}${S.run?` · Marathon leg ${S.run}`:""}${S.pp&&PP?` · ${esc(PP.names[S.pp-1])}`:""}</div>
+  el.innerHTML=`<div class="sub">${esc(S.L.cat)} · ${esc(S.L.name)}${S.L.archive||S.L.custom?" · practice":""}${S.zen?" · Zen":""}${S.run?` · Marathon leg ${S.run}`:""}${S.trail?` · Word Trail stop ${S.trail}`:""}${S.pp&&PP?` · ${esc(PP.names[S.pp-1])}`:""}</div>
    <h1>${win?"WELL <span>DONE</span>":"WELL <span>FULL</span>"}</h1>
    ${win?`<div class="resrow"><div class="stars" aria-label="${st} of 3 stars">${"★".repeat(st)}<i>${"★".repeat(3-st)}</i></div>${S.grade?`<span class="grade g-${S.grade}" role="img" aria-label="Grade ${S.grade}">${S.grade}</span>`:""}</div>
      ${S.gold?`<span class="goldtag">GOLD SOLVE · NO HELP</span>`:help?`<span class="sub">${help}</span>`:""}`:`<p class="sub">${why}</p>`}
    <div class="pts">${fmtN(S.score)}</div>${S.newBest?`<span class="goldtag">NEW PERSONAL BEST</span>`:""}
-   ${runResultHTML(win)}${ppResultHTML()}
+   ${runResultHTML(win)}${ppResultHTML()}${trailResultHTML()}
    ${chalResultHTML()}
    ${breakdownHTML()}
    ${win?miniGridHTML():""}
@@ -2385,6 +2420,7 @@ function showResult(win,st,why){
    ${S.L.cat==="Sports"&&!S.L.daily&&!S.pp?spResultHTML():""}
    ${reflectHTML()}
    ${p2ResultHTML(win)}
+   ${coachHTML(win)}
    ${highlightsHTML()}
    ${!S.pp&&(win||S.phase==="over")?diffAdviceHTML():""}
    <details class="how sc"><summary>How scoring works</summary>${SCORING_HELP}</details>
@@ -2397,7 +2433,7 @@ function showResult(win,st,why){
   const cb=document.getElementById("chalBtn");if(cb)cb.onclick=()=>shareWithCard(chalShareText());
   document.getElementById("retryL").onclick=()=>dk?playDaily(dk,true):startLevel(S.li>=0?S.li:S.L);
   document.getElementById("toMenu").onclick=showMenu;
-  wireAdvice();ppRunWire(el);wireReflect(el);wireQS(el);
+  wireAdvice();ppRunWire(el);wireReflect(el);wireQS(el);wireTrailResult();wireCoach(el);
   {const b=document.getElementById("p2Next");if(b)b.onclick=()=>{const v=b.dataset;if(v.sea!=null)playSeason(+v.sea);else startLevel(+v.evl)}}
   {const b=document.getElementById("hhSet");if(b)b.onclick=()=>showSportsQuiz();const m=document.getElementById("hhMore");if(m)m.onclick=()=>openLegends()}
   wireSay(el);{const d=document.getElementById("lrbDrill");if(d)d.onclick=()=>{el.hidden=true;openRecall("see")}}
@@ -2682,6 +2718,7 @@ function renderProfile(){if(gc.native)gcLoad("total");
      <div class="hero-id">
        <span class="hl">CALLSIGN</span>
        <form class="pf-nick" id="nickForm"><label class="sr" for="nickIn">Player name</label><input id="nickIn" maxlength="16" value="${esc(nick)}" autocomplete="off"><button type="submit">Save</button></form>
+       <div class="pf-look">${avatarHTML("sm")}<span><b>${esc(titleOf())}</b></span><button class="hbtn" id="pfLook">Avatar &amp; title ›</button></div>
        <span class="hl">${rk?`GLOBAL RANK <b>#${rk.pos}</b> / ${fmtN(rk.of)}`:(cloud.db||(gc.native&&gc.auth&&gc.auth.ok))?"RANK: FINISH A PUZZLE":gc.native?"RANK: SIGN IN TO GAME CENTER":"RANK: OFFLINE"}</span>
        <span class="hl">XP <b>${fmtN(xpTotal())}</b> · ${fmtN(L.toNext)} TO LV ${L.lv+1}</span>
        <span class="chip ${ds.doneToday?"ok":"warn"}">${status}</span>
@@ -2719,7 +2756,7 @@ function renderProfile(){if(gc.native)gcLoad("total");
   document.getElementById("nickForm").onsubmit=e=>{e.preventDefault();const v=document.getElementById("nickIn").value.replace(/[^\p{L}\p{N} _.-]/gu,"").trim().slice(0,16);
     if(!v)return;stats.nick=v;saveStats();pushCloud();toast("Name saved");renderProfile()};
   const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
-  on("pfRetake",()=>showQuiz(null));on("pfReview",openReview);on("pfRewards",openRewards);on("pfSb",()=>openScoreboard&&openScoreboard("daily"));on("pfWb",()=>openWordBook());on("pfWeek",shareWeek);on("pfEv",openEvents);on("pfDu",openDuels);
+  on("pfRetake",()=>showQuiz(null));on("pfReview",openReview);on("pfRewards",openRewards);on("pfSb",()=>openScoreboard&&openScoreboard("daily"));on("pfWb",()=>openWordBook());on("pfWeek",shareWeek);on("pfLook",openLook);on("pfEv",openEvents);on("pfDu",openDuels);
   wireChart();
 }
 function scoreChart(games){
@@ -2747,7 +2784,7 @@ function wireChart(){
 function openDrawer(){
   const d=document.getElementById("drawer"),sc=document.getElementById("scrim");
   const nick=stats.nick||"Player",L=levelOf(xpTotal()),rk=myRank();
-  document.getElementById("drMe").innerHTML=`<div class="pf-av" aria-hidden="true">${esc(nick.charAt(0).toUpperCase())}</div><div><b>${esc(nick)}</b><span>Level ${L.lv} · ${fmtN(stats.tot.score)} pts${rk?` · #${rk.pos}`:""}</span></div>`;
+  document.getElementById("drMe").innerHTML=`${avatarHTML()}<div><b>${esc(nick)}</b><span>${esc(titleOf())} · Level ${L.lv} · ${fmtN(stats.tot.score)} pts${rk?` · #${rk.pos}`:""}</span></div>`;
   document.getElementById("drCats").innerHTML=CATEGORIES.map((c,i)=>{const got=c.puzzles.reduce((t,p)=>t+((store[p.id]||{}).stars||0),0);const lk=CAT_LOOK[c.name]||{g1:"#888"};
     return`<button data-ci="${i}">${catIcon(c.name,lk.g1)}<span class="cn">${esc(c.name)}</span><span class="cs">${got}★</span></button>`}).join("");
   document.querySelectorAll("#drCats [data-ci]").forEach(b=>b.onclick=()=>{closeDrawer();goPage("Play");setTimeout(()=>deckTo(deckOrder().indexOf(CATEGORIES[+b.dataset.ci])),80)});
@@ -2774,7 +2811,7 @@ document.getElementById("drClose").onclick=closeDrawer;document.getElementById("
     else if(a==="checkin")showQuiz(null);
     else if(a==="archive")openArchive();else if(a==="maker")openMaker();else if(a==="review")openReview();else if(a==="backup")openBackup();
     else if(a==="tour"){startTutorial()}
-    else if(a==="rewards")openRewards();else if(a==="events")openEvents();else if(a==="wordbook")openWordBook();else if(a==="duels")openDuels();else if(a==="modes")openModes();else if(a==="journal")openJournal();else if(a==="langlab")openLangHub();else if(a==="mini")openMini();else if(a==="chunks")openChunks();else if(a==="scoreboard")openScoreboard();else if(a==="code")openCode();
+    else if(a==="rewards")openRewards();else if(a==="events")openEvents();else if(a==="wordbook")openWordBook();else if(a==="duels")openDuels();else if(a==="modes")openModes();else if(a==="trail")openTrail();else if(a==="look")openLook();else if(a==="journal")openJournal();else if(a==="langlab")openLangHub();else if(a==="mini")openMini();else if(a==="chunks")openChunks();else if(a==="scoreboard")openScoreboard();else if(a==="code")openCode();
     else if(a==="pro"){showPaywall(PRO?"owned":"menu")}
     else if(a==="how"){goPage("Play");const h=document.querySelector(".how");if(h){h.open=true;setTimeout(()=>h.scrollIntoView({behavior:"smooth",block:"start"}),60)}}});
   document.querySelectorAll("#rkSeg button").forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;renderRanks()});
@@ -3169,7 +3206,7 @@ const music=(()=>{let on=false,timer=0,next=0,step=0,bus=null;
 if(typeof document!=="undefined")document.addEventListener("visibilitychange",()=>{if(!AC)return;if(document.hidden)AC.suspend();else if(prefs.music||prefs.sfx)AC.resume()});
 
 /* ---------- display settings ---------- */
-let prefs={big:false,hc:false,mag:true,adapt:true,light:false,theme:null,speed:"normal",sfx:true,music:false,zen:false,autocheck:false,readable:false,haptics:true};try{Object.assign(prefs,JSON.parse(localStorage.getItem("crossfall-a11y")||"{}"))}catch(e){}
+let prefs={coach:true,big:false,hc:false,mag:true,adapt:true,light:false,theme:null,speed:"normal",sfx:true,music:false,zen:false,autocheck:false,readable:false,haptics:true};try{Object.assign(prefs,JSON.parse(localStorage.getItem("crossfall-a11y")||"{}"))}catch(e){}
 if(!prefs.theme)prefs.theme=prefs.light?"light":"dark";
 try{if(localStorage.getItem("crossfall-mute")==="1"){prefs.sfx=false;localStorage.removeItem("crossfall-mute")}}catch(e){}
 const MQ_LIGHT=window.matchMedia?matchMedia("(prefers-color-scheme: light)"):null;
@@ -3185,7 +3222,7 @@ function applyPrefs(){const h=document.documentElement;prefs.light=isLight();h.s
   muted=!prefs.sfx;const mb=document.getElementById("muteBtn");if(mb){mb.style.opacity=muted?.4:1;mb.setAttribute("aria-pressed",!muted)}
   music.set(!!prefs.music);
   try{window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.theme&&window.webkit.messageHandlers.theme.postMessage(prefs.hc?"dark":prefs.theme)}catch(e){}
-  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setHaptics","haptics"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"],["setCb","cb"],["setSpeak","speak"],["setLefty","lefty"],["setCalm","calm"]].forEach(([id,k])=>{const b=document.getElementById(id);if(b)b.setAttribute("aria-checked",!!prefs[k])});
+  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setHaptics","haptics"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"],["setCb","cb"],["setSpeak","speak"],["setLefty","lefty"],["setCalm","calm"],["setCoach","coach"]].forEach(([id,k])=>{const b=document.getElementById(id);if(b)b.setAttribute("aria-checked",!!prefs[k])});
   try{applyWellTheme()}catch(e){}
   document.querySelectorAll("[data-track]").forEach(b=>b.setAttribute("aria-checked",b.dataset.track===(prefs.track||"calm")));
   document.querySelectorAll("[data-remind]").forEach(b=>b.setAttribute("aria-checked",b.dataset.remind===(prefs.remindAt||"evening")));
@@ -3439,6 +3476,7 @@ function renderDailyCard(){
    :`<div class="dc-btns"><button class="big" id="dcPlay">Play today's puzzle</button><button class="ghost-btn" id="dcArchive">Past</button></div>`}`;
   const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
   try{box.insertAdjacentHTML("beforeend",questLine());on("qLine",()=>openModes())}catch(e){}
+  try{box.insertAdjacentHTML("beforeend",trailLine());on("trLine",()=>openTrail())}catch(e){}
   box.insertAdjacentHTML("beforeend",weeklyLine());on("wkLine",openRewards);
   try{box.insertAdjacentHTML("beforeend",eventLine());on("evLine",openEvents)}catch(e){}
   try{const fy=forYouLine();if(fy){box.insertAdjacentHTML("beforeend",fy);const b=document.getElementById("fyLine");b.onclick=()=>startLevel(+b.dataset.l)}}catch(e){}
@@ -4008,8 +4046,11 @@ function openWordBook(cat){wbBackfill();const U=wbUniverse(),cats=Object.keys(U)
   document.getElementById("wbDone").onclick=()=>{el.hidden=true;el.innerHTML="";if(hubPage==="Profile")renderProfile()}}
 
 /* ---- what's new (shown once to returning players) ---- */
-function maybeWhatsNew(){if(stats.seen13||!stats.tot||!stats.tot.games)return;stats.seen12=1;stats.seen13=1;saveStats();const el=document.getElementById("evh");
+function maybeWhatsNew(){if(stats.seen14||!stats.tot||!stats.tot.games)return;stats.seen12=1;stats.seen13=1;stats.seen14=1;saveStats();const el=document.getElementById("evh");
   el.innerHTML=`<h1>WHAT'S <span>NEW</span></h1>
+   <div class="panel wn">${ti("map")}<div><b>Word Trail</b><p>Forty stops across five regions, each a puzzle with a twist. Beat a region's boss to earn its title.</p></div></div>
+   <div class="panel wn">${ti("smile")}<div><b>Your look</b><p>Pick an avatar and color, wear the titles you earn, and share a player card.</p></div></div>
+   <div class="panel wn">${ti("clock")}<div><b>Coach's notes</b><p>After each game, up to two tips based on how it went.</p></div></div>
    <div class="panel wn">${ti("target")}<div><b>Daily quests</b><p>Three fresh goals every day, with XP and a quest streak.</p></div></div>
    <div class="panel wn">${ti("runner")}<div><b>Marathon &amp; Pass and Play</b><p>Run puzzles back to back as they speed up, or hand the phone to a friend for a best-of-3 match.</p></div></div>
    <div class="panel wn">${ti("pencil")}<div><b>Your journal</b><p>After Biblical, Psychology and Books puzzles, a short question to reflect on. Log your mood and keep favorite quotes on a shelf.</p></div></div>
@@ -4058,7 +4099,7 @@ function wireAdvice(){const y=document.getElementById("advYes"),n=document.getEl
 /* ---- smarter: tiered hints ---- */
 const HINTS=[["letter","Reveal a letter",25,"One letter in this word"],["vowels","Show the vowels",40,"Every A, E, I, O, U in this word"],["word","Solve this word",90,"Fills the whole word in"]];
 function hintCost(base){const d=diffCfg();return d&&d.hint>25?base*2:base}
-function openHintMenu(){if(!S||S.phase!=="cross")return;const w=curWord();if(!w||w.solved){hint();return}let el=document.getElementById("hintMenu");
+function openHintMenu(){if(!S||S.phase!=="cross")return;if(S.noHint){toast("No hints on this Word Trail stop");return}const w=curWord();if(!w||w.solved){hint();return}let el=document.getElementById("hintMenu");
   if(!el){el=document.createElement("div");el.id="hintMenu";el.className="hint-menu";el.setAttribute("role","dialog");el.setAttribute("aria-label","Hints");document.getElementById("app").appendChild(el)}
   el.innerHTML=`<div class="hm-card"><span class="ln">HINT · ${w.ans.length} LETTERS</span>${HINTS.map(([k,l,c,d])=>`<button data-hk="${k}"><b>${l}</b><span>${d}</span><i>−${hintCost(c)}</i></button>`).join("")}<button class="hm-x" id="hmX">Never mind</button></div>`;
   el.hidden=false;el.onclick=e=>{if(e.target===el)closeHintMenu()};document.getElementById("hmX").onclick=closeHintMenu;
@@ -4197,6 +4238,7 @@ function ppRunWire(el){
 function openModes(focus){const el=document.getElementById("evh"),qs=questState(),qd=qs.filter(q=>q.done).length,s=stats.qstreak||{},mara=stats.mara||{};
   const cats=CATEGORIES.filter(c=>maraPool(c.name).length),pc=ppCats(),nm=stats.ppNames||["Player 1","Player 2"];
   el.innerHTML=`<h1>PLAY <span>MODES</span></h1>
+   ${trailLine()}
    <div class="panel" id="mdQuests"><h2 class="ph">${ti("target")} Daily quests <span class="sub">${qd}/3 · resets in ${hoursLeftToday()} h</span></h2>
      <ul class="q-list">${qs.map(q=>`<li class="${q.done?"done":""}">${ti(q.ic)}<span><b>${esc(q.label)}</b><span class="q-bar" role="progressbar" aria-label="${esc(q.label)}" aria-valuemin="0" aria-valuemax="${q.goal}" aria-valuenow="${q.v}"><i style="width:${Math.round(q.v/q.goal*100)}%"></i></span></span><span class="q-v">${q.done?"Done":`${fmtN(q.v)}/${fmtN(q.goal)}`}</span></li>`).join("")}</ul>
      <p class="sub">+${fmtN(QUEST_XP)} XP each, +${fmtN(QUEST_ALL_XP)} XP for all three.${s.n?` Quest streak: ${s.n} day${s.n>1?"s":""}.`:""}</p></div>
@@ -4212,6 +4254,7 @@ function openModes(focus){const el=document.getElementById("evh"),qs=questState(
    <div class="btns wide"><button class="big" id="evDone">Done</button></div>`;
   el.hidden=false;el.scrollTop=0;
   el.querySelectorAll("[data-mara]").forEach(b=>b.onclick=()=>startMarathon(b.dataset.mara));
+  {const t=document.getElementById("trLine");if(t)t.onclick=()=>openTrail()}
   let len=3;el.querySelectorAll("#ppLen button").forEach(b=>b.onclick=()=>{len=+b.dataset.n;el.querySelectorAll("#ppLen button").forEach(x=>x.setAttribute("aria-checked",x===b))});
   document.getElementById("ppStart").onclick=()=>{const clean=v=>String(v||"").replace(/[<>]/g,"").trim().slice(0,14);
     const a=clean(document.getElementById("ppN1").value)||"Player 1",b=clean(document.getElementById("ppN2").value)||"Player 2";
@@ -4299,6 +4342,143 @@ function speakQuoteIfNew(){if(!S||S.phase==="cross"||!S.lastText||S.lastText===l
 function sayClueNow(){audioInit();const w=S&&S.phase==="cross"?curWord():null;
   const t=w?clueWords(w):S&&S.lastText?`${S.lastText.word}. ${S.lastText.text}`:"";if(!t)return;if(!speakText(t))toast("Speech isn't available on this device")}
 {const b=document.getElementById("clueSay");if(b){b.hidden=!CLUE_SPEAK;b.onclick=e=>{e.stopPropagation();sayClueNow()}}}
+
+/* ================= Phase 7: Word Trail, a map of puzzles with a twist at every stop ================= */
+const TRAIL_REGIONS=[
+ {id:"meadow",name:"Meadow Path",ic:"seedling",col:"#4fc2b4",title:"Trailblazer"},
+ {id:"city",name:"Neon City",ic:"bolt",col:"#c05ad8",title:"City Slicker"},
+ {id:"coast",name:"Fog Coast",ic:"wave",col:"#4f8fd8",title:"Fog Walker"},
+ {id:"peaks",name:"Frost Peaks",ic:"snow",col:"#7fc8e8",title:"Peak Climber"},
+ {id:"summit",name:"Star Summit",ic:"moon",col:"#f2c14e",title:"Summit Legend"}];
+const TRAIL_RULES={
+ clear:{ic:"puzzle",name:"Clear it",d:"Finish the puzzle.",ok:()=>true},
+ target:{ic:"target",name:"Build the target",d:"Finish and build the target word on the middle line.",ok:()=>S.targetHit},
+ nohint:{ic:"eyes",name:"No hints",d:"Hints are switched off for this stop.",ok:()=>!S.helped.size,noHint:1},
+ fast:{ic:"bolt",name:"Fast fall",d:"Pieces fall 30% faster.",ok:()=>true,mul:.7},
+ junk:{ic:"house",name:"Junk pile",d:"Two extra rows of junk letters to start.",ok:()=>true,junk:2},
+ chain:{ic:"fire",name:"Speed chain",d:"Hit a ×3 speed chain on the way.",ok:()=>(S.maxChain||0)>=3},
+ stars3:{ic:"star",name:"Three stars",d:"Build the target and win every rush.",ok:()=>stars()===3},
+ gold:{ic:"medal",name:"Gold solve",d:"No hints and no Check: solve it all yourself.",ok:()=>!!S.gold,noHint:1},
+ boss:{ic:"trophy",name:"Boss stop",d:"Faster pieces, extra junk, and you must build the target.",ok:()=>S.targetHit,mul:.8,junk:2,boss:1}};
+const TRAIL_PLAN=[["clear","target","nohint","fast","junk","chain","stars3","boss"],["target","fast","nohint","junk","chain","gold","stars3","boss"],["fast","junk","target","chain","nohint","stars3","gold","boss"],["junk","chain","fast","gold","target","stars3","nohint","boss"],["gold","stars3","fast","junk","chain","target","gold","boss"]];
+const TRAIL_N=TRAIL_PLAN.length*8,TRAIL_XP=400,TRAIL_BOSS_XP=1000,TRAIL_REGION_XP=2000;
+var TRAIL=null;
+function trailSt(){const t=stats.trail=stats.trail||{pick:{},done:{}};t.pick=t.pick||{};t.done=t.done||{};return t}
+function trailRule(k){return TRAIL_RULES[TRAIL_PLAN[Math.floor(k/8)][k%8]]}
+function trailRuleId(k){return TRAIL_PLAN[Math.floor(k/8)][k%8]}
+function trailUnlocked(k){return k===0||!!trailSt().done[k-1]}
+function trailNext(){const d=trailSt().done;for(let k=0;k<TRAIL_N;k++)if(!d[k])return k;return TRAIL_N}
+function trailPool(){return LEVELS.filter(p=>!p.heal&&!p.lang&&!lockReason(p))}
+function trailPick(k){const t=trailSt();let li=t.pick[k];if(li!=null&&LEVELS[li]&&!lockReason(LEVELS[li]))return li;
+  const pool=trailPool();if(!pool.length)return 0;const used=new Set(Object.values(t.pick)),R=rng(9173+k*131+(stats.nick||"").length),fresh=pool.filter(p=>!used.has(LEVELS.indexOf(p)));
+  const src=fresh.length?fresh:pool,boss=trailRule(k).boss;let cand=src;if(boss){const big=src.filter(p=>(p.words||[]).length>=6);if(big.length)cand=big}
+  li=LEVELS.indexOf(cand[Math.floor(R()*cand.length)]);t.pick[k]=li;saveStats();return li}
+function startTrail(k){if(!trailUnlocked(k))return;const li=trailPick(k);TRAIL={k,pending:true};RUN=null;PP=null;closeEvents();document.getElementById("result").hidden=true;startLevel(li)}
+function trailApply(k){const rule=trailRule(k),reg=Math.floor(k/8);S.trail=k+1;S.trailRule=trailRuleId(k);
+  S.runMul=(rule.mul||1)*(1-.04*reg);if(rule.noHint)S.noHint=1;
+  if(rule.junk){let top=ROWS;for(let r=0;r<ROWS;r++)if(S.grid[r].some(c=>c&&c.g)){top=r;break}
+    for(let r=Math.max(MID+2,top-rule.junk);r<top;r++){const gap=Math.floor(S.R()*COLS);for(let c=0;c<COLS;c++)if(c!==gap)S.grid[r][c]={ch:GARB[Math.floor(S.R()*GARB.length)],g:1}}}}
+function trailAfter(win){if(!S||!S.trail||S.trailDone||!TRAIL)return;S.trailDone=1;const k=S.trail-1,rule=trailRule(k),t=trailSt();
+  const ok=win&&rule.ok();TRAIL.ok=ok;TRAIL.first=false;TRAIL.region=false;
+  if(ok){const st=stars(),first=!t.done[k];t.done[k]=Math.max(t.done[k]||0,st);TRAIL.first=first;
+    if(first){giveXP(rule.boss?TRAIL_BOSS_XP:TRAIL_XP,`Word Trail stop ${k+1}: ${rule.name}`);
+      if(rule.boss){const R=TRAIL_REGIONS[Math.floor(k/8)];TRAIL.region=true;giveXP(TRAIL_REGION_XP,`${R.name} complete`);
+        giveBadge("trail-"+R.id,R.name,R.ic,`Word Trail region complete · title “${R.title}” unlocked`)}}}
+  saveStats()}
+function trailResultHTML(){if(!S.trail||!TRAIL)return"";const k=S.trail-1,rule=trailRule(k),R=TRAIL_REGIONS[Math.floor(k/8)],nx=k+1<TRAIL_N;
+  return`<div class="readback tr-res" style="--rc:${R.col}"><span class="ln">WORD TRAIL · ${esc(R.name.toUpperCase())} · STOP ${k%8+1} OF 8</span>
+   <p class="tr-rule">${ti(rule.ic)}<span><b>${esc(rule.name)}</b><span>${esc(rule.d)}</span></span></p>
+   ${TRAIL.ok?`<p class="tr-ok">Stop cleared${TRAIL.first?` · +${fmtN(rule.boss?TRAIL_BOSS_XP:TRAIL_XP)} XP`:""}${TRAIL.region?` · <b>${esc(R.name)} complete!</b> New title: <b>${esc(R.title)}</b>`:""}</p>
+     <div class="adv-b">${nx?`<button class="big" id="trNext">Next stop ›</button>`:""}<button class="ghost-btn" id="trMap">Trail map</button></div>`
+   :`<p class="tr-no">Not this time: ${esc(rule.d.charAt(0).toLowerCase()+rule.d.slice(1))}</p><div class="adv-b"><button class="big" id="trAgain">Try this stop again</button><button class="ghost-btn" id="trMap">Trail map</button></div>`}</div>`}
+function wireTrailResult(){const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
+  if(!S.trail)return;const k=S.trail-1;on("trNext",()=>startTrail(k+1));on("trAgain",()=>startTrail(k));on("trMap",()=>{document.getElementById("result").hidden=true;showMenu();openTrail(k)});
+  ["nextL","chalBtn","retryL"].forEach(id=>{const x=document.getElementById(id);if(x)x.remove()})}
+let trailSel=null;
+function trailLine(){const n=trailNext(),done=Object.keys(trailSt().done).length,R=TRAIL_REGIONS[Math.min(TRAIL_REGIONS.length-1,Math.floor(n/8))];
+  return`<button class="wk-line tr-line" id="trLine"><span>${ti(R.ic)} <b>Word Trail</b> · ${n>=TRAIL_N?"complete!":`${esc(R.name)} ${n%8}/8`}</span><span class="tr-mini" aria-hidden="true"><i style="--p:${Math.round(done/TRAIL_N*100)}%"></i></span><span aria-hidden="true">›</span></button>`}
+function openTrail(sel){const el=document.getElementById("evh"),t=trailSt(),n=trailNext();trailSel=sel!=null?sel:Math.min(n,TRAIL_N-1);
+  const k=trailSel,rule=trailRule(k),li=trailUnlocked(k)?trailPick(k):null,L=li!=null?LEVELS[li]:null,R=TRAIL_REGIONS[Math.floor(k/8)];
+  el.innerHTML=`<h1>WORD <span>TRAIL</span></h1>
+   <p class="sub">Forty stops across five regions. Every stop is a puzzle with a twist. Clear a region's boss to earn its title.</p>
+   <div class="panel tr-sheet" style="--rc:${R.col}" aria-live="polite"><span class="ln">${esc(R.name.toUpperCase())} · STOP ${k%8+1}</span>
+     <p class="tr-rule">${ti(rule.ic)}<span><b>${esc(rule.name)}</b><span>${esc(rule.d)}</span></span></p>
+     ${L?`<p class="sub">${catIcon(L.cat,(CAT_LOOK[L.cat]||{}).g1)} ${esc(L.cat)} · ${esc(L.name)}${t.done[k]?` · ${starStr(t.done[k])}`:""}</p><button class="big" id="trGo">${t.done[k]?"Play again":"Play stop "+(k+1)}</button>`:`<p class="sub">${ti("lock")} Clear stop ${k} first.</p>`}</div>
+   ${TRAIL_REGIONS.map((Rg,ri)=>{const base=ri*8,got=[...Array(8)].filter((_,i)=>t.done[base+i]).length,open=trailUnlocked(base);
+     return`<section class="panel tr-reg${open?"":" locked"}" style="--rc:${Rg.col}"><h2 class="ph">${ti(Rg.ic)} ${esc(Rg.name)} <span class="sub">${got}/8${got===8?` · ${esc(Rg.title)}`:""}</span></h2>
+      ${open?`<div class="tr-path">${[0,1].map(row=>`<div class="tr-row${row?" rev":""}">${[0,1,2,3].map(c=>{const i=base+row*4+c,u=trailUnlocked(i),d=t.done[i],ru=trailRule(i);
+        return`<button class="tr-node${d?" done":""}${i===n?" cur":""}${!u?" lk":""}${i===k?" sel":""}${ru.boss?" boss":""}" data-tk="${i}" aria-label="Stop ${i%8+1}, ${esc(ru.name)}${d?`, cleared, ${d} stars`:u?"":", locked"}" ${i===k?'aria-current="true"':""}>${ti(u?ru.ic:"lock")}<b>${i%8+1}</b>${d?`<span class="tr-st">${"★".repeat(d)}</span>`:""}</button>`}).join("")}</div>`).join("")}</div>`
+      :`<p class="sub">${ti("lock")} Beat the ${esc(TRAIL_REGIONS[ri-1].name)} boss to open this region.</p>`}</section>`}).join("")}
+   <div class="btns wide"><button class="big" id="evDone">Done</button></div>`;
+  el.hidden=false;
+  el.querySelectorAll("[data-tk]").forEach(b=>b.onclick=()=>{const sc=el.scrollTop;openTrail(+b.dataset.tk);el.scrollTop=0;const g=document.getElementById("trGo");if(g)g.focus({preventScroll:true});hap("select")});
+  const g=document.getElementById("trGo");if(g)g.onclick=()=>startTrail(k);document.getElementById("evDone").onclick=closeEvents}
+
+/* ================= Phase 8: avatar, titles, player card ================= */
+const AVATARS=["star","fire","bolt","heart","smile","sun","moon","basketball","soccer","skating","headphones","note","knight","spade","swirl","seedling","globe","trophy","target","runner","plane","apple","palette","wave"];
+const AV_COLS=["#ff8a3d","#e8467c","#a35ad8","#4f8fd8","#2fb5a4","#58b84a","#f2c14e","#7a7f8c"];
+function avatarHTML(cls){const a=stats.avatar,nick=stats.nick||"Player";
+  if(!a||!TI[a.ic])return`<div class="pf-av${cls?" "+cls:""}" aria-hidden="true">${esc(nick.charAt(0).toUpperCase())}</div>`;
+  return`<div class="pf-av av-tile${cls?" "+cls:""}" style="--avc:${AV_COLS[a.c]||AV_COLS[0]}" aria-hidden="true">${ti(a.ic)}</div>`}
+function trailRegionsDone(){const d=trailSt().done;return TRAIL_REGIONS.filter((_,ri)=>d[ri*8+7]).length}
+const TITLES=[
+ {id:"new",name:"New Faller",how:"Everyone starts here",ok:()=>true},
+ {id:"vet",name:"Veteran",how:"Reach level 10",ok:()=>levelOf(xpTotal()).lv>=10},
+ {id:"legend",name:"Living Legend",how:"Reach level 25",ok:()=>levelOf(xpTotal()).lv>=25},
+ {id:"smith",name:"Wordsmith",how:"Solve 200 words",ok:()=>(stats.tot.words||0)>=200},
+ {id:"rush",name:"Rush Runner",how:"Win 25 rushes",ok:()=>(stats.tot.rushW||0)>=25},
+ {id:"gold",name:"Gold Hand",how:"Get 5 Gold solves",ok:()=>(stats.tot.golds||0)>=5},
+ {id:"daily",name:"Daily Devotee",how:"Reach a 7-day Daily streak",ok:()=>(stats.miles||[]).includes(7)},
+ {id:"quest",name:"Quest Keeper",how:"Finish all daily quests 7 days running",ok:()=>!!(stats.badges||{}).quest7},
+ {id:"mara",name:"Marathoner",how:"Run 5 legs in a Marathon",ok:()=>!!(stats.badges||{}).mara5},
+ {id:"duel",name:"Duelist",how:"Win 3 duels",ok:()=>rivalsOf().reduce((t,r)=>t+r.w,0)>=3},
+ {id:"refl",name:"Reflective",how:"Write 10 journal reflections",ok:()=>JR.filter(e=>e.note).length>=10},
+ ...TRAIL_REGIONS.map((R,ri)=>({id:"tr-"+R.id,name:R.title,how:`Clear ${R.name} on the Word Trail`,ok:()=>!!trailSt().done[ri*8+7]}))];
+function titleOf(){const t=TITLES.find(x=>x.id===stats.title);return t&&t.ok()?t.name:"New Faller"}
+function openLook(){const el=document.getElementById("evh"),a=stats.avatar||{ic:"",c:0};AVATARS.forEach(tiImg);
+  el.innerHTML=`<h1>YOUR <span>LOOK</span></h1>
+   <div class="panel lk-prev">${avatarHTML("lk-big")}<div><b>${esc(stats.nick||"Player")}</b><span>${esc(titleOf())} · Level ${levelOf(xpTotal()).lv}</span></div></div>
+   <div class="panel"><h2 class="ph">Avatar</h2><div class="lk-grid" role="radiogroup" aria-label="Avatar">${AVATARS.map(ic=>`<button role="radio" aria-checked="${a.ic===ic}" data-av="${ic}" aria-label="${ic}">${ti(ic)}</button>`).join("")}</div>
+     <h2 class="ph">Color</h2><div class="lk-cols" role="radiogroup" aria-label="Avatar color">${AV_COLS.map((c,i)=>`<button role="radio" aria-checked="${(a.c||0)===i}" data-avc="${i}" style="--avc:${c}" aria-label="Color ${i+1}"></button>`).join("")}</div></div>
+   <div class="panel"><h2 class="ph">Title</h2><div class="lk-titles" role="radiogroup" aria-label="Title">${TITLES.map(t=>{const ok=t.ok();
+     return`<button role="radio" aria-checked="${(stats.title||"new")===t.id}" data-tt="${t.id}" ${ok?"":'aria-disabled="true"'} class="${ok?"":"lk-off"}"><b>${ok?"":ti("lock")+" "}${esc(t.name)}</b><span>${esc(t.how)}</span></button>`}).join("")}</div></div>
+   <div class="btns wide"><button class="big" id="lkShare">Share my player card</button><button class="ghost-btn" id="evDone">Done</button></div>`;
+  el.hidden=false;
+  el.querySelectorAll("[data-av]").forEach(b=>b.onclick=()=>{stats.avatar={ic:b.dataset.av,c:(stats.avatar||{}).c||0};saveStats();keepScroll(el,openLook);hap("select")});
+  el.querySelectorAll("[data-avc]").forEach(b=>b.onclick=()=>{stats.avatar={ic:(stats.avatar||{}).ic||"star",c:+b.dataset.avc};saveStats();keepScroll(el,openLook);hap("select")});
+  el.querySelectorAll("[data-tt]").forEach(b=>b.onclick=()=>{const t=TITLES.find(x=>x.id===b.dataset.tt);if(!t.ok()){toast(t.how+" to unlock");return}stats.title=t.id;saveStats();keepScroll(el,openLook);hap("select")});
+  document.getElementById("lkShare").onclick=sharePlayerCard;document.getElementById("evDone").onclick=()=>{closeEvents();if(hubPage==="Profile")renderProfile()}}
+function keepScroll(el,f){const y=el.scrollTop;f();el.scrollTop=y}
+function playerCard(){try{const W=1080,H=1350,cv=document.createElement("canvas");cv.width=W;cv.height=H;const x=cv.getContext("2d"),T=stats.tot,a=stats.avatar,col=a?AV_COLS[a.c]||AV_COLS[0]:"#e8671c";
+  const gr=x.createLinearGradient(0,0,W,H);gr.addColorStop(0,col);gr.addColorStop(1,"#241a3a");x.fillStyle=gr;x.fillRect(0,0,W,H);x.fillStyle="rgba(0,0,0,.32)";x.fillRect(0,0,W,H);
+  const font=(w,sz)=>`${w} ${sz}px "Avenir Next","Helvetica Neue",Arial,sans-serif`;x.textAlign="center";x.fillStyle="#fff";
+  x.font=font(800,60);x.fillText("CROSSFALL",W/2,120);x.font=font(600,36);x.globalAlpha=.8;x.fillText("PLAYER CARD",W/2,172);x.globalAlpha=1;
+  x.beginPath();x.arc(W/2,360,130,0,Math.PI*2);x.fillStyle="rgba(255,255,255,.16)";x.fill();
+  const im=a&&tiImg(a.ic);if(im&&im.complete&&im.naturalWidth)x.drawImage(im,W/2-115,245,230,230);else{x.fillStyle="#fff";x.font=font(800,150);x.fillText((stats.nick||"P").charAt(0).toUpperCase(),W/2,412)}
+  x.fillStyle="#fff";x.font=font(800,88);x.fillText(stats.nick||"Player",W/2,600);x.font=font(600,44);x.globalAlpha=.9;x.fillText(titleOf()+" · Level "+levelOf(xpTotal()).lv,W/2,665);x.globalAlpha=1;
+  const tiles=[[fmtN(T.score),"total points"],[fmtN(starsTotal()),"stars"],[fmtN(T.words),"words solved"],[`${Object.keys(trailSt().done).length}/${TRAIL_N}`,"Word Trail"]];
+  tiles.forEach(([v,l],i)=>{const cx=150+(i%2)*390,cy=740+Math.floor(i/2)*230;x.fillStyle="rgba(255,255,255,.12)";x.beginPath();x.roundRect?x.roundRect(cx,cy,360,200,28):x.rect(cx,cy,360,200);x.fill();
+    x.fillStyle="#fff";x.font=font(800,78);x.fillText(v,cx+180,cy+108);x.font=font(600,32);x.globalAlpha=.85;x.fillText(l,cx+180,cy+158);x.globalAlpha=1});
+  x.font=font(800,48);x.fillText("Find me on Crossfall",W/2,1270);return cv.toDataURL("image/png")}catch(e){return null}}
+function sharePlayerCard(){const T=stats.tot,text=`${stats.nick||"I'm"} on Crossfall: ${titleOf()}, level ${levelOf(xpTotal()).lv}, ${fmtN(T.score)} points and ${fmtN(starsTotal())} stars. Come play!`;
+  const img=playerCard();try{if(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.share&&img){window.webkit.messageHandlers.share.postMessage({text,image:img});return}}catch(e){}
+  if(img&&navigator.canShare){try{const b=atob(img.split(",")[1]),u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);const f=new File([u],"crossfall-player.png",{type:"image/png"});if(navigator.canShare({files:[f]})){navigator.share({files:[f],text}).catch(()=>{});return}}catch(e){}}
+  shareOut(text)}
+
+/* ================= Phase 9: coach's notes ================= */
+function coachTips(win){if(!S||!S.cw||S.tut||S.pp||(typeof prefs!=="undefined"&&prefs.coach===false))return[];const tips=[],T=S.L.target,fmtS=n=>n>=60?`${Math.floor(n/60)}:${String(Math.round(n%60)).padStart(2,"0")}`:`${Math.round(n)} s`;
+  if(!win&&S.phase==="over"&&(S.linesCleared||0)<2)tips.push(["house","Keep the well low","Before you slam a piece, slide it with ◀ ▶ into the gap in a row. Full rows clear and give you room to breathe."]);
+  if(!S.targetHit&&T)tips.push(["target",`Aim for ${T[0]}`,`The target sits on the middle line. Drop its letters there, in order, and keep everything else below the line.`]);
+  if(S.rushTotal>S.rushWins)tips.push(["clock",`${S.rushTotal-S.rushWins} rush${S.rushTotal-S.rushWins>1?"es":""} slipped`,`The rush timer gives time back after a miss.${prefs.speed!=="relaxed"?" Relaxed fall speed in Settings also gives you more room.":""}`]);
+  const log=(S.wordLog||[]).filter(e=>e.dt>0),slow=log.slice().sort((a,b)=>b.dt-a.dt)[0];
+  if(slow&&slow.dt>=30000){const w=S.cw.words.find(x=>x.ans===slow.w);tips.push(["sleepy",`Slowest word: ${slow.w} (${fmtS(slow.dt/1000)})`,`${w?`Its clue was “${w.clue}”. `:""}It's in Review my words so you can practice it.`,"review"])}
+  if(S.helped.size>=4)tips.push(["eyes",`Hints filled ${S.helped.size} squares`,"Try the Letter hint first: it costs 25, far less than revealing the whole word for 90."]);
+  if(win&&(S.maxChain||0)<2&&S.cw.words.length>=5)tips.push(["fire","Chain your solves","Solve the next word quickly after the last for chain points. Start with the shortest clues to build a streak."]);
+  if(win&&S.gold&&stars()===3&&!tips.length)tips.push(["trophy","Flawless","Gold solve, three stars. If it felt easy, try the next difficulty up from the category card."]);
+  return tips.slice(0,2)}
+function coachHTML(win){const t=coachTips(win);if(!t.length)return"";
+  return`<div class="readback coach"><span class="ln">COACH'S NOTES</span>${t.map(([ic,h,b,act])=>`<div class="co-tip">${ti(ic)}<div><b>${esc(h)}</b><p>${esc(b)}</p>${act==="review"?`<button class="ghost-btn" data-co="review">Review my words ›</button>`:""}</div></div>`).join("")}</div>`}
+function wireCoach(el){el.querySelectorAll("[data-co=review]").forEach(b=>b.onclick=()=>{el.hidden=true;openReview()})}
 
 function weeklyLine(){const cs=challengeState(),d=cs.filter(c=>c.done).length;return`<button class="wk-line" id="wkLine"><span>${ti("trophy")} Weekly challenges <b>${d}/3</b></span><span class="wk-bars">${cs.map(c=>`<i style="--p:${Math.round(c.v/c.goal*100)}%"></i>`).join("")}</span><span aria-hidden="true">›</span></button>`}
 
@@ -4873,7 +5053,7 @@ function boot(){
   document.getElementById("setBackup").onclick=()=>{document.getElementById("settings").hidden=true;openBackup()};
   document.getElementById("setDone").onclick=()=>{document.getElementById("settings").hidden=true};
   document.getElementById("paceReset").onclick=()=>{rushPace={};saveRushPace();renderPaceInfo();announce("Rush times reset to two minutes.")};
-  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setHaptics","haptics"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"],["setCb","cb"],["setSpeak","speak"],["setLefty","lefty"],["setCalm","calm"]].forEach(([id,k])=>document.getElementById(id).onclick=()=>{audioInit();prefs[k]=!prefs[k];if(k==="mag"&&!prefs.mag)hideLens();applyPrefs()});
+  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setHaptics","haptics"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"],["setCb","cb"],["setSpeak","speak"],["setLefty","lefty"],["setCalm","calm"],["setCoach","coach"]].forEach(([id,k])=>document.getElementById(id).onclick=()=>{audioInit();prefs[k]=!prefs[k];if(k==="mag"&&!prefs.mag)hideLens();applyPrefs()});
   document.querySelectorAll("[data-speed]").forEach(b=>b.onclick=()=>{prefs.speed=b.dataset.speed;applyPrefs();announce("Fall speed: "+SPEEDS[prefs.speed].label)});
   document.querySelectorAll("[data-theme]").forEach(b=>b.onclick=()=>{prefs.theme=b.dataset.theme;if(prefs.theme!=="dark"&&prefs.hc)prefs.hc=false;applyPrefs();announce("Theme: "+b.dataset.theme)});
   applyPrefs();initLens();initHub();

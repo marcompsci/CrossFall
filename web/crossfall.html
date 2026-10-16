@@ -386,7 +386,7 @@ html.hc .cc.on{outline:2px solid #fff}
 .queue.live{display:flex;align-items:center;gap:12px;justify-content:center;text-transform:none;letter-spacing:0;--mq:calc(13px*var(--ts))}
 .qhold{display:flex;flex-direction:column;align-items:center;gap:3px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:5px 8px;min-height:44px;min-width:56px;color:var(--fg)}
 .qhold.used{opacity:.45}
-.ql{font-size:10px;letter-spacing:.1em;color:var(--muted);font-weight:700}
+.ql{font-size:10px;letter-spacing:.1em;color:color-mix(in srgb,var(--muted) 55%,var(--fg));font-weight:700}
 .qnext{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .mp{display:inline-grid;gap:1px;vertical-align:middle}
 .mp b{width:var(--mq);height:var(--mq);background:var(--tile);color:var(--ink);font:700 calc(var(--mq)*.68)/var(--mq) var(--f-mono);text-align:center;border-radius:2px}
@@ -875,6 +875,33 @@ html.cb .tr-node.done::after{content:"✓";position:absolute;top:2px;right:8px;f
 /* ---- phase 9: coach ---- */
 .coach .co-tip{display:flex;gap:10px;align-items:flex-start;text-align:left;margin:8px 0}.coach .co-tip>.ti{width:40px;height:40px;flex:none}
 .coach .co-tip p{margin:2px 0 0;line-height:1.4;font-size:calc(14px*var(--ts))}.coach .co-tip .ghost-btn{margin-top:6px}
+/* ---- phase 10: Ladder ---- */
+.pzrow:has(>:nth-child(3)){grid-template-columns:repeat(3,1fr)}.pzrow:has(>:nth-child(3)) .pzc{padding:9px 9px}.pzrow:has(>:nth-child(3)) .pzc-n{font-size:calc(15px*var(--ts));white-space:nowrap}.pzrow:has(>:nth-child(3)) .pzc-s .diff{font-size:8px;letter-spacing:0;padding:1px 4px}
+.seg:has(>:nth-child(4)){grid-template-columns:repeat(4,1fr)}
+.ld-goal{text-align:center;margin:4px 0;font-size:calc(14px*var(--ts));line-height:1.4}.ld-goal b{font-family:var(--f-mono);letter-spacing:.08em}
+.ld-rungs{display:flex;flex-direction:column;align-items:center;gap:6px;margin:6px 0}
+.ld-row{display:flex;gap:6px;align-items:center;position:relative}
+.ld-t{width:46px;height:46px;display:grid;place-items:center;border-radius:8px;background:var(--tile);color:var(--ink);font-family:var(--f-mono);font-weight:800;font-size:22px;box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.ld-t.hit{background:var(--gold)}.ld-t.chg{outline:3px solid var(--accent);outline-offset:-3px}
+.ld-row.start .ld-t{background:var(--solved)}
+.ld-t.in{background:var(--panel-2);color:var(--fg);border:2px dashed var(--line);box-shadow:none}.ld-t.caret{border-color:var(--accent);border-style:solid}
+.ld-row.goal{opacity:.9;margin-top:4px}.ld-row.goal::before{content:"GOAL";position:absolute;left:-48px;font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--muted)}
+.ld-n{position:absolute;right:-28px;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.ld-msg{min-height:1.3em;text-align:center;margin:0;font-weight:700;color:var(--accent)}
+.ld-row.shake{animation:ldshake .35s}@keyframes ldshake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+html.cb .ld-t.hit{box-shadow:inset 0 0 0 3px #000}html.cb .ld-t.chg{outline-style:dashed}
+/* ---- phase 11: power-ups ---- */
+.pwr{display:grid;grid-template-columns:auto repeat(3,1fr);gap:6px;margin-bottom:6px;align-items:stretch}
+.pw-sp{display:flex;align-items:center;gap:2px;padding:0 6px;border-radius:10px;background:var(--panel-2);font-family:var(--f-mono);font-weight:800}.pw-sp .ti{width:26px;height:26px}
+.k.pw{max-width:none;height:46px;display:flex;align-items:center;justify-content:center;gap:4px;font-family:var(--f-body);font-size:calc(12px*var(--ts));position:relative}
+.k.pw .ti{width:26px;height:26px}.k.pw i{font-style:normal;font-family:var(--f-mono);font-size:11px;background:var(--accent);color:var(--ink);border-radius:9px;padding:0 5px}
+.k.pw[aria-disabled=true]{opacity:.45}
+#well.frozen{box-shadow:0 0 0 3px #7fd3ff,0 0 24px rgba(127,211,255,.6)}
+.sp-got{display:flex;align-items:center;justify-content:center;gap:6px;margin:4px 0;font-weight:700}.sp-got .ti{width:26px;height:26px}
+/* ---- phase 12: Spooky Season ---- */
+.sp-line{border-color:#ff7a1a!important;background:linear-gradient(90deg,rgba(120,60,200,.22),rgba(255,122,26,.12))!important}
+.sp-hero{background:linear-gradient(135deg,#3b1f6e,#1d1233)!important;color:#fff}.sp-hero .sub{color:#e6dcff}.sp-hero .ln{color:#ffb27a}
+html.spooky #well{background-image:radial-gradient(circle at 80% 8%,rgba(255,240,200,.18) 0 18px,transparent 19px),linear-gradient(180deg,rgba(90,40,160,.25),transparent 60%)}
 .gc-pages{display:flex;gap:6px;margin:2px 0 8px;overflow-x:auto;scrollbar-width:none}
 .gc-pages button{flex:1 0 auto;min-height:32px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.18);color:inherit;font:inherit;font-size:12px;font-weight:700;letter-spacing:.02em}
 .gc-pages button[aria-selected="true"]{background:rgba(255,255,255,.92);color:#111;border-color:transparent}
@@ -1166,6 +1193,7 @@ html.wide #profile.hud>.hud-bar,html.wide #profile.hud>.hero{grid-column:1/-1}
         <button data-act="events"><span data-ti="trophy"></span> Events &amp; seasons</button>
         <button data-act="wordbook"><span data-ti="cards"></span> Word book</button>
         <button data-act="duels"><span data-ti="bolt"></span> Duels &amp; rivals</button>
+        <button data-act="spooky"><span data-ti="moon"></span> Spooky Season</button>
         <button data-act="trail"><span data-ti="map"></span> Word Trail</button>
         <button data-act="look"><span data-ti="smile"></span> Avatar &amp; title</button>
         <button data-act="modes"><span data-ti="target"></span> Quests, Marathon &amp; Pass and Play</button>
@@ -2163,7 +2191,7 @@ function startLevel(i){
   S={diff:dKey,li:obj?-1:i,L,R,cw,grid,phase:"cross",sel:{key:cw.words[0].cells[0],dir:cw.words[0].dir},active:null,queue:[],score:0,
      targetHit:false,lastText:null,t0:Date.now(),rushWins:0,rushTotal:0,lockCount:0,lastRush:-9,cool:1,rush:null,acc:0,usedBonus:[],flash:[],hit:[],ghost:true,linesCleared:0,
      pts:{},helped:new Set(),bad:new Set(),assist:!!prefs.autocheck,chain:0,lastSolve:null,maxChain:0,crossMs:0,rushStreak:0,b2b:false,combo:0,hold:null,canHold:true,zen:!!prefs.zen,speedMult:SPEED_MULT[prefs.speed]||1,wordLog:[],final:null};
-  if(runOn){S.run=RUN.legs+1;S.runMul=Math.max(.6,1-.06*RUN.legs)}if(ppOn)S.pp=PP.turn+1;if(trOn)trailApply(TRAIL.k);
+  if(runOn){S.run=RUN.legs+1;S.runMul=Math.max(.6,1-.06*RUN.legs)}if(ppOn)S.pp=PP.turn+1;if(trOn)trailApply(TRAIL.k);document.documentElement.classList.toggle("spooky",!!L.spooky);
   document.getElementById("menu").hidden=true;document.getElementById("result").hidden=true;document.getElementById("quiz").hidden=true;["maker","archive","textbox","review"].forEach(id=>{const x=document.getElementById(id);if(x)x.hidden=true});
   if(dC&&dC.first)selectWord(S.cw.words[0]);
   padMode="";layout();renderAll();clearRun();saveRunSoon();
@@ -2409,7 +2437,7 @@ function showResult(win,st,why){
    ${win?`<div class="resrow"><div class="stars" aria-label="${st} of 3 stars">${"★".repeat(st)}<i>${"★".repeat(3-st)}</i></div>${S.grade?`<span class="grade g-${S.grade}" role="img" aria-label="Grade ${S.grade}">${S.grade}</span>`:""}</div>
      ${S.gold?`<span class="goldtag">GOLD SOLVE · NO HELP</span>`:help?`<span class="sub">${help}</span>`:""}`:`<p class="sub">${why}</p>`}
    <div class="pts">${fmtN(S.score)}</div>${S.newBest?`<span class="goldtag">NEW PERSONAL BEST</span>`:""}
-   ${runResultHTML(win)}${ppResultHTML()}${trailResultHTML()}
+   ${runResultHTML(win)}${ppResultHTML()}${trailResultHTML()}${spookyResultHTML()}
    ${chalResultHTML()}
    ${breakdownHTML()}
    ${win?miniGridHTML():""}
@@ -2420,6 +2448,7 @@ function showResult(win,st,why){
    ${S.L.cat==="Sports"&&!S.L.daily&&!S.pp?spResultHTML():""}
    ${reflectHTML()}
    ${p2ResultHTML(win)}
+   ${sparksHTML()}
    ${coachHTML(win)}
    ${highlightsHTML()}
    ${!S.pp&&(win||S.phase==="over")?diffAdviceHTML():""}
@@ -2433,7 +2462,7 @@ function showResult(win,st,why){
   const cb=document.getElementById("chalBtn");if(cb)cb.onclick=()=>shareWithCard(chalShareText());
   document.getElementById("retryL").onclick=()=>dk?playDaily(dk,true):startLevel(S.li>=0?S.li:S.L);
   document.getElementById("toMenu").onclick=showMenu;
-  wireAdvice();ppRunWire(el);wireReflect(el);wireQS(el);wireTrailResult();wireCoach(el);
+  wireAdvice();ppRunWire(el);wireReflect(el);wireQS(el);wireTrailResult();wireCoach(el);{const b=document.getElementById("spNext");if(b)b.onclick=()=>playSpooky(+b.dataset.sk)}
   {const b=document.getElementById("p2Next");if(b)b.onclick=()=>{const v=b.dataset;if(v.sea!=null)playSeason(+v.sea);else startLevel(+v.evl)}}
   {const b=document.getElementById("hhSet");if(b)b.onclick=()=>showSportsQuiz();const m=document.getElementById("hhMore");if(m)m.onclick=()=>openLegends()}
   wireSay(el);{const d=document.getElementById("lrbDrill");if(d)d.onclick=()=>{el.hidden=true;openRecall("see")}}
@@ -2496,7 +2525,7 @@ function recordGame(win){
     if(!stats.daily[d]){stats.daily[d]={score:g.score,grade:S.grade,gold:!!S.gold,win,target:S.targetHit,chain:S.maxChain||0,rushW:S.rushWins,rushT:S.rushTotal,log:S.wordLog,t:now};daily=g.score;
       const ks=Object.keys(stats.daily).sort();ks.slice(0,Math.max(0,ks.length-60)).forEach(k=>delete stats.daily[k])}
     if(win)bumpDailyStreak(d)}
-  langAfterGame();recordChal();try{p2After(g)}catch(e){console.error(e)}try{claimQuests()}catch(e){console.error(e)}progressAfter(lv0);saveStats();pushCloud();if(!practice)gcSync(g.score,daily);
+  langAfterGame();recordChal();try{p2After(g)}catch(e){console.error(e)}try{claimQuests()}catch(e){console.error(e)}try{sparksAfter(g);spookyAfter(g)}catch(e){console.error(e)}progressAfter(lv0);saveStats();pushCloud();if(!practice)gcSync(g.score,daily);
 }
 
 /* cloud: shared leaderboard + private stats copy */
@@ -2811,7 +2840,7 @@ document.getElementById("drClose").onclick=closeDrawer;document.getElementById("
     else if(a==="checkin")showQuiz(null);
     else if(a==="archive")openArchive();else if(a==="maker")openMaker();else if(a==="review")openReview();else if(a==="backup")openBackup();
     else if(a==="tour"){startTutorial()}
-    else if(a==="rewards")openRewards();else if(a==="events")openEvents();else if(a==="wordbook")openWordBook();else if(a==="duels")openDuels();else if(a==="modes")openModes();else if(a==="trail")openTrail();else if(a==="look")openLook();else if(a==="journal")openJournal();else if(a==="langlab")openLangHub();else if(a==="mini")openMini();else if(a==="chunks")openChunks();else if(a==="scoreboard")openScoreboard();else if(a==="code")openCode();
+    else if(a==="rewards")openRewards();else if(a==="events")openEvents();else if(a==="wordbook")openWordBook();else if(a==="duels")openDuels();else if(a==="modes")openModes();else if(a==="trail")openTrail();else if(a==="spooky")openSpooky();else if(a==="look")openLook();else if(a==="journal")openJournal();else if(a==="langlab")openLangHub();else if(a==="mini")openMini();else if(a==="chunks")openChunks();else if(a==="scoreboard")openScoreboard();else if(a==="code")openCode();
     else if(a==="pro"){showPaywall(PRO?"owned":"menu")}
     else if(a==="how"){goPage("Play");const h=document.querySelector(".how");if(h){h.open=true;setTimeout(()=>h.scrollIntoView({behavior:"smooth",block:"start"}),60)}}});
   document.querySelectorAll("#rkSeg button").forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;renderRanks()});
@@ -2933,7 +2962,7 @@ function renderPad(){
   const mode=S.phase==="drop"||S.phase==="anim"?"drop":S.phase==="rush"&&S.rush&&S.rush.mode==="tap"?"tap":S.phase==="rush"?"type":"cross";
   if(mode===padMode)return;padMode=mode;
   if(mode==="drop"){
-    pad.innerHTML=`<div class="ctrl"><button class="k" data-a="L" aria-label="Move left">◀</button><button class="k" data-a="R" aria-label="Move right">▶</button><button class="k" data-a="T" aria-label="Rotate">⟳</button><button class="k" data-a="D" aria-label="Drop one row">▼</button><button class="k" data-a="X" aria-label="Hold piece">⇄</button><button class="k hd" data-a="H" aria-label="Slam down">⤓</button></div><div class="ctrl-hint">Keyboard: arrows, ↑ rotate, C holds, space slams</div>`;
+    pad.innerHTML=pwBarHTML()+`<div class="ctrl"><button class="k" data-a="L" aria-label="Move left">◀</button><button class="k" data-a="R" aria-label="Move right">▶</button><button class="k" data-a="T" aria-label="Rotate">⟳</button><button class="k" data-a="D" aria-label="Drop one row">▼</button><button class="k" data-a="X" aria-label="Hold piece">⇄</button><button class="k hd" data-a="H" aria-label="Slam down">⤓</button></div><div class="ctrl-hint">Keyboard: arrows, ↑ rotate, C holds, space slams</div>`;
   }else if(mode==="tap"){
     pad.innerHTML=`<div class="ctrl-hint" style="padding:20px 0;font-size:14px">Tap the word's letters in the well, in order.</div>`;
   }else{
@@ -2943,7 +2972,7 @@ function renderPad(){
   pad.querySelectorAll("button").forEach(b=>{
     const a=b.dataset.a,ch=b.dataset.ch;
     const fire=()=>{if(ch)typeLetter(ch);else if(a==="bk")backspace();else if(a==="hint")openHintMenu();else if(a==="chk")checkWord();else if(a==="X")holdPiece();else if(a==="clr"){if(S.rush){S.rush.input="";renderRush()}}
-      else if(a==="L")move(-1);else if(a==="R")move(1);else if(a==="T")rotate();else if(a==="D")softDrop();else if(a==="H")hardDrop()};
+      else if(a==="L")move(-1);else if(a==="R")move(1);else if(a==="T")rotate();else if(a==="D")softDrop();else if(a==="H")hardDrop();else if(a&&a.slice(0,2)==="P:")usePower(a.slice(2))};
     let t1,t2;
     b.onpointerdown=e=>{lastPD=Date.now();e.preventDefault();audioInit();fire();if(a==="L"||a==="R"||a==="D"){t1=setTimeout(()=>{t2=setInterval(fire,a==="D"?60:95)},210)}};
     b.onclick=()=>{if(Date.now()-lastPD<600)return;audioInit();fire()};
@@ -3476,12 +3505,13 @@ function renderDailyCard(){
    :`<div class="dc-btns"><button class="big" id="dcPlay">Play today's puzzle</button><button class="ghost-btn" id="dcArchive">Past</button></div>`}`;
   const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
   try{box.insertAdjacentHTML("beforeend",questLine());on("qLine",()=>openModes())}catch(e){}
+  try{const sl=spookyLine();if(sl){box.insertAdjacentHTML("afterbegin",sl);on("spLine",openSpooky)}}catch(e){}
   try{box.insertAdjacentHTML("beforeend",trailLine());on("trLine",()=>openTrail())}catch(e){}
   box.insertAdjacentHTML("beforeend",weeklyLine());on("wkLine",openRewards);
   try{box.insertAdjacentHTML("beforeend",eventLine());on("evLine",openEvents)}catch(e){}
   try{const fy=forYouLine();if(fy){box.insertAdjacentHTML("beforeend",fy);const b=document.getElementById("fyLine");b.onclick=()=>startLevel(+b.dataset.l)}}catch(e){}
   box.insertAdjacentHTML("beforeend",`<span class="pz-label">TODAY'S PUZZLES</span>`+puzzlesStrip());
-  on("pzMini",()=>openMini());on("pzChunks",()=>openChunks());on("pzSb",()=>openScoreboard("mini"));on("pzArc",()=>openArchive("mini"));
+  on("pzMini",()=>openMini());on("pzLadder",()=>openLadder());on("pzChunks",()=>openChunks());on("pzSb",()=>openScoreboard("mini"));on("pzArc",()=>openArchive("mini"));
   on("dcPlay",()=>playDaily(t));on("dcAgain",()=>playDaily(t,true));on("dcShare",()=>shareOut(shareText(rec,t)));on("dcArchive",openArchive);
 }
 function openArchive(k){if(typeof openArchiveV2==="function"){openArchiveV2(typeof k==="string"?k:"daily");return}
@@ -3786,7 +3816,7 @@ function renderLearn(){
 let last=performance.now();
 function frame(now){const dt=Math.min(100,now-last);last=now;
   if(S&&document.getElementById("menu").hidden&&document.getElementById("settings").hidden){
-    if(S.phase==="drop"&&S.active&&!(S.popUntil&&now<S.popUntil)&&!(S.tut&&!collides(absCells(S.active,1,0)))){
+    if(S.phase==="drop"&&S.active&&!(S.popUntil&&now<S.popUntil)&&!(S.freezeUntil&&now<S.freezeUntil)&&!(S.tut&&!collides(absCells(S.active,1,0)))){
       if(collides(absCells(S.active,1,0))){S.landT=(S.landT||0)+dt;if(S.landT>=speedCfg().lock){S.landT=0;lock()}}
       else{S.landT=0;S.acc+=dt;if(S.acc>=fallMs()){S.acc=0;S.active.r++;renderWell()}}}
     if(S.phase==="cross")S.crossMs=(S.crossMs||0)+dt;
@@ -3804,6 +3834,7 @@ function giveXP(n,why){stats.xpBonus=(stats.xpBonus||0)+n;if(why)queueCele({kind
 
 /* ---- well themes (tile skins), unlocked by level ---- */
 const WELL_THEMES=[
+ {id:"haunted",name:"Haunted",season:true,lv:1,tile:"#e7ddff",dim:"#b8a6e8",act:"#ff7a1a",sw:["#e7ddff","#b8a6e8","#ff7a1a"]},
  {id:"classic",name:"Classic",lv:1,tile:"",dim:"",act:"",sw:["#ffffff","#e3d6bd","#e8671c"]},
  {id:"neon",name:"Neon",lv:3,tile:"#c9fbff",dim:"#9fe3ee",act:"#ff4fd8",sw:["#c9fbff","#9fe3ee","#ff4fd8"]},
  {id:"sunset",name:"Sunset",lv:5,tile:"#ffe1cc",dim:"#f7c3a6",act:"#ff5a5f",sw:["#ffe1cc","#f7c3a6","#ff5a5f"]},
@@ -4046,8 +4077,11 @@ function openWordBook(cat){wbBackfill();const U=wbUniverse(),cats=Object.keys(U)
   document.getElementById("wbDone").onclick=()=>{el.hidden=true;el.innerHTML="";if(hubPage==="Profile")renderProfile()}}
 
 /* ---- what's new (shown once to returning players) ---- */
-function maybeWhatsNew(){if(stats.seen14||!stats.tot||!stats.tot.games)return;stats.seen12=1;stats.seen13=1;stats.seen14=1;saveStats();const el=document.getElementById("evh");
+function maybeWhatsNew(){if(stats.seen15||!stats.tot||!stats.tot.games)return;stats.seen12=1;stats.seen13=1;stats.seen14=1;stats.seen15=1;saveStats();const el=document.getElementById("evh");
   el.innerHTML=`<h1>WHAT'S <span>NEW</span></h1>
+   <div class="panel wn">${ti("moon")}<div><b>Spooky Season</b><p>Six haunted puzzles until 2 November. Finish them all for the Haunted well theme.</p></div></div>
+   <div class="panel wn">${ti("repeat")}<div><b>Ladder</b><p>A new daily puzzle: turn one word into another, one letter at a time.</p></div></div>
+   <div class="panel wn">${ti("bolt")}<div><b>Power-ups</b><p>Earn sparks as you play, then spend them on Freeze, Bomb and Sweep when the well gets tight.</p></div></div>
    <div class="panel wn">${ti("map")}<div><b>Word Trail</b><p>Forty stops across five regions, each a puzzle with a twist. Beat a region's boss to earn its title.</p></div></div>
    <div class="panel wn">${ti("smile")}<div><b>Your look</b><p>Pick an avatar and color, wear the titles you earn, and share a player card.</p></div></div>
    <div class="panel wn">${ti("clock")}<div><b>Coach's notes</b><p>After each game, up to two tips based on how it went.</p></div></div>
@@ -4480,6 +4514,127 @@ function coachHTML(win){const t=coachTips(win);if(!t.length)return"";
   return`<div class="readback coach"><span class="ln">COACH'S NOTES</span>${t.map(([ic,h,b,act])=>`<div class="co-tip">${ti(ic)}<div><b>${esc(h)}</b><p>${esc(b)}</p>${act==="review"?`<button class="ghost-btn" data-co="review">Review my words ›</button>`:""}</div></div>`).join("")}</div>`}
 function wireCoach(el){el.querySelectorAll("[data-co=review]").forEach(b=>b.onclick=()=>{el.hidden=true;openReview()})}
 
+/* ================= Phase 10: Ladder, a daily word ladder ================= */
+const LD_WORDS="100010TH11TH12TH13TH14TH15TH16TH17TH18TH19TH20TH21ST22ND23RD24TH25TH26TH27TH28TH29TH30TH40TH50TH60TH70TH80TH90THAAASABAYABBAABBEABEDABETABIBABITABLEABLYABORABOXABRAABUTABYEACERACHEACIDACMEACNEACREACTHACTSACYLADADADAMADARADAWADENADITADRYADZEAEONAEROAERYAFARAFERAFFYAGARAGEDAGENAGHAAGIOAGOGAGONAGREAGUEAHEMAHEYAHOYAIELAINOAINTAINUAIRTAIRYAJARAJOGAKEEAKINALANALARALASALBEALCOALEEALEMALEWALFAALGAALLYALMAALMEALMSALOEALOWALSOALTOALUMAMAHAMBIAMBOAMELAMENAMIAAMICAMIDAMIRAMITAMMAAMYLANALANANANASANCEANCYANESANETANEWANILANKHANNAANOAANONANSAANTAANTEANTIANUSAPARAPERAPEXAPIAAPISAPODAPSEAPSUAPUSAQUAARABARAKARCAARCHAREAARETAREWARGOARIAARIDARILARMSARMYARNAAROWARSEARTYARUIARUMASCIASEAASHYASSEATARATMOATOMATOPATTEATWOAUBEAULDAULNAUNEAUNTAURAAUTOAVELAVERAVESAVIDAVIEAVISAVOWAWAYAWNYAWRYAXALAXILAXISAXLEAYAHAYENAYLEAYMEAYRYAZYMBAALBABABABEBABUBABYBACEBACKBADEBAFFBAFTBAICBAILBAINBAITBAKEBAKUBALDBALEBALKBALLBALMBANCBANDBANEBANGBANKBARBBARDBAREBARKBARMBARNBARTBASEBASHBASIBASKBASSBASTBATEBATHBATSBATZBAUDBAUKBAWDBAWLBAWNBAYABAYSBEADBEAKBEALBEAMBEANBEARBEATBEAUBECKBEDEBEEFBEEMBEENBEERBEETBEGABEHNBELKBELLBELTBEMABENDBENEBENTBEREBERGBERMBERNBESTBETABETEBETHBEVYBIASBIBBBICEBIDEBIERBIGABIGGBIKEBIKHBILEBILKBILLBINDBINEBINGBINKBIONBIRDBIRKBIRLBIROBIRRBIRTBISEBISHBISKBITEBITOBITTBIZEBLABBLAEBLATBLAYBLEABLEBBLEDBLEEBLEKBLETBLEWBLINBLIPBLOBBLOTBLOWBLUBBLUEBLURBOARBOATBOCEBODEBODYBOERBOESBOFFBOGYBOILBOKEBOLDBOLEBOLLBOLNBOLOBOLTBOMBBONDBONEBONYBOOBBOOKBOOMBOONBOORBOOTBORDBOREBORNBORTBOSABOSCBOSHBOSKBOSNBOSSBOTEBOTHBOTSBOUDBOUKBOULBOUNBOURBOUTBOWLBOXYBOZABRADBRAEBRAGBRANBRATBRAWBRAYBREDBRENBRETBREWBRIDBRIEBRIGBRIMBRINBRISBRITBROBBROGBROWBRUHBRUNBRUTBUATBUBOBUCKBUFFBUFOBUHLBULBBULKBULLBUMPBUNABUNDBUNGBUNKBUNNBUNSBUNTBUOYBURGBURHBURLBURNBURPBURRBURTBURYBUSHBUSKBUSSBUSTBUSYBUTTBUZZBVDSBYREBYSSCAASCACACACKCADECADICADYCAFECAFFCAGECAKECALFCALICALKCALLCALMCALXCAMECAMPCANDCANECANTCANYCAPECARDCARECARFCARKCARLCARPCARTCASACASECASHCASKCASSCASTCATACATECAUFCAUKCAULCAVECAVYCAWKCAYOCDWOCEBUCEDECEILCELLCELTCENTCERECEROCESSCESTCETECHABCHADCHAMCHAPCHARCHATCHAWCHEFCHENCHESCHEWCHICCHINCHIPCHITCHOCCHOPCHOUCHOWCHUBCHUDCHUMCILLCIMACIONCIRCCISTCITECITYCIVECIZECLADCLAMCLANCLAPCLAWCLAYCLEECLEFCLEGCLEMCLEWCLIOCLIPCLITCLODCLOGCLOTCLOYCLUBCLUECLUMCOAGCOAKCOALCOATCOAXCOCACOCKCOCOCODACODECOEDCOIFCOILCOINCOIRCOITCOKECOLACOLDCOLECOLLCOLPCOLTCOLYCOMACOMBCOMECONDCONECONGCONKCONNCONYCOOKCOOLCOOMCOONCOOPCOOTCOPECOPSCOPYCORACORBCORDCORECORFCORKCORMCORNCOSHCOSSCOSTCOSYCOTECOUPCOVECOWLCOWSCOXACOZYCRABCRAGCRAMCRANCRAPCRAWCRAXCRAYCREWCREXCRIBCRICCROCCROPCROWCRUDCRUPCRUSCRUTCRUXCUBACUBECUCACUFFCULLCULMCULTCUNDCUNTCUONCURBCURDCURECURLCURRCURTCUSKCUSPCUTECYMACYMECYONCYSTCZARDABBDACEDADEDADODAFFDAFTDAGODAILDAISDALEDALFDALODAMADAMEDAMNDAMPDANEDANGDANKDAREDARGDARKDARNDARRDARTDASEDASHDATADATEDAUBDAUKDAUNDAUWDAWEDAWKDAWNDAZEDBMSDDAYDEADDEAFDEALDEANDEARDEASDEBTDECADECKDEDEDEEDDEEMDEEPDEERDEESDEEVDEFTDEFYDEGUDEILDEISDEKADELEDELFDELLDEMEDEMIDEMYDENTDENYDEREDERFDERKDERMDERNDESKDESSDEUTDEVADEVEDEVIDEWYDEYEDHOWDIALDIANDIBSDICEDICHDIDODIETDIGSDIKADIKEDILLDIMEDINEDINGDINKDINTDIREDIRKDIRLDIRTDISADISCDISHDISKDITEDITTDIVADIVEDIZZDJIADOABDOATDOCKDODDDODODOERDOESDOFFDOGEDOGYDOHADOITDOKODOLEDOLFDOLLDOLTDOMEDONADONEDONIDOOMDOOPDOORDOPEDOPYDORKDORMDORNDORPDORRDORYDOSEDOSSDOSTDOTEDOTHDOTYDOUCDOURDOUTDOVEDOWLDOWNDOXYDOZEDOZYDRABDRADDRAGDRAMDRAWDRAYDREEDREGDREWDREYDRIBDRIEDRIPDROHDROPDROWDRUBDRUGDRUMDUADDUALDUANDUBBDUCKDUCTDUDEDUDSDUELDUETDUFFDUKEDULLDULYDUMBDUMPDUNEDUNGDUNTDUPEDURADUREDUSEDUSKDUSTDUTYDYADDYASDYEDDYERDYKEDYNEEACHEALEEAMEEARLEARNEASEEASTEASYEATHEBONECHEECHOECRUECTOEDAMEDDAEDDYEDENEDGEEDGYEDITEEKEEERYEGADEGALEGEREGREEIGHEILDEIREEJOOELANELIXELKEELMYELSEELULELVEEMEUEMEWEMIREMITEMYDENCEENCYENDOENOWENTOENVYEPENEPHAEPICEPOSEQUIERGOERICERINERKEERMEERNEEROSERSEERSHERSTESOXESPYETCHETHEETNAETUIETYMEUGEEUGHEVALEVENEVEREVETEVILEWEREWRYEXITEXONEYASEYEDEYENEYEREYETEYLEEYNEEYOTEYRAEYREEYRYFACEFACTFADEFADYFAHRFAILFAINFAIRFAKEFALKFALLFALXFAMEFANDFANEFANGFARDFAREFARLFARMFAROFASHFASTFATEFAUNFAUXFAWEFAWNFAZEFEALFEARFEATFECKFEEDFEELFEETFEHMFELEFELLFELTFEMEFENDFEODFEREFERMFERNFERSFESSFESTFETEFEUDFIARFIATFICEFICOFIEFFIFEFIFOFIKEFILEFILLFILMFILSFINDFINEFINNFINTFIREFIRKFIRMFISCFISHFISKFISTFITTFITZFIVEFIZZFLABFLAGFLAMFLAPFLATFLAWFLAXFLAYFLEAFLEDFLEEFLETFLEWFLEXFLIPFLITFLIXFLOEFLOGFLONFLOPFLOWFLUEFLUOFLUXFNMAFOALFOAMFOGEFOGYFOILFOINFOLDFOLKFONDFONEFONTFOODFOOLFOOTFORDFOREFORKFORMFORTFOULFOURFOWLFOXYFOZYFRABFRAGFRAPFRATFRAUFRAYFREDFREEFRENFRETFREYFRIMFRITFRIZFROEFROGFROMFROWFUARFUBSFUCKFUELFUFFFUGAFUGHFULLFUMEFUMYFUNDFUNKFURLFURYFUSEFUSSFUSTFUTZFUZEFUZZFYKEFYRDGABYGADEGAEAGAELGAFFGAGAGAGEGAIAGAINGAITGALAGALEGALLGALTGAMEGAMPGAMYGANEGANGGAOLGAPEGARBGARDGAREGASHGASPGASTGATEGATTGAUDGAULGAURGAVEGAWKGAWNGAZEGEALGEANGEARGEATGECKGEDDGEEKGEERGEETGEEZGEICGEINGELDGELTGEMSGENAGENSGENTGENUGEREGERMGERNGERYGESTGETAGETHGEUMGHATGHEEGIBEGIFTGIGEGILDGILEGILLGILTGIMPGINGGIRDGIREGIRLGIRNGIRTGISEGISTGITEGITHGIVEGLADGLEEGLEGGLENGLEWGLEYGLIBGLIMGLISGLOBGLOWGLUEGLUMGLUTGLYNGMANGNARGNATGNAWGNEWGNOFGNOWGOADGOAFGOALGOARGOATGOBYGODEGOELGOENGOERGOFFGOLDGOLFGOLLGOMEGONEGONGGOODGOOFGOOTGORDGOREGORMGORYGOSSGOTEGOTHGOUDGOURGOUTGOVEGOWDGOWKGOWLGOWNGRABGRAFGRAMGRAYGREEGRESGRETGREWGREYGRIDGRIGGRILGRIMGRINGRIPGRISGRITGROGGROSGROTGROWGRUBGRUFGRUMGRUSGUANGUCKGUFFGUHRGUIBGULAGULDGULEGULFGULLGULPGULTGULYGUMPGUNAGUNKGURLGURTGURUGUSHGUSTGUZEGYBEGYLEGYREGYRIGYSEGYTEGYVEHAAFHAAKHAARHACKHADEHADJHAFTHAHAHAIKHAILHAINHAIRHAJEHAJIHAJJHAKEHALEHALFHALKHALLHALMHALOHALPHALSHALTHAMEHANDHANGHANKHANTHARDHAREHARKHARLHARMHARPHARTHARYHASEHASHHASKHASPHASTHATEHATHHAULHAUMHAUTHAVEHAWKHAWMHAZEHAZYHEADHEALHEAMHEAPHEARHEATHEBEHECKHEEDHEELHEEPHEERHEFTHEIRHELDHELEHELLHELMHELPHEMAHEMIHEMOHEMPHENGHENTHERBHERDHEREHERLHERNHEROHERRHERSHERTHERYHESPHESTHETEHEUKHEWEHEWNHEXAHEYHHICKHIDEHIFIHIGHHIKEHILEHILLHILTHINDHINEHINKHINTHIPEHIREHIRSHISSHISTHIVEHIZZHOARHOAXHOBOHOCKHODRHOGHHOGOHOITHOLDHOLEHOLMHOLOHOLPHOLTHOLYHOMEHOMOHONDHONEHONGHONKHONTHOODHOOFHOOKHOOLHOOMHOOPHOOTHOPEHOREHORNHOSEHOSTHOTEHOUPHOURHOVEHOWLHOWPHOYAHSV1HSV2HSVIHUCHHUCKHUEDHUERHUFFHUGEHUGYHUKEHULKHULLHUMPHUNGHUNKHUNTHURLHURRHURTHUSHHUSKHUSOHUZZHYDRHYENHYKEHYMNHYNEHYPEHYPOIAMBIBEXIBISIBLEIBRDICALICBMICEDICKYICONIDEAIDEMIDEOIDESIDIOIDLEIDLYIDOLIDYLIHVHILEXILIOILKEILLYIMAMIMANIMPIINCAINCHINDEINDOINEEINIAINKYINLYINNEINROINSTINTOIODOIOTAIRANIRISIRONIRPEISISISLEITCHITEMITERITISIVRYIWISIXIAIYARJACKJADEJAGGJAILJAINJAKOJAMBJANEJANTJAPEJARLJASPJAVAJAWNJAWYJAZZJEANJEATJEELJEERJEHUJELLJERKJESSJESTJESUJIBBJIBEJILLJILTJIMPJINKJINNJINXJIRDJIVEJOCKJOEYJOHNJOINJOKEJOLEJOLLJOLTJOSOJOSSJOUKJOULJOVEJOWLJPEGJUBAJUBEJUDOJUGEJUJUJUKEJULYJUMPJUNEJUNGJUNKJUNOJUPEJURAJURYJUSTJUTEKADIKAGEKAGUKAILKAINKAKAKALEKALIKAMAKAMEKAMIKANDKANTKARNKATEKAVAKAWNKECKKEELKEENKEEPKEIRKELDKELEKELLKELPKELTKEMBKEMPKENOKEPIKEPTKERBKERFKERLKERNKERSKESSKESTKETAKHANKIBEKIBYKICKKIERKIKEKILLKILNKILOKILTKINDKINEKINGKINKKINOKIPEKIRKKISHKISSKISTKITEKITHKIVAKIVEKNABKNAGKNAPKNARKNAWKNEEKNEWKNITKNOBKNOPKNORKNOTKNOWKNURKOBAKOELKOFFKOHLKOLAKRISKSARKUDAKUDUKURDKYARKYAWKYKELAASLACELACKLADELADYLAFTLAICLAIDLAINLAIRLAKELAKHLAKYLALOLAMALAMBLAMELAMMLAMPLANDLANELANGLANKLANTLAOSLAPPLARDLARELARILARKLARYLASELASHLASKLASSLASTLATALATELATHLAUDLAUSLAVALAVELAWELAWNLAWSLAZELAZYLEADLEAFLEAKLEALLEAMLEANLEAPLEARLEATLECHLEEDLEEFLEEKLEEPLEERLEESLEETLEFTLEGELEMELENALENDLENELENOLENSLENTLEODLEONLERELESELESSLESTLETELEUCLEVELEVOLEVYLEWDLIARLIASLICELICHLICKLIDOLIEDLIEFLIENLIERLIEULIFELIFTLIGELIKELILLLILTLILYLIMALIMBLIMELIMNLIMOLIMPLIMULIMYLINDLINELINGLINKLINTLIONLIRALISPLISSLISTLITELITHLIVELIXTLIZALLYRLOADLOAFLOAMLOANLOBELOCHLOCKLOCOLODELOFTLOGELOGYLOINLOIRLOKELOKILOLLLOMALONDLONELONGLOOBLOOFLOOKLOOLLOOMLOONLOOPLOOSLOOTLOPELORDLORELORILORNLORYLOSELOSSLOSTLOTELOTHLOTOLOUDLOUKLOUPLOURLOUTLOVELOWHLOWKLOWNLUCELUCKLUESLUFFLUGELUKELULLLUMPLUNALUNELUNGLUNTLUNYLURELURGLURKLUSHLUSKLUSTLUTELUTHLUXELXXXLYAMLYNELYNXLYRALYREMAADMAAMMAATMACEMACKMADEMAFAMAGEMAGHMAGIMAHAMAIAMAIDMAILMAIMMAINMAKEMAKIMAKOMALAMALEMALLMALMMALTMAMAMANDMANEMANOMANUMANXMANYMARAMARCMAREMARKMARLMARSMARTMARYMASEMASHMASKMASSMASTMATEMATHMATTMATYMAUDMAULMAWKMAYAMAZEMAZYMDMAMEADMEAKMEALMEANMEARMEATMEAWMEDEMEEDMEEKMEERMEETMEGAMEGOMELDMELLMELTMENDMENTMENUMEOWMERDMEREMERKMERLMEROMESAMESHMESOMESSMESTMETAMETEMETHMEUMMEVEMEWLMEWSMIASMICAMICEMICHMICKMICOMICRMIDAMIENMIFFMIKEMILDMILEMILKMILLMILTMIMEMINAMINDMINEMINKMINTMINXMINYMIRAMIREMIRKMIRYMISEMISSMISTMISYMITEMITTMITUMITYMOANMOATMOCKMOCOMODEMODYMOFFMOHAMOHOMOHRMOILMOKEMOKYMOLAMOLDMOLEMOLLMOLTMOLYMOMEMONAMONEMONKMONOMONTMOODMOONMOORMOOTMOPEMORAMOREMORNMOROMORTMOSKMOSSMOSTMOTEMOTHMOTOMOUNMOVEMOWEMOWNMOXAMOYAMUCEMUCHMUCKMUFFMULEMULLMULTMUMMMUMPMUNDMUNGMUNJMUREMURKMURRMUSAMUSEMUSHMUSKMUSSMUSTMUTEMUTTMUXYMYNAMYTHMYXANABKNADANAIDNAIFNAIKNAILNAISNAJANAKENALENALLNAMENAMONANANANONAOSNAPANAPENAPUNARDNARENARKNARTNASHNASONATHNAVENAVYNAWLNAYTNAZENEAFNEALNEAPNEARNEATNEBONECKNEEDNEERNEIFNEMSNEPANERENERONESENESHNESSNESTNETTNEVENEWSNEWTNEXTNIASNIBSNICENICKNIDENIEFNIFFNIGHNIKENILENILLNILTNINANINENIPANISINOAHNOCKNODENOELNOGONOIENOILNOLENOLLNOLTNOMANOMENONANONENONONONUNOOKNOONNOOTNOPENORINORMNORNNOSENOSTNOSYNOTENOTTNOUNNOUSNOVANOWDNOWTNUDENULLNUMBNURLNUTSNYASOAKYOARYOASTOATHOBEYOBITOBOEOCRAOCTAOCTOODALODDSODICODINODORODYLOGAMOGEEOGLEOGREOILYOINTOKAYOKEHOKEROKEYOKRAOLAYOLEAOLIDOLIOOLLAOLPEOMENOMEROMITOMNIONCEONDEONESONLYONTOONUSONYXOOZEOOZYOPAHOPALOPENOPIEOPUSOPYEORALORBYORCAOREOORFEORGYORLEORLOORYXORZOOSAROSSEOTICOTISOTTOOUCHOURSOUSEOUSTOUZEOVALOVENOVEROVUMOWCHOWELOWENOWREOWSEOXIDOYEROYEZPAASPACAPACEPACKPACOPACTPACUPAGEPAHIPAIDPAILPAINPAIRPAISPALEPALIPALLPALMPALOPALPPALYPANEPANGPANTPAPAPAPEPARAPARDPAREPARIPARKPARRPARTPASHPASKPASSPASTPATEPATHPAULPAUMPAVEPAVOPAWKPAWLPAWNPAYEPAYNPEAGPEAKPEALPEANPEARPEATPEBAPECKPECSPEDIPEDOPEEKPEELPEENPEEPPEERPEGMPEINPEKEPELAPELFPELLPELTPENDPENKPENSPENTPEONPEPOPEREPERIPERKPERNPERSPERTPERYPESEPESOPESTPHIZPHYZPIALPIANPICAPICEPICIPICKPIEDPIERPIETPIGGPIKAPIKEPILEPILLPILYPIMPPINAPINEPINGPINKPINTPINYPIOTPIPAPIPEPIPYPIRLPIRNPISEPISHPISSPISTPITAPITHPITSPITYPIXYPLANPLATPLAYPLEAPLEDPLEYPLIMPLOCPLODPLOPPLOTPLOWPLOYPLUGPLUMPLUSPNYXPOAKPOCKPOCOPODAPODOPOEMPOETPOGYPOKEPOKYPOLEPOLLPOLOPOLTPOLYPOMEPOMPPONDPONEPONSPONYPOODPOOHPOOLPOONPOOPPOORPOPEPOREPORKPORTPORYPOSEPOSSPOSTPOSYPOTTPOUFPOUPPOURPOUTPOWPPOZEPRADPRAEPRAMPRAYPREYPRIEPRIGPRIMPRISPROAPRODPROGPROPPROWPROXPUCEPUCKPUDUPUERPUETPUFFPUGHPUITPUKEPULEPULLPULPPULTPULUPUMAPUMEPUMPPUMYPUNAPUNGPUNKPUNTPUNYPUOYPUPAPUPEPUREPURIPURLPURRPUSHPUSSPUTTPUTZPYETPYINPYLAPYNEPYOTPYREPYROQUABQUADQUAGQUAPQUARQUASQUATQUAYQUETQUEYQUIBQUIDQUINQUIPQUITQUIZQUOBQUODQUOPRACARACERACHRACKRACYRADERAFFRAFTRAGERAIARAIDRAILRAINRAIPRAISRAJARAKERAKIRALERAMPRANARANDRANGRANIRANKRANTRAPERAPTRARERASERASHRASPRATARATERATHRAVERAZEREADREAKREALREAMREAPREARRECKREDEREEDREEFREEKREELREEMREFTREIFREIMREINREISREITRELYREMERENDRENGRENTRESERESTRETEREVEREWEREYNRHEARHOBRHUSRIALRICERICHRICKRIDERIEFRIFERIFTRILERILLRILYRIMARIMERIMYRINDRINERINGRINKRIOTRIPERISERISHRISKRISTRITERIVEROADROAMROANROARROBEROCKRODERODYROEDROILROINROKEROKYROLEROLLROMPRONGRONTROODROOFROOKROOMROONROOPROOTROPEROPYRORYROSEROSSROSTROSYROTAROTEROTYROUEROUKROUNROUPROUTROUXROVEROWNRUBYRUCKRUDDRUDERUFFRUFTRUGARUINRUKHRULERULYRUMPRUNERUNGRUNTRUSERUSHRUSKRUSSRUSTRUTHRYALRYNDRYOTRYSHRYTHSAANSACKSACSSADHSADRSAFESAGASAGESAGOSAGYSAICSAIDSAILSAIMSAINSAKESAKISALESALMSALPSALTSAMESAMPSANDSANESANGSANKSANSSARDSARISARKSARNSARTSASHSATESAUFSAUHSAULSAURSAUTSAVESCABSCADSCANSCARSCATSCOTSCOWSCRYSCUDSCUGSCUMSCUPSCURSCUTSCYESEAHSEAKSEALSEAMSEANSEARSEATSECKSECTSEEDSEEKSEELSEEMSEENSEEPSEERSEETSEGOSEIDSEKESELDSELFSELLSELYSEMESEMISENDSENSSENTSEPTSERESERFSERRSESSSETASETHSETTSEWESEXTSEYESEYHSHABSHADSHAGSHAHSHAMSHAWSHAYSHEDSHETSHEWSHIESHIMSHINSHIPSHODSHOESHOGSHOOSHOPSHOTSHOWSHUGSHUNSHUTSICESICHSICKSIDASIDESIFTSIGHSIGNSIKESILESILKSILLSILOSILTSIMASINESINGSINKSIPESIPYSIRESIRTSISESISSSISTSITESITHSIVASIZESIZYSKAGSKARSKATSKEESKEGSKENSKEPSKEWSKIDSKIMSKINSKIPSKITSKUASKUESKUNSLABSLAGSLAMSLAPSLATSLAVSLAWSLAYSLEDSLEESLEPSLEWSLEYSLIDSLIKSLIMSLIPSLITSLOESLOGSLOOSLOPSLOTSLOWSLUBSLUESLUGSLUMSLURSLUTSMEESMEWSMITSMUGSMUTSNAGSNAPSNARSNAWSNEBSNEDSNETSNEWSNIBSNIGSNIPSNOBSNODSNOTSNOWSNUBSNUGSOAKSOALSOAMSOAPSOARSOCKSODASOFASOFISOFTSOHOSOILSOJASOKESOKOSOLASOLDSOLESOLISOLOSOLYSOMASOMESONDSONGSOONSOOTSOPESOPHSORASORBSORDSORESORISORNSORSSORTSORYSOSOSOSSSOTESOULSOUNSOUPSOURSOUSSOUTSOWLSOWNSOYASPADSPAESPANSPARSPATSPAWSPAYSPEDSPERSPETSPEWSPINSPITSPOTSPRYSPUDSPUESPUNSPURSPUTSRIMSTABSTAGSTALSTARSTAWSTAYSTEDSTEESTEGSTEMSTEPSTERSTETSTEWSTEYSTIRSTOPSTORSTOTSTOWSTRESTUBSTUDSTUMSTUNSTUTSTYESTYXSUCHSUCKSUDDSUDSSUERSUETSUFISUITSUJISULASULKSULLSULUSUMPSUNGSUNKSUNNSUPESURASURDSURESURFSUSUSWABSWADSWAGSWALSWAMSWANSWAPSWATSWAYSWIGSWIMSWOBSWOMSWOPSWUMSYCESYKESYLESYNESYRTSYTHTAASTABUTACETACKTACTTAELTAENTAHATAHRTAILTAINTAITTAKETALCTALETALKTALLTAMETAMPTANATANGTANKTANTTAPATAPETARETARNTAROTARTTASKTATHTATTTATUTAURTAUTTAWSTAXITEADTEAKTEALTEAMTEARTEATTEEKTEELTEEMTEENTEILTELLTENDTENETENTTERMTERNTESTTETETEUKTEXTTHAITHAKTHANTHARTHATTHAWTHEATHEETHEMTHENTHEWTHEYTHINTHIOTHISTHORTHOUTHROTHRUTHUDTHUGTHUSTIARTICETICKTIDETIDYTIERTIFFTIFTTIGHTIKETILETILLTILTTIMETINDTINETINGTINKTINTTINYTIRETIRLTIROTITHTITITIVYTIZATOADTOATTOBYTOCOTODOTODYTOEDTOFFTOFTTOGATOGSTOILTOLATOLDTOLETOLLTOLTTOLUTOMBTOMETONETONGTONYTOOKTOOLTOOMTOONTOOTTOPETOPHTOPITORATORCTORETORNTORTTORYTOSETOSHTOSSTOSTTOTATOTETOTYTOURTOUTTOWNTOWYTOZETOZYTRADTRAMTRAPTRAYTREETREFTREKTRENTRETTREWTREYTRIGTRIMTRIOTRIPTRODTRONTROTTROWTROYTRUBTRUETRUGTSARTUBATUBETUCHTUCKTUETTUFATUFFTUFTTULETULLTUMPTUNATUNETUNKTUPITURFTURKTURMTURNTUSHTUSKTUUMTUZATWASTWAYTWEYTWIGTWINTWITTYDYTYERTYKETYMPTYNDTYNETYNYTYPETYPOTYRETYROTZARUDALUGLYULANULNAULVAUMBEUMBOUNAUUNBEUNCEUNCOUNDEUNDOUNIOUNITUNKEUNTOUNTYUPASUPONURALURAOURDUUREAURETURGEURICURIMUROXURRYURSAURUSURVAUSEDUSERUTASUTESUTIAUTISUTROUVEAUVICVADEVAILVAINVAIRVALEVAMPVANEVANGVANTVARAVAREVARIVARKVARYVASEVASTVAUTVEALVEDAVEERVEGAVEHMVEILVEINVELEVELLVENAVENDVENTVERBVERDVERSVERTVERYVESEVESTVETOVIALVICEVIDEVIEWVILDVILEVILLVINEVINYVIOLVIREVISAVISEVIVAVIVEVOIDVOLEVOLTVOTEVUGGVUGHVYCEWAAGWADDWADEWADYWAEGWAFTWAGEWAIDWAIFWAILWAINWAIRWAITWAKEWAKFWALDWALEWALKWALLWALMWALYWAMPWANDWANEWANGWANTWANYWAPPWARDWAREWARKWARMWARNWARPWARTWARYWASEWASHWASPWASTWATTWAULWAURWAVEWAVYWAWEWAWLWAXYWAYKWAYSWEAKWEALWEANWEARWEEDWEEKWEELWEENWEEPWEETWEFTWEIRWEKAWELDWELEWELKWELLWELSWELTWENDWENEWENTWEPTWEREWERKWERNWERTWESHWESTWHANWHAPWHATWHENWHERWHETWHEWWHEYWHIGWHIMWHINWHIPWHIRWHITWHIZWHOAWHOMWHOPWHOTWHURWICHWICKWIDEWIERWIFEWIGGWIKEWILDWILEWILKWILLWILTWILYWINDWINEWINGWINKWINYWIPEWIREWIRYWISEWISHWISPWISTWITEWITHWIVEWOADWODEWOKEWOLDWOLFWOLLWOMBWONEWONGWONTWOODWOOFWOOKWOOLWOONWORDWOREWORKWORMWORNWORTWOSTWOULWOVEWOWEWOWFWRAPWRAWWRAYWRENWREYWRIEWRIGWRITWULLWUSTWYKEWYLAWYNDWYNNWYPEWYTEXEMEXIANXIIIXMASXRAYXVIIXXIIXXIVXXIXXXVIXYLOXYSTYALUYAMAYAMPYANGYANKYARDYAREYARKYARNYARRYATEYAUDYAULYAUPYAWDYAWLYAWNYAWPYAWSYEADYEANYEARYEDEYEELYELKYELLYELPYENDYERDYERKYERNYESTYEVEYGHEYIFTYITEYIVEYMELYNOWYODEYOGAYOGHYOGIYOITYOKEYOLDYOLKYOLLYONDYONIYOREYOTEYOULYOURYOWEYOWLYRENYUCKYUENYUGAYUKEYULEYUNXYVELYWARYWISZAIMZAINZAMAZANYZARFZATIZEALZEBUZEINZENDZEROZESTZETAZEUSZIMBZINCZINEZINKZIONZIP4ZITIZOBOZOEAZOICZONAZONEZOONZOPEZUBRZULUZUNIZYME";
+let LD_V=null,LD_C=null;const LADDER_CACHE={};var LD=null;
+function ldSets(){if(!LD_V){LD_V=new Set(LD_WORDS.match(/.{4}/g));LD_C=new Set(COMMON.filter(w=>/^[A-Z]{4}$/.test(w)))}return[LD_V,LD_C]}
+function ldNb(w,set){const out=[];for(let i=0;i<4;i++)for(let c=65;c<91;c++){const ch=String.fromCharCode(c);if(ch===w[i])continue;const x=w.slice(0,i)+ch+w.slice(i+1);if(set.has(x))out.push(x)}return out}
+function ldBfs(a,set){const d=new Map([[a,0]]),par=new Map(),q=[a];for(let i=0;i<q.length;i++){const u=q[i];for(const v of ldNb(u,set))if(!d.has(v)){d.set(v,d.get(u)+1);par.set(v,u);q.push(v)}}return{d,par}}
+function ldOneOff(a,b){let n=0;for(let i=0;i<4;i++)if(a[i]!==b[i])n++;return n===1}
+function ladderPuzzle(dk){if(LADDER_CACHE[dk])return LADDER_CACHE[dk];const[V,C]=ldSets(),n=+dk.replace(/-/g,""),R=rng(n*53+11),diff=dayDiff(dk);
+  const want=diff==="Easy"?3:diff==="Moderate"?4:5,starts=[...C].sort().filter(w=>ldNb(w,C).length>=2);let P=null;
+  for(let t=0;t<120&&!P;t++){const a=starts[Math.floor(R()*starts.length)],dc=ldBfs(a,C).d,cands=[...dc.entries()].filter(([,k])=>k===want).map(([w])=>w).sort();
+    if(!cands.length)continue;const dv=ldBfs(a,V).d;const ok=shuffle(cands,R).find(b=>dv.get(b)===want&&ldNb(b,C).length>=1);if(ok)P={a,b:ok,par:want,diff}}
+  if(!P)P={a:"COLD",b:"WARM",par:4,diff};return LADDER_CACHE[dk]=P}
+function ldPath(from,to){const[V,C]=ldSets();for(const set of[C,V]){if(!set.has(to))continue;const s2=new Set(set);s2.add(from);const{d,par}=ldBfs(from,s2);if(d.has(to)){const p=[to];let x=to;while(par.has(x)&&par.get(x)!==from){x=par.get(x);p.unshift(x)}return p}}return null}
+function ldSecs(){return LD.secs+(LD.t0&&!LD.done?(performance.now()-LD.t0)/1000:0)}
+function ldSave(){if(!LD)return;const d=pzStore("ladder").days,r=d[LD.dk]=d[LD.dk]||{};r.rungs=LD.rungs.slice();r.secs=Math.round(ldSecs()*10)/10;r.hints=LD.hints;r.done=LD.done;r.par=LD.P.par;if(LD.done)r.steps=LD.rungs.length;if(LD.archive)r.practice=true;
+  const ks=Object.keys(d).sort();ks.slice(0,Math.max(0,ks.length-60)).forEach(k=>delete d[k]);saveStats()}
+function openLadder(dk){dk=dk||todayKey();const P=ladderPuzzle(dk),rec=pzStore("ladder").days[dk]||{};
+  LD={dk,P,rungs:(rec.rungs||[]).slice(),secs:rec.secs||0,t0:0,hints:rec.hints||0,done:!!rec.done,buf:"",archive:dk!==todayKey(),msg:""};
+  const el=document.getElementById("pz");el.hidden=false;el.className="ov pz pz-ladder";el.scrollTop=0;
+  el.innerHTML=`<div class="pz-top"><button class="icon-btn" id="pzX" aria-label="Close">✕</button><div class="pz-tt"><b>LADDER</b><span>${esc(fmtDay(dk))} · ${diffTag(P.diff)}${LD.archive?" · practice":""}</span></div><span class="pz-time" id="ldT" aria-live="off">0:00</span></div>
+   <p class="ld-goal">Turn <b>${P.a}</b> into <b>${P.b}</b>, changing one letter at a time. Every step must be a real word. Par is ${P.par}.</p>
+   <div class="ld-rungs" id="ldR" role="list" aria-label="Your ladder"></div>
+   <p class="ld-msg" id="ldMsg" role="status" aria-live="polite"></p>
+   <div class="mi-tools"><button class="ghost-btn" id="ldUndo">Undo step</button><button class="ghost-btn" id="ldHint">Show next step</button></div>
+   <div class="mi-pad" id="ldPad"></div>`;
+  document.getElementById("pzX").onclick=closePz;document.getElementById("ldUndo").onclick=ldUndo;document.getElementById("ldHint").onclick=ldHint;
+  const rows=["QWERTYUIOP","ASDFGHJKL","ZXCVBNM"];
+  document.getElementById("ldPad").innerHTML=rows.map((r,i)=>`<div class="kr">${i===2?`<button class="k wide" data-en="1">ENTER</button>`:""}${[...r].map(c=>`<button class="k" data-ch="${c}">${c}</button>`).join("")}${i===2?`<button class="k wide" data-bk="1" aria-label="Delete">⌫</button>`:""}</div>`).join("");
+  document.querySelectorAll("#ldPad .k").forEach(b=>onActivate(b,()=>{audioInit();b.dataset.bk?ldBack():b.dataset.en?ldEnter():ldType(b.dataset.ch)}));
+  if(!ldKeyOn){ldKeyOn=true;document.addEventListener("keydown",e=>{if(!LD||document.getElementById("pz").hidden||LD.done)return;if(e.target&&/INPUT|TEXTAREA/.test(e.target.tagName))return;
+    if(/^[a-zA-Z]$/.test(e.key)){ldType(e.key.toUpperCase());e.preventDefault()}else if(e.key==="Backspace"){ldBack();e.preventDefault()}else if(e.key==="Enter"){ldEnter();e.preventDefault()}})}
+  ldRender();if(LD.done)ldDone(true);else ldTick()}
+let ldKeyOn=false;
+function ldTick(){if(!LD||LD.done)return;LD.t0=performance.now();clearInterval(LD.iv);
+  LD.iv=setInterval(()=>{if(!LD||LD.done||document.hidden||document.getElementById("pz").hidden)return;const el=document.getElementById("ldT");if(el)el.textContent=fmtTime(ldSecs())},500)}
+function ldLast(){return LD.rungs.length?LD.rungs[LD.rungs.length-1]:LD.P.a}
+function ldTiles(w,cls,prev){return[...w].map((ch,i)=>`<span class="ld-t${ch===LD.P.b[i]?" hit":""}${prev&&prev[i]!==ch?" chg":""}">${ch}</span>`).join("")}
+function ldRender(){const R=document.getElementById("ldR");if(!R)return;let prev=LD.P.a,h=`<div class="ld-row start" role="listitem" aria-label="Start: ${LD.P.a}">${ldTiles(LD.P.a)}</div>`;
+  LD.rungs.forEach((w,i)=>{h+=`<div class="ld-row${w===LD.P.b?" end":""}" role="listitem" aria-label="Step ${i+1}: ${w}">${ldTiles(w,"",prev)}<span class="ld-n">${i+1}</span></div>`;prev=w});
+  if(!LD.done){const b=LD.buf.padEnd(4," ");h+=`<div class="ld-row cur" role="listitem" aria-label="Step ${LD.rungs.length+1}: ${LD.buf||"empty"}">${[...b].map((ch,i)=>`<span class="ld-t in${i===LD.buf.length?" caret":""}">${ch.trim()}</span>`).join("")}<span class="ld-n">${LD.rungs.length+1}</span></div>
+    <div class="ld-row goal" role="listitem" aria-label="Goal: ${LD.P.b}">${[...LD.P.b].map(ch=>`<span class="ld-t hit">${ch}</span>`).join("")}</div>`}
+  R.innerHTML=h;const m=document.getElementById("ldMsg");if(m)m.textContent=LD.msg||"";
+  const u=document.getElementById("ldUndo");if(u)u.disabled=LD.done||!LD.rungs.length;const hn=document.getElementById("ldHint");if(hn)hn.disabled=LD.done}
+function ldType(ch){if(LD.done||LD.buf.length>=4)return;LD.buf+=ch;LD.msg="";blip(520,.02);ldRender()}
+function ldBack(){if(LD.done)return;LD.buf=LD.buf.slice(0,-1);ldRender()}
+function ldUndo(){if(LD.done||!LD.rungs.length)return;LD.rungs.pop();LD.buf="";LD.msg="";ldSave();ldRender()}
+function ldErr(t){LD.msg=t;hap("error");announce(t);ldRender();const r=document.querySelector(".ld-row.cur");if(r&&!calmNow()){r.classList.remove("shake");void r.offsetWidth;r.classList.add("shake")}}
+function ldEnter(){if(LD.done)return;const w=LD.buf,last=ldLast(),[V]=ldSets();
+  if(w.length<4)return ldErr("Four letters, please.");
+  if(!ldOneOff(last,w))return ldErr(`Change exactly one letter of ${last}.`);
+  if(!V.has(w))return ldErr(`${w} isn't in the word list.`);
+  if(w===LD.P.a||LD.rungs.includes(w))return ldErr("You've used that word already.");
+  LD.rungs.push(w);LD.buf="";hap("select");blip(660,.05);
+  if(w===LD.P.b){LD.done=true;clearInterval(LD.iv);LD.secs=ldSecs();LD.t0=0;ldSave();ldRender();ldDone(false);return}
+  LD.msg=ldOneOff(w,LD.P.b)?"One letter away!":"";ldSave();ldRender()}
+function ldHint(){if(LD.done)return;const p=ldPath(ldLast(),LD.P.b);if(!p){toast("Undo a step: there's no way through from here");return}
+  LD.hints++;LD.buf=p[0];LD.msg=`Try ${p[0]}.`;ldRender();ldSave()}
+function ldDone(already){const secs=Math.round(LD.secs),steps=LD.rungs.length,par=LD.P.par,counts=!LD.archive;
+  const rank=LD.hints?"Solved with help":steps<par?"Under par!":steps===par?"Perfect ladder":steps<=par+2?"Nice climb":"Made it";
+  if(!already){sfx("win");hap("success");burst(document.getElementById("ldR"),30,170);if(counts){pzBump("ladder",LD.dk);pzXP(LD.hints?100:steps<=par?400:250,"Ladder")}saveStats()}
+  const st=pzStreak("ladder"),box=document.createElement("div");box.className="pz-done";
+  box.innerHTML=`<h2>${esc(rank)}</h2><div class="pz-big">${steps}<small> step${steps===1?"":"s"} · par ${par}</small></div><p class="sub">${fmtTime(secs)}${LD.hints?` · ${LD.hints} hint${LD.hints>1?"s":""}`:""} · ${ti("fire")} ${st.n}-day streak</p>
+   <div class="btns"><button class="big" id="ldShare">Share</button><button class="ghost-btn" id="ldClose">Done</button></div>`;
+  const el=document.getElementById("pz");el.querySelector(".mi-tools").replaceWith(box);const pad=document.getElementById("ldPad");if(pad)pad.remove();
+  document.getElementById("ldShare").onclick=()=>shareOut(`Crossfall Ladder · ${fmtDay(LD.dk)}\n${LD.P.a} → ${LD.P.b} in ${steps} step${steps===1?"":"s"} (par ${par})${LD.hints?" with help":""} · ${fmtTime(secs)}\n${[LD.P.a,...LD.rungs].map((w,i,a)=>i?[...w].map((c,j)=>c===LD.P.b[j]?"▣":"□").join(""):"").filter(Boolean).join("\n")}`);
+  document.getElementById("ldClose").onclick=closePz}
+function ladderBoard(){const d=pzStore("ladder").days,recs=Object.entries(d).filter(([,r])=>!r.practice),solved=recs.filter(([,r])=>r.done),clean=solved.filter(([,r])=>!r.hints),st=pzStreak("ladder");
+  const under=clean.filter(([,r])=>r.steps<=r.par).length,times=clean.map(([,r])=>r.secs);
+  return sbStats([["Played",recs.length],["Solved",solved.length],["Current streak",st.n],["Longest streak",st.best],["At or under par",under],["Best time",times.length?fmtTime(Math.min(...times)):"—"]])
+    +sbWeek(dk=>{const r=d[dk];return r&&!r.practice?(r.done&&!r.hints?"y":r.done?"p":"s"):""})}
+
+/* ================= Phase 11: power-ups (spend sparks during the drop) ================= */
+const POWERS=[["freeze","Freeze","clock",2,"Stops the falling piece for 10 seconds."],["bomb","Bomb","fire",3,"Blasts away the lowest row in the well."],["sweep","Sweep","wave",4,"Clears every junk tile and lets letters settle."]];
+const PW_MAX_USES=3,SPARK_CAP=15;
+function sparks(){if(stats.sparks==null){stats.sparks=3}return stats.sparks}
+function pwAllowed(){return!!(S&&!S.tut&&!S.pp&&!S.challenge&&!(S.L.daily&&!S.L.archive))}
+function pwBarHTML(){if(!pwAllowed())return"";const n=sparks(),used=S.pwUsed||0;
+  return`<div class="pwr" role="group" aria-label="Power-ups, ${n} sparks"><span class="pw-sp" aria-hidden="true">${ti("bolt")}<b>${n}</b></span>${POWERS.map(([id,name,ic,cost,d])=>{const off=n<cost||used>=PW_MAX_USES;
+    return`<button class="k pw" data-a="P:${id}" ${off?'aria-disabled="true"':""} aria-label="${name}, costs ${cost} sparks. ${d}">${ti(ic)}<span>${name}</span><i>${cost}</i></button>`}).join("")}</div>`}
+function usePower(id){if(!S||S.phase!=="drop"||!pwAllowed())return;const P=POWERS.find(p=>p[0]===id);if(!P)return;const n=sparks();
+  if((S.pwUsed||0)>=PW_MAX_USES){toast(`${PW_MAX_USES} power-ups a game`);return}if(n<P[3]){toast(`${P[1]} needs ${P[3]} sparks`);return}
+  if(id==="freeze"){if(!S.active){toast("Nothing is falling");return}S.freezeUntil=performance.now()+10000;S.landT=0;toast("Frozen for 10 s");
+    const w=document.getElementById("well");if(w){w.classList.add("frozen");setTimeout(()=>{const x=document.getElementById("well");if(x)x.classList.remove("frozen")},10000)}}
+  else if(id==="bomb"){let r=-1;for(let i=ROWS-1;i>=0;i--)if(S.grid[i].some(Boolean)){r=i;break}if(r<0){toast("The well is already empty");return}
+    burst(document.querySelector(`#well .wc[data-r="${r}"][data-c="3"]`),26,140);S.grid.splice(r,1);S.grid.unshift(Array(COLS).fill(null));toast("BOOM: bottom row cleared");if(typeof wellFx==="function")wellFx("quake")}
+  else if(id==="sweep"){let k=0;for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++)if(S.grid[r][c]&&S.grid[r][c].g){S.grid[r][c]=null;k++}if(!k){toast("No junk to sweep");return}gravity();toast(`Swept ${k} junk tile${k>1?"s":""}`)}
+  stats.sparks=n-P[3];S.pwUsed=(S.pwUsed||0)+1;S.pwLog=(S.pwLog||[]).concat(id);saveStats();sfx("combo",2);hap("heavy");
+  if(S.active&&collides(absCells(S.active)))S.active.r=Math.max(0,S.active.r-1);padMode="";renderAll()}
+function sparksAfter(g){if(g.practice||S.tut)return;const got=Math.min(6,(g.rows||0)+(g.rushW||0)+(g.target?1:0)+(g.gold?1:0));const before=sparks();stats.sparks=Math.min(SPARK_CAP,before+got);S.sparksGot=stats.sparks-before}
+function sparksHTML(){if(!S||!S.sparksGot)return"";return`<p class="sp-got">${ti("bolt")} +${S.sparksGot} spark${S.sparksGot>1?"s":""} for power-ups · you have ${stats.sparks}</p>`}
+
+/* ================= Phase 12: Spooky Season (mid October to 2 November) ================= */
+const SPOOKY={name:"Spooky Season",blurb:"Six haunted puzzles, only until 2 November. Finish them all for the Haunted well theme.",puzzles:[
+ {name:"Haunted House",drop:"bar",find:"tap",speed:860,seed:9301,words:[["GHOST","Spirit said to drift through walls"],["ATTIC","Dusty room right under the roof"],["CREAK","Sound an old floorboard makes"],["CANDLE","Wax stick with a flickering flame"],["SPIDER","Eight-legged web spinner"],["DOOR","It swings open by itself in every scary movie"]],target:["HOST","Person who throws the party"],bonus:[["BAT","Winged night flyer"],["MOAN","Low, eerie sound"],["DUST","Gathers on old furniture"]]},
+ {name:"Pumpkin Patch",drop:"tetro",find:"clue",speed:840,seed:9317,words:[["PUMPKIN","Big orange gourd"],["CARVE","Cut a face into a jack-o'-lantern"],["LANTERN","Lamp with a candle inside"],["PIE","Slice of this is a Thanksgiving favorite"],["VINE","Long trailing stem a gourd grows on"],["SEEDS","Roast these after scooping out a pumpkin"]],target:["PLANT","Put a seed in the ground"],bonus:[["GOURD","Hard-shelled squash cousin"],["STEM","Handle on top of a pumpkin"],["ORANGE","Color of a classic pumpkin"]]},
+ {name:"Trick or Treat",drop:"single",find:"scramble",speed:830,seed:9323,words:[["COSTUME","Outfit you wear on October 31"],["CANDY","Sweets in the trick-or-treat bag"],["MASK","Covers your face as a disguise"],["DOORBELL","Ring it and say the magic words"],["TREAT","Something sweet handed out at the door"],["WITCH","Pointy-hat flyer on a broom"]],target:["TRICK","The other half of the doorstep deal"],bonus:[["CAPE","Flowing cloak for a vampire costume"],["BAG","Sack for collecting sweets"],["WIG","Fake hair for a costume"]]},
+ {name:"Monster Mash",drop:"bar",find:"clue",speed:820,seed:9341,words:[["ZOMBIE","Slow, groaning undead walker"],["MUMMY","Wrapped in ancient bandages"],["WEREWOLF","Changes shape under a full moon"],["VAMPIRE","Fanged night creature who avoids sunlight"],["FANGS","Long, pointed teeth"],["HOWL","A wolf's cry at night"]],target:["MOON","It's full on a werewolf night"],bonus:[["CLAW","Sharp, curved nail"],["BOLT","Neck hardware on a famous monster"],["GRAVE","Where the undead rise from"]]},
+ {name:"Witch's Brew",drop:"tetro",find:"tap",speed:810,seed:9349,words:[["CAULDRON","Big pot for bubbling potions"],["POTION","Magic drink in a little bottle"],["BROOM","A witch's ride"],["SPELL","Magic words that make things happen"],["CAT","Black pet that crosses your path"],["WAND","Stick for casting magic"]],target:["BREW","Make a potion, or a pot of tea"],bonus:[["HAT","Tall and pointed on a witch"],["TOAD","Warty pond hopper"],["OWL","Wise night bird that hoots"]]},
+ {name:"Graveyard Shift",drop:"single",find:"clue",speed:800,seed:9317,words:[["TOMB","Stone chamber for the dead"],["CRYPT","Underground vault below a church"],["MOSS","Soft green growth on old headstones"],["SHOVEL","Tool for digging a hole"],["MIDNIGHT","Twelve o'clock at night"],["RAVEN","Black bird from a famous Poe poem"]],target:["GRAVE","Resting place marked by a headstone"],bonus:[["SKULL","Bony head"],["BONES","A skeleton's parts"],["CHILL","Cold shiver down your spine"]]}]};
+function spookyOn(d){d=d||new Date();const m=d.getMonth()+1,day=d.getDate();return(m===10&&day>=15)||(m===11&&day<=2)}
+function spookyKey(){const d=new Date();return String(d.getMonth()===10?d.getFullYear():d.getFullYear())}
+function spookySt(){const k=spookyKey();if(!stats.spooky||stats.spooky.key!==k)stats.spooky={key:k,done:[],all:false};return stats.spooky}
+function spookyLevel(k){const p=SPOOKY.puzzles[k];if(!p)return null;const L={...p,words:p.words.map(w=>w.slice()),bonus:p.bonus.map(w=>w.slice()),target:p.target.slice(),cat:"Spooky",spooky:1,sk:k,pi:k,n:SPOOKY.puzzles.length,id:"Spooky:"+spookyKey()+":"+k};
+  L._cw=buildCrossword(L.words,L.seed);return L._cw?L:null}
+function playSpooky(k){if(!spookyOn()){toast("Spooky Season is over for this year");return}const L=spookyLevel(k);if(!L){toast("Try again");return}closeEvents();startLevel(L)}
+function spookyAfter(g){if(!g.win||g.practice||!S.L.spooky||!spookyOn())return;const st=spookySt();
+  if(!st.done.includes(S.L.sk)){st.done.push(S.L.sk);giveXP(400,`Spooky Season ${st.done.length}/6`)}
+  if(!st.all&&st.done.length>=SPOOKY.puzzles.length){st.all=true;stats.seasonThemes=stats.seasonThemes||[];if(!stats.seasonThemes.includes("haunted"))stats.seasonThemes.push("haunted");
+    giveXP(3000,"Spooky Season complete");giveBadge("spooky-"+st.key,"Spooky Season "+st.key,"moon","All six haunted puzzles · Haunted well theme unlocked");
+    queueCele({kind:"xp",title:"Haunted theme unlocked",sub:"Purple tiles and pumpkin-orange pieces. Pick it in Rewards & themes."})}}
+function spookyLine(){if(!spookyOn())return"";const st=spookySt();return`<button class="wk-line sp-line" id="spLine"><span>${ti("moon")} <b>Spooky Season</b> ${st.done.length}/6 · until Nov 2</span><span aria-hidden="true">›</span></button>`}
+function spookyResultHTML(){if(!S.L||!S.L.spooky)return"";const st=spookySt(),k=SPOOKY.puzzles.findIndex((p,i)=>!st.done.includes(i)&&i!==S.L.sk);
+  return`<div class="readback ev-res sp-res"><span class="ln">SPOOKY SEASON · ${st.done.length}/6</span>${k>=0?`<button class="ghost-btn" id="spNext" data-sk="${k}">Next haunted puzzle: ${esc(SPOOKY.puzzles[k].name)} ›</button>`:`<p>${st.all?"All six done. The Haunted theme is yours!":""}</p>`}</div>`}
+function openSpooky(){const el=document.getElementById("evh"),st=spookySt(),end=new Date(new Date().getFullYear(),10,2,23,59),left=Math.max(0,Math.ceil((end-Date.now())/864e5));
+  el.innerHTML=`<h1>SPOOKY <span>SEASON</span></h1>
+   <div class="panel ev-hero sp-hero"><div class="ev-ic">${ti("moon")}</div><div><span class="ln">${left} DAY${left===1?"":"S"} LEFT</span><h2>Six haunted puzzles</h2><p class="sub">${esc(SPOOKY.blurb)} Free for everyone.</p></div></div>
+   <div class="panel"><div class="ev-grid">${SPOOKY.puzzles.map((p,k)=>{const d=st.done.includes(k);return`<button class="ev-pz${d?" done":""}" data-sk="${k}"><b>${k+1}</b><span>${esc(p.name)}</span><i>${d?"✓ Done":"+400 XP"}</i></button>`}).join("")}</div>
+     <span class="pf-rank">Finish all six for +3,000 XP, a badge and the <b>Haunted</b> well theme.${st.all?" Earned! ✓":""}</span></div>
+   <div class="btns wide"><button class="big" id="evDone">Done</button></div>`;
+  el.hidden=false;el.scrollTop=0;el.querySelectorAll("[data-sk]").forEach(b=>b.onclick=()=>playSpooky(+b.dataset.sk));document.getElementById("evDone").onclick=closeEvents}
+
 function weeklyLine(){const cs=challengeState(),d=cs.filter(c=>c.done).length;return`<button class="wk-line" id="wkLine"><span>${ti("trophy")} Weekly challenges <b>${d}/3</b></span><span class="wk-bars">${cs.map(c=>`<i style="--p:${Math.round(c.v/c.goal*100)}%"></i>`).join("")}</span><span aria-hidden="true">›</span></button>`}
 
 /* ---- friend challenges: a short code that carries the puzzle and the score to beat ---- */
@@ -4779,12 +4934,12 @@ function chDone(already){
   document.getElementById("chBack").onclick=closePz;
   setTimeout(runCele,700);
 }
-function closePz(){const el=document.getElementById("pz");el.hidden=true;if(MI){MI.secs=miSecs();MI.t0=0;clearInterval(MI.iv);miSave();MI=null}if(CH&&CH.more&&CH.found.length===4){CH.done=true;chSave()}CH=null;renderDailyCard()}
+function closePz(){const el=document.getElementById("pz");el.hidden=true;if(LD){clearInterval(LD.iv);if(!LD.done){LD.secs=ldSecs();LD.t0=0}ldSave();LD=null}if(MI){MI.secs=miSecs();MI.t0=0;clearInterval(MI.iv);miSave();MI=null}if(CH&&CH.more&&CH.found.length===4){CH.done=true;chSave()}CH=null;renderDailyCard()}
 
 /* ---------------- Scoreboard ---------------- */
 function openScoreboard(kind){
   const el=document.getElementById("sb"),t=todayKey();kind=kind||"daily";
-  const tabs=[["daily","Crossfall Daily"],["mini","The Mini"],["chunks","Chunks"]];
+  const tabs=[["daily","Daily"],["mini","Mini"],["chunks","Chunks"],["ladder","Ladder"]];
   let body="";
   if(kind==="daily"){const recs=Object.entries(stats.daily||{}),ds=dailyStreak(),wins=recs.filter(([,r])=>r.win);
     const best=Math.max(0,...recs.map(([,r])=>r.score||0)),avg=recs.length?Math.round(recs.reduce((s,[,r])=>s+(r.score||0),0)/recs.length):0;
@@ -4792,12 +4947,13 @@ function openScoreboard(kind){
   else if(kind==="mini"){const d=pzStore("mini").days,recs=Object.entries(d).filter(([,r])=>!r.practice),solved=recs.filter(([,r])=>r.done),clean=solved.filter(([,r])=>!r.rev),st=pzStreak("mini");
     const times=clean.map(([,r])=>r.secs);body=sbStats([["Played",recs.length],["Solved",solved.length],["Current streak",st.n],["Longest streak",st.best],["Best time",times.length?fmtTime(Math.min(...times)):"—"],["Average",times.length?fmtTime(times.reduce((a,b)=>a+b,0)/times.length):"—"]])
       +sbWeek(dk=>{const r=d[dk];return r&&!r.practice?(r.done&&!r.rev?"y":r.done?"p":"s"):""})}
+  else if(kind==="ladder"){body=ladderBoard()}
   else{const d=pzStore("chunks").days,recs=Object.entries(d).filter(([,r])=>!r.practice),solved=recs.filter(([,r])=>r.done),st=pzStreak("chunks");
     const ranks={};recs.forEach(([,r])=>{if(r.rank)ranks[r.rank]=(ranks[r.rank]||0)+1});
     body=sbStats([["Played",recs.length],["Completed",solved.length],["Current streak",st.n],["Longest streak",st.best],["Best score",fmtN(Math.max(0,...recs.map(([,r])=>r.score||0)))],["Perfects",ranks.Perfect||0]])
-      +`<div class="panel"><h3>Ranks reached</h3>${CH_RANKS.map(([,n])=>`<div class="hbar"><span>${n}</span><span class="tr"><i style="width:${recs.length?Math.round((ranks[n]||0)/recs.length*100):0}%"></i></span><span class="v">${ranks[n]||0}</span></div>`).join("")}</div>`
+      +`<div class="panel"><h2 class="ph">Ranks reached</h2>${CH_RANKS.map(([,n])=>`<div class="hbar"><span>${n}</span><span class="tr"><i style="width:${recs.length?Math.round((ranks[n]||0)/recs.length*100):0}%"></i></span><span class="v">${ranks[n]||0}</span></div>`).join("")}</div>`
       +sbWeek(dk=>{const r=d[dk];return r&&!r.practice?(r.done?"y":"s"):""})}
-  el.innerHTML=`<h1>SCORE<span>BOARD</span></h1><div class="seg" role="tablist">${tabs.map(([k,l])=>`<button role="tab" aria-selected="${k===kind}" aria-checked="${k===kind}" data-sbk="${k}">${l}</button>`).join("")}</div>${body}
+  el.innerHTML=`<h1>SCORE<span>BOARD</span></h1><div class="seg" role="tablist">${tabs.map(([k,l])=>`<button role="tab" aria-selected="${k===kind}" data-sbk="${k}">${l}</button>`).join("")}</div>${body}
    <p class="sub" style="text-align:center">A streak counts days in a row you finish that day's puzzle on the day. Mini reveals don't count.</p><div class="btns wide"><button class="big" id="sbDone">Done</button></div>`;
   el.hidden=false;el.scrollTop=0;
   el.querySelectorAll("[data-sbk]").forEach(b=>b.onclick=()=>openScoreboard(b.dataset.sbk));
@@ -4805,26 +4961,29 @@ function openScoreboard(kind){
 }
 function sbStats(rows){return`<div class="kpis">${rows.map(([l,v])=>`<div class="kpi"><span class="kl">${l}</span><span class="kv">${v}</span></div>`).join("")}</div>`}
 function sbWeek(f){const t=todayKey(),days=[...Array(14)].map((_,i)=>addDays(t,i-13));
-  return`<div class="panel"><h3>Last 14 days</h3><div class="sbdays">${days.map(dk=>{const s=f(dk);return`<span class="sbd ${s}" title="${fmtDay(dk)}" aria-label="${fmtDay(dk)}: ${s==="y"?"solved":s==="p"?"finished with help":s==="s"?"started":"not played"}">${new Date(dk+"T12:00:00").getDate()}</span>`}).join("")}</div>
+  return`<div class="panel"><h2 class="ph">Last 14 days</h2><div class="sbdays">${days.map(dk=>{const s=f(dk);return`<span class="sbd ${s}" title="${fmtDay(dk)}" aria-label="${fmtDay(dk)}: ${s==="y"?"solved":s==="p"?"finished with help":s==="s"?"started":"not played"}">${new Date(dk+"T12:00:00").getDate()}</span>`}).join("")}</div>
    <div class="sbkey"><span><i class="sbd y"></i>Solved</span><span><i class="sbd p"></i>With help</span><span><i class="sbd s"></i>Started</span></div></div>`}
 
 /* ---------------- Today's Puzzles strip on the home screen ---------------- */
 function puzzlesStrip(){const t=todayKey(),m=pzStore("mini").days[t],c=pzStore("chunks").days[t],ms=pzStreak("mini"),cs=pzStreak("chunks"),P=chunksPuzzle(t),diff=dayDiff(t);
   const card=(id,name,sub,status,streak,done)=>`<button class="pzc ${done?"done":""}" id="${id}"><span class="pzc-n">${name}</span><span class="pzc-s">${sub}</span><span class="pzc-st">${status}</span><span class="pzc-f">${ti("fire")} ${streak}</span></button>`;
+  const ld=pzStore("ladder").days[t],ls=pzStreak("ladder"),LP=ladderPuzzle(t);
   return`<div class="pzrow">${card("pzMini","The Mini",`${diffTag(diff)}`,m&&m.done?`✓ ${fmtTime(m.secs)}`:m&&m.secs?"Resume":"Play",ms.n,m&&m.done)}
-    ${card("pzChunks","Chunks",`${esc(P.theme||"")}`,c&&c.done?`✓ ${esc(c.rank)}`:c&&c.found&&c.found.length?`${c.found.length}/4`:"Play",cs.n,c&&c.done)}</div>
+    ${card("pzChunks","Chunks",`${esc(P.theme||"")}`,c&&c.done?`✓ ${esc(c.rank)}`:c&&c.found&&c.found.length?`${c.found.length}/4`:"Play",cs.n,c&&c.done)}
+    ${card("pzLadder","Ladder",`${LP.a} → ${LP.b}`,ld&&ld.done?`✓ ${ld.steps} steps`:ld&&ld.rungs&&ld.rungs.length?"Resume":"Play",ls.n,ld&&ld.done)}</div>
     <div class="pzlinks"><button id="pzSb">Scoreboard</button><button id="pzArc">Past puzzles</button></div>`}
 
 /* ---------------- archive with tabs and filters ---------------- */
 let arcKind="daily",arcFilter="all";
 function openArchiveV2(kind){if(kind)arcKind=kind;const el=document.getElementById("archive"),t=todayKey();
-  const st=dk=>arcKind==="daily"?(dailyRecord(dk)?"solved":""):arcKind==="mini"?((pzStore("mini").days[dk]||{}).done?"solved":(pzStore("mini").days[dk]||{}).secs?"started":""):((pzStore("chunks").days[dk]||{}).done?"solved":(pzStore("chunks").days[dk]||{}).found?.length?"started":"");
+  const st=dk=>arcKind==="daily"?(dailyRecord(dk)?"solved":""):arcKind==="mini"?((pzStore("mini").days[dk]||{}).done?"solved":(pzStore("mini").days[dk]||{}).secs?"started":""):arcKind==="ladder"?((pzStore("ladder").days[dk]||{}).done?"solved":(pzStore("ladder").days[dk]||{}).rungs?.length?"started":""):((pzStore("chunks").days[dk]||{}).done?"solved":(pzStore("chunks").days[dk]||{}).found?.length?"started":"");
   const info=dk=>{if(arcKind==="daily"){const r=dailyRecord(dk);return r?`${fmtN(r.score)} · ${r.grade||"—"}`:"not played"}
     if(arcKind==="mini"){const r=pzStore("mini").days[dk];return r&&r.done?`✓ ${fmtTime(r.secs)}${r.rev?" · with help":""}`:r&&r.secs?"started":"not played"}
+    if(arcKind==="ladder"){const r=pzStore("ladder").days[dk];return r&&r.done?`✓ ${r.steps} steps · par ${r.par}${r.hints?" · with help":""}`:r&&r.rungs&&r.rungs.length?"started":"not played"}
     const r=pzStore("chunks").days[dk];return r&&r.done?`✓ ${r.rank} · ${fmtN(r.score)}`:r&&r.found&&r.found.length?`${r.found.length}/4 words`:"not played"};
   const days=[...Array(14)].map((_,i)=>addDays(t,-(i+(arcKind==="daily"?1:0)))).filter(dk=>arcFilter==="all"||(arcFilter==="solved"?st(dk)==="solved":st(dk)!=="solved"));
   el.innerHTML=`<h1>PAST <span>PUZZLES</span></h1>
-   <div class="seg" role="tablist" aria-label="Puzzle type">${[["daily","Daily"],["mini","Mini"],["chunks","Chunks"]].map(([k,l])=>`<button role="tab" aria-selected="${k===arcKind}" aria-checked="${k===arcKind}" data-ak="${k}">${l}</button>`).join("")}</div>
+   <div class="seg" role="tablist" aria-label="Puzzle type">${[["daily","Daily"],["mini","Mini"],["chunks","Chunks"],["ladder","Ladder"]].map(([k,l])=>`<button role="tab" aria-selected="${k===arcKind}" data-ak="${k}">${l}</button>`).join("")}</div>
    <div class="seg" role="radiogroup" aria-label="Filter">${[["all","All"],["unsolved","Unsolved"],["solved","Solved"]].map(([k,l])=>`<button role="radio" aria-checked="${k===arcFilter}" data-af="${k}">${l}</button>`).join("")}</div>
    <p class="sub">The last two weeks. Replays are practice: they don't change streaks or the boards.</p>
    <div class="alist">${days.length?days.map(dk=>`<button class="arow" data-dk="${dk}"><span>${esc(fmtDay(dk))} ${diffTag(dayDiff(dk))}</span><span class="sub">${info(dk)}</span></button>`).join(""):`<div class="empty">Nothing here yet.</div>`}</div>
@@ -4832,7 +4991,7 @@ function openArchiveV2(kind){if(kind)arcKind=kind;const el=document.getElementBy
   el.hidden=false;
   el.querySelectorAll("[data-ak]").forEach(b=>b.onclick=()=>{arcKind=b.dataset.ak;openArchiveV2()});
   el.querySelectorAll("[data-af]").forEach(b=>b.onclick=()=>{arcFilter=b.dataset.af;openArchiveV2()});
-  el.querySelectorAll("[data-dk]").forEach(b=>b.onclick=()=>{el.hidden=true;const dk=b.dataset.dk;arcKind==="daily"?playDaily(dk,true):arcKind==="mini"?openMini(dk):openChunks(dk)});
+  el.querySelectorAll("[data-dk]").forEach(b=>b.onclick=()=>{el.hidden=true;const dk=b.dataset.dk;arcKind==="daily"?playDaily(dk,true):arcKind==="mini"?openMini(dk):arcKind==="ladder"?openLadder(dk):openChunks(dk)});
   document.getElementById("arClose").onclick=()=>el.hidden=true;
 }
 

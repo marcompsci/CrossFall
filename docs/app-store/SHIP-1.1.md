@@ -40,5 +40,5 @@ Crossfall Pro is unchanged. The paywall copy now says "70 or more crosswords in 
 - [ ] The Friends tab on Rankings asks for friends permission and loads.
 - [ ] The widget shows the streak, and the reminder fires.
 - [ ] Upload the screenshots, What's New, promotional text and keywords.
-- [ ] Update app privacy (Coarse Location).
+- [x] Update app privacy (Coarse Location). Published 15 Oct 2026.
 - [ ] Add the review notes from `WHATS-NEW-1.1.md`.

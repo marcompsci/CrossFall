@@ -2851,6 +2851,7 @@ function wireChart(){
   svg.addEventListener("pointermove",show);svg.addEventListener("pointerdown",show);svg.addEventListener("pointerleave",hide);
 }
 function openDrawer(){
+  {const sp=document.querySelector('#drawer [data-act="spooky"]');if(sp)sp.hidden=!spookyOn()}  // seasonal: hidden outside Oct 15 to Nov 2
   const d=document.getElementById("drawer"),sc=document.getElementById("scrim");
   const nick=stats.nick||"Player",L=levelOf(xpTotal()),rk=myRank();
   document.getElementById("drMe").innerHTML=`${avatarHTML()}<div><b>${esc(nick)}</b><span>${esc(titleOf())} · Level ${L.lv} · ${fmtN(stats.tot.score)} pts${rk?` · #${rk.pos}`:""}</span></div>`;

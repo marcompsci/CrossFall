@@ -49,17 +49,22 @@ jobs:
             -destination 'generic/platform=iOS Simulator' -derivedDataPath build/DD \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build | tail -n 60
       - name: Privacy manifests, fonts and Info.plist keys are inside the built app
+        shell: bash {0}   # no -e: run every check and report each one
         run: |
           APP=build/DD/Build/Products/Release-iphonesimulator/Crossfall.app
-          WID=$(ls -d "$APP"/PlugIns/*.appex | head -1)
-          echo "app: $APP"; echo "widget: $WID"
-          fail=0
-          chk() { if eval "$2"; then echo "PASS  $1"; else echo "FAIL  $1"; fail=1; fi; }
-          chk "app privacy manifest bundled"    "test -f '$APP/PrivacyInfo.xcprivacy'"
-          chk "widget privacy manifest bundled" "test -f '$WID/PrivacyInfo.xcprivacy'"
-          chk "index.html bundled"              "test -f '$APP/index.html'"
-          n=$(find "$APP" -name '*.woff2' | wc -l | tr -d ' '); chk "5 fonts bundled (found $n)" "test $n -eq 5"
-          for f in $(grep -o '[a-z0-9-]*\.woff2' "$APP/index.html" | sort -u); do chk "font $f at the path index.html uses" "test -f '$APP/$f'"; done
+          WID=$(ls -d "$APP"/PlugIns/*.appex 2>/dev/null | head -1)
+          fail=0; passed=""
+          chk() { if eval "$2"; then echo "PASS  $1"; passed="$passed; $1"; else echo "FAIL  $1"; echo "::error title=Bundle check failed::$1"; fail=1; fi; }
+          chk "app built at $APP"                 "test -d '$APP'"
+          chk "widget extension embedded ($WID)"  "test -n '$WID'"
+          chk "app privacy manifest bundled"      "test -f '$APP/PrivacyInfo.xcprivacy'"
+          chk "widget privacy manifest bundled"   "test -f '$WID/PrivacyInfo.xcprivacy'"
+          chk "index.html bundled"                "test -f '$APP/index.html'"
+          n=$(find "$APP" -name '*.woff2' 2>/dev/null | wc -l | tr -d ' ')
+          chk "5 fonts bundled (found $n)" "test '$n' = 5"
+          for f in $(grep -o '[a-z0-9-]*\.woff2' "$APP/index.html" 2>/dev/null | sort -u); do chk "font $f at the path index.html uses" "test -f '$APP/$f'"; done
           for k in ITSAppUsesNonExemptEncryption NSLocationWhenInUseUsageDescription NSGKFriendListUsageDescription NSLocationDefaultAccuracyReduced CFBundleVersion CFBundleShortVersionString; do
-            v=$(/usr/libexec/PlistBuddy -c "Print :$k" "$APP/Info.plist" 2>/dev/null); chk "Info.plist $k = $v" "test -n '$v'"; done
+            v=$(/usr/libexec/PlistBuddy -c "Print :$k" "$APP/Info.plist" 2>/dev/null)
+            chk "Info.plist $k = ${v:0:40}" "test -n \"\$v\""; done
+          echo "::notice title=Bundle checks passed::${passed#; }"
           exit $fail

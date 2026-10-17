@@ -73,9 +73,11 @@ final class BundleSchemeHandler: NSObject, WKURLSchemeHandler {
               let data = try? Data(contentsOf: file) else {
             task.didFailWithError(URLError(.fileDoesNotExist)); return
         }
-        let type = UTType(filenameExtension: file.pathExtension)?.preferredMIMEType ?? "text/html"
+        let ext = file.pathExtension.lowercased()
+        let type = ext == "woff2" ? "font/woff2" : (UTType(filenameExtension: ext)?.preferredMIMEType ?? "text/html")
+        let contentType = type.hasPrefix("text/") ? "\(type); charset=utf-8" : type
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "HTTP/1.1",
-                                       headerFields: ["Content-Type": "\(type); charset=utf-8",
+                                       headerFields: ["Content-Type": contentType,
                                                       "Content-Length": "\(data.count)"])!
         task.didReceive(response)
         task.didReceive(data)
@@ -547,12 +549,38 @@ final class PageBridge: NSObject, WKScriptMessageHandler {
 struct GameView: UIViewRepresentable {
     @ObservedObject var theme: ThemeModel
 
-    final class Coordinator: NSObject {
+    final class Coordinator: NSObject, WKNavigationDelegate, WKUIDelegate {
         let gameCenter = GameCenter()
         weak var web: WKWebView?
         @objc func textSizeChanged() {
             web?.evaluateJavaScript("window.setNativeTextScale&&window.setNativeTextScale(\(TextScale.current))", completionHandler: nil)
         }
+
+        /// iOS can end the web content process under memory pressure, which leaves a blank page.
+        /// Reload the bundled game; progress is in localStorage, so nothing is lost.
+        func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+            webView.load(URLRequest(url: URL(string: "crossfall://app/index.html")!))
+        }
+
+        /// The game itself only lives at crossfall://. Web links (privacy policy, support)
+        /// open in Safari so the player never gets stuck on a page with no way back.
+        func webView(_ webView: WKWebView, decidePolicyFor action: WKNavigationAction,
+                     decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+            guard let url = action.request.url else { decisionHandler(.cancel); return }
+            switch url.scheme?.lowercased() {
+            case "crossfall", "about", "data", "blob":
+                decisionHandler(.allow)
+            case "https", "http", "mailto":
+                if action.targetFrame?.isMainFrame ?? true { UIApplication.shared.open(url) }  // nil target = target="_blank"
+                decisionHandler(.cancel)
+            default:
+                decisionHandler(.cancel)
+            }
+        }
+
+        /// Never open a second web view. target="_blank" links are already sent to Safari above.
+        func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration,
+                     for action: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? { nil }
     }
 
     func makeCoordinator() -> Coordinator { Coordinator() }
@@ -584,7 +612,11 @@ struct GameView: UIViewRepresentable {
         web.scrollView.contentInsetAdjustmentBehavior = .never
         web.scrollView.bounces = false
         web.allowsLinkPreview = false
-        if #available(iOS 16.4, *) { web.isInspectable = true }
+        #if DEBUG
+        if #available(iOS 16.4, *) { web.isInspectable = true }  // Safari Web Inspector in development builds only
+        #endif
+        web.navigationDelegate = context.coordinator
+        web.uiDelegate = context.coordinator
 
         context.coordinator.web = web
         context.coordinator.gameCenter.web = web

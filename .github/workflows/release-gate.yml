@@ -1,0 +1,61 @@
+name: Release gate
+
+# Runs on every push and pull request. Before a TestFlight upload, both jobs must be green.
+# A job that is skipped or cancelled is NOT a pass.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-and-smoke:
+    name: Static checks + headless smoke test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install Playwright
+        run: |
+          pip install playwright==1.47.0
+          python -m playwright install --with-deps chromium
+      - name: Release gate (fails on any FAIL)
+        run: python3 scripts/release_gate.py --smoke
+
+  ios-build:
+    name: Xcode build (iOS Simulator, unsigned)
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Xcode version
+        run: xcodebuild -version
+      - name: Lint plists and entitlements
+        run: |
+          plutil -lint Crossfall/PrivacyInfo.xcprivacy CrossfallWidget/PrivacyInfo.xcprivacy \
+            Crossfall/Crossfall.entitlements CrossfallWidget/CrossfallWidget.entitlements CrossfallWidget/Info.plist
+      - name: Build app + widget (Release, simulator, no signing)
+        run: |
+          set -o pipefail
+          xcodebuild -project Crossfall.xcodeproj -scheme Crossfall -configuration Release \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build | tail -n 60
+      - name: Privacy manifests and fonts are inside the built app
+        run: |
+          APP=$(find ~/Library/Developer/Xcode/DerivedData -path '*Release-iphonesimulator/Crossfall.app' -type d | head -1)
+          echo "Built: $APP"
+          test -f "$APP/PrivacyInfo.xcprivacy"
+          test -f "$APP/PlugIns/CrossfallWidget.appex/PrivacyInfo.xcprivacy"
+          test -f "$APP/index.html"
+          ls "$APP" | grep -c '\.woff2$' | grep -qx 5
+          /usr/libexec/PlistBuddy -c 'Print :ITSAppUsesNonExemptEncryption' "$APP/Info.plist"
+          /usr/libexec/PlistBuddy -c 'Print :NSLocationWhenInUseUsageDescription' "$APP/Info.plist"
+          /usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$APP/Info.plist"

@@ -19,8 +19,16 @@
 
 **I lost my stars.** Progress is saved on your phone. Deleting the app removes it.
 
-**Is the check-in private?** Yes. Your answers stay on your phone and only choose which words appear. Crossfall is a game, not therapy. If you're struggling, talk to someone you trust; in the US you can call or text 988.
+**Is the check-in private? Is my journal private?** Yes. Check-in answers, journal notes, moods and saved quotes stay on your phone. Nothing is sent to us. Delete entries one by one, or everything in ☰ › My journal › Delete all. Crossfall is a game, not therapy. If you're struggling, talk to someone you trust; in the US you can call or text 988.
+
+**Move my progress to a new phone.** ☰ › Settings › Back up or restore progress. Copy the code and paste it on the new phone. The code includes your journal, so keep it private.
+
+**I bought Pro but it's locked.** ☰ › Go Pro › Restore purchase, signed in with the same Apple Account you bought it with.
+
+**Power-ups, Fever and the Daily.** Power-ups are switched off in the official Daily, Pass & Play and duels so those scores stay fair.
+
+**Location.** Only the optional Sports "hometown" feature uses it, once, on your device. Turn it off in iOS Settings › Privacy & Security › Location Services › Crossfall. See the [privacy policy](PRIVACY.md).
 
 ## Contact
 
-Open an issue in the Crossfall GitHub repository and include your iPhone model, iOS version and what happened.
+Open an issue in the Crossfall GitHub repository (github.com/marcompsci/CrossFall/issues) and include your iPhone model, iOS version and what happened.

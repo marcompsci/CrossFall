@@ -935,6 +935,7 @@ html.cb .ach-m i.on::after{content:"✓";display:block;font-size:10px;line-heigh
 .wd-tiles{display:flex;gap:4px;justify-content:center;flex-wrap:nowrap;margin:6px 0}.wd-tiles .ld-t{width:32px;height:38px;font-size:18px}.wd-card .adv-b{width:100%;max-width:300px}.wd-card .adv-b>*{flex:1}
 .wd-in{width:100%;max-width:300px;box-sizing:border-box;text-transform:uppercase;letter-spacing:.2em;text-align:center;font-family:var(--f-mono);font-size:20px;background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:10px;min-height:48px}
 .wd-res{font-weight:800;color:var(--solved)}
+.legal-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:8px}.legal-links a,.dr-link{color:var(--accent);font-weight:700;text-decoration:underline;min-height:44px;display:inline-flex;align-items:center}.dr-link{padding:0 12px}.legal-note{text-align:center}.jr-care{font-size:calc(12px*var(--ts))}
 .gc-pages{display:flex;gap:6px;margin:2px 0 8px;overflow-x:auto;scrollbar-width:none}
 .gc-pages button{flex:1 0 auto;min-height:32px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.18);color:inherit;font:inherit;font-size:12px;font-weight:700;letter-spacing:.02em}
 .gc-pages button[aria-selected="true"]{background:rgba(255,255,255,.92);color:#111;border-color:transparent}
@@ -1243,6 +1244,8 @@ html.wide #profile.hud>.hud-bar,html.wide #profile.hud>.hero{grid-column:1/-1}
         <button data-act="how">How to play</button>
         <button data-act="settings">Display and rush timer</button>
         <button data-act="checkin">Change my check-in answers</button>
+        <a class="dr-link" href="https://github.com/marcompsci/CrossFall/blob/main/docs/app-store/PRIVACY.md" target="_blank" rel="noopener">Privacy policy</a>
+        <a class="dr-link" href="https://github.com/marcompsci/CrossFall/blob/main/docs/app-store/SUPPORT.md" target="_blank" rel="noopener">Help &amp; support</a>
       </nav>
     </aside>
 
@@ -1347,6 +1350,8 @@ html.wide #profile.hud>.hud-bar,html.wide #profile.hud>.hero{grid-column:1/-1}
     <button class="setrow" role="switch" id="setCalm"><span><span class="st-t">Reduce motion</span><br><span class="st-d">Turns off shakes, pops, floating points and the card tilt. Your phone's Reduce Motion setting does this too.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setCoach"><span><span class="st-t">Coach's notes</span><br><span class="st-d">Up to two tips after each game, based on how it went.</span></span><span class="sw"></span></button>
     <button class="ghost-btn" id="setBackup">Back up or restore progress</button>
+    <div class="legal-links"><a href="https://github.com/marcompsci/CrossFall/blob/main/docs/app-store/PRIVACY.md" target="_blank" rel="noopener">Privacy policy</a><a href="https://github.com/marcompsci/CrossFall/blob/main/docs/app-store/SUPPORT.md" target="_blank" rel="noopener">Help &amp; support</a></div>
+    <p class="st-d legal-note">Crossfall keeps your progress, journal and settings on this device. No ads, no tracking, no account.</p>
     <button class="big" id="setDone">Done</button>
   </div>
 </div>
@@ -4395,6 +4400,8 @@ function openJournal(tab){if(tab)jrTab=tab;const el=document.getElementById("jrn
    :`<div class="panel">${QS.length?`<ul class="jr-list qs-list">${QS.slice().reverse().map(q=>`<li><p class="jr-n">“${esc(q.text)}”</p><div class="jr-h"><span><b>${esc(q.ref)}</b> · ${esc(q.cat)} · ${esc(q.w)}</span><button class="jr-x" data-uq="${q.t}" aria-label="Remove from shelf">×</button></div></li>`).join("")}</ul>`
       :`<p class="sub">Tap the star next to any verse or quote on a result screen to keep it here.</p>`}</div>`}
    <p class="sub">Everything here stays on this phone. It's only included in your backup code.</p>
+   <p class="sub jr-care">Crossfall is a game, not therapy. If you're struggling, talk to someone you trust. In the US you can call or text 988 any time.</p>
+   ${JR.length||QS.length?`<button class="ghost-btn" id="jrWipe">${jrDel==="all"?"Tap again to delete everything":"Delete all journal entries and saved quotes"}</button>`:""}
    <div class="btns wide"><button class="big" id="jrDone">Done</button></div>`;
   el.hidden=false;
   el.querySelectorAll("#jrSeg button").forEach(b=>b.onclick=()=>{jrDel=null;openJournal(b.dataset.t)});
@@ -4403,6 +4410,8 @@ function openJournal(tab){if(tab)jrTab=tab;const el=document.getElementById("jrn
   el.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{const t=+b.dataset.del;if(jrDel!==t){jrDel=t;openJournal();const x=el.querySelector(`[data-del="${t}"]`);if(x)x.focus();return}
     JR=JR.filter(e=>e.t!==t);jrDel=null;saveJR();toast("Entry deleted");openJournal()});
   el.querySelectorAll("[data-uq]").forEach(b=>b.onclick=()=>{QS=QS.filter(q=>q.t!==+b.dataset.uq);saveQS();openJournal()});
+  {const w=document.getElementById("jrWipe");if(w)w.onclick=()=>{if(jrDel!=="all"){jrDel="all";openJournal();const x=document.getElementById("jrWipe");if(x)x.focus();return}
+    JR=[];QS=[];jrDel=null;saveJR();saveQS();toast("Journal and saved quotes deleted");openJournal()}}
   document.getElementById("jrDone").onclick=()=>{el.hidden=true;el.innerHTML="";jrDel=null};
   if(!el.dataset.kb){el.dataset.kb=1;el.addEventListener("keydown",e=>{if(e.key==="Escape"){el.hidden=true;el.innerHTML=""}})}}
 

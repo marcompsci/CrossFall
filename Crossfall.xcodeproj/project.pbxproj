@@ -12,6 +12,14 @@
 		C0F000000000000000000013 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000004 /* Assets.xcassets */; };
 		C0F000000000000000000101 /* CrossfallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000111 /* CrossfallWidget.swift */; };
 		C0F000000000000000000102 /* CrossfallWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000114 /* CrossfallWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C0F000000000000000000221 /* bungee-400.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000201 /* bungee-400.woff2 */; };
+		C0F000000000000000000222 /* martian-mono-500.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000202 /* martian-mono-500.woff2 */; };
+		C0F000000000000000000223 /* martian-mono-700.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000203 /* martian-mono-700.woff2 */; };
+		C0F000000000000000000224 /* atkinson-hyperlegible-400.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000204 /* atkinson-hyperlegible-400.woff2 */; };
+		C0F000000000000000000225 /* atkinson-hyperlegible-700.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000205 /* atkinson-hyperlegible-700.woff2 */; };
+		C0F000000000000000000226 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000206 /* OFL.txt */; };
+		C0F000000000000000000251 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000241 /* PrivacyInfo.xcprivacy */; };
+		C0F000000000000000000252 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C0F000000000000000000242 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +56,14 @@
 		C0F000000000000000000112 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0F000000000000000000113 /* CrossfallWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CrossfallWidget.entitlements; sourceTree = "<group>"; };
 		C0F000000000000000000114 /* CrossfallWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CrossfallWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0F000000000000000000201 /* bungee-400.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = bungee-400.woff2; sourceTree = "<group>"; };
+		C0F000000000000000000202 /* martian-mono-500.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = martian-mono-500.woff2; sourceTree = "<group>"; };
+		C0F000000000000000000203 /* martian-mono-700.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = martian-mono-700.woff2; sourceTree = "<group>"; };
+		C0F000000000000000000204 /* atkinson-hyperlegible-400.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = atkinson-hyperlegible-400.woff2; sourceTree = "<group>"; };
+		C0F000000000000000000205 /* atkinson-hyperlegible-700.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = atkinson-hyperlegible-700.woff2; sourceTree = "<group>"; };
+		C0F000000000000000000206 /* OFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		C0F000000000000000000241 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		C0F000000000000000000242 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +100,8 @@
 				C0F000000000000000000002 /* index.html */,
 				C0F000000000000000000004 /* Assets.xcassets */,
 				C0F000000000000000000005 /* Crossfall.entitlements */,
+				C0F000000000000000000241 /* PrivacyInfo.xcprivacy */,
+				C0F000000000000000000243 /* Fonts */,
 			);
 			path = Crossfall;
 			sourceTree = "<group>";
@@ -103,10 +121,19 @@
 				C0F000000000000000000111 /* CrossfallWidget.swift */,
 				C0F000000000000000000112 /* Info.plist */,
 				C0F000000000000000000113 /* CrossfallWidget.entitlements */,
+				C0F000000000000000000242 /* PrivacyInfo.xcprivacy */,
 			);
 			path = CrossfallWidget;
 			sourceTree = "<group>";
 		};
+		C0F000000000000000000243 /* Fonts */ = {isa = PBXGroup; children = (
+				C0F000000000000000000201 /* bungee-400.woff2 */,
+				C0F000000000000000000202 /* martian-mono-500.woff2 */,
+				C0F000000000000000000203 /* martian-mono-700.woff2 */,
+				C0F000000000000000000204 /* atkinson-hyperlegible-400.woff2 */,
+				C0F000000000000000000205 /* atkinson-hyperlegible-700.woff2 */,
+				C0F000000000000000000206 /* OFL.txt */,
+			); path = Fonts; sourceTree = "<group>"; };
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -190,6 +217,13 @@
 			files = (
 				C0F000000000000000000012 /* index.html in Resources */,
 				C0F000000000000000000013 /* Assets.xcassets in Resources */,
+				C0F000000000000000000251 /* PrivacyInfo.xcprivacy in Resources */,
+				C0F000000000000000000221 /* bungee-400.woff2 in Resources */,
+				C0F000000000000000000222 /* martian-mono-500.woff2 in Resources */,
+				C0F000000000000000000223 /* martian-mono-700.woff2 in Resources */,
+				C0F000000000000000000224 /* atkinson-hyperlegible-400.woff2 in Resources */,
+				C0F000000000000000000225 /* atkinson-hyperlegible-700.woff2 in Resources */,
+				C0F000000000000000000226 /* OFL.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0F000000000000000000252 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,13 +300,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Crossfall/Crossfall.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = X6LZQ3FS36;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Crossfall;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				INFOPLIST_KEY_NSGKFriendListUsageDescription = "Crossfall shows your Game Center friends' scores on the Friends leaderboard.";
+				INFOPLIST_KEY_NSLocationDefaultAccuracyReduced = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Crossfall uses your approximate location once, on this device, to show sports legends from your area. It is never stored or shared.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -297,13 +333,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Crossfall/Crossfall.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = X6LZQ3FS36;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Crossfall;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				INFOPLIST_KEY_NSGKFriendListUsageDescription = "Crossfall shows your Game Center friends' scores on the Friends leaderboard.";
+				INFOPLIST_KEY_NSLocationDefaultAccuracyReduced = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Crossfall uses your approximate location once, on this device, to show sports legends from your area. It is never stored or shared.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -328,7 +365,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CrossfallWidget/CrossfallWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = X6LZQ3FS36;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CrossfallWidget/Info.plist;
@@ -354,7 +391,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CrossfallWidget/CrossfallWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = X6LZQ3FS36;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CrossfallWidget/Info.plist;

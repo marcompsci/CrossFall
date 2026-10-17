@@ -28,6 +28,17 @@ Play with friends
 • Challenge a friend and they race a live ghost of your run. Track your record against every rival.
 • A Friends view on the Game Center leaderboards, and a "Share my week" card.
 
+More ways to play
+• Ladder: change one letter at a time to turn one word into another. A new Today's Puzzle next to the Mini and Chunks.
+• Word Trail: a 40-stop journey across five regions, each stop with its own twist and a boss at the end.
+• Power-ups (Freeze, Bomb, Sweep) and a Fever meter for big scoring streaks.
+• Daily quests, Marathon runs and Pass & Play for two players on one device.
+• Spooky Season: six free haunted puzzles until 2 November.
+
+Track your progress
+• Achievements, an Insights page with your play map and trends, Word of the day, and your own avatar and title.
+• An optional journal for reflections after Biblical, Psychology and Books games. It stays on your phone, and you can delete it any time.
+
 Feels better
 • Big chain and combo callouts, rising chain sounds, word bursts and a highlights reel after every puzzle.
 • XP and levels, 11 well themes, weekly challenges, streak milestones, a daily reminder, a home-screen widget, and three original music tracks.
@@ -48,4 +59,4 @@ Feels better
 
 1. Xcode › Crossfall target › Signing & Capabilities: confirm **App Groups** shows `group.com.phoronomicstudios.crossfall` with a checkmark (automatic signing registers it on the first device build).
 2. Same for the **CrossfallWidgetExtension** target (bundle id `com.phoronomicstudios.crossfall.widget`).
-3. Build 13 is version 1.1. Archive only after 1.0 is approved, then create version 1.1 in App Store Connect.
+3. Build 17 is the current 1.1 build (build 16 is already uploaded). Full review notes for build 17: [`../app-review-notes.md`](../app-review-notes.md).

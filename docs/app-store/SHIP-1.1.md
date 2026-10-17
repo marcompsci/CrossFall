@@ -1,6 +1,6 @@
 # Shipping Crossfall 1.1
 
-Version 1.1 (build 16). Release it once 1.0 is approved and live; App Store Connect won't take a new version while 1.0 is still in review.
+Version 1.1 (build 16 uploaded; build 17 ready, see ../testflight-release-checklist.md). Release it once 1.0 is approved and live; App Store Connect won't take a new version while 1.0 is still in review.
 
 ## 1. Screenshots (ready)
 
@@ -30,7 +30,7 @@ Crossfall Pro is unchanged. The paywall copy now says "70 or more crosswords in 
 
 ## 5. Build
 
-- `MARKETING_VERSION 1.1`, `CURRENT_PROJECT_VERSION 16`.
+- `MARKETING_VERSION 1.1`, `CURRENT_PROJECT_VERSION 17` (16 already uploaded).
 - New Info.plist keys: `NSLocationWhenInUseUsageDescription` and `NSGKFriendListUsageDescription`.
 - In Xcode: Product › Archive, then Distribute App › App Store Connect › Upload. Build 16 goes to TestFlight.
 

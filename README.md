@@ -120,6 +120,10 @@ Then run **Install on iPhone** again.
 
 ## TestFlight
 
+**Before every upload, run the release gate:** `python3 scripts/release_gate.py --smoke`, then make sure the GitHub **Release gate** workflow is green. The full checklist is in [`docs/testflight-release-checklist.md`](docs/testflight-release-checklist.md); the compliance audit is in [`docs/apple-compliance-report.md`](docs/apple-compliance-report.md); review text is in [`docs/app-review-notes.md`](docs/app-review-notes.md); tester setup is in [`docs/external-tester-guide.md`](docs/external-tester-guide.md).
+
+> Build numbers: 1.1 uses plain numbers (16 uploaded, 17 next, recorded in `docs/app-store/last-uploaded-build.txt`). The command below stamps a date-based number (`YYMMDDHHMM`), which is far higher; after one such upload, small numbers from Xcode would be rejected for that version. Pick one method per version.
+
 Double-click **`Ship to TestFlight.command`**. It archives a Release build and uploads it. Each build number comes from the date and time (`YYMMDDHHMM`), so every run makes a new build.
 
 If the upload step says **"Failed to Use Accounts"**, double-click `build/Crossfall.xcarchive` and choose **Distribute App › App Store Connect › Distribute** in Xcode Organizer.
@@ -133,7 +137,7 @@ To stop the error for future uploads, sign out of your Apple ID and back in unde
 | App Store Connect app | Crossfall |
 | Bundle ID | `com.phoronomicstudios.crossfall` |
 | First build | 0.1 (2610111829), 11 Oct 2026 |
-| Current | 0.2 (7), 11 Oct 2026: Game Center, polish, accessibility |
+| Current | 1.1 (17) ready, 16 Oct 2026; 1.1 (16) uploaded 15 Oct; 1.0 in App Review |
 | Devices | iPhone (portrait) and iPad (all orientations, from 0.3) |
 
 ## Roadmap

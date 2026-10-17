@@ -76,6 +76,28 @@ Severity: **BLOCKER** stops TestFlight external review or the App Store, **HIGH*
 - **Dependency vulnerability scan**: there are no dependencies (no SPM, CocoaPods or npm in the shipped app), so there's nothing to scan. CI uses Playwright only as a test tool.
 - **Unit tests in Xcode**: there's no XCTest target. The game logic lives in JS and is covered by the Playwright suites. Adding an XCTest target would be a project change I haven't made without approval.
 
-## 5. Release-readiness result
+## 5. Test and CI results (real runs)
 
-**CONDITIONAL.** All 33 automated gates pass locally and the Linux CI job passed. No known code blockers remain. The manual items still open are: confirm the agreements in App Store Connect, the device play-test, the age-rating and App Privacy answers, pasting the new review notes and What's New, and Omari's go-ahead for the build 17 upload. External TestFlight approval is a separate, lighter review than App Store approval; passing one doesn't mean passing the other.
+| Run | Result |
+| --- | --- |
+| `scripts/release_gate.py --smoke` (local) | 34 checks: 34 pass, 0 fail, 0 skipped |
+| Phase regression suites `t4`–`t7`, `t4b`–`t7b` | Pass. `t4` logs one blocked Google Fonts request from the **web** build (`web/crossfall.html` still uses Google Fonts on the web; the app bundle doesn't). |
+| Injection test, Spooky off-season test | Pass |
+| GitHub Actions, commit e624655 ([run 38999835242](https://github.com/marcompsci/CrossFall/actions/runs/38999835242)) | **Static + smoke: pass. Xcode Release simulator build: pass**, with bundle contents verified |
+| Earlier CI runs | The first two macOS runs failed in my own bundle-check step: wrong widget bundle name, then a plist key Xcode ignores. Both were fixed, and the second led to finding 8. They're kept in the Actions history. |
+| Signed archive / Validate App / upload | **Not run.** Needs the Mac and Omari's go-ahead |
+| Real-device play-test | **Not run** |
+
+## 6. Release-readiness result
+
+**CONDITIONAL.** All 34 automated gates pass locally, and both CI jobs (static + smoke, and the unsigned Release Xcode build) passed on GitHub. Two real defects found in this audit were fixed: HTML injection from shared puzzle codes, and the Spooky Season dead end after 2 November. No known code blockers remain.
+
+Still to do by hand before external TestFlight:
+
+1. App Store Connect › Business: accept any pending agreement.
+2. Signed Archive → Validate App on the Mac → upload build 17, **only when Omari says so**.
+3. Real-device play-test (checklist section D).
+4. Age rating questionnaire (current questions), App Privacy recheck, Test Information, What to Test.
+5. Recommended: a dedicated support email.
+
+External TestFlight approval is a separate, lighter review than App Store approval; passing one doesn't mean passing the other, and neither is guaranteed.

@@ -307,7 +307,6 @@
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				INFOPLIST_KEY_NSGKFriendListUsageDescription = "Crossfall shows your Game Center friends' scores on the Friends leaderboard.";
-				INFOPLIST_KEY_NSLocationDefaultAccuracyReduced = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Crossfall uses your approximate location once, on this device, to show sports legends from your area. It is never stored or shared.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -340,7 +339,6 @@
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				INFOPLIST_KEY_NSGKFriendListUsageDescription = "Crossfall shows your Game Center friends' scores on the Friends leaderboard.";
-				INFOPLIST_KEY_NSLocationDefaultAccuracyReduced = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Crossfall uses your approximate location once, on this device, to show sports legends from your area. It is never stored or shared.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

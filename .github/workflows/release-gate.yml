@@ -63,7 +63,7 @@ jobs:
           n=$(find "$APP" -name '*.woff2' 2>/dev/null | wc -l | tr -d ' ')
           chk "5 fonts bundled (found $n)" "test '$n' = 5"
           for f in $(grep -o '[a-z0-9-]*\.woff2' "$APP/index.html" 2>/dev/null | sort -u); do chk "font $f at the path index.html uses" "test -f '$APP/$f'"; done
-          for k in ITSAppUsesNonExemptEncryption NSLocationWhenInUseUsageDescription NSGKFriendListUsageDescription NSLocationDefaultAccuracyReduced CFBundleVersion CFBundleShortVersionString; do
+          for k in ITSAppUsesNonExemptEncryption NSLocationWhenInUseUsageDescription NSGKFriendListUsageDescription CFBundleVersion CFBundleShortVersionString; do
             v=$(/usr/libexec/PlistBuddy -c "Print :$k" "$APP/Info.plist" 2>/dev/null)
             chk "Info.plist $k = ${v:0:40}" "test -n \"\$v\""; done
           echo "::notice title=Bundle checks passed::${passed#; }"

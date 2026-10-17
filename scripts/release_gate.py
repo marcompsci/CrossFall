@@ -87,6 +87,8 @@ for pat, key in needs:
     if re.search(pat, SWIFT):
         vals = re.findall(rf'INFOPLIST_KEY_{key} = "([^"]+)"', PBX)
         res("PASS" if len(vals) >= 2 and all(len(v) > 25 for v in vals) else "FAIL", f"{key} set for Debug and Release")
+if "CLLocationManager" in SWIFT:
+    res("PASS" if "kCLLocationAccuracyReduced" in SWIFT else "FAIL", "location is requested at reduced (approximate) accuracy")
 res("PASS" if "ATTrackingManager" not in SWIFT and "AdSupport" not in SWIFT else "FAIL", "no tracking / IDFA APIs")
 res("PASS" if setting("INFOPLIST_KEY_ITSAppUsesNonExemptEncryption") == ["NO"] else "WARN",
     "export compliance declared (ITSAppUsesNonExemptEncryption = NO; app uses only Apple's HTTPS)")

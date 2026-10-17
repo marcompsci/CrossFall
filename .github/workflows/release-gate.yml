@@ -46,16 +46,20 @@ jobs:
         run: |
           set -o pipefail
           xcodebuild -project Crossfall.xcodeproj -scheme Crossfall -configuration Release \
-            -destination 'generic/platform=iOS Simulator' \
+            -destination 'generic/platform=iOS Simulator' -derivedDataPath build/DD \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build | tail -n 60
-      - name: Privacy manifests and fonts are inside the built app
+      - name: Privacy manifests, fonts and Info.plist keys are inside the built app
         run: |
-          APP=$(find ~/Library/Developer/Xcode/DerivedData -path '*Release-iphonesimulator/Crossfall.app' -type d | head -1)
-          echo "Built: $APP"
-          test -f "$APP/PrivacyInfo.xcprivacy"
-          test -f "$APP/PlugIns/CrossfallWidget.appex/PrivacyInfo.xcprivacy"
-          test -f "$APP/index.html"
-          ls "$APP" | grep -c '\.woff2$' | grep -qx 5
-          /usr/libexec/PlistBuddy -c 'Print :ITSAppUsesNonExemptEncryption' "$APP/Info.plist"
-          /usr/libexec/PlistBuddy -c 'Print :NSLocationWhenInUseUsageDescription' "$APP/Info.plist"
-          /usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$APP/Info.plist"
+          APP=build/DD/Build/Products/Release-iphonesimulator/Crossfall.app
+          WID=$(ls -d "$APP"/PlugIns/*.appex | head -1)
+          echo "app: $APP"; echo "widget: $WID"
+          fail=0
+          chk() { if eval "$2"; then echo "PASS  $1"; else echo "FAIL  $1"; fail=1; fi; }
+          chk "app privacy manifest bundled"    "test -f '$APP/PrivacyInfo.xcprivacy'"
+          chk "widget privacy manifest bundled" "test -f '$WID/PrivacyInfo.xcprivacy'"
+          chk "index.html bundled"              "test -f '$APP/index.html'"
+          n=$(find "$APP" -name '*.woff2' | wc -l | tr -d ' '); chk "5 fonts bundled (found $n)" "test $n -eq 5"
+          for f in $(grep -o '[a-z0-9-]*\.woff2' "$APP/index.html" | sort -u); do chk "font $f at the path index.html uses" "test -f '$APP/$f'"; done
+          for k in ITSAppUsesNonExemptEncryption NSLocationWhenInUseUsageDescription NSGKFriendListUsageDescription NSLocationDefaultAccuracyReduced CFBundleVersion CFBundleShortVersionString; do
+            v=$(/usr/libexec/PlistBuddy -c "Print :$k" "$APP/Info.plist" 2>/dev/null); chk "Info.plist $k = $v" "test -n '$v'"; done
+          exit $fail

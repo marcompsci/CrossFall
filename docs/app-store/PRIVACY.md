@@ -25,7 +25,7 @@ Deleting the app deletes all of this. The **backup code** (Settings › Back up 
 
 ## Location (optional)
 
-The Sports category can show sports legends from your area. If you tap that option, iOS asks for permission and Crossfall reads your **approximate** location once. It is matched against a list of cities built into the app, **on your device**. The location is not stored and not sent to us or anyone else. If you say no, everything else works the same. You can change this any time in iOS Settings › Privacy & Security › Location Services › Crossfall.
+The Sports category can show sports legends from your area. If you tap that option, iOS asks for permission and Crossfall reads your **approximate** location once. It is matched against a list of cities built into the app, **on your device**. The coordinates are discarded straight away; only the matched city from that built-in list is saved on your device, as if you had typed it. Nothing is sent to us or anyone else. If you say no, everything else works the same. You can change this any time in iOS Settings › Privacy & Security › Location Services › Crossfall.
 
 In App Store Connect this is listed as **Coarse Location, used for App Functionality, not linked to you, not used for tracking**.
 

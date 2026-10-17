@@ -61,6 +61,15 @@ async def main():
         check("privacy policy link in Settings", await pg.evaluate("[...document.querySelectorAll('#settings a')].some(a=>/PRIVACY\\.md$/.test(a.href))"))
         check("support link in Settings", await pg.evaluate("[...document.querySelectorAll('#settings a')].some(a=>/SUPPORT\\.md$/.test(a.href))"))
         check("restore purchase reachable", await pg.evaluate("document.body.innerHTML.includes('Restore purchase')"))
+        # Shared codes come from other people: HTML in a title, clue or nickname must never run.
+        X = '<img src=x onerror="window.__pwn=1">'
+        await pg.evaluate("""(X)=>{document.querySelectorAll('.ov').forEach(o=>{if(o.id!=='menu')o.hidden=true});S=null;showMenu();
+            const spec={t:'T '+X,w:[['APPLE','fruit '+X],['PEAR','green '+X],['PLUM','purple'],['LEMON','sour'],['MANGO','tropical']],d:'bar',f:'clue',s:7};
+            const r=buildCustom(readCustomCode(customCode(spec)));startLevel(r.L)}""", X)
+        await pg.wait_for_timeout(300); await pg.evaluate(PLAY); await pg.wait_for_timeout(600)
+        await pg.evaluate("(X)=>{const c=readChalCode('CFC.'+b64e(JSON.stringify({p:LEVELS[0].id,s:5,n:X,g:X})));if(c){S=null;showMenu();playChallenge(c)}}", X)
+        await pg.wait_for_timeout(400)
+        check("shared puzzle and challenge codes can't inject HTML", not await pg.evaluate("!!window.__pwn"))
         check("no network requests made by the page", not external, ", ".join(sorted(set(external))[:5]))
         check("no uncaught JavaScript errors", not errors, " | ".join(errors[:3]))
         await b.close()

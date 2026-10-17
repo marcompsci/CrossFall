@@ -3027,7 +3027,7 @@ function renderRush(){
   let prompt="",slots="";
   if(tap){prompt="Find it in the well. Tap its letters in order.";slots=`<div class="slots">${[...R_.word].map((c,i)=>`<b style="${i<R_.taps.length?"background:var(--solved)":""}">${c}</b>`).join("")}</div>`}
   else if(R_.mode==="scramble"){prompt="The stack hid a word. Unscramble it.";slots=`<div class="slots scr">${[...R_.scr].map(c=>`<b>${c}</b>`).join("")}</div><div class="slots${R_.input?"":" empty"}">${[...R_.word].map((_,i)=>`<b>${R_.input[i]||""}</b>`).join("")}</div>`}
-  else{prompt=`<b>${R_.clue}</b>`;slots=`<div class="slots empty">${[...R_.word].map((_,i)=>`<b style="${R_.input[i]?"background:var(--tile);border:0":""}">${R_.input[i]||""}</b>`).join("")}</div>`}
+  else{prompt=`<b>${esc(R_.clue)}</b>`;slots=`<div class="slots empty">${[...R_.word].map((_,i)=>`<b style="${R_.input[i]?"background:var(--tile);border:0":""}">${R_.input[i]||""}</b>`).join("")}</div>`}
   if(R_.state==="on"&&R_.limit<RUSH_SECS)prompt+=` <span class="pace">Your time: ${fmtTime(R_.limit)}. You've been quick, so it's shorter.</span>`;
   if(R_.state==="lost")prompt=`Time! The word was <b>${R_.word}</b>.`+(R_.next>R_.limit?` <span class="pace">Next ${RUSH_MODES[R_.mode]} rush gets more time: ${fmtTime(R_.next)}.</span>`:"");
   if(R_.state==="won")prompt=`Found it. Clearing above the line.`+(R_.next<R_.limit?` <span class="pace">Next ${RUSH_MODES[R_.mode]} rush: ${fmtTime(R_.next)}.</span>`:"");
@@ -3571,10 +3571,10 @@ function parseWordList(text){
   const out=[],bad=[];
   for(const raw of String(text).split(/\n/)){const line=raw.trim();if(!line)continue;
     const m=line.match(/^([A-Za-z]{3,9})\s*[-–—:=,|]\s*(.{2,140})$/);
-    if(m&&!out.some(e=>e[0]===m[1].toUpperCase()))out.push([m[1].toUpperCase(),m[2].trim()]);else bad.push(line)}
+    if(m&&!out.some(e=>e[0]===m[1].toUpperCase()))out.push([m[1].toUpperCase(),m[2].replace(/[<>]/g,"").trim()]);else bad.push(line)}
   return{out,bad};
 }
-function buildCustom(spec){
+function buildCustom(spec){spec={...spec,t:String(spec.t||"").replace(/[<>]/g,"").slice(0,40)};  // shared codes are untrusted text
   let words=spec.w.slice(0,10),cw=buildCrossword(words,spec.s||7,30),dropped=[];
   for(let k=0;!cw&&k<3&&words.length>3;k++){
     let best=null;for(let i=0;i<words.length;i++){const tryW=words.filter((_,j)=>j!==i),r=buildCrossword(tryW,(spec.s||7)+i,12);if(r){best={i,r};break}}

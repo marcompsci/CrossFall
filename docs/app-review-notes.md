@@ -9,7 +9,7 @@ Copy-ready text for **App Store Connect**. Each block fits Apple's field limits 
 ```
 Crossfall is a word game where crosswords fall. Solve a clue and your word drops into a well as a falling piece. Stack it, spell the target word on the middle line, and win the word rush before time runs out.
 
-700+ puzzles across ten categories, plus three free Today's Puzzles (the Mini, Chunks and Ladder), a Daily, a 40-stop Word Trail, weekly events and a Spooky Season pack (until 2 November). Game Center leaderboards, a home-screen widget, and a one-time Crossfall Pro purchase. No ads, no tracking, no account.
+700+ puzzles across ten categories, plus four free Today's Puzzles (the Mini, Chunks, Ladder and Cipher), a Daily, a 40-stop Word Trail, a 60-second Rush Gym, weekly events and seasonal packs (Spooky Season until 2 November, Harvest Season 3 to 30 November). Game Center leaderboards, a home-screen widget, and a one-time Crossfall Pro purchase. No ads, no tracking, no account.
 ```
 
 ## 2. What to Test (TestFlight, per build)
@@ -17,13 +17,13 @@ Crossfall is a word game where crosswords fall. Solve a clue and your word drops
 ```
 Build 17 — thanks for testing! Please try:
 
-1. First launch: the welcome questions and the one-minute tour.
-2. Play one puzzle start to finish (Play › any category). Tell us if the falling pieces feel too fast or slow.
-3. Today's Puzzles on the home screen: the Daily, the Mini, Chunks and the new Ladder.
+1. First launch: the welcome questions, the one-minute tour, then the simpler "Start here" home for your first three games.
+2. Play one puzzle start to finish (Play › any category). Tell us if the falling pieces feel too fast or slow. Rate it on the result screen.
+3. Today's Puzzles on the home screen: the Daily, the Mini, Chunks, Ladder and the new Cipher.
 4. ☰ Menu › Word Trail: clear the first two stops.
-5. Power-ups (Freeze, Bomb, Sweep) under the drop buttons, and the Fever bar under the target.
-6. ☰ › Achievements, Insights and Word of the day.
-7. ☰ › Spooky Season (time-limited, until 2 November).
+5. Power-ups (Freeze, Bomb, Sweep and the new Rewind) under the drop buttons, and the Fever bar under the target.
+6. ☰ › Rush Gym, My records, Achievements, Insights and Word of the day. Try Surprise me on the home screen.
+7. ☰ › Spooky Season (until 2 November) or Harvest Season (3 to 30 November).
 8. Settings (Aa): Privacy policy and Help & support links open in Safari.
 9. Rankings tab, signed in and signed out of Game Center.
 10. Go Pro and Restore purchase (TestFlight purchases are free and not charged).
@@ -52,6 +52,13 @@ NEW IN 1.1 (where to find it)
 • Achievements, Insights, Word of the day, Avatar & title: Menu.
 • Quests, Marathon and Pass & Play (same-device multiplayer): Menu › Quests, Marathon & Pass and Play.
 • Spooky Season: a free, time-limited pack (15 Oct to 2 Nov). Menu › Spooky Season. After 2 Nov this menu item is hidden.
+• Harvest Season: a free, time-limited pack (3 to 30 Nov). Menu › Harvest Season and a tile on the home screen, shown only on those dates.
+• Cipher: a fourth Today's Puzzle on the home screen, a daily cryptogram of a public-domain saying or proverb.
+• Rush Gym (60-second unscramble sprint) and My records: Menu.
+• Rewind power-up: under the drop buttons, next to Freeze, Bomb and Sweep.
+• Surprise me: home screen; starts a random puzzle the player can already play.
+• A short thumbs-up / "Not for me" on the result screen. It's stored on the device and only changes which puzzles "For you" suggests.
+• New players see a simpler home screen (the Daily plus one suggested puzzle) for their first three games; "Show everything now" opens the full screen right away.
 
 WELLNESS TOPICS
 Biblical, Psychology and Books start with an optional check-in that chooses which words appear, and offer an optional reflection note after a game (Menu › My journal). All of this is stored only on the device; Menu › My journal › Delete all removes it. The app says it is a game, not therapy, and lists 988 (US). No health claims are made.

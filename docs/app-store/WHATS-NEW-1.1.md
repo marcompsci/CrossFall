@@ -30,13 +30,16 @@ Play with friends
 
 More ways to play
 • Ladder: change one letter at a time to turn one word into another. A new Today's Puzzle next to the Mini and Chunks.
+• Cipher: crack a famous saying where every letter has been swapped.
+• Rush Gym: a 60-second unscramble sprint. Beat your best.
 • Word Trail: a 40-stop journey across five regions, each stop with its own twist and a boss at the end.
-• Power-ups (Freeze, Bomb, Sweep) and a Fever meter for big scoring streaks.
+• Power-ups (Freeze, Bomb, Sweep, Rewind) and a Fever meter for big scoring streaks.
 • Daily quests, Marathon runs and Pass & Play for two players on one device.
-• Spooky Season: six free haunted puzzles until 2 November.
+• Harvest Season: six free autumn puzzles from 3 to 30 November.
 
 Track your progress
 • Achievements, an Insights page with your play map and trends, Word of the day, and your own avatar and title.
+• Bronze to Platinum mastery for every category, your personal records, and a recap at the start of each month.
 • An optional journal for reflections after Biblical, Psychology and Books games. It stays on your phone, and you can delete it any time.
 
 Feels better

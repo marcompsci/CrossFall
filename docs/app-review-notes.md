@@ -24,10 +24,11 @@ Build 17 — thanks for testing! Please try:
 5. Power-ups (Freeze, Bomb, Sweep and the new Rewind) under the drop buttons, and the Fever bar under the target.
 6. ☰ › Rush Gym, My records, Achievements, Insights and Word of the day. Try Surprise me on the home screen.
 7. ☰ › CPU rivals & Rival Cup: race Rook, then replay that puzzle to race your own best.
-8. ☰ › Harvest Season (3 to 30 November).
-9. Settings (Aa): Privacy policy and Help & support links open in Safari.
-10. Rankings tab, signed in and signed out of Game Center.
-11. Go Pro and Restore purchase (TestFlight purchases are free and not charged).
+8. Add the Quick Daily widget (large) to your Home Screen and play it there: clues first, then the well.
+9. ☰ › Harvest Season (3 to 30 November).
+10. Settings (Aa): Privacy policy and Help & support links open in Safari.
+11. Rankings tab, signed in and signed out of Game Center.
+12. Go Pro and Restore purchase (TestFlight purchases are free and not charged).
 
 Send feedback with a screenshot: take a screenshot in the app and tap Share Beta Feedback, or open TestFlight › Crossfall › Send Beta Feedback.
 ```
@@ -56,13 +57,13 @@ NEW IN 1.1 (where to find it)
 • Cipher: a fourth Today's Puzzle on the home screen, a daily cryptogram of a public-domain saying or proverb.
 • Rush Gym (60-second unscramble sprint) and My records: Menu.
 • Rewind power-up: under the drop buttons, next to Freeze, Bomb and Sweep.
-• Surprise me: home screen; starts a random puzzle the player can already play.
+• Surprise me (home): a random playable puzzle.
 • CPU rivals and the weekly Rival Cup: Menu › CPU rivals & Rival Cup. The rivals (Pip, Rook, Vex) are labelled CPU; their pace is computed on the device from the player's own past scores. There are no other players and nothing goes online.
 • Second chance: when the well fills, the player may spend 5 earned sparks once a game to clear the top half. Sparks are earned in play only; they can't be bought. Not offered in the official Daily, duels or Pass & Play.
 • Report a clue (result screen) opens a prefilled GitHub issue in Safari; nothing is sent unless the player submits it there.
-• Customize home, My games (history) and Loved puzzles: Menu.
-• A short thumbs-up / "Not for me" on the result screen. It's stored on the device and only changes which puzzles "For you" suggests.
-• New players see a simpler home screen (the Daily plus one suggested puzzle) for their first three games; "Show everything now" opens the full screen right away.
+• Quick Daily widget (iOS 17, large size): three short clues solved by tapping letters, then the words are dropped into a small well. Runs in the widget via App Intents; state stays on the device.
+• "Loved it / Not for me" on results: stored on the device, only changes suggestions.
+• New players see a simpler home (Daily + one puzzle) for 3 games; "Show everything now" skips it.
 
 WELLNESS TOPICS
 Biblical, Psychology and Books start with an optional check-in that chooses which words appear, and offer an optional reflection note after a game (Menu › My journal). All of this is stored only on the device; Menu › My journal › Delete all removes it. The app says it is a game, not therapy, and lists 988 (US). No health claims are made.

@@ -134,7 +134,6 @@ struct CrossfallWidgetView: View {
     }
 }
 
-@main
 struct CrossfallWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "CrossfallDaily", provider: Provider()) { entry in
@@ -143,5 +142,15 @@ struct CrossfallWidget: Widget {
         .configurationDisplayName("Crossfall Daily")
         .description("Your streak and today's Daily puzzle.")
         .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryInline, .accessoryRectangular])
+    }
+}
+
+@main
+struct CrossfallWidgets: WidgetBundle {
+    var body: some Widget {
+        CrossfallWidget()
+        if #available(iOSApplicationExtension 17.0, *) {
+            QuickDailyWidget()
+        }
     }
 }

@@ -44,7 +44,7 @@ If you turn on the daily reminder, iOS asks for permission and Crossfall schedul
 
 ## Home-screen widget
 
-The widget shows your streak and whether today's Daily is done. The app passes it that small summary through an app group on your device.
+The widget shows your streak and whether today's Daily is done. The app passes it that small summary through an app group on your device. The Quick Daily widget keeps its own game (today's three words, your taps, score and streak) in the same app group on your device. None of it is sent anywhere.
 
 ## Spoken clues
 

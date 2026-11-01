@@ -43,6 +43,8 @@ Track your progress
 • Achievements, an Insights page with your play map and trends, Word of the day, and your own avatar and title.
 • Bronze to Platinum mastery for every category, your personal records, a history of your games, and a recap at the start of each month.
 • Customize the home screen and keep a list of puzzles you loved.
+• Quick Daily widget: play a tiny Crossfall right on your Home Screen. Three clues, then drop the words into the well.
+• Daily calendar, Snow Days in December, smart landing preview, larger controls, and speed stats in Insights.
 • An optional journal for reflections after Biblical, Psychology and Books games. It stays on your phone, and you can delete it any time.
 
 Feels better

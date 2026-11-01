@@ -1217,6 +1217,19 @@ html.light .md-cats button span span{color:#5f5577}
 .rp-link{display:block;margin:6px auto 0;background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:calc(13px*var(--ts));min-height:44px;cursor:pointer}
 .rp-row{text-decoration:none}.rp-row>span:first-child{display:flex;flex-direction:column;gap:2px;font-weight:400}.rp-row b{font-family:var(--f-mono)}
 .hs-row>span:first-child{display:flex;flex-direction:column;gap:2px}.hs-row b{font-weight:700}.hs-s{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+/* ---- phases 38–47 ---- */
+.cal-nav{display:flex;align-items:center;justify-content:space-between;gap:10px}.cal-nav b{font-size:calc(18px*var(--ts))}.cal-nav .icon-btn{width:44px;height:44px;font-size:22px}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.cal-h{text-align:center;font-size:calc(11px*var(--ts));color:var(--muted);font-weight:700}
+.cal-d{position:relative;aspect-ratio:1;min-height:40px;border:0;border-radius:10px;background:var(--panel-2);color:var(--fg);font:inherit;font-weight:700;font-variant-numeric:tabular-nums}
+.cal-d.won{background:var(--solved);color:#10302c}.cal-d.tried{background:color-mix(in srgb,var(--accent) 35%,var(--panel-2))}.cal-d.today{outline:2px solid var(--accent);outline-offset:1px}
+.cal-d:disabled{opacity:.35}.cal-d i{position:absolute;top:1px;right:4px;font-style:normal;font-size:10px}
+.sn-line{border-color:#5b6cff!important;background:linear-gradient(90deg,rgba(91,108,255,.22),rgba(200,230,255,.12))!important}
+.sn-hero{background:linear-gradient(135deg,#25306b,#121836)!important;color:#fff}.sn-hero .sub{color:#dfe6ff}.sn-hero .ln{color:#a9c3ff}
+html.snow #well{background-image:radial-gradient(circle at 20% 10%,rgba(255,255,255,.18) 0 2px,transparent 3px),radial-gradient(circle at 70% 30%,rgba(255,255,255,.14) 0 2px,transparent 3px),linear-gradient(180deg,rgba(91,108,255,.18),transparent 60%)}
+#well .wc.ghost.good{border-color:var(--solved)!important;background:color-mix(in srgb,var(--solved) 28%,transparent)!important;box-shadow:inset 0 0 0 1px var(--solved)}
+.risk-line{border-color:var(--danger)!important;background:color-mix(in srgb,var(--danger) 14%,var(--panel-2))!important}.risk-line small{display:block;font-weight:400;color:var(--muted);font-size:calc(12px*var(--ts))}
+html.bigctl .ctrl .k{height:74px;font-size:calc(24px*var(--ts));max-width:none}html.bigctl .pwr .k.pwu{height:58px}
+#restartBtn{width:100%;margin-top:-4px}
 /* ===== Fluid pass (Apple design / Emil Kowalski skill audit, 28 Oct 2026) ===== */
 :root{--ease-out:cubic-bezier(.2,.8,.2,1);--ease-press:cubic-bezier(.3,.7,.4,1)}
 /* 1. respond on press: every control acknowledges the touch immediately; no 300 ms tap delay */
@@ -1317,6 +1330,7 @@ html.hc .panel{border-color:var(--line);box-shadow:none}
       <nav class="dr-list" aria-label="More">
         <button data-act="resume" id="drResume" hidden>Resume game</button>
         <button data-act="archive">Past daily puzzles</button>
+        <button data-act="calendar"><span data-ti="numbers"></span> Daily calendar</button>
         <button data-act="maker">Make a puzzle</button>
         <button data-act="review">Review my words</button>
         <button data-act="langlab"><span data-ti="globe"></span> Language lab</button>
@@ -1329,6 +1343,7 @@ html.hc .panel{border-color:var(--line);box-shadow:none}
         <button data-act="duels"><span data-ti="bolt"></span> Duels &amp; rivals</button>
         <button data-act="spooky"><span data-ti="moon"></span> Spooky Season</button>
         <button data-act="harvest" hidden><span data-ti="seedling"></span> Harvest Season</button>
+        <button data-act="snow" hidden><span data-ti="snow"></span> Snow Days</button>
         <button data-act="trail"><span data-ti="map"></span> Word Trail</button>
         <button data-act="ach"><span data-ti="medal"></span> Achievements</button>
         <button data-act="insights"><span data-ti="numbers"></span> Insights</button>
@@ -1356,6 +1371,7 @@ html.hc .panel{border-color:var(--line);box-shadow:none}
 
     <section class="hpage" id="pgPlay" aria-label="Play">
       <button class="big" id="resumeBtn" hidden>Resume game</button>
+      <button class="ghost-btn" id="restartBtn" hidden>Restart this puzzle</button>
       <div class="dcard" id="dailyCard"></div>
       <div class="deckhead"><h2 class="hh">Pick a category</h2><span class="ln" id="deckPos">1 / 9</span></div>
       <div class="deck" id="deck" tabindex="0" aria-label="Categories. Swipe left or right, or use the arrow keys."></div>
@@ -1451,6 +1467,8 @@ html.hc .panel{border-color:var(--line);box-shadow:none}
     <span class="ln set-sec">COMFORT &amp; ACCESS</span>
     <button class="setrow" role="switch" id="setCb"><span><span class="st-t">Colorblind-friendly tiles</span><br><span class="st-d">Adds stripes, dots and outlines so no tile relies on color alone, and swaps green for blue.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setSpeak"><span><span class="st-t">Read clues aloud</span><br><span class="st-d">Speaks each new clue and quote as it appears. The speaker by the clue reads it any time.</span></span><span class="sw"></span></button>
+    <button class="setrow" role="switch" id="setBigCtl"><span><span class="st-t">Large game controls</span><br><span class="st-d">Taller move, turn and drop buttons.</span></span><span class="sw"></span></button>
+    <button class="setrow" role="switch" id="setSmart"><span><span class="st-t">Smart landing preview</span><br><span class="st-d">The landing spot glows green when the drop will clear a row.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setLefty"><span><span class="st-t">Left-handed controls</span><br><span class="st-d">Moves slam, turn and hold to the left side of the well controls.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setCalm"><span><span class="st-t">Reduce motion</span><br><span class="st-d">Turns off shakes, pops, floating points and the card tilt. Your phone's Reduce Motion setting does this too.</span></span><span class="sw"></span></button>
     <button class="setrow" role="switch" id="setCoach"><span><span class="st-t">Coach's notes</span><br><span class="st-d">Up to two tips after each game, based on how it went.</span></span><span class="sw"></span></button>
@@ -2338,7 +2356,7 @@ function startLevel(i){
   S={diff:dKey,li:obj?-1:i,L,R,cw,grid,phase:"cross",sel:{key:cw.words[0].cells[0],dir:cw.words[0].dir},active:null,queue:[],score:0,
      targetHit:false,lastText:null,t0:Date.now(),rushWins:0,rushTotal:0,lockCount:0,lastRush:-9,cool:1,rush:null,acc:0,usedBonus:[],flash:[],hit:[],ghost:true,linesCleared:0,
      pts:{},helped:new Set(),bad:new Set(),assist:!!prefs.autocheck,chain:0,lastSolve:null,maxChain:0,crossMs:0,rushStreak:0,b2b:false,combo:0,hold:null,canHold:true,zen:!!prefs.zen,speedMult:SPEED_MULT[prefs.speed]||1,wordLog:[],final:null};
-  if(runOn){S.run=RUN.legs+1;S.runMul=Math.max(.6,1-.06*RUN.legs)}if(ppOn)S.pp=PP.turn+1;if(trOn)trailApply(TRAIL.k);document.documentElement.classList.toggle("spooky",!!L.spooky);document.documentElement.classList.toggle("harvest",!!L.harvest);
+  if(runOn){S.run=RUN.legs+1;S.runMul=Math.max(.6,1-.06*RUN.legs)}if(ppOn)S.pp=PP.turn+1;if(trOn)trailApply(TRAIL.k);document.documentElement.classList.toggle("spooky",!!L.spooky);document.documentElement.classList.toggle("harvest",!!L.harvest);document.documentElement.classList.toggle("snow",!!L.snow);
   document.getElementById("menu").hidden=true;document.getElementById("result").hidden=true;document.getElementById("quiz").hidden=true;["maker","archive","textbox","review"].forEach(id=>{const x=document.getElementById(id);if(x)x.hidden=true});
   if(dC&&dC.first)selectWord(S.cw.words[0]);
   try{paceStart()}catch(e){}
@@ -2359,7 +2377,7 @@ function typeLetter(ch){
   if(S.phase==="rush"){rushType(ch);return}
   if(S.phase!=="cross")return;
   const w=curWord();const cell=S.cw.cells.get(S.sel.key);
-  if(!cell.lock){cell.val=ch;blip(520,.03);if(prefs.autocheck&&ch!==cell.ans){S.bad.add(S.sel.key);S.assist=true}}
+  if(!cell.lock){S.tkAll=(S.tkAll||0)+1;if(ch===cell.ans)S.tkOk=(S.tkOk||0)+1;cell.val=ch;blip(520,.03);if(prefs.autocheck&&ch!==cell.ans){S.bad.add(S.sel.key);S.assist=true}}
   const i=w.cells.indexOf(S.sel.key);
   let nk=null;for(let j=i+1;j<w.cells.length;j++){if(!S.cw.cells.get(w.cells[j]).lock){nk=w.cells[j];break}}
   if(nk)S.sel.key=nk;
@@ -2585,7 +2603,7 @@ function showResult(win,st,why){
    ${win?`<div class="resrow"><div class="stars" aria-label="${st} of 3 stars">${"★".repeat(st)}<i>${"★".repeat(3-st)}</i></div>${S.grade?`<span class="grade g-${S.grade}" role="img" aria-label="Grade ${S.grade}">${S.grade}</span>`:""}</div>
      ${S.gold?`<span class="goldtag">GOLD SOLVE · NO HELP</span>`:help?`<span class="sub">${help}</span>`:""}`:`<p class="sub">${why}</p>`}
    <div class="pts">${fmtN(S.score)}</div>${S.newBest?`<span class="goldtag">NEW PERSONAL BEST</span>`:""}${recHTML()}
-   ${runResultHTML(win)}${ppResultHTML()}${trailResultHTML()}${spookyResultHTML()}${harvestResultHTML()}
+   ${runResultHTML(win)}${ppResultHTML()}${trailResultHTML()}${spookyResultHTML()}${harvestResultHTML()}${snowResultHTML()}
    ${chalResultHTML()}${paceResultHTML()}
    ${breakdownHTML()}
    ${win?miniGridHTML():""}
@@ -2611,7 +2629,7 @@ function showResult(win,st,why){
   const cb=document.getElementById("chalBtn");if(cb)cb.onclick=()=>shareWithCard(chalShareText());
   document.getElementById("retryL").onclick=()=>dk?playDaily(dk,true):startLevel(S.li>=0?S.li:S.L);
   document.getElementById("toMenu").onclick=showMenu;
-  wireAdvice();ppRunWire(el);wireReflect(el);wireQS(el);wireTrailResult();wireCoach(el);wireRate(el);wirePace(el);{const r=document.getElementById("rpOpen");if(r)r.onclick=openReport}{const b=document.getElementById("hvNext");if(b)b.onclick=()=>playHarvest(+b.dataset.hk)}{const b=document.getElementById("spNext");if(b)b.onclick=()=>playSpooky(+b.dataset.sk)}
+  wireAdvice();ppRunWire(el);wireReflect(el);wireQS(el);wireTrailResult();wireCoach(el);wireRate(el);wirePace(el);{const r=document.getElementById("rpOpen");if(r)r.onclick=openReport}{const b=document.getElementById("hvNext");if(b)b.onclick=()=>playHarvest(+b.dataset.hk)}{const b=document.getElementById("snNext");if(b)b.onclick=()=>playSnow(+b.dataset.nk)}{const b=document.getElementById("spNext");if(b)b.onclick=()=>playSpooky(+b.dataset.sk)}
   {const b=document.getElementById("p2Next");if(b)b.onclick=()=>{const v=b.dataset;if(v.sea!=null)playSeason(+v.sea);else startLevel(+v.evl)}}
   {const b=document.getElementById("hhSet");if(b)b.onclick=()=>showSportsQuiz();const m=document.getElementById("hhMore");if(m)m.onclick=()=>openLegends()}
   wireSay(el);{const d=document.getElementById("lrbDrill");if(d)d.onclick=()=>{el.hidden=true;openRecall("see")}}
@@ -2662,7 +2680,7 @@ function streak(){const set=new Set(stats.days);let n=0;const d=new Date();if(!s
 function saveStats(){stats.stars=store;try{localStorage.setItem("crossfall-stats",JSON.stringify(stats))}catch(e){}}
 function recordGame(win){
   const lv0=levelOf(xpTotal()).lv,now=Date.now(),practice=!!(S.L.custom||S.L.archive||S.pp),g={t:now,id:S.L.id,cat:S.L.cat,name:S.L.name,score:S.score,stars:win?stars():0,words:S.cw.words.filter(w=>w.solved).length,
-    target:S.targetHit,rushW:S.rushWins,rushT:S.rushTotal,rows:S.linesCleared,win,secs:Math.round((now-(S.t0||now))/1000),grade:S.grade,gold:!!S.gold,chain:S.maxChain||0,practice,zen:!!S.zen,daily:!!(S.L.daily&&!S.L.archive),clear:S.bestClear||0,hints:S.helped?S.helped.size:0,heal:!!S.L.heal,leg:S.run||0};
+    target:S.targetHit,rushW:S.rushWins,rushT:S.rushTotal,rows:S.linesCleared,win,secs:Math.round((now-(S.t0||now))/1000),grade:S.grade,gold:!!S.gold,chain:S.maxChain||0,practice,zen:!!S.zen,daily:!!(S.L.daily&&!S.L.archive),clear:S.bestClear||0,hints:S.helped?S.helped.size:0,heal:!!S.L.heal,leg:S.run||0,cms:Math.round(S.crossMs||0),tk:[S.tkOk||0,S.tkAll||0]};
   const T=stats.tot;S.newBest=!practice&&T.games>0&&g.score>T.best;
   stats.games.unshift(g);stats.games=stats.games.slice(0,60);
   if(!practice){T.games++;T.score+=g.score;T.words+=g.words;T.targets+=g.target?1:0;T.rushW+=g.rushW;T.rushT+=g.rushT;T.rows+=g.rows;T.wins+=win?1:0;T.best=Math.max(T.best,g.score);T.secs+=g.secs;
@@ -2674,7 +2692,7 @@ function recordGame(win){
     if(!stats.daily[d]){stats.daily[d]={score:g.score,grade:S.grade,gold:!!S.gold,win,target:S.targetHit,chain:S.maxChain||0,rushW:S.rushWins,rushT:S.rushTotal,log:S.wordLog,t:now};daily=g.score;
       const ks=Object.keys(stats.daily).sort();ks.slice(0,Math.max(0,ks.length-60)).forEach(k=>delete stats.daily[k])}
     if(win)bumpDailyStreak(d)}
-  langAfterGame();recordChal();try{p2After(g)}catch(e){console.error(e)}try{claimQuests()}catch(e){console.error(e)}try{sparksAfter(g);spookyAfter(g)}catch(e){console.error(e)}try{after2837(g)}catch(e){console.error(e)}try{achCheck()}catch(e){console.error(e)}try{after1827(g)}catch(e){console.error(e)}progressAfter(lv0);saveStats();pushCloud();if(!practice)gcSync(g.score,daily);
+  langAfterGame();recordChal();try{p2After(g)}catch(e){console.error(e)}try{claimQuests()}catch(e){console.error(e)}try{sparksAfter(g);spookyAfter(g)}catch(e){console.error(e)}try{after2837(g)}catch(e){console.error(e)}try{after3847(g)}catch(e){console.error(e)}try{achCheck()}catch(e){console.error(e)}try{after1827(g)}catch(e){console.error(e)}progressAfter(lv0);saveStats();pushCloud();if(!practice)gcSync(g.score,daily);
 }
 
 /* cloud: shared leaderboard + private stats copy */
@@ -2734,7 +2752,7 @@ function setRankStatus(t){const el=document.getElementById("rkStatus");if(el)el.
 /* hub navigation */
 function showMenu(){
   const rb=document.getElementById("resumeBtn");rb.hidden=!(S&&["drop","cross","rush","anim"].includes(S.phase));
-  rb.onclick=resumeRun;
+  rb.onclick=resumeRun;try{wireRestart()}catch(e){}
   document.getElementById("result").hidden=true;document.getElementById("menu").hidden=false;
   try{if(document.getElementById("onb").hidden)setTimeout(()=>{maybeWhatsNew();try{if(document.getElementById("evh").hidden)maybeRecap()}catch(e){}},400)}catch(e){}
   goPage(hubPage);
@@ -2962,7 +2980,7 @@ function wireChart(){
   svg.addEventListener("pointermove",show);svg.addEventListener("pointerdown",show);svg.addEventListener("pointerleave",hide);
 }
 function openDrawer(){
-  {const sp=document.querySelector('#drawer [data-act="spooky"]');if(sp)sp.hidden=!spookyOn()}{const hv=document.querySelector('#drawer [data-act="harvest"]');if(hv)hv.hidden=!harvestOn()}  // seasonal: hidden outside Oct 15 to Nov 2
+  {const sp=document.querySelector('#drawer [data-act="spooky"]');if(sp)sp.hidden=!spookyOn()}{const hv=document.querySelector('#drawer [data-act="harvest"]');if(hv)hv.hidden=!harvestOn()}{const sn=document.querySelector('#drawer [data-act="snow"]');if(sn)sn.hidden=!snowOn()}  // seasonal: hidden outside Oct 15 to Nov 2
   const d=document.getElementById("drawer"),sc=document.getElementById("scrim");
   const nick=stats.nick||"Player",L=levelOf(xpTotal()),rk=myRank();
   document.getElementById("drMe").innerHTML=`${avatarHTML()}<div><b>${esc(nick)}</b><span>${esc(titleOf())} · Level ${L.lv} · ${fmtN(stats.tot.score)} pts${rk?` · #${rk.pos}`:""}</span></div>`;
@@ -2992,7 +3010,7 @@ document.getElementById("drClose").onclick=closeDrawer;try{initDrawerDrag()}catc
     else if(a==="checkin")showQuiz(null);
     else if(a==="archive")openArchive();else if(a==="maker")openMaker();else if(a==="review")openReview();else if(a==="backup")openBackup();
     else if(a==="tour"){startTutorial()}
-    else if(a==="rewards")openRewards();else if(a==="events")openEvents();else if(a==="wordbook")openWordBook();else if(a==="duels")openDuels();else if(a==="modes")openModes();else if(a==="trail")openTrail();else if(a==="harvest")openHarvest();else if(a==="cipher")openCipher();else if(a==="gym")openGym();else if(a==="records")openRecords();else if(a==="rivals")openModes("mdRiv");else if(a==="history")openHistory();else if(a==="home")openHomeEdit();else if(a==="ach")openAchievements();else if(a==="insights")openInsights();else if(a==="wotd")openWotd();else if(a==="spooky")openSpooky();else if(a==="look")openLook();else if(a==="journal")openJournal();else if(a==="langlab")openLangHub();else if(a==="mini")openMini();else if(a==="chunks")openChunks();else if(a==="scoreboard")openScoreboard();else if(a==="code")openCode();
+    else if(a==="rewards")openRewards();else if(a==="events")openEvents();else if(a==="wordbook")openWordBook();else if(a==="duels")openDuels();else if(a==="modes")openModes();else if(a==="trail")openTrail();else if(a==="harvest")openHarvest();else if(a==="snow")openSnow();else if(a==="cipher")openCipher();else if(a==="gym")openGym();else if(a==="records")openRecords();else if(a==="calendar")openCalendar();else if(a==="rivals")openModes("mdRiv");else if(a==="history")openHistory();else if(a==="home")openHomeEdit();else if(a==="ach")openAchievements();else if(a==="insights")openInsights();else if(a==="wotd")openWotd();else if(a==="spooky")openSpooky();else if(a==="look")openLook();else if(a==="journal")openJournal();else if(a==="langlab")openLangHub();else if(a==="mini")openMini();else if(a==="chunks")openChunks();else if(a==="scoreboard")openScoreboard();else if(a==="code")openCode();
     else if(a==="pro"){showPaywall(PRO?"owned":"menu")}
     else if(a==="how"){goPage("Play");const h=document.querySelector(".how");if(h){h.open=true;setTimeout(()=>h.scrollIntoView({behavior:"smooth",block:"start"}),60)}}});
   document.querySelectorAll("#rkSeg button").forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;renderRanks()});
@@ -3088,10 +3106,11 @@ function renderWell(){
   const act=new Map(),gh=new Set();
   if(S.active){absCells(S.active).forEach(x=>act.set(x.r+","+x.c,x.ch));
     let d=0;while(!collides(absCells(S.active,d+1,0)))d++;if(d>0)absCells(S.active,d,0).forEach(x=>gh.add(x.r+","+x.c))}
+  let ghGood=false;try{ghGood=gh.size>0&&ghostClears()}catch(e){}
   const fl=new Set(S.flash.map(([r,c])=>r+","+c)),hi=new Set(S.hit.map(([r,c])=>r+","+c)),sel=new Set(S.rush?S.rush.taps.map(([r,c])=>r+","+c):[]);
   document.querySelectorAll("#well .wc").forEach(d=>{const r=+d.dataset.r,c=+d.dataset.c,k=r+","+c,x=S.grid[r][c];
     let cls="wc"+(r<MID?" above":r===MID?" mid":"");let t="";
-    if(act.has(k)){cls+=" p";t=act.get(k)}else if(x){cls+=x.g?" g":" f";t=x.ch}else if(gh.has(k))cls+=" ghost";
+    if(act.has(k)){cls+=" p";t=act.get(k)}else if(x){cls+=x.g?" g":" f";t=x.ch}else if(gh.has(k))cls+=" ghost"+(ghGood?" good":"");
     if(fl.has(k))cls+=" flash";if(hi.has(k))cls+=" hit";if(sel.has(k))cls+=" sel";if(x||act.has(k))cls+=fxClass(k);
     if(d.className!==cls)d.className=cls;if(d.textContent!==t)d.textContent=t;
     const lab=`Row ${r+1}, column ${c+1}${r===MID-1?", just above the middle line":r===MID?", on the middle line":""}: ${t?(act.has(k)?"falling ":"")+t:"empty"}`;if(d.getAttribute("aria-label")!==lab)d.setAttribute("aria-label",lab)});
@@ -3387,7 +3406,7 @@ const music=(()=>{let on=false,timer=0,next=0,step=0,bus=null;
 if(typeof document!=="undefined")document.addEventListener("visibilitychange",()=>{if(!AC)return;if(document.hidden)AC.suspend();else if(prefs.music||prefs.sfx)AC.resume()});
 
 /* ---------- display settings ---------- */
-let prefs={coach:true,big:false,hc:false,mag:true,adapt:true,light:false,theme:null,speed:"normal",sfx:true,music:false,zen:false,autocheck:false,readable:false,haptics:true};try{Object.assign(prefs,JSON.parse(localStorage.getItem("crossfall-a11y")||"{}"))}catch(e){}
+let prefs={smartGhost:true,coach:true,big:false,hc:false,mag:true,adapt:true,light:false,theme:null,speed:"normal",sfx:true,music:false,zen:false,autocheck:false,readable:false,haptics:true};try{Object.assign(prefs,JSON.parse(localStorage.getItem("crossfall-a11y")||"{}"))}catch(e){}
 if(!prefs.theme)prefs.theme=prefs.light?"light":"dark";
 try{if(localStorage.getItem("crossfall-mute")==="1"){prefs.sfx=false;localStorage.removeItem("crossfall-mute")}}catch(e){}
 const MQ_LIGHT=window.matchMedia?matchMedia("(prefers-color-scheme: light)"):null;
@@ -3396,14 +3415,14 @@ if(MQ_LIGHT){const f=()=>{if(prefs.theme==="system")applyPrefs()};MQ_LIGHT.addEv
 let NATIVE_TS=(typeof window!=="undefined"&&window.__NATIVE_TS)||1;
 function setNativeTextScale(x){NATIVE_TS=Math.max(.8,Math.min(1.8,+x||1));applyPrefs()}
 if(typeof window!=="undefined")window.setNativeTextScale=setNativeTextScale;
-function applyPrefs(){const h=document.documentElement;prefs.light=isLight();h.style.setProperty("--ts",String(Math.round((prefs.big?1.22:1)*NATIVE_TS*(isWide()?1.18:1)*100)/100));h.classList.toggle("lgtext",!!prefs.big);h.classList.toggle("hc",!!prefs.hc);h.classList.toggle("light",prefs.light);h.classList.toggle("readable",!!prefs.readable);h.classList.toggle("cb",!!prefs.cb);h.classList.toggle("lefty",!!prefs.lefty);h.classList.toggle("calm",!!prefs.calm);
+function applyPrefs(){const h=document.documentElement;prefs.light=isLight();h.style.setProperty("--ts",String(Math.round((prefs.big?1.22:1)*NATIVE_TS*(isWide()?1.18:1)*100)/100));h.classList.toggle("lgtext",!!prefs.big);h.classList.toggle("hc",!!prefs.hc);h.classList.toggle("light",prefs.light);h.classList.toggle("readable",!!prefs.readable);h.classList.toggle("cb",!!prefs.cb);h.classList.toggle("lefty",!!prefs.lefty);h.classList.toggle("calm",!!prefs.calm);h.classList.toggle("bigctl",!!prefs.bigctl);
   if(S&&S.final==null){if(prefs.zen)S.zen=true;if(prefs.autocheck)S.assist=true;S.speedMult=Math.min(S.speedMult==null?1:S.speedMult,SPEED_MULT[prefs.speed]||1)}
   document.querySelectorAll("[data-theme]").forEach(b=>b.setAttribute("aria-checked",b.dataset.theme===prefs.theme));
   document.querySelectorAll("[data-speed]").forEach(b=>b.setAttribute("aria-checked",b.dataset.speed===prefs.speed));
   muted=!prefs.sfx;const mb=document.getElementById("muteBtn");if(mb){mb.style.opacity=muted?.4:1;mb.setAttribute("aria-pressed",!muted)}
   music.set(!!prefs.music);
   try{window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.theme&&window.webkit.messageHandlers.theme.postMessage(prefs.hc?"dark":prefs.theme)}catch(e){}
-  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setHaptics","haptics"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"],["setCb","cb"],["setSpeak","speak"],["setLefty","lefty"],["setCalm","calm"],["setCoach","coach"]].forEach(([id,k])=>{const b=document.getElementById(id);if(b)b.setAttribute("aria-checked",!!prefs[k])});
+  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setHaptics","haptics"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"],["setCb","cb"],["setSpeak","speak"],["setLefty","lefty"],["setCalm","calm"],["setCoach","coach"],["setBigCtl","bigctl"],["setSmart","smartGhost"]].forEach(([id,k])=>{const b=document.getElementById(id);if(b)b.setAttribute("aria-checked",!!prefs[k])});
   try{applyWellTheme()}catch(e){}
   document.querySelectorAll("[data-track]").forEach(b=>b.setAttribute("aria-checked",b.dataset.track===(prefs.track||"calm")));
   document.querySelectorAll("[data-remind]").forEach(b=>b.setAttribute("aria-checked",b.dataset.remind===(prefs.remindAt||"evening")));
@@ -3657,8 +3676,9 @@ function renderDailyCard(){
    :`<div class="dc-btns"><button class="big" id="dcPlay">Play today's puzzle</button><button class="ghost-btn" id="dcArchive">Past</button></div>`}`;
   const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
   if(focusMode()){box.insertAdjacentHTML("beforeend",focusHTML());wireFocus(box);on("dcPlay",()=>playDaily(t));on("dcAgain",()=>playDaily(t,true));on("dcShare",()=>shareOut(shareText(rec,t)));on("dcArchive",openArchive);return}
+  try{const rl=riskLine();if(rl){box.insertAdjacentHTML("beforeend",rl);on("rkLine",()=>playDaily(t))}}catch(e){}
   try{box.insertAdjacentHTML("beforeend",questLine());on("qLine",()=>openModes())}catch(e){}
-  try{const sl=spookyLine();if(sl){box.insertAdjacentHTML("afterbegin",sl);on("spLine",openSpooky)}}catch(e){}try{const hl=harvestLine();if(hl){box.insertAdjacentHTML("afterbegin",hl);on("hvLine",openHarvest)}}catch(e){}
+  try{const sl=spookyLine();if(sl){box.insertAdjacentHTML("afterbegin",sl);on("spLine",openSpooky)}}catch(e){}try{const hl=harvestLine();if(hl){box.insertAdjacentHTML("afterbegin",hl);on("hvLine",openHarvest)}}catch(e){}try{const nl=snowLine();if(nl){box.insertAdjacentHTML("afterbegin",nl);on("snLine",openSnow)}}catch(e){}
   try{box.insertAdjacentHTML("beforeend",trailLine());on("trLine",()=>openTrail())}catch(e){}
   box.insertAdjacentHTML("beforeend",weeklyLine());on("wkLine",openRewards);
   try{box.insertAdjacentHTML("beforeend",eventLine());on("evLine",openEvents)}catch(e){}
@@ -3669,7 +3689,7 @@ function renderDailyCard(){
   try{homeFilter(box)}catch(e){}
   try{tidyHome(box)}catch(e){}
   on("pzEdit",openHomeEdit);on("pzMini",()=>openMini());on("pzLadder",()=>openLadder());on("pzCipher",()=>openCipher());on("pzChunks",()=>openChunks());on("pzSb",()=>openScoreboard("mini"));on("pzArc",()=>openArchive("mini"));
-  on("dcPlay",()=>playDaily(t));on("dcAgain",()=>playDaily(t,true));on("dcShare",()=>shareOut(shareText(rec,t)));on("dcArchive",openArchive);
+  on("dcPlay",()=>playDaily(t));on("dcAgain",()=>playDaily(t,true));on("dcShare",()=>shareOut(shareText(rec,t)));on("dcArchive",()=>openCalendar());
 }
 function openArchive(k){if(typeof openArchiveV2==="function"){openArchiveV2(typeof k==="string"?k:"daily");return}
   const el=document.getElementById("archive"),t=todayKey();let h="";
@@ -3991,7 +4011,8 @@ function giveXP(n,why){stats.xpBonus=(stats.xpBonus||0)+n;if(why)queueCele({kind
 
 /* ---- well themes (tile skins), unlocked by level ---- */
 const WELL_THEMES=[
- {id:"harvest",name:"Harvest",season:true,lv:1,tile:"#fff1dc",dim:"#f0cf9a",act:"#c8541b",sw:["#fff1dc","#f0cf9a","#c8541b"]},
+ {id:"maple",name:"Maple",season:true,lv:1,tile:"#fff1dc",dim:"#f0cf9a",act:"#c8541b",sw:["#fff1dc","#f0cf9a","#c8541b"]},
+ {id:"snowglobe",name:"Snow Globe",season:true,lv:1,tile:"#f2f8ff",dim:"#c9dcf0",act:"#5b6cff",sw:["#f2f8ff","#c9dcf0","#5b6cff"]},
  {id:"haunted",name:"Haunted",season:true,lv:1,tile:"#e7ddff",dim:"#b8a6e8",act:"#ff7a1a",sw:["#e7ddff","#b8a6e8","#ff7a1a"]},
  {id:"classic",name:"Classic",lv:1,tile:"",dim:"",act:"",sw:["#ffffff","#e3d6bd","#e8671c"]},
  {id:"neon",name:"Neon",lv:3,tile:"#c9fbff",dim:"#9fe3ee",act:"#ff4fd8",sw:["#c9fbff","#9fe3ee","#ff4fd8"]},
@@ -4235,17 +4256,21 @@ function openWordBook(cat){wbBackfill();const U=wbUniverse(),cats=Object.keys(U)
   document.getElementById("wbDone").onclick=()=>{el.hidden=true;el.innerHTML="";if(hubPage==="Profile")renderProfile()}}
 
 /* ---- what's new (shown once to returning players) ---- */
-function maybeWhatsNew(){if(stats.seen18||!stats.tot||!stats.tot.games)return;stats.seen12=1;stats.seen13=1;stats.seen14=1;const had16=!!stats.seen16;stats.seen15=1;stats.seen16=1;stats.seen17=1;stats.seen18=1;saveStats();const el=document.getElementById("evh");
+function maybeWhatsNew(){if(stats.seen19||!stats.tot||!stats.tot.games)return;stats.seen12=1;stats.seen13=1;stats.seen14=1;const had16=!!stats.seen16;stats.seen15=1;stats.seen16=1;stats.seen17=1;stats.seen18=1;stats.seen19=1;saveStats();const el=document.getElementById("evh");
   el.innerHTML=`<h1>WHAT'S <span>NEW</span></h1>
+   <div class="panel wn">${ti("numbers")}<div><b>Daily calendar</b><p>See every Daily you've solved by month and replay any past day.</p></div></div>
+   <div class="panel wn">${ti("snow")}<div><b>Snow Days</b><p>Six snowy puzzles all through December, with a Snow Globe well theme for finishing them.</p></div></div>
+   <div class="panel wn">${ti("target")}<div><b>Smart landing &amp; bigger controls</b><p>The landing spot glows green when a drop will clear a row. Turn on large controls in Settings.</p></div></div>
+   <div class="panel wn">${ti("clock")}<div><b>Speed, streak alerts &amp; more</b><p>Speed and accuracy in Insights, a heads-up when your streak is at risk, +2 sparks for your first win each day, and Restart puzzle.</p></div></div>
+   <details class="wn-more"><summary>More new in 1.1</summary>
    <div class="panel wn">${ti("knight")}<div><b>CPU rivals &amp; Rival Cup</b><p>Race Pip, Rook or Vex on any puzzle with their live score beside yours, and beat all three in this week's cup.</p></div></div>
    <div class="panel wn">${ti("clock")}<div><b>Race your best</b><p>Replay a puzzle and a ghost of your best run keeps pace with you.</p></div></div>
    <div class="panel wn">${ti("bolt")}<div><b>Second chance</b><p>When the well fills, spend 5 sparks once a game to clear the top half and keep going.</p></div></div>
    <div class="panel wn">${ti("house")}<div><b>Make home yours</b><p>Hide the tiles you don't use, find past games in My games, and replay your loved puzzles.</p></div></div>
-   <details class="wn-more"><summary>More new in 1.1</summary>
    <div class="panel wn">${ti("lock")}<div><b>Cipher</b><p>A fourth Today's Puzzle: crack a famous saying where every letter has been swapped.</p></div></div>
    <div class="panel wn">${ti("runner")}<div><b>Rush Gym &amp; Rewind</b><p>A 60-second unscramble sprint in the Menu, and a new power-up that takes back your last piece.</p></div></div>
    <div class="panel wn">${ti("trophy")}<div><b>Records, mastery &amp; monthly recaps</b><p>Bronze to Platinum ranks for every category, your all-time bests, and a recap at the start of each month.</p></div></div>
-   <div class="panel wn">${ti("seedling")}<div><b>Harvest Season</b><p>Six cozy autumn puzzles from 3 to 30 November, with a Harvest well theme for finishing them all.</p></div></div>
+   <div class="panel wn">${ti("seedling")}<div><b>Harvest Season</b><p>Six cozy autumn puzzles from 3 to 30 November, with a Maple well theme for finishing them all.</p></div></div>
    <div class="panel wn">${ti("fire")}<div><b>Fever</b><p>Solve fast, clear rows and win rushes to fill the meter under the target. When it's full, points are ×1.5 for 15 seconds.</p></div></div>
    <div class="panel wn">${ti("medal")}<div><b>Achievements &amp; insights</b><p>Fourteen medal tracks with bronze, silver and gold, plus a look at your play days, best categories and best time to play.</p></div></div>
    <div class="panel wn">${ti("pencil")}<div><b>Word of the day</b><p>One clue a day, three tries. Keep the streak going.</p></div></div>
@@ -4462,7 +4487,7 @@ function openModes(focus){const el=document.getElementById("evh"),qs=questState(
   el.hidden=false;el.scrollTop=0;
   el.querySelectorAll("[data-mara]").forEach(b=>b.onclick=()=>startMarathon(b.dataset.mara));
   {const t=document.getElementById("trLine");if(t)t.onclick=()=>openTrail()}{const g=document.getElementById("rgLine");if(g)g.onclick=openGym}
-  el.querySelectorAll("[data-riv]").forEach(b=>b.onclick=()=>raceRival(+b.dataset.riv));{const c=document.getElementById("cupPlay");if(c)c.onclick=playCup}
+  el.querySelectorAll("[data-riv]").forEach(b=>b.onclick=()=>raceRival(+b.dataset.riv));{const c=document.getElementById("cupPlay");if(c)c.onclick=playCup}{const c=document.getElementById("cupShare");if(c)c.onclick=shareCup}
   el.querySelectorAll("[data-lv]").forEach(b=>b.onclick=()=>{closeEvents();startLevel(+b.dataset.lv)});
   let len=3;el.querySelectorAll("#ppLen button").forEach(b=>b.onclick=()=>{len=+b.dataset.n;el.querySelectorAll("#ppLen button").forEach(x=>x.setAttribute("aria-checked",x===b))});
   document.getElementById("ppStart").onclick=()=>{const clean=v=>String(v||"").replace(/[<>]/g,"").trim().slice(0,14);
@@ -4819,8 +4844,8 @@ function openSpooky(){const el=document.getElementById("evh"),st=spookySt(),end=
 /* ================= Phase 13: Today hub (home tidy-up) ================= */
 function tidyHome(box){const lines=[...box.querySelectorAll(":scope > .wk-line")];if(lines.length<3)return;
   const grid=document.createElement("div");grid.className="hub-grid";grid.setAttribute("role","group");grid.setAttribute("aria-label","Today");
-  const wide=[],small=[];lines.forEach(l=>(l.classList.contains("sp-line")||l.classList.contains("fy-line")?wide:small).push(l));
-  wide.filter(l=>l.classList.contains("sp-line")).forEach(l=>grid.appendChild(l));small.forEach(l=>grid.appendChild(l));wide.filter(l=>!l.classList.contains("sp-line")).forEach(l=>grid.appendChild(l));
+  const wide=[],small=[];lines.forEach(l=>(l.classList.contains("sp-line")||l.classList.contains("fy-line")||l.classList.contains("risk-line")?wide:small).push(l));
+  wide.filter(l=>l.classList.contains("risk-line")||l.classList.contains("sp-line")).forEach(l=>grid.appendChild(l));small.forEach(l=>grid.appendChild(l));wide.filter(l=>!l.classList.contains("sp-line")).forEach(l=>grid.appendChild(l));
   const lab=box.querySelector(".pz-label");box.insertBefore(grid,lab||null)}
 
 /* ================= Phase 14: Fever (fill the meter, score ×1.5 for 15 s) ================= */
@@ -4883,6 +4908,7 @@ function openInsights(){const el=document.getElementById("evh"),D=insightsData()
   el.innerHTML=`<h1>YOUR <span>INSIGHTS</span></h1>
    ${D.gs.length<3?`<div class="panel"><p class="sub">Play a few more puzzles and your insights will fill in here.</p></div>`:""}
    <div class="panel"><h2 class="ph">Play days</h2>${heatmap()}</div>
+   ${speedHTML()}${weakHTML()}
    ${D.recent.length>=2?`<div class="panel"><h2 class="ph">Recent scores</h2>${sparkline(D.recent.map(g=>g.score))}${D.trend!=null?`<p class="ins-big ${D.trend>=0?"up":"down"}">${D.trend>=0?"Up":"Down"} ${Math.abs(D.trend)}% <span class="sub">your last 7 games vs the 7 before</span></p>`:""}</div>`:""}
    ${D.cats.length?`<div class="panel"><h2 class="ph">By category</h2><p>Strongest: <b>${esc(D.cats[0].c)}</b> (avg ${fmtN(D.cats[0].avg)})${D.cats.length>1?` · Most room to grow: <b>${esc(D.cats[D.cats.length-1].c)}</b> (avg ${fmtN(D.cats[D.cats.length-1].avg)})`:""}</p>
      ${D.cats.slice(0,6).map(x=>`<div class="hbar"><span>${esc(x.c)}</span><span class="tr"><i style="width:${Math.round(x.avg/D.cats[0].avg*100)}%"></i></span><span class="v">${fmtN(x.avg)}</span></div>`).join("")}</div>`:""}
@@ -4890,7 +4916,7 @@ function openInsights(){const el=document.getElementById("evh"),D=insightsData()
    ${modes.length?`<div class="panel"><h2 class="ph">Rush styles</h2>${modes.map(([m,p])=>`<div class="hbar"><span>${esc(RUSH_MODES[m]||m)}</span><span class="tr"><i style="width:${Math.round(p.wins/p.plays*100)}%"></i></span><span class="v">${p.wins}/${p.plays} · ${fmtTime(p.limit||120)}</span></div>`).join("")}</div>`:""}
    ${D.tough.length?`<div class="panel"><h2 class="ph">Words to practice</h2><ul class="ins-words">${D.tough.map(([w,b])=>`<li><b>${esc(w)}</b><span>${esc(b.c)}</span></li>`).join("")}</ul><button class="ghost-btn" id="insRev">Review my words ›</button></div>`:""}
    <div class="btns wide"><button class="big" id="evDone">Done</button></div>`;
-  el.hidden=false;el.scrollTop=0;document.getElementById("evDone").onclick=closeEvents;const r=document.getElementById("insRev");if(r)r.onclick=()=>{closeEvents();openReview()}}
+  el.hidden=false;el.scrollTop=0;document.getElementById("evDone").onclick=closeEvents;const r=document.getElementById("insRev");if(r)r.onclick=()=>{closeEvents();openReview()};const wk=document.getElementById("insWeak");if(wk)wk.onclick=()=>{closeEvents();startLevel(+wk.dataset.l)}}
 
 /* ================= Phase 17: Word of the Day ================= */
 const WOTD_CACHE={};
@@ -5103,7 +5129,7 @@ function gymEnd(quit){if(!RG)return;clearInterval(RG.iv);document.removeEventLis
 function gymLine(){const G=gymStats();return`<button class="wk-line rg-line" id="rgLine"><span>${ti("runner")} <b>Rush Gym</b><small>${G.best?`Best ${fmtN(G.best)}`:"60-second unscramble sprint"}</small></span><span aria-hidden="true">›</span></button>`}
 
 /* ================= Phase 22: Harvest Season (3 to 30 November) ================= */
-const HARVEST={name:"Harvest Season",blurb:"Six cozy autumn puzzles, from 3 to 30 November. Finish them all for the Harvest well theme.",puzzles:[
+const HARVEST={name:"Harvest Season",blurb:"Six cozy autumn puzzles, from 3 to 30 November. Finish them all for the Maple well theme.",puzzles:[
  {name:"Farm Stand",drop:"bar",find:"tap",speed:860,seed:9401,words:[["TURNIP","Root vegetable with a purple top"],["BEETS","Deep red roots that stain your fingers"],["HONEY","Sweet golden stuff from a hive"],["PEAR","Bell-shaped fruit"],["CARROT","Orange root a rabbit loves"],["JAM","Fruit spread for toast"]],target:["TART","Small fruit pie, or a little sour"],bonus:[["KALE","Leafy green with curly edges"],["LEEK","Mild cousin of the onion"],["BASKET","Carry your picks home in this"]]},
  {name:"Woodland Walk",drop:"tetro",find:"clue",speed:840,seed:9413,words:[["PINECONE","Woody seed holder from an evergreen"],["FERN","Feathery green plant on the forest floor"],["BIRCH","Tree with white, papery bark"],["HIKER","Someone out on the trail with a backpack"],["DEER","Graceful animal with antlers"],["BOOTS","Sturdy shoes for muddy paths"]],target:["TREK","A long, tiring walk"],bonus:[["TWIG","Tiny branch"],["NEST","Birds build it"],["LOG","Fallen tree trunk"]]},
  {name:"County Fair",drop:"single",find:"scramble",speed:830,seed:9421,words:[["FERRIS","___ wheel, the tallest ride at the fair"],["RIBBON","Blue one for first prize"],["PIGLET","Baby farm animal that oinks"],["FUDGE","Rich chocolate candy, often sold by the slab"],["BANJO","Twangy instrument with a round body"],["QUILT","Blanket stitched from patches"]],target:["FAIR","Event with rides, games and prize pigs"],bonus:[["GOAT","Farm animal with a little beard"],["TAFFY","Chewy, stretchy candy"],["LAMB","Young sheep"]]},
@@ -5118,17 +5144,17 @@ function harvestLevel(k){const p=HARVEST.puzzles[k];if(!p)return null;const L={.
 function playHarvest(k){if(!harvestOn()){toast("Harvest Season is over for this year");return}const L=harvestLevel(k);if(!L){toast("Try again");return}closeEvents();startLevel(L)}
 function harvestAfter(g){if(!g.win||g.practice||!S.L.harvest||!harvestOn())return;const st=harvestSt();
   if(!st.done.includes(S.L.hk)){st.done.push(S.L.hk);giveXP(400,`Harvest Season ${st.done.length}/6`)}
-  if(!st.all&&st.done.length>=HARVEST.puzzles.length){st.all=true;stats.seasonThemes=stats.seasonThemes||[];if(!stats.seasonThemes.includes("harvest"))stats.seasonThemes.push("harvest");
-    giveXP(3000,"Harvest Season complete");giveBadge("harvest-"+st.key,"Harvest Season "+st.key,"seedling","All six autumn puzzles · Harvest well theme unlocked");
-    queueCele({kind:"xp",title:"Harvest theme unlocked",sub:"Cream tiles and pumpkin-spice pieces. Pick it in Rewards & themes."})}}
+  if(!st.all&&st.done.length>=HARVEST.puzzles.length){st.all=true;stats.seasonThemes=stats.seasonThemes||[];if(!stats.seasonThemes.includes("maple"))stats.seasonThemes.push("maple");
+    giveXP(3000,"Harvest Season complete");giveBadge("harvest-"+st.key,"Harvest Season "+st.key,"seedling","All six autumn puzzles · Maple well theme unlocked");
+    queueCele({kind:"xp",title:"Maple theme unlocked",sub:"Cream tiles and maple-red pieces. Pick it in Rewards & themes."})}}
 function harvestLine(){if(!harvestOn())return"";const st=harvestSt();return`<button class="wk-line sp-line hv-line" id="hvLine"><span>${ti("seedling")} <b>Harvest Season</b> ${st.done.length}/6 · until Nov 30</span><span aria-hidden="true">›</span></button>`}
 function harvestResultHTML(){if(!S.L||!S.L.harvest)return"";const st=harvestSt(),k=HARVEST.puzzles.findIndex((p,i)=>!st.done.includes(i)&&i!==S.L.hk);
-  return`<div class="readback ev-res hv-res"><span class="ln">HARVEST SEASON · ${st.done.length}/6</span>${k>=0?`<button class="ghost-btn" id="hvNext" data-hk="${k}">Next autumn puzzle: ${esc(HARVEST.puzzles[k].name)} ›</button>`:`<p>${st.all?"All six done. The Harvest theme is yours!":""}</p>`}</div>`}
+  return`<div class="readback ev-res hv-res"><span class="ln">HARVEST SEASON · ${st.done.length}/6</span>${k>=0?`<button class="ghost-btn" id="hvNext" data-hk="${k}">Next autumn puzzle: ${esc(HARVEST.puzzles[k].name)} ›</button>`:`<p>${st.all?"All six done. The Maple theme is yours!":""}</p>`}</div>`}
 function openHarvest(){if(!harvestOn()){toast("Harvest Season runs 3 to 30 November");return}const el=document.getElementById("evh"),st=harvestSt(),end=new Date(new Date().getFullYear(),10,30,23,59),left=Math.max(0,Math.ceil((end-Date.now())/864e5));
   el.innerHTML=`<h1>HARVEST <span>SEASON</span></h1>
    <div class="panel ev-hero hv-hero"><div class="ev-ic">${ti("seedling")}</div><div><span class="ln">${left} DAY${left===1?"":"S"} LEFT</span><h2>Six autumn puzzles</h2><p class="sub">${esc(HARVEST.blurb)} Free for everyone.</p></div></div>
    <div class="panel"><div class="ev-grid">${HARVEST.puzzles.map((p,k)=>{const d=st.done.includes(k);return`<button class="ev-pz${d?" done":""}" data-hk="${k}"><b>${k+1}</b><span>${esc(p.name)}</span><i>${d?"✓ Done":"+400 XP"}</i></button>`}).join("")}</div>
-     <span class="pf-rank">Finish all six for +3,000 XP, a badge and the <b>Harvest</b> well theme.${st.all?" Earned! ✓":""}</span></div>
+     <span class="pf-rank">Finish all six for +3,000 XP, a badge and the <b>Maple</b> well theme.${st.all?" Earned! ✓":""}</span></div>
    <div class="btns wide"><button class="big" id="evDone">Done</button></div>`;
   el.hidden=false;el.scrollTop=0;el.querySelectorAll("[data-hk]").forEach(b=>b.onclick=()=>playHarvest(+b.dataset.hk));document.getElementById("evDone").onclick=closeEvents}
 
@@ -5188,8 +5214,8 @@ function openRecords(){recordsInit();const el=document.getElementById("evh"),R=s
    <div class="panel"><h2 class="ph">${ti("numbers")} All time</h2>${row("Puzzles played",fmtN(T.games))}${row("Words solved",fmtN(T.words))}${row("Points",fmtN(T.score))}${row("Level",levelOf(xpTotal()).lv)}${row("Stars",fmtN(starsTotal()))}</div>
    <div class="panel"><h2 class="ph">${ti("sun")} Monthly</h2>${row(monName(ym)+" so far",M?`${M.games} game${M.games===1?"":"s"}`:"—",M?`${fmtN(M.score)} pts · ${M.words} words`:"")}${PM?row(monName(pm),`${PM.games} games`,`${fmtN(PM.score)} pts`):""}
      ${PM&&PM.games?`<button class="ghost-btn" id="rcRecap">See ${esc(monName(pm))} recap ›</button>`:""}</div>
-   <div class="btns wide"><button class="big" id="evDone">Done</button></div>`;
-  el.hidden=false;el.scrollTop=0;document.getElementById("evDone").onclick=closeEvents;const b=document.getElementById("rcRecap");if(b)b.onclick=()=>openRecap(pm)}
+   <div class="btns wide"><button class="ghost-btn" id="rcShare2">Share my records</button><button class="big" id="evDone">Done</button></div>`;
+  el.hidden=false;el.scrollTop=0;document.getElementById("evDone").onclick=closeEvents;document.getElementById("rcShare2").onclick=shareRecords;const b=document.getElementById("rcRecap");if(b)b.onclick=()=>openRecap(pm)}
 
 /* ================= Phase 27: monthly recap ================= */
 function monKey(t){const d=new Date(t);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")}
@@ -5342,7 +5368,7 @@ function rivalsPanelHTML(){const st=cupState(),cp=cupPuzzles(),cpu=stats.cpu||{}
    <div class="panel" id="mdCup"><h2 class="ph">${ti("trophy")} Rival Cup <span class="sub">this week</span></h2>
    <p class="sub">Beat Pip, then Rook, then Vex, each on this week's cup puzzle. Win all three for +1,500 XP and a badge. A new cup starts every Monday.</p>
    <ol class="cup-list">${RIVALS.map((R,k)=>`<li class="${k<st.stage?"done":k===st.stage&&!st.done?"cur":""}"><b>${R.n}</b> · ${cp[k]?esc(cp[k].cat+": "+cp[k].name):"—"}${k<st.stage?" ✓":""}</li>`).join("")}</ol>
-   ${st.done?`<p><b>Cup won this week ✓</b></p>`:`<button class="big" id="cupPlay">${st.stage?`Race ${RIVALS[st.stage].n}`:"Start the cup"}</button>`}</div>`}
+   ${st.stage?`<button class="ghost-btn" id="cupShare">Share my cup</button>`:""}${st.done?`<p><b>Cup won this week ✓</b></p>`:`<button class="big" id="cupPlay">${st.stage?`Race ${RIVALS[st.stage].n}`:"Start the cup"}</button>`}</div>`}
 
 /* ================= Phase 34: loved puzzles ================= */
 function lovedList(){return Object.entries(stats.fb||{}).filter(([,v])=>v===1).map(([id])=>LEVELS.find(l=>l.id===id)).filter(Boolean)}
@@ -5389,6 +5415,95 @@ function ach2Init(){if(ach2Done)return;ach2Done=true;
 
 /* ---- shared after-game hook for phases 28–37 ---- */
 function after2837(g){try{paceAfter(g)}catch(e){console.error(e)}try{pbAfter(g)}catch(e){console.error(e)}}
+
+
+/* ================= Phase 38: Daily calendar ================= */
+let calMon=null;
+function openCalendar(ym){const t=todayKey();calMon=ym||calMon||t.slice(0,7);const [y,m]=calMon.split("-").map(Number),first=new Date(y,m-1,1),days=new Date(y,m,0).getDate(),lead=(first.getDay()+6)%7;
+  const minYm=monKey(new Date(Date.now()-180*864e5)),canPrev=calMon>minYm,canNext=calMon<t.slice(0,7);
+  const cell=d=>{const dk=`${y}-${String(m).padStart(2,"0")}-${String(d).padStart(2,"0")}`,r=dailyRecord(dk),fut=dk>t,isT=dk===t;
+    return`<button class="cal-d${r?(r.win?" won":" tried"):""}${isT?" today":""}" data-cdk="${dk}" ${fut?"disabled":""} aria-label="${esc(fmtDay(dk))}${r?`, ${r.win?"solved":"played"}, ${r.score} points`:fut?"":", not played"}">${d}${r&&r.gold?"<i>★</i>":""}</button>`};
+  const recs=Object.entries(stats.daily||{}).filter(([k])=>k.startsWith(calMon)),won=recs.filter(([,r])=>r.win).length;
+  const el=document.getElementById("evh");
+  el.innerHTML=`<h1>DAILY <span>CALENDAR</span></h1>
+   <div class="cal-nav"><button class="icon-btn" id="calPrev" aria-label="Previous month" ${canPrev?"":"disabled"}>‹</button><b>${esc(monName(calMon))} ${y}</b><button class="icon-btn" id="calNext" aria-label="Next month" ${canNext?"":"disabled"}>›</button></div>
+   <div class="panel"><div class="cal-g" role="grid">${["M","T","W","T","F","S","S"].map(d=>`<span class="cal-h" aria-hidden="true">${d}</span>`).join("")}${"<span></span>".repeat(lead)}${[...Array(days)].map((_,i)=>cell(i+1)).join("")}</div>
+   <p class="sub">${won} solved this month. Tap any past day to play it as practice; today's counts toward your streak.</p></div>
+   <div class="btns wide"><button class="big" id="evDone">Done</button></div>`;
+  el.hidden=false;el.scrollTop=0;
+  el.querySelectorAll("[data-cdk]").forEach(b=>b.onclick=()=>{const dk=b.dataset.cdk;closeEvents();playDaily(dk,dk!==t)});
+  const sh=(k,n)=>{const [yy,mm]=calMon.split("-").map(Number),d=new Date(yy,mm-1+n,15);openCalendar(monKey(d))};
+  document.getElementById("calPrev").onclick=()=>sh(0,-1);document.getElementById("calNext").onclick=()=>sh(0,1);document.getElementById("evDone").onclick=closeEvents}
+
+/* ================= Phase 39: Snow Days (1 to 31 December) ================= */
+const SNOW={name:"Snow Days",blurb:"Six snowy puzzles, all through December. Finish them all for the Snow Globe well theme.",puzzles:[
+ {name:"First Flakes",drop:"bar",find:"tap",speed:860,seed:9501,words:[["CRYSTAL","Six-sided bit of ice in a snowflake"],["DRIFT","Snow piled up by the wind"],["SLUSH","Melting snow on the sidewalk"],["SLEET","Rain mixed with ice"],["COAT","Warm layer you zip up"],["THAW","When ice starts to melt"]],target:["COLD","Not warm at all"],bonus:[["HAIL","Little balls of ice"],["CHILL","A sharp cold feeling"],["FLURRY","A short burst of light snow"]]},
+ {name:"Snow Fort",drop:"tetro",find:"clue",speed:840,seed:9511,words:[["IGLOO","Dome house made of snow blocks"],["SCRAPER","Tool for clearing ice off the windshield"],["TOBOGGAN","Long, flat sled with a curled front"],["SNOWBALL","Pack it, then throw it"],["FROZEN","Turned to ice"],["GLOVES","Keep your fingers warm"]],target:["FORT","Build one to hide behind in a snowball fight"],bonus:[["WALL","Snow barrier"],["PACK","Squeeze snow tight"],["THROW","Toss it at a friend"]]},
+ {name:"Cabin Night",drop:"single",find:"scramble",speed:830,seed:9521,words:[["CABIN","Small wooden house in the woods"],["PORCH","Covered entry outside the front door"],["CHIMNEY","Smoke goes up and out of it"],["FLANNEL","Soft, warm shirt fabric"],["KINDLING","Small sticks to start a fire"],["STEW","Thick, hearty soup"]],target:["LOGS","Firewood pieces"],bonus:[["EMBER","Glowing bit of a fire"],["ATTIC","Room under the roof"],["RUG","Covers the floor"]]},
+ {name:"Ice Rink",drop:"bar",find:"clue",speed:820,seed:9531,words:[["SKATES","Boots with blades"],["RINK","Frozen floor for skating"],["ZAMBONI","Machine that smooths the ice"],["SPIN","Turn round and round on one foot"],["GLIDE","Move smoothly across the ice"],["PUCK","Black disk in hockey"]],target:["SLIP","Lose your footing on the ice"],bonus:[["LACE","Tie up a boot with this"],["BLADE","Sharp edge under a skate"],["TWIRL","Spin gracefully"]]},
+ {name:"Mountain Snow",drop:"tetro",find:"tap",speed:810,seed:9541,words:[["SUMMIT","Top of a mountain"],["GONDOLA","Cable car up the slope"],["POWDER","Fresh, fluffy snow skiers love"],["LODGE","Cozy inn at a ski resort"],["HELMET","Hard hat for the slopes"],["PEAK","Pointy mountaintop"]],target:["SLOPE","Hill you ski down"],bonus:[["SKI","Long, thin runner for snow"],["POLE","Ski stick"],["TRAIL","Marked path down the hill"]]},
+ {name:"Longest Night",drop:"single",find:"clue",speed:800,seed:9551,words:[["SOLSTICE","Day of the year with the least daylight"],["SHADOW","Dark shape cast in moonlight"],["STARRY","Full of twinkling lights in the sky"],["NORTH","Direction the compass points"],["SKY","Up above, full of stars at night"],["AURORA","Northern lights in the sky"]],target:["DARK","Without light"],bonus:[["OWL","Bird awake at night"],["MOON","Night light in the sky"],["DAWN","When the sun comes back"]]}]};
+function snowOn(d){d=d||new Date();return d.getMonth()===11}
+function snowKey(){return String(new Date().getFullYear())}
+function snowSt(){const k=snowKey();if(!stats.snow||stats.snow.key!==k)stats.snow={key:k,done:[],all:false};return stats.snow}
+function snowLevel(k){const p=SNOW.puzzles[k];if(!p)return null;const L={...p,words:p.words.map(w=>w.slice()),bonus:p.bonus.map(w=>w.slice()),target:p.target.slice(),cat:"Snow Days",snow:1,nk:k,pi:k,n:SNOW.puzzles.length,id:"Snow:"+snowKey()+":"+k};
+  L._cw=buildCrossword(L.words,L.seed);return L._cw?L:null}
+function playSnow(k){if(!snowOn()){toast("Snow Days runs all December");return}const L=snowLevel(k);if(!L){toast("Try again");return}closeEvents();startLevel(L)}
+function snowAfter(g){if(!g.win||g.practice||!S.L.snow||!snowOn())return;const st=snowSt();
+  if(!st.done.includes(S.L.nk)){st.done.push(S.L.nk);giveXP(400,`Snow Days ${st.done.length}/6`)}
+  if(!st.all&&st.done.length>=SNOW.puzzles.length){st.all=true;stats.seasonThemes=stats.seasonThemes||[];if(!stats.seasonThemes.includes("snowglobe"))stats.seasonThemes.push("snowglobe");
+    giveXP(3000,"Snow Days complete");giveBadge("snow-"+st.key,"Snow Days "+st.key,"snow","All six snowy puzzles · Snow Globe well theme unlocked");
+    queueCele({kind:"xp",title:"Snow Globe theme unlocked",sub:"Snow-white tiles and periwinkle pieces. Pick it in Rewards & themes."})}}
+function snowLine(){if(!snowOn())return"";const st=snowSt();return`<button class="wk-line sp-line sn-line" id="snLine"><span>${ti("snow")} <b>Snow Days</b> ${st.done.length}/6 · until Dec 31</span><span aria-hidden="true">›</span></button>`}
+function snowResultHTML(){if(!S.L||!S.L.snow)return"";const st=snowSt(),k=SNOW.puzzles.findIndex((p,i)=>!st.done.includes(i)&&i!==S.L.nk);
+  return`<div class="readback ev-res sn-res"><span class="ln">SNOW DAYS · ${st.done.length}/6</span>${k>=0?`<button class="ghost-btn" id="snNext" data-nk="${k}">Next snowy puzzle: ${esc(SNOW.puzzles[k].name)} ›</button>`:`<p>${st.all?"All six done. The Snow Globe theme is yours!":""}</p>`}</div>`}
+function openSnow(){if(!snowOn()){toast("Snow Days runs all December");return}const el=document.getElementById("evh"),st=snowSt(),end=new Date(new Date().getFullYear(),11,31,23,59),left=Math.max(0,Math.ceil((end-Date.now())/864e5));
+  el.innerHTML=`<h1>SNOW <span>DAYS</span></h1>
+   <div class="panel ev-hero sn-hero"><div class="ev-ic">${ti("snow")}</div><div><span class="ln">${left} DAY${left===1?"":"S"} LEFT</span><h2>Six snowy puzzles</h2><p class="sub">${esc(SNOW.blurb)} Free for everyone.</p></div></div>
+   <div class="panel"><div class="ev-grid">${SNOW.puzzles.map((p,k)=>{const d=st.done.includes(k);return`<button class="ev-pz${d?" done":""}" data-nk="${k}"><b>${k+1}</b><span>${esc(p.name)}</span><i>${d?"✓ Done":"+400 XP"}</i></button>`}).join("")}</div>
+     <span class="pf-rank">Finish all six for +3,000 XP, a badge and the <b>Snow Globe</b> well theme.${st.all?" Earned! ✓":""}</span></div>
+   <div class="btns wide"><button class="big" id="evDone">Done</button></div>`;
+  el.hidden=false;el.scrollTop=0;el.querySelectorAll("[data-nk]").forEach(b=>b.onclick=()=>playSnow(+b.dataset.nk));document.getElementById("evDone").onclick=closeEvents}
+
+/* ================= Phase 41: smart landing preview ================= */
+function ghostClears(){if(!S||!S.active||prefs.smartGhost===false)return false;let d=0;while(!collides(absCells(S.active,d+1,0)))d++;const cells=absCells(S.active,d,0);
+  const rows=[...new Set(cells.map(x=>x.r))];return rows.some(r=>r>=0&&r<ROWS&&S.grid[r].every((x,c)=>x||cells.some(y=>y.r===r&&y.c===c)))}
+
+/* ================= Phase 42: speed & accuracy ================= */
+function speedData(){const gs=stats.games.filter(g=>!g.practice&&g.cms&&g.words).slice(0,30);if(gs.length<3)return null;
+  const spw=g=>g.cms/1000/g.words,avg=gs.reduce((a,g)=>a+spw(g),0)/gs.length,best=Math.min(...gs.map(spw));
+  const tk=gs.filter(g=>g.tk&&g.tk[1]),acc=tk.length?Math.round(tk.reduce((a,g)=>a+g.tk[0],0)/tk.reduce((a,g)=>a+g.tk[1],0)*100):null;
+  const r7=gs.slice(0,7),p7=gs.slice(7,14),trend=p7.length>=3?Math.round((r7.reduce((a,g)=>a+spw(g),0)/r7.length)/(p7.reduce((a,g)=>a+spw(g),0)/p7.length)*100-100):null;return{avg,best,acc,trend}}
+function speedHTML(){const D=speedData();if(!D)return"";
+  return`<div class="panel"><h2 class="ph">${ti("clock")} Speed &amp; accuracy</h2><div class="kpis"><div class="kpi"><span class="kl">Per word</span><span class="kv">${D.avg.toFixed(1)}s</span></div><div class="kpi"><span class="kl">Fastest game</span><span class="kv">${D.best.toFixed(1)}s</span></div>
+   ${D.acc!=null?`<div class="kpi"><span class="kl">Letters right first time</span><span class="kv">${D.acc}%</span></div>`:""}</div>
+   ${D.trend!=null?`<p class="ins-big ${D.trend<=0?"up":"down"}">${D.trend<=0?"Faster":"Slower"} ${Math.abs(D.trend)}% <span class="sub">your last 7 games vs the 7 before</span></p>`:""}</div>`}
+
+/* ================= Phase 43: streak at risk ================= */
+function riskLine(){const st=dailyStreak(),h=new Date().getHours();if(!st.alive||st.doneToday||st.n<2||h<18)return"";const left=24-h;
+  return`<button class="wk-line risk-line" id="rkLine"><span>${ti("fire")} <b>Your ${st.n}-day streak ends at midnight</b><small>About ${left} hour${left>1?"s":""} left · play today's Daily to keep it${st.freezes?` (or use 1 of ${st.freezes} freezes)`:""}</small></span><span aria-hidden="true">›</span></button>`}
+
+/* ================= Phase 44: first win of the day ================= */
+function firstWinAfter(g){if(!g.win||g.practice||S.tut)return;const t=todayKey();if(stats.fwDay===t)return;stats.fwDay=t;stats.sparks=Math.min(SPARK_CAP,sparks()+2);S.fwBonus=true;
+  queueCele({kind:"xp",title:"First win of the day",sub:"+2 sparks for power-ups"})}
+
+/* ================= Phase 45: restart a game in progress ================= */
+function restartHTML(){return`<button class="ghost-btn" id="restartBtn" hidden>Restart this puzzle</button>`}
+function wireRestart(){const r=document.getElementById("restartBtn"),rb=document.getElementById("resumeBtn");if(!r||!rb)return;r.hidden=rb.hidden;r.dataset.arm="";r.textContent="Restart this puzzle";
+  r.onclick=()=>{if(!S)return;if(!r.dataset.arm){r.dataset.arm="1";r.textContent="Tap again to restart";setTimeout(()=>{if(r.dataset.arm){r.dataset.arm="";r.textContent="Restart this puzzle"}},3000);return}
+    const L=S.L,li=S.li;r.dataset.arm="";clearRun();S=null;if(L.daily)playDaily(L.daily,true);else startLevel(li>=0?li:L)}}
+
+/* ================= Phase 46: share the Rival Cup and records ================= */
+function shareCup(){const st=cupState(),c=stats.cpu||{};shareOut(`Crossfall Rival Cup · week of ${fmtDay(st.wk)}\n${RIVALS.map((R,k)=>`${k<st.stage?"🏆":"⬜"} ${R.n}`).join("  ")}\n${st.done?"Cup won!":`${st.stage}/3 rivals beaten`} · CPU record ${Object.values(c).reduce((a,r)=>a+r.w,0)}–${Object.values(c).reduce((a,r)=>a+r.l,0)}`)}
+function shareRecords(){recordsInit();const R=stats.rec||{},ds=stats.dstreak||{};shareOut(`My Crossfall records\n🏆 Best score ${R.score?fmtN(R.score.v):"—"}\n⚡ Longest chain ${R.chain?"×"+R.chain.v:"—"}\n🔥 Longest Daily streak ${ds.best||0} days\n🧩 ${fmtN(stats.tot.games)} puzzles played`)}
+
+/* ================= Phase 47: strengthen your weakest category ================= */
+function weakPick(){const D=insightsData();if(!D.cats||D.cats.length<2)return null;const w=D.cats[D.cats.length-1],c=CATEGORIES.find(x=>x.name===w.c);if(!c)return null;
+  const p=c.puzzles.find(x=>((store[x.id]||{}).stars||0)<3&&!lockReason(x));return p?{L:p,avg:w.avg}:null}
+function weakHTML(){const w=weakPick();return w?`<div class="panel"><h2 class="ph">${ti("target")} Practice your weakest category</h2><p>${esc(w.L.cat)} averages ${fmtN(w.avg)}. Next up: <b>${esc(w.L.name)}</b>.</p><button class="big" id="insWeak" data-l="${LEVELS.indexOf(w.L)}">Play ${esc(w.L.cat)}</button></div>`:""}
+
+/* ---- shared after-game hook for phases 38–47 ---- */
+function after3847(g){try{snowAfter(g)}catch(e){console.error(e)}try{firstWinAfter(g)}catch(e){console.error(e)}}
 
 function weeklyLine(){const cs=challengeState(),d=cs.filter(c=>c.done).length;return`<button class="wk-line" id="wkLine"><span>${ti("trophy")} Weekly challenges <b>${d}/3</b></span><span class="wk-bars">${cs.map(c=>`<i style="--p:${Math.round(c.v/c.goal*100)}%"></i>`).join("")}</span><span aria-hidden="true">›</span></button>`}
 
@@ -5968,7 +6083,7 @@ function boot(){
   document.getElementById("setBackup").onclick=()=>{document.getElementById("settings").hidden=true;openBackup()};
   document.getElementById("setDone").onclick=()=>{document.getElementById("settings").hidden=true};
   document.getElementById("paceReset").onclick=()=>{rushPace={};saveRushPace();renderPaceInfo();announce("Rush times reset to two minutes.")};
-  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setHaptics","haptics"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"],["setCb","cb"],["setSpeak","speak"],["setLefty","lefty"],["setCalm","calm"],["setCoach","coach"]].forEach(([id,k])=>document.getElementById(id).onclick=()=>{audioInit();prefs[k]=!prefs[k];if(k==="mag"&&!prefs.mag)hideLens();applyPrefs()});
+  [["setBig","big"],["setHc","hc"],["setMag","mag"],["setAdapt","adapt"],["setSfx","sfx"],["setMusic","music"],["setHaptics","haptics"],["setZen","zen"],["setAuto","autocheck"],["setRead","readable"],["setCb","cb"],["setSpeak","speak"],["setLefty","lefty"],["setCalm","calm"],["setCoach","coach"],["setBigCtl","bigctl"],["setSmart","smartGhost"]].forEach(([id,k])=>document.getElementById(id).onclick=()=>{audioInit();prefs[k]=!prefs[k];if(k==="mag"&&!prefs.mag)hideLens();applyPrefs()});
   document.querySelectorAll("[data-speed]").forEach(b=>b.onclick=()=>{prefs.speed=b.dataset.speed;applyPrefs();announce("Fall speed: "+SPEEDS[prefs.speed].label)});
   document.querySelectorAll("[data-theme]").forEach(b=>b.onclick=()=>{prefs.theme=b.dataset.theme;if(prefs.theme!=="dark"&&prefs.hc)prefs.hc=false;applyPrefs();announce("Theme: "+b.dataset.theme)});
   applyPrefs();initLens();initHub();

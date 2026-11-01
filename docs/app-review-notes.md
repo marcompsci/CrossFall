@@ -9,7 +9,7 @@ Copy-ready text for **App Store Connect**. Each block fits Apple's field limits 
 ```
 Crossfall is a word game where crosswords fall. Solve a clue and your word drops into a well as a falling piece. Stack it, spell the target word on the middle line, and win the word rush before time runs out.
 
-700+ puzzles across ten categories, plus four free Today's Puzzles (the Mini, Chunks, Ladder and Cipher), a Daily, a 40-stop Word Trail, a 60-second Rush Gym, weekly events and seasonal packs (Spooky Season until 2 November, Harvest Season 3 to 30 November). Game Center leaderboards, a home-screen widget, and a one-time Crossfall Pro purchase. No ads, no tracking, no account.
+700+ puzzles across ten categories, plus four free Today's Puzzles (the Mini, Chunks, Ladder and Cipher), a Daily, a 40-stop Word Trail, a 60-second Rush Gym, weekly events and a seasonal pack (Harvest Season, 3 to 30 November). Game Center leaderboards, a home-screen widget, and a one-time Crossfall Pro purchase. No ads, no tracking, no account.
 ```
 
 ## 2. What to Test (TestFlight, per build)
@@ -23,10 +23,11 @@ Build 17 — thanks for testing! Please try:
 4. ☰ Menu › Word Trail: clear the first two stops.
 5. Power-ups (Freeze, Bomb, Sweep and the new Rewind) under the drop buttons, and the Fever bar under the target.
 6. ☰ › Rush Gym, My records, Achievements, Insights and Word of the day. Try Surprise me on the home screen.
-7. ☰ › Spooky Season (until 2 November) or Harvest Season (3 to 30 November).
-8. Settings (Aa): Privacy policy and Help & support links open in Safari.
-9. Rankings tab, signed in and signed out of Game Center.
-10. Go Pro and Restore purchase (TestFlight purchases are free and not charged).
+7. ☰ › CPU rivals & Rival Cup: race Rook, then replay that puzzle to race your own best.
+8. ☰ › Harvest Season (3 to 30 November).
+9. Settings (Aa): Privacy policy and Help & support links open in Safari.
+10. Rankings tab, signed in and signed out of Game Center.
+11. Go Pro and Restore purchase (TestFlight purchases are free and not charged).
 
 Send feedback with a screenshot: take a screenshot in the app and tap Share Beta Feedback, or open TestFlight › Crossfall › Send Beta Feedback.
 ```
@@ -51,12 +52,15 @@ NEW IN 1.1 (where to find it)
 • Power-ups and Fever: in any regular game, under the drop buttons. Off in the Daily and in duels so those scores stay fair.
 • Achievements, Insights, Word of the day, Avatar & title: Menu.
 • Quests, Marathon and Pass & Play (same-device multiplayer): Menu › Quests, Marathon & Pass and Play.
-• Spooky Season: a free, time-limited pack (15 Oct to 2 Nov). Menu › Spooky Season. After 2 Nov this menu item is hidden.
 • Harvest Season: a free, time-limited pack (3 to 30 Nov). Menu › Harvest Season and a tile on the home screen, shown only on those dates.
 • Cipher: a fourth Today's Puzzle on the home screen, a daily cryptogram of a public-domain saying or proverb.
 • Rush Gym (60-second unscramble sprint) and My records: Menu.
 • Rewind power-up: under the drop buttons, next to Freeze, Bomb and Sweep.
 • Surprise me: home screen; starts a random puzzle the player can already play.
+• CPU rivals and the weekly Rival Cup: Menu › CPU rivals & Rival Cup. The rivals (Pip, Rook, Vex) are labelled CPU; their pace is computed on the device from the player's own past scores. There are no other players and nothing goes online.
+• Second chance: when the well fills, the player may spend 5 earned sparks once a game to clear the top half. Sparks are earned in play only; they can't be bought. Not offered in the official Daily, duels or Pass & Play.
+• Report a clue (result screen) opens a prefilled GitHub issue in Safari; nothing is sent unless the player submits it there.
+• Customize home, My games (history) and Loved puzzles: Menu.
 • A short thumbs-up / "Not for me" on the result screen. It's stored on the device and only changes which puzzles "For you" suggests.
 • New players see a simpler home screen (the Daily plus one suggested puzzle) for their first three games; "Show everything now" opens the full screen right away.
 

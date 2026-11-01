@@ -892,11 +892,11 @@ html.cb .tr-node.done::after{content:"✓";position:absolute;top:2px;right:8px;f
 html.cb .ld-t.hit{box-shadow:inset 0 0 0 3px #000}html.cb .ld-t.chg{outline-style:dashed}
 /* ---- phase 11: power-ups ---- */
 .pwr{display:grid;grid-template-columns:auto repeat(4,1fr);gap:5px;margin-bottom:6px;align-items:stretch}
-.pwr .k.pw{flex-direction:column;gap:0;height:54px;padding:2px 0;font-size:calc(11px*var(--ts));line-height:1.1}.pwr .k.pw i{position:absolute;top:2px;right:3px}.pwr .k.pw .ti{width:24px;height:24px}
+.pwr .k.pwu{flex-direction:column;gap:0;height:54px;padding:2px 0;font-size:calc(11px*var(--ts));line-height:1.1}.pwr .k.pwu i{position:absolute;top:2px;right:3px}.pwr .k.pwu .ti{width:24px;height:24px}
 .pw-sp{display:flex;align-items:center;gap:2px;padding:0 6px;border-radius:10px;background:var(--panel-2);font-family:var(--f-mono);font-weight:800}.pw-sp .ti{width:26px;height:26px}
-.k.pw{max-width:none;height:46px;display:flex;align-items:center;justify-content:center;gap:4px;font-family:var(--f-body);font-size:calc(12px*var(--ts));position:relative}
-.k.pw .ti{width:26px;height:26px}.k.pw i{font-style:normal;font-family:var(--f-mono);font-size:11px;background:var(--accent);color:var(--ink);border-radius:9px;padding:0 5px}
-.k.pw[aria-disabled=true]{opacity:.45}
+.k.pwu{max-width:none;height:46px;display:flex;align-items:center;justify-content:center;gap:4px;font-family:var(--f-body);font-size:calc(12px*var(--ts));position:relative}
+.k.pwu .ti{width:26px;height:26px}.k.pwu i{font-style:normal;font-family:var(--f-mono);font-size:11px;background:var(--accent);color:var(--ink);border-radius:9px;padding:0 5px}
+.k.pwu[aria-disabled=true]{opacity:.45}
 #well.frozen{box-shadow:0 0 0 3px #7fd3ff,0 0 24px rgba(127,211,255,.6)}
 .sp-got{display:flex;align-items:center;justify-content:center;gap:6px;margin:4px 0;font-weight:700}.sp-got .ti{width:26px;height:26px}
 /* ---- phase 12: Spooky Season ---- */
@@ -1208,6 +1208,18 @@ html.wide #profile.hud>.hud-bar,html.wide #profile.hud>.hero{grid-column:1/-1}
 .lh-cta p{margin:0;color:var(--muted)}.lh-cta b{color:var(--fg)}
 .gcard .gc-badge.learn{background:#ffd24a;color:#2a1a00}
 #lr .btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}#lr .btns>*{width:100%;margin:0;min-height:46px}#lr .btns .big{grid-column:1/-1}
+/* ---- phases 28–37 ---- */
+.pzlinks #pzEdit{color:var(--muted)}
+.jit{position:absolute;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:6;max-width:440px;margin-inline:auto;display:flex;gap:10px;align-items:center;padding:12px 12px 12px 16px;border-radius:16px;background:var(--fg);color:var(--bg);box-shadow:0 10px 30px rgba(0,0,0,.35);transition:opacity .2s var(--ease-out,ease),transform .24s var(--ease-out,ease),display .24s allow-discrete}
+.jit[hidden]{display:none;opacity:0;transform:translateY(10px)}@starting-style{.jit:not([hidden]){opacity:0;transform:translateY(10px)}}
+.jit p{margin:0;flex:1;font-size:calc(14px*var(--ts));line-height:1.35}.jit .ghost-btn{flex:none;height:44px;padding:0 14px;color:var(--bg);border-color:color-mix(in srgb,var(--bg) 40%,transparent)}
+.chal-pill.pace{cursor:pointer}
+html.light .md-cats button span span{color:#5f5577}
+.sv-panel p{margin:0;line-height:1.4}.sv-panel .ti{width:22px;height:22px;vertical-align:middle}
+.cup-list{margin:4px 0 8px;padding-left:22px;line-height:1.6;text-align:left}.cup-list li.done{color:var(--muted)}.cup-list li.cur{font-weight:700}
+.rp-link{display:block;margin:6px auto 0;background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:calc(13px*var(--ts));min-height:44px;cursor:pointer}
+.rp-row{text-decoration:none}.rp-row>span:first-child{display:flex;flex-direction:column;gap:2px;font-weight:400}.rp-row b{font-family:var(--f-mono)}
+.hs-row>span:first-child{display:flex;flex-direction:column;gap:2px}.hs-row b{font-weight:700}.hs-s{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
 /* ===== Fluid pass (Apple design / Emil Kowalski skill audit, 28 Oct 2026) ===== */
 :root{--ease-out:cubic-bezier(.2,.8,.2,1);--ease-press:cubic-bezier(.3,.7,.4,1)}
 /* 1. respond on press: every control acknowledges the touch immediately; no 300 ms tap delay */
@@ -1326,6 +1338,9 @@ html.hc .panel{border-color:var(--line);box-shadow:none}
         <button data-act="wotd"><span data-ti="pencil"></span> Word of the day</button>
         <button data-act="gym"><span data-ti="runner"></span> Rush Gym</button>
         <button data-act="records"><span data-ti="trophy"></span> My records</button>
+        <button data-act="rivals"><span data-ti="knight"></span> CPU rivals &amp; Rival Cup</button>
+        <button data-act="history"><span data-ti="clock"></span> My games</button>
+        <button data-act="home"><span data-ti="house"></span> Customize home</button>
         <button data-act="look"><span data-ti="smile"></span> Avatar &amp; title</button>
         <button data-act="modes"><span data-ti="target"></span> Quests, Marathon &amp; Pass and Play</button>
         <button data-act="journal"><span data-ti="pencil"></span> My journal</button>
@@ -2329,6 +2344,7 @@ function startLevel(i){
   if(runOn){S.run=RUN.legs+1;S.runMul=Math.max(.6,1-.06*RUN.legs)}if(ppOn)S.pp=PP.turn+1;if(trOn)trailApply(TRAIL.k);document.documentElement.classList.toggle("spooky",!!L.spooky);document.documentElement.classList.toggle("harvest",!!L.harvest);
   document.getElementById("menu").hidden=true;document.getElementById("result").hidden=true;document.getElementById("quiz").hidden=true;["maker","archive","textbox","review"].forEach(id=>{const x=document.getElementById(id);if(x)x.hidden=true});
   if(dC&&dC.first)selectWord(S.cw.words[0]);
+  try{paceStart()}catch(e){}
   padMode="";layout();renderAll();clearRun();saveRunSoon();
 }
 
@@ -2573,7 +2589,7 @@ function showResult(win,st,why){
      ${S.gold?`<span class="goldtag">GOLD SOLVE · NO HELP</span>`:help?`<span class="sub">${help}</span>`:""}`:`<p class="sub">${why}</p>`}
    <div class="pts">${fmtN(S.score)}</div>${S.newBest?`<span class="goldtag">NEW PERSONAL BEST</span>`:""}${recHTML()}
    ${runResultHTML(win)}${ppResultHTML()}${trailResultHTML()}${spookyResultHTML()}${harvestResultHTML()}
-   ${chalResultHTML()}
+   ${chalResultHTML()}${paceResultHTML()}
    ${breakdownHTML()}
    ${win?miniGridHTML():""}
    <ul><li>${S.cw.words.filter(w=>w.solved).length}/${S.cw.words.length} words solved${S.maxChain>1?` · best chain ×${S.maxChain}`:""}</li>
@@ -2587,7 +2603,7 @@ function showResult(win,st,why){
    ${coachHTML(win)}
    ${highlightsHTML()}
    ${!S.pp&&(win||S.phase==="over")?diffAdviceHTML():""}
-   ${rateHTML()}
+   ${rateHTML()}${reportHTML()}
    <details class="how sc"><summary>How scoring works</summary>${SCORING_HELP}</details>
    <div class="btns">${official?`<button class="big" id="shareD">Share result</button>`:""}${!S.L.custom&&S.score>0?`<button class="ghost-btn" id="chalBtn">${S.challenge?"Send it back":"Challenge a friend"}</button>`:""}${win&&has?`<button class="${official?"ghost-btn":"big"}" id="nextL">${sameCat?"Next puzzle":"Next category: "+nx.cat}</button>`:""}
    <button class="${(win&&has)||official?"ghost-btn":"big"}" id="retryL">${dk?"Play again (practice)":"Play again"}</button>
@@ -2598,7 +2614,7 @@ function showResult(win,st,why){
   const cb=document.getElementById("chalBtn");if(cb)cb.onclick=()=>shareWithCard(chalShareText());
   document.getElementById("retryL").onclick=()=>dk?playDaily(dk,true):startLevel(S.li>=0?S.li:S.L);
   document.getElementById("toMenu").onclick=showMenu;
-  wireAdvice();ppRunWire(el);wireReflect(el);wireQS(el);wireTrailResult();wireCoach(el);wireRate(el);{const b=document.getElementById("hvNext");if(b)b.onclick=()=>playHarvest(+b.dataset.hk)}{const b=document.getElementById("spNext");if(b)b.onclick=()=>playSpooky(+b.dataset.sk)}
+  wireAdvice();ppRunWire(el);wireReflect(el);wireQS(el);wireTrailResult();wireCoach(el);wireRate(el);wirePace(el);{const r=document.getElementById("rpOpen");if(r)r.onclick=openReport}{const b=document.getElementById("hvNext");if(b)b.onclick=()=>playHarvest(+b.dataset.hk)}{const b=document.getElementById("spNext");if(b)b.onclick=()=>playSpooky(+b.dataset.sk)}
   {const b=document.getElementById("p2Next");if(b)b.onclick=()=>{const v=b.dataset;if(v.sea!=null)playSeason(+v.sea);else startLevel(+v.evl)}}
   {const b=document.getElementById("hhSet");if(b)b.onclick=()=>showSportsQuiz();const m=document.getElementById("hhMore");if(m)m.onclick=()=>openLegends()}
   wireSay(el);{const d=document.getElementById("lrbDrill");if(d)d.onclick=()=>{el.hidden=true;openRecall("see")}}
@@ -2661,7 +2677,7 @@ function recordGame(win){
     if(!stats.daily[d]){stats.daily[d]={score:g.score,grade:S.grade,gold:!!S.gold,win,target:S.targetHit,chain:S.maxChain||0,rushW:S.rushWins,rushT:S.rushTotal,log:S.wordLog,t:now};daily=g.score;
       const ks=Object.keys(stats.daily).sort();ks.slice(0,Math.max(0,ks.length-60)).forEach(k=>delete stats.daily[k])}
     if(win)bumpDailyStreak(d)}
-  langAfterGame();recordChal();try{p2After(g)}catch(e){console.error(e)}try{claimQuests()}catch(e){console.error(e)}try{sparksAfter(g);spookyAfter(g)}catch(e){console.error(e)}try{achCheck()}catch(e){console.error(e)}try{after1827(g)}catch(e){console.error(e)}progressAfter(lv0);saveStats();pushCloud();if(!practice)gcSync(g.score,daily);
+  langAfterGame();recordChal();try{p2After(g)}catch(e){console.error(e)}try{claimQuests()}catch(e){console.error(e)}try{sparksAfter(g);spookyAfter(g)}catch(e){console.error(e)}try{after2837(g)}catch(e){console.error(e)}try{achCheck()}catch(e){console.error(e)}try{after1827(g)}catch(e){console.error(e)}progressAfter(lv0);saveStats();pushCloud();if(!practice)gcSync(g.score,daily);
 }
 
 /* cloud: shared leaderboard + private stats copy */
@@ -2889,7 +2905,7 @@ function renderProfile(){if(gc.native)gcLoad("total");
        <span class="hl">XP <b>${fmtN(xpTotal())}</b> · ${fmtN(L.toNext)} TO LV ${L.lv+1}</span>
        <span class="chip ${ds.doneToday?"ok":"warn"}">${status}</span>
        <button class="hbtn" id="pfRewards">Rewards, challenges &amp; themes ›</button>
-       <button class="hbtn" id="pfAch">Achievements ›</button><button class="hbtn" id="pfIns">Insights ›</button><button class="hbtn" id="pfRec">Records ›</button>
+       <button class="hbtn" id="pfAch">Achievements ›</button><button class="hbtn" id="pfIns">Insights ›</button><button class="hbtn" id="pfRec">Records ›</button><button class="hbtn" id="pfHist">My games ›</button>
      </div>
    </section>
    ${sec("01","TELEMETRY",`<div class="hgs">
@@ -2923,7 +2939,7 @@ function renderProfile(){if(gc.native)gcLoad("total");
   document.getElementById("nickForm").onsubmit=e=>{e.preventDefault();const v=document.getElementById("nickIn").value.replace(/[^\p{L}\p{N} _.-]/gu,"").trim().slice(0,16);
     if(!v)return;stats.nick=v;saveStats();pushCloud();toast("Name saved");renderProfile()};
   const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
-  on("pfRetake",()=>showQuiz(null));on("pfReview",openReview);on("pfRewards",openRewards);on("pfSb",()=>openScoreboard&&openScoreboard("daily"));on("pfWb",()=>openWordBook());on("pfWeek",shareWeek);on("pfLook",openLook);on("pfAch",openAchievements);on("pfIns",openInsights);on("pfRec",openRecords);on("pfEv",openEvents);on("pfDu",openDuels);
+  on("pfRetake",()=>showQuiz(null));on("pfReview",openReview);on("pfRewards",openRewards);on("pfSb",()=>openScoreboard&&openScoreboard("daily"));on("pfWb",()=>openWordBook());on("pfWeek",shareWeek);on("pfLook",openLook);on("pfAch",openAchievements);on("pfIns",openInsights);on("pfRec",openRecords);on("pfHist",openHistory);on("pfEv",openEvents);on("pfDu",openDuels);
   wireChart();
 }
 function scoreChart(games){
@@ -2979,7 +2995,7 @@ document.getElementById("drClose").onclick=closeDrawer;try{initDrawerDrag()}catc
     else if(a==="checkin")showQuiz(null);
     else if(a==="archive")openArchive();else if(a==="maker")openMaker();else if(a==="review")openReview();else if(a==="backup")openBackup();
     else if(a==="tour"){startTutorial()}
-    else if(a==="rewards")openRewards();else if(a==="events")openEvents();else if(a==="wordbook")openWordBook();else if(a==="duels")openDuels();else if(a==="modes")openModes();else if(a==="trail")openTrail();else if(a==="harvest")openHarvest();else if(a==="cipher")openCipher();else if(a==="gym")openGym();else if(a==="records")openRecords();else if(a==="ach")openAchievements();else if(a==="insights")openInsights();else if(a==="wotd")openWotd();else if(a==="spooky")openSpooky();else if(a==="look")openLook();else if(a==="journal")openJournal();else if(a==="langlab")openLangHub();else if(a==="mini")openMini();else if(a==="chunks")openChunks();else if(a==="scoreboard")openScoreboard();else if(a==="code")openCode();
+    else if(a==="rewards")openRewards();else if(a==="events")openEvents();else if(a==="wordbook")openWordBook();else if(a==="duels")openDuels();else if(a==="modes")openModes();else if(a==="trail")openTrail();else if(a==="harvest")openHarvest();else if(a==="cipher")openCipher();else if(a==="gym")openGym();else if(a==="records")openRecords();else if(a==="rivals")openModes("mdRiv");else if(a==="history")openHistory();else if(a==="home")openHomeEdit();else if(a==="ach")openAchievements();else if(a==="insights")openInsights();else if(a==="wotd")openWotd();else if(a==="spooky")openSpooky();else if(a==="look")openLook();else if(a==="journal")openJournal();else if(a==="langlab")openLangHub();else if(a==="mini")openMini();else if(a==="chunks")openChunks();else if(a==="scoreboard")openScoreboard();else if(a==="code")openCode();
     else if(a==="pro"){showPaywall(PRO?"owned":"menu")}
     else if(a==="how"){goPage("Play");const h=document.querySelector(".how");if(h){h.open=true;setTimeout(()=>h.scrollIntoView({behavior:"smooth",block:"start"}),60)}}});
   document.querySelectorAll("#rkSeg button").forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;renderRanks()});
@@ -3038,7 +3054,7 @@ function renderScreens(){
 }
 function renderAll(){if(!S)return;renderScreens();renderRush();renderHeader();renderCW();renderClue();renderPad();layout();renderWell();magRefresh();if(S.tut)tutRender()}
 function renderHeader(){
-  document.getElementById("lvlName").innerHTML=`<small>${esc(S.L.cat)}</small><b>${esc(S.L.name)}${S.L.n>1?` <span style="color:var(--muted);font-weight:500">${S.L.pi+1}/${S.L.n}</span>`:""}</b>${S.challenge?`<span class="chal-pill" id="chalPill"></span>`:""}`;chalPill();try{feverRender()}catch(e){}
+  document.getElementById("lvlName").innerHTML=`<small>${esc(S.L.cat)}</small><b>${esc(S.L.name)}${S.L.n>1?` <span style="color:var(--muted);font-weight:500">${S.L.pi+1}/${S.L.n}</span>`:""}</b>${S.challenge?`<span class="chal-pill" id="chalPill"></span>`:S.pace?`<span class="chal-pill pace" id="pacePill" role="button" tabindex="0"></span>`:""}`;chalPill();try{feverRender()}catch(e){}
   setScore(S.score);
   const t=document.getElementById("target");t.className="target"+(S.targetHit?" hit":"");
   t.innerHTML=`<span class="lab">Target</span><span class="word">${[...S.L.target[0]].map(c=>`<b>${c}</b>`).join("")}</span>
@@ -3320,7 +3336,7 @@ window.addEventListener("resize",()=>{if(S&&S.tut)tutRender()});
 
 /* ---------- 1.1 polish: score count-up, effects, haptics ---------- */
 let scoreShown=null,scoreRaf=0;
-function chalPill(){const p=document.getElementById("chalPill");if(!p||!S||!S.challenge)return;const c=S.challenge,g=S.final==null?ghostNow():null;
+function chalPill(){try{pacePill()}catch(e){}const p=document.getElementById("chalPill");if(!p||!S||!S.challenge)return;const c=S.challenge,g=S.final==null?ghostNow():null;
   if(g!=null){const a=S.score>=g;p.className="chal-pill ghost"+(a?" ahead":"");p.innerHTML=`${ti("bolt")} ${esc(c.n)} ${fmtN(g)} · you ${a?"+":"−"}${fmtN(Math.abs(S.score-g))}`;p.setAttribute("aria-label",`${c.n}'s ghost has ${g} points. You are ${a?"ahead":"behind"} by ${Math.abs(S.score-g)}.`);return}
   const a=S.score>c.s;p.className="chal-pill"+(a?" ahead":"");p.textContent=(a?"Ahead of ":"Beat ")+c.n+": "+fmtN(c.s)}
 function setScore(v){chalPill();const el=document.getElementById("score");if(!el)return;
@@ -3653,8 +3669,9 @@ function renderDailyCard(){
   try{box.insertAdjacentHTML("beforeend",surpriseLine());on("svLine",surprise)}catch(e){}
   try{box.insertAdjacentHTML("beforeend",wotdLine());on("wdLine",openWotd)}catch(e){}
   box.insertAdjacentHTML("beforeend",`<span class="pz-label">TODAY'S PUZZLES</span>`+puzzlesStrip());
+  try{homeFilter(box)}catch(e){}
   try{tidyHome(box)}catch(e){}
-  on("pzMini",()=>openMini());on("pzLadder",()=>openLadder());on("pzCipher",()=>openCipher());on("pzChunks",()=>openChunks());on("pzSb",()=>openScoreboard("mini"));on("pzArc",()=>openArchive("mini"));
+  on("pzEdit",openHomeEdit);on("pzMini",()=>openMini());on("pzLadder",()=>openLadder());on("pzCipher",()=>openCipher());on("pzChunks",()=>openChunks());on("pzSb",()=>openScoreboard("mini"));on("pzArc",()=>openArchive("mini"));
   on("dcPlay",()=>playDaily(t));on("dcAgain",()=>playDaily(t,true));on("dcShare",()=>shareOut(shareText(rec,t)));on("dcArchive",openArchive);
 }
 function openArchive(k){if(typeof openArchiveV2==="function"){openArchiveV2(typeof k==="string"?k:"daily");return}
@@ -4221,13 +4238,17 @@ function openWordBook(cat){wbBackfill();const U=wbUniverse(),cats=Object.keys(U)
   document.getElementById("wbDone").onclick=()=>{el.hidden=true;el.innerHTML="";if(hubPage==="Profile")renderProfile()}}
 
 /* ---- what's new (shown once to returning players) ---- */
-function maybeWhatsNew(){if(stats.seen17||!stats.tot||!stats.tot.games)return;stats.seen12=1;stats.seen13=1;stats.seen14=1;const had16=!!stats.seen16;stats.seen15=1;stats.seen16=1;stats.seen17=1;saveStats();const el=document.getElementById("evh");
+function maybeWhatsNew(){if(stats.seen18||!stats.tot||!stats.tot.games)return;stats.seen12=1;stats.seen13=1;stats.seen14=1;const had16=!!stats.seen16;stats.seen15=1;stats.seen16=1;stats.seen17=1;stats.seen18=1;saveStats();const el=document.getElementById("evh");
   el.innerHTML=`<h1>WHAT'S <span>NEW</span></h1>
+   <div class="panel wn">${ti("knight")}<div><b>CPU rivals &amp; Rival Cup</b><p>Race Pip, Rook or Vex on any puzzle with their live score beside yours, and beat all three in this week's cup.</p></div></div>
+   <div class="panel wn">${ti("clock")}<div><b>Race your best</b><p>Replay a puzzle and a ghost of your best run keeps pace with you.</p></div></div>
+   <div class="panel wn">${ti("bolt")}<div><b>Second chance</b><p>When the well fills, spend 5 sparks once a game to clear the top half and keep going.</p></div></div>
+   <div class="panel wn">${ti("house")}<div><b>Make home yours</b><p>Hide the tiles you don't use, find past games in My games, and replay your loved puzzles.</p></div></div>
+   <details class="wn-more"><summary>More new in 1.1</summary>
    <div class="panel wn">${ti("lock")}<div><b>Cipher</b><p>A fourth Today's Puzzle: crack a famous saying where every letter has been swapped.</p></div></div>
    <div class="panel wn">${ti("runner")}<div><b>Rush Gym &amp; Rewind</b><p>A 60-second unscramble sprint in the Menu, and a new power-up that takes back your last piece.</p></div></div>
    <div class="panel wn">${ti("trophy")}<div><b>Records, mastery &amp; monthly recaps</b><p>Bronze to Platinum ranks for every category, your all-time bests, and a recap at the start of each month.</p></div></div>
    <div class="panel wn">${ti("seedling")}<div><b>Harvest Season</b><p>Six cozy autumn puzzles from 3 to 30 November, with a Harvest well theme for finishing them all.</p></div></div>
-   ${had16?"":`<details class="wn-more"><summary>More new in 1.1</summary>
    <div class="panel wn">${ti("fire")}<div><b>Fever</b><p>Solve fast, clear rows and win rushes to fill the meter under the target. When it's full, points are ×1.5 for 15 seconds.</p></div></div>
    <div class="panel wn">${ti("medal")}<div><b>Achievements &amp; insights</b><p>Fourteen medal tracks with bronze, silver and gold, plus a look at your play days, best categories and best time to play.</p></div></div>
    <div class="panel wn">${ti("pencil")}<div><b>Word of the day</b><p>One clue a day, three tries. Keep the streak going.</p></div></div>
@@ -4244,7 +4265,7 @@ function maybeWhatsNew(){if(stats.seen17||!stats.tot||!stats.tot.games)return;st
    <div class="panel wn">${ti("trophy")}<div><b>Events &amp; seasons</b><p>A free weekly event and a six-puzzle season pack every month, with badges and season-only well themes.</p></div></div>
    <div class="panel wn">${ti("cards")}<div><b>Your word book</b><p>Every word you solve is collected by category. Hunt for golden words and finish a category for a badge.</p></div></div>
    <div class="panel wn">${ti("bolt")}<div><b>Duels with a ghost</b><p>Challenge a friend and they race a live ghost of your run. Track your record against every rival.</p></div></div>
-   </details>`}
+   </details>
    <div class="btns wide"><button class="big" id="evDone">Let's go</button></div>`;
   el.hidden=false;document.getElementById("evDone").onclick=closeEvents}
 
@@ -4432,6 +4453,8 @@ function openModes(focus){const el=document.getElementById("evh"),qs=questState(
    <div class="panel" id="mdMara"><h2 class="ph">${ti("runner")} Marathon</h2>
      <p class="sub">Puzzles back to back in one category. Each leg falls a little faster. The run ends when the well fills. +${MARA_XP} XP a leg.</p>
      <div class="md-cats">${cats.map(c=>{const b=mara[c.name];return`<button data-mara="${esc(c.name)}">${catIcon(c.name,(CAT_LOOK[c.name]||{}).g1)}<span><b>${esc(c.name)}</b><span>${b?`Best: ${b.legs} leg${b.legs>1?"s":""} · ${fmtN(b.score)}`:"No run yet"}</span></span></button>`}).join("")}</div></div>
+   ${rivalsPanelHTML()}
+   ${lovedPanelHTML()}
    <div class="panel" id="mdPP"><h2 class="ph">${ti("family")} Pass &amp; Play</h2>
      <p class="sub">Two players, one phone. You each play the same puzzle with the same falling pieces, then compare scores. Games here don't change your stats.</p>
      <div class="pp-form"><label>Player 1<input class="mkin" id="ppN1" maxlength="14" value="${esc(nm[0])}" autocomplete="off"></label><label>Player 2<input class="mkin" id="ppN2" maxlength="14" value="${esc(nm[1])}" autocomplete="off"></label>
@@ -4442,6 +4465,8 @@ function openModes(focus){const el=document.getElementById("evh"),qs=questState(
   el.hidden=false;el.scrollTop=0;
   el.querySelectorAll("[data-mara]").forEach(b=>b.onclick=()=>startMarathon(b.dataset.mara));
   {const t=document.getElementById("trLine");if(t)t.onclick=()=>openTrail()}{const g=document.getElementById("rgLine");if(g)g.onclick=openGym}
+  el.querySelectorAll("[data-riv]").forEach(b=>b.onclick=()=>raceRival(+b.dataset.riv));{const c=document.getElementById("cupPlay");if(c)c.onclick=playCup}
+  el.querySelectorAll("[data-lv]").forEach(b=>b.onclick=()=>{closeEvents();startLevel(+b.dataset.lv)});
   let len=3;el.querySelectorAll("#ppLen button").forEach(b=>b.onclick=()=>{len=+b.dataset.n;el.querySelectorAll("#ppLen button").forEach(x=>x.setAttribute("aria-checked",x===b))});
   document.getElementById("ppStart").onclick=()=>{const clean=v=>String(v||"").replace(/[<>]/g,"").trim().slice(0,14);
     const a=clean(document.getElementById("ppN1").value)||"Player 1",b=clean(document.getElementById("ppN2").value)||"Player 2";
@@ -4749,7 +4774,7 @@ function sparks(){if(stats.sparks==null){stats.sparks=3}return stats.sparks}
 function pwAllowed(){return!!(S&&!S.tut&&!S.pp&&!S.challenge&&!(S.L.daily&&!S.L.archive))}
 function pwBarHTML(){if(!pwAllowed())return"";const n=sparks(),used=S.pwUsed||0;
   return`<div class="pwr" role="group" aria-label="Power-ups, ${n} sparks"><span class="pw-sp" aria-hidden="true">${ti("bolt")}<b>${n}</b></span>${POWERS.map(([id,name,ic,cost,d])=>{const off=n<cost||used>=PW_MAX_USES;
-    return`<button class="k pw" data-a="P:${id}" ${off?'aria-disabled="true"':""} aria-label="${name}, costs ${cost} sparks. ${d}">${ti(ic)}<span>${name}</span><i>${cost}</i></button>`}).join("")}</div>`}
+    return`<button class="k pwu" data-a="P:${id}" ${off?'aria-disabled="true"':""} aria-label="${name}, costs ${cost} sparks. ${d}">${ti(ic)}<span>${name}</span><i>${cost}</i></button>`}).join("")}</div>`}
 function usePower(id){if(!S||S.phase!=="drop"||!pwAllowed())return;const P=POWERS.find(p=>p[0]===id);if(!P)return;const n=sparks();
   if((S.pwUsed||0)>=PW_MAX_USES){toast(`${PW_MAX_USES} power-ups a game`);return}if(n<P[3]){toast(`${P[1]} needs ${P[3]} sparks`);return}
   if(id==="rewind"){if(!rewind())return}
@@ -5160,7 +5185,7 @@ function openRecords(){recordsInit();const el=document.getElementById("evh"),R=s
   el.innerHTML=`<h1>MY <span>RECORDS</span></h1>
    <div class="panel"><h2 class="ph">${ti("trophy")} Best single games</h2>${REC_KEYS.map(([k,l,,fmt])=>row(l,R[k]?fmt(R[k].v):"—",when(R[k]))).join("")}</div>
    <div class="panel"><h2 class="ph">${ti("fire")} Longest streaks</h2>${row("Daily",dys(ds.best))}${row("The Mini",dys(pk("mini")))}${row("Chunks",dys(pk("chunks")))}${row("Ladder",dys(pk("ladder")))}${row("Cipher",dys(pk("cipher")))}${row("Word of the day",dys((stats.wotd||{}).best))}</div>
-   <div class="panel"><h2 class="ph">${ti("bolt")} Modes</h2>${row("Rush Gym best",G.best?fmtN(G.best):"—",G.plays?`${G.plays} session${G.plays>1?"s":""} · ${G.words} words`:"")}${row("Longest Marathon",mara.length?Math.max(...mara.map(m=>m.legs))+" legs":"—")}${row("Word Trail stops",Object.keys((stats.trail||{}).done||{}).length+" of 40")}</div>
+   <div class="panel"><h2 class="ph">${ti("bolt")} Modes</h2>${row("Rush Gym best",G.best?fmtN(G.best):"—",G.plays?`${G.plays} session${G.plays>1?"s":""} · ${G.words} words`:"")}${row("CPU races won",Object.values(stats.cpu||{}).reduce((a,r)=>a+(r.w||0),0))}${row("Longest Marathon",mara.length?Math.max(...mara.map(m=>m.legs))+" legs":"—")}${row("Word Trail stops",Object.keys((stats.trail||{}).done||{}).length+" of 40")}</div>
    <div class="panel"><h2 class="ph">${ti("star")} Category mastery</h2><div class="rc-mast">${CATEGORIES.map(c=>{const {got,max}=catStars(c);return`<div class="rc-row"><span>${esc(c.name)}</span>${masteryChip(got,max)}<small>★ ${got}/${max}</small></div>`}).join("")}</div>
      <p class="sub">Bronze at a quarter of a category's stars, Silver at half, Gold at three quarters, Platinum when every puzzle has three.</p></div>
    <div class="panel"><h2 class="ph">${ti("numbers")} All time</h2>${row("Puzzles played",fmtN(T.games))}${row("Words solved",fmtN(T.words))}${row("Points",fmtN(T.score))}${row("Level",levelOf(xpTotal()).lv)}${row("Stars",fmtN(starsTotal()))}</div>
@@ -5221,6 +5246,152 @@ function initDrawerDrag(){const d=document.getElementById("drawer"),sc=document.
     setTimeout(()=>{if(close){d.hidden=true;sc.hidden=true;const m=document.getElementById("hubMenu");if(m)m.setAttribute("aria-expanded","false")}reset()},dur*1000+30)};
   d.addEventListener("pointerup",end);d.addEventListener("pointercancel",end);
   d.addEventListener("click",e=>{if(Date.now()-justDragged<350){e.stopPropagation();e.preventDefault()}},true)}
+
+
+/* ================= Phase 28: customize the home screen ================= */
+const HOME_TILES=[["qLine","Daily quests"],["trLine","Word Trail"],["wkLine","Weekly challenges"],["evLine","Events & seasons"],["svLine","Surprise me"],["wdLine","Word of the day"],["fyLine","For you"],
+  ["pzMini","The Mini"],["pzChunks","Chunks"],["pzLadder","Ladder"],["pzCipher","Cipher"]];
+function homeHidden(){return stats.homeHide||[]}
+function homeFilter(box){const hid=homeHidden();hid.forEach(id=>{const x=box.querySelector("#"+id);if(x)x.remove()});
+  const row=box.querySelector(".pzrow");if(row&&!row.children.length){row.remove();const lab=box.querySelector(".pz-label");if(lab)lab.remove()}
+  const links=box.querySelector(".pzlinks");if(links&&!links.querySelector("#pzEdit"))links.insertAdjacentHTML("beforeend",`<button id="pzEdit">Customize home</button>`)}
+function openHomeEdit(){const el=document.getElementById("evh"),hid=homeHidden();
+  el.innerHTML=`<h1>CUSTOMIZE <span>HOME</span></h1><p class="sub">Choose what shows on the Play page. The Daily and seasonal events always stay. Hidden things are still in the ☰ Menu.</p>
+   <div class="panel">${HOME_TILES.map(([id,l])=>`<button class="setrow" role="switch" data-hid="${id}" aria-checked="${!hid.includes(id)}"><span><span class="st-t">${esc(l)}</span></span><span class="sw"></span></button>`).join("")}</div>
+   <div class="btns wide"><button class="ghost-btn" id="heAll">Show everything</button><button class="big" id="evDone">Done</button></div>`;
+  el.hidden=false;el.scrollTop=0;
+  el.querySelectorAll("[data-hid]").forEach(b=>b.onclick=()=>{const on=b.getAttribute("aria-checked")!=="true";b.setAttribute("aria-checked",on);
+    const s=new Set(homeHidden());on?s.delete(b.dataset.hid):s.add(b.dataset.hid);stats.homeHide=[...s];saveStats();hap("select")});
+  document.getElementById("heAll").onclick=()=>{stats.homeHide=[];saveStats();el.querySelectorAll("[data-hid]").forEach(b=>b.setAttribute("aria-checked","true"));announce("Everything is back on the home screen")};
+  document.getElementById("evDone").onclick=closeEvents}
+
+/* ================= Phase 29: just-in-time tips (first time a mechanic appears) ================= */
+const JIT={target:"Spell the target word on the orange middle line for +500. Line up the falling letters to build it.",
+  "rush-tap":"Rush! Find the hidden word in the well and tap its letters in order before the timer runs out.",
+  "rush-scramble":"Rush! Unscramble the letters before time runs out. Miss it and a junk row rises.",
+  "rush-clue":"Rush! Answer the clue to clear everything above the middle line.",
+  fever:"Fever! Points are ×1.5 for 15 seconds. Keep solving and clearing rows.",
+  powers:"Power-ups: spend sparks on Freeze, Bomb, Sweep or Rewind. Up to three a game."};
+const JIT_NEW=["target","rush-tap","rush-scramble","rush-clue"];let jitT=0;
+function jit(id){if(!S||S.tut||S.pp||!stats.tutDone||!JIT[id])return;stats.tips=stats.tips||{};if(stats.tips[id])return;
+  if(JIT_NEW.includes(id)&&(stats.tot.games||0)>=10){stats.tips[id]=1;return}
+  let el=document.getElementById("jit");if(el&&!el.hidden)return;
+  if(!el){el=document.createElement("div");el.id="jit";el.className="jit";el.setAttribute("role","status");document.getElementById("app").appendChild(el)}
+  stats.tips[id]=1;saveStats();el.innerHTML=`<p>${esc(JIT[id])}</p><button class="ghost-btn" id="jitOk">Got it</button>`;el.hidden=false;
+  document.getElementById("jitOk").onclick=jitHide;clearTimeout(jitT);jitT=setTimeout(jitHide,8000)}
+function jitHide(){clearTimeout(jitT);const el=document.getElementById("jit");if(el)el.hidden=true}
+{const _sr=startRush;startRush=function(){const r=_sr.apply(this,arguments);try{if(S&&S.rush)setTimeout(()=>jit("rush-"+S.rush.mode),400)}catch(e){}return r}}
+{const _fa=feverAdd;feverAdd=function(){const r=_fa.apply(this,arguments);try{if(feverOn())jit("fever")}catch(e){}return r}}
+{const _sp=spawnPiece;spawnPiece=function(){const r=_sp.apply(this,arguments);try{if(S&&S.phase==="drop"&&!S.tut){if(!(stats.tips||{}).target)jit("target");else if(pwAllowed()&&sparks()>=2)jit("powers")}}catch(e){}return r}}
+
+/* ================= Phase 30: second chance (spend sparks when the well fills) ================= */
+const SAVE_COST=5;
+function canSave(){return!!(S&&!S.tut&&!S.zen&&!S.pp&&!S.challenge&&!S.saved&&S.final==null&&!(S.L.daily&&!S.L.archive)&&sparks()>=SAVE_COST)}
+{const _go=gameOver;gameOver=function(why){if(S&&S.phase==="save")return;if(canSave()){offerSave(why);return}return _go.apply(this,arguments)};
+ window.__gameOverNow=function(why){return _go(why)}}
+function offerSave(why){S.phase="save";S.active=null;S.saveWhy=why;jitHide();hap("error");sfx("lose");renderWell();
+  const el=document.getElementById("textbox");
+  el.innerHTML=`<h1>OUT OF <span>ROOM</span></h1><p class="sub">${esc(why)}</p>
+   <div class="panel sv-panel"><p>Spend <b>${SAVE_COST} sparks</b> to clear the top half of the well and keep going. You get one second chance a game.</p><p class="sub">${ti("bolt")} You have ${sparks()} sparks.</p></div>
+   <div class="btns wide"><button class="big" id="svGo">Keep going · ${SAVE_COST} sparks</button><button class="ghost-btn" id="svEnd">End the game</button></div>`;
+  el.hidden=false;setTimeout(()=>{const b=document.getElementById("svGo");if(b)b.focus()},60);
+  document.getElementById("svGo").onclick=()=>{el.hidden=true;stats.sparks=sparks()-SAVE_COST;S.saved=true;saveStats();
+    for(let r=0;r<=MID;r++)S.grid[r].fill(null);gravity();S.rush=null;S.cool=2;S.phase="anim";S.rwSnap=null;renderAll();toast("SECOND CHANCE");hap("success");sfx("combo",2);
+    setTimeout(()=>{if(S&&S.phase==="anim")afterSettle()},350)};
+  document.getElementById("svEnd").onclick=()=>{el.hidden=true;S.phase="drop";S.saved=true;window.__gameOverNow(S.saveWhy)}}
+
+/* ================= Phases 31–33: CPU rivals, your-best ghost, Rival Cup ================= */
+const RIVALS=[{n:"Pip",lvl:"Easy",f:.75,t:1.3,ic:"seedling",d:"Steady and friendly. A good first race."},
+  {n:"Rook",lvl:"Medium",f:1,t:1,ic:"knight",d:"Plays about as well as you usually do."},
+  {n:"Vex",lvl:"Hard",f:1.3,t:.8,ic:"bolt",d:"Fast and sharp. Bring your best."}];
+var RIVAL=null;
+function rivalBase(L){const wins=stats.games.filter(g=>g.win&&!g.practice&&!g.zen),cat=wins.filter(g=>g.cat===L.cat).slice(0,10),src=cat.length>=3?cat:wins.slice(0,20),w=(L.words||[]).length||6;
+  const s=src.length>=3?src.reduce((a,g)=>a+(g.score||0),0)/src.length:650*w,d=src.length>=3?src.reduce((a,g)=>a+(g.secs||0),0)/src.length:28*w;return{s:Math.max(800,s),d:Math.max(60,d)}}
+function rivalPace(k,L){const R=RIVALS[k],b=rivalBase(L),T=Math.round(b.s*R.f/10)*10,D=Math.min(590,b.d*R.t),n=Math.max(2,Math.ceil(D/10)),rnd=rng(((L.seed||7)*31+k*977)>>>0),h=[];
+  for(let i=0;i<=n;i++){const x=Math.min(1,i*10/D);h.push(Math.round(T*Math.pow(x,1.15)*(i&&i<n?.9+rnd()*.2:1)/10))}
+  for(let i=0;i<h.length;i++)h[i]=Math.min(T/10,i?Math.max(h[i],h[i-1]):h[i]);h[h.length-1]=T/10;return{kind:"cpu",k,n:R.n+" (CPU)",h,s:T}}
+function paceStart(){if(!S)return;S.pace=null;const R=RIVAL;RIVAL=null;if(S.tut||S.pp||pendingChal||S.L.custom)return;
+  if(R){S.pace=rivalPace(R.k,S.L);S.cup=!!R.cup;return}
+  if(S.L.daily&&!S.L.archive)return;const b=(stats.pb||{})[S.L.id];if(b&&b.h&&b.h.length>1&&!stats.pbOff)S.pace={kind:"self",n:"Your best",h:b.h,s:b.s}}
+function paceNow(){const p=S&&S.pace;if(!p||!p.h.length)return null;const i=Math.min(p.h.length-1,Math.floor((Date.now()-(S.t0||Date.now()))/10000));return p.h[Math.max(0,i)]*10}
+function pacePill(){const el=document.getElementById("pacePill");if(!el||!S||!S.pace)return;const p=S.pace,g=S.final==null?paceNow():p.s,a=S.score>=g;
+  el.className="chal-pill ghost pace"+(a?" ahead":"");el.innerHTML=`${ti(p.kind==="cpu"?RIVALS[p.k].ic:"clock")} ${esc(p.n)} ${fmtN(g)} · you ${a?"+":"−"}${fmtN(Math.abs(S.score-g))}`;
+  el.setAttribute("aria-label",`${p.n}: ${g} points. You are ${a?"ahead":"behind"} by ${Math.abs(S.score-g)}.${p.kind==="self"?" Tap to hide.":""}`);
+  el.onclick=p.kind==="self"?()=>{S.pace=null;renderHeader();toast("Ghost hidden for this game")}:null}
+setInterval(()=>{try{if(S&&S.pace&&S.final==null&&["drop","cross","rush","anim"].includes(S.phase))pacePill()}catch(e){}},1000);
+function cupWeek(){return weekKeyOf(Date.now())}
+function cupState(){const wk=cupWeek();if(!stats.cup||stats.cup.wk!==wk)stats.cup={wk,stage:0,done:false};return stats.cup}
+function cupPuzzles(){const wk=cupWeek(),R=rng(+wk.replace(/-/g,"")),pool=CATEGORIES.filter(c=>!c.lang&&!c.heal).flatMap(c=>c.puzzles).filter(l=>!lockReason(l));
+  const out=[];for(let i=0;i<40&&out.length<3&&pool.length;i++){const L=pool[Math.floor(R()*pool.length)];if(!out.includes(L)&&!out.some(o=>o.cat===L.cat))out.push(L)}return out}
+function raceRival(k,L){L=L||surprisePick();if(!L){toast("No puzzle to race on");return}closeEvents();RIVAL={k};startLevel(LEVELS.indexOf(L));if(S&&S.pace)toast(`Race ${S.pace.n}: ${fmtN(S.pace.s)}`)}
+function playCup(){const st=cupState();if(st.done){toast("Cup won this week!");return}const P=cupPuzzles()[st.stage];if(!P){toast("No cup puzzle available");return}
+  closeEvents();RIVAL={k:st.stage,cup:true};startLevel(LEVELS.indexOf(P));if(S&&S.pace)toast(`Rival Cup ${st.stage+1}/3: beat ${S.pace.n}`)}
+function paceAfter(g){if(!S||!S.pace)return;const p=S.pace,won=!!g.win&&S.score>p.s;S.paceRes=won?"win":"loss";
+  if(p.kind==="cpu"){stats.cpu=stats.cpu||{};const r=stats.cpu[RIVALS[p.k].n]=stats.cpu[RIVALS[p.k].n]||{w:0,l:0};won?r.w++:r.l++;
+    if(S.cup){const st=cupState();if(won&&!st.done&&st.stage===p.k){st.stage++;if(st.stage>=3){st.done=true;giveXP(1500,"Rival Cup won");giveBadge("cup-"+st.wk,"Rival Cup","trophy","Beat Pip, Rook and Vex in one week")}}}}}
+function pbAfter(g){if(!S||S.tut||S.pp||S.L.custom||!S.L.id||S.challenge)return;const h=tlPack();if(h.length<2)return;stats.pb=stats.pb||{};const b=stats.pb[S.L.id];
+  if(g.win&&(!b||S.score>b.s)){S.pbPrev=b?b.s:null;stats.pb[S.L.id]={s:Math.round(S.score),h,t:Date.now()};
+    const ks=Object.entries(stats.pb).sort((a,c)=>c[1].t-a[1].t);ks.slice(120).forEach(([k])=>delete stats.pb[k])}}
+function paceResultHTML(){if(!S||!S.pace)return"";const p=S.pace;
+  if(p.kind==="self")return`<div class="chal-res ${S.paceRes==="win"?"won":"lost"}"><div>${S.paceRes==="win"?`New best on this puzzle!`:`Your best here is still ${fmtN(p.s)}`}</div><span>Best ${fmtN(Math.max(p.s,Math.round(S.score)))} · this game ${fmtN(S.score)}</span></div>`;
+  const r=(stats.cpu||{})[RIVALS[p.k].n]||{w:0,l:0},st=S.cup?cupState():null;
+  return`<div class="chal-res ${S.paceRes==="win"?"won":"lost"}"><div>${S.paceRes==="win"?`You beat <b>${esc(p.n)}</b>!`:`<b>${esc(p.n)}</b> won this one.`}</div><span>${esc(p.n)}: ${fmtN(p.s)} · You: ${fmtN(S.score)} · record ${r.w}–${r.l}</span>
+   ${st?`<span>Rival Cup: ${st.done?"won this week ✓":`${st.stage}/3 rivals beaten`}</span>${!st.done?`<button class="ghost-btn" id="cupNext">${S.paceRes==="win"?"Next rival ›":"Try again ›"}</button>`:""}`:`<button class="ghost-btn" id="rvAgain">Race ${esc(RIVALS[p.k].n)} again ›</button>`}</div>`}
+function wirePace(el){const a=el.querySelector("#cupNext");if(a)a.onclick=playCup;const b=el.querySelector("#rvAgain");if(b)b.onclick=()=>raceRival(S.pace.k)}
+function rivalsPanelHTML(){const st=cupState(),cp=cupPuzzles(),cpu=stats.cpu||{};
+  return`<div class="panel" id="mdRiv"><h2 class="ph">${ti("knight")} CPU rivals</h2>
+   <p class="sub">Race a computer opponent on a puzzle you haven't mastered. Its live score shows next to yours, like a friend's ghost.</p>
+   <div class="md-cats">${RIVALS.map((R,k)=>{const r=cpu[R.n]||{w:0,l:0};return`<button data-riv="${k}">${ti(R.ic)}<span><b>${R.n} · ${R.lvl}</b><span>${esc(R.d)}${r.w+r.l?` Record ${r.w}–${r.l}.`:""}</span></span></button>`}).join("")}</div></div>
+   <div class="panel" id="mdCup"><h2 class="ph">${ti("trophy")} Rival Cup <span class="sub">this week</span></h2>
+   <p class="sub">Beat Pip, then Rook, then Vex, each on this week's cup puzzle. Win all three for +1,500 XP and a badge. A new cup starts every Monday.</p>
+   <ol class="cup-list">${RIVALS.map((R,k)=>`<li class="${k<st.stage?"done":k===st.stage&&!st.done?"cur":""}"><b>${R.n}</b> · ${cp[k]?esc(cp[k].cat+": "+cp[k].name):"—"}${k<st.stage?" ✓":""}</li>`).join("")}</ol>
+   ${st.done?`<p><b>Cup won this week ✓</b></p>`:`<button class="big" id="cupPlay">${st.stage?`Race ${RIVALS[st.stage].n}`:"Start the cup"}</button>`}</div>`}
+
+/* ================= Phase 34: loved puzzles ================= */
+function lovedList(){return Object.entries(stats.fb||{}).filter(([,v])=>v===1).map(([id])=>LEVELS.find(l=>l.id===id)).filter(Boolean)}
+function lovedPanelHTML(){const L=lovedList();
+  return`<div class="panel" id="mdLoved"><h2 class="ph">${ti("heart")} Loved puzzles</h2>${L.length?`<div class="md-cats">${L.slice(0,12).map(l=>{const s=(store[l.id]||{}).stars||0;
+    return`<button data-lv="${LEVELS.indexOf(l)}">${catIcon(l.cat,(CAT_LOOK[l.cat]||{}).g1)}<span><b>${esc(l.name)}</b><span>${esc(l.cat)} · ${"★".repeat(s)}${"☆".repeat(3-s)}${(stats.pb||{})[l.id]?` · best ${fmtN(stats.pb[l.id].s)}`:""}</span></span></button>`}).join("")}</div>`
+    :`<p class="sub">Tap <b>Loved it</b> on a result screen and the puzzle is saved here to replay.</p>`}</div>`}
+
+/* ================= Phase 35: report a clue ================= */
+function reportURL(w){const L=S.L,t=`Clue report: ${L.cat} · ${L.name} · ${w.ans}`,b=`Puzzle: ${L.cat} · ${L.name} (${L.id||"?"})\nWord: ${w.ans}\nClue: ${w.clue}\n\nWhat's wrong with it?\n\n`;
+  return"https://github.com/marcompsci/CrossFall/issues/new?title="+encodeURIComponent(t)+"&body="+encodeURIComponent(b)}
+function openReport(){if(!S||!S.cw)return;const el=document.getElementById("textbox");
+  el.innerHTML=`<h1>REPORT A <span>CLUE</span></h1><p class="sub">Spotted a wrong, unclear or out-of-date clue? Pick it below. A GitHub issue opens in Safari with the puzzle and clue filled in; add a sentence and submit it. Nothing is sent unless you submit it there.</p>
+   <div class="alist">${S.cw.words.map(w=>`<a class="arow rp-row" href="${esc(reportURL(w))}" target="_blank" rel="noopener"><span><b>${esc(w.ans)}</b><span class="sub">${esc(w.clue)}</span></span><span aria-hidden="true">↗</span></a>`).join("")}</div>
+   <div class="btns wide"><button class="big" id="rpDone">Done</button></div>`;
+  el.hidden=false;el.scrollTop=0;document.getElementById("rpDone").onclick=()=>el.hidden=true}
+function reportHTML(){return S&&S.L&&!S.L.custom&&!S.tut?`<button class="rp-link" id="rpOpen">Report a clue problem</button>`:""}
+
+/* ================= Phase 36: game history ================= */
+let histF="all";
+function openHistory(){const el=document.getElementById("evh"),G=stats.games||[];
+  const f={all:()=>true,wins:g=>g.win,losses:g=>!g.win,daily:g=>g.daily}[histF]||(()=>true),list=G.filter(f);
+  el.innerHTML=`<h1>MY <span>GAMES</span></h1><p class="sub">Your last ${G.length} games on this device. Tap one to play it again.</p>
+   <div class="seg" role="radiogroup" aria-label="Filter">${[["all","All"],["wins","Wins"],["losses","Losses"],["daily","Daily"]].map(([k,l])=>`<button role="radio" aria-checked="${k===histF}" data-hf="${k}">${l}</button>`).join("")}</div>
+   <div class="alist">${list.length?list.map((g,i)=>`<button class="arow hs-row" data-hg="${G.indexOf(g)}"><span><b>${esc(g.cat)} · ${esc(g.name)}</b><span class="sub">${new Date(g.t).toLocaleDateString("en-US",{month:"short",day:"numeric"})} · ${g.win?"★".repeat(g.stars||0)+"☆".repeat(3-(g.stars||0)):"well full"}${g.grade?` · ${esc(g.grade)}`:""}${g.practice?" · practice":""}</span></span><b class="hs-s">${fmtN(g.score)}</b></button>`).join(""):`<div class="empty">Nothing here yet.</div>`}</div>
+   <div class="btns wide"><button class="big" id="evDone">Done</button></div>`;
+  el.hidden=false;
+  el.querySelectorAll("[data-hf]").forEach(b=>b.onclick=()=>{histF=b.dataset.hf;openHistory()});
+  el.querySelectorAll("[data-hg]").forEach(b=>b.onclick=()=>{const g=G[+b.dataset.hg];if(!g)return;
+    if(g.daily){closeEvents();playDaily(dayKeyOf(g.t),true);return}const i=LEVELS.findIndex(l=>l.id===g.id);
+    if(i>=0){closeEvents();startLevel(i)}else toast("That one can't be replayed from here")});
+  document.getElementById("evDone").onclick=closeEvents}
+
+/* ================= Phase 37: new medal tracks ================= */
+let ach2Done=false;
+function ach2Init(){if(ach2Done)return;ach2Done=true;
+  ACH.push({id:"cipher",name:"Codebreaker",ic:"lock",unit:"Ciphers solved",t:[1,10,50],v:()=>Object.values(pzStore("cipher").days).filter(r=>r.done&&!r.practice).length},
+    {id:"gym",name:"Gym Rat",ic:"runner",unit:"best Rush Gym score",t:[1000,3000,6000],v:()=>(stats.gym||{}).best||0},
+    {id:"mastery",name:"Master",ic:"star",unit:"categories at Bronze or better",t:[1,4,10],v:()=>Object.values(stats.mast||{}).filter(t=>t>=0).length},
+    {id:"rivals",name:"Rival Slayer",ic:"knight",unit:"CPU races won",t:[1,10,50],v:()=>Object.values(stats.cpu||{}).reduce((a,r)=>a+(r.w||0),0)});
+  if(stats.achInit&&!stats.ach2Init){stats.ach=stats.ach||{};ACH.slice(-4).forEach(a=>{let v=0;try{v=a.v()}catch(e){}let t=0;a.t.forEach((n,i)=>{if(v>=n)t=i+1});stats.ach[a.id]=Math.max(stats.ach[a.id]||0,t)})}
+  stats.ach2Init=1}
+{const _ac=achCheck;achCheck=function(){ach2Init();return _ac.apply(this,arguments)}}
+
+/* ---- shared after-game hook for phases 28–37 ---- */
+function after2837(g){try{paceAfter(g)}catch(e){console.error(e)}try{pbAfter(g)}catch(e){console.error(e)}}
 
 function weeklyLine(){const cs=challengeState(),d=cs.filter(c=>c.done).length;return`<button class="wk-line" id="wkLine"><span>${ti("trophy")} Weekly challenges <b>${d}/3</b></span><span class="wk-bars">${cs.map(c=>`<i style="--p:${Math.round(c.v/c.goal*100)}%"></i>`).join("")}</span><span aria-hidden="true">›</span></button>`}
 

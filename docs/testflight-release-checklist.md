@@ -6,12 +6,17 @@ Run this **before every TestFlight upload**. A step is done only once it has act
 
 ```sh
 python3 scripts/build_index.py          # rebuild Crossfall/index.html from web/crossfall.html
-python3 scripts/release_gate.py --smoke # 34 checks; must end "RESULT: CONDITIONAL" with 0 fail, 0 skipped
+python3 scripts/release_gate.py --smoke # 44 checks; must end "RESULT: CONDITIONAL" with 0 fail, 0 skipped
+npm install --no-save axe-core@4.10.2   # once, for the accessibility scan
+bash tests/run_all.sh                   # feature regressions + accessibility; must end "ALL TESTS PASS"
 ```
 
-What the gate covers: bundled page up to date and parses · no remote scripts/fonts · fonts bundled and in the Xcode project · both privacy manifests present, valid, with the right required-reason codes and in Copy Resources · every required-reason API used in Swift declared · purpose strings for every permission used · approximate location · no tracking APIs · export compliance key · one version/build across targets · **build number above the last upload** · bundle ids, team, app group, Game Center entitlement · 1024 icon · Web Inspector Debug-only · web-process crash recovery · links open in Safari · StoreKit restore/entitlements/refunds/pending/cancel · privacy policy covers each data topic · privacy and support linked in the app · secrets scan · headless smoke test (cold start, onboarding, full game, all menu screens, no network, no JS errors, **no HTML injection from shared codes**).
+What the gate covers: bundled page up to date and parses · no remote scripts/fonts · fonts bundled and in the Xcode project · both privacy manifests present, valid, with the right required-reason codes and in Copy Resources · every required-reason API used in Swift declared · purpose strings for every permission used · approximate location · no tracking APIs · export compliance key · one version/build across targets · **build number above the last upload** · bundle ids, team, app group, Game Center entitlement · 1024 icon · Web Inspector Debug-only · web-process crash recovery · links open in Safari · StoreKit restore/entitlements/refunds/pending/cancel · privacy policy covers each data topic · privacy and support linked in the app · secrets scan · headless smoke test (cold start, onboarding, full game, all menu screens, no network, no JS errors, **no HTML injection from shared codes or Game Center names**) · every Swift file compiled · App Intents hidden from Shortcuts · widget makes no network calls · Quick Daily gated to iOS 17 · Pro is the only purchase · review notes and What's New under 4,000 characters · live or upcoming seasonal events named in the review notes.
+
+`tests/run_all.sh` adds the feature suites (t8–t11n), the Quick Daily logic simulation (1,500 days) and an axe-core WCAG 2 A/AA scan of 37 screens in light and dark.
 
 - [ ] Gate result: 0 FAIL, 0 SKIP
+- [ ] `tests/run_all.sh`: ALL TESTS PASS (a SKIP from a missing axe-core is not a pass)
 
 ## B. GitHub Actions (on push)
 
@@ -19,7 +24,7 @@ Workflow **Release gate** (`.github/workflows/release-gate.yml`):
 
 | Job | Runs on | Checks |
 | --- | --- | --- |
-| Static checks + headless smoke test | ubuntu-latest | The full gate with `--smoke` |
+| Static checks + headless smoke test | ubuntu-latest | The full gate with `--smoke`, then `tests/run_all.sh` |
 | Xcode build (iOS Simulator, unsigned) | macos-15 | `plutil -lint` on manifests, entitlements and widget plist; **Release** build of app + widget with `xcodebuild`; then checks the built `.app` contains both privacy manifests, `index.html`, the 5 fonts at the paths the page uses, and the Info.plist keys |
 
 - [ ] Both jobs green on the commit being uploaded (`gh run list -R marcompsci/CrossFall`). A cancelled or skipped job is **not** green.
@@ -48,6 +53,7 @@ The CI build is unsigned and for the simulator. It proves the project compiles a
 - [ ] Rankings signed in and signed out of Game Center; Friends permission
 - [ ] Daily reminder: permission prompt and a notification arrives
 - [ ] Widget shows streak after a game
+- [ ] iOS 17+: add **Quick Daily** (large), finish the crossword by tapping, then move and drop pieces until the rows clear; it shows done and the score. Check it again the next day (new puzzle)
 - [ ] Go Pro → buy (sandbox/TestFlight, not charged) → unlocks; delete and reinstall → **Restore purchase** re-unlocks
 - [ ] Settings › Privacy policy opens **Safari** (not inside the game); same for Help & support
 - [ ] Background the app for 10+ minutes while playing, return: game is there, no white screen
@@ -85,3 +91,4 @@ Before uploading, look at what changed since the last build (`git log <last-uplo
 | 28 Oct 2026 | 756b6fc | 34/34 pass (smoke test opens 31 menu destinations) | pass ([run 40813159057](https://github.com/marcompsci/CrossFall/actions/runs/40813159057)) | pass: Release simulator build, bundle checks, build 17 / 1.1 | New: Cipher, Rush Gym, Rewind, Harvest Season (3–30 Nov, hidden otherwise), mastery, ratings (on device), records, monthly recap, first-run home. Still build 17, **not uploaded** |
 | 1 Nov 2026 | phases 28–37 | 34/34 pass (smoke test opens 34 menu destinations) | see CI | see CI | New: customize home, first-time tips, second chance (5 sparks), CPU rivals, your-best ghost, Rival Cup, loved puzzles, report a clue (opens GitHub issue), My games, 4 medal tracks. Fixed: power-up buttons drew above every sheet. Still build 17, **not uploaded** |
 | 1 Nov 2026 | phases 38–47 + Quick Daily widget | 34/34 pass (36 menu destinations) | see CI | see CI | Quick Daily widget (iOS 17, large) in `CrossfallWidget/QuickDaily.swift`; logic simulated over 1,500 days. **Device check needed:** add the widget and play it (interactive widgets can't be tested in CI). Still build 17, not uploaded |
+| 12 Nov 2026 | re-audit (see commit) | 44/44 pass (36 menu destinations; injection check now covers Mini codes and Game Center names) | see CI | see CI | Compliance re-audit of phases 18–47 + Quick Daily: no blockers. Fixed: Snow Days missing from review notes, Game Center name hygiene, 4 accessibility issues. Tests moved into the repo and CI. Still build 17, **not uploaded** |

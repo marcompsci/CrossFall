@@ -1272,6 +1272,7 @@ html.calm .ov:not(#menu),html.calm .ov:not(#menu)[hidden]{transform:none;transit
 #result h1 span{color:var(--accent)}html.light #result h1 span{color:#c9550f}
 .ln,.kpi .kl,.pz-label,.dr-lab,.panel h3,.panel h2.ph,.how h2,.target .lab,.clue .cn,.goldtag,.ql,.midtag{letter-spacing:.05em}
 .top .lvl small,#coach .cstep{letter-spacing:.08em}
+#coach .cstep{color:#a84600}html.light #coach .cstep{color:var(--accent)}
 /* 7. surfaces separate by fill and soft depth, not hard 1px outlines */
 .panel{border-color:transparent;box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 1px 2px rgba(0,0,0,.18)}
 html.light .panel{box-shadow:0 1px 0 rgba(80,60,30,.06),0 2px 8px rgba(80,60,30,.07)}
@@ -2713,7 +2714,8 @@ function pushCloud(){
 /* Game Center (iPhone app only): the native shell signs the player in, takes scores and achievements, and returns leaderboard rows. */
 const gc={native:false,auth:null,rows:{},err:{},pending:{}};
 function gcPost(m){try{window.webkit.messageHandlers.gc.postMessage(m);return true}catch(e){return false}}
-window.gcAuth=a=>{gc.auth=a;if(a&&a.ok){if(!stats.nick||/^Player( \d+)?$/.test(stats.nick)){stats.nick=a.name;saveStats()}gcSync()}renderRanks();if(hubPage==="Profile")renderProfile()};
+const cleanNick=v=>String(v||"").replace(/[<>&"]/g,"").trim().slice(0,16);
+window.gcAuth=a=>{gc.auth=a;if(a&&a.ok){if(!stats.nick||/^Player( \d+)?$/.test(stats.nick)){stats.nick=cleanNick(a.name);saveStats()}gcSync()}renderRanks();if(hubPage==="Profile")renderProfile()};
 window.gcEntries=(scope,data,err)=>{gc.pending[scope]=false;if(err){gc.err[scope]=err}else{gc.err[scope]=null;gc.rows[scope]=data}renderRanks();if(hubPage==="Profile")renderProfile()};
 function gcLoad(scope){if(!gc.native||!(gc.auth&&gc.auth.ok)||gc.pending[scope])return;gc.pending[scope]=true;gcPost({type:"load",scope})}
 const GC_ACH=[
@@ -2955,7 +2957,7 @@ function renderProfile(){if(gc.native)gcLoad("total");
    ${sec(healProfile?"08":"07","MISSION LOG",stats.games.length?`<div class="hlog">${stats.games.slice(0,10).map(g=>`<div class="hl-row"><span class="t">${new Date(g.t).toLocaleDateString("en-US",{month:"short",day:"numeric"}).toUpperCase()}</span>
        <span class="m"><b>${esc(g.cat)} · ${esc(g.name)}</b><i>${g.win?starStr(g.stars):"WELL FILLED"}${g.grade?` · ${g.grade}`:""}</i></span><span class="n">${fmtN(g.score)}</span></div>`).join("")}</div>`:`<div class="hempty">NO MISSIONS LOGGED</div>`)}`;
   document.getElementById("nickForm").onsubmit=e=>{e.preventDefault();const v=document.getElementById("nickIn").value.replace(/[^\p{L}\p{N} _.-]/gu,"").trim().slice(0,16);
-    if(!v)return;stats.nick=v;saveStats();pushCloud();toast("Name saved");renderProfile()};
+    if(!v)return;stats.nick=cleanNick(v);saveStats();pushCloud();toast("Name saved");renderProfile()};
   const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
   on("pfRetake",()=>showQuiz(null));on("pfReview",openReview);on("pfRewards",openRewards);on("pfSb",()=>openScoreboard&&openScoreboard("daily"));on("pfWb",()=>openWordBook());on("pfWeek",shareWeek);on("pfLook",openLook);on("pfAch",openAchievements);on("pfIns",openInsights);on("pfRec",openRecords);on("pfHist",openHistory);on("pfEv",openEvents);on("pfDu",openDuels);
   wireChart();
@@ -3271,7 +3273,7 @@ function renderOnb(){
   on("oNext",()=>{audioInit();if(o.step<2){o.step++;renderOnb();return}finishOnb()});
 }
 function finishOnb(){
-  const o=onb;stats.nick=o.name.trim().slice(0,16)||stats.nick||"";stats.mood=o.mood;stats.freeCats=o.cats.slice(0,FREE_CATS);stats.onbDone=Date.now();
+  const o=onb;stats.nick=cleanNick(o.name)||stats.nick||"";stats.mood=o.mood;stats.freeCats=o.cats.slice(0,FREE_CATS);stats.onbDone=Date.now();
   prefs.speed=o.style;try{localStorage.setItem("crossfall-a11y",JSON.stringify(prefs))}catch(e){}applyPrefs();saveStats();
   document.getElementById("onb").hidden=true;document.getElementById("onb").innerHTML="";onb=null;hap("success");
   deckIdx=0;showMenu();
@@ -3806,7 +3808,7 @@ function backupCode(){return"CFB1."+b64e(JSON.stringify({stats,store,pace:rushPa
 function openBackup(){
   const el=document.getElementById("textbox");
   el.innerHTML=`<h1>BACK<span>UP</span></h1><p class="sub">Your stars, stats, streak and word bank live on this phone. Save this code somewhere safe (Notes, email to yourself). Paste it here on a new phone to bring everything back.</p>
-   <textarea id="bkOut" readonly rows="4">${esc(backupCode())}</textarea>
+   <textarea id="bkOut" readonly rows="4" aria-label="Your backup code">${esc(backupCode())}</textarea>
    <div class="btns wide"><button class="big" id="bkShare">Share backup code</button></div>
    <span class="ln">RESTORE</span><textarea id="bkIn" rows="3" placeholder="CFB1.…" autocapitalize="off"></textarea>
    <p class="mkmsg" id="bkMsg" role="status"></p>
@@ -5430,7 +5432,7 @@ function openCalendar(ym){const t=todayKey();calMon=ym||calMon||t.slice(0,7);con
   const el=document.getElementById("evh");
   el.innerHTML=`<h1>DAILY <span>CALENDAR</span></h1>
    <div class="cal-nav"><button class="icon-btn" id="calPrev" aria-label="Previous month" ${canPrev?"":"disabled"}>‹</button><b>${esc(monName(calMon))} ${y}</b><button class="icon-btn" id="calNext" aria-label="Next month" ${canNext?"":"disabled"}>›</button></div>
-   <div class="panel"><div class="cal-g" role="grid">${["M","T","W","T","F","S","S"].map(d=>`<span class="cal-h" aria-hidden="true">${d}</span>`).join("")}${"<span></span>".repeat(lead)}${[...Array(days)].map((_,i)=>cell(i+1)).join("")}</div>
+   <div class="panel"><div class="cal-g" role="group" aria-label="Days of the month">${["M","T","W","T","F","S","S"].map(d=>`<span class="cal-h" aria-hidden="true">${d}</span>`).join("")}${"<span></span>".repeat(lead)}${[...Array(days)].map((_,i)=>cell(i+1)).join("")}</div>
    <p class="sub">${won} solved this month. Tap any past day to play it as practice; today's counts toward your streak.</p></div>
    <div class="btns wide"><button class="big" id="evDone">Done</button></div>`;
   el.hidden=false;el.scrollTop=0;
@@ -5659,7 +5661,7 @@ function openMini(dk,opts){
   const el=document.getElementById("pz");el.hidden=false;el.className="ov pz pz-mini";el.scrollTop=0;
   el.innerHTML=`<div class="pz-top"><button class="icon-btn" id="pzX" aria-label="Close">✕</button><div class="pz-tt"><b>THE MINI</b><span>${esc(fmtDay(dk))} · ${diffTag(P.diff)}${MI.archive?" · practice":""}</span></div><span class="pz-time" id="miT" aria-live="off">0:00</span></div>
    ${MI.chal?`<div class="chal-pill" id="miChal">Beat ${esc(MI.chal.n)}: ${fmtTime(MI.chal.s)}</div>`:""}
-   <div class="mi-board"><div class="cwgrid mi-grid" id="miGrid" role="grid" aria-label="Mini crossword"></div></div>
+   <div class="mi-board"><div class="cwgrid mi-grid" id="miGrid" role="group" aria-label="Mini crossword"></div></div>
    <button class="mi-clue" id="miClue" aria-live="polite"></button>
    <div class="mi-tools"><button class="ghost-btn" id="miChk">Check</button><button class="ghost-btn" id="miRevL">Reveal letter</button><button class="ghost-btn" id="miRevW">Reveal word</button></div>
    <p class="mi-note">Reveals finish the puzzle for you but don't count toward your Mini streak.</p>
@@ -5689,7 +5691,7 @@ function miRender(){
   let h="";for(let r=0;r<P.cw.rows;r++)for(let c=0;c<P.cw.cols;c++){const k=r+","+c,x=g.cells.get(k);
     if(!x){h+=`<div class="cc" aria-hidden="true"></div>`;continue}
     const cls="cc on"+(k===MI.key&&!MI.done?" cur":inW.has(k)&&!MI.done?" inword":"")+(MI.done?" solved":"")+(x.bad?" bad":"")+(x.rev?" helped":"");
-    h+=`<div class="${cls}" data-k="${k}" role="gridcell" aria-label="${nums.has(k)?nums.get(k)+", ":""}${x.val||"blank"}">${nums.has(k)?`<span class="n">${nums.get(k)}</span>`:""}<span class="l">${x.val||""}</span></div>`}
+    h+=`<div class="${cls}" data-k="${k}" role="img" aria-label="${nums.has(k)?nums.get(k)+", ":""}${x.val||"blank"}">${nums.has(k)?`<span class="n">${nums.get(k)}</span>`:""}<span class="l">${x.val||""}</span></div>`}
   grid.innerHTML=h;
   grid.querySelectorAll("[data-k]").forEach(d=>onActivate(d,()=>{if(MI.done)return;if(MI.key===d.dataset.k){MI.dir=MI.dir==="a"?"d":"a";if(!miWord())MI.dir=MI.dir==="a"?"d":"a"}else{MI.key=d.dataset.k;if(!miWord())MI.dir=MI.dir==="a"?"d":"a"}miRender()}));
   if(w){const n=nums.get(w.cells[0]);document.getElementById("miClue").innerHTML=`<b>${n}${w.dir==="a"?" ACROSS":" DOWN"}</b><span>${esc(w.clue)}</span><i aria-hidden="true">⇄</i>`}

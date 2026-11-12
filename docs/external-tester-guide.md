@@ -69,7 +69,18 @@ If the link says "This beta isn't accepting any new testers", the limit is reach
 - Your progress stays on your device. TestFlight builds expire after 90 days; install the next one before then.
 - Game Center is optional. Sign in through iOS Settings › Game Center to see rankings.
 - Location is optional and approximate, used once for the Sports "hometown" feature.
-- Spooky Season puzzles are only there from 15 October to 2 November.
+- Seasonal packs only appear on their dates: Harvest Season 3–30 November, Snow Days all of December.
+- CPU rivals (Pip, Rook, Vex) are computer players, not real people.
+
+### Quick Daily widget (iOS 17 or later)
+
+A tiny daily Crossfall you play right on your Home Screen.
+
+1. Touch and hold an empty spot on the Home Screen, then tap **Edit › Add Widget** (or **+** on older versions).
+2. Search for **Crossfall**, swipe to **Quick Daily** (the large size) and tap **Add Widget**.
+3. Tap letters to fill today's words. When the crossword is done, a small well appears: move the piece and drop it to clear the rows.
+
+It's a new puzzle every day. On iOS 16 you'll only see the regular streak widget.
 
 ### What we'd like you to try
 

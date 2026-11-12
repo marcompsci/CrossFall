@@ -139,6 +139,30 @@ for p in ROOT.rglob("*"):
     if pat.search(t): hits.append(str(p.relative_to(ROOT)))
 res("PASS" if not hits else "FAIL", "no API keys, tokens or private keys committed", ", ".join(hits[:5]))
 
+# 8b. Added 12 Nov 2026: widget game, App Store text limits, purchases, seasonal content
+srcs = sorted(p.relative_to(ROOT) for p in ROOT.rglob("*.swift") if ".git" not in p.parts and "build" not in p.parts)
+unreg = [str(p) for p in srcs if f"{p.name} in Sources */" not in PBX]
+res("PASS" if not unreg else "FAIL", "every Swift file is compiled (in a Sources build phase)", ", ".join(unreg))
+wsw = "\n".join(p.read_text(encoding="utf-8") for p in (ROOT / "CrossfallWidget").glob("*.swift"))
+n_int = len(re.findall(r"struct \w+\s*:\s*AppIntent", wsw)); n_hid = wsw.count("isDiscoverable: Bool = false")
+res("PASS" if n_int == n_hid else "FAIL", "widget App Intents are hidden from Shortcuts/Siri (game moves only)", f"{n_int} intents, {n_hid} hidden")
+res("PASS" if not re.search(r"URLSession|https?://", wsw) else "FAIL", "widget makes no network requests")
+res("PASS" if "@available(iOS 17.0, *)" in wsw and "if #available(iOSApplicationExtension 17.0, *)" in wsw else "FAIL",
+    "interactive widget is limited to iOS 17+ (app still supports iOS 16)")
+prods = set(re.findall(r"com\.phoronomicstudios\.crossfall\.[a-z]+", WEB + SWIFT)) - {"com.phoronomicstudios.crossfall.widget"}
+res("PASS" if prods == {"com.phoronomicstudios.crossfall.pro"} else "FAIL", "the only in-app purchase is Crossfall Pro (sparks can't be bought)", ", ".join(sorted(prods)))
+notes = (ROOT / "docs/app-review-notes.md").read_text(encoding="utf-8")
+for name, blk in re.findall(r"## (\d\. [^\n]+)\n\n```\n(.*?)```", notes, re.S):
+    res("PASS" if len(blk) <= 4000 else "FAIL", f"App Store Connect text fits 4,000 characters: {name.split('(')[0].strip()}", f"{len(blk)} chars")
+wn = (ROOT / "docs/app-store/WHATS-NEW-1.1.md").read_text(encoding="utf-8").split("```")
+if len(wn) > 1: res("PASS" if len(wn[1].strip()) <= 4000 else "FAIL", "What's New fits 4,000 characters", f"{len(wn[1].strip())} chars")
+seasons = re.findall(r'const (?:HARVEST|SNOW|SPOOKY)=\{name:"([^"]+)"', WEB)
+import datetime as _dt
+_m = _dt.date.today().month
+live = [n for n in seasons if (n == "Harvest Season" and _m in (10, 11)) or (n == "Snow Days" and _m in (11, 12)) or (n == "Spooky Season" and _m in (9, 10))]
+miss = [n for n in live if n not in notes]
+res("PASS" if not miss else "FAIL", "time-limited events live now or next month are explained in the review notes", ", ".join(miss) or ", ".join(live))
+
 # 9. Optional headless smoke test
 if "--smoke" in sys.argv:
     r = subprocess.run([sys.executable, str(ROOT / "scripts" / "smoke_test.py")], capture_output=True, text=True)

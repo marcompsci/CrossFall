@@ -9,7 +9,7 @@ Copy-ready text for **App Store Connect**. Each block fits Apple's field limits 
 ```
 Crossfall is a word game where crosswords fall. Solve a clue and your word drops into a well as a falling piece. Stack it, spell the target word on the middle line, and win the word rush before time runs out.
 
-700+ puzzles across ten categories, plus four free Today's Puzzles (the Mini, Chunks, Ladder and Cipher), a Daily, a 40-stop Word Trail, a 60-second Rush Gym, weekly events and a seasonal pack (Harvest Season, 3 to 30 November). Game Center leaderboards, a home-screen widget, and a one-time Crossfall Pro purchase. No ads, no tracking, no account.
+700+ puzzles across ten categories, plus four free Today's Puzzles (the Mini, Chunks, Ladder and Cipher), a Daily, a 40-stop Word Trail, a 60-second Rush Gym, weekly events and seasonal packs (Harvest Season in November, Snow Days in December). Game Center leaderboards, a home-screen widget, and a one-time Crossfall Pro purchase. No ads, no tracking, no account.
 ```
 
 ## 2. What to Test (TestFlight, per build)
@@ -25,7 +25,7 @@ Build 17 — thanks for testing! Please try:
 6. ☰ › Rush Gym, My records, Achievements, Insights and Word of the day. Try Surprise me on the home screen.
 7. ☰ › CPU rivals & Rival Cup: race Rook, then replay that puzzle to race your own best.
 8. Add the Quick Daily widget (large) to your Home Screen and play it there: clues first, then the well.
-9. ☰ › Harvest Season (3 to 30 November).
+9. ☰ › Harvest Season (to 30 November) or Snow Days (December).
 10. Settings (Aa): Privacy policy and Help & support links open in Safari.
 11. Rankings tab, signed in and signed out of Game Center.
 12. Go Pro and Restore purchase (TestFlight purchases are free and not charged).
@@ -53,7 +53,7 @@ NEW IN 1.1 (where to find it)
 • Power-ups and Fever: in any regular game, under the drop buttons. Off in the Daily and in duels so those scores stay fair.
 • Achievements, Insights, Word of the day, Avatar & title: Menu.
 • Quests, Marathon and Pass & Play (same-device multiplayer): Menu › Quests, Marathon & Pass and Play.
-• Harvest Season: a free, time-limited pack (3 to 30 Nov). Menu › Harvest Season and a tile on the home screen, shown only on those dates.
+• Free seasonal packs, shown only on their dates: Harvest Season (3–30 Nov) and Snow Days (1–31 Dec), in the Menu and on Play.
 • Cipher: a fourth Today's Puzzle on the home screen, a daily cryptogram of a public-domain saying or proverb.
 • Rush Gym (60-second unscramble sprint) and My records: Menu.
 • Rewind power-up: under the drop buttons, next to Freeze, Bomb and Sweep.

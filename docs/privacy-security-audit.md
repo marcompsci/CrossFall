@@ -1,6 +1,6 @@
 # Crossfall — privacy and security audit
 
-_16 October 2026 · version 1.1 (17)_
+_16 October 2026 · version 1.1 (17) · rechecked 12 November 2026 (phases 18–47, Quick Daily widget)_
 
 ## 1. Data inventory
 
@@ -14,6 +14,8 @@ Everything Crossfall stores lives on the device. There is no Crossfall server.
 | Hometown (city id from built-in list) | `localStorage` | No | No | Sports intro; delete the app |
 | Location coordinates (optional) | Memory only, discarded after matching | No | No | Not stored |
 | Widget snapshot (streak, level, weekly progress) | App-group `UserDefaults` | No | No | Delete the app |
+| Quick Daily widget state (today's letters, well, score, widget streak) | App-group `UserDefaults` (`qd.state.v1`, `qd.streak`, `qd.lastDone`) | No | No | Replaced each day; delete the app |
+| Game history, speed and accuracy, records, medals, ratings, loved puzzles, sparks, rival results, ghost runs | `localStorage` | No (records and cup results only if the player taps Share) | No | Delete the app |
 | Backup code | Created only when the player taps Back up; contains all of the above | Only if the player shares it | No | Player controls it |
 | Game Center scores, achievements | Sent to **Apple** Game Center | Yes, to Apple | Yes, Game Center player | Apple account settings |
 | Purchase entitlement | Apple StoreKit | Apple | Apple Account | Apple |
@@ -62,6 +64,10 @@ No camera, microphone, photos, contacts, Bluetooth, tracking (ATT) or health per
 | Native bridge input | Swift checks each message's type before using it. Leaderboard ids and the IAP product id are fixed in Swift, not taken from the page, and IAP actions are limited to load, refresh, buy and restore. Scores are reported by the device, as in any offline game, so leaderboards can be faked by a modified client. If that matters, set score limits per leaderboard in App Store Connect. |
 | Bundle file serving | `BundleSchemeHandler` rejects `..` and resolves names only through `Bundle.main`, so the page can't read files outside the app bundle. |
 | Content-process crash | Reloads the game automatically; progress is in `localStorage`. |
+| Game Center display name (12 Nov) | Stored as the nickname. It was only ever shown through `textContent` and plain share text, so it couldn't inject markup, but it's now trimmed to 16 characters and stripped of `<>&"` anyway. Smoke test feeds it HTML. |
+| Mini share codes (12 Nov) | Already sanitized; now included in the smoke test's injection check. |
+| Report a clue (12 Nov) | Opens a prefilled GitHub issue **in Safari** with the puzzle and clue text only. Nothing is sent from the app itself; the player chooses whether to post. |
+| Quick Daily widget (12 Nov) | No network access (gate check). App Intents are hidden from Shortcuts (`isDiscoverable = false`, gate check). Daily puzzle is generated on device from the date. |
 
 ## 6. Accounts, deletion and retention
 
@@ -77,6 +83,6 @@ Crossfall doesn't target children, isn't in the Kids category, and collects no p
 
 ## 9. Open items
 
-1. **Device test** of the Privacy link opening Safari and of crash recovery (can't be automated in CI).
+1. **Device test** of the Privacy link opening Safari, crash recovery, and the Quick Daily widget (can't be automated in CI).
 2. **Support contact**: GitHub issues only. A dedicated support email would be friendlier; don't publish a personal address.
 3. Keep `PRIVACY.md`, `PrivacyInfo.xcprivacy` and the App Store Connect label in sync. The gate checks the first two; the third is a manual step on the release checklist.

@@ -1,6 +1,7 @@
 # Crossfall — Apple App Review compliance report
 
-_Audit date: 16 October 2026 · Version 1.1, build 17 · Commit after bf4d28d_
+_Audit date: 16 October 2026 · Version 1.1, build 17 · Commit after bf4d28d_  
+_Re-audited 12 November 2026 after phases 18–47 and the Quick Daily widget: see section 7, which supersedes section 6._
 
 This report checks Crossfall against the App Review Guidelines and Apple's developer requirements as I understand them on the audit date. Apple's reviewers make the final decision, and nothing here guarantees approval of either TestFlight or the App Store.
 
@@ -101,3 +102,52 @@ Still to do by hand before external TestFlight:
 5. Recommended: a dedicated support email.
 
 External TestFlight approval is a separate, lighter review than App Store approval; passing one doesn't mean passing the other, and neither is guaranteed.
+
+## 7. Re-audit, 12 November 2026 (phases 18–47 + Quick Daily widget)
+
+Scope: everything added since 16 October: Cipher, Rush Gym, Rewind, Harvest Season, Snow Days, mastery, ratings, records, monthly recap, customizable home, tips, second chance, CPU rivals and Rival Cup, your-best ghost, loved puzzles, report a clue, My games, medal tracks, Daily calendar, smart landing, large controls, speed stats, streak alerts, Restart, and the **Quick Daily** interactive widget (`CrossfallWidget/QuickDaily.swift`). Still version 1.1, build 17; nothing new has been uploaded.
+
+### What changed in the risk picture
+
+| Area | Guideline | What I checked | Result |
+| --- | --- | --- | --- |
+| Sparks and second chance | 3.1.1 | Sparks are earned by playing only. No product, price or "buy" path exists for them; second chance spends 5 sparks, not money. The only StoreKit product is still `com.phoronomicstudios.crossfall.pro`. | OK. New gate check: the only IAP product id in Swift and JS is the Pro unlock. |
+| CPU rivals, ghosts, Rival Cup | 2.3 / 2.3.1 accurate metadata | Pip, Rook and Vex are labelled **CPU** wherever they appear, and the cup share text says "CPU record". Ghosts are your own past runs. Nothing implies real opponents. | OK. Review notes say they're CPU. |
+| Report a clue | 1.2 | Opens a prefilled GitHub issue in Safari. Players don't post anything inside the app and nothing is shown to other players, so this isn't in-app UGC. | OK. Disclosed in the review notes and `PRIVACY.md`. |
+| Shared codes (puzzles, challenges, Mini) and Game Center names | 1.2 / security | Codes are passed person to person, not hosted. All text from them is stripped or escaped before display. | OK. Smoke test now also feeds a Mini code and a Game Center name containing HTML. |
+| Nickname from Game Center | security hygiene | The name was stored unfiltered, but it's only shown via `textContent` and in plain share text, so it could not run script. | **LOW, hygiene.** Now trimmed to 16 characters and stripped of `<>&"` (`cleanNick`). |
+| Seasonal packs | 2.1 / 2.3 | Harvest Season (3–30 Nov) and Snow Days (1–31 Dec) appear only on their dates and are hidden otherwise, so no dead ends. | **Fixed:** Snow Days was missing from the review notes. New gate check: every live or upcoming seasonal event must be named in the review notes. |
+| Quick Daily widget | 2.5.1, 4.2, 5.1 | iOS 17 `Button(intent:)` widget, gated with `#available(iOSApplicationExtension 17.0, *)` (deployment target stays iOS 16). Its intents are `isDiscoverable = false`, so they don't show up as Shortcuts actions. No network calls; state is a small Codable value in the app-group `UserDefaults`, already covered by the widget's privacy manifest (`1C8F.1`, app-group access). Puzzle logic simulated over 1,500 days: every day builds and perfect play clears all 3 rows. | OK in code and simulation. **Not yet played on a device**; interactive widgets can't run in CI. |
+| Accessibility (not a guideline gate, but part of 4.0 design and Apple's own review habits) | — | axe-core WCAG 2 A/AA across 37 screens in light and dark. | **Fixed 4 issues:** calendar and Mini grids used `role="grid"` without rows; backup code box had no label; tour step label was 2.1:1 contrast (now 5.3:1). Now 0 serious or critical. |
+| Review notes and What's New length | 2.3 / App Store Connect | Each pasteable block ≤ 4,000 characters. | OK. New gate check. |
+| Network, tracking, data collection | 5.1 | No new network calls, SDKs, analytics or identifiers. The only outside links are the GitHub privacy, support and issue pages, opened in Safari. | OK. App Privacy label unchanged. |
+
+No BLOCKER or HIGH findings in this round.
+
+### Permanent gate additions (`scripts/release_gate.py`, section 8b)
+
+Every Swift file is in a Sources build phase · every `AppIntent` is `isDiscoverable = false` · the widget makes no network requests · the Quick Daily widget is gated to iOS 17 · Pro is the only IAP product · review-note and What's New blocks fit App Store Connect's 4,000-character limit · live or upcoming seasonal events are named in the review notes. The gate is now **44 checks**.
+
+The feature regression suites (`tests/t8.py`–`t11n.py`, `tests/qdsim.py`) and the new accessibility scan (`tests/a11y.py`) now live in the repo and run in CI through `tests/run_all.sh`. Before this they only existed in a scratch folder, which was lost once; that's why they were moved.
+
+### Test results (real runs, 12 Nov)
+
+| Run | Result |
+| --- | --- |
+| `scripts/release_gate.py --smoke` | 44 checks: 44 pass, 0 fail, 0 warn, 0 skipped |
+| `tests/run_all.sh` | t8 47/47 · t9 13/13 · t10 29/29 · t11n 25/25 · qdsim 1,500/1,500 days · a11y 37 screens × 2 schemes, 0 serious/critical |
+| GitHub Actions | See `docs/testflight-release-checklist.md`, "Last run" |
+| Signed archive / Validate / upload | **Not run.** Needs the Mac and Omari's go-ahead |
+| Real-device play-test, including the widget | **Not run** |
+
+### Release-readiness result (12 Nov 2026)
+
+**CONDITIONAL.** Every automated check passes, and no known blockers remain in the code. Still to do by hand:
+
+1. App Store Connect › Business: no pending agreements.
+2. On the Mac, only when Omari says so: Archive → Validate App → upload a build numbered **above 16** (the project is at 17).
+3. Real-device play-test (checklist section D), including adding the **Quick Daily** widget on iOS 17+ and playing it through the crossword and the drop.
+4. Age rating questionnaire, App Privacy recheck (should be unchanged), Test Information, and What to Test pasted from `docs/app-review-notes.md`.
+5. Recommended: a dedicated support email instead of GitHub issues only.
+
+External TestFlight review is lighter than App Store review. Passing one doesn't guarantee the other, and neither is guaranteed.

@@ -29,6 +29,10 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Release gate (fails on any FAIL)
         run: python3 scripts/release_gate.py --smoke
+      - name: Feature regression + accessibility tests (fails on any FAIL)
+        run: |
+          npm install --no-save axe-core@4.10.2
+          bash tests/run_all.sh
 
   ios-build:
     name: Xcode build (iOS Simulator, unsigned)

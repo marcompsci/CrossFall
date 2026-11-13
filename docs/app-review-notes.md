@@ -14,23 +14,25 @@ Crossfall is a word game where crosswords fall. Solve a clue and your word drops
 
 ## 2. What to Test (TestFlight, per build)
 
+App Store Connect rejected the "☰" symbol here (HTTP 409 on save), so this block uses plain text only.
+
 ```
-Build 17 — thanks for testing! Please try:
+Build 17 - thanks for testing! Please try:
 
 1. First launch: the welcome questions, the one-minute tour, then the simpler "Start here" home for your first three games.
-2. Play one puzzle start to finish (Play › any category). Tell us if the falling pieces feel too fast or slow. Rate it on the result screen.
+2. Play one puzzle start to finish (Play > any category). Tell us if the falling pieces feel too fast or slow. Rate it on the result screen.
 3. Today's Puzzles on the home screen: the Daily, the Mini, Chunks, Ladder and the new Cipher.
-4. ☰ Menu › Word Trail: clear the first two stops.
+4. Menu > Word Trail: clear the first two stops.
 5. Power-ups (Freeze, Bomb, Sweep and the new Rewind) under the drop buttons, and the Fever bar under the target.
-6. ☰ › Rush Gym, My records, Achievements, Insights and Word of the day. Try Surprise me on the home screen.
-7. ☰ › CPU rivals & Rival Cup: race Rook, then replay that puzzle to race your own best.
+6. Menu > Rush Gym, My records, Achievements, Insights and Word of the day. Try Surprise me on the home screen.
+7. Menu > CPU rivals & Rival Cup: race Rook, then replay that puzzle to race your own best.
 8. Add the Quick Daily widget (large) to your Home Screen and play it there: clues first, then the well.
-9. ☰ › Harvest Season (to 30 November) or Snow Days (December).
+9. Menu > Harvest Season (to 30 November) or Snow Days (December).
 10. Settings (Aa): Privacy policy and Help & support links open in Safari.
 11. Rankings tab, signed in and signed out of Game Center.
 12. Go Pro and Restore purchase (TestFlight purchases are free and not charged).
 
-Send feedback with a screenshot: take a screenshot in the app and tap Share Beta Feedback, or open TestFlight › Crossfall › Send Beta Feedback.
+Send feedback with a screenshot: take a screenshot in the app and tap Share Beta Feedback, or open TestFlight > Crossfall > Send Beta Feedback.
 ```
 
 ## 3. App Review notes (App Store version 1.1 and TestFlight external review)

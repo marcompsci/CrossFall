@@ -59,12 +59,11 @@ NEW IN 1.1 (where to find it)
 • Cipher: a fourth Today's Puzzle on the home screen, a daily cryptogram of a public-domain saying or proverb.
 • Rush Gym (60-second unscramble sprint) and My records: Menu.
 • Rewind power-up: under the drop buttons, next to Freeze, Bomb and Sweep.
-• Surprise me (home): a random playable puzzle.
 • CPU rivals and the weekly Rival Cup: Menu › CPU rivals & Rival Cup. The rivals (Pip, Rook, Vex) are labelled CPU; their pace is computed on the device from the player's own past scores. There are no other players and nothing goes online.
 • Second chance: when the well fills, the player may spend 5 earned sparks once a game to clear the top half. Sparks are earned in play only; they can't be bought. Not offered in the official Daily, duels or Pass & Play.
 • Report a clue (result screen) opens a prefilled GitHub issue in Safari; nothing is sent unless the player submits it there.
 • Quick Daily widget (iOS 17, large size): three short clues solved by tapping letters, then the words are dropped into a small well. Runs in the widget via App Intents; state stays on the device.
-• "Loved it / Not for me" on results: stored on the device, only changes suggestions.
+• Quick Daily also plays in the app (Menu › Quick Daily). Daily goal: 1 earned spark a day. Export my data (Menu › My records) opens the share sheet; nothing is uploaded.
 • New players see a simpler home (Daily + one puzzle) for 3 games; "Show everything now" skips it.
 
 WELLNESS TOPICS

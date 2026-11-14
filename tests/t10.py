@@ -7,7 +7,7 @@ res = []
 def ck(n, ok, d=""):
     res.append(bool(ok)); print(f"{'PASS' if ok else 'FAIL'}  {n}{('  · ' + str(d)) if d not in ('', None) else ''}")
 SETUP = """()=>{stats.tutDone=true;stats.nick='T';stats.freeCats=['Sports','Music','Arcade'];stats.spSkip=1;stats.diff={};CATEGORIES.forEach(c=>stats.diff[c.name]='medium');
- stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.fullHome=1;stats.recapSeen='2026-10';stats.tot.games=12;document.getElementById('onb').hidden=true;S=null;showMenu()}"""
+ stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.seen20=1;stats.fullHome=1;stats.recapSeen='2026-10';stats.tot.games=12;document.getElementById('onb').hidden=true;S=null;showMenu()}"""
 CLOSE = "()=>{document.querySelectorAll('.ov').forEach(o=>{if(o.id!=='menu')o.hidden=true});const c=document.getElementById('cele');if(c)c.hidden=true;S=null;showMenu()}"
 async def main():
     from playwright.async_api import async_playwright

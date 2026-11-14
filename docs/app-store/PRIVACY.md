@@ -1,6 +1,6 @@
 # Crossfall Privacy Policy
 
-_Last updated: 1 November 2026_
+_Last updated: 13 November 2026_
 
 Crossfall is made by Omari Bell (Phoronomic Studios). This policy covers the Crossfall app for iPhone and iPad and its home-screen widget.
 
@@ -21,6 +21,9 @@ Crossfall saves these in the app's own storage on your iPhone or iPad. They are 
 - Words you've solved (Word book, Review my words) and Word Trail, Ladder, Cipher, Rush Gym and Marathon progress
 - Your personal records, monthly totals, game history, CPU rival results, home-screen layout, and any "Loved it" / "Not for me" puzzle ratings (used only to choose suggestions on your device)
 - Pass & Play player names you type in, kept only to fill the form next time
+- Your daily goal and how many puzzles you finished each day, the weekly spotlight count, the in-app Quick Daily, and words you mark "Study later"
+
+**Export my data** (☰ › My records) makes a text table of your recent games and opens the share sheet. Nothing is sent unless you choose where it goes.
 
 Deleting the app deletes all of this. The **backup code** (Settings › Back up or restore progress) is a text copy of this data that you can choose to save or share yourself. It includes your journal, so keep it private.
 

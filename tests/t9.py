@@ -10,7 +10,7 @@ async def main():
     async with async_playwright() as p:
         b=await p.chromium.launch();pg=await b.new_page(viewport={"width":393,"height":852});errs=[];pg.on("pageerror",lambda e:errs.append(str(e)))
         await pg.set_content(SRC);await pg.wait_for_timeout(900)
-        await pg.evaluate("()=>{stats.tutDone=true;stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.fullHome=1;stats.tot.games=5;document.getElementById('onb').hidden=true;S=null;showMenu()}");await pg.wait_for_timeout(500)
+        await pg.evaluate("()=>{stats.tutDone=true;stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.seen20=1;stats.fullHome=1;stats.tot.games=5;document.getElementById('onb').hidden=true;S=null;showMenu()}");await pg.wait_for_timeout(500)
         # drawer: fast flick right closes
         await pg.evaluate("openDrawer()");await pg.wait_for_timeout(450)
         bb=await pg.evaluate("(()=>{const r=document.getElementById('drawer').getBoundingClientRect();return[r.left,r.top,r.width,r.height]})()")

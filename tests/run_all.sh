@@ -4,7 +4,7 @@
 set -u
 cd "$(dirname "$0")/.."
 fail=0
-for t in qdsim t8 t9 t10 t11n a11y; do
+for t in qdsim t8 t9 t10 t11n t12 a11y; do
   echo "== $t"
   out=$(python3 "tests/$t.py" 2>&1); rc=$?
   echo "$out" | grep -E "^FAIL|passed|^[0-9]+/[0-9]+|days|a11y:|Error|SKIP" | tail -5

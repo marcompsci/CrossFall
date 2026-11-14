@@ -20,7 +20,7 @@ async def main():
             pg = await b.new_page(viewport={"width": 393, "height": 852}, color_scheme=scheme, reduced_motion="reduce")
             await pg.route("**/*", lambda r: r.abort() if r.request.url.startswith("http") else r.continue_())
             await pg.set_content(html); await pg.wait_for_timeout(1000); await pg.add_script_tag(content=axe)
-            await pg.evaluate("""()=>{stats.tutDone=true;stats.seen19=1;stats.nick='Tester';stats.freeCats=['Sports','Music','Arcade'];stats.spSkip=1;stats.fullHome=1;
+            await pg.evaluate("""()=>{stats.tutDone=true;stats.seen19=1;stats.seen20=1;stats.nick='Tester';stats.freeCats=['Sports','Music','Arcade'];stats.spSkip=1;stats.fullHome=1;
                 stats.diff={};CATEGORIES.forEach(c=>stats.diff[c.name]='medium');document.getElementById('onb').hidden=true;S=null;showMenu()}""")
             acts = ["home"] + await pg.evaluate("[...document.querySelectorAll('#drawer [data-act]')].map(b=>b.dataset.act)")
             for a in acts:

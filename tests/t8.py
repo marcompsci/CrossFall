@@ -116,7 +116,7 @@ async def main():
         # ---- 27 recap at month change
         await ctx.close()
         ctx, pg, errs2 = await page(b, '2026-11-02T10:00:00'); errs += errs2
-        await pg.evaluate("""()=>{stats.tot.games=10;stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.fullHome=1;stats.monInit=1;delete stats.recapSeen;stats.mon={'2026-10':{games:12,wins:9,score:40000,words:80,best:6100,bestName:'Music · Piano',gold:2,targets:5,cats:{Music:7,Sports:5}},'2026-09':{games:6,wins:4,score:15000,words:30,best:3000,bestName:'x',gold:0,targets:1,cats:{}}};
+        await pg.evaluate("""()=>{stats.tot.games=10;stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.seen20=1;stats.fullHome=1;stats.monInit=1;delete stats.recapSeen;stats.mon={'2026-10':{games:12,wins:9,score:40000,words:80,best:6100,bestName:'Music · Piano',gold:2,targets:5,cats:{Music:7,Sports:5}},'2026-09':{games:6,wins:4,score:15000,words:30,best:3000,bestName:'x',gold:0,targets:1,cats:{}}};
           stats.days=['2026-10-30','2026-10-29','2026-10-02'];document.getElementById('onb').hidden=true;S=null;showMenu()}""")
         await pg.wait_for_timeout(900)
         ck("27 recap opens at the start of a new month", await pg.evaluate("document.getElementById('evh').innerText.includes('OCTOBER RECAP')&&stats.recapSeen==='2026-10'"))
@@ -127,7 +127,7 @@ async def main():
         ck("22 Harvest hidden on 2 Nov (Spooky's last day)", await pg.evaluate("openDrawer(),document.querySelector('#drawer [data-act=\"harvest\"]').hidden&&!document.querySelector('#drawer [data-act=\"spooky\"]').hidden"))
         await ctx.close()
         ctx, pg, errs2 = await page(b, '2026-11-10T10:00:00'); errs += errs2
-        await pg.evaluate("()=>{stats.tot.games=10;stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.fullHome=1;stats.recapSeen='2026-10';document.getElementById('onb').hidden=true;S=null;showMenu()}"); await pg.wait_for_timeout(500)
+        await pg.evaluate("()=>{stats.tot.games=10;stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.seen20=1;stats.fullHome=1;stats.recapSeen='2026-10';document.getElementById('onb').hidden=true;S=null;showMenu()}"); await pg.wait_for_timeout(500)
         hv = await pg.evaluate("JSON.stringify(HARVEST.puzzles.map((p,k)=>{const L=harvestLevel(k);return L?L._cw.words.length+'/'+p.words.length:'FAIL '+p.name}))")
         ck("22 all six Harvest puzzles build with every word", 'FAIL' not in hv and all(a.split('/')[0] == a.split('/')[1] for a in json.loads(hv)), hv)
         ck("22 Harvest on home and in the menu on 10 Nov", await pg.evaluate("!!document.getElementById('hvLine')&&(openDrawer(),!document.querySelector('#drawer [data-act=\"harvest\"]').hidden)&&document.querySelector('#drawer [data-act=\"spooky\"]').hidden"))

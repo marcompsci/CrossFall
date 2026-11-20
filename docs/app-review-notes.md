@@ -57,14 +57,14 @@ NEW IN 1.1 (where to find it)
 • Quests, Marathon and Pass & Play (same-device multiplayer): Menu › Quests, Marathon & Pass and Play.
 • Free seasonal packs, shown only on their dates: Harvest Season (3–30 Nov) and Snow Days (1–31 Dec), in the Menu and on Play.
 • Cipher: a fourth Today's Puzzle on the home screen, a daily cryptogram of a public-domain saying or proverb.
-• Rush Gym (60-second unscramble sprint) and My records: Menu.
+• Rush Gym and My records: Menu.
 • Rewind power-up: under the drop buttons, next to Freeze, Bomb and Sweep.
 • CPU rivals and the weekly Rival Cup: Menu › CPU rivals & Rival Cup. The rivals (Pip, Rook, Vex) are labelled CPU; their pace is computed on the device from the player's own past scores. There are no other players and nothing goes online.
 • Second chance: when the well fills, the player may spend 5 earned sparks once a game to clear the top half. Sparks are earned in play only; they can't be bought. Not offered in the official Daily, duels or Pass & Play.
 • Report a clue (result screen) opens a prefilled GitHub issue in Safari; nothing is sent unless the player submits it there.
 • Quick Daily widget (iOS 17, large size): three short clues solved by tapping letters, then the words are dropped into a small well. Runs in the widget via App Intents; state stays on the device.
 • Quick Daily also plays in the app (Menu › Quick Daily). Daily goal: 1 earned spark a day. Export my data (Menu › My records) opens the share sheet; nothing is uploaded.
-• New players see a simpler home (Daily + one puzzle) for 3 games; "Show everything now" skips it.
+• Groups and Twist of the day: Menu. Wrapped (year summary): home, 1 Dec–15 Jan. Long-press the app icon for quick actions.
 
 WELLNESS TOPICS
 Biblical, Psychology and Books start with an optional check-in that chooses which words appear, and offer an optional reflection note after a game (Menu › My journal). All of this is stored only on the device; Menu › My journal › Delete all removes it. The app says it is a game, not therapy, and lists 988 (US). No health claims are made.

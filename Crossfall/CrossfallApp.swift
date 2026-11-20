@@ -47,6 +47,7 @@ final class ThemeModel: ObservableObject {
 
 @main
 struct CrossfallApp: App {
+    @UIApplicationDelegateAdaptor(QuickActionAppDelegate.self) private var appDelegate
     @StateObject private var theme = ThemeModel()
     var body: some Scene {
         WindowGroup {
@@ -57,6 +58,64 @@ struct CrossfallApp: App {
                 .preferredColorScheme(theme.scheme)
                 .animation(.easeInOut(duration: 0.25), value: theme.mode)
         }
+    }
+}
+
+// MARK: - Home Screen quick actions
+
+/// Long-press the app icon: Today's Daily, Quick Daily, Groups. The page handles them in window.__qa.
+enum QuickActions {
+    static weak var web: WKWebView?
+    static var pageReady = false
+    static var pending: String?
+
+    static func install() {
+        UIApplication.shared.shortcutItems = [
+            UIApplicationShortcutItem(type: "daily", localizedTitle: "Today's Daily", localizedSubtitle: nil,
+                                      icon: UIApplicationShortcutIcon(systemImageName: "calendar"), userInfo: nil),
+            UIApplicationShortcutItem(type: "quick", localizedTitle: "Quick Daily", localizedSubtitle: "Three clues, then the well",
+                                      icon: UIApplicationShortcutIcon(systemImageName: "square.grid.3x3"), userInfo: nil),
+            UIApplicationShortcutItem(type: "groups", localizedTitle: "Groups", localizedSubtitle: nil,
+                                      icon: UIApplicationShortcutIcon(systemImageName: "square.grid.2x2"), userInfo: nil),
+        ]
+    }
+
+    static func handle(_ type: String) {
+        guard ["daily", "quick", "groups"].contains(type) else { return }
+        if pageReady, let web = web { web.evaluateJavaScript("window.__qa&&window.__qa('\(type)')", completionHandler: nil) }
+        else { pending = type }
+    }
+
+    static func pageDidLoad() {
+        pageReady = true
+        if let type = pending {
+            pending = nil
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { handle(type) }
+        }
+    }
+}
+
+final class QuickActionAppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        QuickActions.install()
+        return true
+    }
+
+    func application(_ application: UIApplication, configurationForConnecting session: UISceneSession,
+                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        if let item = options.shortcutItem { QuickActions.pending = item.type }   // cold launch from a quick action
+        let config = UISceneConfiguration(name: nil, sessionRole: session.role)
+        config.delegateClass = QuickActionSceneDelegate.self
+        return config
+    }
+}
+
+final class QuickActionSceneDelegate: NSObject, UIWindowSceneDelegate {
+    func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem,
+                     completionHandler: @escaping (Bool) -> Void) {
+        QuickActions.handle(shortcutItem.type)
+        completionHandler(true)
     }
 }
 
@@ -558,7 +617,12 @@ struct GameView: UIViewRepresentable {
 
         /// iOS can end the web content process under memory pressure, which leaves a blank page.
         /// Reload the bundled game; progress is in localStorage, so nothing is lost.
+        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+            QuickActions.pageDidLoad()
+        }
+
         func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+            QuickActions.pageReady = false
             webView.load(URLRequest(url: URL(string: "crossfall://app/index.html")!))
         }
 
@@ -624,6 +688,7 @@ struct GameView: UIViewRepresentable {
         ProStore.shared.start()
         DailyStatus.shared.web = web
         Locator.shared.web = web
+        QuickActions.web = web
         NotificationCenter.default.addObserver(context.coordinator, selector: #selector(Coordinator.textSizeChanged),
                                                name: UIContentSizeCategory.didChangeNotification, object: nil)
         web.load(URLRequest(url: URL(string: "crossfall://app/index.html")!))

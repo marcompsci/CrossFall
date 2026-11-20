@@ -1,0 +1,26 @@
+/* ===== Phases 58–72 ===== */
+.grp{display:grid;gap:6px;margin:6px 0}
+.grp-row{border-radius:10px;padding:10px 12px;background:var(--g);color:#1a1424;text-align:center}
+.grp-row b{display:block;font-family:var(--f-mono);letter-spacing:.05em;text-transform:uppercase;font-size:calc(13px*var(--ts))}
+.grp-row span{font-size:calc(14px*var(--ts))}
+.grp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.grp .grp-grid .grp-w{width:100%;min-width:0;min-height:58px;padding:4px 2px;border-radius:10px;border:1px solid var(--line);background:var(--panel-2);color:var(--fg);font-family:var(--f-mono);font-weight:700;font-size:calc(12.5px*var(--ts));letter-spacing:.02em;overflow-wrap:anywhere}
+.grp .grp-w[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.grp-ctl{display:flex!important;flex-direction:row!important;justify-content:center;gap:8px}.grp-ctl>button{width:auto!important;flex:1 1 0}
+.grp-ctl>button:disabled{opacity:.45}
+.wr{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:8px 0}
+.wr-c{background:var(--panel-2);border-radius:12px;padding:12px;text-align:left}
+.wr-c b{display:block;font-family:var(--f-display,var(--f-mono));font-size:calc(24px*var(--ts));color:var(--accent)}
+.wr-c span{color:var(--muted);font-size:calc(13px*var(--ts))}
+.sc-hp .sc-row{display:flex;gap:8px;flex-wrap:wrap}
+.sc-b{display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:color-mix(in srgb,var(--accent) 16%,transparent)}
+.sc-b b{font-size:calc(13px*var(--ts))}
+.bdg[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:2px}.bdg[role="button"]{cursor:pointer}
+.cd-list{display:flex;flex-wrap:wrap;gap:6px}
+.we-line{cursor:default}.tw-line{border-left:4px solid var(--accent)}.wr-line{border-left:4px solid var(--solved)}
+#kbSeg button[aria-checked="true"]{background:var(--accent);color:var(--ink)}
+.vol{display:grid;grid-template-columns:70px 1fr 44px;align-items:center;gap:8px;margin-top:8px}
+.vol input{width:100%;accent-color:var(--accent)}.vol output{font-family:var(--f-mono);font-size:calc(12px*var(--ts));text-align:right}
+html.wide-ls #clueText,html.wide-ls .clue,html.wide-ls .cl-t,html.wide-ls .rcp-row span,html.wide-ls .qd-clue{letter-spacing:.06em;word-spacing:.12em}
+html.wide-ls #cw .cc .l,html.wide-ls .k{letter-spacing:.08em}
+@media (prefers-reduced-motion:reduce){.grp-w{transition:none}}

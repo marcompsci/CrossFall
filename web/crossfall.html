@@ -1334,6 +1334,54 @@ html.nightsky #well::after{content:"";position:absolute;inset:0;pointer-events:n
 html.light.nightsky #well .wc:not(.f):not(.p):not(.g){background-color:rgba(255,255,255,.06)}
 @media (prefers-reduced-motion:reduce){#kpop,#pad .kr .k,.ctrl .k{transition:none}#pad.pad-in,#cw .cc.typed .l,#well .drop-trail,html.nightsky #well::after{animation:none}}
 
+/* ===== Phases 83–102 ===== */
+#well .wc.willclear{box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--solved) 70%,transparent);background-color:color-mix(in srgb,var(--solved) 14%,transparent)}
+#well .wc.f.willclear,#well .wc.g.willclear{filter:brightness(1.18)}
+#well.danger{box-shadow:0 0 0 2px color-mix(in srgb,#e2483d 55%,transparent),0 0 24px color-mix(in srgb,#e2483d 35%,transparent);animation:dangerPulse 1.1s ease-in-out infinite}
+@keyframes dangerPulse{50%{box-shadow:0 0 0 2px color-mix(in srgb,#e2483d 25%,transparent),0 0 8px transparent}}
+#wellCombo{position:absolute;top:6px;right:8px;z-index:4;padding:3px 9px;border-radius:999px;font:800 12px/1.2 var(--font,system-ui);letter-spacing:.06em;color:#fff;background:linear-gradient(135deg,#ff8a3d,#e2483d);box-shadow:0 4px 12px rgba(0,0,0,.25);pointer-events:none}
+#wellCombo.bump{animation:comboBump .32s cubic-bezier(.2,1.6,.4,1)}
+@keyframes comboBump{from{transform:scale(1.35)}to{transform:scale(1)}}
+#well .wc.p.spawn{animation:pieceIn .17s ease-out}
+@keyframes pieceIn{from{transform:translateY(-40%);opacity:.3}to{transform:none;opacity:1}}
+#wellWrap{position:relative}
+#cdn{position:absolute;inset:0;display:grid;place-items:center;z-index:6;font:900 72px/1 var(--font,system-ui);color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.5);pointer-events:none;background:rgba(0,0,0,.18)}
+#cdn.go{animation:cdnIn .8s ease-out}
+@keyframes cdnIn{from{transform:scale(1.5);opacity:0}25%{opacity:1;transform:scale(1)}to{opacity:.85}}
+#tcoach{position:absolute;left:8px;right:8px;bottom:12px;z-index:7;display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 14px;border-radius:16px;text-align:center;color:var(--ink,#fff);background:color-mix(in srgb,var(--panel,#1b1b24) 92%,transparent);box-shadow:0 10px 30px rgba(0,0,0,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);animation:tcIn .3s ease-out}
+#tcoach span{font-size:13px;opacity:.85}
+#tcoach .tc-hand{font-size:24px;opacity:1;animation:tcHand 1.4s ease-in-out infinite}
+#tcoach.bye{opacity:0;transform:translateY(8px);transition:.25s}
+@keyframes tcIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes tcHand{0%,100%{transform:translateX(-14px)}50%{transform:translateX(14px)}}
+html.bigwell #well .wc{font-size:calc(var(--wc,36px)*.62)}
+html.ghost-solid #well .wc.ghost{background-color:color-mix(in srgb,var(--accent) 28%,transparent);border-style:solid}
+html.ghost-off #well .wc.ghost{background:none!important;box-shadow:none!important;border-color:transparent!important;color:transparent!important}
+.ws-sum{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin:10px 0}
+.ws-sum>span{display:inline-flex;align-items:center;gap:6px;font-weight:700}
+.ghost-btn.sm{padding:7px 12px;font-size:13px;min-height:36px}
+.sw-panel .btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px}
+.br-cta{text-align:center}
+.sky{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+@media (min-width:560px){.sky{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.sky-c{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 6px;border-radius:14px;border:1px solid color-mix(in srgb,#9d8cff 30%,transparent);background:radial-gradient(120% 90% at 50% 0%,#241c5c,#0d0a26);color:#e8e4ff;font:inherit;cursor:pointer;min-height:44px}
+.sky-c svg{width:100%;max-width:110px;height:auto}
+.sky-c polyline{stroke:#b9aefc}
+.sky-c circle{fill:#8b80c9}
+.sky-c.lit circle{fill:#fff6c9;filter:drop-shadow(0 0 3px #ffe58a)}
+.sky-c.lit{border-color:#ffe58a;box-shadow:0 0 16px rgba(255,229,138,.25)}
+.sky-c b{font-size:13px}.sky-c small{opacity:.75;font-size:12px}
+.br-wrap{display:flex;flex-direction:column;align-items:center;gap:18px;margin:22px 0}
+.br-ring{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 55%,transparent),color-mix(in srgb,var(--accent) 12%,transparent));transform:scale(.6);transition:transform var(--d,4s) ease-in-out}
+.br-ring.in,.br-ring.hold{transform:scale(1)}
+.br-ring.out{transform:scale(.6)}
+.br-cue{font-size:20px;font-weight:700;min-height:1.4em;text-align:center}
+.set-find{margin:6px 0 12px}
+.set-find input{width:100%;box-sizing:border-box;padding:10px 14px;border-radius:12px;border:1px solid var(--line,rgba(127,127,127,.35));background:var(--card,transparent);color:inherit;font:inherit;font-size:16px}
+.set-hide{display:none!important}
+#a11ySlot>.setrow,#a11ySlot>.setgroup{margin-top:10px}
+@media (prefers-reduced-motion:reduce){#well.danger,#wellCombo.bump,#well .wc.p.spawn,#cdn.go,#tcoach,#tcoach .tc-hand{animation:none}.br-ring{transition:none}}
+
 /* ===== Fluid pass (Apple design / Emil Kowalski skill audit, 28 Oct 2026) ===== */
 :root{--ease-out:cubic-bezier(.2,.8,.2,1);--ease-press:cubic-bezier(.3,.7,.4,1)}
 /* 1. respond on press: every control acknowledges the touch immediately; no 300 ms tap delay */
@@ -1456,6 +1504,8 @@ html.hc .panel{border-color:var(--line);box-shadow:none}
         <button data-act="trail"><span data-ti="map"></span> Word Trail</button>
         <button data-act="ach"><span data-ti="medal"></span> Achievements</button>
         <button data-act="insights"><span data-ti="numbers"></span> Insights</button>
+        <button data-act="sky"><span data-ti="star"></span> Your sky</button>
+        <button data-act="breath"><span data-ti="moon"></span> Take a breath</button>
         <button data-act="wotd"><span data-ti="pencil"></span> Word of the day</button>
         <button data-act="gym"><span data-ti="runner"></span> Rush Gym</button>
         <button data-act="records"><span data-ti="trophy"></span> My records</button>
@@ -3096,7 +3146,7 @@ document.getElementById("drClose").onclick=closeDrawer;try{initDrawerDrag()}catc
     else if(a==="checkin")showQuiz(null);
     else if(a==="archive")openArchive();else if(a==="maker")openMaker();else if(a==="review")openReview();else if(a==="backup")openBackup();
     else if(a==="tour"){startTutorial()}
-    else if(a==="rewards")openRewards();else if(a==="events")openEvents();else if(a==="wordbook")openWordBook();else if(a==="duels")openDuels();else if(a==="modes")openModes();else if(a==="trail")openTrail();else if(a==="harvest")openHarvest();else if(a==="snow")openSnow();else if(a==="cipher")openCipher();else if(a==="gym")openGym();else if(a==="records")openRecords();else if(a==="calendar")openCalendar();else if(a==="quickdaily")openQD();else if(a==="groups")openGroups();else if(a==="twist")playTwist();else if(a==="goal")openGoal();else if(a==="rivals")openModes("mdRiv");else if(a==="history")openHistory();else if(a==="home")openHomeEdit();else if(a==="ach")openAchievements();else if(a==="insights")openInsights();else if(a==="wotd")openWotd();else if(a==="spooky")openSpooky();else if(a==="look")openLook();else if(a==="journal")openJournal();else if(a==="langlab")openLangHub();else if(a==="mini")openMini();else if(a==="chunks")openChunks();else if(a==="scoreboard")openScoreboard();else if(a==="code")openCode();
+    else if(a==="rewards")openRewards();else if(a==="events")openEvents();else if(a==="wordbook")openWordBook();else if(a==="duels")openDuels();else if(a==="modes")openModes();else if(a==="trail")openTrail();else if(a==="harvest")openHarvest();else if(a==="snow")openSnow();else if(a==="cipher")openCipher();else if(a==="gym")openGym();else if(a==="records")openRecords();else if(a==="calendar")openCalendar();else if(a==="quickdaily")openQD();else if(a==="groups")openGroups();else if(a==="twist")playTwist();else if(a==="goal")openGoal();else if(a==="rivals")openModes("mdRiv");else if(a==="history")openHistory();else if(a==="home")openHomeEdit();else if(a==="ach")openAchievements();else if(a==="insights")openInsights();else if(a==="sky")openSkyMap();else if(a==="breath")openBreath();else if(a==="wotd")openWotd();else if(a==="spooky")openSpooky();else if(a==="look")openLook();else if(a==="journal")openJournal();else if(a==="langlab")openLangHub();else if(a==="mini")openMini();else if(a==="chunks")openChunks();else if(a==="scoreboard")openScoreboard();else if(a==="code")openCode();
     else if(a==="pro"){showPaywall(PRO?"owned":"menu")}
     else if(a==="how"){goPage("Play");const h=document.querySelector(".how");if(h){h.open=true;setTimeout(()=>h.scrollIntoView({behavior:"smooth",block:"start"}),60)}}});
   document.querySelectorAll("#rkSeg button").forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;renderRanks()});
@@ -3560,7 +3610,7 @@ function hideLens(){if(!lensShown)return;lensShown=false;lensT=null;lens.classLi
 /* ---------- scoring v2: transparent points, chains, combos, grades ---------- */
 const CHAIN_MS=20000,PAR_PER_WORD=30;
 const SPEED_MULT={relaxed:.9,normal:1,fast:1.25};
-const PTS_LABEL={words:"Words",chain:"Speed chains",drop:"Hard drops",rows:"Row clears",combo:"Clear combos",target:"Target word",rush:"Rushes",hints:"Hints",time:"Time bonus",fever:"Fever bonus",perfect:"Perfect clears"};
+const PTS_LABEL={words:"Words",chain:"Speed chains",drop:"Hard drops",rows:"Row clears",combo:"Clear combos",target:"Target word",rush:"Rushes",hints:"Hints",time:"Time bonus",fever:"Fever bonus",perfect:"Perfect clears",match:"Letter matches",link:"Word links",spin:"Spin clears"};
 function addPts(k,v){if(!v)return;S.pts[k]=(S.pts[k]||0)+v;S.score=Math.max(0,S.score+v);try{feverAdd(k,v)}catch(e){}}
 function wordValue(len,own){return 50+10*own+(own===len?Math.max(0,len-5)*25:0)}
 function scoreWord(w){
@@ -4351,13 +4401,18 @@ function openWordBook(cat){wbBackfill();const U=wbUniverse(),cats=Object.keys(U)
   document.getElementById("wbDone").onclick=()=>{el.hidden=true;el.innerHTML="";if(hubPage==="Profile")renderProfile()}}
 
 /* ---- what's new (shown once to returning players) ---- */
-function maybeWhatsNew(){if(stats.seen22||!stats.tot||!stats.tot.games)return;stats.seen12=1;stats.seen13=1;stats.seen14=1;const had16=!!stats.seen16;stats.seen15=1;stats.seen16=1;stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;saveStats();const el=document.getElementById("evh");
+function maybeWhatsNew(){if(stats.seen23||!stats.tot||!stats.tot.games)return;stats.seen12=1;stats.seen13=1;stats.seen14=1;const had16=!!stats.seen16;stats.seen15=1;stats.seen16=1;stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;stats.seen23=1;saveStats();const el=document.getElementById("evh");
   el.innerHTML=`<h1>WHAT'S <span>NEW</span></h1>
+   <div class="panel wn">${ti("puzzle")}<div><b>A well with more to play for</b><p>See which rows a drop will clear, spin clears, letter matches and word links hidden in your rows. A combo meter, a warning when the stack climbs, and a 3-2-1 when you come back.</p></div></div>
+   <div class="panel wn">${ti("star")}<div><b>Your sky</b><p>Each Night Sky theme is now a constellation. Finish its puzzles to light it, and keep a word to carry on your quote shelf.</p></div></div>
+   <div class="panel wn">${ti("moon")}<div><b>Take a breath</b><p>A one-minute guided breath, in the Menu and after reflective puzzles.</p></div></div>
+   <div class="panel wn">${ti("target")}<div><b>Make it yours</b><p>Bigger well letters, three landing guide styles, a search box in Settings, share your well and replay just the drop.</p></div></div>
+   <details class="wn-more"><summary>More new in 1.1</summary>
    <div class="panel wn">${ti("puzzle")}<div><b>Drops that feel like the real thing</b><p>Slide a falling word with your finger, tap to turn it, flick down to slam it. Smoother holds and turns, levels that speed up, perfect clears and a four-row Crossfall.</p></div></div>
    <div class="panel wn">${ti("pencil")}<div><b>A smoother keyboard</b><p>Softer keys with a letter preview as you press, and letters that pop into the grid.</p></div></div>
    <div class="panel wn">${ti("star")}<div><b>Night Sky, reborn</b><p>70 new puzzles of stars, philosophy and the sacred: where we come from and what we've wondered at. Each ends with a word to carry.</p></div></div>
    <div class="panel wn">${ti("cards")}<div><b>Goodbye, Bay City</b><p>Bay City has been retired. If it was one of your free picks, another category takes its place.</p></div></div>
-   <details class="wn-more"><summary>More new in 1.1</summary>
+   
    <div class="panel wn">${ti("cards")}<div><b>Groups</b><p>A new daily puzzle: sort 16 words into their 4 Crossfall categories. Four mistakes and you're out.</p></div></div>
    <div class="panel wn">${ti("bolt")}<div><b>Twist of the day</b><p>One puzzle a day with a rule change: faster pieces, no hold, no hints, a quick rush or a deeper well.</p></div></div>
    <div class="panel wn">${ti("star")}<div><b>Your year &amp; your badges</b><p>Crossfall Wrapped from December, pinned badges on your profile, streak milestones and category details in Insights.</p></div></div>
@@ -6077,6 +6132,160 @@ function setsHTML7382(){const sw=(id,on,t,d)=>`<button class="setrow" role="swit
 {const _rpi2=renderPaceInfo;renderPaceInfo=function(){_rpi2.apply(this,arguments);const a=document.getElementById("a11ySlot");if(!a||a.querySelector("#setWellDrag"))return;
   a.insertAdjacentHTML("afterbegin",setsHTML7382());[["setWellDrag","wellDrag"],["setKeyTick","keyTick"]].forEach(([id,k])=>{const b=document.getElementById(id);
     b.onclick=()=>{prefs[k]=prefs[k]===false;b.setAttribute("aria-checked",prefs[k]!==false);savePrefsQuiet()}})}}
+
+/* ================= Phases 83–102 (20 Nov 2026) ================= */
+function wsSt(){stats.ws=stats.ws||{perfect:0,links:0,spins:0,matches:0,crossfall:0,bestLv:1};return stats.ws}
+
+/* ---------- 83: see which rows a drop will clear; 84: danger zone; 101: combo meter; 102: pieces drop in ---------- */
+function landingClears(){if(!S||!S.active||S.phase!=="drop")return[];let d=0;while(!collides(absCells(S.active,d+1,0)))d++;
+  const cells=absCells(S.active,d,0);if(cells.some(x=>x.r<0))return[];const occ=new Set(cells.map(x=>x.r+","+x.c));
+  const rows=[...new Set(cells.map(x=>x.r))];return rows.filter(r=>{for(let c=0;c<COLS;c++)if(!S.grid[r][c]&&!occ.has(r+","+c))return false;return true})}
+function stackTop(){for(let r=0;r<ROWS;r++)if(S.grid[r].some(Boolean))return r;return ROWS}
+function wellBadges(){const w=document.getElementById("wellWrap");if(!w||!S)return;let b=document.getElementById("wellCombo");
+  if(!b){b=document.createElement("div");b.id="wellCombo";b.setAttribute("aria-hidden","true");w.appendChild(b)}
+  const on=S.combo>1&&(S.phase==="drop"||S.phase==="anim");b.hidden=!on;if(on&&b.dataset.n!==String(S.combo)){b.dataset.n=S.combo;b.textContent="COMBO ×"+S.combo;b.classList.remove("bump");void b.offsetWidth;b.classList.add("bump")}}
+{const _rw=renderWell;renderWell=function(){_rw.apply(this,arguments);if(!S)return;const well=document.getElementById("well");if(!well)return;
+  const will=new Set(landingClears());well.querySelectorAll(".wc.willclear").forEach(d=>{if(!will.has(+d.dataset.r))d.classList.remove("willclear")});
+  if(will.size&&prefs.clearHint!==false)will.forEach(r=>well.querySelectorAll(`.wc[data-r="${r}"]`).forEach(d=>d.classList.add("willclear")));
+  const danger=(S.phase==="drop"||S.phase==="anim")&&!S.tut&&stackTop()<=Math.floor(ROWS*.3);well.classList.toggle("danger",danger);
+  if(danger){const now=performance.now();if(!S._beatT||now-S._beatT>1100){S._beatT=now;try{blip(85,.09)}catch(e){}}if(!S._dangerSaid){S._dangerSaid=1;announce("Careful: the well is nearly full.")}}else S._dangerSaid=0;
+  if(S.active&&S.spawnT&&performance.now()-S.spawnT<170&&!calmNow())well.querySelectorAll(".wc.p").forEach(d=>d.classList.add("spawn"));
+  wellBadges()}}
+{const _sp2=spawnPiece;spawnPiece=function(){const r=_sp2.apply(this,arguments);if(S){S.spawnT=performance.now();S.lastAct="spawn"}return r}}
+
+/* ---------- 85: spin clears; 86: word links; 87: letter matches ---------- */
+{const _mv2=move;move=function(){if(S)S.lastAct="move";return _mv2.apply(this,arguments)}}
+{const _ro2=rotate;rotate=function(){const k=S&&S.active?JSON.stringify(S.active.cells):null;const r=_ro2.apply(this,arguments);if(S&&S.active&&JSON.stringify(S.active.cells)!==k)S.lastAct="rotate";return r}}
+{const _sd2=softDrop;softDrop=function(){const r0=S&&S.active?S.active.r:null;const r=_sd2.apply(this,arguments);if(S&&S.active&&S.active.r!==r0)S.lastAct="move";return r}}
+function rowWords(str){const out=[];const pool=w=>DICT.has(w)||(S&&S.cw&&S.cw.words.some(x=>x.ans===w));
+  for(let L=Math.min(COLS,7);L>=4;L--)for(let i=0;i+L<=str.length;i++){const w=str.slice(i,i+L);if(/^[A-Z]+$/.test(w)&&pool(w)&&!out.some(o=>i<o.i+o.w.length&&o.i<i+L))out.push({w,i})}
+  return out.map(o=>o.w).slice(0,2)}
+{const _lk=lock;lock=function(){if(!S||!S.active)return _lk.apply(this,arguments);
+  const cells=absCells(S.active),spin=S.lastAct==="rotate"&&cells.length>1;let match=0;
+  cells.forEach(({r,c,ch})=>{const b=r+1<ROWS&&!cells.some(x=>x.r===r+1&&x.c===c)?S.grid[r+1][c]:null;if(b&&!b.g&&b.ch===ch)match++});
+  const g=S.grid.map(row=>row.map(x=>x?x.ch:null));cells.forEach(({r,c,ch})=>{if(r>=0)g[r][c]=ch});const links=[];
+  g.forEach(row=>{if(row.every(Boolean))rowWords(row.join("")).forEach(w=>links.push(w))});
+  const r=_lk.apply(this,arguments);
+  if(match&&!S.tut){addPts("match",20*match);wsSt().matches+=match;toast(match>1?`LETTER MATCH ×${match} +${20*match}`:"LETTER MATCH +20");try{blip(880,.04)}catch(e){}}
+  if(g.some(row=>row.every(Boolean))){S._pendClear={spin,links}}
+  return r}}
+{const _as2=afterSettle;afterSettle=function(){if(S&&S._pendClear&&(S.linesCleared||0)>(S._lc2||0)){const p=S._pendClear,n=S.linesCleared-(S._lc2||0);S._pendClear=null;const W=wsSt();
+    if(p.spin){addPts("spin",200*n);W.spins++;toast(`SPIN CLEAR +${200*n}`);try{popCall("SPIN!","clear")}catch(e){}}
+    p.links.forEach(w=>{addPts("link",150);W.links++;toast(`WORD LINK: ${w} +150`);announce("Word link, "+w)});
+    if(n>=4)W.crossfall++;if(S.grid.every(r=>r.every(c=>!c)))W.perfect++;W.bestLv=Math.max(W.bestLv||1,wellLevel())}
+  if(S)S._lc2=S.linesCleared||0;return _as2.apply(this,arguments)}}
+
+/* ---------- 88: 3-2-1 before the well starts again ---------- */
+function resumeCountdown(){if(!S||S.phase!=="drop"||S.tut||!S.active||prefs.countdown===false)return;const el=document.getElementById("cdn")||(()=>{const d=document.createElement("div");d.id="cdn";d.setAttribute("role","status");document.getElementById("wellWrap").appendChild(d);return d})();
+  S.freezeUntil=Math.max(S.freezeUntil||0,performance.now()+2400);let n=3;const tick=()=>{if(n<1||!S||S.phase!=="drop"){el.hidden=true;return}el.hidden=false;el.textContent=n;el.classList.remove("go");void el.offsetWidth;el.classList.add("go");blip(520+n*60,.05);n--;setTimeout(tick,800)};tick()}
+{const _cd=closeDrawer;closeDrawer=function(){const was=!document.getElementById("drawer").hidden;const r=_cd.apply(this,arguments);if(was)setTimeout(resumeCountdown,120);return r}}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")setTimeout(resumeCountdown,200)});
+
+/* ---------- 89: a coach card the first time you drop ---------- */
+function touchCoach(){if(!S||S.phase!=="drop"||S.tut||(stats.tips||{}).drag||prefs.wellDrag===false)return;stats.tips=stats.tips||{};stats.tips.drag=1;saveStats();
+  const w=document.getElementById("wellWrap");if(!w)return;const c=document.createElement("div");c.id="tcoach";c.setAttribute("role","status");
+  c.innerHTML=`<span class="tc-hand" aria-hidden="true">☝︎</span><b>Play right on the well</b><span>Drag ↔ to move · Tap to turn · Flick ↓ to slam</span>`;w.appendChild(c);
+  S.freezeUntil=Math.max(S.freezeUntil||0,performance.now()+3500);const bye=()=>{c.classList.add("bye");setTimeout(()=>c.remove(),250)};setTimeout(bye,3600);c.onclick=bye}
+{const _sp3=spawnPiece;spawnPiece=function(){const r=_sp3.apply(this,arguments);try{if(S&&S.phase==="drop")touchCoach()}catch(e){}return r}}
+
+/* ---------- 90: bigger well letters; 91: ghost style ---------- */
+function applyWellLook(){const h=document.documentElement;h.classList.toggle("bigwell",!!prefs.bigWell);h.classList.toggle("ghost-solid",prefs.ghost==="solid");h.classList.toggle("ghost-off",prefs.ghost==="off")}
+
+/* ---------- 92: share your well ---------- */
+function wellSnapshot(){if(!S||!S.grid)return"";const top=Math.min(stackTop(),ROWS-1),rows=S.grid.slice(Math.max(0,Math.min(top,ROWS-8)));
+  return rows.map(r=>r.map(x=>!x?"⬛":x.g?"⬜":"🟧").join("")).join("\n")}
+function shareWell(){shareOut(`Crossfall · ${S.L.name}\n${wellSnapshot()}\n${fmtN(S.score)} points · LV ${wellLevel()}${S.bestClear>=4?" · CROSSFALL!":""}`)}
+
+/* ---------- 93: new medals ---------- */
+let ach3Done=false;
+function ach3Init(){if(ach3Done)return;ach3Done=true;const W=()=>stats.ws||{};
+  ACH.push({id:"perfect",name:"Clean Sweep",ic:"star",unit:"Perfect Clears",t:[1,5,25],v:()=>W().perfect||0},
+    {id:"links",name:"Word Linker",ic:"cards",unit:"word links in the well",t:[1,25,100],v:()=>W().links||0},
+    {id:"spins",name:"Spinner",ic:"bolt",unit:"spin clears",t:[1,25,100],v:()=>W().spins||0},
+    {id:"groups",name:"Sorter",ic:"cards",unit:"Groups solved",t:[1,10,50],v:()=>Object.values((stats.grp||{}).days||{}).filter(d=>d.win).length+Math.max(0,((stats.grp||{}).solvedOld)||0)},
+    {id:"twists",name:"Twister",ic:"bolt",unit:"Twists won",t:[1,10,30],v:()=>(stats.twist||{}).n||0});
+  if(stats.achInit&&!stats.ach3Init){stats.ach=stats.ach||{};ACH.slice(-5).forEach(a=>{let v=0;try{v=a.v()}catch(e){}let t=0;a.t.forEach((n,i)=>{if(v>=n)t=i+1});stats.ach[a.id]=Math.max(stats.ach[a.id]||0,t)})}
+  stats.ach3Init=1}
+{const _ac3=achCheck;achCheck=function(){ach3Init();return _ac3.apply(this,arguments)}}
+
+/* ---------- 94: well stats in Insights; 95: level reached on results ---------- */
+function wellStatsHTML(){const W=stats.ws;if(!W)return"";const it=(n,l)=>`<div class="wr-c"><b>${fmtN(n||0)}</b><span>${l}</span></div>`;
+  return`<div class="panel"><h2 class="ph">${ti("puzzle")} In the well</h2><div class="wr">${it(W.bestLv||1,"best level")}${it(W.perfect,"Perfect Clears")}${it(W.crossfall,"CROSSFALLs (4 rows)")}${it(W.links,"word links")}${it(W.spins,"spin clears")}${it(W.matches,"letter matches")}</div></div>`}
+{const _oi2=openInsights;openInsights=function(){_oi2.apply(this,arguments);const el=document.getElementById("evh");if(!el||el.querySelector(".ws-ins"))return;const h=wellStatsHTML();if(!h)return;
+  const done=el.querySelector("#evDone");(done?done.closest(".btns")||done:el.lastElementChild).insertAdjacentHTML("beforebegin",h.replace('class="panel"','class="panel ws-ins"'))}}
+function wellSumHTML(){if(!S||S.tut||!(S.linesCleared>0))return"";const lv=wellLevel(),W=wsSt(),best=lv>(S._bestLvBefore||1)&&lv>1;
+  return`<div class="ws-sum"><span>${ti("puzzle")} Reached <b>LV ${lv}</b>${best?" · new best!":""}</span><button class="ghost-btn sm" id="wsShare">Share my well</button><button class="ghost-btn sm" id="wsReplay">Replay the drop</button></div>`}
+
+/* ---------- 96: the Night Sky constellations ---------- */
+const NS_THEMES=["Star Stuff","First Light","Roots","Skywatchers","Wayfinders","Sky Stories","The Thinkers","The Way","Spirit","One Sky"];
+const NS_SHAPES=[[[10,30],[22,14],[34,26],[46,10]],[[8,24],[20,20],[32,26],[44,18],[48,30]],[[12,10],[16,24],[28,30],[40,22],[44,8]],[[8,16],[18,28],[30,12],[42,28],[48,14]],[[10,28],[24,10],[38,28],[24,22]],[[8,8],[20,14],[28,26],[40,20],[48,30]],[[12,28],[18,12],[30,8],[42,14],[46,28]],[[10,18],[22,8],[34,18],[46,8]],[[28,6],[18,18],[28,30],[38,18],[28,6]],[[8,20],[18,10],[28,20],[38,10],[48,20]]];
+function nsProgress(){const c=CATEGORIES.find(x=>x.name==="Night Sky");if(!c)return[];return NS_THEMES.map((name,t)=>{const ps=c.puzzles.filter((p,i)=>i%10===t);const done=ps.filter(p=>((store[p.id]||{}).stars||0)>0).length;return{name,done,n:ps.length,lit:ps.length&&done===ps.length}})}
+function openSkyMap(){const P=nsProgress(),el=document.getElementById("evh"),lit=P.filter(p=>p.lit).length;
+  const star=(t,p)=>{const pts=NS_SHAPES[t].map(([x,y])=>`${x},${y}`).join(" "),k=p.n?p.done/p.n:0;
+    return`<button class="sky-c${p.lit?" lit":""}" data-sky="${t}" aria-label="${esc(p.name)}: ${p.done} of ${p.n} puzzles${p.lit?", lit":""}"><svg viewBox="0 0 56 38" aria-hidden="true"><polyline points="${pts}" fill="none" stroke-width="1" style="opacity:${.25+.75*k}"/>${NS_SHAPES[t].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="${p.lit?2.2:1.4}"/>`).join("")}</svg><b>${esc(p.name)}</b><small>${p.done}/${p.n}</small></button>`};
+  el.innerHTML=`<h1>YOUR <span>SKY</span></h1><p class="sub">Each Night Sky theme is a constellation. Finish its puzzles to light it. ${lit} of 10 lit.</p>
+   <div class="sky">${P.map((p,t)=>star(t,p)).join("")}</div><p class="sub" id="skyNote" role="status"></p>
+   <div class="btns wide"><button class="big" id="evDone">Done</button></div>`;
+  el.hidden=false;el.scrollTop=0;el.querySelectorAll("[data-sky]").forEach(b=>b.onclick=()=>{const t=+b.dataset.sky,p=P[t];const q=STAR_WORDS[t%STAR_WORDS.length];
+    document.getElementById("skyNote").innerHTML=`<b>${esc(p.name)}</b>: ${p.done} of ${p.n} played. ${p.lit?`“${esc(q[0])}” (${esc(q[1])})`:"Play a puzzle from this theme to add a star."}`});
+  document.getElementById("evDone").onclick=closeEvents}
+function skyAfter(){if(!S||!S.L||S.L.cat!=="Night Sky")return;const P=nsProgress();stats.skyLit=stats.skyLit||[];P.forEach((p,t)=>{if(p.lit&&!stats.skyLit.includes(t)){stats.skyLit.push(t);
+  queueCele({kind:"xp",title:"A constellation lights up",sub:`${p.name} is complete. See it in Menu › Your sky.`});giveXP(300,"Constellation: "+p.name)}})}
+
+/* ---------- 97: keep a word to carry ---------- */
+function swSaved(){const [q,by]=starWord();return QS.some(x=>x.text===q&&x.ref===by)}
+function wireStarWord(el){const b=el.querySelector("#swSave");if(!b)return;b.onclick=()=>{const [q,by]=starWord();
+  if(swSaved()){QS=QS.filter(x=>!(x.text===q&&x.ref===by));toast("Removed from your shelf")}else{QS.push({w:"NIGHT SKY",text:q,ref:by,cat:"Night Sky",t:Date.now()});toast("Saved to your quote shelf")}
+  saveQS();b.setAttribute("aria-pressed",swSaved());b.textContent=swSaved()?"Saved ✓":"Save to my quote shelf";hap("select")}}
+
+/* ---------- 98: take a breath ---------- */
+const BREATH=[["Breathe in",4],["Hold",4],["Breathe out",6]];
+function openBreath(){const el=document.getElementById("evh");el.innerHTML=`<h1>TAKE A <span>BREATH</span></h1><p class="sub">Three slow breaths. In for 4, hold for 4, out for 6.</p>
+   <div class="br-wrap"><div class="br-ring" id="brRing" aria-hidden="true"></div><p class="br-cue" id="brCue" role="status" aria-live="assertive">Ready when you are</p></div>
+   <div class="btns"><button class="big" id="brGo">Start</button></div><div class="btns wide"><button class="ghost-btn" id="evDone">Done</button></div>`;
+  el.hidden=false;el.scrollTop=0;let timer=0,stop=false;const ring=document.getElementById("brRing"),cue=document.getElementById("brCue");
+  const run=(cycle,step)=>{if(stop)return;if(cycle>=3){cue.textContent="Well done. Carry that calm with you.";ring.className="br-ring";stats.breaths=(stats.breaths||0)+1;saveStats();hap("success");return}
+    const [t,s]=BREATH[step];cue.textContent=`${t} · ${s}`;ring.className="br-ring "+["in","hold","out"][step];ring.style.setProperty("--d",s+"s");hap("light");
+    let left=s;const tk=()=>{if(stop)return;left--;if(left>0){cue.textContent=`${t} · ${left}`;timer=setTimeout(tk,1000)}else run(step===2?cycle+1:cycle,(step+1)%3)};timer=setTimeout(tk,1000)};
+  document.getElementById("brGo").onclick=e=>{e.currentTarget.hidden=true;run(0,0)};
+  document.getElementById("evDone").onclick=()=>{stop=true;clearTimeout(timer);closeEvents()}}
+const HEAL_CATS=["Biblical","Psychology","Books","Night Sky"];
+
+/* ---------- 99: search settings ---------- */
+function wireSetSearch(){const st=document.getElementById("settings");if(!st||st.querySelector("#setQ"))return;const h=st.querySelector("h1");if(!h)return;
+  h.insertAdjacentHTML("afterend",`<div class="set-find"><input type="search" id="setQ" placeholder="Search settings" aria-label="Search settings" autocomplete="off" spellcheck="false"><p class="sub" id="setNone" hidden>No settings match.</p></div>`);
+  const q=document.getElementById("setQ");q.oninput=()=>{const v=q.value.trim().toLowerCase(),rows=[...st.querySelectorAll(".setrow,.setgroup")].filter(r=>!r.closest(".set-find"));let n=0;
+    rows.forEach(r=>{const show=!v||r.textContent.toLowerCase().includes(v);r.classList.toggle("set-hide",!show);if(show)n++});
+    st.querySelectorAll("h2,.set-h,.ph").forEach(x=>x.classList.toggle("set-hide",!!v));document.getElementById("setNone").hidden=!v||n>0}}
+
+/* ---------- 100: replay just the drop ---------- */
+function replayDrop(){if(!S||!S.L)return;const L=Object.assign({},S.L,{archive:S.L.archive||"drop",dropOnly:true,_cw:S.L._cw||(S.li>=0?crosswordFor(S.li):null)});if(!L._cw)return;document.querySelectorAll(".ov").forEach(o=>{if(o.id!=="menu")o.hidden=true});
+  S=null;startLevel(L);if(S){S.dropOnly=true;autoCross()}}
+function autoCross(){if(!S||!S.dropOnly)return;if(S.phase==="cross"){const w=S.cw.words.find(w=>!w.solved);if(w){selectWord(w);for(const k of w.cells){const c=S.cw.cells.get(k);if(!c.lock){S.sel.key=k;typeLetter(c.ans)}}}}
+  if(S&&S.phase!=="done"&&S.phase!=="over")setTimeout(autoCross,180)}
+
+/* ---------- settings rows ---------- */
+function setsHTML83(){const sw=(id,on,t,d)=>`<button class="setrow" role="switch" id="${id}" aria-checked="${on}"><span><span class="st-t">${t}</span><br><span class="st-d">${d}</span></span><span class="sw"></span></button>`;
+  return sw("setBigWell",!!prefs.bigWell,"Bigger well letters","Larger letters on the falling words and the stack.")+
+   sw("setClearHint",prefs.clearHint!==false,"Show rows a drop will clear","Rows light up while you aim.")+
+   sw("setCountdown",prefs.countdown!==false,"3-2-1 when you come back","A short countdown before the well starts again.")+
+   `<div class="setgroup"><span class="st-t">Landing guide</span><span class="st-d">Where the falling word will land.</span><div class="seg" role="radiogroup" aria-label="Landing guide" id="ghSeg">${[["outline","Outline"],["solid","Solid"],["off","Off"]].map(([k,l])=>`<button role="radio" data-gh="${k}" aria-checked="${(prefs.ghost||"outline")===k}">${l}</button>`).join("")}</div></div>`}
+{const _rpi3=renderPaceInfo;renderPaceInfo=function(){_rpi3.apply(this,arguments);try{wireSetSearch()}catch(e){}const a=document.getElementById("a11ySlot");if(!a||a.querySelector("#setBigWell"))return;
+  a.insertAdjacentHTML("beforeend",setsHTML83());[["setBigWell","bigWell",false],["setClearHint","clearHint",true],["setCountdown","countdown",true]].forEach(([id,k,def])=>{const b=document.getElementById(id);
+    b.onclick=()=>{prefs[k]=def?prefs[k]===false:!prefs[k];b.setAttribute("aria-checked",def?prefs[k]!==false:!!prefs[k]);applyWellLook();savePrefsQuiet();try{if(S)renderWell()}catch(e){}}});
+  a.querySelectorAll("[data-gh]").forEach(b=>b.onclick=()=>{prefs.ghost=b.dataset.gh;a.querySelectorAll("[data-gh]").forEach(x=>x.setAttribute("aria-checked",x===b));applyWellLook();savePrefsQuiet()})}}
+
+/* ---------- hooks ---------- */
+{const _sl4=startLevel;startLevel=function(){const r=_sl4.apply(this,arguments);try{if(S){S._lc2=0;S._bestLvBefore=wsSt().bestLv||1}}catch(e){}return r}}
+{const _rg4=recordGame;recordGame=function(win){const r=_rg4.apply(this,arguments);try{const W=wsSt();W.bestLv=Math.max(W.bestLv||1,wellLevel());skyAfter()}catch(e){console.error(e)}return r}}
+try{applyWellLook()}catch(e){}
+/* ---------- results extras ---------- */
+{const _swh=starWordHTML;starWordHTML=function(){let h=_swh.apply(this,arguments);if(!S||!S.L)return h;
+  if(h)h=h.replace(/<\/div>$/,`<div class="btns"><button class="ghost-btn sm" id="swSave" aria-pressed="${swSaved()}">${swSaved()?"Saved ✓":"Save to my quote shelf"}</button><button class="ghost-btn sm" id="skyOpen">See your sky</button></div></div>`);
+  const heal=HEAL_CATS.includes(S.L.cat)?`<div class="panel br-cta"><p class="sub">Before the next one, a minute to settle.</p><button class="ghost-btn sm" id="brOpen">Take a breath</button></div>`:"";
+  return wellSumHTML()+h+heal}}
+{const _shr=showResult;showResult=function(){const r=_shr.apply(this,arguments);try{const el=document.getElementById("result");if(el){wireStarWord(el);
+  const o=(id,f)=>{const b=document.getElementById(id);if(b)b.onclick=f};o("skyOpen",openSkyMap);o("brOpen",openBreath);o("wsShare",shareWell);o("wsReplay",replayDrop)}}catch(e){console.error(e)}return r}}
 
 function weeklyLine(){const cs=challengeState(),d=cs.filter(c=>c.done).length;return`<button class="wk-line" id="wkLine"><span>${ti("trophy")} Weekly challenges <b>${d}/3</b></span><span class="wk-bars">${cs.map(c=>`<i style="--p:${Math.round(c.v/c.goal*100)}%"></i>`).join("")}</span><span aria-hidden="true">›</span></button>`}
 

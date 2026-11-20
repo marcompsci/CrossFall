@@ -3,7 +3,7 @@
 #well .wc.f.willclear,#well .wc.g.willclear{filter:brightness(1.18)}
 #well.danger{box-shadow:0 0 0 2px color-mix(in srgb,#e2483d 55%,transparent),0 0 24px color-mix(in srgb,#e2483d 35%,transparent);animation:dangerPulse 1.1s ease-in-out infinite}
 @keyframes dangerPulse{50%{box-shadow:0 0 0 2px color-mix(in srgb,#e2483d 25%,transparent),0 0 8px transparent}}
-#wellCombo{position:absolute;top:6px;right:8px;z-index:4;padding:3px 9px;border-radius:999px;font:800 12px/1.2 var(--font,system-ui);letter-spacing:.06em;color:#fff;background:linear-gradient(135deg,#ff8a3d,#e2483d);box-shadow:0 4px 12px rgba(0,0,0,.25);pointer-events:none}
+#wellCombo{position:absolute;top:6px;left:8px;z-index:4;padding:3px 9px;border-radius:999px;font:800 12px/1.2 var(--font,system-ui);letter-spacing:.06em;color:#fff;background:linear-gradient(135deg,#ff8a3d,#e2483d);box-shadow:0 4px 12px rgba(0,0,0,.25);pointer-events:none}
 #wellCombo.bump{animation:comboBump .32s cubic-bezier(.2,1.6,.4,1)}
 @keyframes comboBump{from{transform:scale(1.35)}to{transform:scale(1)}}
 #well .wc.p.spawn{animation:pieceIn .17s ease-out}

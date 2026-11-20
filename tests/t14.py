@@ -9,7 +9,7 @@ res = []
 def ck(n, ok, d=""):
     res.append(bool(ok)); print(f"{'PASS' if ok else 'FAIL'}  {n}{('  · ' + str(d)) if d not in ('', None) else ''}")
 SETUP = """()=>{stats.tutDone=true;stats.nick='T';stats.freeCats=['Sports','Music','Arcade'];stats.spSkip=1;stats.diff={};CATEGORIES.forEach(c=>stats.diff[c.name]='medium');
- stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;stats.seen23=1;stats.fullHome=1;stats.recapSeen='2026-11';stats.tot.games=12;stats.tips={target:1,powers:1,fever:1,'rush-tap':1,'rush-clue':1,'rush-scramble':1};document.getElementById('onb').hidden=true;S=null;showMenu()}"""
+ stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;stats.seen23=1;stats.seen24=1;stats.fullHome=1;stats.recapSeen='2026-11';stats.tot.games=12;stats.tips={target:1,powers:1,fever:1,'rush-tap':1,'rush-clue':1,'rush-scramble':1};document.getElementById('onb').hidden=true;S=null;showMenu()}"""
 CLOSE = "()=>{document.querySelectorAll('.ov').forEach(o=>{if(o.id!=='menu')o.hidden=true});const c=document.getElementById('cele');if(c)c.hidden=true;S=null;showMenu()}"
 TO_DROP = "()=>{const w=S.cw.words.find(w=>!w.solved);selectWord(w);for(const k of w.cells){const c=S.cw.cells.get(k);if(!c.lock){S.sel.key=k;typeLetter(c.ans)}}return S.phase}"
 
@@ -89,7 +89,7 @@ async def main():
         lv = await pg.evaluate("""()=>{S.linesCleared=0;const f1=fallMs();S.linesCleared=10;const f3=fallMs();S.linesCleared=200;const fmax=fallMs();S.linesCleared=0;return [wellLevel(),Math.round(f3/f1*100),Math.round(fmax/f1*100)]}""")
         ck("77 every 5 rows is a level and pieces fall faster (floor at half speed)", lv[1] == 85 and lv[2] == 50, lv)
         pc = await pg.evaluate("""()=>{S.grid=S.grid.map(r=>r.map(()=>null));S.linesCleared=5;S._lcSeen=4;const p=S.pts.perfect||0;afterSettle();return [(S.pts.perfect||0)-p,document.getElementById('wellLv').textContent]}""")
-        ck("77 clearing the well empty is a Perfect Clear (+1000) and the level shows", pc == [1000, "LV 2"], pc)
+        ck("77 clearing the well empty is a Perfect Clear (+1000) and the level shows", pc[0] == 1000 and pc[1].startswith("LV 2"), pc)
         ck("77 four rows at once is a CROSSFALL", await pg.evaluate("(()=>{let said='';const o=popCall;popCall=(t)=>{said+=t+'|'};try{juiceClear(4,1)}finally{popCall=o}return said.includes('CROSSFALL!')})()"))
         # 78 trail
         await pg.evaluate("()=>{S.phase='drop';S.grid=S.grid.map(r=>r.map(()=>null));S.active={cells:[{dr:0,dc:0,ch:'A'},{dr:0,dc:1,ch:'B'}],r:0,c:2};renderWell()}")
@@ -109,7 +109,7 @@ async def main():
         ck("79 a free Bay City pick is replaced by another category", mg[0] == ['Music', 'Arcade', 'Night Sky'] and 'Bay City' not in mg[1], mg)
         errs += e2
         await ctx.close()
-        ctx, pg, e3 = await page(b, '2026-11-20T10:00:00', SETUP.replace("stats.seen22=1;stats.seen23=1;", "")); errs += e3
+        ctx, pg, e3 = await page(b, '2026-11-20T10:00:00', SETUP.replace("stats.seen22=1;stats.seen23=1;stats.seen24=1;", "")); errs += e3
         await pg.evaluate("()=>{S=null;showMenu()}"); await pg.wait_for_timeout(900)
         wn = await pg.evaluate("[document.getElementById('evh').textContent.includes('Night Sky, reborn'),document.querySelectorAll('#evh > .wn').length,!!document.querySelector('#evh details.wn-more')]")
         ck("What's new leads with the 4 newest items and folds the rest", wn == [True, 4, True], wn)

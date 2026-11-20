@@ -1320,7 +1320,7 @@ html.wide-ls #cw .cc .l,html.wide-ls .k{letter-spacing:.08em}
 .ctrl .k.down{transform:scale(.95);filter:brightness(1.12)}
 #well{touch-action:none}
 #wellWrap{position:relative}
-#wellLv{position:absolute;top:4px;right:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;padding:2px 6px;border-radius:6px;background:color-mix(in srgb,var(--panel-2) 80%,transparent);color:var(--muted);pointer-events:none}
+#wellLv{position:absolute;top:4px;right:6px;text-align:right;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;padding:2px 6px;border-radius:6px;background:color-mix(in srgb,var(--panel-2) 80%,transparent);color:var(--muted);pointer-events:none}
 #well .drop-trail{position:absolute;pointer-events:none;border-radius:4px;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--accent) 55%,transparent));animation:cfTrail 240ms ease-out forwards}
 @keyframes cfTrail{0%{opacity:.9}100%{opacity:0}}
 #well{position:relative}
@@ -1336,7 +1336,7 @@ html.light.nightsky #well .wc:not(.f):not(.p):not(.g){background-color:rgba(255,
 #well .wc.f.willclear,#well .wc.g.willclear{filter:brightness(1.18)}
 #well.danger{box-shadow:0 0 0 2px color-mix(in srgb,#e2483d 55%,transparent),0 0 24px color-mix(in srgb,#e2483d 35%,transparent);animation:dangerPulse 1.1s ease-in-out infinite}
 @keyframes dangerPulse{50%{box-shadow:0 0 0 2px color-mix(in srgb,#e2483d 25%,transparent),0 0 8px transparent}}
-#wellCombo{position:absolute;top:6px;right:8px;z-index:4;padding:3px 9px;border-radius:999px;font:800 12px/1.2 var(--font,system-ui);letter-spacing:.06em;color:#fff;background:linear-gradient(135deg,#ff8a3d,#e2483d);box-shadow:0 4px 12px rgba(0,0,0,.25);pointer-events:none}
+#wellCombo{position:absolute;top:6px;left:8px;z-index:4;padding:3px 9px;border-radius:999px;font:800 12px/1.2 var(--font,system-ui);letter-spacing:.06em;color:#fff;background:linear-gradient(135deg,#ff8a3d,#e2483d);box-shadow:0 4px 12px rgba(0,0,0,.25);pointer-events:none}
 #wellCombo.bump{animation:comboBump .32s cubic-bezier(.2,1.6,.4,1)}
 @keyframes comboBump{from{transform:scale(1.35)}to{transform:scale(1)}}
 #well .wc.p.spawn{animation:pieceIn .17s ease-out}
@@ -1378,6 +1378,127 @@ html.ghost-off #well .wc.ghost{background:none!important;box-shadow:none!importa
 .set-hide{display:none!important}
 #a11ySlot>.setrow,#a11ySlot>.setgroup{margin-top:10px}
 @media (prefers-reduced-motion:reduce){#well.danger,#wellCombo.bump,#well .wc.p.spawn,#cdn.go,#tcoach,#tcoach .tc-hand{animation:none}.br-ring{transition:none}}
+
+/* ===== Profile, redesigned (20 Nov): a player card, not a dashboard ===== */
+#profile.pp{display:flex;flex-direction:column;gap:14px;background:none;border:0;box-shadow:none;padding:0;color:var(--fg)}
+#profile.pp::after{content:none}
+.pp-hero{position:relative;overflow:hidden;border-radius:24px;padding:18px 18px 16px;color:#fff;
+  background:radial-gradient(120% 90% at 100% 0%,color-mix(in srgb,var(--g1) 85%,#fff 15%),transparent 55%),linear-gradient(160deg,var(--g1),var(--g2));
+  box-shadow:0 14px 34px color-mix(in srgb,var(--g2) 55%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
+.pp-hero::before{content:"";position:absolute;right:-30px;top:-30px;width:150px;height:150px;border-radius:28px;transform:rotate(18deg);background:rgba(255,255,255,.07);pointer-events:none}
+.pp-hero::after{content:"";position:absolute;right:52px;bottom:-46px;width:96px;height:96px;border-radius:20px;transform:rotate(-12deg);background:rgba(255,255,255,.05);pointer-events:none}
+.pp-top{position:relative;display:flex;align-items:center;gap:14px}
+.pp-top .pf-av{width:68px;height:68px;font-size:30px;box-shadow:0 0 0 3px rgba(255,255,255,.85),0 6px 16px rgba(0,0,0,.3)}
+.pp-who{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.pp-name{display:flex;flex-wrap:wrap;gap:3px}
+.pp-name b{display:grid;place-items:center;width:26px;height:30px;border-radius:6px;background:var(--tile,#f2e9d6);color:var(--ink,#231b35);font-family:var(--f-display);font-size:16px;line-height:1;box-shadow:0 3px 0 rgba(0,0,0,.22)}
+.pp-name b:nth-child(odd){transform:translateY(-1px) rotate(-2deg)}.pp-name b:nth-child(3n){transform:rotate(2deg)}
+.pp-name i.sp{width:8px}
+.pp-title{font-size:14px;font-weight:700;opacity:.9}
+.pp-edit{position:relative;align-self:flex-start;width:44px;height:44px;border-radius:12px;border:0;display:grid;place-items:center;background:rgba(255,255,255,.16);color:#fff}
+.pp-edit svg{width:30px;height:30px}
+.pp-edit[aria-expanded="true"]{background:rgba(255,255,255,.3)}
+.pp-hero .pf-nick{position:relative;margin-top:12px}
+.pp-hero .pf-nick input{background:rgba(0,0,0,.25);border-color:rgba(255,255,255,.35);color:#fff;border-radius:12px;padding:10px 12px;font-size:17px}
+.pp-hero .pf-nick button{background:#fff;color:var(--ink,#231b35);border:0;border-radius:12px;padding:0 16px}
+.pp-lv{position:relative;display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-top:16px;flex-wrap:wrap}
+.pp-lvn{font-size:15px;font-weight:700}.pp-lvn b{font-family:var(--f-display);font-size:26px;margin-left:4px}
+.pp-xp{font-size:13px;opacity:.85}
+.pp-lvbar{position:relative;height:10px;border-radius:999px;background:rgba(0,0,0,.28);overflow:hidden;margin-top:6px}
+.pp-lvbar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#ffd166,#ffe9a8);box-shadow:0 0 12px rgba(255,209,102,.6)}
+.pp-meta{position:relative;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;margin-top:12px;font-size:13px}
+.pp-meta>span:first-child{opacity:.9}.pp-meta b{font-weight:800}
+.pp-day{padding:3px 10px;border-radius:999px;background:rgba(0,0,0,.25);font-weight:700}
+.pp-day.ok{background:rgba(95,209,196,.3)}
+.pp-big{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.pp-tile{display:flex;flex-direction:column;align-items:flex-start;gap:1px;padding:12px 10px 10px;border-radius:16px;background:var(--tile);color:var(--ink);box-shadow:0 4px 0 color-mix(in srgb,var(--tile-dim) 90%,#000 10%);min-width:0}
+.pp-tile .pp-ic{display:block;margin-bottom:4px}
+.pp-tile .pp-ic svg{width:30px;height:30px;display:block}
+.pp-tile b{font-family:var(--f-display);font-size:22px;line-height:1.05;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.pp-tile>span:not(.pp-ic){font-size:13px;font-weight:700}
+.pp-tile small{font-size:11px;opacity:.7;line-height:1.25}
+.pp-tile.fire{background:linear-gradient(160deg,#ffb36b,#ff7a3d);color:#2a1406;box-shadow:0 4px 0 #c4561f}
+.pp-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (min-width:600px){.pp-links{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.pp-link{display:flex;align-items:center;gap:10px;min-height:48px;padding:8px 12px;border-radius:14px;border:1px solid var(--line);background:var(--panel);color:var(--fg);font:inherit;font-weight:700;font-size:14px;text-align:left}
+.pp-link svg{flex:none;width:32px;height:32px}
+.pp-sec{border-radius:20px;background:var(--panel);border:1px solid var(--line);padding:14px 14px 12px}
+.pp-h{margin:0 0 10px;font-size:17px;font-weight:800;letter-spacing:0;text-transform:none;display:flex;align-items:baseline;gap:8px}
+.pp-h small{font-size:13px;font-weight:700;color:var(--muted)}
+.pp-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (min-width:600px){.pp-stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.pp-stat{display:flex;flex-direction:column;padding:10px 12px;border-radius:14px;background:var(--panel-2)}
+.pp-stat b{font-size:22px;font-weight:800;line-height:1.1}
+.pp-stat span{font-size:13px;font-weight:700}
+.pp-stat small{font-size:12px;color:var(--muted)}
+.pp-chart{position:relative}
+.pp-cats{display:flex;flex-direction:column;gap:8px}
+.pp-cat{display:grid;grid-template-columns:28px minmax(0,7.5em) 1fr auto;align-items:center;gap:10px;font-size:14px}
+.pp-cat .cic,.pp-cat .cic svg,.pp-cat>.dot{width:30px;height:30px;display:block}
+.pp-cat .n{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pp-cat .v{font-weight:800;font-variant-numeric:tabular-nums;min-width:4.6em;text-align:right}.pp-cat .v small{color:var(--muted);font-weight:600}
+.pp-bar{display:block;height:8px;border-radius:999px;background:var(--panel-2);overflow:hidden;min-width:40px}
+.pp-bar i{display:block;height:100%;min-width:0;border-radius:inherit;background:var(--accent)}
+.pp-words{display:flex;flex-wrap:wrap;gap:6px}
+.pp-word{padding:5px 9px;border-radius:8px;background:var(--tile);color:var(--ink);font-weight:800;font-size:13px;letter-spacing:.06em;box-shadow:0 2px 0 var(--tile-dim)}
+.pp-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.pp-list{display:flex;flex-direction:column}
+.pp-li{display:flex;align-items:center;gap:10px;padding:9px 2px;border-top:1px solid var(--line);font-size:14px}
+.pp-li:first-child{border-top:0}
+.pp-li>span:first-child{font-weight:700;min-width:6.5em}
+.pp-li .pp-bar{flex:1}
+.pp-li>b:last-child{margin-left:auto;font-variant-numeric:tabular-nums}
+.pp-li.g .d{min-width:3.6em;font-weight:600;color:var(--muted);font-size:13px}
+.pp-li.g .m{display:flex;flex-direction:column;min-width:0;flex:1}
+.pp-li.g .m b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pp-li.g .m i{font-style:normal;font-size:12px;color:var(--muted)}
+.pp-empty{margin:0;color:var(--muted);font-size:14px}
+.pp-note{margin:8px 0 0;color:var(--muted);font-size:12px}
+.pp .sc-hp{border-radius:20px;background:var(--panel);border:1px solid var(--line);padding:14px}
+.pp .bdg{border-radius:14px}
+html.light .pp-tile{box-shadow:0 3px 0 var(--tile-dim),0 0 0 1px var(--line)}
+@media (prefers-reduced-motion:reduce){.pp-name b{transform:none!important}}
+
+/* ===== Phases 103–122 ===== */
+.pp-name b.in{animation:ppTile .42s cubic-bezier(.2,1.4,.4,1) both;animation-delay:calc(var(--i,0)*45ms)}
+@keyframes ppTile{from{opacity:0;transform:translateY(-14px) rotate(-8deg)}}
+.pp-week{position:relative;display:flex;justify-content:space-between;gap:4px;margin-top:14px;padding:8px 10px;border-radius:14px;background:rgba(0,0,0,.2)}
+.pp-week span{display:flex;flex-direction:column;align-items:center;gap:3px;flex:1}
+.pp-week i{width:14px;height:14px;border-radius:5px;background:rgba(255,255,255,.18)}
+.pp-week span.on i{background:#ffd166;box-shadow:0 0 8px rgba(255,209,102,.6)}
+.pp-week span.now i{outline:2px solid #fff;outline-offset:2px}
+.pp-week small{font-size:11px;opacity:.8;font-weight:700}
+.pp-foot{position:relative;display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px;font-size:12px;opacity:.95}
+.pp-share{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:4px 12px 4px 6px;border-radius:12px;border:0;background:rgba(255,255,255,.92);color:var(--ink,#231b35);font:inherit;font-weight:800;font-size:13px}
+.pp-share svg{width:28px;height:28px}
+.pp-fav{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:linear-gradient(120deg,color-mix(in srgb,var(--d) 30%,var(--panel)),var(--panel));border:1px solid color-mix(in srgb,var(--d) 45%,var(--line))}
+.pp-fav .cic,.pp-fav .cic svg{width:40px;height:40px;display:block;flex:none}
+.pp-fav>span{flex:1;min-width:0;display:flex;flex-direction:column}
+.pp-fav small{font-size:12px;color:var(--muted);font-weight:700}.pp-fav b{font-size:18px}.pp-fav i{font-style:normal;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pp-ms{display:flex;flex-direction:column;gap:8px}
+.pp-m{box-sizing:border-box;display:grid;grid-template-columns:32px 1fr 34%;align-items:center;gap:10px;padding:8px 10px;border-radius:14px;background:var(--panel-2);border:0;color:inherit;font:inherit;text-align:left;width:100%}
+.pp-m>svg{width:32px;height:32px}
+.pp-m .t{display:flex;flex-direction:column;min-width:0}.pp-m .t b{font-size:14px}.pp-m .t small{font-size:12px;color:var(--muted)}
+.pp-m .pp-bar{background:color-mix(in srgb,var(--panel) 70%,transparent)}
+.pp-facts{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.pp-facts p{display:flex;align-items:center;gap:10px;margin:0;font-size:14px}.pp-facts svg{width:28px;height:28px;flex:none}
+button.pp-cat{box-sizing:border-box;background:none;border:0;color:inherit;font:inherit;text-align:left;width:100%;padding:4px 2px;border-radius:10px;min-height:40px}
+button.pp-cat:active{background:var(--panel-2)}
+button.pp-word{border:0;font-family:inherit;cursor:pointer;min-height:32px}
+button.pp-word[aria-pressed="true"]{background:var(--accent);color:#fff;box-shadow:0 2px 0 color-mix(in srgb,var(--accent) 60%,#000)}
+.rx-line{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 12px;margin:4px 0 6px;font-size:13px;color:var(--muted)}
+.rx-line span{display:inline-flex;align-items:center;gap:4px}.rx-line svg{width:20px;height:20px}
+.rx-line .up{color:var(--solved);font-weight:700}
+#rush.hurry{animation:hurry .5s ease-in-out infinite alternate}
+#rush.hurry .secs{color:var(--danger)}
+@keyframes hurry{to{box-shadow:0 0 0 3px color-mix(in srgb,var(--danger) 60%,transparent),0 0 22px color-mix(in srgb,var(--danger) 40%,transparent)}}
+.hello{margin:0 0 8px;font-weight:800;font-size:15px}
+.dc-next{margin:8px 0 0;font-size:13px;color:var(--muted);text-align:center}
+#wellLv small{display:block;font-size:9px;font-weight:700;opacity:.8;letter-spacing:.02em;text-transform:none}
+#wellLv.lvup{animation:lvUp .6s cubic-bezier(.2,1.6,.4,1)}
+@keyframes lvUp{0%{transform:scale(1.6);filter:brightness(1.6)}100%{transform:none}}
+.st-go{font-size:20px;font-weight:800;color:var(--accent)}
+@media (prefers-reduced-motion:reduce){.pp-name b.in,#rush.hurry,#wellLv.lvup{animation:none}}
 
 /* ===== Fluid pass (Apple design / Emil Kowalski skill audit, 28 Oct 2026) ===== */
 :root{--ease-out:cubic-bezier(.2,.8,.2,1);--ease-press:cubic-bezier(.3,.7,.4,1)}
@@ -3021,70 +3142,65 @@ function myRank(){if(gc.native){const d=gc.rows.total;return d&&d.mine?{pos:d.mi
 /* profile dashboard */
 function levelOf(score){const lv=Math.floor(Math.sqrt(score/400))+1,lo=Math.pow(lv-1,2)*400,hi=Math.pow(lv,2)*400;return{lv,pct:Math.round((score-lo)/(hi-lo)*100),toNext:hi-score}}
 function renderProfile(){if(gc.native)gcLoad("total");
-  const el=document.getElementById("profile");if(!el)return;el.classList.add("hud");
+  const el=document.getElementById("profile");if(!el)return;el.classList.remove("hud");el.classList.add("pp");
   const T=stats.tot,nick=stats.nick||(cloud.uid?defaultNick():"Player"),L=levelOf(xpTotal()),rk=myRank();
   const ds=dailyStreak(),ms=typeof pzStreak==="function"?pzStreak("mini"):{n:0,best:0},cs=typeof pzStreak==="function"?pzStreak("chunks"):{n:0,best:0};
-  const bankN=Object.keys(stats.bank||{}).length,bankRecent=Object.entries(stats.bank||{}).sort((a,b)=>b[1].t-a[1].t).slice(0,8);
+  const bankN=Object.keys(stats.bank||{}).length,bankRecent=Object.entries(stats.bank||{}).sort((a,b)=>b[1].t-a[1].t).slice(0,10);
   const maxStars=LEVELS.length*3,sTot=starsTotal(),pct=(a,b)=>b?Math.round(a/b*100):0;
   const recent=stats.games.slice(0,14).reverse();
-  const catRows=CATEGORIES.map(c=>{const got=c.puzzles.reduce((t,p)=>t+((store[p.id]||{}).stars||0),0),max=c.puzzles.length*3;return{c:c.name,got,max}});
-  const status=T.games?(ds.alive&&ds.doneToday?"DAILY COMPLETE":"DAILY PENDING"):"AWAITING FIRST RUN";
-  const sec=(n,t,body,extra="")=>`<section class="hp ${extra}"><header><span>${n}</span><b>${t}</b></header>${body}</section>`;
-  const gauge=(v,label,sub,col)=>{const r=34,c=2*Math.PI*r,on=v==null?0:Math.max(0,Math.min(100,v));
-    return`<div class="hg" role="img" aria-label="${label}: ${v==null?"no data":v+"%"}"><svg viewBox="0 0 84 84"><circle class="hg-bg" cx="42" cy="42" r="${r}"/><circle class="hg-ticks" cx="42" cy="42" r="40"/>
-      <circle class="hg-on" cx="42" cy="42" r="${r}" style="--c:${col};stroke-dasharray:${(c*on/100).toFixed(1)} ${c.toFixed(1)}"/></svg>
-      <span class="hg-v">${v==null?"--":v}<small>${v==null?"":"%"}</small></span><span class="hg-l">${label}</span><span class="hg-s">${sub}</span></div>`};
-  const ro=(label,val,sub,accent)=>`<div class="hr${accent?" a":""}"><span class="hr-l">${label}</span><span class="hr-v">${val}</span><span class="hr-s">${sub||"&nbsp;"}</span></div>`;
-  const R=58,C=2*Math.PI*R;
+  const catRows=CATEGORIES.map(c=>{const got=c.puzzles.reduce((t,p)=>t+((store[p.id]||{}).stars||0),0),max=c.puzzles.length*3,played=stats.games.filter(g=>g.cat===c.name).length;return{c:c.name,got,max,played}});
+  const fav=catRows.slice().sort((a,b)=>b.played-a.played||b.got-a.got)[0],look=CAT_LOOK[fav&&fav.played?fav.c:"Night Sky"]||{g1:"#5a45c4",g2:"#140f3d"};
+  const sec=(t,body,cls="")=>`<section class="pp-sec ${cls}"><h2 class="pp-h">${t}</h2>${body}</section>`;
+  const link=(id,ic,t)=>`<button class="pp-link" id="${id}">${ti(ic)}<span>${t}</span></button>`;
+  const stat=(v,l,s)=>`<div class="pp-stat"><b>${v}</b><span>${l}</span>${s?`<small>${s}</small>`:""}</div>`;
+  const bar=(f,col)=>`<span class="pp-bar" aria-hidden="true"><i style="width:${Math.round(Math.max(0,Math.min(1,f))*100)}%;${col?`background:${col}`:""}"></i></span>`;
+  const tiles=[...nick.toUpperCase().replace(/\s+/g," ").slice(0,12)].map(ch=>ch===" "?`<i class="sp"></i>`:`<b>${esc(ch)}</b>`).join("");
+  const rankTxt=rk?`Ranked <b>#${fmtN(rk.pos)}</b> of ${fmtN(rk.of)}`:(cloud.db||(gc.native&&gc.auth&&gc.auth.ok))?"Finish a puzzle to get ranked":gc.native?"Sign in to Game Center to get ranked":"Rankings are offline";
+  const dayTxt=!T.games?"Play your first puzzle":ds.doneToday?"Today's Daily is done":"Today's Daily is waiting";
   el.innerHTML=`
-   <div class="hud-bar"><span>CROSSFALL // PLAYER SYSTEMS</span><span class="blink">● ONLINE</span></div>
-   <section class="hp hero">
-     <div class="reactor" role="img" aria-label="Level ${L.lv}, ${L.pct}% to level ${L.lv+1}">
-       <svg viewBox="0 0 140 140"><circle class="rx-ring" cx="70" cy="70" r="66"/><g class="rx-spin"><circle class="rx-ticks" cx="70" cy="70" r="66"/></g>
-         <circle class="rx-track" cx="70" cy="70" r="${R}"/><circle class="rx-xp" cx="70" cy="70" r="${R}" style="stroke-dasharray:${(C*L.pct/100).toFixed(1)} ${C.toFixed(1)}"/>
-         <circle class="rx-core" cx="70" cy="70" r="40"/><g class="rx-spin rev"><circle class="rx-inner" cx="70" cy="70" r="46"/></g></svg>
-       <div class="rx-txt"><small>LEVEL</small><b>${L.lv}</b><small>${L.pct}%</small></div>
-     </div>
-     <div class="hero-id">
-       <span class="hl">CALLSIGN</span>
-       <form class="pf-nick" id="nickForm"><label class="sr" for="nickIn">Player name</label><input id="nickIn" maxlength="16" value="${esc(nick)}" autocomplete="off"><button type="submit">Save</button></form>
-       <div class="pf-look">${avatarHTML("sm")}<span><b>${esc(titleOf())}</b></span><button class="hbtn" id="pfLook">Avatar &amp; title ›</button></div>
-       <span class="hl">${rk?`GLOBAL RANK <b>#${rk.pos}</b> / ${fmtN(rk.of)}`:(cloud.db||(gc.native&&gc.auth&&gc.auth.ok))?"RANK: FINISH A PUZZLE":gc.native?"RANK: SIGN IN TO GAME CENTER":"RANK: OFFLINE"}</span>
-       <span class="hl">XP <b>${fmtN(xpTotal())}</b> · ${fmtN(L.toNext)} TO LV ${L.lv+1}</span>
-       <span class="chip ${ds.doneToday?"ok":"warn"}">${status}</span>
-       <button class="hbtn" id="pfRewards">Rewards, challenges &amp; themes ›</button>
-       <button class="hbtn" id="pfAch">Achievements ›</button><button class="hbtn" id="pfIns">Insights ›</button><button class="hbtn" id="pfRec">Records ›</button><button class="hbtn" id="pfHist">My games ›</button>
-     </div>
+   <section class="pp-hero hero" style="--g1:${look.g1};--g2:${look.g2}">
+     <div class="pp-top">${avatarHTML()}<div class="pp-who">
+       <div class="pp-name" role="img" aria-label="${esc(nick)}">${tiles}</div>
+       <span class="pp-title">${esc(titleOf())}</span></div>
+       <button class="pp-edit" id="pfEdit" aria-expanded="false" aria-controls="nickForm">${ti("pencil")}<span class="sr">Edit name</span></button></div>
+     <form class="pf-nick" id="nickForm" hidden><label class="sr" for="nickIn">Player name</label><input id="nickIn" maxlength="16" value="${esc(nick)}" autocomplete="off"><button type="submit">Save</button></form>
+     <div class="pp-lv"><span class="pp-lvn">Level <b>${L.lv}</b></span><span class="pp-xp">${fmtN(xpTotal())} XP · ${fmtN(L.toNext)} to level ${L.lv+1}</span></div>
+     <div class="pp-lvbar" role="img" aria-label="${L.pct}% of the way to level ${L.lv+1}"><i style="width:${L.pct}%"></i></div>
+     <div class="pp-meta"><span>${rankTxt}</span><span class="pp-day${ds.doneToday?" ok":""}">${ds.doneToday?"✓ ":""}${dayTxt}</span></div>
    </section>
-   ${sec("01","TELEMETRY",`<div class="hgs">
-     ${gauge(T.games?pct(T.wins,T.games):null,"Solve rate",`${fmtN(T.wins)}/${fmtN(T.games)}`,"#3fd7ff")}
-     ${gauge(T.rushT?pct(T.rushW,T.rushT):null,"Rush wins",`${fmtN(T.rushW)}/${fmtN(T.rushT)}`,"#ffb347")}
-     ${gauge(pct(sTot,maxStars),"Stars",`${sTot}/${maxStars}`,"#ffd84a")}
-     ${gauge(T.wins?pct(T.golds||0,T.wins):null,"Gold rate",`${fmtN(T.golds||0)} gold`,"#5dffb0")}</div>`)}
-   ${sec("02","READOUTS",`<div class="hrs">
-     ${ro("Total score",fmtN(T.score),`This week ${fmtN(curWeek())}`,true)}
-     ${ro("Best game",fmtN(T.best),"points")}
-     ${ro("Games",fmtN(T.games),`${fmtN(T.wins)} finished`)}
-     ${ro("Words solved",fmtN(T.words),`${fmtN(bankN)} in word bank`)}
-     ${ro("Daily streak",`${fmtN(ds.n)}<i>d</i>`,`best ${fmtN((stats.dstreak||{}).best||0)} · ${ti("snow")} ${ds.freezes}`,true)}
-     ${ro("Targets built",fmtN(T.targets),`best chain ×${T.chainBest||0}`)}
-     ${ro("Mini streak",`${fmtN(ms.n)}<i>d</i>`,`best ${fmtN(ms.best)}`)}
-     ${ro("Chunks streak",`${fmtN(cs.n)}<i>d</i>`,`best ${fmtN(cs.best)}`)}</div>
-     <button class="hbtn" id="pfSb">Open puzzle scoreboard ›</button><button class="hbtn" id="pfWeek">Share my week ›</button>`)}
-   ${sec("03",`SCORE TRACE · LAST ${recent.length||14}`,`<div class="chart" id="scoreChart">${recent.length?scoreChart(recent):`<div class="hempty">NO SIGNAL · play a puzzle to start the trace</div>`}</div>`)}
-   ${sec("04","SYSTEMS · STARS BY CATEGORY",`<div class="hsys">${catRows.map(r=>{const f=r.max?r.got/r.max:0,on=Math.round(f*12);
-     return`<div class="hs"><span>${esc(r.c)}</span><span class="segs" aria-hidden="true">${[...Array(12)].map((_,i)=>`<i class="${i<on?"on":""}"></i>`).join("")}</span><span class="v">${r.got}/${r.max}</span></div>`}).join("")}</div>`)}
-   ${sec("05","RUSH CALIBRATION",`<div class="hsys">${Object.entries(RUSH_MODES).map(([m,l])=>{const lim=prefs.adapt===false?RUSH_SECS:rushLimit(m),on=Math.round(lim/RUSH_SECS*12);
-     return`<div class="hs"><span>${l}</span><span class="segs amber" aria-hidden="true">${[...Array(12)].map((_,i)=>`<i class="${i<on?"on":""}"></i>`).join("")}</span><span class="v">${fmtTime(lim)}</span></div>`}).join("")}</div>
-     <span class="hnote">Shorter = faster rushes. ${prefs.adapt===false?"Adaptive timer is off.":"Auto-tunes as you play."}</span>`)}
-   ${sec("06",`WORD BANK · ${fmtN(bankN)}`,bankN?`<div class="hbank">${bankRecent.map(([w,b])=>`<div><b>${esc(w)}</b><span>${esc(b.c)}</span></div>`).join("")}</div><button class="hbtn" id="pfReview">Review 10 words ›</button>`:`<div class="hempty">EMPTY · every word you solve is stored here</div>`)}
-   ${sec("WB",`WORD BOOK · ${fmtN(Object.keys(stats.wb||{}).length)}`,`<button class="hbtn" id="pfWb">Open the word book ›</button>`)}
-   ${sec("BG",`BADGES · ${Object.keys(stats.badges||{}).length}`,badgesHTML()+`<button class="hbtn" id="pfEv">Events &amp; seasons ›</button>`)}
-   ${sec("RV","RIVALS",(()=>{const rv=rivalsOf();return rv.length?`<div class="hsys">${rv.slice(0,5).map(r=>`<div class="hs"><span>${esc(r.n)}</span><span class="v">${r.w}–${r.l}${r.t?"–"+r.t:""}</span></div>`).join("")}</div>`:`<div class="hempty">NO DUELS YET · challenge a friend from any result screen</div>`})()+`<button class="hbtn" id="pfDu">Duels &amp; rivals ›</button>`)}
-   ${healProfile?sec("07","CHECK-IN FOCUS",`<div class="chipline hchips">${healFocus().slice(0,3).map(t=>`<span>${themeLabel(t)}</span>`).join("")}</div><button class="hbtn" id="pfRetake">Change my answers ›</button>`):""}
-   ${sec(healProfile?"08":"07","MISSION LOG",stats.games.length?`<div class="hlog">${stats.games.slice(0,10).map(g=>`<div class="hl-row"><span class="t">${new Date(g.t).toLocaleDateString("en-US",{month:"short",day:"numeric"}).toUpperCase()}</span>
-       <span class="m"><b>${esc(g.cat)} · ${esc(g.name)}</b><i>${g.win?starStr(g.stars):"WELL FILLED"}${g.grade?` · ${g.grade}`:""}</i></span><span class="n">${fmtN(g.score)}</span></div>`).join("")}</div>`:`<div class="hempty">NO MISSIONS LOGGED</div>`)}`;
-  document.getElementById("nickForm").onsubmit=e=>{e.preventDefault();const v=document.getElementById("nickIn").value.replace(/[^\p{L}\p{N} _.-]/gu,"").trim().slice(0,16);
+   <div class="pp-big">
+     <div class="pp-tile fire"><span class="pp-ic">${ti("fire")}</span><b>${fmtN(ds.n)}</b><span>day streak</span><small>best ${fmtN((stats.dstreak||{}).best||0)} · ${ds.freezes} freeze${ds.freezes===1?"":"s"}</small></div>
+     <div class="pp-tile"><span class="pp-ic">${ti("trophy")}</span><b>${fmtN(T.best)}</b><span>best game</span><small>${fmtN(T.score)} total</small></div>
+     <div class="pp-tile"><span class="pp-ic">${ti("cards")}</span><b>${fmtN(T.words)}</b><span>words solved</span><small>${fmtN(bankN)} in your bank</small></div>
+   </div>
+   <nav class="pp-links" aria-label="Your stuff">
+     ${link("pfLook","smile","Avatar &amp; title")}${link("pfRewards","star","Rewards &amp; themes")}${link("pfAch","medal","Achievements")}${link("pfIns","numbers","Insights")}
+     ${link("pfRec","trophy","Records")}${link("pfHist","clock","My games")}${link("pfSb","numbers","Scoreboard")}${link("pfWeek","cards","Share my week")}
+   </nav>
+   ${sec("How you play",`<div class="pp-stats">
+     ${stat(T.games?pct(T.wins,T.games)+"%":"–","solve rate",`${fmtN(T.wins)} of ${fmtN(T.games)} games`)}
+     ${stat(T.rushT?pct(T.rushW,T.rushT)+"%":"–","rushes won",`${fmtN(T.rushW)} of ${fmtN(T.rushT)}`)}
+     ${stat(fmtN(sTot)+"★","stars",`of ${fmtN(maxStars)}`)}
+     ${stat(fmtN(T.golds||0),"gold solves","no help used")}
+     ${stat(fmtN(T.targets),"targets built",`best chain ×${T.chainBest||0}`)}
+     ${stat(fmtN(curWeek()),"points this week","")}
+     ${stat(fmtN(ms.n)+"d","Mini streak",`best ${fmtN(ms.best)}`)}
+     ${stat(fmtN(cs.n)+"d","Chunks streak",`best ${fmtN(cs.best)}`)}</div>`)}
+   ${sec(`Recent scores`,`<div class="chart pp-chart" id="scoreChart">${recent.length?scoreChart(recent):`<p class="pp-empty">Play a puzzle and your scores will show up here.</p>`}</div>`)}
+   ${sec("Stars by category",`<div class="pp-cats">${catRows.map(r=>{const lk=CAT_LOOK[r.c]||{g1:"#888"};
+     return`<div class="pp-cat">${catIcon(r.c,lk.g1)}<span class="n">${esc(r.c)}</span>${bar(r.max?r.got/r.max:0,lk.g1)}<span class="v">${r.got}<small>/${r.max}</small></span></div>`}).join("")}</div>`)}
+   ${sec(`Word bank <small>${fmtN(bankN)}</small>`,(bankN?`<div class="pp-words">${bankRecent.map(([w,b])=>`<span class="pp-word" title="${esc(b.c)}">${esc(w)}</span>`).join("")}</div>`:`<p class="pp-empty">Every word you solve lands here.</p>`)
+     +`<div class="pp-row">${bankN?`<button class="ghost-btn sm" id="pfReview">Review 10 words</button>`:""}<button class="ghost-btn sm" id="pfWb">Word book · ${fmtN(Object.keys(stats.wb||{}).length)}</button></div>`)}
+   ${sec(`Badges <small>${Object.keys(stats.badges||{}).length}</small>`,badgesHTML()+`<div class="pp-row"><button class="ghost-btn sm" id="pfEv">Events &amp; seasons</button></div>`)}
+   ${sec("Rivals",(()=>{const rv=rivalsOf();return rv.length?`<div class="pp-list">${rv.slice(0,5).map(r=>`<div class="pp-li"><span>${esc(r.n)}</span><b>${r.w}–${r.l}${r.t?"–"+r.t:""}</b></div>`).join("")}</div>`:`<p class="pp-empty">No duels yet. Challenge a friend from any result screen.</p>`})()+`<div class="pp-row"><button class="ghost-btn sm" id="pfDu">Duels &amp; rivals</button></div>`)}
+   ${healProfile?sec("Your check-in focus",`<div class="chipline">${healFocus().slice(0,3).map(t=>`<span>${themeLabel(t)}</span>`).join("")}</div><div class="pp-row"><button class="ghost-btn sm" id="pfRetake">Change my answers</button></div>`):""}
+   ${sec("Your rush timers",`<div class="pp-list">${Object.entries(RUSH_MODES).map(([m,l])=>{const lim=prefs.adapt===false?RUSH_SECS:rushLimit(m);
+     return`<div class="pp-li"><span>${l}</span>${bar(lim/RUSH_SECS)}<b>${fmtTime(lim)}</b></div>`}).join("")}</div><p class="pp-note">Shorter means faster rushes. ${prefs.adapt===false?"The adaptive timer is off.":"They tune themselves as you play."}</p>`)}
+   ${sec("Last games",stats.games.length?`<div class="pp-list">${stats.games.slice(0,8).map(g=>`<div class="pp-li g"><span class="d">${new Date(g.t).toLocaleDateString("en-US",{month:"short",day:"numeric"})}</span>
+       <span class="m"><b>${esc(g.name)}</b><i>${esc(g.cat)} · ${g.win?starStr(g.stars):"well filled"}${g.grade?` · ${g.grade}`:""}</i></span><b>${fmtN(g.score)}</b></div>`).join("")}</div>`:`<p class="pp-empty">No games yet.</p>`)}`;
+  const form=document.getElementById("nickForm"),ed=document.getElementById("pfEdit");
+  ed.onclick=()=>{form.hidden=!form.hidden;ed.setAttribute("aria-expanded",!form.hidden);if(!form.hidden){const i=document.getElementById("nickIn");i.focus();i.select()}};
+  form.onsubmit=e=>{e.preventDefault();const v=document.getElementById("nickIn").value.replace(/[^\p{L}\p{N} _.-]/gu,"").trim().slice(0,16);
     if(!v)return;stats.nick=cleanNick(v);saveStats();pushCloud();toast("Name saved");renderProfile()};
   const on=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=f};
   on("pfRetake",()=>showQuiz(null));on("pfReview",openReview);on("pfRewards",openRewards);on("pfSb",()=>openScoreboard&&openScoreboard("daily"));on("pfWb",()=>openWordBook());on("pfWeek",shareWeek);on("pfLook",openLook);on("pfAch",openAchievements);on("pfIns",openInsights);on("pfRec",openRecords);on("pfHist",openHistory);on("pfEv",openEvents);on("pfDu",openDuels);
@@ -4398,13 +4514,19 @@ function openWordBook(cat){wbBackfill();const U=wbUniverse(),cats=Object.keys(U)
   document.getElementById("wbDone").onclick=()=>{el.hidden=true;el.innerHTML="";if(hubPage==="Profile")renderProfile()}}
 
 /* ---- what's new (shown once to returning players) ---- */
-function maybeWhatsNew(){if(stats.seen23||!stats.tot||!stats.tot.games)return;stats.seen12=1;stats.seen13=1;stats.seen14=1;const had16=!!stats.seen16;stats.seen15=1;stats.seen16=1;stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;stats.seen23=1;saveStats();const el=document.getElementById("evh");
+function maybeWhatsNew(){if(stats.seen24||!stats.tot||!stats.tot.games)return;stats.seen12=1;stats.seen13=1;stats.seen14=1;const had16=!!stats.seen16;stats.seen15=1;stats.seen16=1;stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;stats.seen23=1;stats.seen24=1;saveStats();const el=document.getElementById("evh");
   el.innerHTML=`<h1>WHAT'S <span>NEW</span></h1>
+   <div class="panel wn">${ti("smile")}<div><b>A new profile</b><p>Your profile is now a player card: your name in tiles, your week at a glance, your home category and what's up next for you.</p></div></div>
+   <div class="panel wn">${ti("clock")}<div><b>Know how you did</b><p>Results show your crossword time, how you did against your last try, and your longest word ever.</p></div></div>
+   <div class="panel wn">${ti("bolt")}<div><b>Sharper rushes and levels</b><p>The last five seconds of a rush pulse, the well shows rows to the next level, and leveling up gives a buzz.</p></div></div>
+   <div class="panel wn">${ti("pencil")}<div><b>Small things</b><p>Hold delete to clear a word, a countdown to the next Daily, tap a saved word to see its clue, and Settings › Show tips again.</p></div></div>
+   <details class="wn-more"><summary>More new in 1.1</summary>
    <div class="panel wn">${ti("puzzle")}<div><b>A well with more to play for</b><p>See which rows a drop will clear, spin clears, letter matches and word links hidden in your rows. A combo meter, a warning when the stack climbs, and a 3-2-1 when you come back.</p></div></div>
    <div class="panel wn">${ti("star")}<div><b>Your sky</b><p>Each Night Sky theme is now a constellation. Finish its puzzles to light it, and keep a word to carry on your quote shelf.</p></div></div>
    <div class="panel wn">${ti("moon")}<div><b>Take a breath</b><p>A one-minute guided breath, in the Menu and after reflective puzzles.</p></div></div>
    <div class="panel wn">${ti("target")}<div><b>Make it yours</b><p>Bigger well letters, three landing guide styles, a search box in Settings, share your well and replay just the drop.</p></div></div>
-   <details class="wn-more"><summary>More new in 1.1</summary>
+   
+   
    <div class="panel wn">${ti("puzzle")}<div><b>Drops that feel like the real thing</b><p>Slide a falling word with your finger, tap to turn it, flick down to slam it. Smoother holds and turns, levels that speed up, perfect clears and a four-row Crossfall.</p></div></div>
    <div class="panel wn">${ti("pencil")}<div><b>A smoother keyboard</b><p>Softer keys with a letter preview as you press, and letters that pop into the grid.</p></div></div>
    <div class="panel wn">${ti("star")}<div><b>Night Sky, reborn</b><p>70 new puzzles of stars, philosophy and the sacred: where we come from and what we've wondered at. Each ends with a word to carry.</p></div></div>
@@ -5918,7 +6040,7 @@ function showcaseHTML(){const ids=showcase();if(!ids.length)return"";const B=sta
 {const _bh=badgesHTML;badgesHTML=function(){const h=_bh.apply(this,arguments);if(!Object.keys(stats.badges||{}).length)return h;const ids=showcase();
   return`<p class="sub">Tap a badge to pin it to your profile (up to 3).</p>`+h}}
 {const _rp=renderProfile;renderProfile=function(){_rp.apply(this,arguments);const el=document.getElementById("profile");if(!el)return;
-  const hero=el.querySelector(".hero");if(hero&&!el.querySelector(".sc-row")){const h=showcaseHTML();if(h)hero.insertAdjacentHTML("afterend",`<section class="hp sc-hp"><header><span>PN</span><b>PINNED BADGES</b></header>${h}</section>`)}
+  const hero=el.querySelector(".hero");if(hero&&!el.querySelector(".sc-row")){const h=showcaseHTML();if(h)hero.insertAdjacentHTML("afterend",`<section class="pp-sec sc-hp"><h2 class="pp-h">Pinned badges</h2>${h}</section>`)}
   const ids=Object.entries(stats.badges||{}).sort((a,b)=>b[1].t-a[1].t).map(x=>x[0]);
   el.querySelectorAll(".bdg-grid .bdg").forEach((b,i)=>{const id=ids[i];if(!id)return;b.setAttribute("role","button");b.tabIndex=0;b.setAttribute("aria-pressed",showcase().includes(id));
     b.onclick=()=>{toggleShow(id);renderProfile()};b.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();b.onclick()}}})}}
@@ -6283,6 +6405,96 @@ try{applyWellLook()}catch(e){}
   return wellSumHTML()+h+heal}}
 {const _shr=showResult;showResult=function(){const r=_shr.apply(this,arguments);try{const el=document.getElementById("result");if(el){wireStarWord(el);
   const o=(id,f)=>{const b=document.getElementById(id);if(b)b.onclick=f};o("skyOpen",openSkyMap);o("brOpen",openBreath);o("wsShare",shareWell);o("wsReplay",replayDrop)}}catch(e){console.error(e)}return r}}
+
+/* ================= Phases 103–122 (20 Nov 2026) ================= */
+/* ---------- profile helpers ---------- */
+function favCat(){const n={};stats.games.forEach(g=>{if(g.cat)n[g.cat]=(n[g.cat]||0)+1});const top=Object.entries(n).sort((a,b)=>b[1]-a[1])[0];return top&&CATEGORIES.some(c=>c.name===top[0])?{name:top[0],n:top[1]}:null}
+function sinceKey(){if(stats.since)return stats.since;const ds=(stats.days||[]).slice().sort();return ds[0]||null}
+function weekDotsHTML(){const t=todayKey(),set=new Set(stats.days||[]);const days=[...Array(7)].map((_,i)=>addDays(t,i-6));
+  const n=days.filter(d=>set.has(d)).length;
+  return`<div class="pp-week" role="img" aria-label="Played on ${n} of the last 7 days">${days.map(d=>{const dt=new Date(d+"T12:00:00");
+    return`<span class="${set.has(d)?"on":""}${d===t?" now":""}"><i></i><small>${dt.toLocaleDateString("en-US",{weekday:"narrow"})}</small></span>`}).join("")}</div>`}
+function closestMedal(){let best=null;try{ACH.forEach(a=>{let v=0;try{v=a.v()}catch(e){}const tier=achTier(a);if(tier>=a.t.length)return;const goal=a.t[tier],f=v/goal;
+  if(f<1&&(!best||f>best.f))best={a,v,goal,f,tier}})}catch(e){}return best}
+function milestonesHTML(){const L=levelOf(xpTotal()),ds=dailyStreak(),sT=starsTotal(),rows=[];
+  rows.push({ic:"star",t:`Level ${L.lv+1}`,s:`${fmtN(L.toNext)} XP to go`,f:L.pct/100});
+  const sm=[7,30,100,365].find(x=>x>ds.n);if(sm)rows.push({ic:"fire",t:`${sm}-day streak`,s:`${sm-ds.n} more day${sm-ds.n===1?"":"s"} of Dailies`,f:ds.n/sm});
+  const sn=(Math.floor(sT/50)+1)*50;rows.push({ic:"trophy",t:`${fmtN(sn)} stars`,s:`${sn-sT} more star${sn-sT===1?"":"s"}`,f:(sT%50)/50});
+  const cm=closestMedal();if(cm)rows.push({ic:cm.a.ic||"medal",t:`${cm.a.name}: ${ACH_TIER[cm.tier]||"next tier"}`,s:`${fmtN(cm.v)} of ${fmtN(cm.goal)} ${cm.a.unit||""}`.trim(),f:cm.f,id:"pfMedal"});
+  return`<div class="pp-ms">${rows.map(r=>`<${r.id?`button id="${r.id}"`:"div"} class="pp-m">${ti(r.ic)}<span class="t"><b>${esc(r.t)}</b><small>${esc(r.s)}</small></span><span class="pp-bar" aria-hidden="true"><i style="width:${Math.round(Math.max(0,Math.min(1,r.f))*100)}%"></i></span></${r.id?"button":"div"}>`).join("")}</div>`}
+function bestTimeLine(){const g=stats.games.filter(x=>!x.practice&&x.score>0);if(g.length<6)return"";const B=[["mornings",5,12],["afternoons",12,17],["evenings",17,22],["late nights",22,29]];
+  const sc=B.map(([n,a,b])=>{const xs=g.filter(x=>{let h=new Date(x.t).getHours();if(h<5)h+=24;return h>=a&&h<b});return{n,c:xs.length,avg:xs.length?xs.reduce((t,x)=>t+x.score,0)/xs.length:0}}).filter(x=>x.c>=2);
+  if(sc.length<2)return"";sc.sort((a,b)=>b.avg-a.avg);return`You score highest in the <b>${sc[0].n}</b>: ${fmtN(sc[0].avg)} a game on average.`}
+
+/* ---------- 103–110, 119, 121, 122: the new profile, filled in ---------- */
+let ppIntroDone=false;
+{const _rp3=renderProfile;renderProfile=function(){_rp3.apply(this,arguments);const el=document.getElementById("profile");if(!el)return;
+  const hero=el.querySelector(".pp-hero");if(hero){
+    /* 106 name tiles drop in the first time you open the page */
+    if(!ppIntroDone&&!calmNow()){ppIntroDone=true;hero.querySelectorAll(".pp-name b").forEach((b,i)=>{b.style.setProperty("--i",i);b.classList.add("in")})}
+    /* 103 this week; 121 member since; 107 share card */
+    const sk=sinceKey();
+    hero.insertAdjacentHTML("beforeend",`${weekDotsHTML()}<div class="pp-foot">${sk?`<span>Playing since ${new Date(sk+"T12:00:00").toLocaleDateString("en-US",{month:"short",year:"numeric"})}</span>`:"<span></span>"}<button class="pp-share" id="pfCard">${ti("cards")} Share my card</button></div>`)}
+  /* 104 your home category */
+  const f=favCat(),big=el.querySelector(".pp-big");
+  if(f&&big){const lk=CAT_LOOK[f.name]||{g1:"#888",tag:""};big.insertAdjacentHTML("afterend",`<div class="pp-fav" style="--d:${lk.g1}">${catIcon(f.name,lk.g1)}<span><small>Your home category</small><b>${esc(f.name)}</b><i>${fmtN(f.n)} game${f.n===1?"":"s"} · ${esc(lk.tag||"")}</i></span><button class="ghost-btn sm" id="pfFav" data-cat="${esc(f.name)}">Play</button></div>`)}
+  /* 108 + 122 what's next */
+  const links=el.querySelector(".pp-links");if(links)links.insertAdjacentHTML("afterend",`<section class="pp-sec"><h2 class="pp-h">Up next for you</h2>${milestonesHTML()}</section>`);
+  /* 119 when you play best; 110 longest word */
+  const how=[...el.querySelectorAll(".pp-sec")].find(s=>(s.querySelector(".pp-h")||{}).textContent==="How you play");
+  if(how){const bt=bestTimeLine(),lw=stats.longW;if(bt||lw)how.insertAdjacentHTML("beforeend",`<div class="pp-facts">${bt?`<p>${ti("clock")}<span>${bt}</span></p>`:""}${lw?`<p>${ti("pencil")}<span>Longest word solved: <b>${esc(lw.w)}</b> (${lw.w.length} letters)</span></p>`:""}</div>`)}
+  /* 105 tap a category for the deep dive */
+  el.querySelectorAll(".pp-cat").forEach(row=>{const n=row.querySelector(".n");if(!n)return;const name=n.textContent;const b=document.createElement("button");b.className="pp-cat";b.innerHTML=row.innerHTML;
+    b.setAttribute("aria-label",`${name}: ${row.querySelector(".v").textContent.replace("/"," of ")} stars. Open details`);b.onclick=()=>{try{openCatDeep(name)}catch(e){}};row.replaceWith(b)});
+  /* 109 tap a word to see its clue */
+  const ws=el.querySelector(".pp-words");if(ws){ws.insertAdjacentHTML("afterend",`<p class="pp-note" id="ppWordNote" role="status">Tap a word to see its clue.</p>`);
+    ws.querySelectorAll(".pp-word").forEach(sp=>{const b=document.createElement("button");b.className="pp-word";b.textContent=sp.textContent;const clue=sp.getAttribute("title")||"";
+      b.onclick=()=>{ws.querySelectorAll(".pp-word").forEach(x=>x.setAttribute("aria-pressed",x===b));document.getElementById("ppWordNote").innerHTML=`<b>${esc(b.textContent)}</b>: ${esc(clue)}`};b.setAttribute("aria-pressed","false");sp.replaceWith(b)})}
+  const on=(id,fn)=>{const x=document.getElementById(id);if(x)x.onclick=fn};
+  on("pfCard",sharePlayerCard);on("pfMedal",openAchievements);
+  on("pfFav",()=>{const c=document.getElementById("pfFav").dataset.cat;const i=LEVELS.findIndex(l=>l.cat===c&&!((store[l.id]||{}).stars));startLevel(i>=0?i:LEVELS.findIndex(l=>l.cat===c))})}}
+
+/* ---------- 110 longest word; 111 vs your last try; 112 crossword time; 121 member since ---------- */
+{const _rg5=recordGame;recordGame=function(win){try{if(S&&S.L){const prev=stats.games.find(g=>g.id===S.L.id&&!g.practice);S._prevTry=prev?prev.score:null;
+    const longest=S.cw.words.filter(w=>w.solved).map(w=>w.ans).sort((a,b)=>b.length-a.length)[0];S._newLong=null;
+    if(longest&&(!stats.longW||longest.length>stats.longW.w.length)){S._newLong=stats.longW?longest:null;stats.longW={w:longest,t:Date.now()}}
+    if(!stats.since)stats.since=sinceKey()||todayKey()}}catch(e){}
+  return _rg5.apply(this,arguments)}}
+function resLineHTML(){if(!S||S.tut)return"";const bits=[];
+  if(S._prevTry!=null&&!S.L.daily){const d=S.score-S._prevTry;bits.push(d>0?`<span class="up">+${fmtN(d)} on your last try</span>`:d<0?`<span>${fmtN(-d)} under your last try</span>`:`<span>Same as your last try</span>`)}
+  if(S.crossMs>0)bits.push(`<span>${ti("clock")} Crossword in ${fmtTime(S.crossMs/1000)}</span>`);
+  if(S._newLong)bits.push(`<span class="up">New longest word: ${esc(S._newLong)}</span>`);
+  return bits.length?`<div class="rx-line">${bits.join("")}</div>`:""}
+{const _shr2=showResult;showResult=function(){const r=_shr2.apply(this,arguments);try{const el=document.getElementById("result"),p=el&&el.querySelector(".pts");if(p&&!el.querySelector(".rx-line")){const h=resLineHTML();if(h)p.insertAdjacentHTML("afterend",h)}}catch(e){console.error(e)}return r}}
+
+/* ---------- 113 the last five seconds of a rush ---------- */
+setInterval(()=>{const el=document.getElementById("rush");if(!el)return;const hurry=!!(S&&S.phase==="rush"&&S.rush&&S.rush.state==="on"&&!S.rush.zen&&S.rush.left<=5&&S.rush.left>0);
+  if(el.classList.contains("hurry")!==hurry){el.classList.toggle("hurry",hurry);if(hurry){hap("warning");announce("Five seconds left")}}},250);
+
+/* ---------- 114 next Daily countdown; 115 a hello ---------- */
+function untilTomorrow(){const n=new Date(),m=new Date(n);m.setHours(24,0,0,0);const s=Math.max(0,Math.round((m-n)/1000));const h=Math.floor(s/3600),mi=Math.floor(s%3600/60);return h?`${h}h ${mi}m`:`${mi}m`}
+function helloLine(){const h=new Date().getHours(),nick=stats.nick&&!/^Player( \d+)?$/.test(stats.nick)?stats.nick:"";const p=h<5?"Up late":h<12?"Good morning":h<17?"Good afternoon":h<22?"Good evening":"Up late";
+  return`<p class="hello">${p}${nick?`, ${esc(nick)}`:""}.</p>`}
+{const _rdc=renderDailyCard;renderDailyCard=function(){const r=_rdc.apply(this,arguments);try{const box=document.getElementById("dailyCard");if(!box)return r;
+    if(!box.querySelector(".hello"))box.insertAdjacentHTML("afterbegin",helloLine());
+    if(dailyRecord(todayKey())&&!box.querySelector("#dcNext")){const done=box.querySelector(".dc-btns");if(done)done.insertAdjacentHTML("afterend",`<p class="dc-next" id="dcNext">Next Daily in <b>${untilTomorrow()}</b></p>`)}}catch(e){}return r}}
+setInterval(()=>{const n=document.getElementById("dcNext");if(n){const b=n.querySelector("b");if(b)b.textContent=untilTomorrow()}},30000);
+
+/* ---------- 116 level up feel; 120 rows to the next level ---------- */
+{const _lb=lvBadge;lvBadge=function(){_lb.apply(this,arguments);const b=document.getElementById("wellLv");if(!b||!S)return;const lv=wellLevel(),left=ROWS_PER_LEVEL-((S.linesCleared||0)%ROWS_PER_LEVEL);
+  b.innerHTML=`LV ${lv}<small>${left} row${left===1?"":"s"} to LV ${lv+1}</small>`;if(S._lvSeen&&lv>S._lvSeen){hap("success");b.classList.remove("lvup");void b.offsetWidth;b.classList.add("lvup")}S._lvSeen=lv}}
+
+/* ---------- 117 show tips again ---------- */
+{const _rpi4=renderPaceInfo;renderPaceInfo=function(){_rpi4.apply(this,arguments);const a=document.getElementById("a11ySlot");if(!a||a.querySelector("#setTips"))return;
+  a.insertAdjacentHTML("beforeend",`<button class="setrow" id="setTips"><span><span class="st-t">Show tips again</span><br><span class="st-d">Bring back the coach cards and first-time hints.</span></span><span class="st-go" aria-hidden="true">↺</span></button>`);
+  document.getElementById("setTips").onclick=()=>{stats.tips={};saveStats();toast("Tips will show again");announce("Tips will show again")}}}
+
+/* ---------- 118 hold delete to clear the word ---------- */
+function clearWord(){if(!S||S.phase!=="cross")return;const w=curWord();if(!w)return;let n=0;w.cells.forEach(k=>{const c=S.cw.cells.get(k);if(!c.lock&&c.val){c.val="";n++}});
+  const first=w.cells.find(k=>!S.cw.cells.get(k).lock);if(first)S.sel.key=first;if(n){hap("medium");toast("Word cleared")}renderAll()}
+{const _rpd=renderPad;renderPad=function(){const r=_rpd.apply(this,arguments);const bk=document.querySelector('#pad [data-a="bk"]');if(bk&&!bk.dataset.hold){bk.dataset.hold=1;let t;
+  const stop=()=>clearTimeout(t);bk.addEventListener("pointerdown",()=>{stop();t=setTimeout(()=>{if(S&&S.phase==="cross")clearWord()},480)});["pointerup","pointerleave","pointercancel"].forEach(e=>bk.addEventListener(e,stop));
+  bk.setAttribute("aria-label",S&&S.phase==="cross"?"Delete. Hold to clear the word":"Delete")}return r}}
 
 function weeklyLine(){const cs=challengeState(),d=cs.filter(c=>c.done).length;return`<button class="wk-line" id="wkLine"><span>${ti("trophy")} Weekly challenges <b>${d}/3</b></span><span class="wk-bars">${cs.map(c=>`<i style="--p:${Math.round(c.v/c.goal*100)}%"></i>`).join("")}</span><span aria-hidden="true">›</span></button>`}
 

@@ -1,0 +1,29 @@
+/* ===== Phases 73–82 ===== */
+#pad .kr{gap:5px}
+#pad .kr .k{height:48px;max-width:42px;border:0;border-radius:9px;background:linear-gradient(180deg,color-mix(in srgb,var(--panel-2) 88%,#fff 12%),var(--panel-2));
+  box-shadow:0 1.5px 0 var(--key-edge),0 3px 8px rgba(0,0,0,.16);transition:transform 90ms var(--ease-out,ease-out),background-color 120ms,box-shadow 90ms;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+#pad .kr .k.wide{max-width:66px}
+#pad .kr .k:active{transform:none;border-bottom-width:0}
+#pad .kr .k.down{transform:translateY(1px) scale(.95);box-shadow:0 0 0 var(--key-edge),0 1px 3px rgba(0,0,0,.2);background:color-mix(in srgb,var(--panel-2) 70%,var(--fg) 30%)}
+#kpop{position:fixed;z-index:80;pointer-events:none;transform:translate(-50%,-100%) scale(.6);opacity:0;min-width:var(--kw);padding:6px 10px 8px;border-radius:12px;
+  background:var(--panel-2);color:var(--fg);font-family:var(--f-mono);font-weight:800;font-size:28px;text-align:center;box-shadow:0 8px 22px rgba(0,0,0,.35);transition:transform 90ms var(--ease-out,ease-out),opacity 90ms}
+#kpop.on{transform:translate(-50%,-100%) scale(1);opacity:1}
+#cw .cc.typed .l{animation:cfTyped 200ms var(--ease-out,ease-out)}
+@keyframes cfTyped{0%{transform:scale(.6);opacity:.4}100%{transform:scale(1);opacity:1}}
+#pad.pad-in{animation:cfPadIn 180ms var(--ease-out,ease-out)}
+@keyframes cfPadIn{0%{opacity:.35;transform:translateY(6px)}100%{opacity:1;transform:none}}
+.ctrl .k{transition:transform 80ms var(--ease-out,ease-out),filter 80ms}
+.ctrl .k.down{transform:scale(.95);filter:brightness(1.12)}
+#well{touch-action:none}
+#wellWrap{position:relative}
+#wellLv{position:absolute;top:4px;right:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;padding:2px 6px;border-radius:6px;background:color-mix(in srgb,var(--panel-2) 80%,transparent);color:var(--muted);pointer-events:none}
+#well .drop-trail{position:absolute;pointer-events:none;border-radius:4px;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--accent) 55%,transparent));animation:cfTrail 240ms ease-out forwards}
+@keyframes cfTrail{0%{opacity:.9}100%{opacity:0}}
+#well{position:relative}
+.sw-panel blockquote{margin:6px 0;font-size:calc(17px*var(--ts));line-height:1.45;font-style:italic}
+html.nightsky #well{background-color:#0d0b26;background-image:radial-gradient(1px 1px at 12% 18%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 72% 12%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 38% 44%,rgba(255,255,255,.8) 50%,transparent 51%),radial-gradient(1px 1px at 86% 58%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 22% 76%,rgba(255,255,255,.9) 50%,transparent 51%),radial-gradient(1px 1px at 58% 88%,#fff 50%,transparent 51%),radial-gradient(ellipse at 50% 0%,rgba(120,90,220,.35),transparent 70%)}
+html.nightsky #well::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(1px 1px at 30% 28%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 64% 66%,#fff 50%,transparent 51%),radial-gradient(1.2px 1.2px at 8% 52%,#fff 50%,transparent 51%);animation:cfTwinkle 3.6s ease-in-out infinite alternate}
+@keyframes cfTwinkle{0%{opacity:.25}100%{opacity:.9}}
+html.light.nightsky #well .wc:not(.f):not(.p):not(.g){background-color:rgba(255,255,255,.06)}
+@media (prefers-reduced-motion:reduce){#kpop,#pad .kr .k,.ctrl .k{transition:none}#pad.pad-in,#cw .cc.typed .l,#well .drop-trail,html.nightsky #well::after{animation:none}}

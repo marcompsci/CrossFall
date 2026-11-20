@@ -35,7 +35,7 @@ Crossfall crosses a classic crossword with a falling-block well. Every answer yo
 When the stack climbs too high, a rush begins: find the hidden word in the well before the clock runs out. Win and the top of the well clears. Miss and a junk row rises from the bottom.
 
 NINE CATEGORIES
-Swipe through game cards: Sports, Biblical, Psychology, Books, Music, Arcade, Bay City, Kitchen and Night Sky. Twenty puzzles in each, 180 in all, with stars to collect.
+Swipe through game cards: Sports, Biblical, Psychology, Books, Music, Arcade, Kitchen, Night Sky and Language. Night Sky is stars, philosophy and the sacred: where we come from and what we've wondered at. 70 or more puzzles in each, with stars to collect.
 
 START FREE
 Tell us your name and how you're feeling, then pick 3 free categories with 6 puzzles each. The Daily puzzle is free for everyone, every day. Crossfall Pro unlocks all 9 categories and all 180 puzzles with a single one-time purchase. No subscription.

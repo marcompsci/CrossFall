@@ -7182,14 +7182,13 @@ function myBestsHTML(){const g=stats.games.filter(x=>!x.practice&&x.score>0).sli
 {const _rrk=renderRanks;renderRanks=function(){_rrk.apply(this,arguments);try{const pg=document.getElementById("pgRanks");if(!pg)return;const old=document.getElementById("myBests");if(old)old.remove();const h=myBestsHTML();if(h)pg.insertAdjacentHTML("beforeend",h)}catch(e){console.error(e)}}}
 
 /* ---------- 217, 218: weekend challenge ---------- */
-function isWeekend(){const d=new Date().getDay();return d===0||d===6}
 function wkndKey(){const d=new Date();d.setDate(d.getDate()-(d.getDay()===0?1:0));return dayKeyOf(d)}
 function wkndPicks(){const k=wkndKey(),n=k.split("-").join("")|0,cats=CATEGORIES.filter(c=>{const l=LEVELS.find(l=>l.cat===c.name);return l&&!lockReason(l)&&!c.puzzles[0].lang&&!LEVELS.find(x=>x.cat===c.name).heal});
   if(cats.length<3)return[];const out=[];for(let i=0;out.length<3&&i<cats.length*2;i++){const c=cats[(n+i*7)%cats.length];if(out.some(o=>o.cat===c.name))continue;const ls=LEVELS.map((l,j)=>({l,j})).filter(x=>x.l.cat===c.name);const p=ls[(n+i)%ls.length];out.push({cat:c.name,li:p.j,id:p.l.id,name:p.l.name})}return out}
 function wkndDone(){const k=wkndKey(),since=new Date(k+"T00:00:00").getTime();return wkndPicks().map(p=>stats.games.some(g=>g.id===p.id&&g.t>=since&&g.win))}
-function wkndHTML(){if(!isWeekend())return"";const P=wkndPicks();if(P.length<3)return"";const D=wkndDone(),n=D.filter(Boolean).length,paid=(stats.wkndPaid||"")===wkndKey();
+function wkndHTML(){if(!isWeekend(Date.now()))return"";const P=wkndPicks();if(P.length<3)return"";const D=wkndDone(),n=D.filter(Boolean).length,paid=(stats.wkndPaid||"")===wkndKey();
   return`<div class="ht ht-wknd"><span class="ht-k">Weekend challenge · ${n}/3</span><b>${paid?"Done! +300 XP":"Win one puzzle from three categories"}</b><span class="wk-list">${P.map((p,i)=>`<button class="ghost-btn sm wk-p${D[i]?" ok":""}" data-wk="${p.li}" ${D[i]?'aria-label="'+esc(p.name)+', done"':""}>${D[i]?"✓ ":""}${esc(p.cat)}</button>`).join("")}</span></div>`}
-function wkndCheck(){if(!isWeekend())return;const D=wkndDone();if(D.length===3&&D.every(Boolean)&&stats.wkndPaid!==wkndKey()){stats.wkndPaid=wkndKey();stats.wkndN=(stats.wkndN||0)+1;giveXP(300,"Weekend challenge");queueCele({kind:"xp",title:"Weekend challenge done",sub:"Three categories, three wins."});saveStats()}}
+function wkndCheck(){if(!isWeekend(Date.now()))return;const D=wkndDone();if(D.length===3&&D.every(Boolean)&&stats.wkndPaid!==wkndKey()){stats.wkndPaid=wkndKey();stats.wkndN=(stats.wkndN||0)+1;giveXP(300,"Weekend challenge");queueCele({kind:"xp",title:"Weekend challenge done",sub:"Three categories, three wins."});saveStats()}}
 {const _htH3=homeTilesHTML;homeTilesHTML=function(){let h=_htH3.apply(this,arguments)||"";const w=wkndHTML();if(!w)return h;if(!h)return`<div class="home-tiles" id="homeTiles">${w}</div>`;return h.replace('<div class="home-tiles" id="homeTiles">','<div class="home-tiles" id="homeTiles">'+w)}}
 {const _rdc5=renderDailyCard;renderDailyCard=function(){const r=_rdc5.apply(this,arguments);try{document.querySelectorAll("[data-wk]").forEach(b=>b.onclick=()=>startLevel(+b.dataset.wk))}catch(e){}return r}}
 

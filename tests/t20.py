@@ -14,7 +14,15 @@ CLOSE = "()=>{document.querySelectorAll('.ov').forEach(o=>{if(o.id!=='menu')o.hi
 TO_DROP = "async()=>{for(let i=0;i<20&&S.phase==='cross';i++){const w=S.cw.words.find(w=>!w.solved);selectWord(w);for(const k of w.cells){const c=S.cw.cells.get(k);if(!c.lock){S.sel.key=k;typeLetter(c.ans)}}}await new Promise(r=>setTimeout(r,50));return S.phase}"
 BANK = "()=>{stats.bank=stats.bank||{};const W=['ALPHA','BRAVO','CHARLIE','DELTA','ECHO','FOXTROT','GOLF','HOTEL'];W.forEach((w,i)=>stats.bank[w]={c:'Clue for '+w,t:Date.now()-i*1000,box:i<3?0:i<6?2:5,k:'Test'})}"
 
+def no_duplicate_functions():
+    import re, collections
+    src = (ROOT / 'web' / 'crossfall.html').read_text()
+    c = collections.Counter(re.findall(r'^function ([A-Za-z0-9_]+)\(', src, re.M))
+    return [k for k, v in c.items() if v > 1]
+
 async def main():
+    dup = no_duplicate_functions()
+    ck("no function is declared twice (a later one would silently replace the first)", not dup, dup)
     from playwright.async_api import async_playwright
     async with async_playwright() as p:
         b = await p.chromium.launch()

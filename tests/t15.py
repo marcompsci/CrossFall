@@ -9,7 +9,7 @@ res = []
 def ck(n, ok, d=""):
     res.append(bool(ok)); print(f"{'PASS' if ok else 'FAIL'}  {n}{('  · ' + str(d)) if d not in ('', None) else ''}")
 SETUP = """()=>{stats.tutDone=true;stats.nick='T';stats.freeCats=['Sports','Music','Night Sky'];stats.spSkip=1;stats.diff={};CATEGORIES.forEach(c=>stats.diff[c.name]='medium');
- stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;stats.seen23=1;stats.seen24=1;stats.seen25=1;stats.seen26=1;stats.fullHome=1;stats.recapSeen='2026-11';stats.tot.games=12;stats.tips={target:1,powers:1,fever:1,drag:1,'rush-tap':1,'rush-clue':1,'rush-scramble':1};document.getElementById('onb').hidden=true;S=null;showMenu()}"""
+ stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;stats.seen23=1;stats.seen24=1;stats.seen25=1;stats.seen26=1;stats.seen27=1;stats.fullHome=1;stats.recapSeen='2026-11';stats.tot.games=12;stats.tips={target:1,powers:1,fever:1,drag:1,'rush-tap':1,'rush-clue':1,'rush-scramble':1};document.getElementById('onb').hidden=true;S=null;showMenu()}"""
 CLOSE = "()=>{document.querySelectorAll('.ov').forEach(o=>{if(o.id!=='menu')o.hidden=true});const c=document.getElementById('cele');if(c)c.hidden=true;S=null;showMenu()}"
 TO_DROP = "async()=>{for(let i=0;i<20&&S.phase==='cross';i++){const w=S.cw.words.find(w=>!w.solved);selectWord(w);for(const k of w.cells){const c=S.cw.cells.get(k);if(!c.lock){S.sel.key=k;typeLetter(c.ans)}}}await new Promise(r=>setTimeout(r,50));return S.phase}"
 EMPTY = "()=>{S.grid=Array.from({length:ROWS},()=>Array(COLS).fill(null));S.freezeUntil=0;S.combo=0;S.pts={};S.score=0;S.linesCleared=0;S._lc2=0;S._pendClear=null}"
@@ -142,7 +142,7 @@ async def main():
         ck("90 bigger well letters switch works both ways", sw)
         await pg.evaluate(CLOSE)
         # what's new + labels
-        wn = await pg.evaluate("async()=>{stats.seen23=0;stats.seen24=0;stats.seen25=0;stats.seen26=0;maybeWhatsNew();await new Promise(r=>setTimeout(r,50));const t=document.getElementById('evh').textContent;return [t.includes('Your sky'),t.includes('Take a breath'),document.querySelectorAll('#evh > .panel.wn').length,!!stats.seen23]}")
+        wn = await pg.evaluate("async()=>{stats.seen23=0;stats.seen24=0;stats.seen25=0;stats.seen26=0;stats.seen27=0;maybeWhatsNew();await new Promise(r=>setTimeout(r,50));const t=document.getElementById('evh').textContent;return [t.includes('Your sky'),t.includes('Take a breath'),document.querySelectorAll('#evh > .panel.wn').length,!!stats.seen23]}")
         ck("What's New leads with this update (4 panels, older ones folded)", wn[0] and wn[1] and wn[2] == 4 and wn[3], wn)
         ck("score breakdown names the new points", await pg.evaluate("PTS_LABEL.link==='Word links'&&PTS_LABEL.spin==='Spin clears'&&PTS_LABEL.match==='Letter matches'"))
         ck("no page errors", not errs, errs[:3])

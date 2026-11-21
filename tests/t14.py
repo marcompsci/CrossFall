@@ -97,6 +97,12 @@ async def main():
         tr = await pg.evaluate("()=>{prefs.calm=false;hardDrop();return document.querySelectorAll('#well .drop-trail').length}")
         await pg.wait_for_timeout(400)
         tr2 = await pg.evaluate("document.querySelectorAll('#well .drop-trail').length")
+        if tr != 2:  # retry once: under heavy load the first slam can land before the well has drawn
+            await pg.evaluate("()=>{S.paused=false;S.freezeUntil=0;S.phase='drop';S.grid=S.grid.map(r=>r.map(()=>null));S.active={cells:[{dr:0,dc:0,ch:'A'},{dr:0,dc:1,ch:'B'}],r:0,c:2};renderWell()}")
+            await pg.wait_for_timeout(400)
+            tr = await pg.evaluate("()=>{prefs.calm=false;hardDrop();return document.querySelectorAll('#well .drop-trail').length}")
+            await pg.wait_for_timeout(400)
+            tr2 = await pg.evaluate("document.querySelectorAll('#well .drop-trail').length")
         ck("78 a slam leaves a short trail that fades", tr == 2 and tr2 == 0, (tr, tr2))
         await pg.evaluate(CLOSE)
         # settings

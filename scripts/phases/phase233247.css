@@ -1,0 +1,26 @@
+/* ===== Phases 233–247 ===== */
+.ht-uns{border-color:color-mix(in srgb,#ffd166 45%,var(--line))}.ht-uns .ht-k{color:#e0a400}
+html:not(.light) .ht-uns .ht-k{color:#ffd166}
+#unTimer{font-size:18px;color:var(--accent)}
+.ms-words{margin:12px 0 6px}
+.cy{display:flex;flex-direction:column;gap:6px}
+.cy-r{display:grid;grid-template-columns:minmax(0,7.5em) 1fr 2.5em;align-items:center;gap:10px;font-size:13px}
+.cy-r>span:first-child{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cy-b{display:block;height:10px;border-radius:999px;background:var(--panel-2);overflow:hidden}.cy-b i{display:block;height:100%;border-radius:inherit}
+.cy-r b{text-align:right;font-variant-numeric:tabular-nums}
+.fp-note{display:block;font-size:12px;color:var(--accent);margin-top:2px;font-weight:600}
+.fp-sort{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin:8px 0 0;font-size:13px;color:var(--muted)}
+.fp-sort select{padding:6px 10px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--fg);font:inherit;font-size:14px;min-height:36px}
+.nt-box{display:flex;flex-direction:column;align-items:center;gap:6px;margin:4px 0 10px}
+.nt-cur{margin:0;font-size:14px;color:var(--fg)}
+#ntForm{display:flex;gap:6px;width:100%;max-width:340px}
+#ntForm[hidden]{display:none}
+#ntIn{flex:1;min-width:0;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--fg);font:inherit;font-size:16px}
+.pz-target{display:flex;align-items:center;justify-content:center;gap:4px;font-size:12px;color:var(--muted)}
+.pz-target span{margin-right:6px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.pz-target b{display:grid;place-items:center;width:24px;height:26px;border-radius:5px;background:var(--accent);color:var(--ink);font-family:var(--f-mono);font-size:14px}
+.pz-target em{font-style:normal;margin-left:6px;color:var(--solved);font-weight:800}
+.ht-sw{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip-sw{padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel-2);color:var(--muted);font:inherit;font-size:13px;font-weight:700;min-height:36px}
+.chip-sw[aria-checked="true"]{background:color-mix(in srgb,var(--accent) 22%,var(--panel));color:var(--fg);border-color:color-mix(in srgb,var(--accent) 60%,var(--line))}
+.chip-sw[aria-checked="true"]::before{content:"✓ "}

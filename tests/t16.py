@@ -9,7 +9,7 @@ res = []
 def ck(n, ok, d=""):
     res.append(bool(ok)); print(f"{'PASS' if ok else 'FAIL'}  {n}{('  · ' + str(d)) if d not in ('', None) else ''}")
 SETUP = """()=>{stats.tutDone=true;stats.nick='Omari';stats.freeCats=['Sports','Music','Night Sky'];stats.spSkip=1;stats.diff={};CATEGORIES.forEach(c=>stats.diff[c.name]='medium');
- stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;stats.seen23=1;stats.seen24=1;stats.seen25=1;stats.seen26=1;stats.seen27=1;stats.seen28=1;stats.fullHome=1;stats.recapSeen='2026-11';stats.tot.games=12;stats.tips={target:1,powers:1,fever:1,drag:1,'rush-tap':1,'rush-clue':1,'rush-scramble':1};document.getElementById('onb').hidden=true;S=null;showMenu()}"""
+ stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;stats.seen23=1;stats.seen24=1;stats.seen25=1;stats.seen26=1;stats.seen27=1;stats.seen28=1;stats.seen29=1;stats.fullHome=1;stats.recapSeen='2026-11';stats.tot.games=12;stats.tips={target:1,powers:1,fever:1,drag:1,'rush-tap':1,'rush-clue':1,'rush-scramble':1};document.getElementById('onb').hidden=true;S=null;showMenu()}"""
 CLOSE = "()=>{document.querySelectorAll('.ov').forEach(o=>{if(o.id!=='menu')o.hidden=true});const c=document.getElementById('cele');if(c)c.hidden=true;S=null;showMenu()}"
 TO_DROP = "async()=>{for(let i=0;i<20&&S.phase==='cross';i++){const w=S.cw.words.find(w=>!w.solved);selectWord(w);for(const k of w.cells){const c=S.cw.cells.get(k);if(!c.lock){S.sel.key=k;typeLetter(c.ans)}}}await new Promise(r=>setTimeout(r,50));return S.phase}"
 PROFILE = "()=>{goPage('Profile');renderProfile()}"
@@ -98,7 +98,7 @@ async def main():
         await pg.evaluate("document.getElementById('setTips').click()")
         ck("117 Settings › Show tips again resets the tips", await pg.evaluate("Object.keys(stats.tips||{}).length===0"))
         await pg.evaluate(CLOSE)
-        wn = await pg.evaluate("async()=>{stats.seen24=0;stats.seen25=0;stats.seen26=0;stats.seen27=0;stats.seen28=0;maybeWhatsNew();await new Promise(r=>setTimeout(r,50));const t=document.getElementById('evh').textContent;return [t.includes('A new profile'),document.querySelectorAll('#evh > .panel.wn').length,!!stats.seen24]}")
+        wn = await pg.evaluate("async()=>{stats.seen24=0;stats.seen25=0;stats.seen26=0;stats.seen27=0;stats.seen28=0;stats.seen29=0;maybeWhatsNew();await new Promise(r=>setTimeout(r,50));const t=document.getElementById('evh').textContent;return [t.includes('A new profile'),document.querySelectorAll('#evh > .panel.wn').length,!!stats.seen24]}")
         ck("What's New leads with this update", wn == [True, 4, True], wn)
         ck("no page errors", not errs, errs[:3])
         await ctx.close(); await b.close()

@@ -50,7 +50,7 @@ async def main():
         ck("231 Learn sections fold and stay folded", fo)
         # 212-214 unscramble
         await pg.evaluate("document.getElementById('lnUn').click()"); await pg.wait_for_timeout(100)
-        u = await pg.evaluate("()=>{const w=un.list[0][0];const t=[...document.querySelectorAll('.un-tiles b')].map(b=>b.textContent).join('');return [w,t,[...w].sort().join('')===[...t].sort().join(''),t!==w]}")
+        u = await pg.evaluate("()=>{const w=un.list[0][0];const t=[...document.querySelectorAll('.un-tiles b, .un-tiles .un-t')].map(b=>b.textContent).join('');return [w,t,[...w].sort().join('')===[...t].sort().join(''),t!==w]}")
         ck("212 Unscramble shows a bank word's letters mixed up", u[2] and u[3], u)
         await pg.evaluate("document.getElementById('unIn').value='ZZZZ';document.getElementById('unForm').dispatchEvent(new Event('submit',{cancelable:true}))")
         ck("212 a wrong answer says try again", "Try again" in await pg.evaluate("document.getElementById('unMsg').textContent"))

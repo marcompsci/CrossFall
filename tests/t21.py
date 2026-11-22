@@ -9,7 +9,7 @@ res = []
 def ck(n, ok, d=""):
     res.append(bool(ok)); print(f"{'PASS' if ok else 'FAIL'}  {n}{('  · ' + str(d)) if d not in ('', None) else ''}")
 SETUP = """()=>{stats.tutDone=true;stats.nick='Omari';stats.freeCats=['Sports','Music','Night Sky'];stats.spSkip=1;stats.diff={};CATEGORIES.forEach(c=>stats.diff[c.name]='medium');
- for(let i=19;i<=29;i++)stats['seen'+i]=1;stats.fullHome=1;stats.recapSeen='2026-11';stats.tot.games=12;stats.tips={target:1,powers:1,fever:1,drag:1,'rush-tap':1,'rush-clue':1,'rush-scramble':1};document.getElementById('onb').hidden=true;S=null;showMenu()}"""
+ for(let i=19;i<=30;i++)stats['seen'+i]=1;stats.fullHome=1;stats.recapSeen='2026-11';stats.tot.games=12;stats.tips={target:1,powers:1,fever:1,drag:1,'rush-tap':1,'rush-clue':1,'rush-scramble':1};document.getElementById('onb').hidden=true;S=null;showMenu()}"""
 CLOSE = "()=>{document.querySelectorAll('.ov').forEach(o=>{if(o.id!=='menu')o.hidden=true});const c=document.getElementById('cele');if(c)c.hidden=true;const p=document.getElementById('pauseOv');if(p)p.hidden=true;const r=document.getElementById('review');if(r)r.hidden=true;un=null;S=null;showMenu()}"
 TO_DROP = "async()=>{for(let i=0;i<20&&S.phase==='cross';i++){const w=S.cw.words.find(w=>!w.solved);selectWord(w);for(const k of w.cells){const c=S.cw.cells.get(k);if(!c.lock){S.sel.key=k;typeLetter(c.ans)}}}await new Promise(r=>setTimeout(r,50));return S.phase}"
 BANK = "()=>{stats.bank=stats.bank||{};const W=['ALPHA','BRAVO','CHARLIE','DELTA','ECHO','FOXTROT','GOLF','HOTEL','INDIA','JULIET'];W.forEach((w,i)=>stats.bank[w]={c:'Clue for '+w,t:Date.now()-i*1000,box:i<3?0:i<6?2:5,k:'Test'})}"
@@ -89,7 +89,7 @@ async def main():
         await pg.evaluate("()=>{prefs.hideHt={};renderDailyCard()}")
         ck("244 and bring them back", await pg.evaluate("!!document.querySelector('#dailyCard .ht-mc')"))
         await pg.evaluate("renderPaceInfo();document.getElementById('settings').hidden=false"); await pg.wait_for_timeout(50)
-        ck("244 Settings lists the Play cards", await pg.evaluate("document.querySelectorAll('#setHt [data-ht]').length===9"))
+        ck("244 Settings lists the Play cards", await pg.evaluate("document.querySelectorAll('#setHt [data-ht]').length===12"))
         await pg.evaluate("document.querySelector('[data-ht=wknd]').click()")
         ck("244 switching one off is saved", await pg.evaluate("prefs.hideHt.wknd===true"))
         await pg.evaluate("document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'}))")
@@ -105,7 +105,7 @@ async def main():
         # 247 review escape
         await pg.evaluate("openReview()"); await pg.evaluate("document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'}))")
         ck("247 Escape closes the review", await pg.evaluate("document.getElementById('review').hidden"))
-        wn = await pg.evaluate("async()=>{stats.seen29=0;maybeWhatsNew();await new Promise(r=>setTimeout(r,50));const t=document.getElementById('evh').textContent;return [t.includes('Daily and Speed Unscramble'),document.querySelectorAll('#evh > .panel.wn').length,!!stats.seen29]}")
+        wn = await pg.evaluate("async()=>{stats.seen29=0;stats.seen30=0;maybeWhatsNew();await new Promise(r=>setTimeout(r,50));const t=document.getElementById('evh').textContent;return [t.includes('Daily and Speed Unscramble'),document.querySelectorAll('#evh > .panel.wn').length,!!stats.seen29]}")
         ck("What's New leads with this update", wn == [True, 4, True], wn)
         ck("no page errors", not errs, errs[:3])
         await ctx.close(); await b.close()

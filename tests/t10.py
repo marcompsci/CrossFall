@@ -7,7 +7,7 @@ res = []
 def ck(n, ok, d=""):
     res.append(bool(ok)); print(f"{'PASS' if ok else 'FAIL'}  {n}{('  · ' + str(d)) if d not in ('', None) else ''}")
 SETUP = """()=>{stats.tutDone=true;stats.nick='T';stats.freeCats=['Sports','Music','Arcade'];stats.spSkip=1;stats.diff={};CATEGORIES.forEach(c=>stats.diff[c.name]='medium');
- stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;stats.seen23=1;stats.seen24=1;stats.seen25=1;stats.seen26=1;stats.seen27=1;stats.seen28=1;stats.seen29=1;stats.fullHome=1;stats.recapSeen='2026-10';stats.tot.games=12;document.getElementById('onb').hidden=true;S=null;showMenu()}"""
+ stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;stats.seen23=1;stats.seen24=1;stats.seen25=1;stats.seen26=1;stats.seen27=1;stats.seen28=1;stats.seen29=1;stats.seen30=1;stats.fullHome=1;stats.recapSeen='2026-10';stats.tot.games=12;document.getElementById('onb').hidden=true;S=null;showMenu()}"""
 CLOSE = "()=>{document.querySelectorAll('.ov').forEach(o=>{if(o.id!=='menu')o.hidden=true});const c=document.getElementById('cele');if(c)c.hidden=true;S=null;showMenu()}"
 async def main():
     from playwright.async_api import async_playwright
@@ -92,7 +92,7 @@ async def main():
         # 37 medals silent for existing players
         ctx2 = await b.new_context(); pg2 = await ctx2.new_page(); pg2.on("pageerror", lambda e: errs.append(str(e))); await pg2.set_content(SRC); await pg2.wait_for_timeout(800)
         r = await pg2.evaluate("()=>{stats.achInit=1;stats.gym={best:4000};celeQ.length=0;achCheck();return [stats.ach.gym,celeQ.length,ACH.length]}")
-        ck("37 new medal tracks start silently at the earned tier", r == [2, 0, 26], r)
+        ck("37 new medal tracks start silently at the earned tier", r == [2, 0, 28], r)
         await pg.evaluate(CLOSE); await pg.evaluate("()=>{openDrawer();['rivals','history','home'].forEach(a=>{})}")
         ck("drawer has the three new items", await pg.evaluate("['rivals','history','home'].every(a=>!!document.querySelector('#drawer [data-act='+a+']'))"))
         ck("no JS errors", not errs, errs[:3])

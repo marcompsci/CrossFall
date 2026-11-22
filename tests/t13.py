@@ -9,7 +9,7 @@ res = []
 def ck(n, ok, d=""):
     res.append(bool(ok)); print(f"{'PASS' if ok else 'FAIL'}  {n}{('  · ' + str(d)) if d not in ('', None) else ''}")
 SETUP = """()=>{stats.tutDone=true;stats.nick='T';stats.freeCats=['Sports','Music','Arcade'];stats.spSkip=1;stats.diff={};CATEGORIES.forEach(c=>stats.diff[c.name]='medium');
- stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;stats.seen23=1;stats.seen24=1;stats.seen25=1;stats.seen26=1;stats.seen27=1;stats.seen28=1;stats.seen29=1;stats.fullHome=1;stats.recapSeen='2026-11';stats.tot.games=12;stats.tips={target:1,powers:1,fever:1,'rush-tap':1,'rush-clue':1,'rush-scramble':1};document.getElementById('onb').hidden=true;S=null;showMenu()}"""
+ stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;stats.seen23=1;stats.seen24=1;stats.seen25=1;stats.seen26=1;stats.seen27=1;stats.seen28=1;stats.seen29=1;stats.seen30=1;stats.fullHome=1;stats.recapSeen='2026-11';stats.tot.games=12;stats.tips={target:1,powers:1,fever:1,'rush-tap':1,'rush-clue':1,'rush-scramble':1};document.getElementById('onb').hidden=true;S=null;showMenu()}"""
 CLOSE = "()=>{document.querySelectorAll('.ov').forEach(o=>{if(o.id!=='menu')o.hidden=true});const c=document.getElementById('cele');if(c)c.hidden=true;S=null;showMenu()}"
 
 async def page(b, when, setup=SETUP):
@@ -140,7 +140,7 @@ async def main():
         ck("60 Wrapped is hidden outside 1 Dec to 15 Jan", await pg.evaluate("!document.getElementById('wrLine')&&wrapOn(Date.parse('2027-01-15T12:00'))&&!wrapOn(Date.parse('2027-01-16T12:00'))&&wrapYear(Date.parse('2027-01-10T12:00'))===2026"))
         # What's new
         await ctx.close()
-        ctx, pg, e4 = await page(b, '2026-11-20T10:00:00', SETUP.replace("stats.seen21=1;stats.seen22=1;stats.seen23=1;stats.seen24=1;stats.seen25=1;stats.seen26=1;stats.seen27=1;stats.seen28=1;stats.seen29=1;", "")); errs += e4
+        ctx, pg, e4 = await page(b, '2026-11-20T10:00:00', SETUP.replace("stats.seen21=1;stats.seen22=1;stats.seen23=1;stats.seen24=1;stats.seen25=1;stats.seen26=1;stats.seen27=1;stats.seen28=1;stats.seen29=1;stats.seen30=1;", "")); errs += e4
         await pg.evaluate("()=>{S=null;showMenu()}"); await pg.wait_for_timeout(900)
         wn = await pg.evaluate("[document.getElementById('evh').textContent.includes('Groups'),document.querySelectorAll('#evh > .wn').length,!!document.querySelector('#evh details.wn-more')]")
         ck("What's new leads with the 4 newest items and folds the rest", wn == [True, 4, True], wn)

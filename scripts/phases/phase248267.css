@@ -1,0 +1,26 @@
+/* ===== Phases 248–267 ===== */
+.words-chip{flex:none;margin-left:6px;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:800;background:var(--panel-2);color:var(--muted);white-space:nowrap}
+.words-chip.last{background:color-mix(in srgb,#ffd166 30%,transparent);color:#ffd166}
+html.light .words-chip.last{color:#9a6a00}
+.words-chip[hidden]{display:none}
+.pf-line{display:flex;flex-direction:column;align-items:center;gap:4px;margin:4px 0 8px;font-size:13px;color:var(--muted)}
+.pf-line span{display:inline-flex;align-items:center;gap:4px}.pf-line svg{width:20px;height:20px}.pf-line .up{color:var(--solved);font-weight:700}
+.pf-perfect{padding:4px 12px;border-radius:999px;background:linear-gradient(135deg,#ffe08a,#ff9f3d);color:#3a2000!important;font-weight:800}
+.ht-day{grid-column:1/-1}.ht-day .ht-k{color:var(--solved)}
+.ht-day.done{border-color:color-mix(in srgb,var(--solved) 60%,var(--line))}
+.dy-list{display:flex!important;flex-wrap:wrap;gap:6px 12px;margin-top:4px}
+.dy{font-size:13px;color:var(--muted)}.dy.ok{color:var(--solved);font-weight:700}
+.ht-sun{grid-column:1/-1}.ht-sun .ghost-btn{margin-top:6px}
+.ht-missy .ht-k{color:#8fb7ff}
+.un-tiles .un-t{display:grid;place-items:center;width:42px;height:48px;border:0;border-radius:10px;background:var(--tile);color:var(--ink);font-family:var(--f-display);font-size:22px;box-shadow:0 3px 0 var(--tile-dim);cursor:pointer;transition:opacity .15s,transform .15s}
+.un-tiles .un-t.used{opacity:.25;transform:translateY(3px);box-shadow:none}
+.fp-cats{display:flex;gap:6px;overflow-x:auto;padding:8px 0 2px;scrollbar-width:none}.fp-cats::-webkit-scrollbar{display:none}
+.fp-cats button{flex:none;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--fg);font:inherit;font-size:13px;font-weight:700;min-height:36px}
+.fp-cats button[aria-checked="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.nt-row{display:flex;align-items:stretch;gap:6px}.nt-row .arow{flex:1}
+.nt-x,.ht-x,.nd-x{min-width:44px;min-height:44px}
+.nt-x{border:0;border-radius:12px;background:var(--panel-2);color:var(--muted)}
+.stk-note{margin:6px 0}
+button.stk{border:0;background:none;color:inherit;font:inherit;padding:4px 0;border-radius:12px;cursor:pointer}
+button.stk:active{background:var(--panel-2)}
+@media (prefers-reduced-motion:reduce){.un-tiles .un-t{transition:none}}

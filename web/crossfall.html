@@ -1728,6 +1728,33 @@ html:not(.light) .ht-uns .ht-k{color:#ffd166}
 .chip-sw[aria-checked="true"]{background:color-mix(in srgb,var(--accent) 22%,var(--panel));color:var(--fg);border-color:color-mix(in srgb,var(--accent) 60%,var(--line))}
 .chip-sw[aria-checked="true"]::before{content:"✓ "}
 
+/* ===== Phases 248–267 ===== */
+.words-chip{flex:none;margin-left:6px;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:800;background:var(--panel-2);color:var(--muted);white-space:nowrap}
+.words-chip.last{background:color-mix(in srgb,#ffd166 30%,transparent);color:#ffd166}
+html.light .words-chip.last{color:#9a6a00}
+.words-chip[hidden]{display:none}
+.pf-line{display:flex;flex-direction:column;align-items:center;gap:4px;margin:4px 0 8px;font-size:13px;color:var(--muted)}
+.pf-line span{display:inline-flex;align-items:center;gap:4px}.pf-line svg{width:20px;height:20px}.pf-line .up{color:var(--solved);font-weight:700}
+.pf-perfect{padding:4px 12px;border-radius:999px;background:linear-gradient(135deg,#ffe08a,#ff9f3d);color:#3a2000!important;font-weight:800}
+.ht-day{grid-column:1/-1}.ht-day .ht-k{color:var(--solved)}
+.ht-day.done{border-color:color-mix(in srgb,var(--solved) 60%,var(--line))}
+.dy-list{display:flex!important;flex-wrap:wrap;gap:6px 12px;margin-top:4px}
+.dy{font-size:13px;color:var(--muted)}.dy.ok{color:var(--solved);font-weight:700}
+.ht-sun{grid-column:1/-1}.ht-sun .ghost-btn{margin-top:6px}
+.ht-missy .ht-k{color:#8fb7ff}
+.un-tiles .un-t{display:grid;place-items:center;width:42px;height:48px;border:0;border-radius:10px;background:var(--tile);color:var(--ink);font-family:var(--f-display);font-size:22px;box-shadow:0 3px 0 var(--tile-dim);cursor:pointer;transition:opacity .15s,transform .15s}
+.un-tiles .un-t.used{opacity:.25;transform:translateY(3px);box-shadow:none}
+.fp-cats{display:flex;gap:6px;overflow-x:auto;padding:8px 0 2px;scrollbar-width:none}.fp-cats::-webkit-scrollbar{display:none}
+.fp-cats button{flex:none;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--fg);font:inherit;font-size:13px;font-weight:700;min-height:36px}
+.fp-cats button[aria-checked="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.nt-row{display:flex;align-items:stretch;gap:6px}.nt-row .arow{flex:1}
+.nt-x,.ht-x,.nd-x{min-width:44px;min-height:44px}
+.nt-x{border:0;border-radius:12px;background:var(--panel-2);color:var(--muted)}
+.stk-note{margin:6px 0}
+button.stk{border:0;background:none;color:inherit;font:inherit;padding:4px 0;border-radius:12px;cursor:pointer}
+button.stk:active{background:var(--panel-2)}
+@media (prefers-reduced-motion:reduce){.un-tiles .un-t{transition:none}}
+
 /* ===== Fluid pass (Apple design / Emil Kowalski skill audit, 28 Oct 2026) ===== */
 :root{--ease-out:cubic-bezier(.2,.8,.2,1);--ease-press:cubic-bezier(.3,.7,.4,1)}
 /* 1. respond on press: every control acknowledges the touch immediately; no 300 ms tap delay */
@@ -1854,6 +1881,7 @@ html.hc .panel{border-color:var(--line);box-shadow:none}
         <button data-act="album"><span data-ti="cards"></span> Sticker album</button>
         <button data-act="find"><span data-ti="puzzle"></span> Find a puzzle</button>
         <button data-act="unsc"><span data-ti="cards"></span> Unscramble</button>
+        <button data-act="notes"><span data-ti="pencil"></span> My notes</button>
         <button data-act="wnew"><span data-ti="star"></span> What's new</button>
         <button data-act="breath"><span data-ti="moon"></span> Take a breath</button>
         <button data-act="wotd"><span data-ti="pencil"></span> Word of the day</button>
@@ -3491,7 +3519,7 @@ document.getElementById("drClose").onclick=closeDrawer;try{initDrawerDrag()}catc
     else if(a==="checkin")showQuiz(null);
     else if(a==="archive")openArchive();else if(a==="maker")openMaker();else if(a==="review")openReview();else if(a==="backup")openBackup();
     else if(a==="tour"){startTutorial()}
-    else if(a==="rewards")openRewards();else if(a==="events")openEvents();else if(a==="wordbook")openWordBook();else if(a==="duels")openDuels();else if(a==="modes")openModes();else if(a==="trail")openTrail();else if(a==="harvest")openHarvest();else if(a==="snow")openSnow();else if(a==="cipher")openCipher();else if(a==="gym")openGym();else if(a==="records")openRecords();else if(a==="calendar")openCalendar();else if(a==="quickdaily")openQD();else if(a==="groups")openGroups();else if(a==="twist")playTwist();else if(a==="goal")openGoal();else if(a==="rivals")openModes("mdRiv");else if(a==="history")openHistory();else if(a==="home")openHomeEdit();else if(a==="ach")openAchievements();else if(a==="insights")openInsights();else if(a==="sky")openSkyMap();else if(a==="album")openAlbum();else if(a==="find")openFind();else if(a==="unsc")openUnscramble();else if(a==="wnew")openWhatsNew();else if(a==="breath")openBreath();else if(a==="wotd")openWotd();else if(a==="spooky")openSpooky();else if(a==="look")openLook();else if(a==="journal")openJournal();else if(a==="langlab")openLangHub();else if(a==="mini")openMini();else if(a==="chunks")openChunks();else if(a==="scoreboard")openScoreboard();else if(a==="code")openCode();
+    else if(a==="rewards")openRewards();else if(a==="events")openEvents();else if(a==="wordbook")openWordBook();else if(a==="duels")openDuels();else if(a==="modes")openModes();else if(a==="trail")openTrail();else if(a==="harvest")openHarvest();else if(a==="snow")openSnow();else if(a==="cipher")openCipher();else if(a==="gym")openGym();else if(a==="records")openRecords();else if(a==="calendar")openCalendar();else if(a==="quickdaily")openQD();else if(a==="groups")openGroups();else if(a==="twist")playTwist();else if(a==="goal")openGoal();else if(a==="rivals")openModes("mdRiv");else if(a==="history")openHistory();else if(a==="home")openHomeEdit();else if(a==="ach")openAchievements();else if(a==="insights")openInsights();else if(a==="sky")openSkyMap();else if(a==="album")openAlbum();else if(a==="find")openFind();else if(a==="unsc")openUnscramble();else if(a==="notes")openNotes();else if(a==="wnew")openWhatsNew();else if(a==="breath")openBreath();else if(a==="wotd")openWotd();else if(a==="spooky")openSpooky();else if(a==="look")openLook();else if(a==="journal")openJournal();else if(a==="langlab")openLangHub();else if(a==="mini")openMini();else if(a==="chunks")openChunks();else if(a==="scoreboard")openScoreboard();else if(a==="code")openCode();
     else if(a==="pro"){showPaywall(PRO?"owned":"menu")}
     else if(a==="how"){goPage("Play");const h=document.querySelector(".how");if(h){h.open=true;setTimeout(()=>h.scrollIntoView({behavior:"smooth",block:"start"}),60)}}});
   document.querySelectorAll("#rkSeg button").forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;renderRanks()});
@@ -4746,13 +4774,19 @@ function openWordBook(cat){wbBackfill();const U=wbUniverse(),cats=Object.keys(U)
   document.getElementById("wbDone").onclick=()=>{el.hidden=true;el.innerHTML="";if(hubPage==="Profile")renderProfile()}}
 
 /* ---- what's new (shown once to returning players) ---- */
-function maybeWhatsNew(){if(stats.seen29||!stats.tot||!stats.tot.games)return;stats.seen12=1;stats.seen13=1;stats.seen14=1;const had16=!!stats.seen16;stats.seen15=1;stats.seen16=1;stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;stats.seen23=1;stats.seen24=1;stats.seen25=1;stats.seen26=1;stats.seen27=1;stats.seen28=1;stats.seen29=1;saveStats();const el=document.getElementById("evh");
+function maybeWhatsNew(){if(stats.seen30||!stats.tot||!stats.tot.games)return;stats.seen12=1;stats.seen13=1;stats.seen14=1;const had16=!!stats.seen16;stats.seen15=1;stats.seen16=1;stats.seen17=1;stats.seen18=1;stats.seen19=1;stats.seen20=1;stats.seen21=1;stats.seen22=1;stats.seen23=1;stats.seen24=1;stats.seen25=1;stats.seen26=1;stats.seen27=1;stats.seen28=1;stats.seen29=1;stats.seen30=1;saveStats();const el=document.getElementById("evh");
   el.innerHTML=`<h1>WHAT'S <span>NEW</span></h1>
+   <div class="panel wn">${ti("star")}<div><b>Your day</b><p>Today's Daily, the Daily Unscramble and your puzzle goal in one card. Finish all three for 100 XP. Missed yesterday? Play it from Play.</p></div></div>
+   <div class="panel wn">${ti("trophy")}<div><b>Perfect puzzles</b><p>Three stars with no help and no wrong words is a Perfect puzzle. Results also show a new best on a puzzle and new words in your bank.</p></div></div>
+   <div class="panel wn">${ti("cards")}<div><b>Tap to unscramble</b><p>Tap the letter tiles to spell the word, shuffle them, or clear and start again. Find a puzzle has category chips.</p></div></div>
+   <div class="panel wn">${ti("pencil")}<div><b>My notes and more</b><p>All your puzzle notes in one place, when you earned each sticker, words left in the clue bar, and new medals.</p></div></div>
+   <details class="wn-more"><summary>More new in 1.1</summary>
    <div class="panel wn">${ti("star")}<div><b>Daily and Speed Unscramble</b><p>The same five words all day with a streak, or as many as you can in 60 seconds. On Play and Learn.</p></div></div>
    <div class="panel wn">${ti("pencil")}<div><b>Notes on puzzles</b><p>Add a note to any puzzle from its results. Find a puzzle shows your notes and best scores, and sorts A–Z, by stars or by best.</p></div></div>
    <div class="panel wn">${ti("cards")}<div><b>Your words</b><p>See every mastered word, share your word list, and see which categories you played most this year.</p></div></div>
    <div class="panel wn">${ti("smile")}<div><b>Your way</b><p>Pick the cards on Play, fewer celebrations, clues read aloud, and the target word on the pause card.</p></div></div>
-   <details class="wn-more"><summary>More new in 1.1</summary>
+   
+   
    <div class="panel wn">${ti("cards")}<div><b>Study on Learn</b><p>Today's study shows words to review, your review streak and words mastered. Tricky words get their own session.</p></div></div>
    <div class="panel wn">${ti("puzzle")}<div><b>Unscramble</b><p>Five words from your bank, scrambled. Use the clue, take a hint if you need it, and beat your best. Learn or Menu › Unscramble.</p></div></div>
    <div class="panel wn">${ti("trophy")}<div><b>Weekend challenge</b><p>On Saturdays and Sundays, win a puzzle from three categories for 300 XP. Your best games are on Ranks.</p></div></div>
@@ -7152,7 +7186,7 @@ const LOOK_KEYS=["bigWell","clearHint","countdown","ghost","wellGrid","lefty","s
     const st=document.getElementById("settings");a.innerHTML="";try{renderPaceInfo()}catch(e){}if(st)st.scrollTop=0}}}
 
 /* ---------- 205: What's New from the Menu ---------- */
-function openWhatsNew(){stats.seen29=0;maybeWhatsNew()}
+function openWhatsNew(){stats.seen30=0;maybeWhatsNew()}
 
 try{applyLook178()}catch(e){}
 
@@ -7369,6 +7403,101 @@ const HT_KINDS=[["mc","Monthly challenge",".ht-mc"],["wknd","Weekend challenge",
 /* ---------- 247: Escape closes more sheets ---------- */
 document.addEventListener("keydown",e=>{if(e.key!=="Escape"||e.defaultPrevented)return;const rvw=document.getElementById("review");if(rvw&&!rvw.hidden){e.preventDefault();closeReview();return}
   const st=document.getElementById("settings");if(st&&!st.hidden){e.preventDefault();st.hidden=true;return}const dr=document.getElementById("drawer");if(dr&&!dr.hidden){e.preventDefault();closeDrawer()}});
+
+/* ================= Phases 248–267 (21 Nov 2026, evening) ================= */
+
+/* ---------- 248, 249: words left in the clue bar ---------- */
+{const _rcl2=renderClue;renderClue=function(){const r=_rcl2.apply(this,arguments);try{const bar=document.getElementById("cluebar");if(!bar||!S||!S.cw)return r;let c=document.getElementById("wordsChip");
+    if(!c){c=document.createElement("span");c.id="wordsChip";c.className="words-chip";c.setAttribute("aria-live","polite");bar.appendChild(c)}
+    const n=S.cw.words.length,done=S.cw.words.filter(w=>w.solved).length,left=n-done;c.hidden=S.phase!=="cross";c.classList.toggle("last",left===1);c.textContent=left===1?"Last word!":`${done}/${n}`;
+    c.setAttribute("aria-label",left===1?"Last word":`${done} of ${n} words solved`)}catch(e){}return r}}
+
+/* ---------- 250, 251, 254, 265: perfect puzzles, new bests, new words ---------- */
+{const _cw4=checkWords;checkWords=function(cell){const wr=S&&S.wrong;const r=_cw4.apply(this,arguments);try{if(S&&S.wrong&&S.wrong!==wr)S._dirty=1}catch(e){}return r}}
+{const _sl7=startLevel;startLevel=function(){const r=_sl7.apply(this,arguments);try{if(S){S._dirty=0;S._bank0=Object.keys(stats.bank||{}).length;S._best0=S.L&&S.L.id?bestOn(S.L.id):0}}catch(e){}return r}}
+{const _rg10=recordGame;recordGame=function(win){let perfect=false;try{perfect=!!win&&!S._dirty&&!(S.helped&&S.helped.size)&&!S.tut&&!S.dropOnly}catch(e){}const r=_rg10.apply(this,arguments);
+  try{if(S){const g=stats.games[0];S._perfect=perfect&&g&&g.stars>=3;if(S._perfect){stats.perfectN=(stats.perfectN||0)+1}S._newWords=Math.max(0,Object.keys(stats.bank||{}).length-(S._bank0||0));
+    S._newBest=!!(S.L&&S.L.id&&!S.L.daily&&S._best0>0&&S.score>S._best0)}}catch(e){}return r}}
+{const _shr7=showResult;showResult=function(){const r=_shr7.apply(this,arguments);try{const el=document.getElementById("result");if(!el||!S||el.querySelector(".pf-line"))return r;const bits=[];
+    if(S._perfect)bits.push(`<span class="pf-perfect">★ Perfect puzzle: three stars, no help, no wrong words</span>`);
+    if(S._newBest)bits.push(`<span class="up">New best on this puzzle (was ${fmtN(S._best0)})</span>`);
+    if(S._newWords)bits.push(`<span>${ti("cards")} ${S._newWords} new word${S._newWords===1?"":"s"} in your bank</span>`);
+    const at=el.querySelector(".pts");if(at&&bits.length)at.insertAdjacentHTML("afterend",`<div class="pf-line">${bits.join("")}</div>`);if(S._perfect&&!calmNow())hap("success")}catch(e){console.error(e)}return r}}
+
+/* ---------- 252, 253: your day ---------- */
+function dayChecks(){const t=todayKey(),played=stats.games.filter(g=>!g.practice&&dayKeyOf(new Date(g.t))===t).length,goal=Math.max(1,stats.goal||3);
+  return[{k:"daily",l:"Today's Daily",ok:!!dailyRecord(t)},{k:"uns",l:"Daily Unscramble",ok:unDailyDone(),hide:!unDailyList()},{k:"goal",l:`${goal} puzzle${goal===1?"":"s"}`,ok:played>=goal,sub:`${Math.min(played,goal)}/${goal}`}].filter(x=>!x.hide)}
+function dayCheck(){const C=dayChecks(),t=todayKey();if(C.length>=2&&C.every(x=>x.ok)&&stats.dayDone!==t){stats.dayDone=t;stats.dayDoneN=(stats.dayDoneN||0)+1;giveXP(100,"Your day");queueCele({kind:"xp",title:"Your day is done",sub:"Daily, Unscramble and your goal. +100 XP"});saveStats()}}
+function dayTileHTML(){if((prefs.hideHt||{}).day)return"";const C=dayChecks();if(C.length<2)return"";const n=C.filter(x=>x.ok).length,all=n===C.length;
+  return`<div class="ht ht-day${all?" done":""}"><span class="ht-k">Your day · ${n}/${C.length}</span><b>${all?"All done. See you tomorrow!":"Three small things"}</b><span class="dy-list">${C.map(x=>`<span class="dy${x.ok?" ok":""}">${x.ok?"✓":"○"} ${esc(x.l)}${x.sub&&!x.ok?` · ${x.sub}`:""}</span>`).join("")}</span>${all?"":`<span>Finish all for +100 XP</span>`}</div>`}
+
+/* ---------- 262: your week on Sunday; 264: catch up on yesterday's Daily ---------- */
+function thisWeekSum(){const t=todayKey(),mon=addDays(t,-((new Date().getDay()+6)%7)),g=stats.games.filter(x=>!x.practice&&dayKeyOf(new Date(x.t))>=mon);if(!g.length)return null;
+  return{n:g.length,stars:g.reduce((a,x)=>a+(x.stars||0),0),pts:g.reduce((a,x)=>a+(x.score||0),0),days:new Set(g.map(x=>dayKeyOf(new Date(x.t)))).size}}
+function sundayHTML(){if(new Date().getDay()!==0||(prefs.hideHt||{}).sun)return"";const w=thisWeekSum();if(!w)return"";
+  return`<div class="ht ht-sun"><span class="ht-k">Your week so far</span><b>${w.n} puzzles · ${w.stars}★ · ${w.days} day${w.days===1?"":"s"}</b><span>${fmtN(w.pts)} points</span><button class="ghost-btn sm" id="htSunShare">Share my week</button></div>`}
+function missedYHTML(){if((prefs.hideHt||{}).missy)return"";const y=addDays(todayKey(),-1);if(dailyRecord(y)||!stats.games.length)return"";
+  return`<button class="ht ht-missy" id="htMissY"><span class="ht-k">Missed yesterday?</span><b>Play yesterday's Daily</b><span>It won't change your streak, but you'll get the stars.</span></button>`}
+{const _htH5=homeTilesHTML;homeTilesHTML=function(){let h=_htH5.apply(this,arguments)||"";const add=dayTileHTML()+sundayHTML()+missedYHTML();if(!add)return h;
+  return h?h.replace('<div class="home-tiles" id="homeTiles">','<div class="home-tiles" id="homeTiles">'+add):`<div class="home-tiles" id="homeTiles">${add}</div>`}}
+{const _rdc7=renderDailyCard;renderDailyCard=function(){const r=_rdc7.apply(this,arguments);try{const s=document.getElementById("htSunShare");if(s)s.onclick=()=>{const w=thisWeekSum();shareOut(`My Crossfall week: ${w.n} puzzles · ${w.stars}★ · ${w.days} days · ${fmtN(w.pts)} points`)};
+    const m=document.getElementById("htMissY");if(m)m.onclick=()=>playDaily(addDays(todayKey(),-1),true)}catch(e){}return r}}
+HT_KINDS.push(["day","Your day",".ht-day"],["sun","Your week (Sundays)",".ht-sun"],["missy","Yesterday's Daily",".ht-missy"]);
+
+/* ---------- 255: your best month ---------- */
+function bestMonth(){let b=null;Object.entries(stats.mon||{}).forEach(([k,M])=>{if(M.score>0&&(!b||M.score>b.M.score))b={k,M}});return b}
+
+/* ---------- 256, 257: tap letters to unscramble; shuffle ---------- */
+{const _ru2=renderUn;renderUn=function(){_ru2.apply(this,arguments);try{const tiles=document.querySelector("#evh .un-tiles"),inp=document.getElementById("unIn");if(!tiles||!inp||tiles.dataset.tap)return;tiles.dataset.tap=1;
+  const [w]=un.list[un.i];const draw=s=>{tiles.innerHTML=[...s].map((c,i)=>`<button type="button" class="un-t" data-ui="${i}" aria-label="${c}">${c}</button>`).join("");used.clear();wire()};const used=new Set();
+  const wire=()=>tiles.querySelectorAll(".un-t").forEach(b=>b.onclick=()=>{if(used.has(b.dataset.ui)||inp.value.length>=w.length)return;used.add(b.dataset.ui);b.classList.add("used");b.disabled=true;inp.value+=b.textContent;hap("light");
+    if(inp.value.length===w.length)document.getElementById("unForm").dispatchEvent(new Event("submit",{cancelable:true}))});
+  draw(un.sc.s);inp.addEventListener("input",()=>{if(!inp.value){used.clear();tiles.querySelectorAll(".un-t").forEach(b=>{b.classList.remove("used");b.disabled=false})}});
+  const row=document.getElementById("unHint").closest(".btns");row.insertAdjacentHTML("afterbegin",`<button class="ghost-btn" id="unBk" type="button">⌫ Clear</button><button class="ghost-btn" id="unMix" type="button">Shuffle</button>`);
+  document.getElementById("unBk").onclick=()=>{inp.value="";used.clear();tiles.querySelectorAll(".un-t").forEach(b=>{b.classList.remove("used");b.disabled=false})};
+  document.getElementById("unMix").onclick=()=>{un.sc.s=scramble(w);inp.value="";draw(un.sc.s)};
+  const f=document.getElementById("unForm");f.addEventListener("submit",()=>setTimeout(()=>{if(un&&un.list[un.i]&&un.list[un.i][0]===w&&document.getElementById("unIn")){document.getElementById("unIn").value="";used.clear();tiles.querySelectorAll(".un-t").forEach(b=>{b.classList.remove("used");b.disabled=false})}},400))}catch(e){console.error(e)}}}
+
+/* ---------- 258: category chips in Find ---------- */
+let findCat="";
+{const _fm2=findMatches;findMatches=function(q){const m=_fm2.apply(this,arguments);return findCat?m.filter(x=>x.l.cat===findCat):m}}
+{const _of2=openFind;openFind=function(){findCat="";_of2.apply(this,arguments);const s=document.querySelector("#evh .fp-sort");if(!s||document.getElementById("fpCats"))return;
+  s.insertAdjacentHTML("beforebegin",`<div class="fp-cats" id="fpCats" role="radiogroup" aria-label="Category"><button role="radio" data-fc="" aria-checked="true">All</button>${CATEGORIES.map(c=>`<button role="radio" data-fc="${esc(c.name)}" aria-checked="false">${esc(c.name)}</button>`).join("")}</div>`);
+  document.querySelectorAll("#fpCats [data-fc]").forEach(b=>b.onclick=()=>{findCat=b.dataset.fc;document.querySelectorAll("#fpCats [data-fc]").forEach(x=>x.setAttribute("aria-checked",x===b));document.getElementById("fpQ").dispatchEvent(new Event("input"))})}}
+
+/* ---------- 259: settings search understands other words ---------- */
+const SET_KW={setQuiet:"sound audio volume mute night silent",setTypeHap:"vibrate vibration haptics touch",setNoFlash:"flashing epilepsy motion light",setBigClue:"text size font large read",setSpaced:"dyslexia reading letter spacing font",
+  setLefty:"left hand handed",setHcWell:"colour color blind contrast",setTint:"night blue light eyes warm",setReadClue:"voiceover speak audio tts",setSay:"voiceover speak audio tts",setNudge:"break rest health time",setQuietCele:"popups confetti animation"};
+{const _rpi10=renderPaceInfo;renderPaceInfo=function(){_rpi10.apply(this,arguments);Object.entries(SET_KW).forEach(([id,kw])=>{const el=document.getElementById(id);const row=el&&(el.classList.contains("setrow")?el:el.closest(".setgroup"));if(row&&!row.querySelector(".kw"))row.insertAdjacentHTML("beforeend",`<span class="kw" hidden>${kw}</span>`)})}}
+
+/* ---------- 261: my notes ---------- */
+function openNotes(){const N=Object.entries(stats.notes||{}).map(([id,t])=>({id,t,i:LEVELS.findIndex(l=>l.id===id)})).filter(x=>x.i>=0),el=document.getElementById("evh");
+  el.innerHTML=`<h1>MY <span>NOTES</span></h1><p class="sub">${N.length?`${N.length} puzzle note${N.length===1?"":"s"}. Add one from any puzzle's results.`:"No notes yet. Add one from any puzzle's results."}</p>
+   <div class="alist">${N.map(x=>`<div class="nt-row"><button class="arow" data-ni="${x.i}"><span><b>${esc(LEVELS[x.i].name)}</b><span class="sub">${esc(LEVELS[x.i].cat)}</span><span class="fp-note">📝 ${esc(x.t)}</span></span></button><button class="nt-x" data-nd="${esc(x.id)}" aria-label="Delete note for ${esc(LEVELS[x.i].name)}">✕</button></div>`).join("")}</div>
+   <div class="btns wide"><button class="big" id="evDone">Done</button></div>`;el.hidden=false;el.scrollTop=0;
+  el.querySelectorAll("[data-ni]").forEach(b=>b.onclick=()=>{const i=+b.dataset.ni;if(lockReason(LEVELS[i])){toast("That puzzle is locked");return}closeEvents();startLevel(i)});
+  el.querySelectorAll("[data-nd]").forEach(b=>b.onclick=()=>{delete stats.notes[b.dataset.nd];saveStats();openNotes()});document.getElementById("evDone").onclick=closeEvents}
+
+/* ---------- 263: when you earned each sticker ---------- */
+{const _oa=openAlbum;openAlbum=function(){_oa.apply(this,arguments);const el=document.getElementById("evh");el.querySelectorAll(".stk").forEach(s=>{const lab=s.getAttribute("aria-label")||"";const m=lab.match(/^(.*), (.*): (collected|not yet)$/);if(!m)return;
+    const c=m[1],t=STK_TIERS.findIndex(x=>x[0]===m[2]),at=(stats.stk||{})[c+":"+t];const b=document.createElement("button");b.className=s.className;b.innerHTML=s.innerHTML;b.setAttribute("aria-label",lab);
+    b.onclick=()=>{let n=document.getElementById("stkNote");if(!n){document.querySelector("#evh .album").insertAdjacentHTML("beforebegin",`<p class="sub stk-note" id="stkNote" role="status"></p>`);n=document.getElementById("stkNote")}
+      n.innerHTML=at?`<b>${esc(c)} · ${esc(m[2])}</b>: collected ${new Date(at).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"})}`:`<b>${esc(c)} · ${esc(m[2])}</b>: ${STK_TIERS[t][1]==="win"?"win any puzzle in this category":STK_TIERS[t][1]==="stars"?`earn ${STK_TIERS[t][2]} stars in this category`:"play every puzzle in this category"}`};s.replaceWith(b)})}}
+
+/* ---------- profile: 254, 255, 261 ---------- */
+{const _rp9=renderProfile;renderProfile=function(){_rp9.apply(this,arguments);const el=document.getElementById("profile");if(!el)return;const row=el.querySelector(".pr-row");
+  if(row){const bm=bestMonth();row.insertAdjacentHTML("beforeend",`<div class="pr-c"><b>${fmtN(stats.perfectN||0)}</b><span>perfect puzzles</span></div>${bm?`<div class="pr-c"><b>${fmtN(bm.M.score)}</b><span>best month: ${new Date(bm.k+"-15").toLocaleDateString("en-US",{month:"short",year:"numeric"})}</span></div>`:""}`)}
+  const links=el.querySelector(".pp-links");if(links&&!document.getElementById("pfNotes")){const n=Object.keys(stats.notes||{}).length;if(n){links.insertAdjacentHTML("beforeend",`<button class="pp-link" id="pfNotes">${ti("pencil")}<span>My notes · ${n}</span></button>`);document.getElementById("pfNotes").onclick=openNotes}}}}
+
+/* ---------- 266, 267: medals ---------- */
+let ach5Done=false;
+function ach5Init(){if(ach5Done)return;ach5Done=true;ACH.push({id:"perfect2",name:"Perfectionist",ic:"star",unit:"perfect puzzles",t:[1,10,50],v:()=>stats.perfectN||0},{id:"unscr",name:"Unscrambler",ic:"cards",unit:"day Daily Unscramble streak",t:[3,7,30],v:()=>(stats.unDaily||{}).best||0});
+  if(stats.achInit&&!stats.ach5Init){stats.ach=stats.ach||{};ACH.slice(-2).forEach(a=>{let v=0;try{v=a.v()}catch(e){}let t=0;a.t.forEach((n,i)=>{if(v>=n)t=i+1});stats.ach[a.id]=Math.max(stats.ach[a.id]||0,t)})}stats.ach5Init=1}
+{const _ac5=achCheck;achCheck=function(){ach5Init();return _ac5.apply(this,arguments)}}
+
+/* ---------- hooks ---------- */
+{const _rg11=recordGame;recordGame=function(win){const r=_rg11.apply(this,arguments);try{dayCheck()}catch(e){}return r}}
+{const _rui=renderUn;renderUn=function(){const r=_rui.apply(this,arguments);try{if(un&&un.daily&&un._fin)dayCheck()}catch(e){}return r}}
 
 function weeklyLine(){const cs=challengeState(),d=cs.filter(c=>c.done).length;return`<button class="wk-line" id="wkLine"><span>${ti("trophy")} Weekly challenges <b>${d}/3</b></span><span class="wk-bars">${cs.map(c=>`<i style="--p:${Math.round(c.v/c.goal*100)}%"></i>`).join("")}</span><span aria-hidden="true">›</span></button>`}
 
